@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Appium</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Appium</h1>
+        <h2>Automation for Apps</h2>
+        <a href="https://github.com/appium/appium" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>Appium</h1>
+
+<p><a href="https://travis-ci.org/appium/appium"><img src="https://api.travis-ci.org/appium/appium.png?branch=master" alt="Build Status"></a></p>
+
+<p>Appium is a test automation tool for use with native and hybrid iOS applications. It uses the webdriver JSON  wire protocol to drive Apple's UIAutomation. Appium is based on <a href="http://github.com/penguinho">Dan Cuellar's</a> work on iOS Auto.</p>
+
+<p>There are two big benefits to testing with Appium:</p>
+
+<ol>
+<li> Appium uses Apple's UIAutomation library under the hood to perform the automation, which means you do not have to recompile your app or modify in any way to be able to test automate it.</li>
+<li> With Appium, you are able to write your test in your choice of programming language, using the Selenium WebDriver API and language-specific client libraries. If you only used UIAutomation, you would be required to write tests in JavaScript, and only run the tests through the Instruments application. With Appium, you can test your native iOS app with any language, and with your preferred dev tools.</li>
+</ol><h2>Requirements</h2>
+
+<pre><code>&gt; Mac OSX 10.6 +
+&gt; XCode
+&gt; Apple Developer Tools (iphone simulator, command line tools)
+</code></pre>
+
+<h2>(FOR USERS): Ninja-speed Setup</h2>
+
+<p>Install <a href="http://nodejs.org/">node.js</a> which come with its package manager <a href="https://npmjs.org/">npm</a>.</p>
+
+<pre><code>&gt; sudo npm install appium -g
+&gt; appium --app /path/to/your/ios/app &amp;
+&gt; node your-appium-test.js
+</code></pre>
+<a href="https://github.com/appium/appium/tree/master/sample-code/examples">See example tests.</a>
+
+<hr>
+
+<h2>(FOR DEVELOPMENT): Prerequisite</h2>
+
+<p>Install <a href="http://nodejs.org/">node.js</a> which come with its package manager <a href="https://npmjs.org/">npm</a>.
+Change into your local repo clone and install packages using following commands:</p>
+
+<pre><code>&gt; sudo npm install -g mocha
+&gt; sudo npm install -g grunt
+&gt; npm install
+</code></pre>
+
+<p>First two commands will make test and build tools available (sudo may not be necessary if you installed node.js through homebrew). The third command will install all app dependencies.</p>
+
+<p>To avoid a security dialog that can appear when launching your iOS app, you need to modify your /etc/authorization file. You can do this by settings the element following &lt;allow-root&gt; under &lt;key&gt;system.privilege.taskport&lt;/key&gt; to &lt;true/&gt; or by running the supplied grunt task (at your own risk)</p>
+
+<pre><code>&gt; sudo grunt authorize
+</code></pre>
+
+<h2>Quick Start</h2>
+
+<p>Download UICatalog:</p>
+
+<pre><code>&gt; grunt downloadApp
+</code></pre>
+
+<p>Build an app:</p>
+
+<pre><code>&gt; grunt buildApp:UICatalog
+&gt; grunt buildApp:TestApp
+</code></pre>
+
+<p>Run functional tests against TestApp:</p>
+
+<pre><code>&gt; grunt functional
+</code></pre>
+
+<p>Run unit tests against TestApp:</p>
+
+<pre><code>&gt; grunt unit
+</code></pre>
+
+<p>Run tests against UICatalog:</p>
+
+<pre><code>&gt; grunt uicatalog
+</code></pre>
+
+<p>Run all tests against TestApp and UICatalog:</p>
+
+<pre><code>&gt; grunt test
+</code></pre>
+
+<p>Before commiting code please run grunt to run test and check your changes against code quality standards:</p>
+
+<pre><code>&gt; grunt
+Running "lint:all" (lint) task
+Lint free.
+
+Done, without errors.
+</code></pre>
+
+<h2>More things, low-level things</h2>
+
+<p>If you want to run the appium server and have it listen indefinitely, you can
+do one of the following:</p>
+
+<pre><code>&gt; grunt appium:TestApp
+&gt; grunt appium:UICatalog
+</code></pre>
+
+<p>Then you can, e.g., run individual testfiles using Mocha directly:</p>
+
+<pre><code>&gt; mocha -t 60000 -R spec test/functional/simple.js
+</code></pre>
+
+<p>Do you like getting close to the metal? Or are you trying to run this from
+a script with a custom app? Start appium without grunt from the
+command line (see parser.js for more CLI arguments):</p>
+
+<pre><code>&gt; node server.js --app /absolute/path/to/app -V 1
+</code></pre>
+
+<p>In this case, the app has to be compiled for the iphone simulator, e.g., by
+doing this in the Xcode project:</p>
+
+<pre><code>&gt; xcodebuild -sdk iphonesimulator6.0
+</code></pre>
+
+<p>This will create a directory called build/Release-iphonesimulator in your Xcode
+project, and this dir will contain the .app package you need to send to the
+server.</p>
+
+<p>You can also run against an app on an actual device by plugging the device in
+and passing the udid argument to server.js in the command above.</p>
+
+<h2>Using with a <a href="http://bitbeam.org">Bitbeambot</a>
+</h2>
+
+<p>AWAITING THE FUTURE</p>
+
+<h2>Contributing</h2>
+
+<p>Fork the project, make a change, and send a pull request!</p>
+
+<h2>Mailing List</h2>
+
+<p><a href="https://groups.google.com/d/forum/appium-discuss">Discussion Group</a></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/appium/appium/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/appium/appium/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/appium/appium"></a> is maintained by <a href="https://github.com/appium">appium</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
