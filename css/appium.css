@@ -359,3 +359,7 @@ border: 1px solid #e5e5e5;
 .video-js{
   margin: 0 auto 20px auto;
 }
+
+#readmeMarkdown section {
+    padding-top: 10px;
+}
