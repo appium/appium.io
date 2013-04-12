@@ -97,12 +97,11 @@
 Requirements
 </h2>
 
-<pre class="prettyprint">> Mac OS X 10.6 or higher
-> XCode
-> Apple Developer Tools (iPhone simulator SDK, command line tools)
-> Android SDK API >= 17
-> Node and npm (http://www.nodejs.org) (Node must be >= v0.8)</pre>
-</section>
+General:<li>Mac OS X 10.6 or higher (Linux OK for Android-only)</li>
+
+<li>Node and npm (brew install node) (Node must be &amp;gt;= v0.8)</li>For iOS automation:<li>XCode</li>
+
+<li>Apple Developer Tools (iPhone simulator SDK, command line tools)</li>For Android automation:<li>Android SDK API &amp;gt;= 17</li></section>
 <section id="user-quick-start">
 <h2>
 <a href="#user-quick-start" class="anchor" name="requirements">
@@ -111,12 +110,14 @@ Requirements
 User Quick Start
 </h2>
 
-Get something working with a quickness.<pre class="prettyprint">> mkdir appium-test && cd appium-test
-> sudo npm install appium -g
-> npm install wd
-> curl -O https://raw.github.com/appium/appium/master/sample-code/examples/node/simplest.js
-> appium &
-> node simplest.js</pre>
+Option 1: Use Appium.app:<li>Download the <a href="&quot;https://bitbucket.org/appium/appium.app/downloads/appium-release.dmg&quot;">Appium.app dmg</a></li>
+
+<li>Run Appium.app then run a test using your favorite language / framework</li>Option 2: Run Appium from the command line using Node:<pre class="prettyprint">mkdir appium-test && cd appium-test
+npm install appium -g  # might have to do this with sudo
+npm install wd
+curl -O https://raw.github.com/appium/appium/master/sample-code/examples/node/simplest.js
+appium &
+node simplest.js</pre>
 Example Tests: 
 
 <a href="https://github.com/appium/appium/tree/master/sample-code/examples/node">Node.js</a>
@@ -183,14 +184,25 @@ Install
 
 <a href="http://nodejs.org/">node.js</a>
 
- (includes npm, the node.js package manager).Fork the Appium repo ( 
+ (includes npm, the node.js package manager).
+The recommended way to install node is 
+
+<code>brew install node</code>
+
+. Node 
+
+<a href="http://mxcl.github.io/homebrew/">installed by
+brew</a>
+
+ will not require sudo for npm commands.Fork the Appium repo ( 
 
 <a href="https://github.com/appium/appium">https://github.com/appium/appium</a>
 
 ), then clone your fork.From your local repo clone&#39;s command prompt, install these packages using the
-following commands:<pre class="prettyprint">> sudo npm install -g mocha
-> sudo npm install -g grunt-cli
-> ./reset.sh</pre>
+following commands (if you didn&#39;t install node using homebrew, you might have
+to run npm with sudo privs):<pre class="prettyprint">npm install -g mocha
+npm install -g grunt-cli
+./reset.sh</pre>
 The first two commands install test and build tools (sudo may not be necessary
 if you installed node.js via Homebrew). The third command installs all app
 dependencies, builds supporting binaries and test apps. 
@@ -221,21 +233,7 @@ have to modify your
 <code>/etc/authorization</code> file to &amp;lt;true/&amp;gt;.</p></li>
 
 <li><p>Run the following grunt command which automatically modifies your
-<code>/etc/authorization</code> file for you:</p><blockquote><p>sudo grunt authorize</p></blockquote></li><strong>Important Note:</strong>
-
- Making this modification to your 
-
-<code>/etc/authorization</code>
-
- file
-grants access privileges to all members belonging to your 
-
-<code>_developer</code>
-
- group.Download the UICatalog test app:<pre class="prettyprint">> grunt downloadApp</pre>
-Build the test apps (if the functional tests fail, try running these grunt commands again):<pre class="prettyprint">> grunt buildApp:UICatalog
-> grunt buildApp:TestApp
-> grunt buildApp:WebViewApp</pre>
+<code>/etc/authorization</code> file for you:</p><pre><code>sudo grunt authorize</code></pre></li>At this point, you can simply run:<pre class="prettyprint">./reset.sh --ios</pre>
 </section>
 <section id="developing-on-appium-android">
 <h2>
@@ -249,17 +247,15 @@ Developing on Appium (Android)
 
 <a href="https://github.com/appium/appium/blob/master/docs/system-setup.md#android">setting up your system for Appium Android support</a>
 
-.)Configure the and build bootstrap .jar:<pre class="prettyprint">> grunt configAndroidBootstrap
-> grunt buildAndroidBootstrap</pre>
-Configure and build the test app:<pre class="prettyprint">> grunt configAndroidApp:ApiDemos
-> grunt buildAndroidApp:ApiDemos</pre>
+.)Now, you can simply run:<pre class="prettyprint">./reset.sh --android</pre>
+If you want to use Selendroid for older apps:<pre class="prettyprint">./reset.sh --selendroid</pre>
 Make sure you have one and only one Android emulator or device running, e.g.
 by running this command in another process (assuming the 
 
 <code>emulator</code>
 
  command is
-on your path):<pre class="prettyprint">> emulator -avd <MyAvdName></pre>
+on your path):<pre class="prettyprint">emulator -avd <MyAvdName></pre>
 </section>
 <section id="making-sure-you-re-up-to-date">
 <h2>
@@ -271,7 +267,10 @@ Making sure you&#39;re up to date
 
 Since we use dev versions of some packages, it often becomes necessary to
 install new NPM packages or update various things. There&#39;s a handy shell script
-to do all this:<pre class="prettyprint">> ./reset.sh</pre>
+to do all this:<pre class="prettyprint">./reset.sh</pre>
+Or you can run reset for individual platforms only:<pre class="prettyprint">./reset.sh --ios
+./reset.sh --android
+./reset.sh --selendroid</pre>
 </section>
 <section id="running-tests">
 <h2>
@@ -281,26 +280,17 @@ to do all this:<pre class="prettyprint">> ./reset.sh</pre>
 Running Tests
 </h2>
 
-Once, your system is set up and your code is up to date, you can run all the
-functional tests:<pre class="prettyprint">> grunt functional</pre>
-Note: we use 
-
-<a href="http://github.com/admc/wd">wd</a>
-
- as the Selenium client in our
-functional tests. Because of the work we are doing to extend the WebDriver
-protocol, we use the development version of wd. If you&#39;ve installed wd in some
-other way, you might need to do this in the Appium project directory to get the
-tests to run successfully:<pre class="prettyprint">> rm -rf node_modules/wd
-> npm install .</pre>
-Run unit tests:<pre class="prettyprint">> grunt unit</pre>
-Run all tests:<pre class="prettyprint">> grunt test</pre>
+Once, your system is set up and your code is up to date, you can run various
+kinds of tests:<pre class="prettyprint">grunt functional
+grunt android
+grunt ios
+grunt unit</pre>
+Or you can run all tests:<pre class="prettyprint">grunt test</pre>
 Before committing code, please run grunt to execute some basic tests and check
-your changes against code quality standards:<pre class="prettyprint">> grunt
-Running "lint:all" (lint) task
-Lint free.
-
-Done, without errors.</pre>
+your changes against code quality standards:<pre class="prettyprint">grunt
+> Running "lint:all" (lint) task
+> Lint free.
+> Done, without errors.</pre>
 </section>
 <section id="dig-in-deeper-to-appium-dev">
 <h2>
@@ -311,9 +301,9 @@ Dig in deeper to Appium dev
 </h2>
 
 Advanced gruntIf you want to run the Appium server and have it listen indefinitely, you can
-execute one of the following commands to start an Appium server with or without a specified app:<pre class="prettyprint">> grunt appium           // launch Appium server without app
-> grunt appium:TestApp   // launch Appium server with the TestApp
-> grunt appium:UICatalog // launch Appium server with the UICatalog app</pre>
+execute one of the following commands to start an Appium server with or without a specified app:<pre class="prettyprint">grunt appium           // launch Appium server without app
+grunt appium:TestApp   // launch Appium server with the TestApp
+grunt appium:UICatalog // launch Appium server with the UICatalog app</pre>
 Like the power of automating dev tasks? Check out the 
 
 <a href="https://github.com/appium/appium/blob/master/docs/grunt.md">Appium grunt
@@ -321,15 +311,15 @@ tasks</a>
 
  available to
 help with building apps, installing apps, generating docs, etc...Running individual testsIf you have an Appium server listening, you can run individual test files using
-Mocha, for example:<pre class="prettyprint">> mocha -t 60000 -R spec test/functional/testapp/simple.js</pre>
+Mocha, for example:<pre class="prettyprint">mocha -t 60000 -R spec test/functional/testapp/simple.js</pre>
 Advanced Appium server flagsDo you like getting close to the metal? Or are you trying to launch an Appium
 server from a script with a custom app? If so you can start Appium without
-grunt from the command line with an app or without an app, among other things:<pre class="prettyprint">> node server.js -V  // launch Appium server without app
-> node server.js --app /absolute/path/to/app -V  // launch Appium server with app
-> node server.js --launch // pre-launch the app when appium loads
-> node server.js --log /my/appium.log // log to file instead of stdout
-> node server.js --without-delay // (iOS) use faster instruments-without-delay
-> node server.js --fast-reset // (Android) faster resetting between tests</pre>
+grunt from the command line with an app or without an app, among other things:<pre class="prettyprint">node server.js -V  // launch Appium server without app
+node server.js --app /absolute/path/to/app -V  // launch Appium server with app
+node server.js --launch // pre-launch the app when appium loads
+node server.js --log /my/appium.log // log to file instead of stdout
+node server.js --without-delay // (iOS) use faster instruments-without-delay
+node server.js --fast-reset // (Android) faster resetting between tests</pre>
 (See
 
 
