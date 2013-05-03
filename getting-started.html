@@ -76,7 +76,9 @@
 </a></li>
 <li><a href="#user-quick-start"><i class="icon-chevron-right"></i> User Quick Start
 </a></li>
-<li><a href="#write-tests-for-appium"><i class="icon-chevron-right"></i> Write Tests for Appium
+<li><a href="#troubleshooting"><i class="icon-chevron-right"></i> Troubleshooting
+</a></li>
+<li><a href="#write-tests-for-your-apps-with-appium"><i class="icon-chevron-right"></i> Write Tests for Your Apps with Appium
 </a></li>
 <li><a href="#hacking-with-appium"><i class="icon-chevron-right"></i> Hacking with Appium
 </a></li>
@@ -147,23 +149,35 @@
 <span class="title">curl</span> -<span class="type">O</span> https://raw.github.com/appium/appium/master/sample-code/examples/node/simplest.js
 <span class="title">appium</span> &amp;
 <span class="title">node</span> simplest.js</code></pre>
+<p>See the next section for links on how to make sure your system is set up to run Appium tests.</p>
 <p>Example Tests: <a href="https://github.com/appium/appium/tree/master/sample-code/examples/node">Node.js</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/examples/python">Python</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/examples/php">PHP</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/examples/ruby">Ruby</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/examples/java">Java</a></p>
 </section>
-<section id="write-tests-for-appium">
+<section id="troubleshooting">
 <h2>
-<a href="#write-tests-for-appium" class="anchor" name="requirements">
+<a href="#troubleshooting" class="anchor" name="requirements">
 <span class="mini-icon mini-icon-link"></span>
 </a>
-<h2>Write Tests for Appium</h2>
+<h2>Troubleshooting</h2>
+
+</h2>
+
+<p>We put together a <a href="https://github.com/appium/appium/blob/master/docs/troubleshooting.md">troubleshooting guide</a>. Please have a look here first if you run into any problems. It contains instructions for checking a lot of common errors and how to get in touch with the community if you&#39;re stumped.</p>
+</section>
+<section id="write-tests-for-your-apps-with-appium">
+<h2>
+<a href="#write-tests-for-your-apps-with-appium" class="anchor" name="requirements">
+<span class="mini-icon mini-icon-link"></span>
+</a>
+<h2>Write Tests for Your Apps with Appium</h2>
 
 </h2>
 
 <p>We support a sub-set of the <a href="https://github.com/appium/appium/wiki/JSON-Wire-Protocol:-Supported-Methods">Selenium WebDriver JSON Wire Protocol</a>.</p>
-<p>We also have several extensions to the JSON Wire Protocol for <a href="https://github.com/appium/appium/wiki/Automating-mobile-gestures">automating
-mobile
-gestures</a>
+<p>You find elements by using a sub-set of WebDriver&#39;s element-finding strategies. See <a href="https://github.com/appium/appium/blob/master/docs/finding-elements.md">finding elements</a> for detailed information.</p>
+<p>We also have several extensions to the JSON Wire Protocol for <a href="https://github.com/appium/appium/blob/master/docs/gestures.md">automating
+mobile gestures</a>
 like tap, flick, and swipe.</p>
-<p>You can also automate web views in hybrid apps! See the <a href="https://github.com/appium/appium/wiki/Testing-Hybrid-Apps">hybrid app
+<p>You can also automate web views in hybrid apps! See the <a href="https://github.com/appium/appium/blob/master/docs/hybrid.md">hybrid app
 guide</a></p>
 <p>We support Android and iOS platforms side-by-side:</p>
 <ul>
@@ -176,6 +190,7 @@ guide</a></p>
 <li><a href="https://github.com/appium/appium/blob/master/docs/running-tests.md#android-ios">Run an Android test</a></li>
 <li><a href="https://github.com/appium/ruby_console/blob/master/osx.md">Getting started with Appium and Ruby on OS X</a></li>
 </ul>
+<p>For the full list of Appium doc pages, visit <a href="https://github.com/appium/appium/blob/master/docs/">this directory</a>.</p>
 <hr>
 </section>
 <section id="hacking-with-appium">
@@ -275,9 +290,10 @@ to do all this for all platforms:</p>
 
 <p>Once, your system is set up and your code is up to date, you can run various
 kinds of tests:</p>
-<pre><code><span class="title">grunt</span> functional
-<span class="title">grunt</span> android
+<pre><code><span class="title">grunt</span> android
 <span class="title">grunt</span> ios
+<span class="title">grunt</span> selendroid
+<span class="title">grunt</span> firefoxos
 <span class="title">grunt</span> unit</code></pre>
 <p>Or you can run all tests:</p>
 <pre><code><span class="title">grunt</span> test</code></pre>
@@ -345,7 +361,7 @@ all CLI arguments.)</p>
 </h2>
 
 <p>Fork the project, make a change, and send a pull request!</p>
-<p>Oh and please have a look at our <a href="https://github.com/appium/appium/wiki/Style-guide-for-contributors">Style Guide</a> before getting to work.</p>
+<p>Oh and please have a look at our <a href="https://github.com/appium/appium/blob/master/docs/style-guide.md">Style Guide</a> before getting to work.</p>
 </section>
 <section id="project-credits-inspiration">
 <h2>
@@ -357,7 +373,7 @@ all CLI arguments.)</p>
 </h2>
 
 <p>The open source community has made this project possible, please add missing projects to the list.</p>
-<p><a href="https://github.com/appium/appium/wiki/Credits">All the OSS code contributing to Appium</a></p>
+<p><a href="https://github.com/appium/appium/blob/master/docs/credits.md">All the OSS code contributing to Appium</a></p>
 </section>
 <section id="mailing-list">
 <h2>
