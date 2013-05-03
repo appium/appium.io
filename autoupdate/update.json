@@ -1,1 +1,1 @@
-{ "latest":"1.6.1", "url":"https://bitbucket.org/appium/appium.app/downloads/appium-1.6.1.dmg", "do-not-upgrade":["1.5.5"]}
+{ "latest":"1.6.1", "url":"https://bitbucket.org/appium/appium.app/downloads/appium-1.6.1.dmg", "do-not-upgrade":["1.6.0", "1.5.5"]}
