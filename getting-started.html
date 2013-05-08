@@ -331,12 +331,11 @@ Mocha, for example:</p>
 <p>Do you like getting close to the metal? Or are you trying to launch an Appium
 server from a script with a custom app? If so you can start Appium without
 grunt from the command line with an app or without an app, among other things:</p>
-<pre><code>node server<span class="variable">.js</span> -V  <span class="comment">// launch Appium server without app</span>
-node server<span class="variable">.js</span> --app /absolute/path/to/app -V  <span class="comment">// launch Appium server with app</span>
+<pre><code>node server<span class="variable">.js</span> <span class="comment">// launch Appium server without app</span>
+node server<span class="variable">.js</span> --app /absolute/path/to/app  <span class="comment">// launch Appium server with app</span>
 node server<span class="variable">.js</span> --launch <span class="comment">// pre-launch the app when appium loads</span>
 node server<span class="variable">.js</span> --log /my/appium<span class="variable">.log</span> <span class="comment">// log to file instead of stdout</span>
-node server<span class="variable">.js</span> --without-delay <span class="comment">// (iOS) use faster instruments-without-delay</span>
-node server<span class="variable">.js</span> --fast-reset <span class="comment">// (Android) faster resetting between tests</span></code></pre>
+node server<span class="variable">.js</span> --quiet <span class="comment">// don't log verbose output</span></code></pre>
 <p>(See
 <a href="https://github.com/appium/appium/blob/master/docs/server-args.md">the server documentation</a> for
 all CLI arguments.)</p>
