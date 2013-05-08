@@ -139,7 +139,7 @@
 
 <p>Option 1: Use Appium.app:</p>
 <ul>
-<li>Download the <a href="https://bitbucket.org/appium/appium.app/downloads/appium.dmg">Appium.app dmg</a></li>
+<li>Download the <a href="&quot;https://bitbucket.org/appium/appium.app/downloads/appium.dmg&quot;">Appium.app dmg</a></li>
 <li>Run Appium.app then run a test using your favorite language / framework</li>
 </ul>
 <p>Option 2: Run Appium from the command line using Node:</p>
@@ -211,7 +211,7 @@ following commands (if you didn&#39;t install node using homebrew, you might hav
 to run npm with sudo privileges):</p>
 <pre><code><span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">mocha</span>
 <span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">grunt</span>-<span class="comment">cli</span>
-<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</code></pre>
+<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
 <p>The first two commands install test and build tools (sudo may not be necessary
 if you installed node.js via Homebrew). The third command installs all app
 dependencies, builds supporting binaries and test apps. <code>reset.sh</code> is also the
@@ -240,7 +240,7 @@ have to modify your <code>/etc/authorization</code> file in one of two ways:</p>
 </li>
 </ol>
 <p>At this point, you can simply run:</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ios</code></pre>
+<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ios</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
 </section>
 <section id="hacking-with-appium-android">
 <h2>
@@ -253,9 +253,9 @@ have to modify your <code>/etc/authorization</code> file in one of two ways:</p>
 
 <p>(First, have a look at <a href="https://github.com/appium/appium/blob/master/docs/system-setup.md#android">setting up your system for Appium Android support</a>.)</p>
 <p>Now, you can simply run:</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">android</code></pre>
+<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">android</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
 <p>If you want to use <a href="http://github.com/DominikDary/selendroid">Selendroid</a> for older apps:</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">selendroid</code></pre>
+<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">selendroid</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
 <p>Make sure you have one and only one Android emulator or device running, e.g.
 by running this command in another process (assuming the <code>emulator</code> command is
 on your path):</p>
@@ -272,12 +272,13 @@ on your path):</p>
 
 <p>Since we use dev versions of some packages, it often becomes necessary to
 install new NPM packages or update various things. There&#39;s a handy shell script
-to do all this for all platforms:</p>
-<pre><code>./re<span class="operator"><span class="keyword">set</span>.sh</code></pre>
+to do all this for all platforms (the <code>--dev</code> flag gets dev npm dependencies
+and test applications used in the Appium test suite):</p>
+<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
 <p>Or you can run reset for individual platforms only:</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ios</span>
-<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">android</span>
-<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">selendroid</code></pre>
+<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ios</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</span>
+<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">android</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</span>
+<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">selendroid</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
 </section>
 <section id="running-tests">
 <h2>
