@@ -92,7 +92,7 @@
 </a></li>
 <li><a href="#dig-in-deeper-to-appium-dev"><i class="icon-chevron-right"></i> Dig in deeper to Appium dev
 </a></li>
-<li><a href="#using-with-a-bitbeambot-http-bitbeam-org"><i class="icon-chevron-right"></i> Using with a Bitbeambot
+<li><a href="#using-with-a-bitbeambot-http-bitbeam-org-and-other-robots"><i class="icon-chevron-right"></i> Using with a Bitbeambot and other robots
 </a></li>
 <li><a href="#contributing"><i class="icon-chevron-right"></i> Contributing
 </a></li>
@@ -115,7 +115,7 @@
 
 <p>General:</p>
 <ul>
-<li>Mac OS X 10.6 or higher (Linux OK for Android-only)</li>
+<li>Mac OS X 10.7 or higher, 10.8 recommended (Linux OK for Android-only; support for Windows is in &quot;beta&quot;)</li>
 <li>Node and npm (brew install node) (Node must be &gt;= v0.8)</li>
 </ul>
 <p>For iOS automation:</p>
@@ -226,7 +226,7 @@ recommended command to run after pulling changes from master.</p>
 
 </h2>
 
-<p>(First, have a look at <a href="https://github.com/appium/appium/blob/master/docs/system-setup.md#ios">setting up your system for Appium iOS support</a>.)</p>
+<p>(First, have a look at <a href="docs/running-on-osx.md#ios">setting up your system for Appium iOS support</a>.)</p>
 <p>To avoid a security dialog that may appear when launching your iOS apps you&#39;ll
 have to modify your <code>/etc/authorization</code> file in one of two ways:</p>
 <ol>
@@ -251,7 +251,7 @@ have to modify your <code>/etc/authorization</code> file in one of two ways:</p>
 
 </h2>
 
-<p>(First, have a look at <a href="https://github.com/appium/appium/blob/master/docs/system-setup.md#android">setting up your system for Appium Android support</a>.)</p>
+<p>(First, have a look at setting up your system for Appium Android support (<a href="docs/running-on-linux.md">linux</a>, <a href="docs/running-on-osx.md#android">osx</a> or <a href="docs/running-on-windows.md">windows</a>).)</p>
 <p>Now, you can simply run:</p>
 <pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">android</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
 <p>If you want to use <a href="http://github.com/DominikDary/selendroid">Selendroid</a> for older apps:</p>
@@ -340,16 +340,16 @@ node server<span class="variable">.js</span> --quiet <span class="comment">// do
 <a href="https://github.com/appium/appium/blob/master/docs/server-args.md">the server documentation</a> for
 all CLI arguments.)</p>
 </section>
-<section id="using-with-a-bitbeambot-http-bitbeam-org">
+<section id="using-with-a-bitbeambot-http-bitbeam-org-and-other-robots">
 <h2>
-<a href="#using-with-a-bitbeambot-http-bitbeam-org" class="anchor" name="requirements">
+<a href="#using-with-a-bitbeambot-http-bitbeam-org-and-other-robots" class="anchor" name="requirements">
 <span class="mini-icon mini-icon-link"></span>
 </a>
-<h2>Using with a <a href="http://bitbeam.org">Bitbeambot</a></h2>
+<h2>Using with a <a href="http://bitbeam.org">Bitbeambot</a> and other robots</h2>
 
 </h2>
 
-<p>AWAITING THE FUTURE</p>
+<p>Check out the <a href="https://github.com/appium/robots">Appium Robots</a> project</p>
 </section>
 <section id="contributing">
 <h2>
