@@ -15,6 +15,14 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script>
+      function load() {
+        var downloadLink = document.getElementById('downloadLink');
+        if (navigator.appVersion.indexOf("Win")!=-1) {
+          downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows.zip";
+        } else {
+          downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/appium-0.6.0.dmg";
+        }
+      }
       var toggleVideo = function() {
         var vid = $("#show-demo-video");
         if (vid.css("display") == "none") {
@@ -30,9 +38,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-   <link rel="shortcut icon" href="ico/favicon.png">
+    <link rel="shortcut icon" href="ico/favicon.png">
   </head>
-  <body>
+  <body onload="load()">
 
     <!-- Navbar
     ================================================== -->
@@ -79,12 +87,14 @@
     <p>
      <!-- <a href="https://github.com/appium/appium/zipball/master" class="btn btn-primary btn-large">Download .zip</a> -->
      <!-- <a href="https://github.com/appium/appium/tarball/master" class="btn btn-primary btn-large">Download .tar.gz</a> -->
-     <a href="https://bitbucket.org/appium/appium.app/downloads/appium-0.6.0.dmg" class="btn btn-primary btn-large">Download Appium</a>
+     <a id="downloadLink" href="https://bitbucket.org/appium/appium.app/downloads/" class="btn btn-primary btn-large">Download Appium</a>
     </p>
-
     <ul class="masthead-links">
       <li>
         <a href="https://github.com/appium/appium">View on GitHub</a>
+      </li>
+      <li>
+        <a href="https://bitbucket.org/appium/appium.app/downloads/">Downloads</a>
       </li>
       <li>
         <a href="./getting-started.html">Documentation</a>
