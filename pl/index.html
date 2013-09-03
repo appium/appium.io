@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="pl">
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Appium: Kinderleichte Mobile App Testautomatisierung.</title>
+    <title>Appium: Łatwa automatyzacja aplikacji mobilnych</title>
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="../css/bootstrap-responsive.css" rel="stylesheet">
@@ -64,22 +64,22 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active">
-                <a href="index.html">Startseite</a>
+                <a href="index.html">Strona główna</a>
               </li>
               <li class="">
-                <a href="./getting-started.html">Los geht's</a>
+                <a href="./getting-started.html">Jak zacząć</a>
               </li>
               <li class="">
-                <a href="./get-involved.html">Hilf mit!</a>
+                <a href="./get-involved.html">Zaangażuj się!</a>
               </li>
               <li class="">
-                <a href="http://blog.appium.io">Blog</a>
+                <a href="/blog">Blog</a>
               </li>
               <li class="">
                 <a href="../index.html">English</a>
               </li>
               <li class="">
-                <a href="../pl/index.html">Polski</a>
+                <a href="../de/index.html">Deutsch</a>
               </li>
             </ul>
           </div>
@@ -92,28 +92,28 @@
   <div class="container">
     <h1 class="appium-logo">Appium</h1>
     <img class="code-bg" src="../img/code-bg.gif" />
-    <p>Testautomatisierung für Apps</p>
-    <p class="small">Appium ist ein Open Source Testautomatisierungswerkzeug für native und <a href="https://github.com/appium/appium/wiki/Testing-Hybrid-Apps">hybride</a> mobile Anwendungen (Apps). <br>Das Werkzeug testet iOS und Android Apps mit Hilfe des WebDriver <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON Wire Protocol</a>.</p>
+    <p>Automatyczne testy aplikacji mobilnych</p>
+    <p class="small">Poznaj narzędzie do tworzenia automatycznych testów natywnych i <a href="https://github.com/appium/appium/wiki/Testing-Hybrid-Apps">hybyrdowych</a> aplikacji mobilnych. <br>Steruj aplikacjami iOS i Android przy pomocy protokołu WebDriver <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON Wire Protocol</a>.</p>
 
     <p>
      <!-- <a href="https://github.com/appium/appium/zipball/master" class="btn btn-primary btn-large">Download .zip</a> -->
      <!-- <a href="https://github.com/appium/appium/tarball/master" class="btn btn-primary btn-large">Download .tar.gz</a> -->
-     <a href="https://bitbucket.org/appium/appium.app/downloads/appium-0.8.5.dmg" class="btn btn-primary btn-large">Appium (herunterladen)</a>
-     <p class="small">Hier geht's zur alten <a href="../appium-node-webkit.dmg">node-webkit Version</a> (benötigt <a href="http://nodejs.org/">Node.js</a>)</p>
+     <a href="https://bitbucket.org/appium/appium.app/downloads/appium-0.8.3.1.dmg" class="btn btn-primary btn-large">Sćiągnij Appium</a>
+     <p class="small">Tutaj możesz ściągnąć starszą wersję <a href="../appium-node-webkit.dmg">Appium node-webkit</a> (wymagającą <a href="http://nodejs.org/">Node.js</a>)</p>
     </p>
 
     <ul class="masthead-links">
       <li>
-        <a href="https://github.com/appium/appium">Appium Quellen bei GitHub</a>
+        <a href="https://github.com/appium/appium">Appium na GitHub'ie</a>
       </li>
       <li>
-        <a href="./getting-started.html">Dokumentation</a>
+        <a href="./getting-started.html">Dokumentacja</a>
       </li>
       <li>
-        <a href="https://github.com/appium/appium/tree/master/sample-code/examples">Beispiele</a>
+        <a href="https://github.com/appium/appium/tree/master/sample-code/examples">Przykłady</a>
       </li>
       <li>
-        <a href="https://github.com/appium/appium/wiki/Credits">Danksagungen</a>
+        <a href="https://github.com/appium/appium/wiki/Credits">Podziękowania</a>
       </li>
       <li>
         <a href="https://travis-ci.org/appium/appium"><img src="https://api.travis-ci.org/appium/appium.png?branch=master" alt="Build Status"></a>
@@ -128,9 +128,9 @@
 
   <div class="marketing">
 
-    <h1 id="introducing-appium">Das ist Appium!</h1>
-    <p class="marketing-byline">Auf der Suche nach Testautomatisierung für native Apps? Bitte hier entlang.</p>
-    <h2><a href="javascript: toggleVideo()">Sieh dir die Videos an!</a></h2>
+    <h1 id="introducing-appium">Poznaj Appium!</h1>
+    <p class="marketing-byline">Brakuje Ci narzędzia do automatyzacji aplikacji moblinych? Problem rozwiązany.</p>
+    <h2><a href="javascript: toggleVideo()">Obejrzyj filmy prezentujące możliwości Appium!</a></h2>
     <div id="show-demo-video" style="display:none">
       <iframe width="640" height="360" src="http://www.youtube.com/embed/ILKi6B54_sw" frameborder="0" allowfullscreen></iframe>
       <iframe width="640" height="360" src="http://www.youtube.com/embed/eKhuF_4KzYo" frameborder="0" allowfullscreen></iframe>
@@ -141,40 +141,38 @@
 
       <div class="span4">
         <img class="marketing-img" src="../img/marketing-recompiling.png" alt="Forget recompiling">
-        <h2>Appium Philosopie</h2>
+        <h2>Filozofia Appium</h2>
         <p>
-          Appium basiert auf der Grundidee keinerlei Modifikationen (z.B. SDKs, Re-Kompilierung) an nativen Apps vornehmen zu müssen, um automatisierte Tests gegen diese Apps ausführen zu können. All Das unter der Zuhilfenahme etablierter Testmethodiken, -Frameworks und -Tools. Appium wurde auf den Fundamenten von Open Source Prinzipien entworfen, um Beiträge und Verbesserungen aus der Entwicklergemeinschaft zu fördern.
+          Ideą Appium jest by testowanie aplikacji natywnych nie wymagało dodawania specjalnych SDK czy też rekompilacji Twojej aplikacji. Powinieneś również mieć możliwość użycia preferowanych przez siebie narzędzi, jęzków i praktyk. Appium to w pełni otwarty projekt, stworzony tak, by zachęcić społeczność do udziału w jego rozbudowie.
         </p>
       </div>
 
       <div class="span4">
         <img class="marketing-img" src="../img/marketing-favorite-tool.png" alt="Use your favorite tool">
-        <h2>Testen in gewohnter Umgebung</h2>
+        <h2>Użyj ulubionych narzędzi</h2>
         <p>
-          Appiums Ziel besteht darin jegliche mobile App mit Hilfe jeglicher Programmiersprache/Testframeworks und mit vollem Zugriff auf Back-End Schnittstellen und Datenbanken zu automatisieren. Programmiere Tests in deiner favorisierten Sprache unter der Zuhilfenahme der oben aufgelisteten Technologien. Jede Programmiersprache, die über Selenium WebDriver API Client-Bibliotheken verfügt ist Appium-kompatibel.
+          Celem Appium jest automatyzacja każdej aplikacji mobilnej z dowolnego języka programowania przy użyciu dowolnego framework'a testującego, z pełnym dostępu do API back-end'u oraz daz danych z kodu testującego. Pisz testy przy użyciu swoich ulubionych narzędzi używając dowolnego z powyższych języków .. i nie tylko (możesz użyć Selenium WebDriver API i jego implementacji dla różnych języków).
         </p>
       </div>
 
       <div class="span4">
         <!-- http://www.psdgraphics.com/psd-icons/settings-icon-psd-hammer-and-wrench/ -->
-        <img class="marketing-img" src="../img/marketing-requirements.png" alt="Systemanforderungen">
-        <h2>Systemanforderungen</h2>
-        <pre class="prettyprint">
-> Mac OSX 10.6 +
-> XCode
-> Apple Developer Werkzeuge
-(iPhone Simulator, CLI-Werkzeuge)
-> Android SDK API >= 17
-        </pre>
+        <img class="marketing-img" src="../img/marketing-requirements.png" alt="Requirements">
+        <h2>Wymagania</h2>
+        <h4>iOS</h4>
+        Mac OSX 10.7+<br>
+        XCode 4.5+ z Command Line Tools<br>
+        <h4>Android</h4>
+        Mac OSX 10.7+ lub Windows 7+ lub Linux<br>
+        Android SDK ≥ 16 (SDK &lt; 16 w trybie Selendroid)<br>
       </div>
-
     </div>
 
     <hr class="soften">
 
-    <h1>Kinderleichte Installation. Jetzt ausprobieren!</h1>
+    <h1>Dziecinnie prosta instalacja. Spróbuj teraz!</h1>
     <p>
-      Installiere <a href="http://nodejs.org">node.js</a> (beinhaltet npm, den node.js Paketmanager).
+      Zainstaluj <a href="http://nodejs.org">node.js</a> (zawiera npm, packet manager dla node.js).
     </p>
 <pre class="prettyprint ninja">
 > sudo npm install appium -g
@@ -183,7 +181,7 @@
 > node your-appium-test.js
 </pre>
     <p>
-      Los geht's: <a href="https://github.com/appium/appium/tree/master/sample-code/examples">Appium Beispieltests.</a>
+      Zobacz: <a href="https://github.com/appium/appium/tree/master/sample-code/examples">przykładowe testy Appium.</a>
     </p>
   </div>
 
@@ -194,15 +192,14 @@
     ================================================== -->
     <footer class="footer">
       <div class="container">
-        <p>Wir haben ein offenes Ohr für Beiträge und Diskissionen rundum die Zukunft mobiler Testautomatisierung! Bitte melde Dich bei uns!</p>
+        <p>Jesteśmy otwarci na dyskusje i chcielibyśmy usłyszeć Twój głos. Zdecyduj jak powinna wyglądać przyszlość testowania aplikacji na urządzenia mobilne!</p>
         <ul class="footer-links">
-          <li><a href="http://blog.appium.io">Blog</a></li>
-          <li><a href="https://groups.google.com/d/forum/appium-discuss">Mailingliste</a></li>
-          <li><a href="https://github.com/appium/appium/issues">Fehlerdatenbank</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="https://groups.google.com/d/forum/appium-discuss">Grupa dyskusyjna</a></li>
+          <li><a href="https://github.com/appium/appium/issues">Zgłoś błąd</a></li>
           <li><a href="https://github.com/appium/appium/wiki">Wiki</a></li>
           <li><a href="http://freenode.net">#appium @ freenode (IRC)</a></li>
         </ul>
-        <p style="color:rgb(153, 153, 153);">Mit freundlicher Unterstützung von <a href="https://saucelabs.com/appium">Sauce Labs</a> und Robotern.</p>
       </div>
     </footer>
 
