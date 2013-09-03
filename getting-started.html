@@ -20,6 +20,22 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
    <link rel="shortcut icon" href="ico/favicon.png">
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-6735579-10']);
+        _gaq.push(['_setDomainName', 'appium.io']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
   </head>
 
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -47,6 +63,12 @@
               </li>
               <li class="">
                 <a href="de/index.html">Deutsch</a>
+              </li>
+              <li class="">
+                <a href="pl/index.html">Polski</a>
+              </li>
+              <li class="">
+                <a href="jp/index.html">日本人</a>
               </li>
             </ul>
           </div>
@@ -92,7 +114,7 @@
 </a></li>
 <li><a href="#dig-in-deeper-to-appium-dev"><i class="icon-chevron-right"></i> Dig in deeper to Appium dev
 </a></li>
-<li><a href="#using-with-tapster-and-other-robots"><i class="icon-chevron-right"></i> Using with Tapster and other robots
+<li><a href="#using-with-a-tapster-https-github-com-hugs-tapsterbot-and-other-robots"><i class="icon-chevron-right"></i> Using with a Tapster and other robots
 </a></li>
 <li><a href="#contributing"><i class="icon-chevron-right"></i> Contributing
 </a></li>
@@ -115,7 +137,11 @@
 
 <p>General:</p>
 <ul>
-<li>Mac OS X 10.7 or higher, 10.8 recommended (Linux OK for Android-only; support for Windows is in &quot;beta&quot;)</li>
+<li>OS X is required for iOS automation<ul>
+<li>Mac OS X 10.7 or higher, 10.8.4 recommended</li>
+</ul>
+</li>
+<li>Android works on OS X and Linux. Support for Windows is in &quot;beta&quot;</li>
 <li>Node and npm (brew install node) (Node must be &gt;= v0.8)</li>
 </ul>
 <p>For iOS automation:</p>
@@ -125,7 +151,7 @@
 </ul>
 <p>For Android automation:</p>
 <ul>
-<li>Android SDK API &gt;= 17</li>
+<li>Android SDK API &gt;= 17 (Additional features require 18)</li>
 </ul>
 </section>
 <section id="user-quick-start">
@@ -139,7 +165,7 @@
 
 <p>Option 1: Use Appium.app:</p>
 <ul>
-<li>Download the <a href="https://bitbucket.org/appium/appium.app/downloads/appium-0.8.5.dmg">Appium.app dmg</a></li>
+<li>Download the Appium.app <a href="https://bitbucket.org/appium/appium.app/downloads/appium.dmg">dmg</a></li>
 <li>Run Appium.app then run a test using your favorite language / framework</li>
 </ul>
 <p>Option 2: Run Appium from the command line using Node:</p>
@@ -216,7 +242,10 @@ to run npm with sudo privileges):</p>
 <p>The first two commands install test and build tools (sudo may not be necessary
 if you installed node.js via Homebrew). The third command installs all app
 dependencies, builds supporting binaries and test apps. <code>reset.sh</code> is also the
-recommended command to run after pulling changes from master.</p>
+recommended command to run after pulling changes from master. At this point,
+you&#39;re able to star the Appium server (see below for examples of various flags
+you can pass in):</p>
+<pre><code><span class="title">node</span> server.js</code></pre>
 </section>
 <section id="hacking-with-appium-ios">
 <h2>
@@ -316,11 +345,6 @@ your changes against code quality standards:</p>
 </h2>
 
 <h3>Advanced grunt</h3>
-<p>If you want to run the Appium server and have it listen indefinitely, you can
-execute one of the following commands to start an Appium server with or without a specified app:</p>
-<pre><code>grunt appium           // <span class="command">launch</span> Appium server <span class="keyword">without</span> app
-grunt appium:TestApp   // <span class="command">launch</span> Appium server <span class="keyword">with</span> <span class="keyword">the</span> TestApp
-grunt appium:UICatalog // <span class="command">launch</span> Appium server <span class="keyword">with</span> <span class="keyword">the</span> UICatalog app</code></pre>
 <p>Like the power of automating dev tasks? Check out the <a href="https://github.com/appium/appium/blob/master/docs/grunt.md">Appium grunt
 tasks</a> available to
 help with building apps, installing apps, generating docs, etc...</p>
@@ -328,6 +352,21 @@ help with building apps, installing apps, generating docs, etc...</p>
 <p>If you have an Appium server listening, you can run individual test files using
 Mocha, for example:</p>
 <pre><code><span class="comment">mocha</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">60000</span> <span class="literal">-</span><span class="comment">R</span> <span class="comment">spec</span> <span class="comment">test/functional/testapp/simple</span>.<span class="comment">js</code></pre>
+<p>Or individual tests (e.g., a test with the word &quot;alert&quot; in the name):</p>
+<pre><code><span class="comment">mocha</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">60000</span> <span class="literal">-</span><span class="comment">R</span> <span class="comment">spec</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">grep</span> <span class="comment">"alert"</span> <span class="comment">test/functional/apidemos</code></pre>
+<p>You can also run all of appium&#39;s tests this way. In one window, <code>node
+server.js</code> In another window, sequentially (waiting for each to pass, making
+sure emulator is up, etc...):</p>
+<p><code>alias mm=&quot;mocha -t 60000 -R spec&quot;</code></p>
+<pre><code><span class="title">mm</span> test/functional/apidemos
+<span class="title">mm</span> test/functional/prefs
+<span class="title">mm</span> test/functional/safari
+<span class="title">mm</span> test/functional/selendroid
+<span class="title">mm</span> test/functional/testapp
+<span class="title">mm</span> test/functional/uicatalog
+<span class="title">mm</span> test/functional/webview</code></pre>
+<p>For convenience, there&#39;s a <code>test.sh</code> script which runs just these tests which
+it is important to pass before publishing appium.</p>
 <h3>Advanced Appium server flags</h3>
 <p>Do you like getting close to the metal? Or are you trying to launch an Appium
 server from a script with a custom app? If so you can start Appium without
@@ -341,12 +380,12 @@ node server<span class="variable">.js</span> --quiet <span class="comment">// do
 <a href="https://github.com/appium/appium/blob/master/docs/server-args.md">the server documentation</a> for
 all CLI arguments.)</p>
 </section>
-<section id="using-with-tapster-and-other-robots">
+<section id="using-with-a-tapster-https-github-com-hugs-tapsterbot-and-other-robots">
 <h2>
-<a href="#using-with-tapster-and-other-robots" class="anchor" name="requirements">
+<a href="#using-with-a-tapster-https-github-com-hugs-tapsterbot-and-other-robots" class="anchor" name="requirements">
 <span class="mini-icon mini-icon-link"></span>
 </a>
-<h2>Using with <a href="http://tapsterbot.com">Tapster</a> and other robots</h2>
+<h2>Using with a <a href="https://github.com/hugs/tapsterbot">Tapster</a> and other robots</h2>
 
 </h2>
 
