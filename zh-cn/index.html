@@ -1,0 +1,232 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Appium: Mobile App Automation Made Awesome.</title>
+    <!-- Bootstrap -->
+    <link href="http://appium.io/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="http://appium.io/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://appium.io/css/appium.css" rel="stylesheet">
+    <link href="http://appium.io/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+    <script type="text/javascript" src="//api.viglink.com/api/ping?format=jsonp&amp;key=084c74521c465af0d8f08b63422103cc&amp;loc=file%3A%2F%2Fvmware-host%2FShared%2520Folders%2FMy%2520Desktop%2FAppium%2520%2520Mobile%2520App%2520Automation%2520Made%2520Awesome_CHN..html&amp;v=1&amp;jsonp=vglnk_jsonp_13802357599745"></script><script src="//hm.baidu.com/hm.js?3d143f0a07b6487f65609d8411e5464f"></script><script type="text/javascript" async="" src="http://stats.g.doubleclick.net/dc.js"></script><script src="./Appium  Mobile App Automation Made Awesome._files/hm.js"></script><script type="text/javascript" async="" src="./Appium  Mobile App Automation Made Awesome._files/inpage_linkid.js" id="undefined"></script><script type="text/javascript" charset="UTF-8" src="./Appium  Mobile App Automation Made Awesome._files/logb02.js"></script><script id="hp_same_"></script><script id="hp_done_"></script><script type="text/javascript" async="" src="./Appium  Mobile App Automation Made Awesome._files/dc.js"></script><script src="./Appium  Mobile App Automation Made Awesome._files/video.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script>
+      function load() {
+        var downloadLink = document.getElementById('downloadLink');
+        if (navigator.appVersion.indexOf("Win")!=-1) {
+          downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows-0.9.1.zip";
+        } else {
+          downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/appium-0.10.1.dmg";
+        }
+      }
+      var toggleVideo = function() {
+        var vid = $("#show-demo-video");
+        if (vid.css("display") == "none") {
+          vid.css("display","");
+        }
+        else {
+          vid.css("display","none");
+        }
+      };
+    </script>
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://appium.io/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://appium.io/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://appium.io/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://appium.io/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="http://appium.io/ico/favicon.png">
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+        _gaq.push(['_setAccount', 'UA-6735579-10']);
+        _gaq.push(['_setDomainName', 'appium.io']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+  <style>undefined</style><script></script><script id="hp_same_"></script><script id="hp_done_"></script></head>
+  <body onload="load()" style="">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./Appium  Mobile App Automation Made Awesome._files/Appium  Mobile App Automation Made Awesome..html" style="color:#eee">Appium</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="./Appium  Mobile App Automation Made Awesome._files/Appium  Mobile App Automation Made Awesome..html">主页</a>
+              </li>
+              <li class="">
+                <a href="http://appium.io/getting-started.html">快速上手</a>
+              </li>
+              <li class="">
+                <a href="http://appium.io/get-involved.html">参与</a>
+              </li>
+              <li class="">
+                <a href="https://github.com/appium/jobs/wiki/Appium-Jobs">Appium 职位</a>
+              </li>
+              <li class="">
+                <a href="http://blog.appium.io/">Blog</a>
+              </li>
+              <li class="">
+                <a href="http://appium.io/index.html">English</a>
+              </li>
+              <li class="">
+                <a href="http://appium.io/de/index.html">Deutsch</a>
+              </li>
+              <li class="">
+                <a href="http://appium.io/pl/index.html">Polski</a>
+              </li>
+              <li class="">
+                <a href="http://appium.io/pt/index.html">Português</a>
+              </li>
+              <li class="">
+                <a href="http://appium.io/jp/index.html">日本語</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="jumbotron masthead">
+  <div class="container">
+    <h1 class="appium-logo">Appium</h1>
+    <img class="code-bg" src="http://appium.io/img/code-bg.gif">
+    <p>移动应用自动化</p>
+    <p class="small">Appium是一个开源的，适用于原生或混合移动应用应用（ <a href="https://github.com/appium/appium/wiki/Testing-Hybrid-Apps">hybrid mobile apps</a> ）的自动化测试平台. <br>Appium应用WebDriver: <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON wire protocol</a>驱动安卓和iOS移动应用.</p>
+
+    <p>
+     <!-- <a href="https://github.com/appium/appium/zipball/master" class="btn btn-primary btn-large">Download .zip</a> -->
+     <!-- <a href="https://github.com/appium/appium/tarball/master" class="btn btn-primary btn-large">Download .tar.gz</a> -->
+     <a id="downloadLink" href="https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows-0.9.1.zip" class="btn btn-primary btn-large">下载 Appium</a>
+    </p>
+    <ul class="masthead-links">
+      <li>
+        <a href="https://github.com/appium/appium">访问GitHub</a>
+      </li>
+      <li>
+        <a href="https://bitbucket.org/appium/appium.app/downloads/">相关下载</a>
+      </li>
+      <li>
+        <a href="http://appium.io/getting-started.html">文档</a>
+      </li>
+      <li>
+        <a href="https://github.com/appium/appium/tree/master/sample-code/examples">示例</a>
+      </li>
+      <li>
+        <a href="https://github.com/appium/appium/wiki/Credits">贡献者</a>
+      </li>
+      <li>
+        <a href="https://travis-ci.org/appium/appium"><img src="https://api.travis-ci.org/appium/appium.png?branch=master" alt="Build Status"></a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br class="thick-line">
+
+<div class="container">
+
+  <div class="marketing">
+
+    <h1 id="introducing-appium">Appium 介绍</h1>
+    <p class="marketing-byline">缺少原生应用的自动化测试工具？这个问题解决了！</p>
+    <h2><a href="javascript: toggleVideo()">播放Appium 视频介绍</a></h2>
+    <div id="show-demo-video" style="display:none">
+      <iframe width="640" height="360" src="./Appium  Mobile App Automation Made Awesome._files/1J0aXDbjiUE.html" frameborder="0" allowfullscreen=""></iframe>
+      <iframe width="480" height="360" src="./Appium  Mobile App Automation Made Awesome._files/oTIEt11cXNk.html" frameborder="0" allowfullscreen=""></iframe>
+      <iframe width="640" height="360" src="./Appium  Mobile App Automation Made Awesome._files/ILKi6B54_sw.html" frameborder="0" allowfullscreen=""></iframe>
+      <iframe width="640" height="360" src="./Appium  Mobile App Automation Made Awesome._files/eKhuF_4KzYo.html" frameborder="0" allowfullscreen=""></iframe>
+    </div>
+    <hr>
+
+    <div class="row-fluid">
+
+      <div class="span4">
+        <img class="marketing-img" src="http://appium.io/img/marketing-recompiling.png" alt="Forget recompiling">
+        <h2>Appium 的哲学</h2>
+        <p>
+    我们相信，对原生应用的自动化测试，应当不必要包含其他的SDK组件或者特别编译您的App，并且应当可以选择任何您喜欢的测试方法，框架和工具。基于这些出发点我们开发了Appium。现在Appium是一个开源项目，通过一系列设计和工具抉择，鼓励广大开发者为社区提供多种多样的贡献。
+        </p>
+      </div>
+
+      <div class="span4">
+        <img class="marketing-img" src="http://appium.io/img/marketing-favorite-tool.png" alt="Use your favorite tool">
+        <h2>用你喜欢的工具</h2>
+        <p>
+     Appium的初衷是将使用任何开发语言、测试框架进行移动app自动化测试成为可能，同时支持测试代码拥有完全的对应用后台API和数据库的访问权限。编写测试程序可以使用任何开发工具，和目前支持的上面任何一种开发语言。（对于其他语言，只需要支持Selenium WebDriver API 和该语言相关的 client libraries即可)。
+        </p>
+      </div>
+
+      <div class="span4">
+        <!-- http://www.psdgraphics.com/psd-icons/settings-icon-psd-hammer-and-wrench/ -->
+        <img class="marketing-img" src="http://appium.io/img/marketing-requirements.png" alt="Requirements">
+        <h2>系统需求</h2>
+        <h4>iOS</h4>
+        Mac OSX 10.7+<br>
+        XCode 4.5+ w/ Command Line Tools<br>
+        <h4>Android</h4>
+        Mac OSX 10.7+ or Windows 7+ or Linux<br>
+        Android SDK ≥ 16 (SDK &lt; 16 in Selendroid mode)<br>
+      </div>
+
+    </div>
+
+    <hr class="soften">
+
+    <h1>简单的设置步骤。开始第一个测试程序吧：</h1>
+    <p>安装<a href="http://nodejs.org/">node.js</a> (包括npm, node.js 包管理工具).
+    </p>
+<pre class="prettyprint ninja"><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> sudo npm install </span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">g appium
+</span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> npm install wd
+</span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> appium </span></span><span class="pun"><span class="pun">&amp;</span></span><span class="pln"><span class="pln">
+</span></span><span class="pun"><span class="pun">&gt;</span></span><span class="pln"><span class="pln"> node your</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">appium</span></span><span class="pun"><span class="pun">-</span></span><span class="pln"><span class="pln">test</span></span><span class="pun"><span class="pun">.</span></span><span class="pln"><span class="pln">js</span></span></pre>
+    <p>参考<a href="https://github.com/appium/appium/tree/master/sample-code/examples">Appium 测试程序范例.</a>
+    </p>
+  </div>
+
+</div>
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p>We're open for discussion and would love to hear your voice in the conversation about the future of mobile apps testing!</p>
+        <ul class="footer-links">
+          <li><a href="http://blog.appium.io/">Blog</a></li>
+          <li><a href="https://groups.google.com/d/forum/appium-discuss">Discussion Group</a></li>
+          <li><a href="https://github.com/appium/appium/issues">Issues</a></li>
+          <li><a href="https://github.com/appium/appium/wiki">Wiki</a></li>
+          <li><a href="http://freenode.net/">#appium @ freenode</a></li>
+        </ul>
+        <p style="color:rgb(153, 153, 153);">Powered by <a href="https://saucelabs.com/appium">Sauce Labs</a> and robots.</p>
+      </div>
+    </footer>
+
+
+    <script src="./Appium  Mobile App Automation Made Awesome._files/jquery-latest.js"></script>
+    <script src="./Appium  Mobile App Automation Made Awesome._files/bootstrap.min.js"></script>
+    <script src="./Appium  Mobile App Automation Made Awesome._files/prettify.js"></script>
+    <script src="./Appium  Mobile App Automation Made Awesome._files/app.js"></script>
+  
+
+<script type="text/javascript" async="" src="./Appium  Mobile App Automation Made Awesome._files/cnzz.js"></script><script type="text/javascript">var vglnk = {api_url: '//api.viglink.com/api', key: '084c74521c465af0d8f08b63422103cc'};</script><script type="text/javascript" async="" src="./Appium  Mobile App Automation Made Awesome._files/vglnk.js"></script><script type="text/javascript">var vglnk = {api_url: '//api.viglink.com/api', key: '084c74521c465af0d8f08b63422103cc'};</script><script type="text/javascript" async="" src="http://cdn.viglink.com/api/vglnk.js"></script></body></html>
