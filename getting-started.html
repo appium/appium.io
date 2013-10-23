@@ -65,19 +65,10 @@
                 <a href="de/index.html">Deutsch</a>
               </li>
               <li class="">
-                <a href="fr/index.html">Français</a>
-              </li>
-              <li class="">
                 <a href="pl/index.html">Polski</a>
               </li>
               <li class="">
-                <a href="pt/index.html">Português</a>
-              </li>
-              <li class="">
                 <a href="jp/index.html">日本語</a>
-              </li>
-              <li class="">
-                <a href="zh-cn/index.html">中文(简体)</a>
               </li>
             </ul>
           </div>
@@ -103,27 +94,17 @@
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
-          <li><a href="#requirements"><i class="icon-chevron-right"></i> Requirements
+          <li><a href="#supported-platforms"><i class="icon-chevron-right"></i> Supported Platforms
 </a></li>
-<li><a href="#user-quick-start"><i class="icon-chevron-right"></i> User Quick Start
+<li><a href="#why-appium"><i class="icon-chevron-right"></i> Why Appium?
 </a></li>
-<li><a href="#troubleshooting"><i class="icon-chevron-right"></i> Troubleshooting
+<li><a href="#requirements"><i class="icon-chevron-right"></i> Requirements
 </a></li>
-<li><a href="#write-tests-for-your-apps-with-appium"><i class="icon-chevron-right"></i> Write Tests for Your Apps with Appium
+<li><a href="#quick-start"><i class="icon-chevron-right"></i> Quick Start
 </a></li>
-<li><a href="#hacking-with-appium"><i class="icon-chevron-right"></i> Hacking with Appium
+<li><a href="#writing-tests-for-appium"><i class="icon-chevron-right"></i> Writing Tests for Appium
 </a></li>
-<li><a href="#hacking-with-appium-ios"><i class="icon-chevron-right"></i> Hacking with Appium (iOS)
-</a></li>
-<li><a href="#hacking-with-appium-android"><i class="icon-chevron-right"></i> Hacking with Appium (Android)
-</a></li>
-<li><a href="#making-sure-you-re-up-to-date"><i class="icon-chevron-right"></i> Making sure you&#39;re up to date
-</a></li>
-<li><a href="#running-tests"><i class="icon-chevron-right"></i> Running Tests
-</a></li>
-<li><a href="#dig-in-deeper-to-appium-dev"><i class="icon-chevron-right"></i> Dig in deeper to Appium dev
-</a></li>
-<li><a href="#using-with-a-tapster-https-github-com-hugs-tapsterbot-and-other-robots"><i class="icon-chevron-right"></i> Using with a Tapster and other robots
+<li><a href="#how-it-works"><i class="icon-chevron-right"></i> How It Works
 </a></li>
 <li><a href="#contributing"><i class="icon-chevron-right"></i> Contributing
 </a></li>
@@ -131,11 +112,56 @@
 </a></li>
 <li><a href="#mailing-list"><i class="icon-chevron-right"></i> Mailing List
 </a></li>
+<li><a href="#troubleshooting"><i class="icon-chevron-right"></i> Troubleshooting
+</a></li>
+<li><a href="#using-robots"><i class="icon-chevron-right"></i> Using Robots
+</a></li>
 
         </ul>
       </div>
       <div class="span9" id="readmeMarkdown">
-        <section id="requirements">
+        <section id="supported-platforms">
+<h2>
+<a href="#supported-platforms" class="anchor" name="requirements">
+<span class="mini-icon mini-icon-link"></span>
+</a>
+<h2>Supported Platforms</h2>
+
+</h2>
+
+<ul>
+<li>iOS</li>
+<li>Android</li>
+<li>FirefoxOS</li>
+</ul>
+</section>
+<section id="why-appium">
+<h2>
+<a href="#why-appium" class="anchor" name="requirements">
+<span class="mini-icon mini-icon-link"></span>
+</a>
+<h2>Why Appium?</h2>
+
+</h2>
+
+<ol>
+<li>You don&#39;t have to recompile your app or modify it in any way, due
+to use of standard automation APIs on all platforms.</li>
+<li>You can write tests with your favorite dev tools using any <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a>-compatible
+language such as Java, <a href="https://github.com/appium/selenium-objective-c">Objective-C</a>,
+JavaScript with Node.js (in both <a href="https://github.com/admc/wd">callback</a> and <a href="https://github.com/jlipps/yiewd">yield-based</a> flavours),
+PHP, Python, <a href="https://github.com/appium/ruby_lib">Ruby</a>, C#, Clojure, or Perl
+with the Selenium WebDriver API and language-specific client libraries.</li>
+<li>You can use any testing framework.</li>
+</ol>
+<p>Investing in <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a> means you are betting
+on a single, free and open protocol for testing that has become a defacto standard. Don&#39;t lock yourself into a proprietary stack.</p>
+<p>If you use Apple&#39;s UIAutomation library without Appium you can only write tests
+using JavaScript and you can only run tests through the Instruments application.
+Similarly, with Google&#39;s UiAutomator you can only write tests in Java. Appium
+opens up the possibility of true cross-platform native mobile automation. Finally!</p>
+</section>
+<section id="requirements">
 <h2>
 <a href="#requirements" class="anchor" name="requirements">
 <span class="mini-icon mini-icon-link"></span>
@@ -144,262 +170,92 @@
 
 </h2>
 
-<p>General:</p>
+<p>Your environment needs to be setup for the particular mobile platforms that you
+want to run tests on. See below for particular platform requirements.</p>
+<p>If you want to run Appium via an <code>npm install</code>, hack with or contribute to Appium, you will need
+<a href="http://nodejs.org">node.js and npm</a> 0.8 or greater (<code>brew install node</code>).</p>
+<h3>iOS Requirements</h3>
 <ul>
-<li>OS X is required for iOS automation<ul>
 <li>Mac OS X 10.7 or higher, 10.8.4 recommended</li>
+<li>XCode &gt;= 4.6.3</li>
+<li>Apple Developer Tools (iPhone simulator SDK, command line tools)</li>
+<li><a href="https://github.com/appium/appium/blob/master/docs/running-on-osx.md#ios">Ensure you read our documentation on setting yourself up for iOS testing!</a></li>
+</ul>
+<h3>Android Requirements</h3>
+<ul>
+<li><a href="http://developer.android.com">Android SDK</a> API &gt;= 17 (Additional features require 18)</li>
+<li>Appium supports Android on OS X, Linux and has beta support for Windows. Make sure you follow the
+directions for setting up your environment properly for testing on different OSes:<ul>
+<li><a href="https://github.com/appium/appium/blob/master/docs/running-on-linux.md">linux</a> </li>
+<li><a href="https://github.com/appium/appium/blob/master/docs/running-on-osx.md#android">osx</a></li>
+<li><a href="https://github.com/appium/appium/blob/master/docs/running-on-windows.md">windows</a></li>
 </ul>
 </li>
-<li>Android works on OS X and Linux. Support for Windows is in &quot;beta&quot;</li>
-<li>Node and npm (brew install node) (Node must be &gt;= v0.8)</li>
 </ul>
-<p>For iOS automation:</p>
+<h3>FirefoxOS Requirements</h3>
 <ul>
-<li>XCode</li>
-<li>Apple Developer Tools (iPhone simulator SDK, command line tools)</li>
-</ul>
-<p>For Android automation:</p>
-<ul>
-<li>Android SDK API &gt;= 17 (Additional features require 18)</li>
+<li><a href="https://developer.mozilla.org/en/docs/Tools/Firefox_OS_Simulator">Firefox OS Simulator</a></li>
 </ul>
 </section>
-<section id="user-quick-start">
+<section id="quick-start">
 <h2>
-<a href="#user-quick-start" class="anchor" name="requirements">
+<a href="#quick-start" class="anchor" name="requirements">
 <span class="mini-icon mini-icon-link"></span>
 </a>
-<h2>User Quick Start</h2>
+<h2>Quick Start</h2>
 
 </h2>
 
-<p>Option 1: Use Appium.app:</p>
+<p>Kick up an Appium server, and then run a test written in your favourite <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a>-compatible language!
+You can run an Appium server using node.js or using the application, see below.</p>
+<h3>Using Node.js</h3>
+<pre><code><span class="variable">$ </span>npm install -g appium
+<span class="variable">$ </span>appium &amp;</code></pre>
+<h3>Using the App</h3>
 <ul>
-<li>Download the Appium.app <a href="https://bitbucket.org/appium/appium.app/downloads/appium.dmg">dmg</a></li>
-<li>Run Appium.app then run a test using your favorite language / framework</li>
+<li><a href="https://github.com/appium/appium/releases">Download the Appium app</a></li>
+<li>Run it! </li>
 </ul>
-<p>Option 2: Run Appium from the command line using Node:</p>
-<pre><code><span class="title">mkdir</span> appium-test &amp;&amp; cd appium-test
-<span class="title">npm</span> install -g appium  # might have to <span class="keyword">do</span> this with sudo
-<span class="title">sudo</span> authorize_ios # enable developer use <span class="keyword">of</span> iOS sim
-<span class="title">npm</span> install wd
-<span class="title">curl</span> -<span class="type">O</span> https://raw.github.com/appium/appium/master/sample-code/examples/node/simplest.js
-<span class="title">appium</span> &amp;
-<span class="title">node</span> simplest.js</code></pre>
-<p>See the next section for links on how to make sure your system is set up to run Appium tests.</p>
-<p>Example Tests: <a href="https://github.com/appium/appium/tree/master/sample-code/examples/node">Node.js</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/examples/python">Python</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/examples/php">PHP</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/examples/ruby">Ruby</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/examples/java">Java</a></p>
 </section>
-<section id="troubleshooting">
+<section id="writing-tests-for-appium">
 <h2>
-<a href="#troubleshooting" class="anchor" name="requirements">
+<a href="#writing-tests-for-appium" class="anchor" name="requirements">
 <span class="mini-icon mini-icon-link"></span>
 </a>
-<h2>Troubleshooting</h2>
+<h2>Writing Tests for Appium</h2>
 
 </h2>
 
-<p>We put together a <a href="https://github.com/appium/appium/blob/master/docs/troubleshooting.md">troubleshooting guide</a>. Please have a look here first if you run into any problems. It contains instructions for checking a lot of common errors and how to get in touch with the community if you&#39;re stumped.</p>
-</section>
-<section id="write-tests-for-your-apps-with-appium">
-<h2>
-<a href="#write-tests-for-your-apps-with-appium" class="anchor" name="requirements">
-<span class="mini-icon mini-icon-link"></span>
-</a>
-<h2>Write Tests for Your Apps with Appium</h2>
-
-</h2>
-
-<p>We support a sub-set of the <a href="https://github.com/appium/appium/wiki/JSON-Wire-Protocol:-Supported-Methods">Selenium WebDriver JSON Wire Protocol</a>.</p>
-<p>You find elements by using a sub-set of WebDriver&#39;s element-finding strategies. See <a href="https://github.com/appium/appium/blob/master/docs/finding-elements.md">finding elements</a> for detailed information.</p>
+<p>We support a subset of the <a href="https://github.com/appium/appium/wiki/JSON-Wire-Protocol:-Supported-Methods">Selenium WebDriver JSON Wire Protocol</a>.</p>
+<p>First and foremost, specify mobile-targeted <a href="https://github.com/appium/appium/blob/master/docs/caps.md">desired capabilities</a> to run your test through Appium.</p>
+<p>You find elements by using a subset of <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a>&#39;s element-finding strategies.
+See <a href="https://github.com/appium/appium/blob/master/docs/finding-elements.md">finding elements</a> for detailed information.</p>
 <p>We also have several extensions to the JSON Wire Protocol for <a href="https://github.com/appium/appium/blob/master/docs/gestures.md">automating
 mobile gestures</a>
 like tap, flick, and swipe.</p>
 <p>You can also automate web views in hybrid apps! See the <a href="https://github.com/appium/appium/blob/master/docs/hybrid.md">hybrid app
 guide</a></p>
-<p>We support Android and iOS platforms side-by-side:</p>
-<ul>
-<li><a href="https://github.com/appium/appium/blob/master/docs/running-on-osx.md#ios">Set up your system for Appium iOS support</a></li>
-<li><a href="https://github.com/appium/appium/blob/master/docs/running-on-osx.md#android">Set up your system for Appium Android support</a></li>
-<li><a href="https://github.com/appium/appium/blob/master/docs/running-on-linux.md#android">Set up your system for Android support on linux</a></li>
-<li><a href="https://github.com/appium/appium/blob/master/docs/running-tests.md#prep-ios">Prepare your app for an iOS test</a></li>
-<li><a href="https://github.com/appium/appium/blob/master/docs/running-tests.md#preparing-your-app-for-test-android">Prepare your app for an Android test</a></li>
-<li><a href="https://github.com/appium/appium/blob/master/docs/running-tests.md#run-ios">Run an iOS test</a></li>
-<li><a href="https://github.com/appium/appium/blob/master/docs/running-tests.md#android-ios">Run an Android test</a></li>
-<li><a href="https://github.com/appium/ruby_console/blob/master/osx.md">Getting started with Appium and Ruby on OS X</a></li>
-</ul>
+<p>This repository contains <a href="https://github.com/appium/appium/tree/master/sample-code/examples/node">many examples of tests in a variety of different languages</a>!</p>
 <p>For the full list of Appium doc pages, visit <a href="https://github.com/appium/appium/blob/master/docs/">this directory</a>.</p>
-<hr>
 </section>
-<section id="hacking-with-appium">
+<section id="how-it-works">
 <h2>
-<a href="#hacking-with-appium" class="anchor" name="requirements">
+<a href="#how-it-works" class="anchor" name="requirements">
 <span class="mini-icon mini-icon-link"></span>
 </a>
-<h2>Hacking with Appium</h2>
+<h2>How It Works</h2>
 
 </h2>
 
-<p>Install <a href="http://nodejs.org/">node.js</a> (includes npm, the node.js package manager).
-The recommended way to install node is <code>brew install node</code>. Node <a href="http://mxcl.github.io/homebrew/">installed by
-brew</a> will not require sudo for npm commands.</p>
-<p>Fork the Appium repo ( <a href="https://github.com/appium/appium"><a href="https://github.com/appium/appium">https://github.com/appium/appium</a></a> ), then clone your fork.</p>
-<p>From your local repo&#39;s command prompt, install these packages using the
-following commands (if you didn&#39;t install node using homebrew, you might have
-to run npm with sudo privileges):</p>
-<pre><code><span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">mocha</span>
-<span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">grunt</span>-<span class="comment">cli</span>
-<span class="comment">npm</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">cordova</span>
-<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
-<p>The first two commands install test and build tools (sudo may not be necessary
-if you installed node.js via Homebrew). The third command installs all app
-dependencies, builds supporting binaries and test apps. <code>reset.sh</code> is also the
-recommended command to run after pulling changes from master. At this point,
-you&#39;re able to star the Appium server (see below for examples of various flags
-you can pass in):</p>
-<pre><code><span class="title">node</span> server.js</code></pre>
-</section>
-<section id="hacking-with-appium-ios">
-<h2>
-<a href="#hacking-with-appium-ios" class="anchor" name="requirements">
-<span class="mini-icon mini-icon-link"></span>
-</a>
-<h2>Hacking with Appium (iOS)</h2>
-
-</h2>
-
-<p>(First, have a look at <a href="https://github.com/appium/appium/blob/master/docs/running-on-osx.md#ios">setting up your system for Appium iOS support</a>.)</p>
-<p>To avoid a security dialog that may appear when launching your iOS apps you&#39;ll
-have to modify your <code>/etc/authorization</code> file in one of two ways:</p>
-<ol>
-<li><p>Manually modify the element following &lt;allow-root&gt; under
-&lt;key&gt;system.privilege.taskport&lt;/key&gt; in your
-<code>/etc/authorization</code> file to &lt;true/&gt;.</p>
-</li>
-<li><p>Run the following grunt command which automatically modifies your
-<code>/etc/authorization</code> file for you:</p>
-<pre><code>su<span class="operator"><span class="keyword">do</span> grunt authorize</code></pre>
-</li>
-</ol>
-<p>At this point, you can simply run:</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ios</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
-</section>
-<section id="hacking-with-appium-android">
-<h2>
-<a href="#hacking-with-appium-android" class="anchor" name="requirements">
-<span class="mini-icon mini-icon-link"></span>
-</a>
-<h2>Hacking with Appium (Android)</h2>
-
-</h2>
-
-<p>(First, have a look at setting up your system for Appium Android support (<a href="docs/running-on-linux.md">linux</a>, <a href="docs/running-on-osx.md#android">osx</a> or <a href="docs/running-on-windows.md">windows</a>).)</p>
-<p>Now, you can simply run:</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">android</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
-<p>If you want to use <a href="http://github.com/DominikDary/selendroid">Selendroid</a> for older apps:</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">selendroid</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
-<p>Make sure you have one and only one Android emulator or device running, e.g.
-by running this command in another process (assuming the <code>emulator</code> command is
-on your path):</p>
-<pre><code>emulator -avd <span class="tag">&lt;<span class="title">MyAvdName</span>&gt;</span></code></pre>
-</section>
-<section id="making-sure-you-re-up-to-date">
-<h2>
-<a href="#making-sure-you-re-up-to-date" class="anchor" name="requirements">
-<span class="mini-icon mini-icon-link"></span>
-</a>
-<h2>Making sure you&#39;re up to date</h2>
-
-</h2>
-
-<p>Since we use dev versions of some packages, it often becomes necessary to
-install new NPM packages or update various things. There&#39;s a handy shell script
-to do all this for all platforms (the <code>--dev</code> flag gets dev npm dependencies
-and test applications used in the Appium test suite):</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
-<p>Or you can run reset for individual platforms only:</p>
-<pre><code><span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">ios</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</span>
-<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">android</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</span>
-<span class="string">.</span><span class="comment">/reset</span>.<span class="comment">sh</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">selendroid</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">dev</code></pre>
-</section>
-<section id="running-tests">
-<h2>
-<a href="#running-tests" class="anchor" name="requirements">
-<span class="mini-icon mini-icon-link"></span>
-</a>
-<h2>Running Tests</h2>
-
-</h2>
-
-<p>Once, your system is set up and your code is up to date, you can run various
-kinds of tests:</p>
-<pre><code><span class="title">grunt</span> android
-<span class="title">grunt</span> ios
-<span class="title">grunt</span> selendroid
-<span class="title">grunt</span> firefoxos
-<span class="title">grunt</span> unit</code></pre>
-<p>Or you can run all tests:</p>
-<pre><code><span class="title">grunt</span> test</code></pre>
-<p>Before committing code, please run grunt to execute some basic tests and check
-your changes against code quality standards:</p>
-<pre><code>grunt
-<span class="blockquote">&gt; Running "lint:all" (lint) task</span>
-<span class="blockquote">&gt; Lint free.</span>
-<span class="blockquote">&gt; Done, without errors.</span></code></pre>
-</section>
-<section id="dig-in-deeper-to-appium-dev">
-<h2>
-<a href="#dig-in-deeper-to-appium-dev" class="anchor" name="requirements">
-<span class="mini-icon mini-icon-link"></span>
-</a>
-<h2>Dig in deeper to Appium dev</h2>
-
-</h2>
-
-<h3>Advanced grunt</h3>
-<p>Like the power of automating dev tasks? Check out the <a href="https://github.com/appium/appium/blob/master/docs/grunt.md">Appium grunt
-tasks</a> available to
-help with building apps, installing apps, generating docs, etc...</p>
-<h3>Running individual tests</h3>
-<p>If you have an Appium server listening, you can run individual test files using
-Mocha, for example:</p>
-<pre><code><span class="comment">mocha</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">60000</span> <span class="literal">-</span><span class="comment">R</span> <span class="comment">spec</span> <span class="comment">test/functional/testapp/simple</span>.<span class="comment">js</code></pre>
-<p>Or individual tests (e.g., a test with the word &quot;alert&quot; in the name):</p>
-<pre><code><span class="comment">mocha</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">60000</span> <span class="literal">-</span><span class="comment">R</span> <span class="comment">spec</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">grep</span> <span class="comment">"alert"</span> <span class="comment">test/functional/apidemos</code></pre>
-<p>You can also run all of appium&#39;s tests this way. In one window, <code>node
-server.js</code> In another window, sequentially (waiting for each to pass, making
-sure emulator is up, etc...):</p>
-<p><code>alias mm=&quot;mocha -t 60000 -R spec&quot;</code></p>
-<pre><code><span class="title">mm</span> test/functional/apidemos
-<span class="title">mm</span> test/functional/prefs
-<span class="title">mm</span> test/functional/safari
-<span class="title">mm</span> test/functional/selendroid
-<span class="title">mm</span> test/functional/testapp
-<span class="title">mm</span> test/functional/uicatalog
-<span class="title">mm</span> test/functional/webview</code></pre>
-<p>For convenience, there&#39;s a <code>test.sh</code> script which runs just these tests which
-it is important to pass before publishing appium.</p>
-<h3>Advanced Appium server flags</h3>
-<p>Do you like getting close to the metal? Or are you trying to launch an Appium
-server from a script with a custom app? If so you can start Appium without
-grunt from the command line with an app or without an app, among other things:</p>
-<pre><code>node server<span class="variable">.js</span> <span class="comment">// launch Appium server without app</span>
-node server<span class="variable">.js</span> --app /absolute/path/to/app  <span class="comment">// launch Appium server with app</span>
-node server<span class="variable">.js</span> --launch <span class="comment">// pre-launch the app when appium loads</span>
-node server<span class="variable">.js</span> --log /my/appium<span class="variable">.log</span> <span class="comment">// log to file instead of stdout</span>
-node server<span class="variable">.js</span> --quiet <span class="comment">// don't log verbose output</span></code></pre>
-<p>(See
-<a href="https://github.com/appium/appium/blob/master/docs/server-args.md">the server documentation</a> for
-all CLI arguments.)</p>
-</section>
-<section id="using-with-a-tapster-https-github-com-hugs-tapsterbot-and-other-robots">
-<h2>
-<a href="#using-with-a-tapster-https-github-com-hugs-tapsterbot-and-other-robots" class="anchor" name="requirements">
-<span class="mini-icon mini-icon-link"></span>
-</a>
-<h2>Using with a <a href="https://github.com/hugs/tapsterbot">Tapster</a> and other robots</h2>
-
-</h2>
-
-<p>Check out the <a href="https://github.com/appium/robots">Appium Robots</a> project</p>
+<p>Appium drives various native automation frameworks and provides an API based on
+Selenium&#39;s <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver JSON wire protocol</a>.</p>
+<p>Appium drives Apple&#39;s UIAutomation library for iOS support, which is based on 
+<a href="http://github.com/penguinho">Dan Cuellar&#39;s</a> work on iOS Auto.</p>
+<p>Android support uses the UiAutomator framework for newer platforms and
+<a href="http://github.com/DominikDary/selendroid">Selendroid</a> for older Android platforms.</p>
+<p>FirefoxOS support leverages <a href="https://developer.mozilla.org/en-US/docs/Marionette">Marionette</a>,
+an automation driver that is compatible with WebDriver and is used to automate
+Gecko-based platforms.</p>
 </section>
 <section id="contributing">
 <h2>
@@ -410,8 +266,7 @@ all CLI arguments.)</p>
 
 </h2>
 
-<p>Fork the project, make a change, and send a pull request!</p>
-<p>Oh and please have a look at our <a href="https://github.com/appium/appium/blob/master/docs/style-guide.md">Style Guide</a> before getting to work.</p>
+<p>Please take a look at our <a href="https://github.com/appium/appium/blob/master/CONTRIBUTING.md">contribution documentation</a>.</p>
 </section>
 <section id="project-credits-inspiration">
 <h2>
@@ -422,8 +277,7 @@ all CLI arguments.)</p>
 
 </h2>
 
-<p>The open source community has made this project possible, please add missing projects to the list.</p>
-<p><a href="https://github.com/appium/appium/blob/master/docs/credits.md">All the OSS code contributing to Appium</a></p>
+<p><a href="https://github.com/appium/appium/blob/master/docs/credits.md">Credits</a></p>
 </section>
 <section id="mailing-list">
 <h2>
@@ -435,6 +289,31 @@ all CLI arguments.)</p>
 </h2>
 
 <p>Announcements and debates often take place on the <a href="https://groups.google.com/d/forum/appium-discuss">Discussion Group</a>, be sure to sign up!</p>
+</section>
+<section id="troubleshooting">
+<h2>
+<a href="#troubleshooting" class="anchor" name="requirements">
+<span class="mini-icon mini-icon-link"></span>
+</a>
+<h2>Troubleshooting</h2>
+
+</h2>
+
+<p>We put together a <a href="https://github.com/appium/appium/blob/master/docs/troubleshooting.md">troubleshooting guide</a>.
+Please have a look here first if you run into any problems. It contains instructions for checking a lot
+of common errors and how to get in touch with the community if you&#39;re stumped.</p>
+</section>
+<section id="using-robots">
+<h2>
+<a href="#using-robots" class="anchor" name="requirements">
+<span class="mini-icon mini-icon-link"></span>
+</a>
+<h2>Using Robots</h2>
+
+</h2>
+
+<p>Using Appium with <a href="https://github.com/hugs/tapsterbot">Tapster</a> and other robots is possible, 
+check out the <a href="https://github.com/appium/robots">Appium Robots</a> project!</p>
 </section>
       </div>
     </div>
