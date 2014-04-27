@@ -14,17 +14,25 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script>
-      var toggleVideo = function() {
-        var vid = $("#show-demo-video");
-        if (vid.css("display") == "none") {
-          vid.css("display","");
-        }
-        else {
-          vid.css("display","none");
-        }
-      };
-    </script>
+      <script>
+          function load() {
+              var downloadLink = document.getElementById('downloadLink');
+              if (navigator.appVersion.indexOf("Win")!=-1) {
+                  downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows-0.18.0.zip";
+              } else {
+                  downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/appium-0.18.0.dmg";
+              }
+          }
+          var toggleVideo = function() {
+              var vid = $("#show-demo-video");
+              if (vid.css("display") == "none") {
+                  vid.css("display","");
+              }
+              else {
+                  vid.css("display","none");
+              }
+          };
+      </script>
 
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png">
@@ -86,6 +94,9 @@
               </li>
               <li class="">
                 <a href="../pt/index.html">Português</a>
+              </li>
+              <li class="">
+                 <a href="../es/index.html">Español</a>
               </li>
               <li class="">
                 <a href="../jp/index.html">日本語</a>
