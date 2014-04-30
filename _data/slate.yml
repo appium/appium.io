@@ -1,0 +1,11 @@
+- language: cn
+  tag: 1.0-beta
+
+- language: en
+  tag: 1.0-beta
+
+- language: cn
+  tag: master
+
+- language: en
+  tag: master
