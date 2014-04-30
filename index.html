@@ -1,240 +1,185 @@
+---
+---
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Appium: Mobile App Automation Made Awesome.</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/appium.css" rel="stylesheet">
-    <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
-    <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
-    <script src="http://vjs.zencdn.net/c/video.js"></script>
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script>
-      function load() {
+{% include head.html %}
+<body onload="load()">
+<script>
+    function load() {
         var downloadLink = document.getElementById('downloadLink');
-        if (navigator.appVersion.indexOf("Win")!=-1) {
-          downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows-0.18.0.zip";
+        if (navigator.appVersion.indexOf("Win") != -1) {
+            downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows-0.18.0.zip";
         } else {
-          downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/appium-0.18.0.dmg";
+            downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/appium-0.18.0.dmg";
         }
-      }
-      var toggleVideo = function() {
+    }
+    var toggleVideo = function () {
         var vid = $("#show-demo-video");
         if (vid.css("display") == "none") {
-          vid.css("display","");
+            vid.css("display", "");
         }
         else {
-          vid.css("display","none");
+            vid.css("display", "none");
         }
-      };
-    </script>
+    };
+</script>
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="ico/favicon.png">
-
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-        _gaq.push(['_setAccount', 'UA-6735579-10']);
-        _gaq.push(['_setDomainName', 'appium.io']);
-        _gaq.push(['_setAllowLinker', true]);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-  </head>
-  <body onload="load()">
-
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="/" style="color:#eee">Appium</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active">
-                <a href="/">Home</a>
-              </li>
-              <li class="">
-                <a href="./getting-started.html">Get started</a>
-              </li>
-              <li class="">
-                <a href="./get-involved.html">Get Involved!</a>
-              </li>
-              <li class="">
-                <a href="https://github.com/appium/jobs/wiki/Appium-Jobs">Appium Jobs</a>
-              </li>
-              <li class="">
-                <a href="http://blog.appium.io">Blog</a>
-              </li>
-              <li class="">
-                <a href="de/index.html">Deutsch</a>
-              </li>
-              <li class="">
-                <a href="fr/index.html">Français</a>
-              </li>
-              <li class="">
-                <a href="pl/index.html">Polski</a>
-              </li>
-              <li class="">
-                <a href="pt/index.html">Português</a>
-              </li>
-              <li class="">
-                <a href="jp/index.html">日本語</a>
-              </li>
-              <li class="">
-                <a href="zh-cn/index.html">中文(简体)</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
+{% include navbar.html %}
 
 <div class="jumbotron masthead">
-  <div class="container">
-    <h1 class="appium-logo">Appium</h1>
-    <img class="code-bg" src="img/code-bg.gif" />
-    <p>Automation for Apps</p>
-    <p class="small">Appium is an open source test automation framework for use with native and <a href="https://github.com/appium/appium/wiki/Testing-Hybrid-Apps">hybrid</a> mobile apps. <br>It drives iOS and Android apps using the WebDriver <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON wire protocol</a>.</p>
+    <div class="container">
+        <h1 class="img-responsive appium-logo">Appium</h1>
+        <img class="img-responsive code-bg" src="img/code-bg.gif"/>
 
-    <p>
-     <!-- <a href="https://github.com/appium/appium/zipball/master" class="btn btn-primary btn-large">Download .zip</a> -->
-     <!-- <a href="https://github.com/appium/appium/tarball/master" class="btn btn-primary btn-large">Download .tar.gz</a> -->
-     <a id="downloadLink" href="https://bitbucket.org/appium/appium.app/downloads/" class="btn btn-primary btn-large">Download Appium</a>
-    </p>
-    <ul class="masthead-links">
-      <li>
-        <a href="https://github.com/appium/appium">View on GitHub</a>
-      </li>
-      <li>
-        <a href="./downloads.html">Downloads</a>
-      </li>
-      <li>
-        <a href="./getting-started.html">Documentation</a>
-      </li>
-      <li>
-        <a href="https://github.com/appium/appium/tree/master/sample-code/examples">Examples</a>
-      </li>
-      <li>
-        <a href="https://github.com/appium/appium/wiki/Credits">Contributions</a>
-      </li>
-      <li>
-        <a href="https://travis-ci.org/appium/appium"><img src="https://api.travis-ci.org/appium/appium.png?branch=master" alt="Build Status"></a>
-      </li>
-    </ul>
-  </div>
+        <p>Automation for Apps</p>
+
+        <p class="small">Appium is an open source test automation framework for
+            use with native and <a
+                    href="/slate/en/1.0-beta/#hybrid.md">hybrid</a>
+            mobile apps. <br>It drives iOS and Android apps using the WebDriver
+            <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON
+                wire protocol</a>.</p>
+
+        <p>
+            <!-- <a href="https://github.com/appium/appium/zipball/master" class="btn btn-primary btn-large">Download .zip</a> -->
+            <!-- <a href="https://github.com/appium/appium/tarball/master" class="btn btn-primary btn-large">Download .tar.gz</a> -->
+            <a id="downloadLink"
+               href="https://bitbucket.org/appium/appium.app/downloads/"
+               class="btn btn-primary btn-lg" role="button">Download Appium</a>
+        </p>
+    </div>
 </div>
 
-<br class="thick-line"/>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
 
-<div class="container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav navbar-nav-center">
+                <li><a href="https://github.com/appium/appium">View on GitHub</a></li>
+                <li><a href="/downloads.html">Downloads</a></li>
+                <li><a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples">Examples</a></li>
+                <li><a href="/slate/en/1.0-beta/#credits.md">Contributions</a></li>
+                <li><a href="https://travis-ci.org/appium/appium"><img
+                        src="https://api.travis-ci.org/appium/appium.png?branch=master"
+                        alt="Build Status"></a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
 
-  <div class="marketing">
+<div class="marketing container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+            <h1 class="page-header" id="introducing-appium">Introducing Appium.</h1>
 
-    <h1 id="introducing-appium">Introducing Appium.</h1>
-    <p class="marketing-byline">Is native app automation missing from your tool belt? Problem solved.</p>
-    <h2><a href="javascript: toggleVideo()">Watch the Videos</a></h2>
-    <div id="show-demo-video" style="display:none">
-      <iframe width="640" height="360" src="http://www.youtube.com/embed/1J0aXDbjiUE" frameborder="0" allowfullscreen></iframe>
-      <iframe width="480" height="360" src="http://www.youtube.com/embed/oTIEt11cXNk" frameborder="0" allowfullscreen></iframe>
-      <iframe width="640" height="360" src="http://www.youtube.com/embed/ILKi6B54_sw" frameborder="0" allowfullscreen></iframe>
-      <iframe width="640" height="360" src="http://www.youtube.com/embed/eKhuF_4KzYo" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <hr>
+            <p class="marketing-byline">Is native app automation missing from your
+                tool belt? Problem solved.</p>
 
-    <div class="row-fluid">
+            <h2><a href="javascript: toggleVideo()">Watch the Videos</a></h2>
 
-      <div class="span4">
-        <img class="marketing-img" src="img/marketing-recompiling.png" alt="Forget recompiling">
-        <h2>Appium Philosophy</h2>
-        <p>
-          Appium is built on the idea that testing native apps shouldn't require including an SDK or recompiling your app. And that you should be able to use your preferred test practices, frameworks, and tools. Appium is an open source project and has made design and tool decisions to encourage a vibrant contributing community.
-        </p>
-      </div>
+            <div id="show-demo-video" style="display:none">
+                <iframe width="640" height="360"
+                        src="http://www.youtube.com/embed/1J0aXDbjiUE"
+                        frameborder="0" allowfullscreen></iframe>
+                <iframe width="480" height="360"
+                        src="http://www.youtube.com/embed/oTIEt11cXNk"
+                        frameborder="0" allowfullscreen></iframe>
+                <iframe width="640" height="360"
+                        src="http://www.youtube.com/embed/ILKi6B54_sw"
+                        frameborder="0" allowfullscreen></iframe>
+                <iframe width="640" height="360"
+                        src="http://www.youtube.com/embed/eKhuF_4KzYo"
+                        frameborder="0" allowfullscreen></iframe>
+            </div>
+            </div>
+        </div>
 
-      <div class="span4">
-        <img class="marketing-img" src="img/marketing-favorite-tool.png" alt="Use your favorite tool">
-        <h2>Use your favorite tools</h2>
-        <p>
-          Appium aims to automate any mobile app from any language and any test framework, with full access to back-end APIs and DBs from test code. Write tests with your favorite dev tools using all the above programming languages, and probably more (with the Selenium WebDriver API and language-specific client libraries).
-        </p>
-      </div>
+        <hr class="soften">
 
-      <div class="span4">
-        <!-- http://www.psdgraphics.com/psd-icons/settings-icon-psd-hammer-and-wrench/ -->
-        <img class="marketing-img" src="img/marketing-requirements.png" alt="Requirements">
-        <h2>Requirements</h2>
-        <h4>iOS</h4>
-        Mac OSX 10.7+<br />
-        XCode 4.5+ w/ Command Line Tools<br />
-        <h4>Android</h4>
-        Mac OSX 10.7+ or Windows 7+ or Linux<br />
-        Android SDK &ge; 16 (SDK < 16 in Selendroid mode)<br />
-      </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="img/marketing-recompiling.png"
+                     alt="Forget recompiling">
 
-    </div>
+                <h2>Appium Philosophy</h2>
 
-    <hr class="soften">
+                <p>
+                    Appium is built on the idea that testing native apps
+                    shouldn't require including an SDK or recompiling your app.
+                    And that you should be able to use your preferred test
+                    practices, frameworks, and tools. Appium is an open source
+                    project and has made design and tool decisions to encourage
+                    a vibrant contributing community.
+                </p>
+            </div>
 
-    <h1>Easy setup process, run a test now.</h1>
-    <p>
-      Install <a href="http://nodejs.org">node.js</a> (includes npm, the node.js package manager).
-    </p>
+            <div class="col-md-4">
+                <img src="img/marketing-favorite-tool.png"
+                     alt="Use your favorite tool">
+
+                <h2>Use your favorite tools</h2>
+
+                <p>
+                    Appium aims to automate any mobile app from any language and
+                    any test framework, with full access to back-end APIs and
+                    DBs from test code. Write tests with your favorite dev tools
+                    using all the above programming languages, and probably more
+                    (with the Selenium WebDriver API and language-specific
+                    client libraries).
+                </p>
+            </div>
+
+            <div class="col-md-4">
+                <!-- http://www.psdgraphics.com/psd-icons/settings-icon-psd-hammer-and-wrench/ -->
+                <img class="marketing-img" src="img/marketing-requirements.png"
+                     alt="Requirements">
+
+                <h2>Requirements</h2>
+                <h4>iOS</h4>
+                Mac OSX 10.7+<br/>
+                XCode 4.5+ w/ Command Line Tools<br/>
+                <h4>Android</h4>
+                Mac OSX 10.7+ or Windows 7+ or Linux<br/>
+                Android SDK &ge; 16 (SDK < 16 in Selendroid mode)<br/>
+            </div>
+        </div>
+
+        <hr class="soften">
+
+        <div class="row">
+            <div class="col-md-12">
+            <h1>Easy setup process, run a test now.</h1>
+
+            <p>
+                Install <a href="http://nodejs.org">node.js</a> (includes npm, the
+                node.js package manager).
+            </p>
 <pre class="prettyprint ninja">
 > npm install -g appium
 > npm install wd
 > appium &amp;
 > node your-appium-test.js
 </pre>
-    <p>
-      See the <a href="https://github.com/appium/appium/tree/master/sample-code/examples">Appium example tests.</a>
-    </p>
-  </div>
-
+            <p>
+                See the <a
+                    href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples">Appium
+                example tests.</a>
+            </p>
+                </div>
+            </div>
 </div>
 
 
-    <!-- Footer
-    ================================================== -->
-    <footer class="footer">
-      <div class="container">
-        <p>We're open for discussion and would love to hear your voice in the conversation about the future of mobile apps testing!</p>
-        <ul class="footer-links">
-          <li><a href="http://blog.appium.io">Blog</a></li>
-          <li><a href="https://groups.google.com/d/forum/appium-discuss">Discussion Group</a></li>
-          <li><a href="https://github.com/appium/appium/issues">Issues</a></li>
-          <li><a href="https://github.com/appium/appium/wiki">Wiki</a></li>
-          <li><a href="http://freenode.net">#appium @ freenode</a></li>
-        </ul>
-        <p style="color:rgb(153, 153, 153);">Powered by <a href="https://saucelabs.com/appium">Sauce Labs</a> and robots.</p>
-      </div>
-    </footer>
-
-
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/google-code-prettify/prettify.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+{% include footer.html %}
+</body>
 </html>

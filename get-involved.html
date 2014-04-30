@@ -1,156 +1,67 @@
+---
+---
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Appium: Mobile App Automation, Made Awesome.</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/appium.css" rel="stylesheet">
-    <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+{% include head.html %}
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
 
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-   <link rel="shortcut icon" href="ico/favicon.png">
-
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-        _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-        _gaq.push(['_setAccount', 'UA-6735579-10']);
-        _gaq.push(['_setDomainName', 'appium.io']);
-        _gaq.push(['_setAllowLinker', true]);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-  </head>
-  <body data-spy="scroll" data-target=".bs-docs-sidebar">
-
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="/" style="color:#eee">Appium</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="">
-                <a href="/">Home</a>
-              </li>
-              <li class="">
-                <a href="./getting-started.html">Get started</a>
-              </li>
-              <li class="active">
-                <a href="./get-involved.html">Get Involved!</a>
-              </li>
-              <li class="">
-                <a href="http://blog.appium.io">Blog</a>
-              </li>
-              <li class="">
-                <a href="de/index.html">Deutsch</a>
-              </li>
-              <li class="">
-                <a href="fr/index.html">Français</a>
-              </li>
-              <li class="">
-                <a href="pl/index.html">Polski</a>
-              </li>
-              <li class="">
-                <a href="pt/index.html">Português</a>
-              </li>
-              <li class="">
-                <a href="jp/index.html">日本語</a>
-              </li>
-              <li class="">
-                <a href="zh-cn/index.html">中文(简体)</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
+{% include navbar.html %}
 
 <!-- Subhead : We need you!
 ================================================== -->
 <header class="jumbotron subhead" id="overview">
-  <div class="container">
-    <h1>Appium wants you!</h1>
-    <p class="lead">Appium needs your help - get involved! Let's make it rockium together!</p>
-  </div>
+    <div class="container">
+        <h1>Appium wants you!</h1>
+
+        <p class="lead">Appium needs your help - get involved! Let's make it
+            rockium together!</p>
+    </div>
 </header>
 
 
-  <div class="container">
+<div class="container-fluid">
+
 
     <div class="row">
-      <img id="we-need-ya" src="img/we-need-ya.png" alt="Appium needs you man!"/>
-      <div class="span4">
-      </div>
-      <div class="span5">
+        <div class="col-md-4 col-xs-12">
+            <img class="pull-left img-responsive" id="we-need-ya" src="img/we-need-ya.png"
+                 alt="Appium needs you man!"/>
+        </div>
 
-        <!-- Section - Make it better
-        ================================================== -->
-        <section id="we-need-desc">
-          <div class="page-header">
-            <h1>Let's make it even better!</h1>
-          </div>
-          <p class="lead">
-            Open Source is the life blood of the software universe, and Appium is only as good as the community contributing to it. <br><br>Dive in! Help improve the docs, hack on the internals, build tests.<br><br> Anything you are interested in doing can help make the project more awesome.
-          </p>
+        <div class="col-md-offset-1 col-md-4">
 
-          <p class="lead">
-            Join the community:
-          </p>
-          <ul>
-            <li><a href="https://groups.google.com/d/forum/appium-discuss">Discussion Group</a></li>
-            <li><a href="https://github.com/appium/appium/issues">GitHub Issues</a></li>
-            <li><a href="http://freenode.net">#appium @ freenode</a></li>
-            <li>Check out the <a href="https://github.com/appium/appium/wiki/Credits">Contributing Projects</a></li>
-          </ul>
+            <!-- Section - Make it better
+            ================================================== -->
+            <section id="we-need-desc">
+                <h1>Let's make it even better!</h1>
+                <p class="lead">
+                    Open Source is the life blood of the software universe, and
+                    Appium is only as good as the community contributing to it.
+                    <br><br>Dive in! Help improve the docs, hack on the
+                    internals, build tests.<br><br> Anything you are interested
+                    in doing can help make the project more awesome.
+                </p>
+
+                <p class="lead">
+                    Join the community:
+                </p>
+                <ul>
+                    <li>
+                        <a href="https://groups.google.com/d/forum/appium-discuss">Discussion
+                            Group</a></li>
+                    <li><a href="https://github.com/appium/appium/issues">GitHub
+                        Issues</a></li>
+                    <li>Check out the <a
+                            href="/slate/en/1.0-beta/#credits.md">Contributing
+                        Projects</a></li>
+                </ul>
 
 
-        </section>
-
-      </div>
+            </section>
+        </div>
     </div>
-  </div>
+</div>
 
-    <!-- Footer
-    ================================================== -->
-    <footer class="footer">
-      <div class="container">
-        <p>We're open for discussion and would love to hear your voice in the discussion about the future of mobile apps testing!</p>
-        <ul class="footer-links">
-          <li><a href="http://blog.appium.io">Blog</a></li>
-          <li><a href="https://groups.google.com/d/forum/appium-discuss">Discussion Group</a></li>
-          <li><a href="https://github.com/appium/appium/issues">Issues</a></li>
-          <li><a href="http://freenode.net">#appium @ freenode</a></li>
-        </ul>
-      </div>
-    </footer>
-
-
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-affix.js"></script>
-    <script src="js/google-code-prettify/prettify.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+{% include footer.html %}
+</body>
 </html>
