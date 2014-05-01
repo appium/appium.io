@@ -1423,11 +1423,7 @@ will download the coverage.ec file for that particular run. Note that you can
 <p>Appium supports a subset of the WebDriver locator strategies:</p>
 
 <ul>
-<li>find by &ldquo;tag name&rdquo; (i.e., ui component type)</li>
-<li>find by &ldquo;name&rdquo; (i.e., the text, label, or developer-generated ID a.k.a
-&lsquo;accessibilityIdentifier&rsquo; of an element)
-NOTE: the &ldquo;name&rdquo; locator strategy will be deprecated on mobile devices,
-and will not be a part of Appium v1.0</li>
+<li>find by &ldquo;class&rdquo; (i.e., ui component type)</li>
 <li>find by &ldquo;xpath&rdquo; (i.e., an abstract representation of a path to an element,
 with certain constraints)</li>
 </ul>
@@ -1443,116 +1439,10 @@ search using the UiAutomator Api (Android-only)</li>
 using the Id/Name that the native Accessibility options utilize.</li>
 </ul>
 
-<h2 id="tag-name-mapping">Tag name mapping</h2>
-
-<p>You can use the direct UIAutomation component type name for the tag name,
-or use the simplified mapping (used in some examples below) found here:</p>
-
-<p>https://github.com/appium/appium-uiauto/blob/master/uiauto/lib/mechanic.js#L30</p>
-
 <h2 id="issues">Issues</h2>
 
 <p>There&rsquo;s a known issue with table cell elements becoming invalidated before
 there&rsquo;s time to interact with them. We&rsquo;re working on a fix</p>
-
-<h2 id="examples">Examples</h2>
-
-<h3 id="find-all-the-uiabuttons-on-the-screen">Find all the UIAButtons on the screen</h3>
-
-<p>WD.js:</p>
-<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByTagName</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// tap all the buttons
-</span>  <span class="kd">var</span> <span class="nx">tapNextButton</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">button</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">button</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">tapNextButton</span><span class="p">();</span>
-      <span class="p">})</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="nx">tapNextButton</span><span class="p">();</span>
-<span class="p">});</span>
-</pre>
-
-<p>Ruby:</p>
-<pre class="highlight ruby"><span class="n">buttons</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_elements</span> <span class="ss">:tag_name</span><span class="p">,</span> <span class="ss">:button</span>
-<span class="n">buttons</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">b</span><span class="o">|</span> <span class="n">b</span><span class="p">.</span><span class="nf">click</span> <span class="p">}</span>
-</pre>
-
-<p>Python:</p>
-<pre class="highlight python"><span class="p">[</span><span class="n">button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span> <span class="k">for</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'button'</span><span class="p">)]</span>
-</pre>
-
-<h3 id="find-the-element-with-the-text-(or-accessibilityidentifier)-&quot;go&quot;">Find the element with the text (or accessibilityIdentifier) &ldquo;Go&rdquo;</h3>
-
-<p>WD.js:</p>
-<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Go'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">el</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-</pre>
-
-<p>Ruby:</p>
-<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s1">'Go'</span><span class="p">).</span><span class="nf">click</span>
-</pre>
-
-<p>Python:</p>
-<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s">'Go'</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-</pre>
-
-<h3 id="find-the-nav-bar-text-element-where-the-text-begins-with-&quot;hi,-&quot;">Find the nav bar text element where the text begins with &ldquo;Hi, &rdquo;</h3>
-
-<p>WD.js:</p>
-<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByXpath</span><span class="p">(</span><span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">el</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-    <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
-  <span class="p">});</span>
-<span class="p">});</span>
-</pre>
-
-<p>Ruby:</p>
-<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:xpath</span><span class="p">,</span> <span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span>
-</pre>
-
-<h3 id="find-an-element-by-tagname">Find an element by tagName</h3>
-
-<p>Java:</p>
-<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
-
-<span class="n">WebELement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
-<span class="n">element</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
-
-<span class="n">List</span><span class="o">&lt;</span><span class="n">WebElement</span><span class="o">&gt;</span> <span class="n">elems</span> <span class="o">=</span> <span class="n">findElements</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
-<span class="n">elems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
-</pre>
-
-<p>Python:</p>
-<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'tableCell'</span><span class="p">)[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
-</pre>
-
-<h3 id="using-the-&quot;-ios-uiautomation&quot;-locator-strategy">Using the &ldquo;-ios uiautomation&rdquo; locator strategy</h3>
-
-<p>WD.js:</p>
-<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="s1">'-ios uiautomation'</span><span class="p">,</span> <span class="s1">'.elements()[1].cells()[2]'</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
-</pre>
-
-<h3 id="using-the-&quot;-android-uiautomator&quot;-locator-strategy">Using the &ldquo;-android uiautomator&rdquo; locator strategy</h3>
-
-<p>WD.js:</p>
-<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="s1">'-android uiautomator'</span><span class="p">,</span> <span class="s1">'new UiSelector().clickable(true)'</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
-</pre>
-
-<h3 id="pull-to-refresh-using-a-swipe-gesture">Pull to refresh using a swipe gesture</h3>
-
-<p>Python:</p>
-<pre class="highlight python"><span class="n">js_snippet</span> <span class="o">=</span> <span class="s">"mobile: swipe"</span>
-<span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s">'startX'</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s">'startY'</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s">'startX'</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s">'startY'</span><span class="p">:</span><span class="mf">0.95</span><span class="p">,</span> <span class="s">'tapCount'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'duration'</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="n">js_snippet</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
-</pre>
 
 <h2 id="using-the-appium-inspector-to-locate-elements">Using The Appium Inspector To Locate Elements</h2>
 
@@ -1582,412 +1472,6 @@ inspector preview. The Appium inspector then highlights the element in the UI
 navigator, showing me both the id and element type of the button I clicked.</p>
 
 <p><img alt="Step 1" src="https://raw.github.com/appium/appium/master/assets/InspectorImages/Step2.png" /></p>
-
-<h1 id="automating-mobile-gestures"><span id="gestures.md"></span>Automating mobile gestures</h1>
-
-<p>While the Selenium WebDriver spec has support for certain kinds of mobile
-interaction, its parameters are not always easily mappable to the
-functionality that the underlying device automation (like UIAutomation in the
- case of iOS) provides. To that end, Appium augments the WebDriver spec with
- extra commands and parameters for mobile gestures:</p>
-
-<ul>
-<li><strong>tap</strong> (on screen or on element) with options:
-
-<ul>
-<li>how many fingers</li>
-<li>how long to tap</li>
-<li>how many taps</li>
-<li>where precisely to tap on the screen or element</li>
-</ul></li>
-<li><strong>flick</strong> (on screen or on element) with options:
-
-<ul>
-<li>how many fingers</li>
-<li>where to start the flick on screen or element</li>
-<li>where to end the flick on screen or element</li>
-</ul></li>
-<li><strong>swipe/drag</strong> (on screen or on element) with options:
-
-<ul>
-<li>how many fingers</li>
-<li>how long the swipe/drag takes in seconds</li>
-<li>where to start the swipe on screen or element</li>
-<li>where to end the swipe on screen or element</li>
-</ul></li>
-<li><strong>scroll to</strong> (element)</li>
-<li><strong>slider</strong></li>
-<li><strong>shake</strong></li>
-<li><strong>longTap</strong> (element)</li>
-<li>set the <strong>orientation</strong> with option:
-
-<ul>
-<li>new orientation (landscape or portrait)</li>
-</ul></li>
-</ul>
-
-<h2 id="json-wire-protocol-server-extensions">JSON Wire Protocol server extensions</h2>
-
-<p>Here are the endpoints with which we have implemented these additions to the
-spec.</p>
-
-<p><strong>Note on coordinates:</strong> All the X and Y parameters listed below can be used
-in two ways. If they are between 0 and 1 (e.g., 0.5), they are taken to be
-percentage of screen or element size. In other words,
-<code class="prettyprint">{x: 0.5, y: 0.25}</code> means a coordinate that is 50% from the left side of the
-screen/element, and 25% from the top of the screen/element. If the values are
- greater than 1, they are taken as pixels. So, <code class="prettyprint">{x: 100,
- y: 300}</code> means a coordinate that is 100 pixels from the left and 300 from
- the top of the screen/element.</p>
-
-<p><strong>Note on performing actions on screen vs elements:</strong> These methods all take
-an optional <code class="prettyprint">element</code> parameter. If present, this is taken to be the ID of an
-element which has already been retrieved. So in this case,
-the coordinates will be taken to refer to the rectangle of that element only
-. So <code class="prettyprint">{x: 0.5, y: 0.5, element: &#39;3&#39;}</code> means &ldquo;the exact middle point of the
-element with ID &lsquo;3&rsquo;&rdquo;.</p>
-
-<ul>
-<li><code class="prettyprint">POST session/:sessionId/touch/tap</code> - perform a tap on the screen or an element
-
-<ul>
-<li>URL Parameter: sessionId of session to route to</li>
-<li>JSON parameters:
-
-<ul>
-<li><code class="prettyprint">tapCount</code> (optional, default <code class="prettyprint">1</code>): how many times to tap</li>
-<li><code class="prettyprint">touchCount</code> (optional, default <code class="prettyprint">1</code>): how many fingers to tap with</li>
-<li><code class="prettyprint">duration</code> (optional, default <code class="prettyprint">0.1</code>): how long (in seconds) to tap</li>
-<li><code class="prettyprint">x</code> (optional, default <code class="prettyprint">0.5</code>): x coordinate to tap (in pixels or relative units)</li>
-<li><code class="prettyprint">y</code> (optional, default <code class="prettyprint">0.5</code>): y coordinate to tap (in pixels or relative units)</li>
-<li><code class="prettyprint">element</code> (optional): ID of element to scope this command to</li>
-</ul></li>
-</ul></li>
-<li><code class="prettyprint">POST session:/sessionId/touch/flick_precise</code> - perform a flick on the screen or an element
-
-<ul>
-<li>URL Parameter: sessionId of session to route to</li>
-<li>JSON parameters:
-
-<ul>
-<li><code class="prettyprint">touchCount</code> (optional, default <code class="prettyprint">1</code>): how many fingers to flick with</li>
-<li><code class="prettyprint">startX</code> (optional, default <code class="prettyprint">0.5</code>): x coordinate where flick begins (in pixels or relative units)</li>
-<li><code class="prettyprint">startY</code> (optional, default <code class="prettyprint">0.5</code>): y coordinate where flick begins (in pixels or relative units)</li>
-<li><code class="prettyprint">endX</code> (required): x coordinate where flick ends (in pixels or relative units)</li>
-<li><code class="prettyprint">endY</code> (required): y coordinate where flick ends (in pixels or relative units)</li>
-<li><code class="prettyprint">element</code> (optional): ID of element to scope this command to</li>
-</ul></li>
-</ul></li>
-<li><code class="prettyprint">POST session:/sessionId/touch/swipe</code> - perform a swipe/drag on the screen or an element
-
-<ul>
-<li>URL Parameter: sessionId of session to route to</li>
-<li>JSON parameters:
-
-<ul>
-<li><code class="prettyprint">touchCount</code> (optional, default <code class="prettyprint">1</code>): how many fingers to flick with</li>
-<li><code class="prettyprint">startX</code> (optional, default <code class="prettyprint">0.5</code>): x coordinate where swipe begins (in pixels or relative units)</li>
-<li><code class="prettyprint">startY</code> (optional, default <code class="prettyprint">0.5</code>): y coordinate where swipe begins (in pixels or relative units)</li>
-<li><code class="prettyprint">endX</code> (required): x coordinate where swipe ends (in pixels or relative units)</li>
-<li><code class="prettyprint">endY</code> (required): y coordinate where swipe ends (in pixels or relative units)</li>
-<li><code class="prettyprint">duration</code> (optional, default <code class="prettyprint">0.8</code>): time (in seconds) to spend performing the swipe/drag</li>
-<li><code class="prettyprint">element</code> (optional): ID of element to scope this command to</li>
-</ul></li>
-</ul></li>
-</ul>
-
-<p><strong>Note on setting orientation:</strong> Setting the orientation takes different
-parameters than the tap, flick, and swipe methods. This action is performed
-by setting the orientation of the browser to &ldquo;LANDSCAPE&rdquo; or &ldquo;PORTRAIT&rdquo;. The
-alternative access method below does not apply to setting orientation.</p>
-
-<ul>
-<li><code class="prettyprint">POST /session/:sessionId/orientation</code> - set the orientation of the browser
-
-<ul>
-<li>URL Parameter: sessionId of session to route to</li>
-<li>JSON parameters:
-
-<ul>
-<li><code class="prettyprint">orientation</code> (required): new orientation, either &ldquo;LANDSCAPE&rdquo; or &ldquo;PORTRAIT&rdquo;</li>
-</ul></li>
-</ul></li>
-</ul>
-
-<h2 id="alternative-access-method">Alternative access method</h2>
-
-<p>Extending the JSON Wire Protocol is great, but it means that the various
-WebDriver language bindings will have to implement access to these endpoints
-in their own way. Naturally, this will take different amounts of time
-depending on the project. We have instituted a way to get around this delay,
-by using <code class="prettyprint">driver.execute()</code> with special parameters.</p>
-
-<p><code class="prettyprint">POST session/:sessionId/execute</code> takes two JSON parameters:
-  * <code class="prettyprint">script</code> (usually a snippet of javascript)
-  * <code class="prettyprint">args</code> (usually an array of arguments passed to that snippet in the javascript engine)</p>
-
-<p>In the case of these new mobile methods, <code class="prettyprint">script</code> must be one of:
-  * <code class="prettyprint">mobile: tap</code>
-  * <code class="prettyprint">mobile: flick</code>
-  * <code class="prettyprint">mobile: swipe</code>
-  * <code class="prettyprint">mobile: scrollTo</code>
-  * <code class="prettyprint">mobile: scroll</code>
-  * <code class="prettyprint">mobile: shake</code>
-(The <code class="prettyprint">mobile:</code> prefix allows us to route these requests to the appropriate
-endpoint).</p>
-
-<p>And <code class="prettyprint">args</code> will be an array with one element: a Javascript object defining
-the parameters for the corresponding function. So, let&rsquo;s say I want to call
-<code class="prettyprint">tap</code> on a certain screen position. I can do so by calling <code class="prettyprint">driver.execute</code>
-with these JSON parameters:</p>
-<pre class="highlight json"><span class="p">{</span><span class="w">
-  </span><span class="s2">"script"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile: tap"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
-  </span><span class="p">}]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre>
-
-<p>In this example, our new <code class="prettyprint">tap</code> method will be called with the <code class="prettyprint">x</code> and <code class="prettyprint">y</code>
-params as described above.</p>
-
-<h2 id="code-examples">Code examples</h2>
-
-<p>In these examples, note that the element parameter is always optional.</p>
-
-<h2 id="tap">Tap</h2>
-
-<ul>
-<li><strong>WD.js:</strong></li>
-</ul>
-<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByTagName</span><span class="p">(</span><span class="s1">'tableCell'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span>
-<span class="kd">var</span> <span class="nx">tapOpts</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">x</span><span class="p">:</span> <span class="mi">150</span> <span class="c1">// in pixels from left
-</span>  <span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">30</span> <span class="c1">// in pixels from top
-</span>  <span class="p">,</span> <span class="na">element</span><span class="p">:</span> <span class="nx">els</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nx">value</span> <span class="c1">// the id of the element we want to tap
-</span><span class="p">};</span>
-<span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: tap"</span><span class="p">,</span> <span class="p">[</span><span class="nx">tapOpts</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// continue testing
-</span><span class="p">});</span>
-<span class="p">});</span>
-</pre>
-
-<ul>
-<li><strong>Java:</strong></li>
-</ul>
-<pre class="highlight java"><span class="n">WebElement</span> <span class="n">row</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElements</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"tableCell"</span><span class="o">)).</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
-<span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
-<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">tapObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
-<span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"x"</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span> <span class="c1">// in pixels from left</span>
-<span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"y"</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span> <span class="c1">// in pixels from top</span>
-<span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">row</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span> <span class="c1">// the id of the element we want to tap</span>
-<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: tap"</span><span class="o">,</span> <span class="n">tapObject</span><span class="o">);</span>
-</pre>
-<pre class="highlight java"><span class="c1">//In iOS app, if UI element visbile property is "false".</span>
-<span class="c1">//Using element location tap on it.</span>
-<span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/scrollview[1]/image[1]"</span><span class="o">));</span>
-<span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">wd</span><span class="o">;</span>
-<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">tapObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
-<span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"x"</span><span class="o">,</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">element</span><span class="o">.</span><span class="na">getLocation</span><span class="o">().</span><span class="na">getX</span><span class="o">());</span>
-<span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"y"</span><span class="o">,</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">element</span><span class="o">.</span><span class="na">getLocation</span><span class="o">().</span><span class="na">getY</span><span class="o">());</span>
-<span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"duration"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">);</span>
-<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: tap"</span><span class="o">,</span> <span class="n">tapObject</span><span class="o">);</span>
-</pre>
-
-<ul>
-<li><strong>Python:</strong></li>
-</ul>
-<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: tap"</span><span class="p">,</span> <span class="p">{</span><span class="s">"touchCount"</span><span class="p">:</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">:</span><span class="s">"0.9"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">:</span><span class="s">"0.8"</span><span class="p">,</span> <span class="s">"element"</span><span class="p">:</span><span class="n">element</span><span class="o">.</span><span class="nb">id</span><span class="p">})</span>
-</pre>
-
-<ul>
-<li><strong>Ruby:</strong></li>
-</ul>
-<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">150</span><span class="p">,</span> <span class="ss">:y</span> <span class="o">=&gt;</span> <span class="mi">30</span>
-</pre>
-
-<ul>
-<li><strong>Ruby:</strong></li>
-</ul>
-<pre class="highlight ruby"><span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
-<span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nf">ref</span>
-</pre>
-
-<ul>
-<li><strong>C#:</strong></li>
-</ul>
-<pre class="highlight csharp"><span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Double</span><span class="p">&gt;</span> <span class="n">coords</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">double</span><span class="p">&gt;();</span>
-<span class="n">coords</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span> <span class="m">12</span><span class="p">);</span>
-<span class="n">coords</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"y"</span><span class="p">,</span> <span class="m">12</span><span class="p">);</span>
-<span class="n">driver</span><span class="p">.</span><span class="nf">ExecuteScript</span><span class="p">(</span><span class="s">"mobile: tap"</span><span class="p">,</span> <span class="n">coords</span><span class="p">);</span>
-</pre>
-
-<h2 id="flick">Flick</h2>
-
-<ul>
-<li><strong>WD.js:</strong></li>
-</ul>
-<pre class="highlight javascript"><span class="c1">// options for a 2-finger flick from the center of the screen to the top left
-</span><span class="kd">var</span> <span class="nx">flickOpts</span> <span class="o">=</span> <span class="p">{</span>
-<span class="na">endX</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">,</span> <span class="na">endY</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">,</span> <span class="na">touchCount</span><span class="p">:</span> <span class="mi">2</span>
-<span class="p">};</span>
-<span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: flick"</span><span class="p">,</span> <span class="p">[</span><span class="nx">flickOpts</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// continue testing
-</span><span class="p">});</span>
-</pre>
-
-<ul>
-<li><strong>Java:</strong></li>
-</ul>
-<pre class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
-<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">flickObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
-<span class="n">flickObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endX"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-<span class="n">flickObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endY"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
-<span class="n">flickObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"touchCount"</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
-<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: flick"</span><span class="o">,</span> <span class="n">flickObject</span><span class="o">);</span>
-</pre>
-
-<h2 id="swipe">Swipe</h2>
-
-<p><em>Note</em>: Swiping is unfortunately broken in iOS7, because of a bug in Apple&rsquo;s
-frameworks. For iOS7, see <code class="prettyprint">mobile: scroll</code> as a workaround that works for most
-cases.</p>
-
-<ul>
-<li><strong>WD.js:</strong></li>
-</ul>
-<pre class="highlight javascript"><span class="c1">// options for a slow swipe from the right edge of the screen to the left
-</span><span class="kd">var</span> <span class="nx">swipeOpts</span> <span class="o">=</span> <span class="p">{</span>
-<span class="na">startX</span><span class="p">:</span> <span class="mf">0.95</span>
-<span class="p">,</span> <span class="na">startY</span><span class="p">:</span> <span class="mf">0.5</span>
-<span class="p">,</span> <span class="na">endX</span><span class="p">:</span> <span class="mf">0.05</span>
-<span class="p">,</span> <span class="na">endY</span><span class="p">:</span> <span class="mf">0.5</span>
-<span class="p">,</span> <span class="na">duration</span><span class="p">:</span> <span class="mf">1.8</span>
-<span class="p">};</span>
-<span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: swipe"</span><span class="p">,</span> <span class="p">[</span><span class="nx">swipeOpts</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// continue testing
-</span><span class="p">});</span>
-</pre>
-
-<ul>
-<li><strong>Java:</strong></li>
-</ul>
-<pre class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
-<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">swipeObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
-<span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startX"</span><span class="o">,</span> <span class="mf">0.95</span><span class="o">);</span>
-<span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startY"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">);</span>
-<span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endX"</span><span class="o">,</span> <span class="mf">0.05</span><span class="o">);</span>
-<span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endY"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">);</span>
-<span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"duration"</span><span class="o">,</span> <span class="mf">1.8</span><span class="o">);</span>
-<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: swipe"</span><span class="o">,</span> <span class="n">swipeObject</span><span class="o">);</span>
-</pre>
-
-<h2 id="scroll">Scroll</h2>
-
-<ul>
-<li><strong>WD.js:</strong></li>
-</ul>
-<pre class="highlight javascript"><span class="c1">// scroll the view down
-</span><span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: scroll"</span><span class="p">,</span> <span class="p">[{</span><span class="na">direction</span><span class="p">:</span> <span class="s1">'down'</span><span class="p">}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// continue testing
-</span><span class="p">});</span>
-</pre>
-
-<ul>
-<li><strong>Java:</strong></li>
-</ul>
-<pre class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
-<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"direction"</span><span class="o">,</span> <span class="s">"down"</span><span class="o">);</span>
-<span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
-<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: scroll"</span><span class="o">,</span> <span class="n">scrollObject</span><span class="o">);</span>
-</pre>
-
-<h2 id="slider">Slider</h2>
-
-<p><strong>iOS</strong></p>
-
-<ul>
-<li><strong>Java</strong></li>
-</ul>
-<pre class="highlight java"><span class="c1">// slider values can be string representations of numbers between 0 and 1</span>
-<span class="c1">// e.g., "0.1" is 10%, "1.0" is 100%</span>
-<span class="n">WebElement</span> <span class="n">slider</span> <span class="o">=</span>  <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/slider[1]"</span><span class="o">));</span>
-<span class="n">slider</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
-</pre>
-
-<p><strong>Android</strong></p>
-
-<p>The best way to interact with the slider on Android is with the &lsquo;mobile:
-tap&rsquo; gesture. It is difficult to find a reliable way to set a specific
-percentage that works on all screen sizes, however. Therefore,
-it is recommended to write tests that focus on minimum, 50%, and maximum.</p>
-
-<ul>
-<li><strong>Ruby</strong></li>
-</ul>
-<pre class="highlight ruby"><span class="c1"># 0%</span>
-<span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:x</span> <span class="o">=&gt;</span><span class="n">slider</span><span class="p">.</span><span class="nf">location</span><span class="p">.</span><span class="nf">x</span><span class="p">,</span> <span class="ss">:y</span> <span class="o">=&gt;</span><span class="n">slider</span><span class="p">.</span><span class="nf">location</span><span class="p">.</span><span class="nf">y</span>
-
-<span class="c1"># 100%</span>
-<span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:x</span> <span class="o">=&gt;</span><span class="n">slider</span><span class="p">.</span><span class="nf">location</span><span class="p">.</span><span class="nf">x</span> <span class="o">+</span> <span class="n">slider</span><span class="p">.</span><span class="nf">size</span><span class="p">.</span><span class="nf">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">:y</span> <span class="o">=&gt;</span><span class="n">slider</span><span class="p">.</span><span class="nf">location</span><span class="p">.</span><span class="nf">y</span>
-
-<span class="c1"># 50%</span>
-<span class="n">slider</span><span class="p">.</span><span class="nf">click</span>
-</pre>
-
-<h2 id="set-orientation">Set orientation</h2>
-
-<ul>
-<li><strong>WD.js:</strong></li>
-</ul>
-<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">setOrientation</span><span class="p">(</span><span class="s2">"LANDSCAPE"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// continue testing
-</span><span class="p">});</span>
-</pre>
-
-<ul>
-<li><strong>Python:</strong></li>
-</ul>
-<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s">"LANDSCAPE"</span>
-</pre>
-
-<h2 id="scroll-to">Scroll To</h2>
-<pre class="highlight ruby">  <span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
-  <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: scrollTo'</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nf">ref</span>
-</pre>
-<pre class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
-<span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Log In"</span><span class="o">));;</span>
-<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollToObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">scrollToObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
-<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: scrollTo"</span><span class="o">,</span> <span class="n">scrollToObject</span><span class="o">);</span>
-</pre>
-
-<h2 id="longtap">longTap</h2>
-
-<ul>
-<li><strong>c#</strong></li>
-</ul>
-<pre class="highlight csharp"><span class="c1">// long tap an element
-//
-</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;();</span>
-<span class="n">parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"using"</span><span class="p">,</span> <span class="n">_attributeType</span><span class="p">);</span>
-<span class="n">parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"value"</span><span class="p">,</span> <span class="n">_attribute</span><span class="p">);</span>
-<span class="n">Response</span> <span class="n">response</span> <span class="p">=</span> <span class="n">rm</span><span class="p">.</span><span class="nf">executescript</span><span class="p">(</span><span class="n">DriverCommand</span><span class="p">.</span><span class="n">FindElement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">);</span>
-<span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">elementDictionary</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">Value</span> <span class="k">as</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;;</span>
-<span class="kt">string</span> <span class="n">id</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">elementDictionary</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-<span class="p">{</span>
- <span class="n">id</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">elementDictionary</span><span class="p">[</span><span class="s">"ELEMENT"</span><span class="p">];</span>
-<span class="p">}</span>
-<span class="n">IJavaScriptExecutor</span> <span class="n">js</span> <span class="p">=</span> <span class="p">(</span><span class="n">IJavaScriptExecutor</span><span class="p">)</span><span class="n">remoteDriver</span><span class="p">;</span>
-<span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="p">&gt;</span> <span class="n">longTapObject</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="p">&gt;();</span>
-<span class="n">longTapObject</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"element"</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
-<span class="n">js</span><span class="p">.</span><span class="nf">ExecuteScript</span><span class="p">(</span><span class="s">"mobile: longClick"</span><span class="p">,</span> <span class="n">longTapObject</span><span class="p">);</span>
-</pre>
 
 <h1 id="selenium-grid"><span id="grid.md"></span>Selenium Grid</h1>
 
@@ -2433,105 +1917,6 @@ advanced</strong>, only for iOS 6.0 and up)
   <span class="p">,</span> <span class="na">device</span><span class="p">:</span> <span class="s1">'Android'</span>
 <span class="p">};</span>
 </pre>
-
-<h1 id="cross-platform-mobile-methods"><span id="mobile_methods.md"></span>Cross platform mobile methods</h1>
-
-<h2 id="reset">Reset</h2>
-
-<p>Mobile reset will reset the app&rsquo;s state.</p>
-
-<p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
-<pre class="highlight ruby"><span class="n">mobile</span> <span class="ss">:reset</span>
-</pre>
-
-<p>Ruby without the gem</p>
-<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: reset'</span>
-</pre>
-
-<h2 id="pullfile">pullFile</h2>
-
-<p>Fetch a file from the device&rsquo;s filesystem, returning it base64 encoded.</p>
-
-<p>Takes a single argument, <code class="prettyprint">path</code>. On Android and iOS, this is either the path
-to the file (relative to the root of the app&rsquo;s file system).  On iOS only,
-if path starts with <code class="prettyprint">/AppName.app</code>, which will be replaced with the
-application&rsquo;s .app directory</p>
-<pre class="highlight ruby"><span class="c1"># Android and iOS</span>
-<span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: pullFile'</span><span class="p">,</span> <span class="p">{</span><span class="ss">path: </span><span class="s1">'/Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">}</span> <span class="c1">#=&gt; /Library/AddressBook/AddressBook.sqlitedb</span>
-
-<span class="c1"># iOS only</span>
-<span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: pullFile, {path: '</span><span class="o">/</span><span class="no">UICatalog</span><span class="p">.</span><span class="nf">app</span><span class="sr">/logfile.log'} #=&gt; /</span><span class="no">Applications</span><span class="o">/</span><span class="mi">12323</span><span class="o">-</span><span class="mi">452262</span><span class="o">-</span><span class="mi">24241</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">124124</span><span class="o">/</span><span class="no">UICatalog</span><span class="p">.</span><span class="nf">app</span><span class="sr">/logfile.log
-</span></pre>
-
-<p>Ruby</p>
-<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span><span class="p">(</span><span class="s1">'mobile: pullFile'</span><span class="p">,</span> <span class="p">{</span><span class="ss">path: </span><span class="s1">'/Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">})</span>
-</pre>
-
-<h2 id="android-mobile-methods">Android mobile methods</h2>
-
-<h2 id="keyevent">KeyEvent</h2>
-
-<p><a href="http://developer.android.com/reference/android/view/KeyEvent.html">KeyEvent</a> enables sending a keycode to Android.</p>
-
-<p>Press the system menu button in Java.</p>
-<pre class="highlight java"><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">keycode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
-<span class="n">keycode</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"keycode"</span><span class="o">,</span> <span class="mi">82</span><span class="o">);</span>
-<span class="o">((</span><span class="n">JavascriptExecutor</span><span class="o">)</span><span class="n">driver</span><span class="o">).</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: keyevent"</span><span class="o">,</span> <span class="n">keycode</span><span class="o">);</span>
-</pre>
-
-<p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
-<pre class="highlight ruby"><span class="n">mobile</span> <span class="ss">:keyevent</span><span class="p">,</span> <span class="ss">keycode: </span><span class="mi">82</span>
-</pre>
-
-<p>Ruby without the gem</p>
-<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: keyevent'</span><span class="p">,</span> <span class="ss">:keycode</span> <span class="o">=&gt;</span> <span class="mi">82</span>
-</pre>
-
-<h2 id="mobile-find">Mobile find</h2>
-
-<p>Java</p>
-
-<p>See <a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/java/junit/src/test/java/com/saucelabs/appium/MobileFindJavaTest.java">MobileFindJavaTest.java</a></p>
-
-<p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
-<pre class="highlight ruby"><span class="n">scroll_to</span> <span class="s1">'Gallery'</span>
-</pre>
-
-<h1 id="touch-actions"><span id="touch-actions.md"></span>Touch Actions</h1>
-
-<p>WebDriver provides an API to send some kinds of touch gestures to the devices,
-for example, to long press an element you can do:</p>
-
-<p>For iOS Application:</p>
-<pre class="highlight java"><span class="kd">final</span> <span class="n">WebElement</span> <span class="n">imageView</span> <span class="o">=</span> <span class="n">searchResults</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"ImageView"</span><span class="o">));</span>
-<span class="k">new</span> <span class="nf">TouchActions</span><span class="p">(</span><span class="n">driver</span><span class="o">).</span><span class="na">longPress</span><span class="o">(</span><span class="n">imageView</span><span class="o">).</span><span class="na">perform</span><span class="o">();</span>
-</pre>
-
-<p>For Android Application:</p>
-
-<p>Java:</p>
-<pre class="highlight java"><span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"API Demo"</span><span class="o">));</span>
-<span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">wd</span><span class="o">;</span>
-<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tapObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
-<span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
-<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: longClick"</span><span class="o">,</span> <span class="n">tapObject</span><span class="o">);</span>
-</pre>
-
-<p>Python:</p>
-<pre class="highlight python"><span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"your_element_xpath"</span><span class="p">)</span>
-<span class="n">wd</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: longClick"</span><span class="p">,{</span> <span class="s">"touchCount"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"x"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"y"</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s">"element"</span><span class="p">:</span><span class="n">element</span><span class="o">.</span><span class="nb">id</span> <span class="p">})</span>
-</pre>
-
-<p>Currently Appium support some of the gestures in the Touch Actions API:</p>
-
-<ul>
-<li>flick</li>
-<li>long press</li>
-<li>single tap</li>
-</ul>
-
-<p>Some other gestures are supported through the &ldquo;Alternative access method&rdquo;
-explained in <a href="#gestures.md">Automating mobile gestures</a></p>
 
 <h1 id="troubleshooting-appium"><span id="troubleshooting.md"></span>Troubleshooting Appium</h1>
 
@@ -3024,6 +2409,426 @@ the start of the doc is preferable (<code class="prettyprint">other.md</code> in
 <li><a href="https://github.com/leftlogic/remote-debug">Remote Debug</a></li>
 <li><a href="http://code.google.com/p/selenium/">Selenium Project</a></li>
 <li><a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debug-proxy</a></li>
+</ul>
+
+<h1 id="appium-client-libraries"><span id="appium-bindings.md"></span>Appium Client Libraries</h1>
+
+<p>Appium has libraries for:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Language</th>
+<th style="text-align: right">Source</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a href="http://rubygems.org/gems/appium_lib">Ruby</a></td>
+<td style="text-align: right"><a href="https://github.com/appium/ruby_lib">GitHub</a></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="https://pypi.python.org/pypi/Appium-Python-Client">Python</a></td>
+<td style="text-align: right"><a href="https://github.com/appium/python-client">GitHub</a></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3Aio.appium%20a%3Ajava-client">Java</a></td>
+<td style="text-align: right"><a href="https://github.com/appium/java-client">GitHub</a></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="https://www.npmjs.org/package/wd">JavaScript</a></td>
+<td style="text-align: right"><a href="https://github.com/admc/wd">GitHub</a></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="https://github.com/appium/php-client">PHP</a></td>
+<td style="text-align: right"><a href="https://github.com/appium/php-client">GitHub</a></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="http://www.nuget.org/packages/Appium.WebDriver/">C#</a></td>
+<td style="text-align: right"><a href="https://github.com/appium/appium-dotnet-driver">GitHub</a></td>
+</tr>
+</tbody></table>
+
+<p>Note that some methods such as <code class="prettyprint">endTestCoverage()</code> and <code class="prettyprint">complexFind()</code> are
+not generally useful. Proper coverage support will be added once <a href="https://github.com/appium/appium/issues/2448">this issue</a>
+is resolved. <code class="prettyprint">complexFind()</code> will be removed once <a href="https://github.com/appium/appium/issues/2264">this issue</a>
+is resolved. If you want to use them anyway, consult the documentation for the bindings on GitHub.</p>
+
+<h2 id="lock">Lock</h2>
+
+<p>Lock the screen.</p>
+<pre class="highlight ruby"><span class="n">lock</span> <span class="mi">5</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">lock</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">lockScreen</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">LockDevice</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+</pre>
+
+<h2 id="background-app">Background app</h2>
+
+<p>Send the currently active app to the background.</p>
+<pre class="highlight ruby"><span class="n">background_app</span> <span class="mi">5</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">background_app</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">runAppInBackground</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
+</pre>
+
+<h2 id="hide-keyboard-(ios-only)">Hide Keyboard (iOS only)</h2>
+
+<p>Hide the keyboard on iOS</p>
+<pre class="highlight ruby"><span class="n">hide_keyboard</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">hide_keyboard</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">hideKeyboard</span><span class="o">();</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">HideKeyboard</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
+</pre>
+
+<h2 id="is-installed">Is installed</h2>
+
+<p>Check if an app is installed</p>
+<pre class="highlight ruby"><span class="n">is_installed?</span> <span class="s2">"com.example.android.apis"</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">is_app_installed</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">isAppInstalled</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">IsAppInstalled</span><span class="p">(</span><span class="s">"com.example.android.apis-"</span><span class="p">);</span>
+</pre>
+
+<h2 id="install-app">Install App</h2>
+
+<p>Install an app to the device.</p>
+<pre class="highlight ruby"><span class="n">install</span> <span class="s1">'path/to/my.apk'</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">install_app</span><span class="p">(</span><span class="s">'path/to/my.apk'</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">installApp</span><span class="o">(</span><span class="s">"path/to/my.apk"</span><span class="o">)</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">InstallApp</span><span class="p">(</span><span class="s">"path/to/my.apk"</span><span class="p">);</span>
+</pre>
+
+<h2 id="remove-app">Remove App</h2>
+
+<p>Remove an app from the device.</p>
+<pre class="highlight ruby"><span class="n">remove</span> <span class="s1">'com.example.android.apis'</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">remove_app</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">removeApp</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">RemoveApp</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">);</span>
+</pre>
+
+<h2 id="shake">Shake</h2>
+
+<p>Simulate the device shaking.</p>
+<pre class="highlight ruby"><span class="n">shake</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">shake</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">shake</span><span class="o">()</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">ShakeDevice</span><span class="p">();</span>
+</pre>
+
+<h2 id="close-app">Close app</h2>
+
+<p>Close the app</p>
+<pre class="highlight ruby"><span class="n">close_app</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close_app</span><span class="p">();</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">closeApp</span><span class="o">()</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">CloseApp</span><span class="p">();</span>
+</pre>
+
+<h2 id="launch">Launch</h2>
+
+<p>Launch the app</p>
+<pre class="highlight ruby"><span class="n">launch</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">launch_app</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">launchApp</span><span class="o">()</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">LaunchApp</span><span class="p">();</span>
+</pre>
+
+<h2 id="reset">Reset</h2>
+
+<p>Reset the app.</p>
+<pre class="highlight ruby"><span class="n">reset</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">resetApp</span><span class="o">()</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">ResetApp</span><span class="p">();</span>
+</pre>
+
+<h2 id="available-contexts">Available Contexts</h2>
+
+<p>List all available contexts</p>
+<pre class="highlight ruby"><span class="n">context_array</span> <span class="o">=</span> <span class="n">available_contexts</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">()</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span><span class="p">()</span>
+</pre>
+
+<h2 id="current-context">Current context</h2>
+
+<p>List the current context</p>
+<pre class="highlight ruby"><span class="n">context</span> <span class="o">=</span> <span class="n">current_context</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_context</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getContext</span><span class="o">()</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">()</span>
+</pre>
+
+<h2 id="switch-to-default-context">Switch to default context</h2>
+
+<p>Change the context to the default.</p>
+<pre class="highlight ruby"><span class="n">switch_to_default_context</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">();</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span><span class="p">();</span>
+</pre>
+
+<h2 id="app-strings">App Strings</h2>
+
+<p>Get the app&rsquo;s strings.</p>
+<pre class="highlight ruby"><span class="n">strings</span> <span class="o">=</span> <span class="n">app_strings</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">app_strings</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getAppString</span><span class="o">();</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetAppStrings</span><span class="p">();</span>
+</pre>
+
+<h2 id="key-event">Key Event</h2>
+
+<p>Send a key event to the device.</p>
+<pre class="highlight ruby"><span class="n">key_event</span> <span class="mi">176</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">keyevent</span><span class="p">(</span><span class="mi">176</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">sendKeyEvent</span><span class="o">(</span><span class="n">AndroidKeyCode</span><span class="o">.</span><span class="na">HOME</span><span class="o">);</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">KeyEvent</span><span class="p">(</span><span class="s">"176"</span><span class="p">);</span>
+</pre>
+
+<h2 id="current-activity">Current Activity</h2>
+
+<p>Android only. Get the current activity.</p>
+<pre class="highlight ruby"><span class="n">current_activity</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_activity</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">currentActivity</span><span class="o">();</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
+</pre>
+
+<h2 id="touchaction-/-multitouchaction">TouchAction / MultiTouchAction</h2>
+
+<p>An API for generating touch actions. This section of the documentation will be
+expanded upon soon.</p>
+<pre class="highlight ruby"><span class="n">touch_action</span> <span class="o">=</span> <span class="no">Appium</span><span class="o">::</span><span class="no">TouchAction</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
+<span class="n">touch_action</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="ss">element: </span><span class="n">element</span><span class="p">,</span> <span class="ss">x: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">y: </span><span class="mi">10</span><span class="p">).</span><span class="nf">perform</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">_touch_action</span><span class="o">.</span><span class="n">tap</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">TouchAction</span> <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TouchAction</span><span class="o">(</span><span class="n">driver</span><span class="o">)</span>
+<span class="o">.</span><span class="na">press</span><span class="o">(</span><span class="n">mapview</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
+<span class="o">.</span><span class="na">release</span><span class="o">().</span>
+<span class="n">perform</span><span class="o">();</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">var</span> <span class="n">touchAction1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TouchActions</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="n">touchAction1</span><span class="p">.</span><span class="nf">Down</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">).</span><span class="nf">Up</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
+
+<span class="n">var</span> <span class="n">multiTouchAction</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MultiTouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<span class="n">multiTouchAction</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">touchAction1</span><span class="p">);</span>
+
+<span class="nf">PerformMultiTouchAction</span><span class="p">(</span><span class="n">multiTouchAction</span><span class="p">);</span>
+</pre>
+
+<h2 id="swipe">Swipe</h2>
+
+<p>Simulate a user swipe.</p>
+<pre class="highlight ruby"><span class="n">swipe</span> <span class="ss">start_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">start_y: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">end_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">end_y: </span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration: </span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">swipe</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">swipe</span><span class="o">(</span><span class="mi">75</span><span class="o">,</span> <span class="mi">500</span><span class="o">,</span> <span class="mi">75</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">800</span><span class="o">)</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">todo</span><span class="p">:</span> <span class="n">c</span><span class="err">#</span>
+</pre>
+
+<h2 id="pinch">Pinch</h2>
+
+<p>Pinch the screen.</p>
+<pre class="highlight ruby"><span class="n">pinch</span> <span class="mi">75</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">pinch</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">pinch</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">Pinch</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">25</span><span class="p">)</span>
+</pre>
+
+<h2 id="zoom">Zoom</h2>
+
+<p>Zoom the screen.</p>
+<pre class="highlight ruby"><span class="n">zoom</span> <span class="mi">200</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">zoom</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">Zoom</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">200</span><span class="p">);</span>
+</pre>
+
+<h2 id="pull-file">Pull file</h2>
+
+<p>Pulls a file from the device.</p>
+<pre class="highlight ruby"><span class="n">pull_file</span> <span class="s1">'Library/AddressBook/AddressBook.sqlitedb'</span>
+</pre>
+<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">pull_file</span><span class="p">(</span><span class="s">'Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">)</span>
+</pre>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">pullFile</span><span class="o">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="o">);</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">PullFile</span><span class="p">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">);</span>
+</pre>
+
+<h2 id="push-file">Push File</h2>
+
+<p>Pushes a file to the device.</p>
+<pre class="highlight ruby"><span class="n">data</span> <span class="o">=</span> <span class="s2">"some data for the file"</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">"/data/local/tmp/file.txt"</span>
+<span class="n">push_file</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span>
+</pre>
+<pre class="highlight python"><span class="n">data</span> <span class="o">=</span> <span class="s">"some data for the file"</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">push_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">))</span>
+</pre>
+<pre class="highlight java"><span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encodeBase64</span><span class="o">(</span><span class="s">"some data for the file"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+<span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span><span class="o">;</span>
+<span class="n">driver</span><span class="o">.</span><span class="na">pushFile</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span>
+</pre>
+<pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+</pre>
+<pre class="highlight php">todo: php
+</pre>
+<pre class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">PushFile</span><span class="p">(</span><span class="s">"/data/local/tmp/file.txt"</span><span class="p">,</span> <span class="s">"some data for the file"</span><span class="p">);</span>
+</pre>
+
+<h2 id="appium-desktop-apps">Appium Desktop Apps</h2>
+
+<p>Appium&rsquo;s desktop app supports OS X and Windows.</p>
+
+<ul>
+<li><a href="https://bitbucket.org/appium/appium.app/downloads/">Appium.app for OS X</a></li>
+<li><a href="https://bitbucket.org/appium/appium.app/downloads/">Appium.exe for Windows</a></li>
 </ul>
 
 <h1 id="contributing-to-appium"><span id="CONTRIBUTING.md"></span>Contributing to Appium</h1>

@@ -415,7 +415,10 @@ are no problems.</p>
 passing the -U flag to the server, and passing the bundle ID (if the app is
 installed on the device) or the path to the .ipa file via the <code class="prettyprint">--app</code> flag or
 the <code class="prettyprint">app</code> desired capability:</p>
-<pre class="highlight plaintext">node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
+<pre class="highlight plaintext"># appium 0.x
+node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
+# appium 1.x
+node . -U &lt;UDID&gt; --app &lt;bundle_id&gt; --platform-name &lt;iOS|android&gt;
 </pre>
 
 <p>This will start Appium and have Appium use the device to test the app.</p>
