@@ -13,7 +13,7 @@ desc 'Publish changes to github'
 task :publish => :appium do
   sh 'git add --all .'
   sh 'git commit -am "Update appium.io"'
-  sh 'git push origin master'
+  sh 'git push origin gh-pages'
 end
 
 task :default => :appium
