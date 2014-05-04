@@ -4,13 +4,34 @@
 <html>
 {% include head.html %}
 <body onload="load()">
+
 <script>
+    document.write("\<script src='http://code.jquery.com/jquery-latest.min.js' type='text/javascript'>\<\/script>");
     function load() {
         var downloadLink = document.getElementById('downloadLink');
         if (navigator.appVersion.indexOf("Win") != -1) {
             downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows-0.18.0.zip";
         } else {
             downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/appium-0.18.0.dmg";
+        }
+        function qs(key) {
+            key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+            var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+            return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+        }
+
+        // translate the page
+        var lang = qs('lang');
+        if (lang) {
+            $.ajax({
+                url: "translations/index/" + lang + ".json",
+                success: function (data) {
+                    var obj = JSON.parse(data);
+                    for(var key in obj) {
+                        document.getElementById(key).innerText = obj[key];
+                    }
+                }
+            });
         }
     }
     var toggleVideo = function () {
@@ -31,14 +52,14 @@
         <h1 class="img-responsive appium-logo">Appium</h1>
         <img class="img-responsive code-bg" src="img/code-bg.gif"/>
 
-        <p>Automation for Apps</p>
+        <p id="jumbotron-heading">Automation for Apps</p>
 
-        <p class="small">Appium is an open source test automation framework for
-            use with native and <a
-                    href="/slate/en/1.0-beta/#hybrid.md">hybrid</a>
-            mobile apps. <br>It drives iOS and Android apps using the WebDriver
-            <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON
-                wire protocol</a>.</p>
+        <p class="small"><span id="jumbotron-p-pt1">Appium is an open source test automation framework for
+            use with native and</span> <a
+                    href="/slate/en/1.0-beta/#hybrid.md"><span id="jumbotron-p-pt2">hybrid</span></a>
+            <span id="jumbotron-p-pt3">mobile apps.</span> <br><span id="jumbotron-p-pt4">It drives iOS and Android apps using the WebDriver</span>
+            <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol"><span id="jumbotron-p-pt5">JSON
+                wire protocol</span></a><span id="jumbotron-p-pt6">.</span></p>
 
         <p>
             <!-- <a href="https://github.com/appium/appium/zipball/master" class="btn btn-primary btn-large">Download .zip</a> -->
@@ -65,10 +86,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-nav-center">
-                <li><a href="https://github.com/appium/appium">View on GitHub</a></li>
-                <li><a href="/downloads.html">Downloads</a></li>
-                <li><a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples">Examples</a></li>
-                <li><a href="/slate/en/1.0-beta/#credits.md">Contributions</a></li>
+                <li><a href="https://github.com/appium/appium" id="jumbotron-github">View on GitHub</a></li>
+                <li><a href="/downloads.html" id="jumbotron-downloads">Downloads</a></li>
+                <li><a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples" id="jumbotron-examples">Examples</a></li>
+                <li><a href="/slate/en/1.0-beta/#credits.md" id="jumbotron-contributions">Contributions</a></li>
                 <li><a href="https://travis-ci.org/appium/appium"><img
                         src="https://api.travis-ci.org/appium/appium.png?branch=master"
                         alt="Build Status"></a></li>
@@ -82,10 +103,10 @@
             <div class="col-md-12">
             <h1 class="page-header" id="introducing-appium">Introducing Appium.</h1>
 
-            <p class="marketing-byline">Is native app automation missing from your
+            <p class="marketing-byline" id="intro-subheading">Is native app automation missing from your
                 tool belt? Problem solved.</p>
 
-            <h2><a href="javascript: toggleVideo()">Watch the Videos</a></h2>
+            <h2><a href="javascript: toggleVideo()" id="watch-videos">Watch the Videos</a></h2>
 
             <div id="show-demo-video" style="display:none">
                 <iframe width="640" height="360"
@@ -111,9 +132,9 @@
                 <img src="img/marketing-recompiling.png"
                      alt="Forget recompiling">
 
-                <h2>Appium Philosophy</h2>
+                <h2 id="philosophy">Appium Philosophy</h2>
 
-                <p>
+                <p id="philosophy-more">
                     Appium is built on the idea that testing native apps
                     shouldn't require including an SDK or recompiling your app.
                     And that you should be able to use your preferred test
@@ -127,9 +148,9 @@
                 <img src="img/marketing-favorite-tool.png"
                      alt="Use your favorite tool">
 
-                <h2>Use your favorite tools</h2>
+                <h2 id="favorite-tools">Use your favorite tools</h2>
 
-                <p>
+                <p id="favorite-tools-more">
                     Appium aims to automate any mobile app from any language and
                     any test framework, with full access to back-end APIs and
                     DBs from test code. Write tests with your favorite dev tools
@@ -144,13 +165,13 @@
                 <img class="marketing-img" src="img/marketing-requirements.png"
                      alt="Requirements">
 
-                <h2>Requirements</h2>
+                <h2 id="requirements">Requirements</h2>
                 <h4>iOS</h4>
                 Mac OSX 10.7+<br/>
-                XCode 4.5+ w/ Command Line Tools<br/>
+                <span id="req-xcode">XCode 4.5+ w/ Command Line Tools</span><br/>
                 <h4>Android</h4>
-                Mac OSX 10.7+ or Windows 7+ or Linux<br/>
-                Android SDK &ge; 16 (SDK < 16 in Selendroid mode)<br/>
+                <span id="req-android-os">Mac OSX 10.7+ or Windows 7+ or Linux</span><br/>
+                <span id="req-android-sdk">Android SDK &ge; 16 (SDK < 16 in Selendroid mode)</span><br/>
             </div>
         </div>
 
@@ -158,11 +179,11 @@
 
         <div class="row">
             <div class="col-md-12">
-            <h1>Easy setup process, run a test now.</h1>
+            <h1 id="easy-setup">Easy setup process, run a test now.</h1>
 
             <p>
-                Install <a href="http://nodejs.org">node.js</a> (includes npm, the
-                node.js package manager).
+                <span id="easy-setup-p1">Install</span> <a href="http://nodejs.org">node.js</a> <span id="easy-setup-p2">(includes npm, the
+                node.js package manager).</span>
             </p>
 <pre class="prettyprint ninja">
 > npm install -g appium
@@ -171,9 +192,9 @@
 > node your-appium-test.js
 </pre>
             <p>
-                See the <a
-                    href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples">Appium
-                example tests.</a>
+                <span id="see-examples-p1">See the</span> <a
+                    href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples"><span id="see-examples-p2">Appium
+                example tests.</span></a>
             </p>
                 </div>
             </div>
