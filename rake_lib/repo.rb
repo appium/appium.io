@@ -62,7 +62,7 @@ module AppiumIo
       all_tags_by_date = "git for-each-ref --sort='-*authordate' --format '%(taggerdate:short) %(tag)' refs/tags"
       all_tags_by_date = sh all_tags_by_date
 
-      start_date  = Date.parse '2014-04-24'
+      start_date  = Date.parse '2014-05-02'
       @valid_tags = []
 
       # discard all tags before 2014-04-24 v0.18.2

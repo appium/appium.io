@@ -13,6 +13,8 @@ description: Want to rock your mobile app automation? This is how you get starte
 
 Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, FirefoxOS).
 
+**Note:** we have just recently released Appium 1.0. If you already have a bunch of Appium tests, you might want to check out the  [Migrating to 1.0](/slate/en/master/#migrating-to-1-0.md) doc!
+
 ## Supported Platforms
 
 * iOS
@@ -49,23 +51,25 @@ Your environment needs to be setup for the particular mobile platforms that you
 want to run tests on. See below for particular platform requirements.
 
 If you want to run Appium via an `npm install`, hack with or contribute to Appium, you will need
-[node.js and npm](http://nodejs.org) 0.8 or greater (`brew install node`: make sure you have not installed Node or Appium with `sudo`, otherwise you'll likely run into problems). We recommend the latest stable version.
+[node.js and npm](http://nodejs.org) 0.10 or greater (`brew install node`: make sure you have not installed Node or Appium with `sudo`, otherwise you'll run into problems). We recommend the latest stable version.
 
 To verify that all of Appium's dependencies are met you can use `appium-doctor`.
 Run `appium-doctor` and supply the `--ios` or `--android` flags to verify that all
 of the dependencies are set up correctly. If running from source, you may have to use
-`bin/appium-doctor.js` or `node bin/appium-doctor.js`.
+`./bin/appium-doctor.js` or `node bin/appium-doctor.js`.
+
+You also need to download the Appium client for your language so you can write tests. The Appium clients are simple extensions to the WebDriver clients. You can see the list of clients and links to download instructions at the  [Appium clients list](/slate/en/master/#appium-clients.md).
 
 ### iOS Requirements
 
-* Mac OS X 10.7 or higher, 10.8.4 recommended
-* XCode &gt;= 4.6.3
+* Mac OS X 10.7 or higher, 10.9.2 recommended
+* XCode &gt;= 4.6.3, 5.1.1 recommended
 * Apple Developer Tools (iPhone simulator SDK, command line tools)
 *  [Ensure you read our documentation on setting yourself up for iOS testing!](/slate/en/master/#running-on-osx.md)
 
 ### Android Requirements
 
-* [Android SDK](http://developer.android.com) API &gt;= 17 (Additional features require 18)
+* [Android SDK](http://developer.android.com) API &gt;= 17 (Additional features require 18/19)
 * Appium supports Android on OS X, Linux and Windows. Make sure you follow the
   directions for setting up your environment properly for testing on different OSes:
   *  [linux](/slate/en/master/#running-on-linux.md)
@@ -104,7 +108,7 @@ You can also automate web views in hybrid apps! See the  [hybrid app guide](/sla
 
 This repository contains [many examples of tests in a variety of different languages](https://github.com/appium/appium/tree/master/sample-code/examples)!
 
-For the full list of Appium doc pages, visit [this directory](/slate/en/1.0-beta/).
+For the full list of Appium doc pages, visit [this directory](/slate/en/master/).
 
 ## How It Works
 
@@ -123,7 +127,7 @@ Gecko-based platforms.
 
 ## Contributing
 
-Please take a look at our [contribution documentation](/slate/en/1.0-beta/#CONTRIBUTING.md)
+Please take a look at our [contribution documentation](/slate/en/master/#CONTRIBUTING.md)
 for instructions on how to build, test and run Appium from source.
 
 ## Project Credits & Inspiration

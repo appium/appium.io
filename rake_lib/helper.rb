@@ -52,8 +52,9 @@ module AppiumIo
     # the docs never change after publishing
     def update_docs
       tags = @appium_repo.valid_tags
-      # target branches instead of tags until the new tags are available
-      tags = @appium_repo.branches
+      # don't publish branches, use only valid tags
+      # tag is valid if it's published on or after '2014-05-02'
+      # tags = @appium_repo.branches
 
       metadata = []
       tags.each do |tag|

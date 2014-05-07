@@ -48,6 +48,8 @@
 
 <p>Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, FirefoxOS).</p>
 
+<p><strong>Note:</strong> we have just recently released Appium 1.0. If you already have a bunch of Appium tests, you might want to check out the <a href="#migrating-to-1-0.md">Migrating to 1.0</a> doc!</p>
+
 <h2 id="supported-platforms">Supported Platforms</h2>
 
 <ul>
@@ -88,18 +90,20 @@ opens up the possibility of true cross-platform native mobile automation. Finall
 want to run tests on. See below for particular platform requirements.</p>
 
 <p>If you want to run Appium via an <code class="prettyprint">npm install</code>, hack with or contribute to Appium, you will need
-<a href="http://nodejs.org">node.js and npm</a> 0.8 or greater (<code class="prettyprint">brew install node</code>: make sure you have not installed Node or Appium with <code class="prettyprint">sudo</code>, otherwise you&rsquo;ll likely run into problems). We recommend the latest stable version.</p>
+<a href="http://nodejs.org">node.js and npm</a> 0.10 or greater (<code class="prettyprint">brew install node</code>: make sure you have not installed Node or Appium with <code class="prettyprint">sudo</code>, otherwise you&rsquo;ll run into problems). We recommend the latest stable version.</p>
 
 <p>To verify that all of Appium&rsquo;s dependencies are met you can use <code class="prettyprint">appium-doctor</code>.
 Run <code class="prettyprint">appium-doctor</code> and supply the <code class="prettyprint">--ios</code> or <code class="prettyprint">--android</code> flags to verify that all
 of the dependencies are set up correctly. If running from source, you may have to use
-<code class="prettyprint">bin/appium-doctor.js</code> or <code class="prettyprint">node bin/appium-doctor.js</code>.</p>
+<code class="prettyprint">./bin/appium-doctor.js</code> or <code class="prettyprint">node bin/appium-doctor.js</code>.</p>
+
+<p>You also need to download the Appium client for your language so you can write tests. The Appium clients are simple extensions to the WebDriver clients. You can see the list of clients and links to download instructions at the <a href="#appium-clients.md">Appium clients list</a>.</p>
 
 <h3 id="ios-requirements">iOS Requirements</h3>
 
 <ul>
-<li>Mac OS X 10.7 or higher, 10.8.4 recommended</li>
-<li>XCode &gt;= 4.6.3</li>
+<li>Mac OS X 10.7 or higher, 10.9.2 recommended</li>
+<li>XCode &gt;= 4.6.3, 5.1.1 recommended</li>
 <li>Apple Developer Tools (iPhone simulator SDK, command line tools)</li>
 <li><a href="#running-on-osx.md">Ensure you read our documentation on setting yourself up for iOS testing!</a></li>
 </ul>
@@ -107,7 +111,7 @@ of the dependencies are set up correctly. If running from source, you may have t
 <h3 id="android-requirements">Android Requirements</h3>
 
 <ul>
-<li><a href="http://developer.android.com">Android SDK</a> API &gt;= 17 (Additional features require 18)</li>
+<li><a href="http://developer.android.com">Android SDK</a> API &gt;= 17 (Additional features require 18/19)</li>
 <li>Appium supports Android on OS X, Linux and Windows. Make sure you follow the
 directions for setting up your environment properly for testing on different OSes:
 
@@ -152,7 +156,7 @@ See <a href="#finding-elements.md">finding elements</a> for detailed information
 
 <p>You can also automate web views in hybrid apps! See the <a href="#hybrid.md">hybrid app guide</a></p>
 
-<p>This repository contains <a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples">many examples of tests in a variety of different languages</a>!</p>
+<p>This repository contains <a href="https://github.com/appium/appium/tree/master/sample-code/examples">many examples of tests in a variety of different languages</a>!</p>
 
 <p>For the full list of Appium doc pages, visit <a href="#">this directory</a>.</p>
 
@@ -267,7 +271,7 @@ because <a href="https://github.com/appium/appium">Appium is open source</a>.</p
 
 <h2 id="appium-concepts">Appium Concepts</h2>
 
-<p><em>Client/Server Architecture</em>
+<p><strong>Client/Server Architecture</strong><br/>
 Appium is at its heart a webserver that exposes a REST API. It receives
 connections from a client, listens for commands, executes those commands on a
 mobile device, and responds with an HTTP response representing the result of
@@ -277,7 +281,7 @@ that has a client. We can put the server on a different machine than our
 tests are running on. We can write test code and rely on a cloud service
 like <a href="https://saucelabs.com/mobile">Sauce Labs</a> to receive and interpret the commands.</p>
 
-<p><em>Session</em>
+<p><strong>Session</strong><br/>
 Automation is always performed in the context of a session. Clients initiate
 a session with a server in ways specific to each library,
 but they all end up sending a <code class="prettyprint">POST /session</code> request to the server,
@@ -285,7 +289,7 @@ with a JSON object called  the &lsquo;desired capabilities&rsquo; object. At thi
 the server will start up the automation session and respond with a session ID
 which can be used in sending further commands.</p>
 
-<p><em>Desired Capabilities</em>
+<p><strong>Desired Capabilities</strong><br/>
 Desired capabilities are sets of keys and values (i.e.,
 a map or hash) sent to the Appium server to tell the server what kind of
 automation session we&rsquo;re interested in starting up. There are also various
@@ -297,11 +301,17 @@ during a Safari automation session, we&rsquo;re allowed to use JavaScript to ope
 up new windows. See the <a href="#caps.md">capabilities doc</a> for the complete list of
 capabilities available for Appium.</p>
 
-<p><em>Appium Server</em>
-Appium is a server written with Node.js. It can be built and installed from
+<p><strong>Appium Server</strong><br/>
+Appium is a server written in Node.js. It can be built and installed from
 source or directly from NPM.</p>
 
-<p><em>Appium.app, Appium.exe</em>
+<p><strong>Appium Clients</strong><br/>
+There are client libraries (in Java, Ruby, Python, PHP, JavaScript, and C#)
+which support Appium&rsquo;s extensions to the WebDriver protocol. When using Appium,
+you want to use these client libraries instead of your regular WebDriver
+client. You can view the full list of libraries <a href="#appium-clients.md">here</a>.</p>
+
+<p><strong>Appium.app, Appium.exe</strong><br/>
 There exist GUI wrappers around the Appium server that can be downloaded.
 These come bundled with everything required to run the Appium server,
 so you don&rsquo;t need to worry about Node. They also come with an Inspector,
@@ -658,6 +668,13 @@ want to zip it up, you can.</p>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </pre>
+<pre class="highlight python"><span class="p">{</span>
+    <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
+    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'6.1'</span><span class="p">,</span>
+    <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span><span class="p">,</span>
+    <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
+<span class="p">}</span>
+</pre>
 
 <p>In this set of capabilities, <code class="prettyprint">myApp</code> must be either:</p>
 
@@ -703,6 +720,13 @@ otherwise failing, you can restart it by running:</p>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </pre>
+<pre class="highlight python"><span class="p">{</span>
+    <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
+    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.2'</span><span class="p">,</span>
+    <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'Android Emulator'</span><span class="p">,</span>
+    <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
+<span class="p">}</span>
+</pre>
 
 <p>In this set of capabilities, <code class="prettyprint">myApp</code> must be either:</p>
 
@@ -736,6 +760,15 @@ and specifying the Selendroid automation backend.</p>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </pre>
+<pre class="highlight python"><span class="p">{</span>
+    <span class="s">'automationName'</span><span class="p">:</span> <span class="s">'Selendroid'</span><span class="p">,</span>
+    <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
+    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'2.3'</span><span class="p">,</span>
+    <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'Android Emulator'</span><span class="p">,</span>
+    <span class="s">'version'</span><span class="p">:</span> <span class="s">'2.3'</span><span class="p">,</span>
+    <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
+<span class="p">}</span>
+</pre>
 
 <p>Now Appium will start up a Selendroid test session instead of the default test
 session. One of the downsides to using Selendroid is that its API differs
@@ -767,6 +800,8 @@ using the instrument target, for example <code class="prettyprint">$ ant instrum
 instrumentation class.</p>
 <pre class="highlight ruby"><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">androidCoverage: </span><span class="s1">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
 </pre>
+<pre class="highlight python"><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'androidCoverage'</span><span class="p">:</span> <span class="s">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
+</pre>
 
 <p>Appium will start your app like this:</p>
 
@@ -775,6 +810,8 @@ instrumentation class.</p>
 <p>After your test completes, it&rsquo;s time to end the coverage collection and pull
 the coverage.ec file from the device.</p>
 <pre class="highlight ruby"><span class="n">mobile</span> <span class="ss">:endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
+</pre>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">end_test_coverage</span><span class="p">(</span><span class="n">intent</span><span class="o">=</span><span class="s">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s">'/mnt/sdcard/coverage.ec'</span><span class="p">)</span>
 </pre>
 
 <p><code class="prettyprint">AndroidManifest.xml</code> defines the instrumentation and broadcast receiver.</p>
@@ -1587,7 +1624,7 @@ it yourself:</p>
 </pre>
 
 <p>Once installed you can start the proxy with the following command:</p>
-<pre class="highlight shell"><span class="c"># Change the udid to be the udid of the attached device and make sure to set the port to 27753 </span>
+<pre class="highlight shell"><span class="c"># Change the udid to be the udid of the attached device and make sure to set the port to 27753</span>
 <span class="c"># as that is the port the remote-debugger uses.</span>
 <span class="gp">&gt; </span>ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
 </pre>
@@ -1628,7 +1665,7 @@ part of iOS 6</strong> and was not available previously.</p>
 <pre class="highlight java">  <span class="c1">//setup the web driver and launch the webview app.</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
-  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"http://appium.s3.amazonaws.com/WebViewApp6.0.app.zip"</span><span class="o">);</span>  
+  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"http://appium.s3.amazonaws.com/WebViewApp6.0.app.zip"</span><span class="o">);</span>
   <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
   <span class="n">RemoteWebDriver</span> <span class="n">remoteWebDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">desiredCapabilities</span><span class="o">);</span>
 
@@ -1651,7 +1688,7 @@ part of iOS 6</strong> and was not available previously.</p>
 
 <h2 id="wd.rb-code-example-using-cucumber">Wd.rb Code example using cucumber</h2>
 <pre class="highlight ruby"><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
-<span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span> 
+<span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span>
 <span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
 <span class="n">capabilities</span> <span class="o">=</span>
     <span class="p">{</span>
@@ -1667,13 +1704,13 @@ part of iOS 6</strong> and was not available previously.</p>
 <span class="c1"># View the appium logs while running @driver.window_handles to figure out which window is the one you want and find the associated number</span>
 <span class="c1"># Then switch to it using @driver.switch_to_window("6")</span>
 
-<span class="no">Given</span><span class="p">(</span><span class="sr">/^I switch to webview$/</span><span class="p">)</span> <span class="k">do</span> 
+<span class="no">Given</span><span class="p">(</span><span class="sr">/^I switch to webview$/</span><span class="p">)</span> <span class="k">do</span>
   <span class="n">webview</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">contexts</span><span class="p">.</span><span class="nf">last</span>
   <span class="vi">@driver</span><span class="p">.</span><span class="nf">switch_to</span><span class="p">.</span><span class="nf">context</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
 <span class="k">end</span>
 
 <span class="no">Given</span><span class="p">(</span><span class="sr">/^I switch out of webview$/</span><span class="p">)</span> <span class="k">do</span>
-  <span class="vi">@driver</span><span class="p">.</span><span class="nf">switch_to</span><span class="p">(</span><span class="vi">@driver</span><span class="p">.</span><span class="nf">contexts</span><span class="p">.</span><span class="nf">first</span><span class="p">)</span>    
+  <span class="vi">@driver</span><span class="p">.</span><span class="nf">switch_to</span><span class="p">(</span><span class="vi">@driver</span><span class="p">.</span><span class="nf">contexts</span><span class="p">.</span><span class="nf">first</span><span class="p">)</span>
 <span class="k">end</span>
 
 <span class="c1"># Now you can use CSS to select an element inside your webview</span>
@@ -1689,6 +1726,30 @@ part of iOS 6</strong> and was not available previously.</p>
 what window its in (this is useful if your webview id changes or if you are
 using the same codebase to test android and ios)
 https://gist.github.com/feelobot/7309729</p>
+
+<h2 id="wd.py-code-example">Wd.py Code example</h2>
+<pre class="highlight python"><span class="n">APP_PATH</span> <span class="o">=</span> <span class="s">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
+<span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'iOS 6.0'</span><span class="p">,</span>
+    <span class="s">'platform'</span><span class="p">:</span> <span class="s">'Mac 10.8'</span><span class="p">,</span>
+    <span class="s">'device'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span><span class="p">,</span>
+    <span class="s">'app'</span><span class="p">:</span> <span class="n">APP_PATH</span><span class="p">,</span>
+    <span class="s">'name'</span><span class="p">:</span> <span class="s">"Example Python Test"</span>
+<span class="p">}</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Remote</span><span class="p">(</span><span class="s">'http://localhost:4723/wd/hub'</span><span class="p">,</span> <span class="n">capabilities</span><span class="p">)</span>
+
+<span class="c"># switch to webview</span>
+<span class="n">webview</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">contexts</span><span class="o">.</span><span class="n">last</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+
+<span class="c"># do some webby stuff</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(:</span><span class="n">css</span><span class="p">,</span> <span class="s">".green_button"</span><span class="p">)</span><span class="o">.</span><span class="n">click</span>
+
+<span class="c"># switch back to native view</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="p">(</span><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span><span class="o">.</span><span class="n">first</span><span class="p">)</span>
+
+<span class="c"># Now you can use CSS to select an element inside your webview</span>
+</pre>
 
 <h2 id="automating-hybrid-android-apps">Automating hybrid Android apps</h2>
 
@@ -1718,7 +1779,7 @@ switching contexts, etc&hellip;</p>
 <pre class="highlight java">  <span class="c1">//setup the web driver and launch the webview app.</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
-  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"/path/to/some.apk"</span><span class="o">);</span>  
+  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"/path/to/some.apk"</span><span class="o">);</span>
   <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
   <span class="n">RemoteWebDriver</span> <span class="n">remoteWebDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">desiredCapabilities</span><span class="o">);</span>
 
@@ -1735,6 +1796,17 @@ switching contexts, etc&hellip;</p>
 
   <span class="c1">//close the app.</span>
   <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
+</pre>
+
+<h2 id="wd.py-code-example">Wd.py Code example</h2>
+<pre class="highlight python"><span class="c"># assuming we have an initialized `driver` object working on a hybrid app</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
+<span class="n">elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s">'.some-class'</span><span class="p">)</span>
+<span class="n">assertLess</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">))</span>
+<span class="n">assertEqual</span><span class="p">(</span><span class="s">'My very own text'</span><span class="p">,</span> <span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"NATIVE_APP"</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre>
 
 <h1 id="deploying-your-ios-app-to-your-device"><span id="ios-deploy.md"></span>Deploying your iOS app to your device</h1>
@@ -1834,6 +1906,12 @@ attempting to use Appium.</p>
   <span class="p">,</span> <span class="na">version</span><span class="p">:</span> <span class="s1">'6.1'</span>
 <span class="p">}</span>
 </pre>
+<pre class="highlight python"><span class="p">{</span>
+    <span class="s">'app'</span><span class="p">:</span> <span class="s">'safari'</span><span class="p">,</span>
+    <span class="s">'device'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span><span class="p">,</span>
+    <span class="s">'version'</span><span class="p">:</span> <span class="s">'6.1'</span>
+<span class="p">}</span>
+</pre>
 
 <h2 id="mobile-safari-on-a-real-ios-device">Mobile Safari on a Real iOS Device</h2>
 
@@ -1883,7 +1961,7 @@ advanced</strong>, only for iOS 6.0 and up)
 
 <h2 id="running-your-test">Running your test</h2>
 
-<p>To configure you test to run against safari simpley set the <strong>&ldquo;app&rdquo;</strong> to be <strong>&ldquo;safari&rdquo;</strong>.</p>
+<p>To configure you test to run against safari simply set the <strong>&ldquo;app&rdquo;</strong> to be <strong>&ldquo;safari&rdquo;</strong>.</p>
 
 <h2 id="java-example">Java Example</h2>
 <pre class="highlight java"><span class="c1">//setup the web driver and launch the webview app.</span>
@@ -1902,6 +1980,24 @@ advanced</strong>, only for iOS 6.0 and up)
 <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
 </pre>
 
+<h2 id="python-example">Python Example</h2>
+<pre class="highlight python"><span class="c"># setup the web driver and launch the webview app.</span>
+<span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'app'</span><span class="p">:</span> <span class="s">'safari'</span> <span class="p">}</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Remote</span><span class="p">(</span><span class="s">'http://localhost:4723/wd/hub'</span><span class="p">,</span> <span class="n">capabilities</span><span class="p">)</span>
+
+<span class="c"># Navigate to the page and interact with the elements on the guinea-pig page using id.</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'http://saucelabs.com/test/guinea-pig'</span><span class="p">);</span>
+<span class="n">div</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">'i_am_an_id'</span><span class="p">)</span>
+<span class="c"># check the text retrieved matches expected value</span>
+<span class="n">assertEqual</span><span class="p">(</span><span class="s">'I am a div'</span><span class="p">,</span> <span class="n">div</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c"># populate the comments field by id</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_lement_by_id</span><span class="p">(</span><span class="s">'comments'</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">'My comment'</span><span class="p">)</span>
+
+<span class="c"># close the driver</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre>
+
 <h2 id="mobile-chrome-on-emulator-or-real-device">Mobile Chrome on Emulator or Real Device</h2>
 
 <p>Pre-requisites:</p>
@@ -1915,6 +2011,11 @@ advanced</strong>, only for iOS 6.0 and up)
 <pre class="highlight javascript"><span class="p">{</span>
   <span class="na">app</span><span class="p">:</span> <span class="s1">'chrome'</span>
   <span class="p">,</span> <span class="na">device</span><span class="p">:</span> <span class="s1">'Android'</span>
+<span class="p">};</span>
+</pre>
+<pre class="highlight python"><span class="p">{</span>
+    <span class="s">'app'</span><span class="p">:</span> <span class="s">'chrome'</span><span class="p">,</span>
+    <span class="s">'device'</span><span class="p">:</span> <span class="s">'Android'</span>
 <span class="p">};</span>
 </pre>
 
@@ -2457,7 +2558,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Lock the screen.</p>
 <pre class="highlight ruby"><span class="n">lock</span> <span class="mi">5</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">lock</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">lock</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">lockScreen</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
 </pre>
@@ -2473,7 +2574,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Send the currently active app to the background.</p>
 <pre class="highlight ruby"><span class="n">background_app</span> <span class="mi">5</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">background_app</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">background_app</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">runAppInBackground</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
 </pre>
@@ -2489,7 +2590,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Hide the keyboard on iOS</p>
 <pre class="highlight ruby"><span class="n">hide_keyboard</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">hide_keyboard</span><span class="p">()</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">hide_keyboard</span><span class="p">()</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">hideKeyboard</span><span class="o">();</span>
 </pre>
@@ -2505,7 +2606,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Check if an app is installed</p>
 <pre class="highlight ruby"><span class="n">is_installed?</span> <span class="s2">"com.example.android.apis"</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">is_app_installed</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">is_app_installed</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">isAppInstalled</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </pre>
@@ -2521,7 +2622,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Install an app to the device.</p>
 <pre class="highlight ruby"><span class="n">install</span> <span class="s1">'path/to/my.apk'</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">install_app</span><span class="p">(</span><span class="s">'path/to/my.apk'</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">install_app</span><span class="p">(</span><span class="s">'path/to/my.apk'</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">installApp</span><span class="o">(</span><span class="s">"path/to/my.apk"</span><span class="o">)</span>
 </pre>
@@ -2537,7 +2638,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Remove an app from the device.</p>
 <pre class="highlight ruby"><span class="n">remove</span> <span class="s1">'com.example.android.apis'</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">remove_app</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">remove_app</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">removeApp</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </pre>
@@ -2553,7 +2654,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Simulate the device shaking.</p>
 <pre class="highlight ruby"><span class="n">shake</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">shake</span><span class="p">()</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">shake</span><span class="p">()</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">shake</span><span class="o">()</span>
 </pre>
@@ -2569,7 +2670,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Close the app</p>
 <pre class="highlight ruby"><span class="n">close_app</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close_app</span><span class="p">();</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">close_app</span><span class="p">();</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">closeApp</span><span class="o">()</span>
 </pre>
@@ -2585,7 +2686,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Launch the app</p>
 <pre class="highlight ruby"><span class="n">launch</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">launch_app</span><span class="p">()</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">launch_app</span><span class="p">()</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">launchApp</span><span class="o">()</span>
 </pre>
@@ -2601,7 +2702,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Reset the app.</p>
 <pre class="highlight ruby"><span class="n">reset</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">resetApp</span><span class="o">()</span>
 </pre>
@@ -2617,7 +2718,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>List all available contexts</p>
 <pre class="highlight ruby"><span class="n">context_array</span> <span class="o">=</span> <span class="n">available_contexts</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">()</span>
 </pre>
@@ -2633,7 +2734,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>List the current context</p>
 <pre class="highlight ruby"><span class="n">context</span> <span class="o">=</span> <span class="n">current_context</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_context</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">current_context</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getContext</span><span class="o">()</span>
 </pre>
@@ -2649,7 +2750,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Change the context to the default.</p>
 <pre class="highlight ruby"><span class="n">switch_to_default_context</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">();</span>
 </pre>
@@ -2665,7 +2766,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Get the app&rsquo;s strings.</p>
 <pre class="highlight ruby"><span class="n">strings</span> <span class="o">=</span> <span class="n">app_strings</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">app_strings</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">app_strings</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getAppString</span><span class="o">();</span>
 </pre>
@@ -2681,7 +2782,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Send a key event to the device.</p>
 <pre class="highlight ruby"><span class="n">key_event</span> <span class="mi">176</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">keyevent</span><span class="p">(</span><span class="mi">176</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">keyevent</span><span class="p">(</span><span class="mi">176</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">sendKeyEvent</span><span class="o">(</span><span class="n">AndroidKeyCode</span><span class="o">.</span><span class="na">HOME</span><span class="o">);</span>
 </pre>
@@ -2697,7 +2798,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <p>Android only. Get the current activity.</p>
 <pre class="highlight ruby"><span class="n">current_activity</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">current_activity</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">current_activity</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">currentActivity</span><span class="o">();</span>
 </pre>
@@ -2716,7 +2817,8 @@ expanded upon soon.</p>
 <span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
 <span class="n">touch_action</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="ss">element: </span><span class="n">element</span><span class="p">,</span> <span class="ss">x: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">y: </span><span class="mi">10</span><span class="p">).</span><span class="nf">perform</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">_touch_action</span><span class="o">.</span><span class="n">tap</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">action</span> <span class="o">=</span> <span class="n">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
+<span class="n">action</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">release</span><span class="p">()</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
 </pre>
 <pre class="highlight java"><span class="n">TouchAction</span> <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TouchAction</span><span class="o">(</span><span class="n">driver</span><span class="o">)</span>
 <span class="o">.</span><span class="na">press</span><span class="o">(</span><span class="n">mapview</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
@@ -2741,9 +2843,9 @@ expanded upon soon.</p>
 <p>Simulate a user swipe.</p>
 <pre class="highlight ruby"><span class="n">swipe</span> <span class="ss">start_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">start_y: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">end_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">end_y: </span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration: </span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">swipe</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">swipe</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 </pre>
-<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">swipe</span><span class="o">(</span><span class="mi">75</span><span class="o">,</span> <span class="mi">500</span><span class="o">,</span> <span class="mi">75</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">800</span><span class="o">)</span>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">swipe</span><span class="o">(</span><span class="n">startx</span><span class="o">=</span><span class="mi">75</span><span class="o">,</span> <span class="n">starty</span><span class="o">=</span><span class="mi">500</span><span class="o">,</span> <span class="n">endx</span><span class="o">=</span><span class="mi">75</span><span class="o">,</span> <span class="n">endy</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">800</span><span class="o">)</span>
 </pre>
 <pre class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </pre>
@@ -2757,7 +2859,7 @@ expanded upon soon.</p>
 <p>Pinch the screen.</p>
 <pre class="highlight ruby"><span class="n">pinch</span> <span class="mi">75</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">pinch</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">pinch</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">pinch</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </pre>
@@ -2773,7 +2875,7 @@ expanded upon soon.</p>
 <p>Zoom the screen.</p>
 <pre class="highlight ruby"><span class="n">zoom</span> <span class="mi">200</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">zoom</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </pre>
@@ -2789,7 +2891,7 @@ expanded upon soon.</p>
 <p>Pulls a file from the device.</p>
 <pre class="highlight ruby"><span class="n">pull_file</span> <span class="s1">'Library/AddressBook/AddressBook.sqlitedb'</span>
 </pre>
-<pre class="highlight python"><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">pull_file</span><span class="p">(</span><span class="s">'Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">)</span>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">pull_file</span><span class="p">(</span><span class="s">'Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">)</span>
 </pre>
 <pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">pullFile</span><span class="o">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="o">);</span>
 </pre>
@@ -2809,7 +2911,7 @@ expanded upon soon.</p>
 </pre>
 <pre class="highlight python"><span class="n">data</span> <span class="o">=</span> <span class="s">"some data for the file"</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">push_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">))</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">push_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">))</span>
 </pre>
 <pre class="highlight java"><span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encodeBase64</span><span class="o">(</span><span class="s">"some data for the file"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
 <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span><span class="o">;</span>
@@ -2830,6 +2932,19 @@ expanded upon soon.</p>
 <li><a href="https://bitbucket.org/appium/appium.app/downloads/">Appium.app for OS X</a></li>
 <li><a href="https://bitbucket.org/appium/appium.app/downloads/">Appium.exe for Windows</a></li>
 </ul>
+
+<h1 id="list-of-client-libraries-with-appium-server-support"><span id="appium-clients.md"></span>List of client libraries with Appium server support</h1>
+
+<ul>
+<li><a href="https://github.com/appium/ruby_lib">https://github.com/appium/ruby_lib</a> - Ruby</li>
+<li><a href="https://github.com/appium/python-client">https://github.com/appium/python-client</a> - Python</li>
+<li><a href="https://github.com/appium/java-client">https://github.com/appium/java-client</a> - Java</li>
+<li><a href="https://github.com/admc/wd">https://github.com/admc/wd</a> - JavaScript (Node.js)</li>
+<li><a href="https://github.com/appium/php-client">https://github.com/appium/php-client</a> - PHP</li>
+<li><a href="https://github.com/appium/appium-dotnet-driver">https://github.com/appium/appium-dotnet-driver</a> - C# (.NET)</li>
+</ul>
+
+<p>Please see each library for installation instructions.</p>
 
 <h1 id="contributing-to-appium"><span id="CONTRIBUTING.md"></span>Contributing to Appium</h1>
 
@@ -2985,6 +3100,88 @@ Mocha, for example:</p>
 
 <p>NOTE: For Android, you will need an emulator/device with screen size of 4.0&quot;
 (480x800). Some tests might fail on a different screen size.</p>
+
+<h1 id="migrating-your-tests-from-appium-0.18.x-to-appium-1.x"><span id="migrating-to-1-0.md"></span>Migrating your tests from Appium 0.18.x to Appium 1.x</h1>
+
+<p>Appium 1.0 has removed a number of deprecated features from the previous versions. This guide will help you know what needs to change in your test suite to take advantage of Appium 1.0.</p>
+
+<h2 id="new-client-libraries">New client libraries</h2>
+
+<p>The biggest thing you need to worry about is using the new Appium client libraries instead of the vanilla WebDriver clients you are currently using. Visit the <a href="#appium-clients.md">Appium client list</a> to find the client for your language. Downloads and instructions for integrating into your code are available on the individual client websites.</p>
+
+<p>Ultimately, you&rsquo;ll be doing something like (to use Python as an example):</p>
+<pre class="highlight plaintext">from appium import webdriver
+</pre>
+
+<p>Instead of:</p>
+<pre class="highlight plaintext">from selenium import webdriver
+</pre>
+
+<h2 id="new-desired-capabilities">New desired capabilities</h2>
+
+<p>The following capabilities are no longer used:</p>
+
+<ul>
+<li><code class="prettyprint">device</code></li>
+<li><code class="prettyprint">version</code></li>
+</ul>
+
+<p>Instead, use these capabilities:</p>
+
+<ul>
+<li><code class="prettyprint">platformName</code> (either &ldquo;iOS&rdquo; or &ldquo;Android&rdquo;)</li>
+<li><code class="prettyprint">platformVersion</code> (the mobile OS version you want)</li>
+<li><code class="prettyprint">deviceName</code> (the kind of device you want, like &ldquo;iPhone Simulator&rdquo;)</li>
+<li><code class="prettyprint">automationName</code> (&ldquo;Selendroid&rdquo; if you want to use Selendroid, otherwise, this can be omitted)</li>
+</ul>
+
+<p>The <code class="prettyprint">app</code> capability remains the same, but now refers exclusively to non-browser apps. To use browsers like Safari or Chrome, use the standard <code class="prettyprint">browserName</code> cap. This means that <code class="prettyprint">app</code> and <code class="prettyprint">browserName</code> are exclusive.</p>
+
+<p>We have also standardized on camelCase for Appium server caps. That means caps like <code class="prettyprint">app-package</code> or <code class="prettyprint">app-wait-activity</code> are now <code class="prettyprint">appPackage</code> and <code class="prettyprint">appWaitActivity</code> respectively. Of course, since Android app package and activity are now auto-detected, you should be able to omit them entirely in most cases.</p>
+
+<h2 id="new-locator-strategies">New locator strategies</h2>
+
+<p>We&rsquo;ve removed the following locator strategies:</p>
+
+<ul>
+<li><code class="prettyprint">name</code></li>
+<li><code class="prettyprint">tag name</code></li>
+</ul>
+
+<p>We have now added the <code class="prettyprint">accessibility_id</code> strategy to do what <code class="prettyprint">name</code> used to do. The specifics will be relative to your Appium client.</p>
+
+<p><code class="prettyprint">tag name</code> has been replaced by <code class="prettyprint">class name</code>. So to find an element by its UI type, use the class name locator strategy for your client.</p>
+
+<p>Note about <code class="prettyprint">class name</code> and <code class="prettyprint">xpath</code> strategies: these now require the fully-qualified class name for your element. This means that if you had an xpath selector that looked like this:</p>
+<pre class="highlight plaintext">//table/cell/button
+</pre>
+
+<p>It would now need to be:</p>
+<pre class="highlight plaintext">//UIATableView/UIATableCell/UIAButton
+</pre>
+
+<p>(And likewise for Android: <code class="prettyprint">button</code> now needs to be <code class="prettyprint">android.widget.Button</code>)</p>
+
+<p>We&rsquo;ve also added the following locator strategies:</p>
+
+<ul>
+<li><code class="prettyprint">-ios uiautomation</code></li>
+<li><code class="prettyprint">-android uiautomator</code></li>
+</ul>
+
+<p>Refer to your client for ways to use these new locator strategies.</p>
+
+<h2 id="xml,-not-json">XML, not JSON</h2>
+
+<p>App source methods, which previously returned JSON, now return XML, so if you have code that relies on parsing the app source, it will need to be updated.</p>
+
+<h2 id="no-more-execute_script(&quot;mobile:-xxx&quot;)">No more <code class="prettyprint">execute_script(&quot;mobile: xxx&quot;)</code></h2>
+
+<p>All the <code class="prettyprint">mobile:</code> methods have been removed, and have been replaced by native methods in the Appium client libraries. This means that a method call like <code class="prettyprint">driver.execute(&quot;mobile: lock&quot;, [5])</code> will now look something more like <code class="prettyprint">driver.lock(5)</code> (where <code class="prettyprint">lock</code> has been turned into a native client method). Of course, the details on calling these methods will differ by client.</p>
+
+<p>Of particular note, the gesture methods have been replaced by the new TouchAction / MultiAction API which allows for a much more powerful and general way of putting gestural automation together. Refer to your Appium client for usage notes on TouchAction / MultiAction.</p>
+
+<p>And that&rsquo;s it! Happy migrating!</p>
 
       </div>
       <div class="dark-box">

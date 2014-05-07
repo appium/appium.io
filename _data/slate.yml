@@ -1,11 +1,5 @@
 - language: cn
-  tag: 1.0-beta
+  tag: v1.0.0
 
 - language: en
-  tag: 1.0-beta
-
-- language: cn
-  tag: master
-
-- language: en
-  tag: master
+  tag: v1.0.0
