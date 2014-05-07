@@ -32,7 +32,7 @@ module AppiumIo
       appium_clone_url = 'https://github.com/appium/appium.git'
       @appium_repo     = Repo.new path: appium_path, clone: appium_clone_url
 
-      @default_checkout  = '1.0-beta'
+      @default_checkout  = 'master'
 
       # api docs repo
       api_docs_path      = repo_path 'api-docs.git'
@@ -67,7 +67,7 @@ module AppiumIo
         # fix readme links for Slate
         data = File.read readme_dst
         data.gsub!('](docs/en/)', '](#)')
-        data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/1.0-beta/sample-code/examples)')
+        data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
         File.open(readme_dst, 'w') { |f| f.write data }
 
         # copy english contributing into the english docs
@@ -185,9 +185,9 @@ YAML
       # - contributing lacks docs/ prefix
       # - docs/en links to github
       # - sample code links to github
-      data.gsub!('](CONTRIBUTING.md)', '](/slate/en/1.0-beta/#CONTRIBUTING.md)')
-      data.gsub!('](docs/en/)', '](/slate/en/1.0-beta/)')
-      data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/1.0-beta/sample-code/examples)')
+      data.gsub!('](CONTRIBUTING.md)', '](/slate/en/master/#CONTRIBUTING.md)')
+      data.gsub!('](docs/en/)', '](/slate/en/master/)')
+      data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
 
       File.open(dest, 'w') { |f| f.write(yaml + data) }
     end

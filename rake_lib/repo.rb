@@ -102,7 +102,6 @@ v1.0.0-beta.1
       list = sh 'git branch --remote'
       valid_branches = []
       list.split(/\r?\n/).each do |line|
-        # origin/1.0-beta
         # origin/HEAD -> origin/master
         # origin/master
         if line.include?('origin/') && !line.include?('->')
