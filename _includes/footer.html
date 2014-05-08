@@ -35,9 +35,7 @@ if (!langVal) {
 }
 $("#l_" + langVal).addClass("active");
 $("a.localizable-link").each(function() {
-    console.log(this);
     var _href = $(this).attr("href");
-    console.log(_href);
     $(this).attr("href", _href + "?lang=" + langVal);
 });
 </script>
