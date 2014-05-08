@@ -8,7 +8,7 @@
   , "jumbotron-p-pt6" : "."
   , "downloadLink" : "Télécharger"
   , "jumbotron-github" : "Visualiser"
-  , "jumbotron-downloads" : "Documentation"
+  , "jumbotron-downloads" : "Téléchargements"
   , "jumbotron-examples" : "Exemples"
   , "jumbotron-contributions" : "Contributions"
   , "introducing-appium" : "Introduisant Appium."
@@ -25,7 +25,7 @@
   , "easy-setup" : "Procédé de configuration facile, lancez un test maintenant."
   , "easy-setup-p1" : "Installez"
   , "easy-setup-p2" : "(npm, le gestionnaire de paquets node.js inclus)"
-  , "install-code" : "> npm install -g appium\n> npm install wd\n> appium &amp;\n> node votre-appium-test.js"
+  , "install-code" : "> brew install node\n> npm install -g appium\n> npm install wd\n> appium &amp;\n> node votre-appium-test.js"
   , "see-examples-p1" : "Regardez les"
   , "see-examples-p2" : "tests exemplaires de Appium."
 }
