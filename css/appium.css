@@ -351,3 +351,26 @@ bottom: 270px;
     float: none;
   }
 }
+
+.language-list {
+    background-color: #0b0b18;
+}
+
+.language-list>li>a {
+    font-size: 10pt;
+    padding: 5px 8px;
+}
+
+.language-list>li.active>a, .language-list>li.active>a:hover, .language-list>li.active>a:focus {
+    background-color: #1aa2c5;
+    color:#fff;
+}
+
+.language-list>li>a, .language-list>li>a:focus {
+    color:#c9e7e9;
+}
+
+.language-list>li>a:hover {
+    background-color: #64318e;
+    color:#fff;
+}

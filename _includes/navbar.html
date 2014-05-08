@@ -18,13 +18,20 @@ http://getbootstrap.com/components/#navbar
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/introduction.html">Introduction</a></li>
-                <li><a href="/getting-started.html">Get started</a></li>
-                <li><a href="/get-involved.html">Get Involved!</a></li>
+                <li><a href="/" data-localize="home-nav-link">Home</a></li>
+                <li><a href="/introduction.html" data-localize="intro-nav-link">Introduction</a></li>
+                <li><a href="/getting-started.html" data-localize="getting-started-nav-link">Get started</a></li>
+                <li><a href="/get-involved.html" data-localize="get-involved-nav-link">Get Involved!</a></li>
                 <!-- <li><a href="/tutorials.html">Tutorials</a></li> -->
-                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/documentation.html" data-localize="docs-nav-link">Documentation</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<ul class="nav nav-pills language-list">
+    <li id="l_en"><a href="/index.html">English</a></li>
+    <li id="l_fr"><a href="/index.html?lang=fr">Français</a></li>
+</ul>
+<script>
+    appiumLocalize("navbar");
+</script>

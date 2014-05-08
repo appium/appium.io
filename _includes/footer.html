@@ -2,21 +2,18 @@
 ================================================== -->
 <footer class="footer">
     <div class="container">
-        <p>We're open for discussion and would love to hear your voice in the conversation about the future of mobile apps testing!</p>
+        <p data-localize="open-for-discussion">We're open for discussion and would love to hear your voice in the conversation about the future of mobile apps testing!</p>
         <ul class="footer-links">
-            <li><a href="https://groups.google.com/d/forum/appium-discuss">Discussion Group</a></li>
-            <li><a href="https://github.com/appium/appium/issues">Issues</a></li>
+            <li><a href="https://groups.google.com/d/forum/appium-discuss" data-localize="discussion-group">Discussion Group</a></li>
+            <li><a href="https://github.com/appium/appium/issues" data-localize="issues">Issues</a></li>
         </ul>
-        <p style="color:rgb(153, 153, 153);">Powered by <a href="https://saucelabs.com/mobile">Sauce Labs</a> and robots.</p>
+        <p style="color:rgb(153, 153, 153);"><span data-localize="powered-by-pt1">Powered by</span> <a href="https://saucelabs.com/mobile">Sauce Labs</a> <span data-localize="powered-by-pt2">and robots.</span></p>
     </div>
 </footer>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<script src="//vjs.zencdn.net/c/video.js"></script>
-<script src="/js/app.js"></script>
-<script src="/js/jquery.localize.min.js"></script>
 <script>
+appiumLocalize("footer");
+
 // getParameterByName from http://stackoverflow.com/a/901144
 function getParameterByName(name) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -32,4 +29,9 @@ function appiumLocalize(pageName) {
   }
   $("[data-localize]").localize(pageName, opts);
 }
+var langVal = getParameterByName("lang");
+if (!langVal) {
+    langVal = navigator.language.substr(0,2);
+}
+$("#l_" + langVal).addClass("active");
 </script>
