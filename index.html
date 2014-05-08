@@ -158,19 +158,16 @@
             <div class="col-md-12">
             <h1 data-localize="easy-setup">Easy setup process, run a test now.</h1>
 
-            <p>
-                <span data-localize="easy-setup-p1">Install</span> <a href="http://nodejs.org">node.js</a> <span data-localize="easy-setup-p2">(includes npm, the
-                node.js package manager).</span>
-            </p>
-<pre class="prettyprint ninja" data-localize="install-code">
-> npm install -g appium
-> npm install wd
-> appium &amp;
+<pre class="prettyprint ninja">
+> brew install node      # get node.js
+> npm install -g appium  # get appium
+> npm install wd         # get appium client
+> appium &amp;           # start appium
 > node your-appium-test.js
 </pre>
             <p>
                 <span data-localize="see-examples-p1">See the</span> <a
-                    href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples"><span data-localize="see-examples-p2">Appium
+                    href="https://github.com/appium/appium/tree/master/sample-code/examples"><span data-localize="see-examples-p2">Appium
                 example tests.</span></a>
             </p>
                 </div>
