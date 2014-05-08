@@ -1,8 +1,8 @@
 {
     "jumbotron-heading" : "Automatisation pour les Apps."
   , "jumbotron-p-pt1" : "Appium est un système de test d'automatisation à &lt;&lt;open source&gt;&gt; ou code source ouvert pour l'utilisation avec des applications mobiles natives ou"
-  , "jumbotron-p-pt2" : "hybrides."
-  , "jumbotron-p-pt3" : ""
+  , "jumbotron-p-pt2" : "hybrides"
+  , "jumbotron-p-pt3" : "."
   , "jumbotron-p-pt4" : "Il guide les applications iOS et Android en utilisant le WebDriver"
   , "jumbotron-p-pt5" : "JSON wire protocol"
   , "jumbotron-p-pt6" : "."
