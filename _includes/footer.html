@@ -13,4 +13,9 @@
 
 <script>
 appiumLocalize("footer");
+var langVal = getParameterByName("lang");
+if (!langVal) {
+    langVal = navigator.language.substr(0,2);
+}
+$("#l_" + langVal).addClass("active");
 </script>
