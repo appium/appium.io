@@ -13,6 +13,22 @@
 
 <script>
 appiumLocalize("footer");
+
+// getParameterByName from http://stackoverflow.com/a/901144
+function getParameterByName(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+  results = regex.exec(location.search);
+  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+function appiumLocalize(pageName) {
+  var opts = { pathPrefix: "/localize", skipLanguage: /^en/ };
+  var langVal = getParameterByName("lang");
+  if (langVal) {
+    opts.language = langVal;
+  }
+  $("[data-localize]").localize(pageName, opts);
+}
 var langVal = getParameterByName("lang");
 if (!langVal) {
     langVal = navigator.language.substr(0,2);
