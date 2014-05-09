@@ -4,7 +4,7 @@
     var href = window.location.pathname;
 
     // activate documentation for nested docs
-    // example: docs/1.0-beta/cn/index.html
+    // example: docs/master/cn/index.html
     if (href.indexOf('/docs/') === 0) {
         href = '/documentation.html';
     }

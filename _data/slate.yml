@@ -1,5 +1,9 @@
-- language: cn
-  tag: v1.0.0
+cn:
+  - v1.0.0
+  - master
+  - 0.18.x
 
-- language: en
-  tag: v1.0.0
+en:
+  - v1.0.0
+  - master
+  - 0.18.x

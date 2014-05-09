@@ -5,8 +5,14 @@ description: Appium Documentation
 ---
 
 <div class="btn-group-vertical">
-{% for doc in site.data.slate %}
-  <a href="slate/{{ doc.language }}/{{ doc.tag }}" type="button" class="btn btn-default">{{ doc.language }} {{ doc.tag }}</a>
-  <li class="button_divider"></li>
+  {% for pair in site.data.slate %}
+    {% assign language = pair[0] %}
+    {% assign versions = pair[1] %}
+    <ul><b>{{ language }}</b><ul>
+    {% for version in versions %}
+      <a href="slate/{{ language }}/{{ version }}" type="button" class="btn btn-default">{{ version }}</a>
+      <li class="button_divider"></li>
+    {% endfor %}
+    </ul></ul>
 {% endfor %}
 </div>

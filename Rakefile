@@ -16,6 +16,11 @@ task :publish => :appium do
   sh 'git push origin gh-pages'
 end
 
+desc 'Delete folders created by appium task'
+task :clean do
+  sh 'rm -rf slate docs'
+end
+
 task :default => :appium
 
 # jekyll serve -- run local gh pages server

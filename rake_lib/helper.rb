@@ -56,7 +56,12 @@ module AppiumIo
       # tag is valid if it's published on or after '2014-05-02'
       # tags = @appium_repo.branches
 
-      metadata = []
+      # also publish branches
+      branches = %w[master 0.18.x]
+      tags += branches
+
+      metadata = Hash.new []
+      puts "Processing: #{tags}"
       tags.each do |tag|
         @appium_repo.checkout tag
 
@@ -81,23 +86,32 @@ module AppiumIo
           language = basename path
           dest     = join Dir.pwd, 'docs', language, tag
 
-          # # tags never change so don't override
-          # next if exists? dest
-          # # overwrite for testing
-          rm_rf dest if exists? dest
+          # update metadata before skipping
+          metadata[language] += [ tag ]
+
+          # delete existing branches
+          rm_rf dest if exists?(dest) && branches.include?(tag)
+
+          # tags never change. check folder exists in docs/
+          if exists?(dest)
+            puts "Skipping: #{dest}"
+            next
+          end
 
           copy_entry path, dest
 
           process_with_slate input: dest, language: language, tag: tag
-          metadata << [language, tag]
         end
       end
 
       File.open('_data/slate.yml', 'w') do |f|
         result = ''
-        metadata.each do |language, tag|
+        metadata.each do |key, values|
+          result += "\n#{key}:\n"
+          values.each do |tag|
           # must be exactly two spaces before tag or YAML parsing fails
-          result += "\n- language: #{language}\n  tag: #{tag}\n"
+          result += "  - #{tag}\n"
+          end
         end
 
         f.write result.strip
