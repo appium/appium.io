@@ -1,4 +1,6 @@
 encoding: utf-8
+gems:
+  - jekyll-sitemap
 markdown: redcarpet
 redcarpet:
   extensions: [
