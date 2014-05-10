@@ -6,7 +6,7 @@ module AppiumIo
     extend Forwardable
 
     # Avoid having to type 'File.' to use these common methods
-    def_delegators File, :exist?, :exists?, :basename, :expand_path
+    def_delegators File, :exist?, :exists?, :basename, :expand_path, :dirname
     def_delegators FileUtils, :mkdir_p, :rm_rf
 
     # Join the paths then expand the path
