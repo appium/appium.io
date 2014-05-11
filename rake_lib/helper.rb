@@ -55,8 +55,17 @@ module AppiumIo
       tutorial_repo.checkout 'master'
       tutorial_repo.sh 'rake build' # create '01_native_ios_automation.md'
 
-      publish_folder = join Dir.pwd, 'slate', 'en', 'tutorial'
+      slate_root     = join Dir.pwd, 'slate'
+      publish_folder = join slate_root, 'en', 'tutorial'
       build_folder   = join tutorial_repo.path, 'tutorials', 'en'
+
+      image_folder = join slate_root, 'images'
+
+      # copy tutorial images
+      Dir.glob(join(build_folder, '*.png')) do |file|
+        next if File.directory?(file)
+        copy_entry file, image_folder
+      end
 
       src_markdown_file = join build_folder, '01_native_ios_automation.md'
       dst_markdown_file = join @api_docs_repo.path, 'source', 'index.md'
@@ -67,7 +76,7 @@ module AppiumIo
       # pull html from api_docs
       build_folder = join @api_docs_repo.path, 'build'
 
-      html_file    = 'index.html'
+      html_file   = 'index.html'
       input_html  = join build_folder, html_file
       output_html = join publish_folder, html_file
 

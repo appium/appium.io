@@ -25,6 +25,9 @@ module AppiumIo
 
       dir_to_make = File.directory?(dest) ? dest : File.dirname(dest)
 
+      # copy_entry '/a/b/c.png', '/e/f' => copies to /e/f/c.png
+      dest = join(dest, basename(source)) if !File.directory?(source) && File.directory?(dest)
+
       FileUtils.mkdir_p dir_to_make
       FileUtils.copy_entry source, dest, preserve = false,
                            dereference_root = false,
