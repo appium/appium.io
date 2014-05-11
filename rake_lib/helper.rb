@@ -18,7 +18,7 @@ module AppiumIo
   class Helper
     include AppiumIo::Files
 
-    attr_reader :default_checkout, :git_dir, :appium_repo, :api_docs_repo
+    attr_reader :default_checkout, :git_dir, :appium_repo, :api_docs_repo, :tutorial_repo
 
     # Creates a new Helper object. The appium repository is cloned and updated.
     #
@@ -26,29 +26,52 @@ module AppiumIo
     # appium_dir - clone of appium/appium
     # api_docs_dir - clone of appium/api-docs
     def initialize opts={}
-      @git_dir         = expand_path '../appium.io_workspace'
+      @@slate_published_once = false
+      @git_dir               = expand_path '../appium.io_workspace'
+      @default_checkout      = 'master'
 
       # appium repo. always fetch from appium/appium. ignore @username
-      appium_path      = repo_path 'appium.git'
-      appium_clone_url = 'https://github.com/appium/appium.git'
-      @appium_repo     = Repo.new path: appium_path, clone: appium_clone_url
-
-      @default_checkout  = 'master'
+      appium_path            = repo_path 'appium.git'
+      appium_clone_url       = 'https://github.com/appium/appium.git'
+      @appium_repo           = Repo.new path: appium_path, clone: appium_clone_url
 
       # api docs repo
-      api_docs_path      = repo_path 'api-docs.git'
-      api_docs_clone_url = 'https://github.com/appium/api-docs.git'
-      @api_docs_repo     = Repo.new path: api_docs_path, clone: api_docs_clone_url, master: true
-
-      @@slate_published_once = false
+      api_docs_path          = repo_path 'api-docs.git'
+      api_docs_clone_url     = 'https://github.com/appium/api-docs.git'
+      @api_docs_repo         = Repo.new path: api_docs_path, clone: api_docs_clone_url, master: true
 
       # tutorial repo
-      # todo: support tutorial once it's updated to work with Slate
+      tutorial_path          = repo_path 'tutorial.git'
+      tutorial_clone_url     = 'https://github.com/appium/tutorial.git'
+      @tutorial_repo         = Repo.new path: tutorial_path, clone: tutorial_clone_url, master: true
     end
 
     def repo_path path
       raise 'git dir must be set' unless @git_dir
       join @git_dir, path
+    end
+
+    def update_tutorial
+      tutorial_repo.checkout 'master'
+      tutorial_repo.sh 'rake build' # create '01_native_ios_automation.md'
+
+      publish_folder = join Dir.pwd, 'slate', 'en', 'tutorial'
+      build_folder   = join tutorial_repo.path, 'tutorials', 'en'
+
+      src_markdown_file = join build_folder, '01_native_ios_automation.md'
+      dst_markdown_file = join @api_docs_repo.path, 'source', 'index.md'
+      copy_entry src_markdown_file, dst_markdown_file
+
+      @api_docs_repo.sh 'rake build'
+
+      # pull html from api_docs
+      build_folder = join @api_docs_repo.path, 'build'
+
+      html_file    = 'index.html'
+      input_html  = join build_folder, html_file
+      output_html = join publish_folder, html_file
+
+      rewrite_slate_index input_html, output_html
     end
 
     # docs are published exactly once per tag
@@ -106,6 +129,9 @@ module AppiumIo
           puts "Processing with slate: #{language} #{tag}"
           process_with_slate input: dest, language: language, tag: tag
         end
+
+        # update tutorial after docs are complete
+        update_tutorial
       end
 
       File.open('_data/slate.yml', 'w') do |f|
