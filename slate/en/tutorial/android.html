@@ -1,0 +1,2320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Tutorial</title>
+
+    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../javascripts/all.js" type="text/javascript"></script>
+
+      <script>
+        $(function() {
+          setupLanguages(["ruby","java"]);
+        });
+      </script>
+  </head>
+
+  <body class="index">
+    <div class="tocify-wrapper">
+      <img src="../../images/logo.png">
+      <div id="toc">
+      </div>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="native-android-automation">Native Android Automation</h1>
+
+<p>This tutorial covers automating native Android apps in Ruby and Java. To select
+the active language, click <code class="prettyprint">Ruby</code> or <code class="prettyprint">Java</code> on the left hand side. Code 
+samples and content will change based on the selected language.</p>
+
+<h1 id="getting-started-with-appium">Getting started with appium</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Appium enables iOS and Android automation using Selenium WebDriver.
+The same WebDriver bindings can be used across web and mobile.</p>
+
+<ul>
+<li>Open Source
+
+<ul>
+<li>Apache 2.0 License</li>
+</ul>
+</li>
+<li>Cross Platform
+
+<ul>
+<li>Test Android on OS X, Windows, Linux</li>
+<li>Test iOS on OS X</li>
+</ul>
+</li>
+<li>Native, Hybrid, Mobile Web</li>
+<li>Any language. Any framework.</li>
+<li>No app changes or source code access required.</li>
+</ul>
+
+<p>In this chapter, we’ll be preparing to automate a native Android app.</p>
+
+<h2 id="install-overview">Install Overview</h2>
+
+<p>This document is written for OS X 10.9.2 or better.</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Tool</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right">OS X</td>
+<td style="text-align: left">The mac operating system</td>
+</tr>
+<tr>
+<td style="text-align: right">Xcode</td>
+<td style="text-align: left">Apple’s integrated development environment</td>
+</tr>
+<tr>
+<td style="text-align: right">rvm</td>
+<td style="text-align: left">The ruby version manager. Helps install ruby</td>
+</tr>
+<tr>
+<td style="text-align: right">gem</td>
+<td style="text-align: left">The rubygems command. A package manager for Ruby</td>
+</tr>
+<tr>
+<td style="text-align: right">Java</td>
+<td style="text-align: left">A programming language and software development kit</td>
+</tr>
+<tr>
+<td style="text-align: right">bundler</td>
+<td style="text-align: left">Enables managing gem dependencies</td>
+</tr>
+<tr>
+<td style="text-align: right">brew</td>
+<td style="text-align: left">Helps install software on Macs</td>
+</tr>
+<tr>
+<td style="text-align: right">npm</td>
+<td style="text-align: left">Node’s package manager</td>
+</tr>
+<tr>
+<td style="text-align: right">grunt</td>
+<td style="text-align: left">A command line task runner for node.js</td>
+</tr>
+<tr>
+<td style="text-align: right">ant</td>
+<td style="text-align: left">A java build system</td>
+</tr>
+<tr>
+<td style="text-align: right">maven</td>
+<td style="text-align: left">A java build system with improved dependency management</td>
+</tr>
+</tbody>
+</table>
+
+<p>Note that <a href="http://appium.io/">Appium.app</a> provides a ready to run version of
+appium. If you’re using Appium.app then there’s no need to run from source unless
+you want to use the latest and greatest.</p>
+
+<p>Install <a href="https://developer.apple.com/downloads/index.action">Xcode 5.1 from the App Store</a>.</p>
+
+<p>Install the command line build tools within Xcode. (Xcode -&gt; Preferences -&gt; Downloads).
+Alternatively, download them directly from <a href="https://developer.apple.com/downloads/index.action">Apple</a>.</p>
+
+<ul>
+<li>Install <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a>.</li>
+</ul>
+
+<h2 id="install-ruby">Install Ruby</h2>
+
+<ul>
+<li>Install the latest stable release of Ruby.</li>
+</ul>
+
+<p><code>\curl -sSL https://get.rvm.io | bash -s stable
+rvm install ruby
+</code></p>
+
+<ul>
+<li>Make sure RVM is using the correct Ruby by default</li>
+</ul>
+
+<p><code>rvm list
+rvm --default use 2.1.1
+</code></p>
+
+<ul>
+<li>If you have an old ruby/rvm, you can upgrade with</li>
+</ul>
+
+<p><code>rvm get head
+rvm autolibs homebrew
+rvm install ruby
+</code></p>
+
+<ul>
+<li>Check that it’s installed properly by printing the ruby version.</li>
+</ul>
+
+<p><code class="prettyprint">ruby --version</code></p>
+
+<ul>
+<li>Update RubyGems and Bundler.</li>
+</ul>
+
+<p><code>gem update --system
+gem install --no-rdoc --no-ri bundler
+gem update
+gem cleanup
+</code></p>
+
+<ul>
+<li>Check that RubyGems is &gt;= 2.1.5</li>
+</ul>
+
+<p><code class="prettyprint">gem --version</code></p>
+
+<ul>
+<li>Install <code class="prettyprint">appium_console</code> gem.</li>
+</ul>
+
+<p><code>gem uninstall -aIx appium_lib
+gem uninstall -aIx appium_console
+gem install --no-rdoc --no-ri appium_console
+</code></p>
+
+<ul>
+<li>Install <a href="https://github.com/appium/flaky">flaky</a> gem.</li>
+</ul>
+
+<p><code>gem uninstall -aIx flaky
+gem install --no-rdoc --no-ri flaky
+</code></p>
+
+<ul>
+<li>Install <a href="http://mxcl.github.io/homebrew/">brew</a>
+</li>
+</ul>
+
+<p><code class="prettyprint">ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</code></p>
+
+<ul>
+<li>Install <a href="http://nodejs.org/">nodejs</a> using brew.</li>
+</ul>
+
+<p><code>brew update
+brew upgrade node
+brew install node
+</code></p>
+
+<ul>
+<li>Node should be <code class="prettyprint">v0.10.26</code> or better.
+Don’t use the big green install button on <a href="http://nodejs.org/">nodejs.org</a> or
+all npm commands will require sudo.</li>
+</ul>
+
+<p><code>node --version
+npm --version
+</code></p>
+
+<ul>
+<li>Install grunt.</li>
+</ul>
+
+<p><code class="prettyprint">npm install -g grunt grunt-cli</code></p>
+
+<ul>
+<li>Run the version command from the appium folder. If you’re not in that
+folder, the grunt version will not display.</li>
+</ul>
+
+<p><code>grunt --version
+grunt-cli v0.1.13
+grunt v0.4.2
+</code></p>
+
+<ul>
+<li>Install <a href="http://ant.apache.org/">ant</a> if it’s not already installed.</li>
+<li>Install <a href="http://maven.apache.org/download.cgi">maven 3.1.1 or better</a> if
+it’s not already installed. Old maven will not work.</li>
+</ul>
+
+<p><code>ant -version
+mvn -version
+</code></p>
+
+<ul>
+<li>Clone appium</li>
+</ul>
+
+<p><code class="prettyprint">git clone git://github.com/appium/appium.git</code></p>
+
+<ul>
+<li>Run reset.sh. When running reset.sh, make sure to be on Xcode 5.0.2 for
+best results. You may have problems if you reset on Xcode 4.6.3 and then
+switch to a newer Xcode.</li>
+</ul>
+
+<p><code class="prettyprint">cd appium; ./reset.sh</code></p>
+
+<p>If you see config errors, try cleaning git. <code class="prettyprint">git clean -dfx; git reset --hard</code></p>
+
+<p>You can also reset by platform. <code class="prettyprint">./reset.sh --ios</code></p>
+
+<ul>
+<li>Authorize for testing. Must run reset.sh as mentioned above before
+running the grunt task. If you’re only testing Android, this can be skipped.</li>
+</ul>
+
+<p><code>sudo `which grunt`; authorize</code></p>
+
+<ul>
+<li>Start appium.</li>
+</ul>
+
+<p><code class="prettyprint">$ node .</code></p>
+
+<h2 id="bash-profile">Bash Profile</h2>
+
+<ul>
+<li>You may have to add grunt as well <code class="prettyprint">/usr/local/share/npm/bin/grunt</code>
+</li>
+</ul>
+
+<p><code>$ nano ~/.bash_profile
+PATH=$PATH:/Applications/apache-ant-1.8.4/bin
+PATH=$PATH:/usr/local/share/npm/bin/
+export JAVA_HOME="`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`"
+
+export PATH
+</code></p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<ul>
+<li>If install fails, keep trying to install a few times.</li>
+</ul>
+
+<p>When using <code class="prettyprint">Appium.app</code> make sure to set Appium -&gt; Preferences… -&gt; Check
+“Use External Appium Package” and set it to the path of Appium cloned from GitHub.</p>
+
+<p>Fix permission errors. npm shouldn’t require sudo.</p>
+
+<p><code>brew uninstall node
+brew install node
+rm -rf ./node_modules
+rm -rf "/Users/`whoami`/.npm"
+rm -rf /usr/local/lib/node_modules/
+./reset.sh --ios
+./reset.sh --android
+</code></p>
+
+<ul>
+<li><a href="https://gist.github.com/bootstraponline/5580587">Helper bash methods</a></li>
+</ul>
+
+<h2 id="ssl-issues">SSL Issues</h2>
+
+<p><code class="prettyprint">Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed</code></p>
+
+<ul>
+<li>
+<a href="http://railsapps.github.io/openssl-certificate-verify-failed.html">Fix SSL issues</a> with:</li>
+</ul>
+
+<p><code>rvm osx-ssl-certs update all
+rvm osx-ssl-certs status all
+</code></p>
+
+<h2 id="maven-on-os-x-10.9">Maven on OS X 10.9</h2>
+
+<p><code>brew update
+brew install maven
+</code></p>
+
+<h2 id="corrupt-ruby-gems">Corrupt ruby gems</h2>
+
+<p>If you see:</p>
+
+<p><code class="prettyprint">invalid gem: package is corrupt, exception while verifying: undefined method</code></p>
+
+<p>Then run <code class="prettyprint">rm -rf ~/.rvm</code> and reinstall RVM.</p>
+
+<span class="desc ruby">
+
+<h2 id="ruby-ide">Ruby IDE</h2>
+
+<p>I recommend the <a href="http://www.jetbrains.com/ruby/whatsnew/index.html">RubyMine IDE</a>.
+For professional work, features such as auto completion, jump to definition,
+and refactoring are valuable.</p>
+
+<p>If you have a preferred editor already, then feel free to continue using it.</p>
+
+</span>
+
+<span class="desc java">
+
+<h2 id="java-ide">Java IDE</h2>
+
+<p>Java has a number of popular editors. For this module,
+we’ll be using <code class="prettyprint">IntelliJ IDEA Community Edition</code>, an open source IDE by
+JetBrains. The software is available <a href="http://www.jetbrains.com/idea/download/">for free download at this link</a>.</p>
+
+<p>If you already have a preferred editor, feel free to continue using it. The
+sample projects use Maven and work with Eclipse, NetBeans, and IntelliJ.</p>
+
+</span>
+
+<h2 id="install-android">Install Android</h2>
+
+<p>The following instructions are specific to installing Android on OS X.</p>
+
+<h3 id="bash-profile">Bash Profile</h3>
+
+<ul>
+<li>Add the Android SDK tools folder to your path so you can run <code class="prettyprint">android</code>.</li>
+<li>Define the <code class="prettyprint">ANDROID_HOME</code> env var pointing to SDK root. On OS X place it in
+<code class="prettyprint">~/.bash_profile</code>
+</li>
+<li>You may have to add grunt as well <code class="prettyprint">/usr/local/share/npm/bin/grunt</code>
+</li>
+</ul>
+
+<p><code># ~/.bash_profile
+export ANDROID_HOME=$HOME/Downloads/android-sdk-macosx
+export ANDROID_SDK=$ANDROID_HOME
+PATH=$PATH:/Applications/apache-ant-1.8.4/bin
+PATH=$PATH:/usr/local/share/npm/bin/
+PATH=$PATH:$ANDROID_HOME/build-tools
+PATH=$PATH:$ANDROID_HOME/platform-tools
+PATH=$PATH:$ANDROID_HOME/tools
+export JAVA_HOME="`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`"
+
+export PATH
+</code></p>
+
+<ul>
+<li>Run <code class="prettyprint">android</code> to open the SDK manager.</li>
+<li>Install the following packages:</li>
+</ul>
+
+<p><img src="../../images/android_sdk_manager.png"></p>
+
+<ul>
+<li>Create a new Android virtual device.
+Ensure <code class="prettyprint">Use Host GPU</code> is checked.
+Set <code class="prettyprint">VM Heap</code> to <code class="prettyprint">64</code>. <code class="prettyprint">32</code> is too small.</li>
+</ul>
+
+<p><img src="../../images/avd_settings.png"></p>
+
+<p><code class="prettyprint">android avd</code></p>
+
+<ul>
+<li><p>Launch the emulator with <code class="prettyprint">emulator @tutorial</code></p></li>
+<li><p>Check that <code class="prettyprint">hax is working</code> If it’s not, install hax
+<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager">directly from Intel</a></p></li>
+</ul>
+
+<p><code>$ emulator @tutorial
+HAX is working and emulator runs in fast virt mode
+</code></p>
+
+<ul>
+<li>After launching the emulator, check that it’s listed in adb devices. Run
+the following commands a few times until it’s listed.</li>
+</ul>
+
+<p><code class="prettyprint">adb kill-server; adb devices</code></p>
+
+<p>If you see <code class="prettyprint">error: protocol fault (no status)</code> just keep running the command
+until the emulator is detected.</p>
+
+<ul>
+<li><p>With both the Android emulator running and the Appium server started, it’s
+time to launch the appium console. Make sure the ENV vars are exported.</p></li>
+<li><p>Start appium console</p></li>
+</ul>
+
+<p><code class="prettyprint">arc</code></p>
+
+<ul>
+<li>See <a href="https://github.com/appium/appium/blob/master/docs/running-on-osx.md">running on OS X</a>
+</li>
+</ul>
+
+<h2 id="helpful-links">Helpful Links</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="https://www.npmjs.org/">npm</a></td>
+<td style="text-align: left">The main registry for npm packages. Appium is published here.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://rubygems.org/">rubygems</a></td>
+<td style="text-align: left">The main registry for Ruby gems. The appium ruby bindings are published here.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://rvm.io/">RVM</a></td>
+<td style="text-align: left">RVM’s homepage. Extensive documentation is available.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://www.ruby-lang.org/en/">Ruby</a></td>
+<td style="text-align: left">The Ruby language homepage. Useful for keeping up to date with Ruby releases.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="summary">Summary</h2>
+
+<p>We learned about the appium project and how it’s useful for automating mobile
+applications. Then we installed all the necessary software to begin
+automation. Finally, helpful links were reviewed.</p>
+
+<p>In the next chapter, we’ll look at writing tests interactively using a console.</p>
+
+<h1 id="appium-ruby-console">Appium Ruby Console</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>A read-eval-print loop, REPL, is a great way to learn a new technology.
+In this chapter, we’ll be using the Appium Ruby Console (ARC) to write tests.</p>
+
+<p>An open source mobile app will be used to demonstrate the standard test workflow.
+We’ll also look at a desktop app that makes writing tests a bit easier.</p>
+
+<h2 id="compiling-the-android-sample-app">Compiling the Android sample app</h2>
+
+<p><code class="prettyprint">cd</code> into the appium repository root. Running <code class="prettyprint">./reset.sh --android --dev</code> will
+build the sample AndroidApp app ApiDemos.</p>
+
+<p><code class="prettyprint">* Configuring and cleaning/building Android test app: ApiDemos</code></p>
+
+<p>After seeing <code class="prettyprint">---- reset.sh completed successfully ----</code>,
+you’ll find appium’s custom api demos at this location:</p>
+
+<p><code class="prettyprint">/appium/sample-code/apps/ApiDemos/bin/ApiDemos-debug.apk</code></p>
+
+<p>Appium uses a modified ApiDemo app so make sure to use this version instead of
+what’s provided in the SDK. The Appium fork of API Demos is <a href="https://github.com/appium/android-apidemos">on GitHub</a>.</p>
+
+<h2 id="origin-of-api-demos">Origin of Api Demos</h2>
+
+<p>The ApiDemos app is <a href="http://developer.android.com/sdk/exploring.html">provided by Google</a>
+in the Android SDK. Running the <code class="prettyprint">$ android</code> command will allow you to download
+<code class="prettyprint">Samples for SDK</code> for each platform version. Once downloaded,
+you can find the app at <code class="prettyprint">$ANDROID_HOME/platforms/android-VERSION/samples/</code></p>
+
+<h2 id="prebuilt-android-sample-app">Prebuilt Android Sample App</h2>
+
+<p>I have a compiled version of the Api Demos apk on GitHub.</p>
+
+<p><code class="prettyprint">https://github.com/appium/ruby_lib/raw/master/ruby_lib_android/api.apk</code></p>
+
+<p>Downloading from the above link will be faster than building from source.</p>
+
+<h2 id="starting-the-console">Starting the console</h2>
+
+<p>Appium Ruby Console needs a platform and app path to get started.</p>
+
+<p>If you see the following warning, it’s safe to ignore. <code class="prettyprint">libdvm.so</code> is part of
+the android platform and not something we control.</p>
+
+<p><code>WARNING: linker: libdvm.so has text relocations. This is wasting memory and
+is a security risk. Please fix.
+</code></p>
+
+<p>We’re developing locally, so create an appium.txt with the following:</p>
+
+<p><code>$ nano appium.txt
+[caps]
+platformName = "android"
+app = "./api.apk"
+</code></p>
+
+<p>The appium.txt contains two important pieces of information.</p>
+
+<p>platformName is the platform we’re automating. In this case, we’re using android.</p>
+
+<p>app is the path to api.apk. The ruby console is able to parse relative
+paths. This path will then be converted to an absolute path which appium uses
+to identify which app to install on the emulator.</p>
+
+<p>In a new terminal tab, start the appium server using <code class="prettyprint">node .</code> In a second
+tab, launch the emulator using <code class="prettyprint">emulator @tutorial</code>. In the final tab,
+run the <code class="prettyprint">arc</code> command from within the directory containing appium.txt.
+The arc console will read appium.txt, connect the Android emulator,
+and allow you to enter commands.</p>
+
+<p>To assist with opening three tabs, I have a bash script on <a href="https://gist.github.com/bootstraponline/5580587">GitHub</a>
+that starts appium, the emulator, and changes the working directory.</p>
+
+<h2 id="page-command">Page Command</h2>
+
+<p>With the console started, the next step is to begin automation.
+The <code class="prettyprint">page</code> command prints a list of elements that are of interest.</p>
+<pre class="highlight plaintext">&gt; page
+post /execute
+{
+    :script =&gt; "mobile: getStrings"
+}
+get /source
+View
+  class: android.view.View
+  resource_id: android:id/action_bar_overlay_layout
+FrameLayout
+  class: android.widget.FrameLayout
+  resource_id: android:id/action_bar_container
+View
+  class: android.view.View
+  resource_id: android:id/action_bar
+ImageView
+  class: android.widget.ImageView
+  resource_id: android:id/home
+TextView
+  class: android.widget.TextView
+  text: API Demos
+  resource_id: android:id/action_bar_title
+  id: activity_sample_code
+FrameLayout
+  class: android.widget.FrameLayout
+  resource_id: android:id/content
+ListView
+  class: android.widget.ListView
+  resource_id: android:id/list
+TextView
+  class: android.widget.TextView
+  text, name: Accessibility
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: Animation
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: App
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: Content
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: Graphics
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: Media
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: NFC
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: OS
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: Preference
+  resource_id: android:id/text1
+TextView
+  class: android.widget.TextView
+  text, name: Text
+  resource_id: android:id/text1
+  id: autocomplete_3_button_7
+TextView
+  class: android.widget.TextView
+  text, name: Views
+  resource_id: android:id/text1
+</pre>
+
+<p>Let’s review in detail what this output means.</p>
+
+<p><code class="prettyprint">[1] pry(main)&gt; page</code> The 1 tells us this is the first command we’ve entered
+during this pry session. The terminal will show <code class="prettyprint">[2] pry(main)&gt;</code> which means
+it’s ready for the second command. Pry is an open source
+<a href="http://pryrepl.org/">runtime development console</a> that’s used by appium
+ruby console.</p>
+
+<p>The next set of information is the network traffic.</p>
+
+<p><code>post /execute
+{
+    :script =&gt; "mobile: getStrings"
+}
+get /source
+</code></p>
+
+<p>In response to the page command, two network requests were sent. The
+<a href="http://rubygems.org/gems/selenium-webdriver">selenium-webdriver gem</a> is used
+to generate these requests.</p>
+
+<p>After that is the result of the page command.</p>
+
+<p><code>TextView
+  class: android.widget.TextView
+  text: API Demos
+  resource_id: android:id/action_bar_title
+  id: activity_sample_code
+</code></p>
+
+<p><code class="prettyprint">TextView</code> is the <a href="http://developer.android.com/reference/android/widget/TextView.html">android specific class name</a>
+for the element.</p>
+
+<p>Under each element name is a list of properties.</p>
+
+<p><code>TextView
+  class: android.widget.TextView
+  text: API Demos
+  resource_id: android:id/action_bar_title
+  id: activity_sample_code
+</code></p>
+
+<p>In this case we see there’s a class, text, resource_id,
+and an id. To find by text we can use the text command.</p>
+
+<p><code>&gt; text('API Demos')
+#&lt;Selenium::WebDriver::Element:0x7f5348cbb3447ff2 id="1"&gt;
+</code></p>
+
+<p>The text command will look for any text on screen.</p>
+
+<p>To find by resource_id, we’d use:</p>
+
+<p><code>&gt; id('android:id/action_bar_title')
+#&lt;Selenium::WebDriver::Element:0x..fe9053092a74b142a id="2"&gt;
+</code></p>
+
+<p>To find by strings.xml id, we’d use:</p>
+
+<p><code>&gt; id('activity_sample_code')
+#&lt;Selenium::WebDriver::Element:0x5c46252e10021cc id="4"&gt;
+</code></p>
+
+<p>Once we’ve found the element, attributes such as text can be accessed.</p>
+
+<p><code>&gt; id('activity_sample_code').text
+"API Demos"
+</code></p>
+
+<p>These helper methods <a href="https://github.com/appium/ruby_lib/tree/master/docs">are documented on GitHub</a>.</p>
+
+<p>To view all possible elements, there’s a <code class="prettyprint">source</code> command. The <code class="prettyprint">page_class</code>
+command will give you an overview of what classes exist on the current page.</p>
+
+<p><code>&gt; page_class
+12x android.widget.TextView
+4x android.widget.FrameLayout
+2x android.widget.LinearLayout
+2x android.view.View
+1x android.widget.ListView
+1x android.widget.ImageView
+</code></p>
+
+<p>The page command excels at identifying the elements you’re most likely
+interested in automating. I encourage you to read through the existing docs
+and try the methods on different elements.</p>
+
+<h2 id="ending-the-session">Ending the session</h2>
+
+<p>Once we’re done with a testing session, it’s very important to cleanly quit.
+If a session is not terminated properly then appium will consider the session
+to still be in progress. This blocks all future sessions from working.</p>
+
+<p>In the appium ruby console, the best way to quit the session is by using the
+<code class="prettyprint">x</code> command. The <code class="prettyprint">x</code> command first ends the webdriver session,
+and then ends the console.</p>
+
+<p>If you desire to end only the webdriver session and remain in the console,
+use driver_quit.</p>
+
+<p>It’s also important to end sessions when running tests outside the console.
+All the selenium bindings offer a quit method. This should be invoked once
+the testing session is over.</p>
+
+<h2 id="appium.app-inspector">Appium.app Inspector</h2>
+
+<p>We’ve covered finding elements using the page command on the terminal.
+Appium also has a GUI tool on OS X called Appium.app.</p>
+
+<p>Appium.app enables visual exploration of the application to identify elements.
+In addition, gestures are supported and can be exported to working code.</p>
+
+<p>When using Appium.app for the first time, click the checkbox button. This
+will activate appium doctor. If you don’t see all green checkmarks,
+then something is incorrect with your system configuration. Make the
+necessary changes, press the checkbox button again, and then proceed when
+everything is passing.</p>
+
+<p><img src="../../images/appium_doctor.png"></p>
+
+<p>By default Appium.app uses a bundled version of appium. If you’re running the
+newest appium version from source, then click <code class="prettyprint">Appium</code> -&gt; <code class="prettyprint">Preferences</code> and
+set <code class="prettyprint">Use External Appium Package</code>.</p>
+
+<p><img src="../../images/appium_external.png"></p>
+
+<p>While most interactions can be done completely within the console, Appium.app is
+great for identifying the proper values for appium’s gesture commands.</p>
+
+<p>Appium.app’s inspector works on Android. The data is based on the same source
+as the page command that we used in the last lesson.</p>
+
+<p><img src="../../images/inspector_android.png"></p>
+
+<h2 id="uiautomatorviewer">uiautomatorviewer</h2>
+
+<p>Google includes the uiautomatorviewer tool in the Android SDK.
+uiautomator requires API 16 (Android 4.1, Jelly Bean) or above. Appium’s
+uiautomator support works best on API 17 (Android 4.2,
+Jelly Bean MR1) or above. For this tutorial, we’re interested in API 19.</p>
+
+<p>Run <code class="prettyprint">android avd</code>, select your Android emulator, press Edit, then ensure that
+‘Use Host GPU’ is not checked. If we’re using the Host GPU then uiautomatorviewer
+will be unable to capture screenshots.</p>
+
+<p>Also ensure that no Android appium sessions are running. Appium uses uiautomator
+internally and this will prevent uiautomatorviewer from working if they’re both
+running at the same time.</p>
+
+<p>Manually launch the Api Demos activity on the emulator then click
+<code class="prettyprint">Device Screeshot with compressed Hierarchy</code>. The button has an image of a droid
+with a red circle. The following is a screenshot of the end result:</p>
+
+<p><img src="../../images/uiautomatorviewer.png"></p>
+
+<p>Once you’re done with uiautomatorviewer, you may want to restore the Host GPU
+option. The Android emulator is significantly faster with it enabled.</p>
+
+<h2 id="helpful-links">Helpful Links</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/appium/tree/master/docs">Appium</a></td>
+<td style="text-align: left">New versions of Appium.app are available on the appium homepage.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem</a></td>
+<td style="text-align: left">Appium’s ruby library is on GitHub.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/ruby_console">appium_console gem</a></td>
+<td style="text-align: left">Appium’s Ruby Console is also on GitHub.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td style="text-align: left">The network traffic displayed in the console conforms to the JSON Wire Protocol.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="summary">Summary</h2>
+
+<p>We compiled the open source API Demos app from source. Then the Appium
+Ruby Console was used find elements with the page command. After ending the
+session, we looked at two visual tools. Appium.app is great for generating
+gestures and uiautomatorviewer helps inspect elements on the page visually.</p>
+
+<p>In the next chapter, we’ll write our first test.</p>
+
+<h1 id="writing-your-first-test">Writing your first test</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Now that we’ve looked at the commands in the console,
+it’s time to write our first test. This involves using a test framework,
+following the page object pattern, and running the test automatically.</p>
+
+<h2 id="automating-a-simple-action">Automating a simple action</h2>
+
+<span class="desc ruby">
+
+<p>The commands in the test are exactly the same as those used in the console.
+Code can be copied and pasted to and from the console to form production tests.</p>
+
+<p>The basic structure of the Api Demos test app is that clicking on the text
+brings you to a dedicated page about that text. Accessibility triggers the
+Accessibility page, Animation triggers Animation, and so on.</p>
+
+<p>We’re going to verify each element brings us to the correct page.</p>
+<pre class="highlight ruby"><span class="n">s_text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span>
+<span class="n">s_text_exact</span> <span class="s1">'Accessibility Node Provider'</span>
+</pre>
+
+<p>For the first entry, we click on Accessibility and then assert that the
+Accessibility page is displayed. The code is valid however there’s an issue
+related to timing.</p>
+
+<p>In the console, the implicit wait is turned to zero for immediate feedback.
+That means when an element isn’t found the test ends immediately because an
+element not found exception is raised.</p>
+
+<p>To overcome these timing problems, the wait helper method is useful.</p>
+<pre class="highlight ruby"><span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span> <span class="s1">'Accessibility Node Provider'</span> <span class="p">}</span>
+</pre>
+
+<p>Now the code will wait up to 30 seconds for the command to succeed. If it
+succeeds then the next line is executed immediately. If the
+command is still failing after 30 seconds, an error is raised. If this error
+is not rescued then the test will end in failure.</p>
+
+<p>Another problem with the test code is that we’re depending on the exact text
+value. When the app changes, our tests will break.</p>
+<pre class="highlight ruby"><span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span> <span class="mi">2</span> <span class="p">}</span>
+
+<span class="n">wait</span> <span class="p">{</span> <span class="n">cell_1</span><span class="p">.</span><span class="nf">click</span> <span class="p">}</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">find_exact</span> <span class="s1">'Accessibility Node Provider'</span> <span class="p">}</span>
+</pre>
+
+<p>In this code, we’re finding the first text by index. Index 2 contains the
+first cell. Index 1 is the header <code class="prettyprint">API Demo</code>. To verify we’re on the
+accessibility page after clicking, the name selector is used. Name is
+implemented as a content description search when using uiautomator. Thia
+allows the text to change while retaining the content description. The test
+is now resilient to text changes. It’ll break only when the elements are
+reordered or the content description changes.</p>
+
+<p>To conclude this lesson, we’ll look at the code to automate all 12 cells.</p>
+<pre class="highlight ruby"><span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'text'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
+
+<span class="n">cell_names</span><span class="o">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">cell_name</span><span class="o">|</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">scroll_to_exact</span><span class="p">(</span><span class="n">cell_name</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+  <span class="n">wait_true</span> <span class="p">{</span> <span class="o">!</span> <span class="n">exists</span> <span class="p">{</span> <span class="n">find_exact</span> <span class="n">cell_name</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">back</span> <span class="p">}</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">find_exact</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">);</span> <span class="n">find_exact</span><span class="p">(</span><span class="s1">'Animation'</span><span class="p">)</span>  <span class="p">}</span>
+<span class="k">end</span>
+</pre>
+
+<p>First we’re finding all <code class="prettyprint">android.widget.TextView</code> using the shortcut tag name
+ `text. After that, we’re saving the names to the cell_names array.</p>
+<pre class="highlight plaintext"> [ 0] "API Demos",
+ [ 1] "Accessibility",
+ [ 2] "Animation",
+ [ 3] "App",
+ [ 4] "Content",
+ [ 5] "Graphics",
+ [ 6] "Media",
+ [ 7] "NFC",
+ [ 8] "OS",
+ [ 9] "Preference",
+ [10] "Text",
+ [11] "Views"
+</pre>
+
+<p>The first item in the array is the page header. That’s discarded with
+<code class="prettyprint">cell_names[1..-1]</code>. For the remaining elements, we’re scrolling to and
+clicking each of them. To detect that the click was successful,
+the code waits for the cell name to no longer be visible.</p>
+
+<p><code class="prettyprint">wait_true { ! exists { find_exact cell_name } }</code></p>
+
+<p>After that we’re returning to the home page by using <code class="prettyprint">back</code>. The back method
+will return even though the app hasn’t finished transitioning. I recommend
+disabling animations under in <code class="prettyprint">Dev Settings</code>. This can also be <a href="https://code.google.com/p/android-test-kit/wiki/DisablingAnimations">done programmatically</a>.</p>
+
+<p><img src="../../images/animation_off.png"></p>
+
+<p>Finally, we’re checking to ensure we’ve returned to the homepage before
+looking for the next element.</p>
+
+<p><code class="prettyprint">wait { find_exact('Accessibility'); find_exact('Animation')  }</code></p>
+
+</span>
+
+<span class="desc java">
+
+<p>The commands in the test are exactly the same as those used in the console.
+Code can be copied and pasted to and from the console to form production tests.</p>
+
+<p>The basic structure of the Api Demos test app is that clicking on the text
+brings you to a dedicated page about that text. Accessibility triggers the
+Accessibility page, Animation triggers Animation, and so on.</p>
+
+<p>Clone the git repository and copy the <a href="https://github.com/appium/tutorial/tree/master/modules/source/java_android">java_android</a>
+directory to your computer.</p>
+
+<p><code class="prettyprint">git clone https://github.com/appium/tutorial.git</code></p>
+
+<p>The project is setup using maven.</p>
+
+<ul>
+<li>To use with NetBeans, go to <code class="prettyprint">File</code> then <code class="prettyprint">Open Project</code> and select the folder.</li>
+<li>To use with Eclipse, go to <code class="prettyprint">File</code> then <code class="prettyprint">Import</code> and select <code class="prettyprint">Existing Maven Projects</code>
+</li>
+<li>To use with IntelliJ, go to <code class="prettyprint">File</code> then <code class="prettyprint">Open</code> and select the <code class="prettyprint">pom.xml</code>
+</li>
+<li>To use with the command line, <code class="prettyprint">mvn clean test</code> will run all the tests.</li>
+</ul>
+
+<p>We’re going to verify each element brings us to the correct page.</p>
+<pre class="highlight java"><span class="c1">// java</span>
+<span class="n">s_text</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">s_text_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">);</span>
+</pre>
+
+<p>For the first entry, we click on Accessibility and then assert that the
+Accessibility page is displayed. The code is valid however there’s an issue
+related to timing.</p>
+
+<p>In the console, the implicit wait is turned to zero for immediate feedback.
+That means when an element isn’t found the test ends immediately because an
+element not found exception is raised.</p>
+
+<p>To overcome these timing problems, the wait helper method is useful.</p>
+<pre class="highlight java"><span class="c1">// java</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">));</span>
+</pre>
+
+<p>Now the code will wait up to 30 seconds for the command to succeed. If it
+succeeds then the next line is executed immediately. If the
+command is still failing after 30 seconds, an error is raised. If this error
+is not rescued then the test will end in failure.</p>
+
+<p>Another problem with the test code is that we’re depending on the exact text
+value. When the app changes, our tests will break.</p>
+<pre class="highlight java"><span class="c1">// java</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text</span><span class="o">(</span><span class="mi">2</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">find_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">);</span>
+</pre>
+
+<p>In this code, we’re finding the first text by index. Index 2 contains the
+first cell. Index 1 is the header <code class="prettyprint">API Demo</code>. To verify we’re on the
+accessibility page after clicking, the name selector is used. Name is
+implemented as a content description search when using uiautomator. Thia
+allows the text to change while retaining the content description. The test
+is now resilient to text changes. It’ll break only when the elements are
+reordered or the content description changes.</p>
+
+<p>To conclude this lesson, we’ll look at the code to automate all 12 cells.</p>
+<pre class="highlight java"><span class="n">setWait</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">cell_names</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">WebElement</span> <span class="n">cell</span> <span class="o">:</span> <span class="n">tags</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="n">cell_names</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cell</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="c1">// delete title cell</span>
+<span class="n">cell_names</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+
+<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">cell_name</span> <span class="o">:</span> <span class="n">cell_names</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">scroll_to_exact</span><span class="o">(</span><span class="n">cell_name</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">waitInvisible</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="n">cell_name</span><span class="o">));</span>
+    <span class="n">back</span><span class="o">();</span>
+    <span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">));</span>
+    <span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Animation"</span><span class="o">));</span>
+<span class="o">}</span>
+
+<span class="n">setWait</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span> <span class="c1">// restore old implicit wait</span>
+</pre>
+
+<p>The implicit wait in the console is 0. Since we’ll be checking for elements
+that don’t exist, the wait is set to 0 <code class="prettyprint">setWait(0)</code>.  Next all the text tags
+(<code class="prettyprint">android.widget.TextView</code>) are found using the shortcut tag name text. After
+that, we’re saving the names to the cell_names array.</p>
+
+<p><code> [ 0] "API Demos",
+ [ 1] "Accessibility",
+ [ 2] "Animation",
+ [ 3] "App",
+ [ 4] "Content",
+ [ 5] "Graphics",
+ [ 6] "Media",
+ [ 7] "NFC",
+ [ 8] "OS",
+ [ 9] "Preference",
+ [10] "Text",
+ [11] "Views"
+</code></p>
+
+<p>The first item in the array is the page header. That’s discarded with
+<code class="prettyprint">cell_names.remove(0);</code>. For the remaining elements, we’re scrolling to and
+clicking each of them. To detect that the click was successful,
+the code waits for the cell name to no longer be visible.</p>
+
+<p><code class="prettyprint">waitInvisible(for_s_text_exact(cell_name));</code></p>
+
+<p>After that we’re returning to the home page by using <code class="prettyprint">back();</code>. The back method
+will return even though the app hasn’t finished transitioning. I recommend
+disabling animations under in <code class="prettyprint">Dev Settings</code>. This can also be <a href="https://code.google.com/p/android-test-kit/wiki/DisablingAnimations">done programmatically</a>.</p>
+
+<p><img src="../../images/animation_off.png"></p>
+
+<p>Finally, we’re checking to ensure we’ve returned to the homepage before
+looking for the next element.</p>
+<pre class="highlight java"><span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">));</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Animation"</span><span class="o">));</span>
+</pre>
+
+</span>
+
+<h2 id="page-object-pattern">Page Object Pattern</h2>
+
+<span class="desc ruby">
+
+<p>Now that we have a test fully written, it’s time to apply the
+<a href="https://code.google.com/p/selenium/wiki/PageObjects">page object pattern</a>.</p>
+
+<p>This pattern is language independent and applies to any Selenium testing,
+not just appium. The idea is to create an abstraction at the page level. Each
+page knows how to perform the relevant actions.</p>
+
+<p>Clone the git repository and copy the <a href="https://github.com/appium/tutorial/tree/master/modules/source/ruby_android">ruby_android</a>
+directory to your computer.</p>
+
+<p><code class="prettyprint">git clone https://github.com/appium/tutorial.git</code></p>
+
+<p>The pages are contained within the page folder, and the test inside specs.
+The test code is:</p>
+<pre class="highlight ruby"><span class="n">home</span><span class="p">.</span><span class="nf">accessibility_click</span>
+<span class="n">back_click</span>
+
+<span class="n">home</span><span class="p">.</span><span class="nf">animation_click</span>
+<span class="n">back_click</span>
+</pre>
+
+<p>This says from the home page, find the accessibility element and click it.
+Then go back, find the animation element and click it,
+and finally go back once more. The page objects are implemented using modules.</p>
+<pre class="highlight ruby"><span class="k">module</span> <span class="nn">APIDemos</span>
+  <span class="k">module</span> <span class="nn">Home</span>
+    <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+</pre>
+
+<p>There’s a top level <code class="prettyprint">APIDemos</code> module followed by a module for the
+individual page. After that the <code class="prettyprint">class &lt;&lt; self</code> line makes the following
+methods static.</p>
+<pre class="highlight ruby">  <span class="k">def</span> <span class="nf">accessibility_click</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">assert</span>
+    <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+    <span class="n">accessibility</span><span class="p">.</span><span class="nf">assert</span>
+  <span class="k">end</span>
+</pre>
+
+<p>This is the first element method. First the method asserts that the app
+is on the home page. Self in this case refers to the Home module. <code class="prettyprint">self
+.assert</code> is the same as <code class="prettyprint">home.assert</code>. After that the second static text
+is clicked. Finally, the code asserts the app is on the accessibility page.
+The accessibility page object defines the assert methods:</p>
+<pre class="highlight ruby">  <span class="k">def</span> <span class="nf">assert_exists</span>
+    <span class="n">s_text_exact</span> <span class="s1">'Accessibility Node Querying'</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">assert</span>
+    <span class="n">wait</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">assert_exists</span> <span class="p">}</span>
+  <span class="k">end</span>
+</pre>
+
+<p>We’re looking for an exact text match to detect the accessibility page.</p>
+
+<p><code class="prettyprint">appium.txt</code> enables these page methods to be used from within the appium
+ruby console. In the next lesson, we’ll review running the entire test using
+Rake.</p>
+
+</span>
+
+<span class="desc java">
+
+<p>Now that we have a test fully written, it’s time to apply the
+<a href="https://code.google.com/p/selenium/wiki/PageObjects">page object pattern</a>.
+For this tutorial, we’re going to implement the page object pattern using
+abstract classes and static helper methods.</p>
+
+<p>The page object pattern is language independent and applies to any Selenium
+testing, not just appium. The idea is to create an abstraction at the page
+level. Each page knows how to perform the relevant actions.</p>
+
+<p>Clone the git repository and copy the <a href="https://github.com/appium/tutorial/tree/master/modules/source/java_android">java_android</a>
+directory to your computer.</p>
+
+<p><code class="prettyprint">git clone https://github.com/appium/tutorial.git</code></p>
+
+<p>The project is setup using maven.</p>
+
+<ul>
+<li>To use with NetBeans, go to <code class="prettyprint">File</code> then <code class="prettyprint">Open Project</code> and select the folder.</li>
+<li>To use with Eclipse, go to <code class="prettyprint">File</code> then <code class="prettyprint">Import</code> and select <code class="prettyprint">Existing Maven Projects</code>
+</li>
+<li>To use with IntelliJ, go to <code class="prettyprint">File</code> then <code class="prettyprint">Open</code> and select the <code class="prettyprint">pom.xml</code>
+</li>
+<li>To use with the command line, <code class="prettyprint">mvn clean test</code> will run all the tests.</li>
+</ul>
+
+<p>The pages are contained within the page folder, and the test inside specs.
+The test code is:</p>
+<pre class="highlight java"><span class="c1">// PageObjectPatternTest.java</span>
+<span class="n">home</span><span class="o">.</span><span class="na">accessibilityClick</span><span class="o">();</span>
+<span class="n">back</span><span class="o">();</span>
+
+<span class="n">home</span><span class="o">.</span><span class="na">animationClick</span><span class="o">();</span>
+<span class="n">back</span><span class="o">();</span>
+</pre>
+
+<p>This says from the home page, find the accessibility element and click it. Then
+go back, find the animation element and click it, and finally go back once
+more.</p>
+
+<p>The page objects are implemented using abstract classes.</p>
+<pre class="highlight java"><span class="c1">// HomePage.java</span>
+<span class="kn">package</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">page</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.openqa.selenium.By</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Helpers</span><span class="o">.</span><span class="na">element</span><span class="o">;</span>
+
+<span class="cm">/** Page object for the home page **/</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="o">{</span>
+</pre>
+
+<p>We’re using a helpers class to find elements using Selenium’s By class. The
+element method is imported statically so <code class="prettyprint">element()</code> can be used instead of
+<code class="prettyprint">Helpers.element()</code>.</p>
+<pre class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">accessibilityClick</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">loaded</span><span class="o">();</span>
+    <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">AccessibilityPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
+<span class="o">}</span>
+</pre>
+
+<p>This is the first method in the HomePage class. The method starts by asserting
+that the app is on the home page. <code class="prettyprint">loaded();</code> in this context is the same as
+<code class="prettyprint">HomePage.loaded();</code> After that, we’re finding the “Accessibility” element by
+name then clicking on it. Finally, the code asserts the app is on
+the accessibility page. The AccessibilityPage page object defines the assert methods:</p>
+<pre class="highlight java"><span class="cm">/** Verify the accessibility page has loaded **/</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">loaded</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">));</span>
+<span class="o">}</span>
+</pre>
+
+<p>We’re looking for an element that’s known to be present to verify the
+currently loaded page is the accessibility page. The accessibility page has
+an element named “Accessibility Node Provider” so that’s how we’re
+finding it.</p>
+
+<p>I encourage you to review the full source of the example. This is one way to
+implement the page object pattern. There are many other alternatives such as the
+<a href="https://code.google.com/p/selenium/wiki/PageFactory">PageFactory</a> included in
+Selenium’s Java bindings.</p>
+
+</span>
+
+<h2 id="running-the-test">Running the test</h2>
+
+<span class="desc ruby">
+
+<p>Now that we have the code written and it’s following best practices,
+let’s investigate a new way to run it.</p>
+
+<p>One way to run the test is to copy and paste the lines into the console.
+This can be done line by line when debugging. You could also copy and paste
+the entire test.</p>
+
+<p>When running a full test, it’s often preferable to use the <code class="prettyprint">rake</code> command.</p>
+
+<blockquote>
+<p>rake android[test]</p>
+</blockquote>
+
+<p>The Rakefile for this project is setup to define an android task. That task
+accepts the test name as an argument.</p>
+
+<p>Running a single test this way is great for debugging as the individual lines
+of the source code are printed to the console. It also reproduces how the
+test will be run in continuous integration. If there are timing issues then
+they will be apparent when everything is run together.</p>
+
+<p>The rake output for our simple 4 line test is below:</p>
+<pre class="highlight plaintext">$ rake android[test]
+adb uninstall com.example.android.apis
+WARNING: linker: libdvm.so has text relocations. This is wasting memory and is a security risk. Please fix.
+Success
+Rake appium.txt path is: /tutorial/modules/source/ruby_android/appium.txt
+bundle exec ruby ./appium/run.rb android "test"
+appium.txt path: /tutorial/modules/source/ruby_android/appium.txt
+Exists? true
+Loading /tutorial/modules/source/ruby_android/appium.txt
+{
+      "DEVICE" =&gt; "android",
+    "APP_PATH" =&gt; "./api.apk",
+     "require" =&gt; [
+        [0] "./appium/android/pages",
+        [1] "./appium/android/common.rb"
+    ]
+}
+</pre>
+
+<p>First the rake task uninstalls any existing version of the apk. The android 
+emulator comes preloaded with an API Demos that’s different from what we’re 
+expecting. If the tests run against that version then they’ll fail. 
+Uninstalling ensures we’re testing against the correct version.</p>
+
+<p>We’ve loaded appium.txt and then used bundle exec to run a ruby command with
+the gems defined in the Gemfile. The appium.txt defines what device to use,
+the app to install, and the files to load.</p>
+<pre class="highlight plaintext">Start driver
+Use selendroid? false
+Debug is: true
+{
+        :fast_clear =&gt; true,
+             :debug =&gt; true,
+              :wait =&gt; 1,
+    :export_session =&gt; true
+}
+Device is: Android
+</pre>
+
+<p>The driver is started in debug mode and we’re able to see the session traffic.
+The session capabilities are sent to the appium server. We’re using
+uiautomator (Device Android) instead of selendroid. The reset method fast
+clear is enabled. The implicit wait is set to 1 second. Export session is
+enabled. This makes it possible to use the flake gem with Sauce Labs.</p>
+<pre class="highlight plaintext">post /session
+{
+    :desiredCapabilities =&gt; {
+                 :compressXml =&gt; false,
+                    :platform =&gt; "Linux",
+                     :version =&gt; "4.3",
+                      :device =&gt; "Android",
+               :"device-type" =&gt; "tablet",
+        :"device-orientation" =&gt; "portrait",
+                        :name =&gt; "Ruby Console Android Appium",
+               :"app-package" =&gt; nil,
+              :"app-activity" =&gt; nil,
+         :"app-wait-activity" =&gt; nil,
+                   :fastClear =&gt; true,
+                         :app =&gt; "/tutorial/modules/source/ruby_android/api.apk"
+    }
+}
+</pre>
+
+<p><a href="http://developer.android.com/tools/help/uiautomator/UiDevice.html#setCompressedLayoutHeirarchy(boolean)">compressXml</a>
+only works on API 18 or above so it’s disabled by default. When enabled,
+the source output and XPaths are much cleaner.</p>
+
+<p>app-package, app-activity, and app-wait-activity are set to nil. By omitting
+these in the desired capabilities, appium will inspect the APK and use
+reasonable defaults.</p>
+<pre class="highlight plaintext">post /execute
+{
+    :script =&gt; "mobile: setCommandTimeout",
+      :args =&gt; [
+        [0] {
+            :timeout =&gt; 9999
+        }
+    ]
+}
+</pre>
+
+<p>The command timeout is set to a high value. That means if there’s a long
+pause between sending commands to appium, the test will not automatically fail.</p>
+<pre class="highlight plaintext">post /timeouts/implicit_wait
+{
+    :ms =&gt; 1000
+}
+</pre>
+
+<p>By default, we’re waiting 1 second for an element to show up. Even though
+implicit wait is used, we’re also taking advantage of a client side wait.</p>
+<pre class="highlight plaintext">Loading one test: /tutorial/modules/source/ruby_android/appium/android/specs/./test.rb
+</pre>
+
+<p>We’ve found one test, <code class="prettyprint">test.rb</code>, and execution begins.</p>
+<pre class="highlight plaintext">test | 1 |android/specs/test.rb:5
+</pre>
+
+<p>This is the 1st test in test.rb and it’s named <code class="prettyprint">test</code>.</p>
+<pre class="highlight plaintext">    home.accessibility_click
+</pre>
+
+<p>The actual line of code from test.rb that’s running is displayed in the
+console.</p>
+<pre class="highlight plaintext">post /element
+{
+    :using =&gt; "xpath",
+    :value =&gt; "text[@text='Accessibility']"
+}
+post /element
+{
+    :using =&gt; "xpath",
+    :value =&gt; "text[@text='Animation']"
+}
+post /element
+{
+    :using =&gt; "xpath",
+    :value =&gt; "//text[2]"
+}
+post /element/3/click
+post /element
+{
+    :using =&gt; "xpath",
+    :value =&gt; "text[@text='Accessibility Node Querying']"
+}
+</pre>
+
+<p>That one call to <code class="prettyprint">home.accessibility_click</code> generated 5 network requests. The
+first two are for home.assert, the third and fourth are for clicking on the
+button, and finally we’re asserting we made it to the accessibility page.</p>
+<pre class="highlight plaintext">    back_click
+def back_click
+  sleep 2
+  back
+post /back
+</pre>
+
+<p>The back_click logic sleeps two seconds to prevent flakiness and then invokes
+the back method on the appium server.</p>
+<pre class="highlight plaintext">    home.animation_click
+post /element
+{
+    :using =&gt; "xpath",
+    :value =&gt; "text[@text='Accessibility']"
+}
+post /element
+{
+    :using =&gt; "xpath",
+    :value =&gt; "text[@text='Animation']"
+}
+post /element
+{
+    :using =&gt; "xpath",
+    :value =&gt; "//text[3]"
+}
+post /element/7/click
+post /element
+{
+    :using =&gt; "xpath",
+    :value =&gt; "text[@text='Bouncing Balls']"
+}
+</pre>
+
+<p>This is the second button. The app is on the animation page.</p>
+<pre class="highlight plaintext">    back_click
+def back_click
+  sleep 2
+  back
+post /back
+end
+</pre>
+
+<p>And now the app is on the home page.</p>
+<pre class="highlight plaintext">Finished in 14 secs
+
+1 runs, 0 assertions, 0 failures, 0 errors, 0 skips
+delete 
+</pre>
+
+<p>At the end of the test, statistics are displayed. This is a successful run
+because there are no failures, errors, or skips. The final <code class="prettyprint">delete</code> is the
+result of calling driver.quit which tells appium to end the session.</p>
+
+</span>
+
+<span class="desc java">
+
+<p>Now that we have the code written and it’s following best practices,
+let’s investigate a new way to run it.</p>
+
+<blockquote>
+<p>mvn -Dtest=appium.tutorial.android.PageObjectPatternTest clean test</p>
+</blockquote>
+
+<p>We’re invoking maven and passing the fully qualified name of the
+PageObjectPatternTest class. Then we’re running the clean command to make
+sure old test code is deleted. Finally the test command runs which will
+execute each test that has the JUnit <code class="prettyprint">@org.junit.Test</code> annotation.</p>
+
+<p>Running a single test this way is great for quickly verifying the code works.
+To run all the tests, there’s the <code class="prettyprint">mvn clean test</code> command. First clean is
+run, then all the tests are executed. We’re going to investigate the appium
+server output for the PageObjectPatternTest test.</p>
+<pre class="highlight plaintext">debug: Request received with params:
+{ "platformVersion": "4.4",
+  "platform": "OS X 10.9",
+  "app": "/tutorial/modules/source/java_android/api.apk",
+  "platformName": "Android"
+}
+</pre>
+
+<p>The desired capabilities tell appium what device to use,
+the app to install, and the requested simulator version.</p>
+<pre class="highlight java"><span class="c1">// AppiumTest.java</span>
+<span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">timeouts</span><span class="o">().</span><span class="na">implicitlyWait</span><span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+</pre>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/timeouts/implicit_wait
+debug: Request received with params: {"ms":30000}
+info: Set Android implicit wait to 30000ms
+</pre>
+
+<p>The <code class="prettyprint">driver.manage().timeouts()</code> line of Java code requested that appium wait
+30 seconds for elements to appear before giving up.</p>
+<pre class="highlight java"><span class="c1">// HomePage.java</span>
+<span class="n">accessibilityClick</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">loaded</span><span class="o">();</span>
+  <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+  <span class="n">AccessibilityPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
+<span class="o">}</span>
+</pre>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+debug: Request received with params: {"using":"name","value":"NFC"}
+</pre>
+
+<p>The first method that executes is accessibilityClick. The logs show that loaded is
+checking for the NFC name to verify the homepage is displayed.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+debug: Request received with params: {"using":"name","value":"Accessibility"}
+</pre>
+
+<p>Next the code looks for the “Accessibility” element.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element/2/click
+debug: Request received with params: {"id":"2"}
+</pre>
+
+<p>That element is found, assigned the id of 2, and then clicked.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+debug: Request received with params: {"using":"name","value":"Accessibility Node Provider"}
+</pre>
+
+<p>Now the code looks to see if the Accessibility page has loaded.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/back
+</pre>
+
+<p>After finding the accessibility page, it’s time to return to the home page
+using <code class="prettyprint">back</code>.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+debug: Request received with params: {"using":"name","value":"NFC"}
+</pre>
+
+<p>The code verifies we successfully returned to the home page.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+debug: Request received with params: {"using":"name","value":"Animation"}
+debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element/5/click
+</pre>
+
+<p>Now the “Animation” element is found and clicked.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+debug: Request received with params: {"using":"name","value":"Bouncing Balls"}
+</pre>
+
+<p>Searching for “Bouncing Balls” verifies we’ve made it to the animation page.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/back
+</pre>
+
+<p>Finally, we’re returning to the home page once more and the test is complete.</p>
+<pre class="highlight plaintext">-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running appium.tutorial.android.PageObjectPatternTest
+Running test: pageObject
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.455 sec - in appium.tutorial.android.PageObjectPatternTest
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 21.475s
+[INFO] Finished at: Sat Mar 22 19:14:23 EDT 2014
+[INFO] Final Memory: 16M/185M
+[INFO] ------------------------------------------------------------------------
+</pre>
+
+<p>At the end of the test, statistics are displayed. This is a successful run
+because there are no failures, errors, or skips.</p>
+<pre class="highlight plaintext">DELETE /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb 200 525ms - 89b
+</pre>
+
+<p>The final <code class="prettyprint">delete</code> is the result of calling driver.quit which tells appium to
+end the session.</p>
+
+</span>
+
+<h2 id="helpful-links">Helpful Links</h2>
+
+<span class="desc ruby">
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem docs</a></td>
+<td style="text-align: left">The Ruby lib has extensive documentation. A number of Ruby helper methods are available.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/RubyBindings">Selenium Ruby bindings</a></td>
+<td style="text-align: left">The full API of the selenium ruby bindings is available. Under the hood the ruby bindings for appium use the selenium ruby bindings.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
+<td style="text-align: left">The page object pattern is explained in great detail.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://rake.rubyforge.org/">Rake</a></td>
+<td style="text-align: left">The Rake homepage contains an overview of the tool.</td>
+</tr>
+</tbody>
+</table>
+
+</span>
+
+<span class="desc java">
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="http://maven.apache.org/">Apache Maven</a></td>
+<td style="text-align: left">Maven’s homepage contains extensive documentation</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://junit.org/">JUnit</a></td>
+<td style="text-align: left">JUnit is on GitHub</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
+<td style="text-align: left">Selenium’s wiki has an excellent article about page objects</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://developer.apple.com/library/ios/samplecode/uicatalog/introduction/intro.html">Apple’s uicatalog</a></td>
+<td style="text-align: left">Apple hosts the sample code for the UICatalog app we’ve been testing</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></td>
+<td style="text-align: left">JetBrains has a free open source IntelliJ IDEA IDE that works well for Java</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://www.eclipse.org/downloads/">Eclipse</a></td>
+<td style="text-align: left">Eclipse is another popular IDE</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://netbeans.org/downloads/">NetBeans</a></td>
+<td style="text-align: left">NetBeans is a Java IDE by Oracle</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://developer.android.com/sdk/installing/studio.html">Android Studio</a></td>
+<td style="text-align: left">If you’re developing for android, you may already have Android Studio installed.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td style="text-align: left">The commands generated by using the Selenium bindings conform to the JSON Wire Protocol</td>
+</tr>
+</tbody>
+</table>
+
+</span>
+
+<h2 id="summary">Summary</h2>
+
+<p>We successfully wrote a complete test and applied the page object pattern to it.
+After that, we ran the test. The appium server output was reviewed to 
+understand how the code is translated into selenium commands.</p>
+
+<p>In the next chapter, we’re going to look at even more ways to run tests.</p>
+
+<h1 id="running-tests">Running tests</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<span class="desc ruby">
+
+<p>So far we’ve looked at two different ways to run tests, the console and rake.</p>
+
+<p>In this chapter we’ll cover running using the flaky gem, locally, on Jenkins,
+and on Sauce.</p>
+
+</span>
+
+<span class="desc java">
+
+<p>So far we’ve looked at running the tests using maven. In this chapter we’ll
+cover running via Jenkins, and on Sauce.</p>
+
+</span>
+
+<h2 id="flaky-gem">Flaky Gem</h2>
+
+<span class="desc ruby">
+
+<p>The flaky gem is a complete test runner specialized for appium Ruby tests.</p>
+
+<p>It runs only on OS X and supports iOS and Android testing. After writing a
+number of UI tests, you’ll quickly notice that flakiness is a serious problem
+. One way we’re able to overcome this issue is by running failed tests
+multiple times.</p>
+
+<p>The flaky gem has a number of run modes:</p>
+
+<ul>
+<li>all tests - run everything</li>
+<li>from file - run a set of tests as specified in a text file</li>
+<li>one test - run only one test</li>
+<li>two pass - run tests once, then run only the failures x amount of times.</li>
+</ul>
+
+<p>The best way to understand these modes is to see them in action.</p>
+
+<p>In addition to running the tests and recording pass/fail,
+there are a number of interesting features.</p>
+
+<p>The test run is automatically video recorded, in addition to debug and crash
+logs. The crash logs are also recorded.
+After a run, all the specific information is stored in /tmp/flaky</p>
+
+<p>This tool was designed for a highly specific use case (testing virtual
+devices) so even if it doesn’t work out of the box for you,
+some of the open source code may still be valuable.</p>
+
+<p>flaky uses the same test syntax as rake.</p>
+
+<p>To run the <code class="prettyprint">test.rb</code> from the last lesson 3 times, use <code class="prettyprint">flake 3 android[test]</code></p>
+<pre class="highlight plaintext">$ flake 3 android[test]
+Recording Video: true
+Running test 3x
+
+ android/specs/test  ✓ ✓ ✓
+
+1 Tests
+
+Success (1):
+android/specs/test, runs: 3, pass: 3, fail: 0
+
+Finished in 1 min 6 secs
+Mar 16 12:55 pm - 12:56 pm
+3/16/2014   1   0   1   100
+--
+</pre>
+
+<p>This output shows that we’re able to run the test 3 times without issue.
+Additional information is saved in <code class="prettyprint">/tmp/flaky</code>. It’s not uncommon to have a
+test that fails 1 in 10 times. Rerunning failed tests is a way to see how
+stable they are.</p>
+
+</span>
+
+<span class="desc java">
+
+<p>The flaky gem is only for ruby</p>
+
+</span>
+
+<h2 id="running-locally">Running Locally</h2>
+
+<span class="desc ruby">
+
+<p>For completeness, there are three primary ways of running tests locally.</p>
+
+<ul>
+<li>appium ruby console</li>
+<li>rake</li>
+<li>flake</li>
+</ul>
+
+<p>Running locally means both the test and the virtual device are on your
+computer. Manually running the console, rake, or flake is nice for
+development. However to run the tests automatically, a continuous integration
+solution is needed. That’s what we’re discussing in the next lesson.</p>
+
+</span>
+
+<span class="desc java">
+
+<p>Using maven is one way to run tests locally.</p>
+
+<p><code class="prettyprint">mvn clean test</code></p>
+
+<p>The above command will delete old code then run all the tests.</p>
+
+<p><code class="prettyprint">mvn -Dtest=appium.tutorial.android.PageObjectPatternTest clean test</code></p>
+
+<p><code class="prettyprint">-D</code> sets the test property to the fully qualified class name of the test.
+Then clean is invoked, and test runs only the single test.</p>
+
+</span>
+
+<h2 id="running-using-jenkins-ci">Running using Jenkins CI</h2>
+
+<p>Jenkins is a popular open source CI server. Appium works with any CI.</p>
+
+<p>A simple way to get started is by downloading the Jenkins war.</p>
+
+<p><code class="prettyprint">http://jenkins-ci.org/</code></p>
+
+<p>then run</p>
+
+<p><code class="prettyprint">java -jar jenkins.war</code></p>
+
+<p>now open a web browser and visit <a href="http://localhost:8080/">http://localhost:8080/</a></p>
+
+<p>Click <code class="prettyprint">New Item</code>, enter <code class="prettyprint">Appium job</code> in <code class="prettyprint">Item name</code>,
+select <code class="prettyprint">Build a free-style software project</code> then click <code class="prettyprint">OK</code>.</p>
+
+<p>Scroll down to Build, and press <code class="prettyprint">Add build step</code>, then select <code class="prettyprint">Execute shell</code>
+. Add the following:</p>
+
+<span class="desc ruby">
+<pre class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
+
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">emulator64</span><span class="o">-</span><span class="n">x86</span>
+<span class="n">emulator</span> <span class="vi">@tutorial</span> <span class="o">&amp;</span>
+<span class="nb">sleep</span> <span class="mi">40</span>
+
+<span class="c1"># http://ncona.com/2014/01/detect-when-android-emulator-is-ready/</span>
+<span class="n">svc_bootanim</span><span class="o">=</span><span class="s1">''</span>
+<span class="k">while</span> <span class="o">[[</span> <span class="s1">'stopped'</span> <span class="o">!=</span> <span class="err">$</span><span class="p">{</span><span class="n">svc_bootanim</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span> <span class="o">]]</span><span class="p">;</span> <span class="k">do</span>
+  <span class="nb">sleep</span> <span class="mi">3</span>
+  <span class="n">svc_bootanim</span><span class="o">=</span><span class="sb">`adb shell getprop init.svc.bootanim`</span>
+  <span class="n">adb</span> <span class="n">kill</span><span class="o">-</span><span class="n">server</span><span class="p">;</span> <span class="n">adb</span> <span class="n">devices</span>
+<span class="n">done</span>
+
+<span class="n">adb</span> <span class="n">uninstall</span> <span class="n">com</span><span class="p">.</span><span class="nf">example</span><span class="p">.</span><span class="nf">android</span><span class="p">.</span><span class="nf">apis</span>
+
+<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span>
+<span class="n">bundle</span> <span class="n">update</span>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
+
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">emulator64</span><span class="o">-</span><span class="n">x86</span>
+</pre>
+
+<p>Press <code class="prettyprint">OK</code>, and then <code class="prettyprint">Build Now</code> near the top left of the page. Click on the
+build link inside the <code class="prettyprint">Build History</code> tab. Finally select <code class="prettyprint">Console Output</code>.
+You should see something like this:</p>
+<pre class="highlight plaintext">Started by user anonymous
+Building in workspace /.jenkins/jobs/Android/workspace
+[workspace] $ /bin/bash --login /var/folders/w7/c1yh5bps5dnc0frz0tbj_dmh0000gn/T/hudson5624873839237212617.sh
+No matching processes belonging to you were found
+HAX is working and emulator runs in fast virt mode
+* daemon not running. starting it now on port 5037 *
+* daemon started successfully *
+List of devices attached 
+emulator-5554   device
+
+* daemon not running. starting it now on port 5037 *
+* daemon started successfully *
+List of devices attached 
+emulator-5554   device
+
+WARNING: linker: libdvm.so has text relocations. This is wasting memory and is a security risk. Please fix.
+Failure
+Fetching gem metadata from https://rubygems.org/............
+Fetching additional metadata from https://rubygems.org/..
+Resolving dependencies...
+Using rake (10.1.1)
+Using awesome_print (1.2.0)
+Using json (1.8.1)
+Using posix-spawn (0.3.8)
+Using ffi (1.9.3)
+Using childprocess (0.5.1)
+Using multi_json (1.9.0)
+Using rubyzip (1.1.0)
+Using websocket (1.0.7)
+Using selenium-webdriver (2.40.0)
+Using blankslate (2.1.2.4)
+Using parslet (1.5.0)
+Using toml (0.1.1)
+Using appium_lib (0.21.0)
+Using bond (0.5.1)
+Using coderay (1.1.0)
+Using method_source (0.8.2)
+Using slop (3.5.0)
+Using pry (0.9.12.6)
+Using numerizer (0.1.1)
+Using chronic_duration (0.10.4)
+Using spec (5.0.19)
+Using appium_console (0.5.9)
+Using flaky (0.0.31)
+Using mime-types (2.2)
+Using rest-client (1.6.7)
+Using test_runner (0.9.37)
+Using bundler (1.5.3)
+Your bundle is updated!
+Recording Video: true
+Running test 1x
+[36m
+ android/specs/test [0m[32m ✓[0m
+
+1 Tests
+
+Success (1):
+android/specs/test, runs: 1, pass: 1, fail: 0 
+
+Finished in 24 secs
+Mar 16  1:09 pm -  1:10 pm
+3/16/2014   1   0   1   100
+--
+Finished: SUCCESS
+</pre>
+
+</span>
+
+<span class="desc java">
+<pre class="highlight shell"><span class="c">#!/bin/bash --login</span>
+
+killall -9 node &amp;&gt; /dev/null
+
+<span class="nb">cd</span> <span class="nv">$APPIUM_HOME</span>
+node . &amp;&gt; /dev/null &amp;
+
+killall -9 emulator64-x86
+emulator @tutorial &amp;&gt; /dev/null &amp;
+sleep 40
+
+<span class="c"># http://ncona.com/2014/01/detect-when-android-emulator-is-ready/</span>
+<span class="nv">svc_bootanim</span><span class="o">=</span><span class="s1">''</span>
+<span class="k">while</span> <span class="o">[[</span> <span class="s1">'stopped'</span> !<span class="o">=</span> <span class="k">${</span><span class="nv">svc_bootanim</span>:0:7<span class="k">}</span> <span class="o">]]</span>; <span class="k">do
+  </span>sleep 3
+  <span class="nv">svc_bootanim</span><span class="o">=</span><span class="sb">`</span>adb shell getprop init.svc.bootanim<span class="sb">`</span>
+  adb <span class="nb">kill</span>-server; adb devices
+<span class="k">done
+
+</span><span class="nb">cd</span> ~/tutorial/modules/source/java_android
+mvn clean <span class="nb">test
+
+</span>killall -9 node &amp;&gt; /dev/null
+killall -9 emulator64-x86
+</pre>
+
+<p>Make sure that APPIUM_HOME is set in your <code class="prettyprint">~/.bash_profile</code></p>
+
+<p><code>open ~/.bash_profile
+export APPIUM_HOME="path/to/appium"
+</code></p>
+
+<p>Press <code class="prettyprint">OK</code>, and then <code class="prettyprint">Build Now</code> near the top left of the page. Click on the
+build link inside the <code class="prettyprint">Build History</code> tab. Finally select <code class="prettyprint">Console Output</code>.
+You should see results in the Jenkins console once the job completes.</p>
+<pre class="highlight plaintext">-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running appium.tutorial.android.AutomatingASimpleActionTest
+Running test: one
+Running test: two
+Running test: four
+Running test: three
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 82.315 sec - in appium.tutorial.android.AutomatingASimpleActionTest
+Running appium.tutorial.android.PageObjectPatternTest
+Running test: pageObject
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.957 sec - in appium.tutorial.android.PageObjectPatternTest
+
+Results :
+
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1:38.581s
+[INFO] Finished at: Wed Mar 26 22:33:10 EDT 2014
+[INFO] Final Memory: 19M/180M
+[INFO] ------------------------------------------------------------------------
+Finished: SUCCESS
+</pre>
+
+</span>
+
+<p>This demonstrates that the technology works well in CI. For a proper setup,
+the Jenkins master node would be on a different physical machine. The executor
+would then attach to the master node. The code would be pulled from GitHub using
+the Git plugin. The <a href="https://wiki.jenkins-ci.org/display/JENKINS/Android+Emulator+Plugin">android emulator plugin</a>
+is an alternative to launching the emulator from within the shell script. There
+are also a number of other helpful plugins such as <a href="https://wiki.jenkins-ci.org/display/JENKINS/Green+Balls">Green spheres</a>.</p>
+
+<p>In the next lesson, we’ll look at running the same test on Sauce Labs. This
+means we don’t have to worry about setting up build nodes.</p>
+
+<h2 id="running-on-sauce">Running on Sauce</h2>
+
+<p>All the tools and techniques we’ve covered so far produce tests that run well
+on Sauce Labs.</p>
+
+<p>Testing is best done by using a continuous integration software such as Jenkins.</p>
+
+<p>With a few tweaks to the Jenkins setup we used in the previous lesson,
+we’ll be running on Sauce very quickly. <code class="prettyprint">upload.rb</code> takes care of sending the
+app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">storage API</a>.</p>
+
+<span class="desc ruby">
+<pre class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
+<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span>
+<span class="n">bundle</span> <span class="n">update</span>
+
+<span class="n">export</span> <span class="no">SAUCE_USERNAME</span><span class="o">=</span><span class="s2">"your username from sauce"</span>
+<span class="n">export</span> <span class="no">SAUCE_ACCESS_KEY</span><span class="o">=</span><span class="s2">"your accesskey from sauce"</span>
+<span class="n">export</span> <span class="no">UPLOAD_FILE</span><span class="o">=</span><span class="s1">'api.apk'</span>
+<span class="n">ruby</span> <span class="p">.</span><span class="nf">/</span><span class="n">upload</span><span class="o">/</span><span class="n">upload</span><span class="p">.</span><span class="nf">rb</span>
+
+<span class="n">export</span> <span class="no">SAUCE_PATH</span><span class="o">=</span><span class="s2">"sauce-storage:api.apk"</span>
+<span class="n">export</span> <span class="no">APP_NAME</span><span class="o">=</span><span class="s2">"Ruby Android Appium tutorial"</span>
+
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
+</pre>
+
+<p>Now when we run the job, instead of using a local emulator, it’ll run on the
+Sauce cloud.</p>
+<pre class="highlight ruby"><span class="no">Started</span> <span class="n">by</span> <span class="n">user</span> <span class="n">anonymous</span>
+<span class="no">Building</span> <span class="k">in</span> <span class="n">workspace</span> <span class="sr">/.jenkins/</span><span class="n">jobs</span><span class="o">/</span><span class="no">Android</span> <span class="n">on</span> <span class="no">Sauce</span><span class="o">/</span><span class="n">workspace</span>
+<span class="o">[</span><span class="n">workspace</span><span class="o">]</span> <span class="err">$</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span> <span class="sr">/var/</span><span class="n">folders</span><span class="o">/</span><span class="n">w7</span><span class="o">/</span><span class="n">c1yh5bps5dnc0frz0tbj_dmh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">hudson4299606924074097008</span><span class="p">.</span><span class="nf">sh</span>
+<span class="no">Fetching</span> <span class="n">gem</span> <span class="n">metadata</span> <span class="n">from</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/............
+Fetching additional metadata from https:/</span><span class="o">/</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/..
+Resolving dependencies...
+Using rake (10.1.1)
+Using awesome_print (1.2.0)
+Using json (1.8.1)
+Using posix-spawn (0.3.8)
+Using ffi (1.9.3)
+Using childprocess (0.5.1)
+Using multi_json (1.9.0)
+Using rubyzip (1.1.1)
+Using websocket (1.0.7)
+Using selenium-webdriver (2.40.0)
+Using blankslate (2.1.2.4)
+Using parslet (1.5.0)
+Using toml (0.1.1)
+Using appium_lib (0.21.0)
+Using bond (0.5.1)
+Using coderay (1.1.0)
+Using method_source (0.8.2)
+Using slop (3.5.0)
+Using pry (0.9.12.6)
+Using numerizer (0.1.1)
+Using chronic_duration (0.10.4)
+Using spec (5.0.19)
+Using appium_console (0.5.9)
+Using flaky (0.0.31)
+Using mime-types (2.2)
+Using rest-client (1.6.7)
+Using test_runner (0.9.37)
+Using bundler (1.5.3)
+Your bundle is updated!
+File already uploaded
+Recording Video: false
+Running test 1x
+cmd: cd /</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span><span class="p">;</span> <span class="n">rake</span> <span class="n">android</span><span class="o">[</span><span class="s1">'test'</span><span class="p">,</span><span class="kp">true</span><span class="o">]</span>
+<span class="err"></span><span class="o">[</span><span class="mi">36</span><span class="n">m</span>
+ <span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span> <span class="err"></span><span class="o">[</span><span class="mi">0</span><span class="n">m</span><span class="err"></span><span class="o">[</span><span class="mi">32</span><span class="n">m</span> <span class="err">✓</span><span class="o">[</span><span class="mi">0</span><span class="n">m</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">saucelabs</span><span class="p">.</span><span class="nf">com</span><span class="sr">/tests/</span><span class="n">fd94de19e2d84beaa7e93e0853137bde</span>
+
+
+<span class="mi">1</span> <span class="no">Tests</span>
+
+<span class="no">Success</span> <span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+<span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span><span class="p">,</span> <span class="ss">runs: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">pass: </span><span class="mi">1</span><span class="p">,</span> <span class="nb">fail</span><span class="p">:</span> <span class="mi">0</span> 
+
+<span class="no">Finished</span> <span class="k">in</span> <span class="mi">33</span> <span class="n">secs</span>
+<span class="no">Mar</span> <span class="mi">16</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">36</span> <span class="n">pm</span> <span class="o">-</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">36</span> <span class="n">pm</span>
+<span class="mi">3</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="mi">2014</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">100</span>
+<span class="o">--</span>
+<span class="no">Finished</span><span class="p">:</span> <span class="no">SUCCESS</span>
+</pre>
+
+</span>
+
+<span class="desc java">
+<pre class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">woven</span><span class="o">/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">java_android</span>
+<span class="n">export</span> <span class="n">SAUCE_USER_NAME</span><span class="o">=</span><span class="s">"your username from sauce"</span>
+<span class="n">export</span> <span class="n">SAUCE_API_KEY</span><span class="o">=</span><span class="s">"your accesskey from sauce"</span>
+
+<span class="n">mvn</span> <span class="o">-</span><span class="n">Dsauce</span><span class="o">=</span><span class="kc">true</span> <span class="n">clean</span> <span class="n">test</span>
+</pre>
+
+<p>Now when we run the job, instead of using a local simulator,
+it’ll run on the Sauce cloud. The following links are from running on Sauce.</p>
+<pre class="highlight java"><span class="o">-------------------------------------------------------</span>
+ <span class="n">T</span> <span class="n">E</span> <span class="n">S</span> <span class="n">T</span> <span class="n">S</span>
+<span class="o">-------------------------------------------------------</span>
+<span class="n">Running</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">AutomatingASimpleActionTest</span>
+  <span class="nl">test:</span> <span class="n">one</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/d785f5dfdc384998868ad951badbdc0d</span>
+  <span class="nl">test:</span> <span class="n">two</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/ec30035b44714c9c80c03b95ab1d898d</span>
+  <span class="nl">test:</span> <span class="n">four</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/8dcb1fdc2d0c4c4396b1077e427c41c5</span>
+  <span class="nl">test:</span> <span class="n">three</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/7a1812746c1d48c69d30fe67b6c7445d</span>
+<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">4</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">Time</span> <span class="nl">elapsed:</span> <span class="mf">257.266</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">in</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">AutomatingASimpleActionTest</span>
+<span class="n">Running</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">PageObjectPatternTest</span>
+  <span class="nl">test:</span> <span class="n">pageObject</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/9310b0779e0f488cb2683abd24a14856</span>
+<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">1</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">Time</span> <span class="nl">elapsed:</span> <span class="mf">40.323</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">in</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">PageObjectPatternTest</span>
+
+<span class="n">Results</span> <span class="o">:</span>
+
+<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">5</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span>
+
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Total</span> <span class="nl">time:</span> <span class="mi">5</span><span class="o">:</span><span class="mf">01.891</span><span class="n">s</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Finished</span> <span class="nl">at:</span> <span class="n">Tue</span> <span class="n">Apr</span> <span class="mi">01</span> <span class="mi">23</span><span class="o">:</span><span class="mi">28</span><span class="o">:</span><span class="mi">36</span> <span class="n">EDT</span> <span class="mi">2014</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Final</span> <span class="nl">Memory:</span> <span class="mi">18</span><span class="n">M</span><span class="o">/</span><span class="mi">185</span><span class="n">M</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="nl">Finished:</span> <span class="n">SUCCESS</span>
+</pre>
+
+</span>
+
+<p>Visiting <a href="https://saucelabs.com/tests/fd94de19e2d84beaa7e93e0853137bde">the link on Sauce</a>
+will allow you to review the test logs, video recordings, and other information.</p>
+
+<h2 id="helpful-links">Helpful Links</h2>
+
+<span class="desc ruby">
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
+<td style="text-align: left">The Jenkins homepage contains the latest releases and additional information.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
+<td style="text-align: left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/flaky">flaky gem</a></td>
+<td style="text-align: left">flaky is on GitHub.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
+<td style="text-align: left">The objective c code for recording Android/iOS is on GitHub</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
+<td style="text-align: left">Sauce has great documentation for getting started on their platform.</td>
+</tr>
+</tbody>
+</table>
+
+</span>
+
+<span class="desc java">
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
+<td style="text-align: left">The Jenkins homepage contains the latest releases and additional information.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
+<td style="text-align: left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
+<td style="text-align: left">The objective c code for recording Android/iOS is on GitHub</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
+<td style="text-align: left">Sauce has great documentation for getting started on their platform.</td>
+</tr>
+</tbody>
+</table>
+
+</span>
+
+<h2 id="summary">Summary</h2>
+
+<p>We successfully wrote a complete test and applied the page object pattern to it.
+After that, we ran the test. The appium server output was reviewed to 
+understand how the code is translated into selenium commands.</p>
+
+<p>In the next chapter, we’re going to look at even more ways to run tests.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In this final chapter, we’ll look at resources, support,
+and how to search the source code.</p>
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<p>Appium relies on uiautomator for Android automation. Selendroid is also
+supported for Android and is particularly useful for older devices and
+webview support. While a deep understanding of these frameworks is not
+required, it’s helpful when determining what’s possible with appium.</p>
+
+<p>Google has posted the session videos from GTAC 2013. There are a
+number of excellent sessions related to user interface automation.</p>
+
+<ul>
+<li>
+<a href="https://www.youtube.com/watch?v=uHoB0KzQGRg">GTAC 2013: Breaking the Matrix - Android Testing at Scale</a>
+
+<ul>
+<li><a href="https://www.google.com/moderator/#15/e=203275&amp;t=203275.4d">Moderator GTAC 2013 Breaking the Matrix</a></li>
+<li>This session explains Google’s approach to android testing. A <a href="googletesting.blogspot.com/2013/08/how-google-team-tests-mobile-apps.html">blog post</a> is also available.</li>
+</ul>
+</li>
+<li>
+<a href="https://www.youtube.com/watch?v=1J0aXDbjiUE">GTAC 2013: Appium: Automation for Mobile Apps</a>
+
+<ul>
+<li>Jonathan Lipps, the chief architect of Appium, explains mobile app automation.</li>
+</ul>
+</li>
+<li>
+<a href="https://www.youtube.com/watch?v=O1u8iBLUFL0">GTAC 2013: Android UI Automation</a>
+
+<ul>
+<li>Google’s uiautomator engineers talk about the future of uiautomator.</li>
+</ul>
+</li>
+<li>
+<a href="https://www.youtube.com/watch?v=T7ugmCuNxDU">GTAC 2013: Espresso: Fresh Start to Android UI Testing</a>
+
+<ul>
+<li>Google’s newest Android testing framework is presented. This isn’t
+directly related to appium, however it contains some useful information.
+The project has since <a href="https://code.google.com/p/android-test-kit/">been open sourced</a>.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="community-support">Community Support</h2>
+
+<p>Appium has community support in the form of a
+<a href="https://groups.google.com/d/forum/appium-discuss">Google discussion group</a>.</p>
+
+<p>Make sure to read through the
+<a href="https://github.com/appium/appium/blob/master/docs/troubleshooting.md">online documentation</a>
+before posting a question. In addition to the documentation, make sure to search
+the group archive to see if your question has already been asked.</p>
+
+<p>You may want to review <a href="http://www.catb.org/esr/faqs/smart-questions.html">How To Ask Questions The Smart Way</a>
+if you’re new to online discussion groups.</p>
+
+<h2 id="professional-support">Professional Support</h2>
+
+<p>Sauce Labs offers professional support for appium on their hosted cloud. If
+you are a Sauce Labs customer and encounter an issue on the Sauce platform,
+then make sure to open a support ticket.</p>
+
+<p>In addition to Sauce Labs, there’s a growing number of companies that offer
+appium as part of their commercial automation products.</p>
+
+<p>Google actively develops Android. If you’ve found an issue with the Android
+platform then <a href="https://code.google.com/p/android/issues/list">let them know</a>.
+It’s best to make sure that the bug is in Android itself instead of in appium
+before opening an android issue.</p>
+
+<h2 id="searching-the-source-code">Searching the Source Code</h2>
+
+<p>Appium is fully open source. Very few parts of the automation stack are not
+available on GitHub. The Apple tooling, for example Instruments,
+is proprietary. For everything else, GitHub is an amazing tool to look at the
+source.</p>
+
+<p>If we’re interested to see what happens when we type “page” in the Ruby
+console, the answer is only
+<a href="https://github.com/appium/ruby_lib/search?l=ruby&amp;q=%22def+page%22&amp;type=Code">a search away</a>.
+Notice that quotes are used for “def page” so that we’re looking for a ruby method starting with page.</p>
+
+<p>Selenium and all the official bindings are also on GitHub. Here’s a
+<a href="https://github.com/SeleniumHQ/selenium/search?l=ruby&amp;q=%22status%22&amp;type=Code">sample search</a>
+showing that the Ruby bindings support the status command.</p>
+
+<p>appium is composed of modules. The module related to uiautomator is
+appium-uiautomator. To find out what happens on Android when we request the
+page source, search for
+<a href="https://github.com/appium/appium-uiautomator/search?l=java&amp;q=dumpWindowHierarchy&amp;ref=cmdform">dumpWindowHierarchy</a>.
+From there we can tell what uiautomator method appium is using to get the source code.</p>
+
+<p>Android is open source and so are the testing tools. This is helpful to
+identify how methods are implemented. <a href="https://android.googlesource.com/platform/frameworks/testing/+/9ebf91aa923d2424298cb908a79dd03aefbf0a8f/uiautomator/library/core-src/com/android/uiautomator/core/UiDevice.java">UiDevice.java</a>
+contains a dumpWindowHierarchy method. The JavaDoc says the data is saved to
+/data/local/tmp. However upon looking at the actual code,
+the location is dynamically defined depending on where the device has it’s
+data directory. Open source is wonderful for quickly understanding the best
+way to automate on Android.</p>
+
+<h2 id="helpful-links">Helpful Links</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="http://saucelabs.com/">Sauce Labs</a></td>
+<td style="text-align: left">Sauce Labs supports appium for automated mobile testing in the cloud.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://github.com/">GitHub</a></td>
+<td style="text-align: left">GitHub contains all the appium source code.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/appium/tree/master/docs">Appium docs</a></td>
+<td style="text-align: left">Appium has documentation inside the git repository</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://developer.android.com/tools/help/uiautomator/index.html">uiautomator docs</a></td>
+<td style="text-align: left">Google’s documentation for uiautomator.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="summary">Summary</h2>
+
+<p>We covered a number of resources from Google GTAC videos to reading the
+Android source code. In addition to community support, appium is available for
+professional support from companies such as Sauce Labs. Finally, we looked at
+ways to search GitHub to answer questions about automation.</p>
+
+      </div>
+      <div class="dark-box">
+          <div id="lang-selector">
+                <a href="#" data-language-name="ruby">Ruby</a>
+                <a href="#" data-language-name="java">Java</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
