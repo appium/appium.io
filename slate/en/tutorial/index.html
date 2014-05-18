@@ -28,7 +28,13 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="getting-started-with-appium">Getting started with appium</h1>
+        <h1 id="native-ios-automation">Native iOS Automation</h1>
+
+<p>This tutorial covers automating native iOS apps in Ruby and Java. To select the
+active language, click <code class="prettyprint">Ruby</code> or <code class="prettyprint">Java</code> on the left hand side. Code samples and
+content will change based on the selected language.</p>
+
+<h1 id="getting-started-with-appium">Getting started with appium</h1>
 
 <h2 id="introduction">Introduction</h2>
 
@@ -945,7 +951,91 @@ Rake.</p>
 
 </span>
 
-<h2 id="running-the-test-with-rake">Running the test with Rake</h2>
+<span class="desc java">
+
+<p>Now that we have a test fully written, it’s time to apply the
+<a href="https://code.google.com/p/selenium/wiki/PageObjects">page object pattern</a>.
+For this tutorial, we’re going to implement the page object pattern using
+abstract classes and static helper methods.</p>
+
+<p>The page object pattern is language independent and applies to any Selenium
+testing, not just appium. The idea is to create an abstraction at the page
+level. Each page knows how to perform the relevant actions.</p>
+
+<p>Clone the git repository and copy the <a href="https://github.com/appium/tutorial/tree/master/modules/source/java_ios">java_ios</a>
+directory to your computer.</p>
+
+<p><code class="prettyprint">git clone https://github.com/appium/tutorial.git</code></p>
+
+<p>The project is setup using maven.</p>
+
+<ul>
+<li>To use with NetBeans, go to <code class="prettyprint">File</code> then <code class="prettyprint">Open Project</code> and select the folder.</li>
+<li>To use with Eclipse, go to <code class="prettyprint">File</code> then <code class="prettyprint">Import</code> and select <code class="prettyprint">Existing Maven Projects</code>
+</li>
+<li>To use with IntelliJ, go to <code class="prettyprint">File</code> then <code class="prettyprint">Open</code> and select the <code class="prettyprint">pom.xml</code>
+</li>
+<li>To use with the command line, <code class="prettyprint">mvn clean test</code> will run all the tests.</li>
+</ul>
+
+<p>The pages are contained within the page folder, and the test inside specs.
+The test code is:</p>
+<pre class="highlight java"><span class="c1">// PageObjectPatternTest.java</span>
+<span class="n">home</span><span class="o">.</span><span class="na">buttonsClick</span><span class="o">();</span>
+<span class="n">back</span><span class="o">();</span>
+
+<span class="n">home</span><span class="o">.</span><span class="na">controlsClick</span><span class="o">();</span>
+<span class="n">back</span><span class="o">();</span>
+</pre>
+
+<p>This says from the home page, find the buttons element and click it. Then go
+back, find the controls element and click it, and finally go back once more.
+The page objects are implemented using abstract classes.</p>
+<pre class="highlight java"><span class="c1">// HomePage.java</span>
+<span class="kn">package</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">page</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.openqa.selenium.By</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Helpers</span><span class="o">.</span><span class="na">element</span><span class="o">;</span>
+
+<span class="cm">/** Page object for the home page **/</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="o">{</span>
+</pre>
+
+<p>We’re using a helpers class to find elements using Selenium’s By class. The
+element method is imported statically so <code class="prettyprint">element()</code> can be used instead of
+<code class="prettyprint">Helpers.element()</code>.</p>
+<pre class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">buttonsClick</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">loaded</span><span class="o">();</span>
+    <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+    <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
+<span class="o">}</span>
+</pre>
+
+<p>This is the first method in the HomePage class. The method starts by asserting
+that the app is on the home page. <code class="prettyprint">loaded();</code> in this context is the same as
+<code class="prettyprint">HomePage.loaded();</code> After that, we’re finding the “various uses of UIButton”
+element by name then clicking on it. Finally, the code asserts the app is on
+the buttons page. The ButtonsPage page object defines the assert methods:</p>
+<pre class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">loaded</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">));</span>
+<span class="o">}</span>
+</pre>
+
+<p>We’re looking for the title to verify the currently loaded page is the buttons
+page. The title element has a name attribute of “Buttons” so that’s how we’re
+finding it.</p>
+
+<p>I encourage you to review the full source of the example. This is one way to
+implement the page object pattern. There are many other alternatives such as the
+<a href="https://code.google.com/p/selenium/wiki/PageFactory">PageFactory</a> included in
+Selenium’s Java bindings.</p>
+
+</span>
+
+<h2 id="running-the-test">Running the test</h2>
+
+<span class="desc ruby">
 
 <p>Now that we have the code written and it’s following best practices,
 let’s investigate a new way to run it.</p>
@@ -1120,7 +1210,121 @@ delete
 because there are no failures, errors, or skips. The final <code class="prettyprint">delete</code> is the
 result of calling driver.quit which tells appium to end the session.</p>
 
+</span>
+
+<span class="desc java">
+
+<p>Now that we have the code written and it’s following best practices,
+let’s investigate a new way to run it.</p>
+
+<p><code class="prettyprint">mvn -Dtest=appium.tutorial.ios.PageObjectPatternTest clean test</code></p>
+
+<p>We’re invoking maven and passing the fully qualified name of the
+PageObjectPatternTest class. Then we’re running the clean command to make
+sure old test code is deleted. Finally the test command runs which will
+execute each test that has the JUnit <code class="prettyprint">@org.junit.Test</code> annotation.</p>
+
+<p>Running a single test this way is great for quickly verifying the code works.
+To run all the tests, there’s the <code class="prettyprint">mvn clean test</code> command. First clean is
+run, then all the tests are executed. We’re going to investigate the appium
+server output for the PageObjectPatternTest test.</p>
+<pre class="highlight plaintext">debug: Request received with params:
+{"desiredCapabilities"=&gt;
+  {"platform"=&gt;"OS X 10.9",
+   "app"=&gt;"/tutorial/modules/source/java_ios/UICatalog.app",
+   "device"=&gt;"iPhone Simulator",
+   "version"=&gt;"7.1"}}
+</pre>
+
+<p>The desired capabilities tell appium what device to use,
+the app to install, and the requested simulator version.</p>
+<pre class="highlight java"><span class="c1">// AppiumTest.java</span>
+<span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">timeouts</span><span class="o">().</span><span class="na">implicitlyWait</span><span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
+</pre>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/timeouts/implicit_wait
+debug: Request received with params: {"ms":30000}
+info: Set iOS implicit wait to 30000ms
+</pre>
+
+<p>The <code class="prettyprint">driver.manage().timeouts()</code> line of Java code requested that appium wait
+30 seconds for elements to appear before giving up.</p>
+<pre class="highlight java"><span class="c1">// HomePage.java</span>
+<span class="n">buttonsClick</span><span class="o">()</span> <span class="o">{</span>
+  <span class="n">loaded</span><span class="o">();</span>
+  <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+  <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
+<span class="o">}</span>
+</pre>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"UICatalog"}
+</pre>
+
+<p>The first method that executes is buttonsClick. The logs show that loaded is
+checking for the UICatalog name to verify the homepage is displayed.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"Buttons, Various uses of UIButton"}
+</pre>
+
+<p>Next the code looks for the “Various uses of UIButton” element.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element/1/click
+debug: Request received with params: {"id":"1"}
+</pre>
+
+<p>That element is found, assigned the id of 1, and then clicked.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"Buttons"}
+</pre>
+
+<p>Now the code looks to see if the Buttons page has loaded.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/back
+</pre>
+
+<p>After finding the buttons page, it’s time to return to the home page using
+<code class="prettyprint">back</code>.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"UICatalog"}
+</pre>
+
+<p>The code verifies we successfully returned to the home page.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"Controls, Various uses of UIControl"}
+debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element/4/click
+</pre>
+
+<p>Now the “uses of UIControl” is found and clicked.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+debug: Request received with params: {"using":"name","value":"Controls"}
+</pre>
+
+<p>Searching for “Controls” verifies we’ve made it to the controls page.</p>
+<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/back
+</pre>
+
+<p>Finally, we’re returning to the home page once more and the test is complete.</p>
+<pre class="highlight plaintext">-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running appium.tutorial.ios.PageObjectPatternTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.95 sec - in appium.tutorial.ios.PageObjectPatternTest
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+</pre>
+
+<p>At the end of the test, statistics are displayed. This is a successful run
+because there are no failures, errors, or skips.</p>
+<pre class="highlight plaintext">DELETE /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692 200 794ms - 89b
+</pre>
+
+<p>The final <code class="prettyprint">delete</code> is the result of calling driver.quit which tells appium to
+end the session.</p>
+
+</span>
+
 <h2 id="helpful-links">Helpful Links</h2>
+
+<span class="desc ruby">
 
 <table>
 <thead>
@@ -1149,10 +1353,64 @@ result of calling driver.quit which tells appium to end the session.</p>
 </tbody>
 </table>
 
+</span>
+
+<span class="desc java">
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="http://maven.apache.org/">Apache Maven</a></td>
+<td style="text-align: left">Maven’s homepage contains extensive documentation</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://junit.org/">JUnit</a></td>
+<td style="text-align: left">JUnit is on GitHub</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
+<td style="text-align: left">Selenium’s wiki has an excellent article about page objects</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://developer.apple.com/library/ios/samplecode/uicatalog/introduction/intro.html">Apple’s uicatalog</a></td>
+<td style="text-align: left">Apple hosts the sample code for the UICatalog app we’ve been testing</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></td>
+<td style="text-align: left">JetBrains has a free open source IntelliJ IDEA IDE that works well for Java</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://www.eclipse.org/downloads/">Eclipse</a></td>
+<td style="text-align: left">Eclipse is another popular IDE</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://netbeans.org/downloads/">NetBeans</a></td>
+<td style="text-align: left">NetBeans is a Java IDE by Oracle</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="http://developer.android.com/sdk/installing/studio.html">Android Studio</a></td>
+<td style="text-align: left">If you’re developing for android, you may already have Android Studio installed.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td style="text-align: left">The commands generated by using the Selenium bindings conform to the JSON Wire Protocol</td>
+</tr>
+</tbody>
+</table>
+
+</span>
+
 <h2 id="summary">Summary</h2>
 
 <p>We successfully wrote a complete test and applied the page object pattern to it.
-After that, the rake gem was used to run the test.</p>
+After that, we ran the test. The appium server output was reviewed to 
+understand how the code is translated into selenium commands.</p>
 
 <p>In the next chapter, we’re going to look at even more ways to run tests.</p>
 
@@ -1160,10 +1418,23 @@ After that, the rake gem was used to run the test.</p>
 
 <h2 id="introduction">Introduction</h2>
 
+<span class="desc ruby">
+
 <p>So far we’ve looked at two different ways to run tests, the console and rake.</p>
 
 <p>In this chapter we’ll cover running using the flaky gem, locally, on Jenkins,
 and on Sauce.</p>
+
+</span>
+
+<span class="desc java">
+
+<p>So far we’ve looked at running the tests using maven. In this chapter we’ll
+cover running via Jenkins, and on Sauce.</p>
+
+</span>
+
+<span class="desc ruby">
 
 <h2 id="flaky-gem">Flaky Gem</h2>
 
@@ -1221,7 +1492,17 @@ Additional information is saved in <code class="prettyprint">/tmp/flaky</code>. 
 test that fails 1 in 10 times. Rerunning failed tests is a way to see how
 stable they are.</p>
 
+</span>
+
+<span class="desc java">
+
+<p>The flaky gem is only for Ruby.</p>
+
+</span>
+
 <h2 id="running-locally">Running Locally</h2>
+
+<span class="desc ruby">
 
 <p>For completeness, there are three primary ways of running tests locally.</p>
 
@@ -1235,6 +1516,27 @@ stable they are.</p>
 computer. Manually running the console, rake, or flake is nice for
 development. However to run the tests automatically, a continuous integration
 solution is needed. That’s what we’re discussing in the next lesson.</p>
+
+</span>
+
+<span class="desc java">
+
+<p>Using maven is one way to run tests locally.</p>
+
+<blockquote>
+<p>mvn clean test</p>
+</blockquote>
+
+<p>The above command will delete old code then run all the tests.</p>
+
+<blockquote>
+<p>mvn -Dtest=appium.tutorial.ios.AutomatingASimpleActionTest clean test</p>
+</blockquote>
+
+<p><code class="prettyprint">-D</code> sets the test property to the fully qualified class name of the test.
+Then clean is invoked, and test runs only the single test.</p>
+
+</span>
 
 <h2 id="running-using-jenkins-ci">Running using Jenkins CI</h2>
 
@@ -1255,16 +1557,18 @@ select <code class="prettyprint">Build a free-style software project</code> then
 
 <p>Scroll down to Build, and press <code class="prettyprint">Add build step</code>, then select <code class="prettyprint">Execute shell</code>
 . Add the following:</p>
-<pre class="highlight shell"><span class="c">#!/bin/bash --login</span>
 
-killall -9 <span class="s2">"iPhone Simulator"</span> &amp;&gt; /dev/null
-killall -9 ruby &amp;&gt; /dev/null
-killall -9 node &amp;&gt; /dev/null
-killall -9 instruments &amp;&gt; /dev/null
+<span class="desc ruby">
+<pre class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
 
-<span class="nb">cd</span> ~/tutorial/modules/source/ruby_ios
-bundle update
-flake 1 ios[test]
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="s2">"iPhone Simulator"</span> <span class="o">&amp;&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span>
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">ruby</span> <span class="o">&amp;&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span>
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">node</span> <span class="o">&amp;&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span>
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">instruments</span> <span class="o">&amp;&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span>
+
+<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_ios</span>
+<span class="n">bundle</span> <span class="n">update</span>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">ios</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
 </pre>
 
 <p>Press <code class="prettyprint">OK</code>, and then <code class="prettyprint">Build Now</code> near the top left of the page. Click on the
@@ -1320,6 +1624,59 @@ Mar 13 10:41 pm - 10:41 pm
 Finished: SUCCESS
 </pre>
 
+</span>
+
+<span class="desc java">
+<pre class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
+
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="s">"iPhone Simulator"</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="kc">null</span>
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">node</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="kc">null</span>
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">instruments</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="kc">null</span>
+
+<span class="n">cd</span> <span class="n">$APPIUM_HOME</span>
+<span class="n">node</span> <span class="o">.</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="kc">null</span> <span class="o">&amp;</span>
+
+<span class="n">cd</span> <span class="o">~/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">java_ios</span>
+<span class="n">mvn</span> <span class="n">clean</span> <span class="n">test</span>
+
+<span class="err">#</span> <span class="n">end</span> <span class="n">appium</span> <span class="n">when</span> <span class="n">the</span> <span class="n">job</span> <span class="n">is</span> <span class="n">done</span> <span class="n">to</span> <span class="n">prevent</span>
+<span class="err">#</span> <span class="n">leaking</span> <span class="n">file</span> <span class="n">descriptors</span>
+<span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">node</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="kc">null</span>
+</pre>
+
+<p>Make sure that APPIUM_HOME is set in your <code class="prettyprint">~/.bash_profile</code></p>
+
+<p><code>open ~/.bash_profile
+export APPIUM_HOME="path/to/appium"
+</code></p>
+
+<p>Press <code class="prettyprint">OK</code>, and then <code class="prettyprint">Build Now</code> near the top left of the page. Click on the
+build link inside the <code class="prettyprint">Build History</code> tab. Finally select <code class="prettyprint">Console Output</code>.
+You should see results in the Jenkins console once the job completes.</p>
+<pre class="highlight java"><span class="o">-------------------------------------------------------</span>
+ <span class="n">T</span> <span class="n">E</span> <span class="n">S</span> <span class="n">T</span> <span class="n">S</span>
+<span class="o">-------------------------------------------------------</span>
+<span class="n">Running</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">AutomatingASimpleActionTest</span>
+<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">4</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">Time</span> <span class="nl">elapsed:</span> <span class="mf">87.175</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">in</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">AutomatingASimpleActionTest</span>
+<span class="n">Running</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">PageObjectPatternTest</span>
+<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">1</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">Time</span> <span class="nl">elapsed:</span> <span class="mf">16.115</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">in</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">PageObjectPatternTest</span>
+
+<span class="n">Results</span> <span class="o">:</span>
+
+<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">5</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span>
+
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Total</span> <span class="nl">time:</span> <span class="mi">1</span><span class="o">:</span><span class="mf">47.262</span><span class="n">s</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Finished</span> <span class="nl">at:</span> <span class="n">Sat</span> <span class="n">Mar</span> <span class="mi">22</span> <span class="mi">15</span><span class="o">:</span><span class="mi">14</span><span class="o">:</span><span class="mi">14</span> <span class="n">EDT</span> <span class="mi">2014</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Final</span> <span class="nl">Memory:</span> <span class="mi">16</span><span class="n">M</span><span class="o">/</span><span class="mi">114</span><span class="n">M</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
+<span class="nl">Finished:</span> <span class="n">SUCCESS</span>
+</pre>
+
+</span>
+
 <p>Appium works well in CI. For a proper setup, the Jenkins master node would be
 on a different physical machine. The OS X executor would then attach to the
 master node. The code would be pulled from GitHub using the Git plugin. Note
@@ -1340,19 +1697,21 @@ on Sauce Labs.</p>
 <p>With a few tweaks to the Jenkins setup we used in the previous lesson,
 we’ll be running on Sauce very quickly. <code class="prettyprint">upload.rb</code> takes care of sending the
 app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">storage API</a>.</p>
-<pre class="highlight shell"><span class="c">#!/bin/bash --login</span>
-<span class="nb">cd</span> ~/tutorial/modules/source/ruby_ios
-bundle update
 
-<span class="nb">export </span><span class="nv">SAUCE_USERNAME</span><span class="o">=</span><span class="s2">"your username from sauce"</span>
-<span class="nb">export </span><span class="nv">SAUCE_ACCESS_KEY</span><span class="o">=</span><span class="s2">"your accesskey from sauce"</span>
-<span class="nb">export </span><span class="nv">UPLOAD_FILE</span><span class="o">=</span><span class="s1">'UICatalog6.1.app.zip'</span>
-ruby ./upload/upload.rb
+<span class="desc ruby">
+<pre class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
+<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_ios</span>
+<span class="n">bundle</span> <span class="n">update</span>
 
-<span class="nb">export </span><span class="nv">SAUCE_PATH</span><span class="o">=</span><span class="s2">"sauce-storage:UICatalog6.1.app.zip"</span>
-<span class="nb">export </span><span class="nv">APP_NAME</span><span class="o">=</span><span class="s2">"Ruby iOS Appium tutorial"</span>
+<span class="n">export</span> <span class="no">SAUCE_USERNAME</span><span class="o">=</span><span class="s2">"your username from sauce"</span>
+<span class="n">export</span> <span class="no">SAUCE_ACCESS_KEY</span><span class="o">=</span><span class="s2">"your accesskey from sauce"</span>
+<span class="n">export</span> <span class="no">UPLOAD_FILE</span><span class="o">=</span><span class="s1">'UICatalog6.1.app.zip'</span>
+<span class="n">ruby</span> <span class="p">.</span><span class="nf">/</span><span class="n">upload</span><span class="o">/</span><span class="n">upload</span><span class="p">.</span><span class="nf">rb</span>
 
-flake 1 ios[test]
+<span class="n">export</span> <span class="no">SAUCE_PATH</span><span class="o">=</span><span class="s2">"sauce-storage:UICatalog6.1.app.zip"</span>
+<span class="n">export</span> <span class="no">APP_NAME</span><span class="o">=</span><span class="s2">"Ruby iOS Appium tutorial"</span>
+
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">ios</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
 </pre>
 
 <p>Now when we run the job, instead of using a local simulator,
@@ -1414,7 +1773,51 @@ Finished: SUCCESS
 <p>Visiting <a href="https://saucelabs.com/tests/60e7ef4226874cd8b4540a8141bf8bbf">the link on Sauce</a> will allow you to review the test logs,
 video recordings, and other information.</p>
 
+</span>
+
+<span class="desc java">
+<pre class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">java_ios</span>
+<span class="n">export</span> <span class="n">SAUCE_USER_NAME</span><span class="o">=</span><span class="s">"your username from sauce"</span>
+<span class="n">export</span> <span class="n">SAUCE_API_KEY</span><span class="o">=</span><span class="s">"your accesskey from sauce"</span>
+
+<span class="n">mvn</span> <span class="o">-</span><span class="n">Dsauce</span><span class="o">=</span><span class="kc">true</span> <span class="n">clean</span> <span class="n">test</span>
+</pre>
+
+<p>Now when we run the job, instead of using a local simulator,
+it’ll run on the Sauce cloud.</p>
+<pre class="highlight plaintext">-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running appium.tutorial.ios.AutomatingASimpleActionTest
+  test: one https://saucelabs.com/tests/59c95c8df1104065a051de31095f97fe
+  test: two https://saucelabs.com/tests/a882c59795d546578c633dee0f11c6e3
+  test: four https://saucelabs.com/tests/be89de1f417b44dea2d806350ff0f296
+  test: three https://saucelabs.com/tests/413d750a36004d1f94603c2614011704
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 222.53 sec - in appium.tutorial.ios.AutomatingASimpleActionTest
+Running appium.tutorial.ios.PageObjectPatternTest
+  test: pageObject https://saucelabs.com/tests/162533a139bd4bc6b436e51a4de63815
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 49.818 sec - in appium.tutorial.ios.PageObjectPatternTest
+
+Results :
+
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4:36.305s
+[INFO] Finished at: Tue Apr 01 23:20:40 EDT 2014
+[INFO] Final Memory: 16M/185M
+[INFO] ------------------------------------------------------------------------
+Finished: SUCCESS
+</pre>
+
+</span>
+
 <h2 id="helpful-links">Helpful Links</h2>
+
+<span class="desc ruby">
 
 <table>
 <thead>
@@ -1447,13 +1850,60 @@ video recordings, and other information.</p>
 </tbody>
 </table>
 
+</span>
+
+<span class="desc java">
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
+<td style="text-align: left">The Jenkins homepage contains the latest releases and additional information.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
+<td style="text-align: left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
+<td style="text-align: left">The objective c code for recording Android/iOS is on GitHub</td>
+</tr>
+<tr>
+<td style="text-align: right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
+<td style="text-align: left">Sauce has great documentation for getting started on their platform.</td>
+</tr>
+</tbody>
+</table>
+
+</span>
+
 <h2 id="summary">Summary</h2>
+
+<span class="desc ruby">
 
 <p>We looked at the flaky gem, running locally, and installing Jenkins CI. From
 there we ran a test successfully on Sauce.</p>
 
 <p>In the final chapter, we’ll look at some additional resources for maintaining and
 writing production level automation.</p>
+
+</span>
+
+<span class="desc java">
+
+<p>We looked at the running locally with maven from the terminal,
+maven via Jenkins, and using Sauce.</p>
+
+<p>In the final chapter, we’ll look at some additional resources for maintaining and
+writing production level automation.</p>
+
+</span>
 
 <h1 id="conclusion">Conclusion</h1>
 
