@@ -18,7 +18,8 @@ module AppiumIo
   class Helper
     include AppiumIo::Files
 
-    attr_reader :default_checkout, :git_dir, :appium_repo, :api_docs_repo, :tutorial_repo
+    attr_reader :default_checkout, :git_dir, :appium_repo, :api_docs_repo, :tutorial_repo,
+                :dot_app_repo
 
     # Creates a new Helper object. The appium repository is cloned and updated.
     #
@@ -44,11 +45,34 @@ module AppiumIo
       tutorial_path          = repo_path 'tutorial.git'
       tutorial_clone_url     = 'https://github.com/appium/tutorial.git'
       @tutorial_repo         = Repo.new path: tutorial_path, clone: tutorial_clone_url, master: true
+
+      # appium-dot-app
+      dot_app_path           = repo_path 'dot_app'
+      dot_app_clone_url      = 'https://github.com/appium/appium-dot-app.git'
+      @dot_app_repo          = Repo.new path: dot_app_path, clone: dot_app_clone_url, master: true
     end
 
     def repo_path path
       raise 'git dir must be set' unless @git_dir
       join @git_dir, path
+    end
+
+    def slate_image_folder
+      # ensure trailing slash
+      @slate_image_folder ||= join(Dir.pwd, 'slate', 'images', '')
+      mkdir_p @slate_image_folder unless exists? @slate_image_folder
+      @slate_image_folder
+    end
+
+    def update_dot_app_images
+      dot_app_repo.checkout 'master'
+
+      # copy dot app images
+      dot_app_images = join(dot_app_repo.path, 'README-files', '**', '*.png')
+      Dir.glob(dot_app_images) do |file|
+        next if File.directory?(file)
+        copy_entry file, slate_image_folder
+      end
     end
 
     def update_tutorial
@@ -59,12 +83,10 @@ module AppiumIo
       publish_folder = join slate_root, 'en', 'tutorial'
       build_folder   = join tutorial_repo.path, 'tutorials', 'en'
 
-      image_folder = join slate_root, 'images'
-
       # copy tutorial images
       Dir.glob(join(build_folder, '*.png')) do |file|
         next if File.directory?(file)
-        copy_entry file, image_folder
+        copy_entry file, slate_image_folder
       end
 
       src_markdown_file = join build_folder, '01_native_ios_automation.md'
@@ -95,21 +117,31 @@ module AppiumIo
       branches = %w[master 0.18.x]
       tags     += branches
 
+      update_dot_app_images
+
       metadata = Hash.new []
       puts "Processing: #{tags}"
       tags.each do |tag|
         @appium_repo.checkout tag
 
         # copy english readme into the english docs
-        readme_src = join @appium_repo.path, 'README.md'
-        readme_dst = join(@appium_repo.path, 'docs', 'en', 'README.md')
+        readme_src = join appium_repo.path, 'README.md'
+        readme_dst = join appium_repo.path, 'docs', 'en', 'README.md'
         copy_entry readme_src, readme_dst
-
         # fix readme links for Slate
         data = File.read readme_dst
         data.gsub!('](docs/en/)', '](#)')
         data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
         File.open(readme_dst, 'w') { |f| f.write data }
+
+        # copy english dot app into the english docs
+        dot_app_readme_src = join dot_app_repo.path, 'README.md'
+        dot_app_readme_dst = join appium_repo.path, 'docs', 'en', 'dot_app.md'
+        copy_entry dot_app_readme_src, dot_app_readme_dst
+        # fix links for Slate
+        data = File.read dot_app_readme_dst
+        data.gsub!('](/README-files/images/', '](../../images/')
+        File.open(dot_app_readme_dst, 'w') { |f| f.write data }
 
         # copy english contributing into the english docs
         contributing_src = join @appium_repo.path, 'CONTRIBUTING.md'
@@ -138,10 +170,10 @@ module AppiumIo
           puts "Processing with slate: #{language} #{tag}"
           process_with_slate input: dest, language: language, tag: tag
         end
+      end # tags.each do |tag|
 
-        # update tutorial after docs are complete
-        update_tutorial
-      end
+      # update tutorial after docs are complete
+      update_tutorial
 
       File.open('_data/slate.yml', 'w') do |f|
         result = ''
