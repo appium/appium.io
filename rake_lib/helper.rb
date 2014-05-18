@@ -89,20 +89,24 @@ module AppiumIo
         copy_entry file, slate_image_folder
       end
 
-      src_markdown_file = join build_folder, '01_native_ios_automation.md'
-      dst_markdown_file = join @api_docs_repo.path, 'source', 'index.md'
-      copy_entry src_markdown_file, dst_markdown_file
+      md_html_pairs = ['01_native_ios_automation.md', 'ios.html',
+                       '02_native_android_automation.md', 'android.html']
+      md_html_pairs.each_slice(2) do |source_md, dest_html|
+        src_markdown_file = join build_folder, source_md
+        dst_markdown_file = join @api_docs_repo.path, 'source', 'index.md'
+        copy_entry src_markdown_file, dst_markdown_file
 
-      @api_docs_repo.sh 'rake build'
+        @api_docs_repo.sh 'rake build'
 
-      # pull html from api_docs
-      build_folder = join @api_docs_repo.path, 'build'
+        # pull html from api_docs
+        api_folder = join @api_docs_repo.path, 'build'
 
-      html_file   = 'index.html'
-      input_html  = join build_folder, html_file
-      output_html = join publish_folder, html_file
+        html_file   = 'index.html'
+        input_html  = join api_folder, html_file
+        output_html = join publish_folder, dest_html
 
-      rewrite_slate_index input_html, output_html
+        rewrite_slate_index input_html, output_html
+      end
     end
 
     # docs are published exactly once per tag
