@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<title>API Reference</title>
-<link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
-<link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
-<link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="../../javascripts/all.js" type="text/javascript"></script><script>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>API Reference</title>
+
+    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../javascripts/all.js" type="text/javascript"></script>
+
+      <script>
         $(function() {
           setupLanguages(["ruby","python","java","javascript","php","csharp"]);
         });
       </script>
-</head>
-<body class="index">
+  </head>
+
+  <body class="index">
     <div class="tocify-wrapper">
-      <img src="../../images/logo.png"><div id="toc">
+      <img src="../../images/logo.png">
+      <div id="toc">
       </div>
         <ul class="toc-footer">
-<li><a href="https://github.com/appium/ruby_lib">Ruby bindings</a></li>
+            <li><a href="https://github.com/appium/ruby_lib">Ruby bindings</a></li>
             <li><a href="https://github.com/appium/python-client">Python bindings</a></li>
             <li><a href="https://github.com/appium/java-client">Java bindings</a></li>
             <li><a href="https://github.com/admc/wd">JavaScript bindings</a></li>
@@ -27,7 +33,7 @@
             <li><a href="https://github.com/appium/appium-dotnet-driver">C# bindings</a></li>
             <li><a href="http://appium.io/">Appium home page</a></li>
         </ul>
-</div>
+    </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
@@ -48,6 +54,7 @@
 <li>Android</li>
 <li>FirefoxOS</li>
 </ul>
+
 <h2 id="为什么选择appium-?">为什么选择appium ?</h2>
 
 <ol>
@@ -59,6 +66,7 @@ PHP, Python, <a href="https://github.com/appium/ruby_lib">Ruby</a>, C#, Clojure,
 可以使用标准的Selenium WebDriver API和特定语言的客户端库.</li>
 <li>你可以使用任何测试框架.</li>
 </ol>
+
 <p>依托  <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a> 意味着你可以押宝在一个已经成为事实上标准的独立,自由和开放的协议.而不会被限制在任何的专利中</p>
 
 <p>如果在没有使用Appium的情况,你使用了Apple的UIAutomation库就只能通过Javascript,并且只能通过Instruments application插桩应用来运行你的测试.
@@ -80,6 +88,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <li>Apple Developer Tools (iPhone simulator SDK, command line tools)</li>
 <li><a href="#running-on-osx.cn.md">Ensure you read our documentation on setting yourself up for iOS testing!</a></li>
 </ul>
+
 <h3 id="android依赖">android依赖</h3>
 
 <ul>
@@ -94,11 +103,13 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 </ul>
 </li>
 </ul>
+
 <h3 id="firefoxos-requirements">FirefoxOS Requirements</h3>
 
 <ul>
 <li><a href="https://developer.mozilla.org/en/docs/Tools/Firefox_OS_Simulator">Firefox OS Simulator</a></li>
 </ul>
+
 <h2 id="快速开始">快速开始</h2>
 
 <p>启动Appium server,并运行用你喜欢的 <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a> 兼容的语言编写的测试用例.
@@ -115,6 +126,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <li><a href="https://github.com/appium/appium/releases">下载 Appium app</a></li>
 <li>运行它! </li>
 </ul>
+
 <h2 id="为appium编写测试">为Appium编写测试</h2>
 
 <p>我们支持 <a href="https://github.com/appium/appium/wiki/JSON-Wire-Protocol:-Supported-Methods">Selenium WebDriver JSON Wire Protocol</a> 的一个子集
@@ -178,6 +190,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <li><p>你可以在<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">Inter官方网站</a>找到所有相关的文档</p></li>
 <li><p>这将需要x86的模拟镜像</p></li>
 </ul>
+
 <h1 id="android-coverage">
 <span id="android_coverage.cn.md"></span>Android Coverage</h1>
 
@@ -283,11 +296,13 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <span id="caps.cn.md"></span>Appium 服务关键字</h1>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>关键字</th>
 <th>描述</th>
 <th>实例</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><code class="prettyprint">app</code></td>
@@ -329,14 +344,17 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 </tr>
 </tbody>
 </table>
+
 <h3 id="android特有">Android特有</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>关键字</th>
 <th>描述</th>
 <th>实例</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><code class="prettyprint">app-activity</code></td>
@@ -369,14 +387,17 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 </tr>
 </tbody>
 </table>
+
 <h3 id="ios特有">iOS特有</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>关键字</th>
 <th>描述</th>
 <th>实例</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><code class="prettyprint">calendarFormat</code></td>
@@ -406,6 +427,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 </tr>
 </tbody>
 </table>
+
 <h1 id="名单">
 <span id="credits.cn.md"></span>名单</h1>
 
@@ -422,6 +444,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <li><a href="http://code.google.com/p/selenium/">Selenium Project</a></li>
 <li><a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debug-proxy</a></li>
 </ul>
+
 <h1 id="元素定位与交互">
 <span id="finding-elements.cn.md"></span>元素定位与交互</h1>
 
@@ -432,6 +455,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <li>find by “name” (i.e., 通过元素的文本, 标签, 或者开发同学添加的id标示, 比如accessibilityIdentifier)</li>
 <li>find by “xpath” (i.e., 具有一定约束的路径抽象标示, 基于XPath方式)</li>
 </ul>
+
 <h3 id="标签名抽象映射">标签名抽象映射</h3>
 
 <p>你可以使用UIAutomation的控件类型用于标签名, 或者使用简化的映射, 可以参考下如下例子
@@ -611,6 +635,7 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
 </ul>
 </li>
 </ul>
+
 <h2 id="json-wire-协议服务器扩展">JSON Wire 协议服务器扩展</h2>
 
 <p>使用下面的这些接口，我们在这个spec上，额外做了一些扩展。</p>
@@ -695,6 +720,7 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
 </ul>
 </li>
 </ul>
+
 <p><strong>注意：设置方向</strong> 设置屏幕方向传入的参数与点击，轻触，拖动等方法传入的参数不同。这个动作是由屏幕的方向设置为“横向”或者“竖向”执行。下面的替换方法不适用于设置方向。</p>
 
 <ul>
@@ -713,6 +739,7 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
 </ul>
 </li>
 </ul>
+
 <h2 id="可供选择的方法">可供选择的方法</h2>
 
 <p>扩展JSON Wire协议的确很棒，但这意味着绑定的各式各样WebDriver语言将不得不用自己的方式实现对这些端点的访问。当然，用自己方式实现所花费的时间多少取决于不同的项目。我们已经制定了一个方法来解决这个延迟，使用带有特殊参数的<code class="prettyprint">driver.execute()</code>方法。</p>
@@ -898,6 +925,7 @@ driver.orientation = "LANDSCAPE"
 </code>
 </li>
 </ul>
+
 <h3 id="滚动到">滚动到</h3>
 <pre class="highlight ruby">  <span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
   <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: scrollTo'</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nf">ref</span>
@@ -975,10 +1003,12 @@ driver.orientation = "LANDSCAPE"
 <p><a href="http://gruntjs.com">Grunt</a> 是 Node.js 的 Make! 我们用它来自动化所有的 appium 开发任务。 下面就是你能做的：</p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>任务</th>
 <th>描述</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>grunt lint</td>
@@ -1066,6 +1096,7 @@ driver.orientation = "LANDSCAPE"
 </tr>
 </tbody>
 </table>
+
 <h2 id="其他">其他</h2>
 
 <p><code class="prettyprint">grunt buildApp</code> 默认使用 iPhone 6.1 模拟器的 SDK 来构建应用。你可以传其他的 SDK 给 grunt 命令。
@@ -1084,6 +1115,7 @@ driver.orientation = "LANDSCAPE"
 <li> <a href="#hybrid.cn.md">混合 Android 应用</a>
 </li>
 </ul>
+
 <h2 id="自动化混合-ios-应用">自动化混合 iOS 应用</h2>
 
 <p>在你的 Appium 测试里，你需要以下几步来和 web 页面交涉：</p>
@@ -1098,6 +1130,7 @@ driver.orientation = "LANDSCAPE"
 <li> (这会将你的 Appium session 放入一个模式， 在这个模式下，所有的命令都会被解释成自动化web视图而不是原生的部分。比如，当你运行 getElementByTagName，它会在 web 视图的 DOM 上操作，而不是返回 UIAElements。当然，一个 Webdriver 的方法只能在一个上下文中有意义，所以如果在错误的上下文，你会收到错误信息。)</li>
 <li> 如果你想停止 web 视图的自动化，回到原生部分，你可以简单地使用 <code class="prettyprint">execute_script</code> 调用 <code class="prettyprint">"mobile: leaveWebView"</code> 方法来离开 web 层。</li>
 </ol>
+
 <h2 id="在-ios-真机上运行">在 iOS 真机上运行</h2>
 
 <p>appium 使用一个远程调试器建立连接来实现和 web 视图的交互。当在模拟器上执行下面例子的时候，我们可以直接建立连接，因为模拟器和 appium 服务器在同一台机器上。</p>
@@ -1157,6 +1190,7 @@ driver.orientation = "LANDSCAPE"
 <li>*我们正在完善 web 视图下面的方法。<a href="http://appium.io/get-involved.html">加入我们！</a>
 </li>
 </ul>
+
 <h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
 <pre class="highlight java">  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
@@ -1232,6 +1266,7 @@ https://gist.github.com/feelobot/7309729</p>
 <li> (这会将你的 Appium session 放入一个模式， 在这个模式下，所有的命令都会被解释成自动化web视图而不是原生的部分。比如，当你运行 getElementByTagName，它会在 web 视图的 DOM 上操作，而不是返回 UIAElements。当然，一个 Webdriver 的方法只能在一个上下文中有意义，所以如果在错误的上下文，你会收到错误信息。)</li>
 <li> 如果要停止web上下文里的自动化，回到原生部分的自动化，简单地使用 “NATIVE_APP” 调用 <code class="prettyprint">window</code> 方法。比如 <code class="prettyprint">driver.window("NATIVE_APP")</code>。</li>
 </ol>
+
 <p>注意：我们可以像上面说的，使用同样的策略。然而，Selendroid 使用 <code class="prettyprint">WEBVIEW</code>/<code class="prettyprint">NATIVE_APP</code> 窗口设置策略。 Appium 常规的混合支持也使用这种策略。</p>
 
 <h2 id="wd.js-代码例子">Wd.js 代码例子</h2>
@@ -1282,6 +1317,7 @@ https://gist.github.com/feelobot/7309729</p>
 <li>用特殊的设备参数来构建app</li>
 <li>使用 <a href="https://github.com/ghughes/fruitstrap">fruitstrap</a>, 一个第三方程序，来部署你构建的app到手机上</li>
 </ol>
+
 <h2 id="xcodebuild-命令的参数:">Xcodebuild 命令的参数:</h2>
 
 <p>新的参数运行指定设置. 参考 <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>:</p>
@@ -1423,6 +1459,7 @@ https://gist.github.com/feelobot/7309729</p>
 <li> 确认Chrome已经安装在了你的真机或模拟器上 (应用的包名是<code class="prettyprint">com.android.chrome</code>) .在不编译chromiun的情况下, 不可能得到模拟器上的x86版本的chrome, 你可以运行一个ARM的模拟器然后从真机上获取一个Chrome的APK安装在模拟器上.</li>
 <li> 确认 <a href="https://code.google.com/p/chromedriver/downloads/list">ChromeDriver</a>, version &gt;= 2.0 正确的安装在你的系统上并且设置了<code class="prettyprint">chromedriver</code>成为系统全局变量.</li>
 </ul>
+
 <p>接着,像这样设置就可以在Chrome上执行测试了:</p>
 <pre class="highlight javascript"><span class="p">{</span>
   <span class="na">app</span><span class="p">:</span> <span class="s1">'chrome'</span>
@@ -1492,6 +1529,7 @@ https://gist.github.com/feelobot/7309729</p>
 <li><p>你要测试的应用的源码</p></li>
 <li><p>一台安装了XCode和XCode Command Line Developer Tools的Mac机器 </p></li>
 </ol>
+
 <h2 id="provisioning-profile">Provisioning Profile</h2>
 
 <p>要在真机上测试就需要一个有效的iOS开发者的Distribution Certificate and Provisioning Profile。你可以在这个上面找到配置这些的相关信息<a href="http://developer.apple.com/library/ios/#documentation/ToolsLanguages/Conceptual/YourFirstAppStoreSubmission/TestYourApponManyDevicesandiOSVersions/TestYourApponManyDevicesandiOSVersions.html">Apple documentation</a></p>
@@ -1516,6 +1554,7 @@ https://gist.github.com/feelobot/7309729</p>
 <li>再次确认你从instruments启动你的自动化测试</li>
 <li>确认instruments已经关闭</li>
 </ol>
+
 <h1 id="在-linux-上运行-appium">
 <span id="running-on-linux.cn.md"></span>在 Linux 上运行 Appium</h1>
 
@@ -1551,6 +1590,7 @@ limitations. For more information you can check out this
 Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。你可以在 <a href="#android-hax-emulator.cn.md">page</a> 找到更多的信息。</li>
 <li>确保你使用的 AVD 里面的 <code class="prettyprint">config.ini</code> 有这条指令 <code class="prettyprint">hw.battery=yes</code>。</li>
 </ul>
+
 <h1 id="在-mac-os-x-上使用-appium">
 <span id="running-on-osx.cn.md"></span>在 Mac OS X 上使用 Appium</h1>
 
@@ -1563,6 +1603,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>确保 Xcode 和 iOS SDK 都已经安装好了。 （当前 Appium 支持 Xcode 4.6.3/iOS 6.1 和 Xcode 5/iOS 7.0。 注意不推荐在基于 Xcode 5 下且低于 7.0 的 iOS 版本进行测试。 参照下篇可以获取更多信息）</li>
 <li>你需要授权 iOS 模拟器的使用。如果你是通过 NPM 安装的 Appium，那么你可以运行 <code class="prettyprint">sudo authorize_ios</code> （<code class="prettyprint">authorize_ios</code>）是来自 Appium npm 包里的一个二进制执行文件。如果你是从源代码运行 Appium，那么你可以简单的使用 <code class="prettyprint">sudo grunt authorize</code>。如果你使用<code class="prettyprint">Appium.app</code>, 那你只要用界面来操作。</li>
 </ul>
+
 <h2 id="使用多种-ios-sdk-进行测试">使用多种 iOS SDK 进行测试</h2>
 
 <p>Appium 使用苹果提供的 <code class="prettyprint">instruments</code> 来启动 iOS 模拟器，默认它会使用当前安装的 Xcode 和该 Xcode 下安装好的最高版本的 iOS SDK。这就意味着如果你想测试 iOS 6.1， 但是你安装了 iOS 7.0， 那么 Appium 会强制使用 7.0 的模拟器。 唯一的方法就是安装多个Xcode，然后在安装不同的 SDK。然后在启动 Appium 前，切换到你要测试的特定的版本。</p>
@@ -1592,6 +1633,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li><p>确保你使用的 AVD 里面的 <code class="prettyprint">config.ini</code> 有这条指令 <code class="prettyprint">hw.battery=yes</code>。</p></li>
 <li><p>Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。你可以在 <a href="#android-hax-emulator.cn.md">page</a> 找到更多的信息。</p></li>
 </ul>
+
 <h1 id="在windows上运行appium">
 <span id="running-on-windows.cn.md"></span>在windows上运行appium</h1>
 
@@ -1610,6 +1652,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li><p>安装<a href="http://maven.apache.org/download.cgi">Apache Maven</a>. 并且设置M2HOME和M2环境变量，把M2环境变量添加到你的系统PATH变量中。</p></li>
 <li><p>安装<a href="http://git-scm.com/download/win">Git</a>. 确保你安装了windows下的Git，以便可以运行常用的command命令</p></li>
 </ol>
+
 <p>现在，你已经下载安装了所有的依赖，开始运行
     reset.bat</p>
 
@@ -1627,6 +1670,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 </li>
 <li>确保在你的AVD的<code class="prettyprint">config.ini</code>中有一个配置项为<code class="prettyprint">hw.battery=yes</code> </li>
 </ul>
+
 <h3 id="最简略的安装方式">最简略的安装方式</h3>
 
 <p>出于对官方文档的尊重，我按照原文翻译，如下介绍我的安装心得。官方提到的一些工具，其实并不需要安装。
@@ -1637,6 +1681,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <ol>
 <li>安装nodejs</li>
 </ol>
+
 <p>2、使用npm安装appium，npm install -g appium</p>
 
 <h3 id="运行appium">运行appium</h3>
@@ -1691,13 +1736,14 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>一個模擬器編譯過的 .app 目錄或著 .zip 檔的本地絕對路徑</li>
 <li>一個包含著你的.app封包的zip檔的url</li>
 </ul>
+
 <p>在你選擇的WebDriver庫裡，設定remote session使用上述的環境參數然後使用端口 4723來連接本地服務器 (或著是使用你在Appium啟動時所設定的任意端口)。現在你已經設置完成了！</p>
 
 <h2 id="用appium測試你的app-(android)">用Appium測試你的app (Android)</h2>
 
 <p>首先，先確定你有一個而且必須是只能一個Android模擬器或著設備連接著。如果你輸入<code class="prettyprint">adb devices</code>，你應該只看到一個設備連接著。這將是Appium所用來測試的設備。當然，要連接一個設備，你需要準備好一個Android AVD (參考 <a href="#system-setup.md">系統設置</a> 以了解更多). 如果Android SDK工具在你的路徑下，你可以簡單的執行:</p>
 
-<p>emulator -avd </p>
+<p>emulator -avd &lt;我的Avd名稱&gt;</p>
 
 <p>然後等android模擬器啟動。有時候，因為某些原因，<code class="prettyprint">adb</code>會卡住。如果它沒有顯示任何的設備或其他故障，你可以使用下列指令來重啟:</p>
 
@@ -1724,6 +1770,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>一個 .apk 或著 .zip 檔的本地絕對路徑</li>
 <li>一個包含著你的.apk檔的zip壓縮檔的url</li>
 </ul>
+
 <p><code class="prettyprint">myAppPackage</code> 必須是你的應用的java package，例如, <code class="prettyprint">com.example.android.myApp</code>.</p>
 
 <p><code class="prettyprint">myAppActivity</code> 必須是你的希望測試的Android activity, 例如, <code class="prettyprint">MainActivity</code>.</p>
@@ -1755,12 +1802,14 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <p>所有的标志都是可选的，但是有一些标志需要组合在一起才能生效。</p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>标志</th>
 <th>默认值</th>
 <th>描述</th>
 <th>例子</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td><code class="prettyprint">--shell</code></td>
@@ -2100,6 +2149,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 </tr>
 </tbody>
 </table>
+
 <h1 id="触摸动作（touch-actions）">
 <span id="touch-actions.cn.md"></span>触摸动作（touch actions）</h1>
 
@@ -2133,6 +2183,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>long press （长按）</li>
 <li>single tap （单击）</li>
 </ul>
+
 <p>其他手势通过 “Alternative access method” 支持，参见 <a href="#gestures.cn.md">自动化手机手势</a></p>
 
 <h1 id="appium-故障调试">
@@ -2147,11 +2198,13 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>确保你的系统配置好了(比如， xCode 是最新的，Android SDK 安装好了， <code class="prettyprint">ANDROID_HOME</code> 配置好了，参照 <a href="#running-on-osx.md">setup instructions</a> ).</li>
 <li>确保你应用的路径正确。</li>
 </ul>
+
 <h2 id="如果你从-appium.app-运行的话-(通过-dmg-安装的)">如果你从 Appium.app 运行的话 (通过 dmg 安装的)</h2>
 
 <ul>
 <li>升级应用，然后重启。 如果你提示你无法升级，从<a href="http://appium.io">appium.io</a>重新下载。</li>
 </ul>
+
 <h2 id="如果你从源代码运行-appium-的话">如果你从源代码运行 Appium 的话</h2>
 
 <ul>
@@ -2170,6 +2223,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <code class="prettyprint">{ANDROID_HOME}/tools/ant/uibuild.xml:155: SDK does not have any Build Tools installed.</code>
 在 Android SDK 22 里，platform 和 build 工具被拆分到它们各自项中去。你需要确保安装了 build-tool 和 platform-tool。</p></li>
 </ul>
+
 <h2 id="android">Android</h2>
 
 <ul>
@@ -2178,6 +2232,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>Make sure you know about the <code class="prettyprint">app-package</code>, <code class="prettyprint">app-activity</code>, and <code class="prettyprint">app-wait-activity</code> desiredCapabilities (see <a href="#running-tests.md">this doc</a> for more information).</li>
 <li>你得知道 <code class="prettyprint">app-package</code>， <code class="prettyprint">app-activity</code> 和 <code class="prettyprint">app-wait-activity</code> (详见 <a href="#running-tests.md">文档</a>.</li>
 </ul>
+
 <h2 id="ios">IOS</h2>
 
 <ul>
@@ -2190,18 +2245,21 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>如果你第一次运行 Appium，先授权使用 Instruments。通常会有一个对话框弹出让你输入你的密码。如果你从源代码运行 Appium，你只需简单的运行 <code class="prettyprint">sudo grunt authorize</code>。如果用 npm 安装的话，运行 <code class="prettyprint">sudo authorize_ios</code> 即可。</li>
 <li>如果你看到 <code class="prettyprint">iOS Simulator failed to install the application.</code> 而且 App 的路径都正确的，那么重启下电脑看看。</li>
 </ul>
+
 <h2 id="webview/hybrid/safari-app-支持">Webview/Hybrid/Safari app 支持</h2>
 
 <ul>
 <li>确保真机上的'Web Inspector'激活了。</li>
 <li>确保你激活了模拟器上的 Safari 的开发模式。Safari - Advance Preferences- Developer menu</li>
 </ul>
+
 <h2 id="firefoxos">FirefoxOS</h2>
 
 <ul>
 <li>确保 Boot-to-Gecko 模拟器启动并运行着。</li>
 <li>确保模拟器的屏幕是亮着并没用锁屏的(可能需要重启 B2G).</li>
 </ul>
+
 <h2 id="告诉社区">告诉社区</h2>
 
 <p>如果你通过以上方法都不能解决问题，你可以做：</p>
@@ -2215,6 +2273,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>客户端和服务端的错误信息</li>
 <li>除了上述， 贴出 Appium 服务器端的输出也非常重要，特别是运行在 verbose 模式。这样我们可以分析诊断问题在哪里。</li>
 </ul>
+
 <h2 id="known-issues">Known Issues</h2>
 
 <ul>
@@ -2224,22 +2283,28 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 </li>
 <li>如果你通过 MacPorts 安装的 node 和 npm，那么确保 MacPorts 的 bin 文件夹 (<code class="prettyprint">/opt/local/bin</code>) 被添加到环境变量 <code class="prettyprint">PATH</code> 中去。</li>
 </ul>
+
 <h2 id="specific-errors">Specific Errors</h2>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Action</th>
 <th>Error</th>
 <th>Resolution</th>
-</tr></thead>
-<tbody><tr>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td>Running reset.sh</td>
 <td>xcodebuild: error: SDK “iphonesimulator6.1” cannot be located</td>
 <td>安装 iPhone 6.1 SDK 或者 使用单独的 SDK 构建 待测应用 比如： <code class="prettyprint">grunt buildApp:UICatalog:iphonesimulator5.1</code>
 </td>
-</tr></tbody>
+</tr>
+</tbody>
 </table>
-</div>
+
+      </div>
       <div class="dark-box">
           <div id="lang-selector">
                 <a href="#" data-language-name="ruby">Ruby</a>
