@@ -861,8 +861,8 @@ brings you to a dedicated page about that text. Accessibility triggers the
 Accessibility page, Animation triggers Animation, and so on.</p>
 
 <p>We’re going to verify each element brings us to the correct page.</p>
-<pre class="highlight ruby"><span class="n">s_text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span>
-<span class="n">s_text_exact</span> <span class="s1">'Accessibility Node Provider'</span>
+<pre class="highlight ruby"><span class="n">text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span>
+<span class="n">text_exact</span> <span class="s1">'Accessibility Node Provider'</span>
 </pre>
 
 <p>For the first entry, we click on Accessibility and then assert that the
@@ -874,8 +874,8 @@ That means when an element isn’t found the test ends immediately because an
 element not found exception is raised.</p>
 
 <p>To overcome these timing problems, the wait helper method is useful.</p>
-<pre class="highlight ruby"><span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
-<span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span> <span class="s1">'Accessibility Node Provider'</span> <span class="p">}</span>
+<pre class="highlight ruby"><span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="s1">'Accessibility Node Provider'</span> <span class="p">}</span>
 </pre>
 
 <p>Now the code will wait up to 30 seconds for the command to succeed. If it
@@ -885,7 +885,7 @@ is not rescued then the test will end in failure.</p>
 
 <p>Another problem with the test code is that we’re depending on the exact text
 value. When the app changes, our tests will break.</p>
-<pre class="highlight ruby"><span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span> <span class="mi">2</span> <span class="p">}</span>
+<pre class="highlight ruby"><span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span> <span class="mi">2</span> <span class="p">}</span>
 
 <span class="n">wait</span> <span class="p">{</span> <span class="n">cell_1</span><span class="p">.</span><span class="nf">click</span> <span class="p">}</span>
 <span class="n">wait</span> <span class="p">{</span> <span class="n">find_exact</span> <span class="s1">'Accessibility Node Provider'</span> <span class="p">}</span>
@@ -900,7 +900,7 @@ is now resilient to text changes. It’ll break only when the elements are
 reordered or the content description changes.</p>
 
 <p>To conclude this lesson, we’ll look at the code to automate all 12 cells.</p>
-<pre class="highlight ruby"><span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'text'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
+<pre class="highlight ruby"><span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'android.widget.TextView'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
 
 <span class="n">cell_names</span><span class="o">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">cell_name</span><span class="o">|</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">scroll_to_exact</span><span class="p">(</span><span class="n">cell_name</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
@@ -973,8 +973,8 @@ directory to your computer.</p>
 
 <p>We’re going to verify each element brings us to the correct page.</p>
 <pre class="highlight java"><span class="c1">// java</span>
-<span class="n">s_text</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-<span class="n">s_text_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">);</span>
+<span class="n">text</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">text_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">);</span>
 </pre>
 
 <p>For the first entry, we click on Accessibility and then assert that the
@@ -987,8 +987,8 @@ element not found exception is raised.</p>
 
 <p>To overcome these timing problems, the wait helper method is useful.</p>
 <pre class="highlight java"><span class="c1">// java</span>
-<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
-<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">));</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_text</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">));</span>
 </pre>
 
 <p>Now the code will wait up to 30 seconds for the command to succeed. If it
@@ -999,7 +999,7 @@ is not rescued then the test will end in failure.</p>
 <p>Another problem with the test code is that we’re depending on the exact text
 value. When the app changes, our tests will break.</p>
 <pre class="highlight java"><span class="c1">// java</span>
-<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text</span><span class="o">(</span><span class="mi">2</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_text</span><span class="o">(</span><span class="mi">2</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
 <span class="n">find_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">);</span>
 </pre>
 
@@ -1016,7 +1016,7 @@ reordered or the content description changes.</p>
 
 <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">cell_names</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
 
-<span class="k">for</span> <span class="o">(</span><span class="n">WebElement</span> <span class="n">cell</span> <span class="o">:</span> <span class="n">tags</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span> <span class="o">{</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">WebElement</span> <span class="n">cell</span> <span class="o">:</span> <span class="n">tags</span><span class="o">(</span><span class="s">"android.widget.TextView"</span><span class="o">))</span> <span class="o">{</span>
     <span class="n">cell_names</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cell</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
 <span class="o">}</span>
 
@@ -1025,10 +1025,10 @@ reordered or the content description changes.</p>
 
 <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">cell_name</span> <span class="o">:</span> <span class="n">cell_names</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">scroll_to_exact</span><span class="o">(</span><span class="n">cell_name</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-    <span class="n">waitInvisible</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="n">cell_name</span><span class="o">));</span>
+    <span class="n">waitInvisible</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="n">cell_name</span><span class="o">));</span>
     <span class="n">back</span><span class="o">();</span>
-    <span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">));</span>
-    <span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Animation"</span><span class="o">));</span>
+    <span class="n">wait</span><span class="o">(</span><span class="n">for_find</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">));</span>
+    <span class="n">wait</span><span class="o">(</span><span class="n">for_find</span><span class="o">(</span><span class="s">"Animation"</span><span class="o">));</span>
 <span class="o">}</span>
 
 <span class="n">setWait</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span> <span class="c1">// restore old implicit wait</span>
@@ -1058,7 +1058,7 @@ that, we’re saving the names to the cell_names array.</p>
 clicking each of them. To detect that the click was successful,
 the code waits for the cell name to no longer be visible.</p>
 
-<p><code class="prettyprint">waitInvisible(for_s_text_exact(cell_name));</code></p>
+<p><code class="prettyprint">waitInvisible(for_text_exact(cell_name));</code></p>
 
 <p>After that we’re returning to the home page by using <code class="prettyprint">back();</code>. The back method
 will return even though the app hasn’t finished transitioning. I recommend
@@ -1112,7 +1112,7 @@ individual page. After that the <code class="prettyprint">class &lt;&lt; self</c
 methods static.</p>
 <pre class="highlight ruby">  <span class="k">def</span> <span class="nf">accessibility_click</span>
     <span class="nb">self</span><span class="p">.</span><span class="nf">assert</span>
-    <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+    <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
     <span class="n">accessibility</span><span class="p">.</span><span class="nf">assert</span>
   <span class="k">end</span>
 </pre>
@@ -1123,7 +1123,7 @@ is on the home page. Self in this case refers to the Home module. <code class="p
 is clicked. Finally, the code asserts the app is on the accessibility page.
 The accessibility page object defines the assert methods:</p>
 <pre class="highlight ruby">  <span class="k">def</span> <span class="nf">assert_exists</span>
-    <span class="n">s_text_exact</span> <span class="s1">'Accessibility Node Querying'</span>
+    <span class="n">text_exact</span> <span class="s1">'Accessibility Node Querying'</span>
   <span class="k">end</span>
 
   <span class="k">def</span> <span class="nf">assert</span>

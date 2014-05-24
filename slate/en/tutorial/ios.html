@@ -591,20 +591,20 @@ then we accessed the name attribute to verify it matches what we expect.</p>
 
 <p>To search for a UIAStaticText that matches, we’d use:</p>
 
-<p><code>&gt; s_text 'UICatalog'
+<p><code>&gt; text 'UICatalog'
 #&lt;Selenium::WebDriver::Element:0x5e4e2159acc099a id="3"&gt;
 </code></p>
 
 <p>This finds a static text that contains UICatalog. If we’re looking for an
-exact match, then s_text_exact works.</p>
+exact match, then text_exact works.</p>
 
-<p><code>&gt; s_text_exact 'UICatalog'
+<p><code>&gt; text_exact 'UICatalog'
 #&lt;Selenium::WebDriver::Element:0x5e4e2159acc099a id="3"&gt;
 </code></p>
 
 <p>These helper methods <a href="https://github.com/appium/ruby_lib/tree/master/docs">are documented on GitHub</a>.
-The difference between s_text and find is the class restriction. Find will match
-on any class while s_text will only match on a UIAStaticText element.</p>
+The difference between text and find is the class restriction. Find will match
+on any class while text will only match on a UIAStaticText element.</p>
 
 <p><code>UIAStaticText
    name, label: Buttons, Various uses of UIButton
@@ -633,7 +633,7 @@ has changed.</p>
 
 <p>To use an id with a class restriction, resolve it first:</p>
 
-<p><code>&gt; s_text(resolve_id('ButtonsExplain')).name
+<p><code>&gt; text(resolve_id('ButtonsExplain')).name
 "Buttons, Various uses of UIButton"
 </code></p>
 
@@ -764,7 +764,7 @@ Java notes:
 
 The commands from the Ruby console are different from those in the Java
 bindings. To make this easier, the java_ios folder contains a Helpers class.
-Convenience methods such as s_text, back, and wait have been added. They're
+Convenience methods such as text, back, and wait have been added. They're
 generally intended to mimic the code we've looked at in the Ruby console.
 
 Clone the git repository and open the projects/java_ios directory.
@@ -789,12 +789,12 @@ git clone https://github.com/appium/tutorial.git</aside></p>
 
 <h3 id="click-&amp;-verify">Click &amp; verify</h3>
 <pre class="highlight ruby"><span class="c1"># ruby</span>
-<span class="n">s_text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span>
-<span class="n">s_text_exact</span> <span class="s1">'Buttons'</span>
+<span class="n">text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span>
+<span class="n">text_exact</span> <span class="s1">'Buttons'</span>
 </pre>
 <pre class="highlight java"><span class="c1">// java</span>
-<span class="n">s_text</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
-<span class="n">s_text_exact</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">);</span>
+<span class="n">text</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">text_exact</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">);</span>
 </pre>
 
 <p>For the first entry, we click on Buttons and then assert that the buttons
@@ -809,12 +809,12 @@ element not found exception is raised.</p>
 
 <h3 id="using-a-wait">Using a wait</h3>
 <pre class="highlight ruby"><span class="c1"># ruby</span>
-<span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
-<span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span> <span class="s1">'Buttons'</span> <span class="p">}</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="s1">'Buttons'</span> <span class="p">}</span>
 </pre>
 <pre class="highlight java"><span class="c1">// java</span>
-<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
-<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">));</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_text</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">));</span>
 </pre>
 
 <p>Now the code will wait up to 30 seconds for the command to succeed. If it
@@ -827,18 +827,18 @@ value. When the app changes, our tests will break.</p>
 
 <h3 id="dynamic-values">Dynamic values</h3>
 <pre class="highlight ruby"><span class="c1"># ruby</span>
-<span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span> <span class="mi">2</span> <span class="p">}</span>
+<span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span> <span class="mi">2</span> <span class="p">}</span>
 <span class="n">page_title</span> <span class="o">=</span> <span class="n">cell_1</span><span class="p">.</span><span class="nf">name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">).</span><span class="nf">first</span>
 
 <span class="n">wait</span> <span class="p">{</span> <span class="n">cell_1</span><span class="p">.</span><span class="nf">click</span> <span class="p">}</span>
-<span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span> <span class="n">page_title</span> <span class="p">}</span>
+<span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="n">page_title</span> <span class="p">}</span>
 </pre>
 <pre class="highlight java"><span class="c1">// java</span>
-<span class="n">WebElement</span> <span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span><span class="o">(</span><span class="n">for_s_text</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+<span class="n">WebElement</span> <span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span><span class="o">(</span><span class="n">for_text</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
 <span class="n">String</span> <span class="n">page_title</span> <span class="o">=</span> <span class="n">cell_1</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"name"</span><span class="o">).</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">)[</span><span class="mi">0</span><span class="o">];</span>
 
 <span class="n">cell_1</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
-<span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="n">page_title</span><span class="o">));</span>
+<span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="n">page_title</span><span class="o">));</span>
 </pre>
 
 <p>In this code, we’re finding the first text by index. Index 2 contains the
@@ -853,8 +853,8 @@ even after small changes to the string values.</p>
 <span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'UIATableCell'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
 
 <span class="n">cell_names</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
-  <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span><span class="p">(</span><span class="nb">name</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
-  <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text_exact</span> <span class="nb">name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">).</span><span class="nf">first</span> <span class="p">}</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span><span class="p">(</span><span class="nb">name</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="nb">name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">).</span><span class="nf">first</span> <span class="p">}</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">back</span> <span class="p">}</span>
 <span class="k">end</span>
 </pre>
@@ -866,8 +866,8 @@ even after small changes to the string values.</p>
 <span class="o">}</span>
 
 <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">name</span> <span class="o">:</span> <span class="n">cell_names</span><span class="o">)</span> <span class="o">{</span>
-  <span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="n">name</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
-  <span class="n">wait</span><span class="o">(</span><span class="n">for_s_text_exact</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">)[</span><span class="mi">0</span><span class="o">]));</span>
+  <span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="n">name</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
+  <span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">)[</span><span class="mi">0</span><span class="o">]));</span>
   <span class="n">back</span><span class="o">();</span>
 <span class="o">}</span>
 </pre>
@@ -921,7 +921,7 @@ individual page. After that the <code class="prettyprint">class &lt;&lt; self</c
 methods static.</p>
 <pre class="highlight ruby"><span class="k">def</span> <span class="nf">button_uses_click</span>
   <span class="nb">self</span><span class="p">.</span><span class="nf">assert</span>
-  <span class="n">wait</span> <span class="p">{</span> <span class="n">s_text</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+  <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
   <span class="n">button_uses</span><span class="p">.</span><span class="nf">assert</span>
 <span class="k">end</span>
 </pre>
@@ -932,7 +932,7 @@ is on the home page. Self in this case refers to the Home module. <code class="p
 is clicked. Finally, the code asserts the app is on the button uses page.
 The button_uses page object defines the assert methods:</p>
 <pre class="highlight ruby"><span class="k">def</span> <span class="nf">assert_exists</span>
-  <span class="n">s_text_exact</span> <span class="n">resolve_id</span> <span class="s1">'ButtonsTitle'</span>
+  <span class="n">text_exact</span> <span class="n">resolve_id</span> <span class="s1">'ButtonsTitle'</span>
 <span class="k">end</span>
 
 <span class="k">def</span> <span class="nf">assert</span>
@@ -942,7 +942,7 @@ The button_uses page object defines the assert methods:</p>
 
 <p>In this part of the app there’s an ID. We’re resolving that id to the text
 value and then performing an exact static text search. This is the same as
-<code class="prettyprint">s_text_exact 'Buttons'</code> however because we’re using ids,
+<code class="prettyprint">text_exact 'Buttons'</code> however because we’re using ids,
 the text can change and the ids will remain constant.</p>
 
 <p><code class="prettyprint">appium.txt</code> enables these page methods to be used from within the appium
