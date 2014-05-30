@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>API Reference</title>
+
+    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../javascripts/all.js" type="text/javascript"></script>
+
+      <script>
+        $(function() {
+          setupLanguages(["ruby","python","java","javascript","php","csharp"]);
+        });
+      </script>
+  </head>
+
+  <body class="index">
+    <div class="tocify-wrapper">
+      <img src="../../images/logo.png">
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href="https://github.com/appium/ruby_lib">Ruby bindings</a></li>
+            <li><a href="https://github.com/appium/python-client">Python bindings</a></li>
+            <li><a href="https://github.com/appium/java-client">Java bindings</a></li>
+            <li><a href="https://github.com/admc/wd">JavaScript bindings</a></li>
+            <li><a href="https://github.com/appium/php-client">PHP bindings</a></li>
+            <li><a href="https://github.com/appium/appium-dotnet-driver">C# bindings</a></li>
+            <li><a href="http://appium.io/">Appium home page</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="appium">
+<span id="README.md"></span>Appium</h1>
+
+<blockquote>
+<p>Appium是一个支持原生,混合和移动web apps的开源的跨平台测试框架工具</p>
+</blockquote>
+
+<p><a href="https://npmjs.org/package/appium"><img alt="NPM version" src="https://badge.fury.io/js/appium.png"></a>
+<a href="https://travis-ci.org/appium/appium"><img alt="Build Status" src="https://api.travis-ci.org/appium/appium.png?branch=master"></a></p>
+
+<h2 id="支持平台">支持平台</h2>
+
+<ul>
+<li>iOS</li>
+<li>Android</li>
+<li>FirefoxOS</li>
+</ul>
+
+<h2 id="为什么选择appium-?">为什么选择appium ?</h2>
+
+<ol>
+<li>你不需要以任何方式重新编译或者修改你的app,就可以在所有的平台上使用标准的自动化APIs</li>
+<li>你可以用你喜欢的开发工具使用任何 <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a> 兼容的语言来编写测试用例.比如
+Java, <a href="https://github.com/appium/selenium-objective-c">Objective-C</a>,
+JavaScript with Node.js (in both <a href="https://github.com/admc/wd">callback</a> and <a href="https://github.com/jlipps/yiewd">yield-based</a> flavours),
+PHP, Python, <a href="https://github.com/appium/ruby_lib">Ruby</a>, C#, Clojure, 或者 Perl 
+可以使用标准的Selenium WebDriver API和特定语言的客户端库.</li>
+<li>你可以使用任何测试框架.</li>
+</ol>
+
+<p>依托  <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a> 意味着你可以押宝在一个已经成为事实上标准的独立,自由和开放的协议.而不会被限制在任何的专利中</p>
+
+<p>如果在没有使用Appium的情况,你使用了Apple的UIAutomation库就只能通过Javascript,并且只能通过Instruments application插桩应用来运行你的测试.
+同样的,在Google的UiAutomator体系下,你只能用Java写你的测试案例.
+Appium最终开启了跨平台原生移动自动化的可能.</p>
+
+<h2 id="依赖">依赖</h2>
+
+<p>你的环境需要配置好运行测试相关的特定移动平台,下面列出相关的依赖平台
+如果你想通过<code class="prettyprint">npm install</code>来运行appium, 为Appium研究和贡献力量.你需要<a href="http://nodejs.org">node.js and npm</a> 0.8 或者更高版本 (<code class="prettyprint">brew install node</code>).</p>
+
+<p>你可以使用 <code class="prettyprint">appium-doctor</code> 来验证 Appium 的所有依赖。运行 <code class="prettyprint">appium-doctor</code>，然后提供 <code class="prettyprint">--ios</code> 或者 <code class="prettyprint">--android</code> 参数来验证两个平台的依赖是否配置正确。如果从源代码运行，你可以使用 <code class="prettyprint">bin/appium-doctor.js</code> 或者 <code class="prettyprint">node bin/appium-doctor.js</code></p>
+
+<h3 id="ios依赖">IOS依赖</h3>
+
+<ul>
+<li>Mac OS X 10.7 or higher, 10.8.4 recommended</li>
+<li>XCode &gt;= 4.6.3</li>
+<li>Apple Developer Tools (iPhone simulator SDK, command line tools)</li>
+<li><a href="#running-on-osx.cn.md">Ensure you read our documentation on setting yourself up for iOS testing!</a></li>
+</ul>
+
+<h3 id="android依赖">android依赖</h3>
+
+<ul>
+<li>
+<a href="http://developer.android.com">Android SDK</a> API &gt;= 17 (Additional features require 18)</li>
+<li>Appium支持OS X上的Android, Linux和Windows上的beta支持.确保你通过如下的指示来配置你需要运行测试的不同系统的环境
+
+<ul>
+<li><a href="#running-on-linux.cn.md">linux</a></li>
+<li><a href="#running-on-osx.cn.md">osx</a></li>
+<li><a href="#running-on-windows.cn.md">windows</a></li>
+</ul>
+</li>
+</ul>
+
+<h3 id="firefoxos-requirements">FirefoxOS Requirements</h3>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en/docs/Tools/Firefox_OS_Simulator">Firefox OS Simulator</a></li>
+</ul>
+
+<h2 id="快速开始">快速开始</h2>
+
+<p>启动Appium server,并运行用你喜欢的 <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a> 兼容的语言编写的测试用例.
+你可以用node.js或者下面的应用程序来运行Appium</p>
+
+<h3 id="使用node.js">使用Node.js</h3>
+
+<p>$ npm install -g appium
+    $ appium &amp;</p>
+
+<h3 id="使用app">使用app</h3>
+
+<ul>
+<li><a href="https://github.com/appium/appium/releases">下载 Appium app</a></li>
+<li>运行它! </li>
+</ul>
+
+<h2 id="为appium编写测试">为Appium编写测试</h2>
+
+<p>我们支持 <a href="https://github.com/appium/appium/wiki/JSON-Wire-Protocol:-Supported-Methods">Selenium WebDriver JSON Wire Protocol</a> 的一个子集
+首先还需要指定特定移动平台相关的 <a href="#caps.cn.md">desired capabilities</a> 来通过appium运行你的测试</p>
+
+<p>你可以通过 <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a> 的元素定位策略的一个子集来定位元素
+更多信息请参考 <a href="#finding-elements.cn.md">finding elements</a></p>
+
+<p>我们也对 JSON Wire Protocol for <a href="#gestures.cn.md">automating mobile gestures</a> 做了一些扩展以支持像 tap, flick, 和 swipe 这样的动作(松开,按压,滑动等手机手势)</p>
+
+<p>你也可以在混合模式下自动化你的用HTML5构建的Web页面 <a href="#hybrid.cn.md">hybrid app guide</a>
+这个代码地址包含了 <a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/node">很多不同语言的测试例子</a>!</p>
+
+<p>想了解全部的Appium的文档页面,请访问 <a href="#">这个目录</a>.</p>
+
+<h2 id="工作原理">工作原理</h2>
+
+<p>Appium通过多种原生自动化框架来提供基于Selenium的 <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver JSON wire protocol</a> api</p>
+
+<p>Appium驱动Apple的UIAutomation库提供IOS支持. UIAutomation基于<a href="http://github.com/penguinho">Dan Cuellar’s</a></p>
+
+<p>Android支持上, 在新版本的Android使用了Uiautomator框架,老版本的android上使用了
+<a href="http://github.com/DominikDary/selendroid">Selendroid</a> </p>
+
+<p>FirefoxOS的支持依赖一个基于Gecko平台并且兼容WebDriver的自动化驱动<a href="https://developer.mozilla.org/en-US/docs/Marionette">Marionette</a>,不过暂不翻译了.因为暂时用不到</p>
+
+<h2 id="如何贡献代码">如何贡献代码</h2>
+
+<p>可以看下我们的文档  <a href="#CONTRIBUTING.md">contribution documentation</a>
+以了解如何从源代码中进行编译,测试和运行</p>
+
+<h2 id="其他项目的授权和灵感来源">其他项目的授权和灵感来源</h2>
+
+<p><a href="#credits.cn.md">Credits</a></p>
+
+<h2 id="邮件列表">邮件列表</h2>
+
+<p>声明和公告经常放到讨论组 <a href="https://groups.google.com/d/forum/appium-discuss">Discussion Group</a>, 需要注册</p>
+
+<h2 id="问题定位">问题定位</h2>
+
+<p>我们增加了一个 <a href="#troubleshooting.cn.md">问题定位指南</a>.
+如果你遇到一些问题,请看下这个问的那个.它包含了一些常见的错误说明,以及在无法解决的情况如何和社区联系</p>
+
+<h2 id="使用robots扩展">使用Robots扩展</h2>
+
+<p>可以使用appium的一些robots扩展.或者其他的robots.想了解更多可以看看 <a href="https://github.com/appium/robots">Appium Robots</a></p>
+
+<h2 id="翻译工作">翻译工作</h2>
+
+<p>文档翻译工作由<a href="http://testerhome.com/topics/150">testerhome</a>在推动, 我们会不断补充更多的文档和测试用例.
+欢迎对Appium感兴趣的同学加入我们, 为开源社区贡献中国人的力量.</p>
+
+<h1 id="intel®-硬件加速器管理">
+<span id="android-hax-emulator.cn.md"></span>Intel® 硬件加速器管理</h1>
+
+<p>如果你发现android虚拟机太慢, 并且你的系统运行在Intel® 的cpu上. 那么你可以尝试下HAXM, HAXM能够让你充分利用硬件虚拟化技术来加速android模拟器</p>
+
+<ul>
+<li><p>要安装HAXM, 你可以打开Android SDK Manager, 你可以在Extras中发现这个安装选项</p></li>
+<li><p>你可以在<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">Inter官方网站</a>找到所有相关的文档</p></li>
+<li><p>这将需要x86的模拟镜像</p></li>
+</ul>
+
+<h1 id="android-coverage">
+<span id="android_coverage.cn.md"></span>Android Coverage</h1>
+
+<p>Android 覆盖率需要使用模拟器或者 root 过的机器。使用 instrument target 构建应用，比如 <code class="prettyprint">$ ant instrument</code></p>
+
+<p>将 <code class="prettyprint">androidCoverage</code> 传给你设备的 capabilities，并设置为你的 instrument 的 class。
+比如</p>
+<pre class="highlight ruby"><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">androidCoverage: </span><span class="s1">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
+</pre>
+
+<p>Appium 会用类似的命令启动应用：<code class="prettyprint">adb shell am instrument -e coverage true -w com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation</code></p>
+
+<p>当你的测试完成时，我们就可以结束覆盖率收集，然后将 coverage.ec 文件从设备里取出来。</p>
+<pre class="highlight ruby"><span class="n">mobile</span> <span class="ss">:endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
+</pre>
+
+<p>在 <code class="prettyprint">AndroidManifest.xml</code> 里定义 instrumentation 和 broadcast 接收器。</p>
+<pre class="highlight xml">    <span class="nt">&lt;instrumentation</span>
+        <span class="na">android:name=</span><span class="s">"com.example.pkg.instrumentation.MyInstrumentation"</span>
+        <span class="na">android:targetPackage=</span><span class="s">"com.example.pkg"</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;/instrumentation&gt;</span>
+
+    <span class="c">&lt;!-- adb shell am broadcast -a com.example.pkg.END_EMMA --&gt;</span>
+    <span class="nt">&lt;receiver</span> <span class="na">android:name=</span><span class="s">"com.example.pkg.instrumentation.EndEmmaBroadcast"</span> <span class="nt">&gt;</span>
+       <span class="nt">&lt;intent-filter&gt;</span>
+           <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"com.example.pkg.END_EMMA"</span> <span class="nt">/&gt;</span>
+       <span class="nt">&lt;/intent-filter&gt;</span>
+    <span class="nt">&lt;/receiver&gt;</span>
+</pre>
+
+<p>再定义 <code class="prettyprint">EndEmmaBroadcast.java</code> ：</p>
+<pre class="highlight java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.annotation.SuppressLint</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.BroadcastReceiver</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Process</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.util.Log</span><span class="o">;</span>
+
+<span class="c1">// adb shell am broadcast -a com.example.pkg.END_EMMA</span>
+<span class="nd">@SuppressLint</span><span class="o">(</span><span class="s">"SdCardPath"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EndEmmaBroadcast</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="kt">int</span><span class="n">ent</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"AppiumEmma"</span><span class="o">,</span> <span class="s">"EndEmmaBroadcast broadcast received!"</span><span class="o">);</span>
+        <span class="c1">// reflection is used so emma doesn't cause problems for other build targets</span>
+        <span class="c1">// that do not include emma.</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.vladium.emma.rt.RT"</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">getMethod</span><span class="o">(</span><span class="s">"dumpCoverageData"</span><span class="o">,</span> <span class="n">File</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"/mnt/sdcard/coverage.ec"</span><span class="o">),</span> <span class="kc">false</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"AppiumEmma"</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="c1">// once coverage is dumped, the processes is ended.</span>
+        <span class="n">Process</span><span class="o">.</span><span class="na">killProcess</span><span class="o">(</span><span class="n">Process</span><span class="o">.</span><span class="na">myPid</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+
+<p>定义 <code class="prettyprint">MyInstrumentation.java</code>：</p>
+<pre class="highlight java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">android.app.Instrumentation</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.content.IntentFilter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">android.support.v4.content.LocalBroadcastManager</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyInstrumentation</span> <span class="kd">extends</span> <span class="n">Instrumentation</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Intent</span> <span class="kt">int</span><span class="n">ent</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">arguments</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="n">ent</span> <span class="o">=</span> <span class="n">getTargetContext</span><span class="o">().</span><span class="na">getPackageManager</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">getLaunchIntentForPackage</span><span class="o">(</span><span class="s">"com.example.pkg"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">setFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
+        <span class="n">start</span><span class="o">();</span> <span class="c1">// creates new thread which invokes onStart</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onStart</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">startActivitySync</span><span class="o">(</span><span class="kt">int</span><span class="n">ent</span><span class="o">);</span>
+        <span class="n">LocalBroadcastManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">getTargetContext</span><span class="o">()).</span><span class="na">registerReceiver</span><span class="o">(</span>
+                <span class="k">new</span> <span class="n">EndEmmaBroadcast</span><span class="o">(),</span> <span class="k">new</span> <span class="n">IntentFilter</span><span class="o">(</span><span class="s">"com.example.pkg.END_EMMA"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre>
+
+<h3 id="报表">报表</h3>
+
+<p><code class="prettyprint">ant instrument</code> 命令会生成一个 <code class="prettyprint">coverage.em</code> 文件。你可以使用 <code class="prettyprint">mobile :endCoverage</code> 命令来可以下载 某次运行的 coverage.ec 文件。 注意：你可以有很多个 coverage.ec 文件。你可以用下面的命令将他们合并起来：</p>
+
+<blockquote>
+<p>java -cp /path/to/android-sdk-macosx/tools/lib/emma_device.jar emma report -r html -in coverage.em,coverage0.ec,coverage1.ec -sp /path/to/your-app/src</p>
+</blockquote>
+
+<h1 id="appium-服务关键字">
+<span id="caps.cn.md"></span>Appium 服务关键字</h1>
+
+<p class="expand_table"></p>
+
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="prettyprint">app</code></td>
+<td>
+<code class="prettyprint">.ipa</code> or <code class="prettyprint">.apk</code>文件所在的本地绝对路径或者远程路径,也可以是一个包括两者的<code class="prettyprint">.zip</code>. Appium会先尝试安装路径对应的应用在适当的真机或模拟器上.也可以是一个<code class="prettyprint">chrome</code>或者<code class="prettyprint">chromium</code>，这样就会在android系统中其中chrome或chromium,也可以是<code class="prettyprint">safari</code>会启动ios上的safari. 针对Android系统，如果你指定<code class="prettyprint">app-package</code>和<code class="prettyprint">app-activity</code>(具体见下面)的话，那么就可以不指定<code class="prettyprint">app</code>.</td>
+<td>比如<code class="prettyprint">/abs/path/to/my.apk</code>或<code class="prettyprint">http://myapp.com/app.ipa</code>, Android上的<code class="prettyprint">chrome</code>, <code class="prettyprint">chromium</code>, iOS的<code class="prettyprint">safari</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">browserName</code></td>
+<td>考虑到Selenium的兼容性，必须要使用<code class="prettyprint">''</code>;要启动的浏览器的名称</td>
+<td>比如<code class="prettyprint">chrome</code>和<code class="prettyprint">safari</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">device</code></td>
+<td>要使用的模拟器或真机的类型名称</td>
+<td>比如<code class="prettyprint">ios</code>, <code class="prettyprint">selendroid</code>, <code class="prettyprint">firefoxos</code>, <code class="prettyprint">mock_ios</code>, <code class="prettyprint">android</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">version</code></td>
+<td>Android API版本, iOS版本, Chrome/Safari版本</td>
+<td>(Android)4.2/4.3(ios) 6.0/6.1/7.0</td>
+</tr>
+<tr>
+<td><code class="prettyprint">newCommandTimeout</code></td>
+<td>设置在接受到有效命令之前结束进程并退出的时间</td>
+<td>比如. <code class="prettyprint">60</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">launch</code></td>
+<td>在Appium已经安装的情况下可自动启动app。默认是<code class="prettyprint">true</code>
+</td>
+<td>
+<code class="prettyprint">true</code>, <code class="prettyprint">false</code>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="android特有">Android特有</h3>
+
+<p class="expand_table"></p>
+
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="prettyprint">app-activity</code></td>
+<td>你要启动的Android 应用对应的Activity名称</td>
+<td>比如<code class="prettyprint">MainActivity</code>, <code class="prettyprint">.Settings</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">app-package</code></td>
+<td>你想运行的Android应用的包名</td>
+<td>比如<code class="prettyprint">com.example.android.myApp</code>, <code class="prettyprint">com.android.settings</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">app-wait-activity</code></td>
+<td>你想要等待启动的Android Activity名称</td>
+<td>比如<code class="prettyprint">SplashActivity</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">device-ready-timeout</code></td>
+<td>设置一个模拟器或真机准备就绪的时间</td>
+<td>比如<code class="prettyprint">5</code>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="ios特有">iOS特有</h3>
+
+<p class="expand_table"></p>
+
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="prettyprint">calendarFormat</code></td>
+<td>为iOS的模拟器设置日历格式</td>
+<td>比如. <code class="prettyprint">gregorian</code>公历</td>
+</tr>
+<tr>
+<td><code class="prettyprint">deviceName</code></td>
+<td>iOS Simulator 的设备名</td>
+<td>比如. <code class="prettyprint">iPhone Retina (3.5-inch)</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">language</code></td>
+<td>为iOS的模拟器设置系统语言</td>
+<td>比如. <code class="prettyprint">fr</code>法语</td>
+</tr>
+<tr>
+<td><code class="prettyprint">launchTimeout</code></td>
+<td>在Appium运行失败之前设置一个等待instruments的时间</td>
+<td>比如. <code class="prettyprint">20000</code>毫秒</td>
+</tr>
+<tr>
+<td><code class="prettyprint">locale</code></td>
+<td>为iOS模拟器进行区域设置</td>
+<td>比如. <code class="prettyprint">fr_CA</code>法语</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="名单">
+<span id="credits.cn.md"></span>名单</h1>
+
+<h3 id="以下这些项目，鼓舞了我们，成就了-appium。">以下这些项目，鼓舞了我们，成就了 Appium。</h3>
+
+<ul>
+<li><a href="http://developer.apple.com/library/ios/#documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">Apple UIAutomation</a></li>
+<li><a href="https://github.com/detro/ghostdriver">GhostDriver</a></li>
+<li><a href="https://github.com/penguinho/applecart">IOS Auto</a></li>
+<li><a href="https://github.com/ios-driver/ios-driver">IOS Driver</a></li>
+<li><a href="https://github.com/jaykz52/mechanic">Mechanic.js</a></li>
+<li><a href="https://github.com/rogerwang/node-webkit">node-webkit</a></li>
+<li><a href="https://github.com/leftlogic/remote-debug">Remote Debug</a></li>
+<li><a href="http://code.google.com/p/selenium/">Selenium Project</a></li>
+<li><a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debug-proxy</a></li>
+</ul>
+
+<h1 id="元素定位与交互">
+<span id="finding-elements.cn.md"></span>元素定位与交互</h1>
+
+<p>Appium支持一个Webdriver元素定位方法的子集</p>
+
+<ul>
+<li>find by “tag name” (i.e., 通过UI的控件类型)</li>
+<li>find by “name” (i.e., 通过元素的文本, 标签, 或者开发同学添加的id标示, 比如accessibilityIdentifier)</li>
+<li>find by “xpath” (i.e., 具有一定约束的路径抽象标示, 基于XPath方式)</li>
+</ul>
+
+<h3 id="标签名抽象映射">标签名抽象映射</h3>
+
+<p>你可以使用UIAutomation的控件类型用于标签名, 或者使用简化的映射, 可以参考下如下例子
+https://github.com/appium/appium/blob/master/lib/uiauto/lib/mechanic.js#L29</p>
+
+<p>(官方文档外的补充)
+对于Android下的元素对应, 可以参考
+https://github.com/appium/appium/blob/master/lib/devices/android/bootstrap/src/io/appium/android/bootstrap/AndroidElementClassMap.java</p>
+
+<h2 id="例子">例子</h2>
+
+<h3 id="找到屏幕上所有的uiabuttons">找到屏幕上所有的UIAButtons</h3>
+
+<p>WD.js:</p>
+<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByTagName</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// tap all the buttons
+</span>  <span class="kd">var</span> <span class="nx">tapNextButton</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">button</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">button</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">tapNextButton</span><span class="p">();</span>
+      <span class="p">})</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">tapNextButton</span><span class="p">();</span>
+<span class="p">});</span>
+</pre>
+
+<p>Ruby:</p>
+<pre class="highlight ruby"><span class="n">buttons</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_elements</span> <span class="ss">:tag_name</span><span class="p">,</span> <span class="ss">:button</span>
+<span class="n">buttons</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">b</span><span class="o">|</span> <span class="n">b</span><span class="p">.</span><span class="nf">click</span> <span class="p">}</span>
+</pre>
+
+<p>Python:</p>
+<pre class="highlight python"><span class="p">[</span><span class="n">button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span> <span class="k">for</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'button'</span><span class="p">)]</span>
+</pre>
+
+<h3 id='找到所有文本内容(或者accessibilityidentifier)为"go"的元素'>找到所有文本内容(或者accessibilityIdentifier)为"Go"的元素</h3>
+
+<p>WD.js:</p>
+<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Go'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre>
+
+<p>Ruby:</p>
+<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s1">'Go'</span><span class="p">).</span><span class="nf">click</span>
+</pre>
+
+<p>Python:</p>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s">'Go'</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre>
+
+<h3 id='找到以"hi,-"开头的导航条元素'>找到以“Hi, "开头的导航条元素</h3>
+
+<p>WD.js:</p>
+<pre class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByXpath</span><span class="p">(</span><span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">el</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+    <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre>
+
+<p>Ruby:</p>
+<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:xpath</span><span class="p">,</span> <span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span>
+</pre>
+
+<h3 id="通过tagname查找元素">通过tagName查找元素</h3>
+
+<p>Java:</p>
+<pre class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
+
+<span class="n">WebELement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
+<span class="n">element</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">WebElement</span><span class="o">&gt;</span> <span class="n">elems</span> <span class="o">=</span> <span class="n">findElements</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
+<span class="n">elems</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
+</pre>
+
+<p>Python:</p>
+<pre class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'tableCell'</span><span class="p">)[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre>
+
+<h2 id="findandact">FindAndAct</h2>
+
+<p>你也可以通过一行命令来完成元素的查找和交互(只适用于IOS)
+举个例子, 你可以通过一次调用来实现查找一个元素并点击它, 使用的命令是<code class="prettyprint">mobile: findAndAct</code></p>
+
+<p>Python:</p>
+<pre class="highlight python"><span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s">'strategy'</span><span class="p">:</span> <span class="s">'tag_name'</span><span class="p">,</span> <span class="s">'selector'</span><span class="p">:</span> <span class="s">'button'</span><span class="p">,</span> <span class="s">'action'</span><span class="p">:</span> <span class="s">'tap'</span><span class="p">}</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: findAndAct"</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+</pre>
+
+<h3 id="用一个滑动手势进行下拉刷新">用一个滑动手势进行下拉刷新</h3>
+
+<p>Python:</p>
+<pre class="highlight python"><span class="n">js_snippet</span> <span class="o">=</span> <span class="s">"mobile: swipe"</span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s">'startX'</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s">'startY'</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s">'startX'</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s">'startY'</span><span class="p">:</span><span class="mf">0.95</span><span class="p">,</span> <span class="s">'tapCount'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'duration'</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="n">js_snippet</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+</pre>
+
+<p>备注:  driver.execute_script() 可以在 <a href="https://github.com/appium/appium/wiki/Automating-mobile-gestures">Automating Mobile Gestures: Alternative access method</a>) 找到说明</p>
+
+<h2 id="使用appium-inspector来定位元素">使用Appium Inspector来定位元素</h2>
+
+<p>(翻译备注: 这个工具目前只有Mac版本, 如果你使用的是windows, 可以使用android自带的traceview工具来获得元素的位置)</p>
+
+<p>Appium提供了一个灵活的工具Appium Inspector, 允许你在app运行的时候, 直接定位你正在关注的元素. 通过Appium Inspector(靠近start test按钮的i标示文本), 你可以通过点击预览窗口上的控件来获得它的name属性, 或者直接在UI导航窗口中定位</p>
+
+<h3 id="概述">概述</h3>
+
+<p>Appium Inspector有一个简单的布局, 全部由如下窗口组成.
+UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
+
+<p><img alt="Step 1" src="https://raw.github.com/appium/appium/master/assets/InspectorImages/Overview.png"></p>
+
+<h3 id="例子">例子</h3>
+
+<p>启动Appium Inspector后, (通过点击app右上的小"i"按钮), 你可以定位任何预览窗口中的元素. 作为测试, 我正在查找id为"show alert"的按钮</p>
+
+<p><img alt="Step 1" src="https://raw.github.com/appium/appium/master/assets/InspectorImages/Step1.png"></p>
+
+<p>要找到这个按钮的id, 在定位预览窗口中我点击了"show alert"按钮, Appium Inspector在UI导航窗口中高亮显示了这个元素, 然后展示了刚被点击按钮的id和元素类型</p>
+
+<p><img alt="Step 1" src="https://raw.github.com/appium/appium/master/assets/InspectorImages/Step2.png"></p>
+
+<h1 id="使移动手势自动化">
+<span id="gestures.cn.md"></span>使移动手势自动化</h1>
+
+<p>当selenium webDriver 提供某些交互功能的支持时，它的参数并不总是能很容易的映射到底层自动化设备（比如ios中的UIAutomation）所提供的功能。为此，Appium在WebDriver 之上为移动手势增加了额外的命令和参数。</p>
+
+<ul>
+<li>
+<strong>点击</strong>（在屏幕或者元素上）选项
+
+<ul>
+<li>手指个数</li>
+<li>点击时长</li>
+<li>点击次数</li>
+<li>点击屏幕或元素的精确位置</li>
+</ul>
+</li>
+<li>
+<strong>轻触</strong>（在屏幕或者元素上）选项
+
+<ul>
+<li>手指个数</li>
+<li>轻触开始位置</li>
+<li>轻触结束位置</li>
+</ul>
+</li>
+<li>
+<strong>拖动</strong>（在屏幕或者元素上）选项
+
+<ul>
+<li>手指个数</li>
+<li>拖动持续时长</li>
+<li>拖动开始位置</li>
+<li>拖动结束位置</li>
+</ul>
+</li>
+<li>
+<strong>滑动到</strong>（元素）</li>
+<li><strong>滑动</strong></li>
+<li><strong>摇晃</strong></li>
+<li>
+<strong>长按</strong> (元素)</li>
+<li>设置 <strong>orientation</strong> 选项:
+
+<ul>
+<li>新方向 (横屏或者竖屏)</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="json-wire-协议服务器扩展">JSON Wire 协议服务器扩展</h2>
+
+<p>使用下面的这些接口，我们在这个spec上，额外做了一些扩展。</p>
+
+<p><strong>注意:坐标</strong> 下面列出的所有X和Y参数都可以通过两种方式使用。它们取值  0 到 1 之间，比如 0.5 ，它被视为屏幕尺寸或者元素尺寸的百分比。换句话说，’{x: 0.5 , y: 0.25}’意思是坐标为屏幕/元素长度的 50% ，屏幕/元素高度的 25% 。如果取值大于 1 ，它们将被看做像素。那么，坐标’{x: 100,y: 300}’就表示距离屏幕/元素左边 100 像素，距离屏幕/元素上边 300 像素。</p>
+
+<p><strong>注意：在屏幕与元素上执行操作</strong> 这些方法都接受一个可选的’element’参数。如果存在，它将被当做已被检索元素的ID。因此，在这种情况下，该坐标只与特定元素所占矩形区域有关。所以’{x: 0.5 , y: 0.5 ,element:’3’}’的意思是元素ID为 3 的中心点坐标处。</p>
+
+<ul>
+<li>
+<code class="prettyprint">POST session/:sessionId/touch/tap</code> - 在屏幕或者元素上执行一次点击
+
+<ul>
+<li>URL 参数：要路由到会话的会话id</li>
+<li>JSON 参数：
+
+<ul>
+<li>
+<code class="prettyprint">tapCount</code> (可选, 默认 <code class="prettyprint">1</code>): 点击次数</li>
+<li>
+<code class="prettyprint">touchCount</code> (可选, 默认 <code class="prettyprint">1</code>): 触摸数量</li>
+<li>
+<code class="prettyprint">duration</code> (可选, 默认 <code class="prettyprint">0.1</code>): 点击持续时间，单位秒</li>
+<li>
+<code class="prettyprint">x</code> (可选, 默认 <code class="prettyprint">0.5</code>): 点击位置的x坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">y</code> (可选, 默认 <code class="prettyprint">0.5</code>): 点击位置的y坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">element</code> (可选): 元素ID</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code class="prettyprint">POST session:/sessionId/touch/flick_precise</code> - 在屏幕或者元素上执行一次轻触
+
+<ul>
+<li>URL参数：要路由到会话的会话id</li>
+<li>JSON 参数:
+
+<ul>
+<li>
+<code class="prettyprint">touchCount</code> (可选, 默认 <code class="prettyprint">1</code>): 触摸数量</li>
+<li>
+<code class="prettyprint">startX</code> (可选, 默认 <code class="prettyprint">0.5</code>): 轻触起点的x坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">startY</code> (可选, 默认 <code class="prettyprint">0.5</code>): 轻触起点的y坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">endX</code> (必选): 轻触终点的x坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">endY</code> (必选): 轻触终点的y坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">element</code> (可选): 元素ID</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code class="prettyprint">POST session:/sessionId/touch/swipe</code> - 在屏幕或者元素上执行一次拖动
+
+<ul>
+<li>URL参数：要路由到会话的会话id</li>
+<li>JSON 参数:
+
+<ul>
+<li>
+<code class="prettyprint">touchCount</code> (可选, 默认 <code class="prettyprint">1</code>): 触摸数量</li>
+<li>
+<code class="prettyprint">startX</code> (可选, 默认 <code class="prettyprint">0.5</code>): 拖动起点的x坐标（像素或者相对比例）)</li>
+<li>
+<code class="prettyprint">startY</code> (可选, 默认 <code class="prettyprint">0.5</code>): 拖动起点的y坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">endX</code> (必选): 拖动终点的x坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">endY</code> (必选): 拖动终点的y坐标（像素或者相对比例）</li>
+<li>
+<code class="prettyprint">duration</code> (可选, 默认 <code class="prettyprint">0.8</code>): 持续时间，单位：秒</li>
+<li>
+<code class="prettyprint">element</code> (可选): 元素ID</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<p><strong>注意：设置方向</strong> 设置屏幕方向传入的参数与点击，轻触，拖动等方法传入的参数不同。这个动作是由屏幕的方向设置为“横向”或者“竖向”执行。下面的替换方法不适用于设置方向。</p>
+
+<ul>
+<li>
+<code class="prettyprint">POST /session/:sessionId/orientation</code> - 设置屏幕的方向
+
+<ul>
+<li>URL 参数：sessionId</li>
+<li>JSON 参数:
+
+<ul>
+<li>
+<code class="prettyprint">orientation</code> (必选): 新的方向，要么“横屏”要么“竖屏”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="可供选择的方法">可供选择的方法</h2>
+
+<p>扩展JSON Wire协议的确很棒，但这意味着绑定的各式各样WebDriver语言将不得不用自己的方式实现对这些端点的访问。当然，用自己方式实现所花费的时间多少取决于不同的项目。我们已经制定了一个方法来解决这个延迟，使用带有特殊参数的<code class="prettyprint">driver.execute()</code>方法。</p>
+
+<p><code class="prettyprint">POST session/:sessionId/execute</code> 两个JSON参数:
+  * <code class="prettyprint">script</code> (通常为一段js脚本)
+  * <code class="prettyprint">args</code> (通常为要传入这段js脚本的参数数组)</p>
+
+<p>在这些新的移动方法的情况下，<code class="prettyprint">script</code>必须为下面情况之一:
+  * <code class="prettyprint">mobile: tap</code>
+  * <code class="prettyprint">mobile: flick</code>
+  * <code class="prettyprint">mobile: swipe</code>
+  * <code class="prettyprint">mobile: scrollTo</code>
+  * <code class="prettyprint">mobile: shake</code>
+( <code class="prettyprint">mobile:</code> 前缀让我们来路由这些请求到相应的端点).</p>
+
+<p><code class="prettyprint">args</code>是一个元素的数组：一个javascript对象为相应功能定义的参数。比如说，我想在屏幕的某个位置调用‘tap’，我可以调用<code class="prettyprint">driver.execute</code>，传入这些JSON参数：</p>
+<pre class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"script"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile: tap"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"y"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre>
+
+<p>在这个例子中，<code class="prettyprint">tap</code>方法被调用，使用上面定义的<code class="prettyprint">x</code> and <code class="prettyprint">y</code>参数。</p>
+
+<h2 id="示例代码">示例代码</h2>
+
+<p>注意：在这些示例中，参数都是可选的。</p>
+
+<h3 id="点击">点击</h3>
+
+<ul>
+<li><strong>WD.js:</strong></li>
+</ul>
+<pre class="highlight javascript">  <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByTagName</span><span class="p">(</span><span class="s1">'tableCell'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tapOpts</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">x</span><span class="p">:</span> <span class="mi">150</span> <span class="c1">// 距离左边的像素值
+</span>      <span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">30</span> <span class="c1">// 距离上边的像素值
+</span>      <span class="p">,</span> <span class="na">element</span><span class="p">:</span> <span class="nx">els</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nx">value</span> <span class="c1">// 想要执行tap事件的元素id
+</span>    <span class="p">};</span>
+    <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: tap"</span><span class="p">,</span> <span class="p">[</span><span class="nx">tapOpts</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// 继续测试
+</span>    <span class="p">});</span>
+  <span class="p">});</span>
+</pre>
+
+<ul>
+<li><strong>Java:</strong></li>
+</ul>
+<pre class="highlight java">  <span class="n">WebElement</span> <span class="n">row</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElements</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"tableCell"</span><span class="o">)).</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+  <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+  <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">tapObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
+  <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"x"</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span> <span class="c1">// 距离左边的像素值</span>
+  <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"y"</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span> <span class="c1">// 距离右边的像素值</span>
+  <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">row</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span> <span class="c1">// 想要执行tap事件的元素id</span>
+  <span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: tap"</span><span class="o">,</span> <span class="n">tapObject</span><span class="o">);</span>
+</pre>
+<pre class="highlight java">  <span class="c1">//在iOS app中，如果UI 控件的visible属性为“false”，通过元素的位置进行点击.</span>
+  <span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/scrollview[1]/image[1]"</span><span class="o">));</span>
+  <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">wd</span><span class="o">;</span>
+  <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">tapObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
+  <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"x"</span><span class="o">,</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">element</span><span class="o">.</span><span class="na">getLocation</span><span class="o">().</span><span class="na">getX</span><span class="o">());</span> 
+  <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"y"</span><span class="o">,</span> <span class="o">(</span><span class="kt">double</span><span class="o">)</span> <span class="n">element</span><span class="o">.</span><span class="na">getLocation</span><span class="o">().</span><span class="na">getY</span><span class="o">());</span> 
+  <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"duration"</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">);</span>
+  <span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: tap"</span><span class="o">,</span> <span class="n">tapObject</span><span class="o">);</span>
+</pre>
+
+<ul>
+<li><strong>Python:</strong></li>
+</ul>
+<pre class="highlight python">  <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: tap"</span><span class="p">,</span> <span class="p">{</span><span class="s">"touchCount"</span><span class="p">:</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">:</span><span class="s">"0.9"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">:</span><span class="s">"0.8"</span><span class="p">,</span> <span class="s">"element"</span><span class="p">:</span><span class="n">element</span><span class="o">.</span><span class="nb">id</span><span class="p">})</span>
+</pre>
+
+<ul>
+<li><strong>Ruby:</strong></li>
+</ul>
+<pre class="highlight ruby">  <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">150</span><span class="p">,</span> <span class="ss">:y</span> <span class="o">=&gt;</span> <span class="mi">30</span>
+</pre>
+
+<ul>
+<li><strong>Ruby:</strong></li>
+</ul>
+<pre class="highlight ruby">  <span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
+  <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nf">ref</span>
+</pre>
+
+<ul>
+<li><strong>C#:</strong></li>
+</ul>
+<pre class="highlight csharp">  <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Double</span><span class="p">&gt;</span> <span class="n">coords</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">double</span><span class="p">&gt;();</span>
+  <span class="n">coords</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span> <span class="m">12</span><span class="p">);</span>
+  <span class="n">coords</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"y"</span><span class="p">,</span> <span class="m">12</span><span class="p">);</span>
+  <span class="n">driver</span><span class="p">.</span><span class="nf">ExecuteScript</span><span class="p">(</span><span class="s">"mobile: tap"</span><span class="p">,</span> <span class="n">coords</span><span class="p">);</span>
+</pre>
+
+<h3 id="轻触">轻触</h3>
+
+<ul>
+<li><strong>WD.js:</strong></li>
+</ul>
+<pre class="highlight javascript">  <span class="c1">// options for a 2-finger flick from the center of the screen to the top left
+</span>  <span class="kd">var</span> <span class="nx">flickOpts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">endX</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">,</span> <span class="na">endY</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">,</span> <span class="na">touchCount</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="p">};</span>
+  <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: flick"</span><span class="p">,</span> <span class="p">[</span><span class="nx">flickOpts</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// continue testing
+</span>  <span class="p">});</span>
+</pre>
+
+<ul>
+<li><strong>Java:</strong></li>
+</ul>
+<pre class="highlight java">  <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+  <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">flickObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
+  <span class="n">flickObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endX"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+  <span class="n">flickObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endY"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+  <span class="n">flickObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"touchCount"</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+  <span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: flick"</span><span class="o">,</span> <span class="n">flickObject</span><span class="o">);</span>
+</pre>
+
+<h3 id="拖动">拖动</h3>
+
+<ul>
+<li><strong>WD.js:</strong></li>
+</ul>
+<pre class="highlight javascript">  <span class="c1">// options for a slow swipe from the right edge of the screen to the left
+</span>  <span class="kd">var</span> <span class="nx">swipeOpts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">startX</span><span class="p">:</span> <span class="mf">0.95</span>
+    <span class="p">,</span> <span class="na">startY</span><span class="p">:</span> <span class="mf">0.5</span>
+    <span class="p">,</span> <span class="na">endX</span><span class="p">:</span> <span class="mf">0.05</span>
+    <span class="p">,</span> <span class="na">endY</span><span class="p">:</span> <span class="mf">0.5</span>
+    <span class="p">,</span> <span class="na">duration</span><span class="p">:</span> <span class="mf">1.8</span>
+  <span class="p">};</span>
+  <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: swipe"</span><span class="p">,</span> <span class="p">[</span><span class="nx">swipeOpts</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// continue testing
+</span>  <span class="p">});</span>
+</pre>
+
+<ul>
+<li><strong>Java:</strong></li>
+</ul>
+<pre class="highlight java">  <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+  <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">swipeObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
+  <span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startX"</span><span class="o">,</span> <span class="mf">0.95</span><span class="o">);</span>
+  <span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startY"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">);</span>
+  <span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endX"</span><span class="o">,</span> <span class="mf">0.05</span><span class="o">);</span>
+  <span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endY"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">);</span>
+  <span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"duration"</span><span class="o">,</span> <span class="mf">1.8</span><span class="o">);</span>
+  <span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: swipe"</span><span class="o">,</span> <span class="n">swipeObject</span><span class="o">);</span>
+</pre>
+
+<h3 id="滑动">滑动</h3>
+
+<ul>
+<li><strong>Java</strong></li>
+</ul>
+<pre class="highlight java">  <span class="c1">// 滑块值可设置为0到1的字符类型的值</span>
+  <span class="c1">// 例如，"0.1" 表示 10%, "1.0" 表示 100%</span>
+  <span class="n">WebElement</span> <span class="n">slider</span> <span class="o">=</span>  <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/slider[1]"</span><span class="o">));</span>
+  <span class="n">slider</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
+</pre>
+
+<h3 id="设置方向">设置方向</h3>
+
+<ul>
+<li><strong>WD.js:</strong></li>
+</ul>
+<pre class="highlight javascript">  <span class="nx">driver</span><span class="p">.</span><span class="nx">setOrientation</span><span class="p">(</span><span class="s2">"LANDSCAPE"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// continue testing
+</span>  <span class="p">});</span>
+</pre>
+
+<ul>
+<li>
+<strong>Python:</strong>
+<code class="prettyprint">python
+driver.orientation = "LANDSCAPE"
+</code>
+</li>
+</ul>
+
+<h3 id="滚动到">滚动到</h3>
+<pre class="highlight ruby">  <span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
+  <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: scrollTo'</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nf">ref</span>
+</pre>
+
+<h3 id="长按">长按</h3>
+
+<ul>
+<li><strong>c#</strong></li>
+</ul>
+<pre class="highlight csharp">  <span class="c1">// 在元素上长按
+</span>  <span class="c1">// 
+</span>  <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;();</span>
+  <span class="n">parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"using"</span><span class="p">,</span> <span class="n">_attributeType</span><span class="p">);</span>
+  <span class="n">parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"value"</span><span class="p">,</span> <span class="n">_attribute</span><span class="p">);</span>
+  <span class="n">Response</span> <span class="n">response</span> <span class="p">=</span> <span class="n">rm</span><span class="p">.</span><span class="nf">executescript</span><span class="p">(</span><span class="n">DriverCommand</span><span class="p">.</span><span class="n">FindElement</span><span class="p">,</span> <span class="n">parameters</span><span class="p">);</span>
+  <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">elementDictionary</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">Value</span> <span class="k">as</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;;</span>
+  <span class="kt">string</span> <span class="n">id</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">elementDictionary</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+  <span class="p">{</span>
+     <span class="n">id</span> <span class="p">=</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">elementDictionary</span><span class="p">[</span><span class="s">"ELEMENT"</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="n">IJavaScriptExecutor</span> <span class="n">js</span> <span class="p">=</span> <span class="p">(</span><span class="n">IJavaScriptExecutor</span><span class="p">)</span><span class="n">remoteDriver</span><span class="p">;</span>
+  <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="p">&gt;</span> <span class="n">longTapObject</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">String</span><span class="p">&gt;();</span>
+  <span class="n">longTapObject</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"element"</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+  <span class="n">js</span><span class="p">.</span><span class="nf">ExecuteScript</span><span class="p">(</span><span class="s">"mobile: longClick"</span><span class="p">,</span> <span class="n">longTapObject</span><span class="p">);</span>
+</pre>
+
+<h1 id="selenium-grid">
+<span id="grid.cn.md"></span>Selenium Grid</h1>
+
+<p>使用 <b>”–nodeconfig"</b> 服务器参数，你可以在本地 selenium grid 里注册你的 appium 服务器。</p>
+<pre class="highlight shell"><span class="gp">&gt; </span>node . -V --nodeconfig /path/to/nodeconfig.json
+</pre>
+
+<p>在 node 的配置文件里，你需要定义 <b>“browserName”</b>，<b>“version”</b> 和 <b>“platform”</b>。
+基于这些参数，selenium grid 会将你的测试定向到正确的设备上去。你还需要配置你的 <b>host</b> 详细信息和
+<b>selenium grid</b> 的详细信息。你可以在 <a href="http://code.google.com/p/selenium/source/browse/java/server/src/org/openqa/grid/common/defaults/GridParameters.properties">这里</a> 找到详细的参数列表和描述信息。</p>
+
+<p>一旦你启动了 appium 服务器并且在 grid 里注册了信息，你会在 grid 控制台发现你的设备：</p>
+
+<p>“http://<b>&lt;grid-ip-adress&gt;</b>:<b>&lt;grid-port&gt;</b>/grid/console”</p>
+
+<h2 id="grid-配置文件例子">Grid 配置文件例子</h2>
+<pre class="highlight xml">{
+  "capabilities":
+      [
+        {
+          "browserName": "<span class="nt">&lt;e.g._iPhone5_or_iPad4&gt;</span>",
+          "version":"<span class="nt">&lt;version_of_iOS_e.g._6.1&gt;</span>",
+          "maxInstances": 1,
+          "platform":"<span class="nt">&lt;platform_e.g._MAC_or_ANDROID&gt;</span>"
+        }
+      ],
+  "configuration":
+  {
+    "cleanUpCycle":2000,
+    "timeout":30000,
+    "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+    "url":"http://<span class="nt">&lt;host_name_appium_server_or_ip-address_appium_server&gt;</span>:<span class="nt">&lt;appium_port&gt;</span>/wd/hub",
+    "maxSession": 1,
+    "register": true,
+    "registerCycle": 5000,
+    "hubPort": <span class="nt">&lt;grid_port&gt;</span>,
+    "hubHost": "<span class="nt">&lt;Grid_host_name_or_grid_ip-address&gt;</span>"
+  }
+}
+</pre>
+
+<p>可以在 <a href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/Platform.html">这里</a>查看有效的 platform 参数。</p>
+
+<h1 id="appium-grunt-命令">
+<span id="grunt.cn.md"></span>Appium grunt 命令</h1>
+
+<p><a href="http://gruntjs.com">Grunt</a> 是 Node.js 的 Make! 我们用它来自动化所有的 appium 开发任务。 下面就是你能做的：</p>
+
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grunt lint</td>
+<td>运行 JSLint</td>
+</tr>
+<tr>
+<td>grunt test</td>
+<td>运行所有的测试</td>
+</tr>
+<tr>
+<td>grunt functional</td>
+<td>运行整个功能测试集</td>
+</tr>
+<tr>
+<td>grunt ios</td>
+<td>运行 iOS 功能测试集</td>
+</tr>
+<tr>
+<td>grunt android</td>
+<td>运行 Android 功能测试集</td>
+</tr>
+<tr>
+<td>grunt selendroid</td>
+<td>运行 selendroid 功能测试集</td>
+</tr>
+<tr>
+<td>grunt firefoxos</td>
+<td>运行 firefoxos 功能测试集</td>
+</tr>
+<tr>
+<td>grunt unit</td>
+<td>运行所有的单元测试</td>
+</tr>
+<tr>
+<td>grunt buildApp:&lt;AppName&gt;:&lt;SDK&gt;</td>
+<td>构建一个用于 iPhone 模拟器的 iOS 应用。  我们预计这个应用的路径是 <code class="prettyprint">sample-code/apps/&lt;AppName&gt;/build/Release-iphonesimulator/&lt;AppName&gt;.app</code>. 默认的 SDK 是 ‘iphonesimulator6.0’</td>
+</tr>
+<tr>
+<td>grunt signApp:&lt;certName&gt;</td>
+<td>使用开发证书的绝对路径，签名测试应用。</td>
+</tr>
+<tr>
+<td>grunt authorize</td>
+<td>授权模拟器，使它不需要弹框请求权限。</td>
+</tr>
+<tr>
+<td>grunt log</td>
+<td>打印 appium.log (运行测试的时候很有用)</td>
+</tr>
+<tr>
+<td>grunt configAndroidBootstrap</td>
+<td>配置使用 ant 构建 Android 的 bootstrap.jar</td>
+</tr>
+<tr>
+<td>grunt buildAndroidBootstrap</td>
+<td>使用 ant 构建 bootstrap.jar</td>
+</tr>
+<tr>
+<td>grunt buildSelendroidServer</td>
+<td>构建 selendroid 服务器</td>
+</tr>
+<tr>
+<td>grunt configAndroidApp:&lt;AppName&gt;</td>
+<td>配置使用 ant 构建 android 测试应用。 我们期待有一个  <code class="prettyprint">sample-code/apps/&lt;AppName&gt;</code> 的 Android 项目</td>
+</tr>
+<tr>
+<td>grunt buildAndroidApp:&lt;AppName&gt;</td>
+<td>使用 ant 构建项目. 会在 <code class="prettyprint">sample-code/apps/&lt;AppName&gt;</code> 下生成应用。</td>
+</tr>
+<tr>
+<td>grunt installAndroidApp:&lt;AppName&gt;</td>
+<td>将安卓应用安装到模拟器和设备中去</td>
+</tr>
+<tr>
+<td>grunt docs</td>
+<td>生成文档</td>
+</tr>
+<tr>
+<td>grunt generateAppiumIo</td>
+<td>将 README.md 转成 appium.io 的 getting-started.html</td>
+</tr>
+<tr>
+<td>grunt setConfigVer:&lt;device&gt;</td>
+<td>将 package.json 里面 appium 的版本号和对应设备写入 <code class="prettyprint">.appiumconfig.json</code> 文件</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="其他">其他</h2>
+
+<p><code class="prettyprint">grunt buildApp</code> 默认使用 iPhone 6.1 模拟器的 SDK 来构建应用。你可以传其他的 SDK 给 grunt 命令。
+(用 <code class="prettyprint">xcodebuild -showsdks</code> 找出你所有的 sdk）:</p>
+
+<p>&gt; grunt buildApp:UICatalog:iphonesimulator6.0</p>
+
+<h1 id="自动化混合应用">
+<span id="hybrid.cn.md"></span>自动化混合应用</h1>
+
+<p>Appium 其中一个理念就是你不能为了测试应用而修改应用。为了符合这个方法学，我们可以使用 Selenium 测试传统 web 应用的方法来测试混合 web 应用 (比如，iOS 应用里的元素 “UIWebView” )，这是有可能的。这里会有一些技术性的复杂，Appium 需要知道你是想测试原生部分呢还是web部分。幸运的是，我们还能遵守 WebDriver 的协议。</p>
+
+<ul>
+<li> <a href="#hybrid.cn.md">混合 iOS 应用</a>
+</li>
+<li> <a href="#hybrid.cn.md">混合 Android 应用</a>
+</li>
+</ul>
+
+<h2 id="自动化混合-ios-应用">自动化混合 iOS 应用</h2>
+
+<p>在你的 Appium 测试里，你需要以下几步来和 web 页面交涉：</p>
+
+<ol>
+<li> 前往到应用里 web 视图激活的部分。</li>
+<li> 调用 <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/window_handles">GET session/:sessionId/window_handles</a>
+</li>
+<li> 这会返回一个我们能访问的 web 视图的 id 的列表。</li>
+<li> 使用你想访问的这个 web 视图的 id 作为参数，调用 <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/window">POST session/:sessionId/window</a>
+</li>
+<li> (这会将你的 Appium session 放入一个模式， 在这个模式下，所有的命令都会被解释成自动化web视图而不是原生的部分。比如，当你运行 getElementByTagName，它会在 web 视图的 DOM 上操作，而不是返回 UIAElements。当然，一个 Webdriver 的方法只能在一个上下文中有意义，所以如果在错误的上下文，你会收到错误信息。)</li>
+<li> 如果你想停止 web 视图的自动化，回到原生部分，你可以简单地使用 <code class="prettyprint">execute_script</code> 调用 <code class="prettyprint">"mobile: leaveWebView"</code> 方法来离开 web 层。</li>
+</ol>
+
+<h2 id="在-ios-真机上运行">在 iOS 真机上运行</h2>
+
+<p>appium 使用一个远程调试器建立连接来实现和 web 视图的交互。当在模拟器上执行下面例子的时候，我们可以直接建立连接，因为模拟器和 appium 服务器在同一台机器上。</p>
+
+<p>当在真机上运行用例时，appium 无法直接访问 web 视图，所以我们需要通过 USB 线缆来建立连接。我们使用 <a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debugger-proxy</a>建立连接。</p>
+
+<p>使用 brew 安装最新的 ios-webkit-debug-proxy。在终端运行一下命令:</p>
+<pre class="highlight shell"><span class="c"># 如果你没有安装 brew 的话，先安装 brew。</span>
+<span class="gp">&gt; </span>ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.github.com/mxcl/homebrew/go/install<span class="k">)</span><span class="s2">"</span>
+<span class="gp">&gt; </span>brew update
+<span class="gp">&gt; </span>brew install ios-webkit-debug-proxy
+</pre>
+
+<p>你也可以通过 git 克隆项目来自己安装最新版本：</p>
+<pre class="highlight shell"><span class="c"># Please be aware that this will install the proxy with the latest code (and not a tagged version).</span>
+<span class="gp">&gt; </span>git clone https://github.com/google/ios-webkit-debug-proxy.git
+<span class="gp">&gt; </span><span class="nb">cd </span>ios-webkit-debug-proxy
+<span class="gp">&gt; </span>./autogen.sh
+<span class="gp">&gt; </span>./configure
+<span class="gp">&gt; </span>make
+<span class="gp">&gt; </span>sudo make install
+</pre>
+
+<p>一旦安装好了， 你就可以启动代理：</p>
+<pre class="highlight shell"><span class="c"># 将udid替换成你的设备的udid。确保端口 27753 没有被占用</span>
+<span class="c"># remote-debugger 将会使用这个端口。</span>
+<span class="gp">&gt; </span>ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
+</pre>
+
+<p><b>注意：</b> 这个 ios-webkit-debug-proxy 需要 <b>“web inspector”</b> 打开着以便建立连接。在 <b> settings &gt; safari &gt; advanced </b> 里打开它。请注意 web inspector <b>在 iOS6 时候加入的</b> 以前的版本没有。</p>
+
+<h2 id="wd.js-code-example">Wd.js Code example</h2>
+<pre class="highlight javascript">  <span class="c1">// 假设我们已经有一个初始化好了的 `driver` 对象。
+</span>  <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 找到按钮，打开 web 视图
+</span>    <span class="nx">el</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 引导到 UIWebView
+</span>      <span class="nx">driver</span><span class="p">.</span><span class="nx">windowHandles</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">handles</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 得到能访问的视图列表。
+</span>        <span class="nx">driver</span><span class="p">.</span><span class="nb">window</span><span class="p">(</span><span class="nx">handles</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 因为只有一个，所以选择第一个。
+</span>          <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 通过 css 拿到元素。
+</span>            <span class="nx">els</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// 肯定有元素。
+</span>            <span class="nx">els</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">elText</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 得到第一个元素的文本。
+</span>              <span class="nx">elText</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="s2">"My very own text"</span><span class="p">);</span> <span class="c1">// 比较匹配文本。
+</span>              <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: leaveWebView"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 离开web视图上下文。
+</span>                <span class="c1">// 如果你想的话，做一些原生应用的操作。
+</span>                <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span> <span class="c1">// 退出。
+</span>              <span class="p">});</span>
+            <span class="p">});</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+</pre>
+
+<ul>
+<li>想看到具体的上下文，请看<a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/node/hybrid.js">该node 的例子</a>
+</li>
+<li>*我们正在完善 web 视图下面的方法。<a href="http://appium.io/get-involved.html">加入我们！</a>
+</li>
+</ul>
+
+<h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
+<pre class="highlight java">  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
+  <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
+  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"http://appium.s3.amazonaws.com/WebViewApp6.0.app.zip"</span><span class="o">);</span>  
+  <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
+  <span class="n">RemoteWebDriver</span> <span class="n">remoteWebDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">desiredCapabilities</span><span class="o">);</span>
+
+  <span class="c1">// 切换到最新的web视图</span>
+  <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">winHandle</span> <span class="o">:</span> <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">getWindowHandles</span><span class="o">()){</span>
+    <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="n">winHandle</span><span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="c1">//在 guinea-pig 页面用 id 和 元素交互。</span>
+  <span class="n">WebElement</span> <span class="n">div</span> <span class="o">=</span> <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"i_am_an_id"</span><span class="o">));</span>
+  <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="s">"I am a div"</span><span class="o">,</span> <span class="n">div</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span> <span class="c1">//验证得到的文本是否正确。</span>
+  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"comments"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"My comment"</span><span class="o">);</span> <span class="c1">//填写评论。</span>
+
+  <span class="c1">//离开 webview，回到原生应用。</span>
+  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: leaveWebView"</span><span class="o">);</span>
+
+  <span class="c1">//关闭应用。</span>
+  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
+</pre>
+
+<h2 id="wd.rb-cucumber-的例子">Wd.rb cucumber 的例子</h2>
+<pre class="highlight ruby"><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
+<span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span>
+<span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
+<span class="n">capabilities</span> <span class="o">=</span>
+    <span class="p">{</span>
+      <span class="s1">'browserName'</span> <span class="o">=&gt;</span> <span class="s1">'iOS 6.0'</span><span class="p">,</span>
+      <span class="s1">'platform'</span> <span class="o">=&gt;</span> <span class="s1">'Mac 10.8'</span><span class="p">,</span>
+      <span class="s1">'device'</span> <span class="o">=&gt;</span> <span class="s1">'iPhone Simulator'</span><span class="p">,</span>
+      <span class="s1">'app'</span> <span class="o">=&gt;</span> <span class="no">APP_PATH</span><span class="p">,</span>
+      <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="no">TEST_NAME</span>
+    <span class="p">}</span>
+<span class="vi">@driver</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="p">.</span><span class="nf">for</span><span class="p">(</span><span class="ss">:remote</span><span class="p">,</span> <span class="ss">:desired_capabilities</span> <span class="o">=&gt;</span> <span class="n">capabilities</span><span class="p">,</span> <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">SERVER_URL</span><span class="p">)</span>
+
+<span class="c1">## 这里切换到最近一个窗口是因为在我们的例子里这个窗口一直是 webview。其他的用例里，你需要自己指定。</span>
+<span class="c1">## 运行 @driver.window_handles，查看 appium 的日志，找出到底哪个窗口是你要的，然后找出相关的数字。</span>
+<span class="c1">## 然后用 @driver.switch_to_window(number)，切换过去。</span>
+
+<span class="no">Given</span><span class="p">(</span><span class="sr">/^I switch to webview$/</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">webview</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">window_handles</span><span class="p">.</span><span class="nf">last</span>
+  <span class="vi">@driver</span><span class="p">.</span><span class="nf">switch_to</span><span class="p">.</span><span class="nf">window</span><span class="p">(</span><span class="n">webview</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="no">Given</span><span class="p">(</span><span class="sr">/^I switch out of webview$/</span><span class="p">)</span> <span class="k">do</span>
+  <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span><span class="p">(</span><span class="s2">"mobile: leaveWebView"</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c1"># 你可以使用 CSS 选择器在你的 webview 里来选择元素</span>
+
+<span class="no">And</span><span class="p">(</span><span class="sr">/^I click a webview button $/</span><span class="p">)</span> <span class="k">do</span>
+  <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span><span class="p">(</span><span class="ss">:css</span><span class="p">,</span> <span class="s2">".green_button"</span><span class="p">).</span><span class="nf">click</span>
+<span class="k">end</span>
+</pre>
+
+<h3 id="用-ruby-调试-web-视图：">用 ruby 调试 web 视图：</h3>
+
+<p>我在我的帮助类里创建了一个快速方法来定位web元素，无论它在哪一个窗口视图。
+（这非常有帮助，特别是你的 webview 的 id 变化或者你用同一份代码来测试 Android 和 iOS。）
+https://gist.github.com/feelobot/7309729</p>
+
+<h2 id="自动化混合-android-应用">自动化混合 Android 应用</h2>
+
+<p>Appium 通过 Chromedriver 内建混合应用支持。Appium 也可以使用 Selendroid 做为 4.4 之前的设备对 webview 支持的背部引擎。（你需要在 desired capability 里指定 <code class="prettyprint">"device": "selendroid"</code>）。然后：</p>
+
+<ol>
+<li> 前往你应用里 web 视图激活的部分。</li>
+<li> 用 “WEBVIEW” 做窗口句柄调用 <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol#/session/:sessionId/window">POST session/:sessionId/window</a> ， 比如 <code class="prettyprint">driver.window("WEBVIEW")</code>。</li>
+<li> (这会将你的 Appium session 放入一个模式， 在这个模式下，所有的命令都会被解释成自动化web视图而不是原生的部分。比如，当你运行 getElementByTagName，它会在 web 视图的 DOM 上操作，而不是返回 UIAElements。当然，一个 Webdriver 的方法只能在一个上下文中有意义，所以如果在错误的上下文，你会收到错误信息。)</li>
+<li> 如果要停止web上下文里的自动化，回到原生部分的自动化，简单地使用 “NATIVE_APP” 调用 <code class="prettyprint">window</code> 方法。比如 <code class="prettyprint">driver.window("NATIVE_APP")</code>。</li>
+</ol>
+
+<p>注意：我们可以像上面说的，使用同样的策略。然而，Selendroid 使用 <code class="prettyprint">WEBVIEW</code>/<code class="prettyprint">NATIVE_APP</code> 窗口设置策略。 Appium 常规的混合支持也使用这种策略。</p>
+
+<h2 id="wd.js-代码例子">Wd.js 代码例子</h2>
+<pre class="highlight javascript"><span class="c1">// 假设我们已经初始化了一个 `driver` 实例。
+</span><span class="nx">driver</span><span class="p">.</span><span class="nb">window</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 选择唯一的 WebView
+</span>  <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 通过 CSS 取得元素
+</span>    <span class="nx">els</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// 验证元素存在
+</span>    <span class="nx">els</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">elText</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 得到第一个元素的文本
+</span>      <span class="nx">elText</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="s2">"My very own text"</span><span class="p">);</span> <span class="c1">// 验证文本内容
+</span>      <span class="nx">driver</span><span class="p">.</span><span class="nb">window</span><span class="p">(</span><span class="s2">"NATIVE_APP"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 离开 webview 上下文
+</span>        <span class="c1">// 可以做些原生应用的测试
+</span>        <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span> <span class="c1">// 关闭 webdriver
+</span>      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre>
+
+<h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
+<pre class="highlight java">  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
+  <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
+  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"/path/to/some.apk"</span><span class="o">);</span>  
+  <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
+  <span class="n">RemoteWebDriver</span> <span class="n">remoteWebDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">desiredCapabilities</span><span class="o">);</span>
+
+  <span class="c1">// 切换到最新的web视图</span>
+  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="s">"WEBVIEW"</span><span class="o">);</span>
+
+  <span class="c1">//在 guinea-pig 页面用 id 和 元素交互。</span>
+  <span class="n">WebElement</span> <span class="n">div</span> <span class="o">=</span> <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"i_am_an_id"</span><span class="o">));</span>
+  <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="s">"I am a div"</span><span class="o">,</span> <span class="n">div</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span> <span class="c1">//验证得到的文本是否正确。</span>
+  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"comments"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"My comment"</span><span class="o">);</span> <span class="c1">//填写评论。</span>
+
+  <span class="c1">//离开 webview，回到原生应用。</span>
+  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">window</span><span class="o">(</span><span class="s">"NATIVE_APP"</span><span class="o">);</span>
+
+  <span class="c1">//关闭应用。</span>
+  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
+</pre>
+
+<h1 id="部署ios-app-到手机上">
+<span id="ios-deploy.cn.md"></span>部署ios app 到手机上</h1>
+
+<p>准备在真机上执行appium测试, 需要如下准备:</p>
+
+<ol>
+<li>用特殊的设备参数来构建app</li>
+<li>使用 <a href="https://github.com/ghughes/fruitstrap">fruitstrap</a>, 一个第三方程序，来部署你构建的app到手机上</li>
+</ol>
+
+<h2 id="xcodebuild-命令的参数:">Xcodebuild 命令的参数:</h2>
+
+<p>新的参数运行指定设置. 参考 <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>:</p>
+<pre class="highlight plaintext">xcodebuild [-project projectname] [-target targetname ...]
+             [-configuration configurationname] [-sdk [sdkfullpath | sdkname]]
+             [buildaction ...] [setting=value ...] [-userdefault=value ...]
+</pre>
+
+<p>这有一个资料来参考可用的<a href="https://developer.apple.com/library/mac/#documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html#//apple_ref/doc/uid/TP40003931-CH3-DontLinkElementID_10">设置</a></p>
+<pre class="highlight plaintext">CODE_SIGN_IDENTITY (Code Signing Identity)
+    介绍: 标识符，指定一个签名.
+    例如: iPhone Developer
+</pre>
+
+<p>PROVISIONING_PROFILE 已经从可用的的命令中消失了，但还是有必要设置的。</p>
+
+<p>在xcodebuild命令中设置 “CODE_SIGN_IDENTITY” &amp; “PROVISIONING_PROFILE”:</p>
+<pre class="highlight plaintext">xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+</pre>
+
+<p>成功的话, app会构建到如下目录 <code class="prettyprint">&lt;app_dir&gt;/build/&lt;configuration&gt;-iphoneos/&lt;app_name&gt;.app</code></p>
+
+<h2 id="用fruitstrap进行部署">用Fruitstrap进行部署</h2>
+
+<p>clone一个fruitstrap的fork版本在<a href="https://github.com/ghughes/fruitstrap">ghughes version</a> ，这个已经不再维护. 已确认该fork可用<a href="https://github.com/unprompted/fruitstrap">unprompted fork</a>, 但是其它的据说也可用.</p>
+
+<p>clone成功的话, 执行 <code class="prettyprint">make fruitstrap</code>
+然后, 然后复制生成的 <code class="prettyprint">fruitstrap</code>到app的所在的目录或上级目录下。</p>
+
+<p>运行fruitstrap 通过输入以下命令 (命令是否可用依赖于你fork的 fruitstrap):</p>
+<pre class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;
+</pre>
+
+<p>如果是为了持续集成,你可以发现很有用的方法来记录fruitstrap命令行和日志文件中的记录, 像这样:</p>
+<pre class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out
+</pre>
+
+<p>在node服务启动前fruitstrap进行需要被结束, 一个方法是扫描fruitstrap的输出来得知app完成启动。 有一个有效的方法是通过一个Rakefile 和一个 <code class="prettyprint">go_device.sh</code> 脚本:</p>
+<pre class="highlight plaintext">bundle exec rake ci:fruit_deploy_app | while read line ; do 
+   echo "$line" | grep "text to identify successful launch" 
+   if [ $? = 0 ] 
+   then 
+   # Actions 
+       echo "App finished launching: $line" 
+       sleep 5 
+       kill -9 `ps -aef | grep fruitstrap | grep -v grep | awk '{print $2}'` 
+   fi
+ done
+</pre>
+
+<p>一旦fruitstrap的进程被结束, node 服务就可以启动并且appium测试可以被执行!</p>
+
+<p>下一步:
+<a href="https://github.com/appium/appium/wiki/Running-Appium-on-Real-Devices">在真机上运行appium</a></p>
+
+<h1 id="自动化手机网页应用">
+<span id="mobile-web.cn.md"></span>自动化手机网页应用</h1>
+
+<p>如果你正对于如何在iOS的Safari或Android上的Chrome做网页应用的自动化，那么Appium能够帮助你。你可以写一个最普通的WebDriver测试代码，就像使用Selenium服务一样使用Appium来满足需求。</p>
+
+<h2 id="ios模拟器上的safari浏览器">iOS模拟器上的Safari浏览器</h2>
+
+<p>首先，我们需要先确认在你的Safari浏览器的设置中开启了开发者模式，这样Safari的远程调试端口也会被同时打开。</p>
+
+<p>如果你打算在模拟器或真机上使用Appium的话，你必须先开发Safari。</p>
+
+<p>然后设置如下显示的这些信息以便于在设备中的Safari执行测试：</p>
+<pre class="highlight javascript"><span class="p">{</span>
+  <span class="na">app</span><span class="p">:</span> <span class="s1">'safari'</span>
+  <span class="p">,</span> <span class="na">device</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span>
+  <span class="p">,</span> <span class="na">version</span><span class="p">:</span> <span class="s1">'6.1'</span>
+<span class="p">}</span>
+</pre>
+
+<h3 id="ios真机上的safari浏览器">iOS真机上的Safari浏览器</h3>
+
+<p>为了能够在真机上的Safari执行测试，我们使用了<a href="https://github.com/snevesbarros/SafariLauncher">SafariLauncher App</a>来启动Safari。使用<a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-webkit-proxy</a>来自动启动Safari的远程调试功能。</p>
+
+<p><b>提示:</b> 目前针对iOS7版本的上，ios-webkit-debug-proxy有一个问题。<a href="https://github.com/google/ios-webkit-debug-proxy/issues/38">a bug</a></p>
+
+<h3 id="前期设置">前期设置</h3>
+
+<p>当你要在真机上的Safari中执行你的测试脚本之前你需要先注意以下几点：
+<em>安装并正常运行<b>ios-webkit-debug-proxy</b>（具体可以参考(s<a href="#hybrid.md">hybrid docs</a>)
+*打开iOS真机中的<b>web inspector</b>，可以在iOS6.0或更高版本中的<b>设置 &gt; safari &gt; 高级</b>找到。
+*创建一个<b>provisioning profile</b> 能够帮助你配置safariLauncher.
+*
+你可以前往<b>Apple Developers Member Center</b> 创建一个launcher profile:
+  * <b>第一步:</b> 创建一个<b>新的App Id</b> 同时设置WildCard App ID这个选项置为"</em>“
+  * <b>第二步:</b> 为步骤1的App Id创建一个<b>new Development Profile</b> .
+  * <b>第三步:</b> 选择你的<b>certificate(s) and device(s)</b> 并选择下一步.
+  * <b>第四步:</b> 设置profile的名称以及<b>generate the profile</b>.
+  * <b>第五步:</b> 下载profile并使用文本编辑器打开.
+  * <b>第六步:</b> 寻找并牢记你的<b>UUID</b> </p>
+
+<p>现在你有了自己的profile文件，可以在终端中输入如下的命令:</p>
+<pre class="highlight shell"><span class="gp">$ </span>git clone https://github.com/appium/appium.git
+<span class="gp">$ </span><span class="nb">cd </span>appium
+
+<span class="c"># 选项1:你可以不设置任何的参数就可以设置ios开发者证书</span>
+<span class="gp">$ </span>./reset.sh --ios --real-safari
+
+<span class="c"># 选项2:你需要定义code signing identity并且允许xcode可选择profile identity code</span>
+<span class="gp">$ </span>./reset.sh --ios --real-safari --code-sign <span class="s1">'&lt;code signing idendity&gt;'</span> 
+
+<span class="c">#选项3:你需要设置&lt;code signing idendity&gt;和&lt;profile identity code&gt;</span>
+<span class="gp">$ </span>./reset.sh --ios --real-safari --code-sign <span class="s1">'&lt;code signing idendity&gt;'</span> --profile <span class="s1">'&lt;retrieved profile identity code&gt;'</span>
+
+<span class="c">#设置成功之后，就可以像往常一样启动服务</span>
+<span class="gp">$ </span>node /lib/server/main.js -U &lt;UDID&gt;
+</pre>
+
+<h3 id="执行你的测试">执行你的测试</h3>
+
+<p>如果要在safari下的运行你的测试, 只需要简单的配置app为safari即可</p>
+
+<h3 id="java-举例">Java 举例</h3>
+<pre class="highlight java"><span class="c1">//setup the web driver and launch the webview app.</span>
+<span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+<span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"safari"</span><span class="o">);</span>  
+<span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
+<span class="n">RemoteWebDriver</span> <span class="n">remoteWebDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">desiredCapabilities</span><span class="o">);</span>
+
+<span class="c1">// Navigate to the page and interact with the elements on the guinea-pig page using id.</span>
+<span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"http://saucelabs.com/test/guinea-pig"</span><span class="o">);</span>
+<span class="n">WebElement</span> <span class="n">div</span> <span class="o">=</span> <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"i_am_an_id"</span><span class="o">));</span>
+<span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="s">"I am a div"</span><span class="o">,</span> <span class="n">div</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span> <span class="c1">//check the text retrieved matches expected value</span>
+<span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"comments"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"My comment"</span><span class="o">);</span> <span class="c1">//populate the comments field by id.</span>
+
+<span class="c1">//close the app.</span>
+<span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
+</pre>
+
+<h3 id="在真机或模拟器上的chrome执行测试">在真机或模拟器上的Chrome执行测试</h3>
+
+<p>需要做的准备:</p>
+
+<ul>
+<li> 确认Chrome已经安装在了你的真机或模拟器上 (应用的包名是<code class="prettyprint">com.android.chrome</code>) .在不编译chromiun的情况下, 不可能得到模拟器上的x86版本的chrome, 你可以运行一个ARM的模拟器然后从真机上获取一个Chrome的APK安装在模拟器上.</li>
+<li> 确认 <a href="https://code.google.com/p/chromedriver/downloads/list">ChromeDriver</a>, version &gt;= 2.0 正确的安装在你的系统上并且设置了<code class="prettyprint">chromedriver</code>成为系统全局变量.</li>
+</ul>
+
+<p>接着,像这样设置就可以在Chrome上执行测试了:</p>
+<pre class="highlight javascript"><span class="p">{</span>
+  <span class="na">app</span><span class="p">:</span> <span class="s1">'chrome'</span>
+  <span class="p">,</span> <span class="na">device</span><span class="p">:</span> <span class="s1">'Android'</span>
+<span class="p">};</span>
+</pre>
+
+<h1 id="跨平台的移动测试方法">
+<span id="mobile_methods.cn.md"></span>跨平台的移动测试方法</h1>
+
+<h3 id="移动测试的重置方法reset">移动测试的重置方法reset</h3>
+
+<p>reset方法会重置待测应用的状态</p>
+
+<p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
+<pre class="highlight ruby"><span class="n">mobile</span> <span class="ss">:reset</span>
+</pre>
+
+<p>不使用其他gem的方式</p>
+<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: reset'</span>
+</pre>
+
+<h2 id="android下的移动测试方法">Android下的移动测试方法</h2>
+
+<h3 id="移动测试的按键事件keyevent">移动测试的按键事件keyevent</h3>
+
+<p><a href="http://developer.android.com/reference/android/view/KeyEvent.html">KeyEvent</a> 提供了发送按键码(keycode)到Android的能力.</p>
+
+<p>在java中按下系统菜单键的演示</p>
+<pre class="highlight java"><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">keycode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+<span class="n">keycode</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"keycode"</span><span class="o">,</span> <span class="mi">82</span><span class="o">);</span>
+<span class="o">((</span><span class="n">JavascriptExecutor</span><span class="o">)</span><span class="n">driver</span><span class="o">).</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: keyevent"</span><span class="o">,</span> <span class="n">keycode</span><span class="o">);</span>
+</pre>
+
+<p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
+<pre class="highlight ruby"><span class="n">mobile</span> <span class="ss">:keyevent</span><span class="p">,</span> <span class="ss">keycode: </span><span class="mi">82</span>
+</pre>
+
+<p>不使用第三方gem的方式</p>
+<pre class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: keyevent'</span><span class="p">,</span> <span class="ss">:keycode</span> <span class="o">=&gt;</span> <span class="mi">82</span>
+</pre>
+
+<h3 id="移动测试的find方法">移动测试的Find方法</h3>
+
+<p>Java</p>
+
+<p>Java</p>
+
+<p><a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/java/junit/src/test/java/com/saucelabs/appium/MobileFindJavaTest.java">MobileFindJavaTest.java</a></p>
+
+<p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
+<pre class="highlight ruby"><span class="n">scroll_to</span> <span class="s1">'Gallery'</span>
+</pre>
+
+<h1 id="appium在真机上">
+<span id="real-devices.cn.md"></span>Appium在真机上</h1>
+
+<p>Appium已经初步支持真机测试。</p>
+
+<p>如果要在真机上执行测试，你将要做如下准备：</p>
+
+<p>1.一个苹果的开发者ID和有效的开发者对应的配置文件和签名文件</p>
+
+<p>2.一台iPad或者iPhone</p>
+
+<ol>
+<li><p>你要测试的应用的源码</p></li>
+<li><p>一台安装了XCode和XCode Command Line Developer Tools的Mac机器 </p></li>
+</ol>
+
+<h2 id="provisioning-profile">Provisioning Profile</h2>
+
+<p>要在真机上测试就需要一个有效的iOS开发者的Distribution Certificate and Provisioning Profile。你可以在这个上面找到配置这些的相关信息<a href="http://developer.apple.com/library/ios/#documentation/ToolsLanguages/Conceptual/YourFirstAppStoreSubmission/TestYourApponManyDevicesandiOSVersions/TestYourApponManyDevicesandiOSVersions.html">Apple documentation</a></p>
+
+<p>同样的，你还需要对你的应用签名，更多的信息可以查看<a href="http://developer.apple.com/library/ios/#documentation/ToolsLanguages/Conceptual/YourFirstAppStoreSubmission/ProvisionYourDevicesforDevelopment/ProvisionYourDevicesforDevelopment.html#//apple_ref/doc/uid/TP40011375-CH4-SW1">sign your app</a>.</p>
+
+<p>你必须使用Xcode的执行按钮来安装你的应用</p>
+
+<h2 id="使用appium运行你的测试">使用Appium运行你的测试</h2>
+
+<p>一旦你的设备和应用设置好了之后，你就能够用如下的命令在你的机器上执行测试：</p>
+<pre class="highlight plaintext">node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
+</pre>
+
+<p>这将会启动Appium并且开始在真机上测试应用。</p>
+
+<h2 id="疑问解答思路">疑问解答思路</h2>
+
+<ol>
+<li>确认UDID已经正确的在xcode organizar或itunes中设置了。很长的字符串（20多个字符串）
+0.确认你测试代码中的测试对象设备的设置</li>
+<li>再次确认你从instruments启动你的自动化测试</li>
+<li>确认instruments已经关闭</li>
+</ol>
+
+<h1 id="在-linux-上运行-appium">
+<span id="running-on-linux.cn.md"></span>在 Linux 上运行 Appium</h1>
+
+<h3 id="限制">限制</h3>
+
+<p>如果你在 Linux 上使用 Appium， 那么你没法使用已经构建好的 ‘.app'，那是为 OS X 准备的。 另外由于 Appium 在测试 iOS 应用时 依赖 OS X 特有的库， 所以你也没有办法测试在 Linux 上测试 iOS 应用。</p>
+
+<h2 id="配置">配置</h2>
+
+<p>首先，安装版本高于或等于 0.8 的 nodejs。可以根据 <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">instructions for your flavor of linux</a> 进行安装。</p>
+
+<p>安装好了 node.js 之后，安装 <a href="http://developer.android.com/sdk/index.html">Android SDK</a>。 你会需要运行 <code class="prettyprint">android</code> <code class="prettyprint">adb</code> 等工具，这些工具都在 SDK 里包含了， 你要做的是配置环境变量。当然你要确保你的 API level 大于等于 17。 你也需要使用 Ant 来构建 bootstrap jar 以便 Appium 使用它来测试 Android 应用。</p>
+
+<p>最后， 设置 <code class="prettyprint">$ANDROID_HOME</code> 为你的 Android SDK 的路径。比如， 你将 Android SDK 解压在 <code class="prettyprint">/usr/local/adt/</code>， 那你就要将如下添加到你的 <code class="prettyprint">.bashrc</code> 或 <code class="prettyprint">.zshrc</code> 或 <code class="prettyprint">.bash_profile</code> 等 shell 配置文件中去:</p>
+
+<p>export ANDROID_HOME=”/usr/local/adt/sdk</p>
+
+<p>现在你可以运行 Appium 了， 在你 checkout 出来的 Appium 目录里， 运行 <code class="prettyprint">.reset.sh --android</code>， 它会帮助你安装好所有的依赖。</p>
+
+<h2 id="运行-appium">运行 Appium</h2>
+
+<p>运行测试前， 你需要启动一个 API Level 大于等于 17 的 Android 模拟器或者连接一个系统是 4.1 以上的 Android 真机。然后在 Appium 目录运行</p>
+
+<p>node .</p>
+
+<p>你可以在 <a href="#server-args.cn.md">server documentation</a> 找到所有的命令行参数。</p>
+
+<h2 id="备注">备注</h2>
+
+<ul>
+<li>There exists a hardware accelerated emulator for android, it has it’s own
+limitations. For more information you can check out this
+Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。你可以在 <a href="#android-hax-emulator.cn.md">page</a> 找到更多的信息。</li>
+<li>确保你使用的 AVD 里面的 <code class="prettyprint">config.ini</code> 有这条指令 <code class="prettyprint">hw.battery=yes</code>。</li>
+</ul>
+
+<h1 id="在-mac-os-x-上使用-appium">
+<span id="running-on-osx.cn.md"></span>在 Mac OS X 上使用 Appium</h1>
+
+<p>在 OS X 上， Appium 支持 iOS 和 Android 测试</p>
+
+<h2 id="系统配置-(ios)">系统配置 (iOS)</h2>
+
+<ul>
+<li>Appium 需要 Mac OS X 10.7， 推荐 10.8。 （经过测试， 10.9 也能工作。）</li>
+<li>确保 Xcode 和 iOS SDK 都已经安装好了。 （当前 Appium 支持 Xcode 4.6.3/iOS 6.1 和 Xcode 5/iOS 7.0。 注意不推荐在基于 Xcode 5 下且低于 7.0 的 iOS 版本进行测试。 参照下篇可以获取更多信息）</li>
+<li>你需要授权 iOS 模拟器的使用。如果你是通过 NPM 安装的 Appium，那么你可以运行 <code class="prettyprint">sudo authorize_ios</code> （<code class="prettyprint">authorize_ios</code>）是来自 Appium npm 包里的一个二进制执行文件。如果你是从源代码运行 Appium，那么你可以简单的使用 <code class="prettyprint">sudo grunt authorize</code>。如果你使用<code class="prettyprint">Appium.app</code>, 那你只要用界面来操作。</li>
+</ul>
+
+<h2 id="使用多种-ios-sdk-进行测试">使用多种 iOS SDK 进行测试</h2>
+
+<p>Appium 使用苹果提供的 <code class="prettyprint">instruments</code> 来启动 iOS 模拟器，默认它会使用当前安装的 Xcode 和该 Xcode 下安装好的最高版本的 iOS SDK。这就意味着如果你想测试 iOS 6.1， 但是你安装了 iOS 7.0， 那么 Appium 会强制使用 7.0 的模拟器。 唯一的方法就是安装多个Xcode，然后在安装不同的 SDK。然后在启动 Appium 前，切换到你要测试的特定的版本。</p>
+
+<p>另外，我们发现 Xcode 5 上的 iOS 6.1 测试，会很慢而且不稳定。所以我们推荐，如果要在 6.1 及 6.1 以下版本的 iOS 上进行测试，请使用 Xcode 4.6.3。如果要在 iOS 7.0 上测试，请使用 Xcode 5。假设我们的 Xcode 5 在 <code class="prettyprint">/Applications/Xcode.app</code>， Xcode 4.6 在 <code class="prettyprint">/Applications/Xcode-4.6.app</code>，我们就可以用下面的命令来切换到 Xcode 4.6 来为 iOS 6.1 测试做准备。</p>
+
+<p>sudo xcode-select -switch /Applications/Xcode-4.6.app/Contents/Developer/</p>
+
+<p>如果要回到 Xcode 5 的话，我们再运行一次:</p>
+
+<p>sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/</p>
+
+<h2 id="系统配置-(android)">系统配置 (Android)</h2>
+
+<ul>
+<li>确保你已经安装了 <a href="http://developer.android.com/sdk/index.html">Android SDK installed</a>。</li>
+<li>确保你安装的 Android SDK API 大于等于 17。你可以运行 Android SDK 管理器（<code class="prettyprint">android</code>） 然后在额外的包里选择你要安装的 API。</li>
+<li>确保你安装了 <code class="prettyprint">ant</code>。 我们用 Ant 来构建 Appium 的 bootstrap jar 和 测试程序。Mac OS X Mavericks （小牛）已经不预装 <code class="prettyprint">ant</code> 了， 你可以去<a href="http://ant.apache.org/bindownload.cgi">官网</a>下载。你可以用 <code class="prettyprint">homebrew</code> 安装。</li>
+<li>
+<p>确保你配置好了<code class="prettyprint">$ANDROID_HOME</code>，并指向你的 Android SDK 目录。比如你的把 Android SDK 解压到 <code class="prettyprint">/usr/local/adt/</code>，  那你就要将如下添加到你的 <code class="prettyprint">.bashrc</code> 或 <code class="prettyprint">.zshrc</code> 或 <code class="prettyprint">.bash_profile</code> 等 shell 配置文件中去:</p>
+
+<p>export ANDROID_HOME=“/usr/local/adt/sdk”</p>
+</li>
+<li><p>确保你安装了 <a href="http://maven.apache.org/download.cgi">Maven 3.0.5</a>。 Maven 3.1.1 不能使用！
+我们需要 Maven 来支持 Selendroid， 借助 Selendroid， Appium 可以在低于 4.2 的 Android 版本里运行。 </p></li>
+<li><p>确保你的 AVD 已经配置好了最新的 Android 版本 （一个可以运行的 UIAutomator）（至少 4.1 ）。你可以使用 Android SDK tool 来创建 AVD。 别忘记给 AVD 起个好记的名字，下次你可以用它来启动模拟器并在模拟器上运行测试。</p></li>
+<li><p>确保你使用的 AVD 里面的 <code class="prettyprint">config.ini</code> 有这条指令 <code class="prettyprint">hw.battery=yes</code>。</p></li>
+<li><p>Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。你可以在 <a href="#android-hax-emulator.cn.md">page</a> 找到更多的信息。</p></li>
+</ul>
+
+<h1 id="在windows上运行appium">
+<span id="running-on-windows.cn.md"></span>在windows上运行appium</h1>
+
+<h3 id="限制">限制</h3>
+
+<p>如果你在windows上安装appium，你没法使用预编译专用于OS X的.app文件，你也将不能测试IOS apps，因为appium依赖OS X专用的库来支持IOS测试。这意味着你只能通过在mac上来运行IOS的app测试。这点限制挺大。</p>
+
+<h2 id="开始安装">开始安装</h2>
+
+<ol>
+<li><p>安装<a href="http://nodejs.org/download/">nodejs</a> 0.8版本及以上, 通过官方的安装程序来安装。</p></li>
+<li><p>安装android的sdk包，(http://developer.android.com/sdk/index.html), 运行依赖sdk中的'android'工具。并确保你安装了Level17或以上的版本api。设置<code class="prettyprint">ANDROID_HOME</code>系统变量为你的Android SDK路径，并把tools platform-tools两个目录加入到系统的Path路径里。因为这里面包含有一些执行命令</p></li>
+<li><p>安装java的JDK，并设置<code class="prettyprint">JAVA_HOME</code> 变量为你的JDK目录。</p></li>
+<li><p>安装<a href="http://ant.apache.org/bindownload.cgi">Apache Ant</a>
+或者直接使用Android Windows SDK自带的ant，地址在eclipse\plugins目录，你需要把这个目录加到你的系统PATH变量中</p></li>
+<li><p>安装<a href="http://maven.apache.org/download.cgi">Apache Maven</a>. 并且设置M2HOME和M2环境变量，把M2环境变量添加到你的系统PATH变量中。</p></li>
+<li><p>安装<a href="http://git-scm.com/download/win">Git</a>. 确保你安装了windows下的Git，以便可以运行常用的command命令</p></li>
+</ol>
+
+<p>现在，你已经下载安装了所有的依赖，开始运行
+    reset.bat</p>
+
+<h3 id="运行appium">运行Appium</h3>
+
+<p>要在windows上运行测试用例，你需要先启动Android模拟器或者连接上一个API Level17以上的android真机。
+然后在命令行运行appium 
+    node .</p>
+
+<h3 id="备注">备注</h3>
+
+<ul>
+<li>你必须带上–no-reset和–full-reset标记，以用于windows上的android</li>
+<li>有一个硬件加速模拟器用于android，但是它有自己的一些限制，如果你想了解更多，请参考<a href="#android-hax-emulator.cn.md">页面</a>
+</li>
+<li>确保在你的AVD的<code class="prettyprint">config.ini</code>中有一个配置项为<code class="prettyprint">hw.battery=yes</code> </li>
+</ul>
+
+<h3 id="最简略的安装方式">最简略的安装方式</h3>
+
+<p>出于对官方文档的尊重，我按照原文翻译，如下介绍我的安装心得。官方提到的一些工具，其实并不需要安装。
+下面介绍我已经测试过的安装和使用过程</p>
+
+<h3 id="安装appium">安装appium</h3>
+
+<ol>
+<li>安装nodejs</li>
+</ol>
+
+<p>2、使用npm安装appium，npm install -g appium</p>
+
+<h3 id="运行appium">运行appium</h3>
+
+<p>启动appium，直接运行appium 即可。</p>
+
+<h3 id="更新appium">更新appium</h3>
+
+<p>通过<code class="prettyprint">npm install -g appium</code> 来更新appium即可</p>
+
+<p>如果有任何疑问，欢迎到testerhome.com来交流</p>
+
+<h1 id="執行測試">
+<span id="running-tests.cn.md"></span>執行測試</h1>
+
+<h2 id="測試前的準備-(ios)">測試前的準備 (iOS)</h2>
+
+<p>在模擬器上測試apps必須要用模擬器專用的編譯器，例如說使用下列的命令來編譯 Xcode 項目：</p>
+
+<p>&gt; xcodebuild -sdk iphonesimulator6.0</p>
+
+<p>這行指令在Xcode項目底下創建了一個<code class="prettyprint">build/Release-iphonesimulator</code>目錄，並且生成一個可以透過 Appium 服務器來交流的的<code class="prettyprint">.app</code>封包。</p>
+
+<p>如果需要，你可以把.app 目錄壓縮成一個zip壓縮檔！Appium 會自行解壓縮。讓你能方便在非本地運行Appium。</p>
+
+<h2 id="測試前的準備-(android)">測試前的準備 (Android)</h2>
+
+<p>用Appium去執行你的.apk檔其實沒什麼特別需要注意的事項。如果需要，你可以把它壓縮成zip壓縮檔。</p>
+
+<h2 id="用appium測試你的app-(ios)">用Appium測試你的app (iOS)</h2>
+
+<p>目前最好的測試方式請參照測試範例：</p>
+
+<p><a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/node">Node.js</a> | <a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/python">Python</a> | <a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/php">PHP</a> | <a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/ruby">Ruby</a> | <a href="https://github.com/appium/appium/tree/1.0-beta/sample-code/examples/java">Java</a></p>
+
+<p>基本上來說，首先先確定你啟動了Appium:</p>
+
+<p>node . -V</p>
+
+<p>然後執行你的WebDriver測試腳本，腳本必須包含下列的環境參數：</p>
+<pre class="highlight javascript"><span class="p">{</span>
+    <span class="na">device</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span><span class="p">,</span>
+    <span class="na">browserName</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">version</span><span class="p">:</span> <span class="s1">'6.1'</span><span class="p">,</span>
+    <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
+<span class="p">}</span>
+</pre>
+
+<p>在這個腳本集裡，<code class="prettyprint">myApp</code>必須是下列其中之一：</p>
+
+<ul>
+<li>一個模擬器編譯過的 .app 目錄或著 .zip 檔的本地絕對路徑</li>
+<li>一個包含著你的.app封包的zip檔的url</li>
+</ul>
+
+<p>在你選擇的WebDriver庫裡，設定remote session使用上述的環境參數然後使用端口 4723來連接本地服務器 (或著是使用你在Appium啟動時所設定的任意端口)。現在你已經設置完成了！</p>
+
+<h2 id="用appium測試你的app-(android)">用Appium測試你的app (Android)</h2>
+
+<p>首先，先確定你有一個而且必須是只能一個Android模擬器或著設備連接著。如果你輸入<code class="prettyprint">adb devices</code>，你應該只看到一個設備連接著。這將是Appium所用來測試的設備。當然，要連接一個設備，你需要準備好一個Android AVD (參考 <a href="#system-setup.md">系統設置</a> 以了解更多). 如果Android SDK工具在你的路徑下，你可以簡單的執行:</p>
+
+<p>emulator -avd &lt;我的Avd名稱&gt;</p>
+
+<p>然後等android模擬器啟動。有時候，因為某些原因，<code class="prettyprint">adb</code>會卡住。如果它沒有顯示任何的設備或其他故障，你可以使用下列指令來重啟:</p>
+
+<p>adb kill-server &amp;&amp; adb devices</p>
+
+<p>現在，確認Appium已經啟動:</p>
+
+<p>node .</p>
+
+<p>然後執行你的WebDriver測試腳本，腳本必須包含下列的環境參數：</p>
+<pre class="highlight javascript"><span class="p">{</span>
+    <span class="na">device</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
+    <span class="na">browserName</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">version</span><span class="p">:</span> <span class="s1">'4.2'</span><span class="p">,</span>
+    <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span><span class="p">,</span>
+    <span class="s1">'app-package'</span><span class="p">:</span> <span class="nx">myAppPackage</span><span class="p">,</span>
+    <span class="s1">'app-activity'</span><span class="p">:</span> <span class="nx">myAppActivity</span>
+<span class="p">}</span>
+</pre>
+
+<p>在這個腳本集裡，<code class="prettyprint">myApp</code>必須是下列其中之一：</p>
+
+<ul>
+<li>一個 .apk 或著 .zip 檔的本地絕對路徑</li>
+<li>一個包含著你的.apk檔的zip壓縮檔的url</li>
+</ul>
+
+<p><code class="prettyprint">myAppPackage</code> 必須是你的應用的java package，例如, <code class="prettyprint">com.example.android.myApp</code>.</p>
+
+<p><code class="prettyprint">myAppActivity</code> 必須是你的希望測試的Android activity, 例如, <code class="prettyprint">MainActivity</code>.</p>
+
+<p>在你選擇的WebDriver庫裡，設定remote session使用上述的環境參數然後使用端口 4723來連接本地服務器 (或著是使用你在Appium啟動時所設定的任意端口)。現在你已經設置完成了！</p>
+
+<h2 id="用appium測試你的app-(android-設備-&lt;-4.2,-以及混合app測試)">用Appium測試你的app (Android 設備 &lt; 4.2, 以及混合app測試)</h2>
+
+<p>低於4.2版本的Android設備 (API Level 17) 沒有安裝Google 的<a href="http://developer.android.com/tools/help/uiautomator/index.html">用戶界面自動化框架/UiAutomator framework</a>.下面的範例是早期Appium在這些設備上的測試方法。對於早期的設備以及使用混合模式(webview-based)製作的apps, Appium 包含了另一種自動化測試後端<a href="http://selendroid.io/">Selendroid</a>.</p>
+
+<p>要使用Selendroid, 只需要在之前提到的環境參數上稍作修改即可，把'Android’ 換成 ‘Selendroid’:</p>
+<pre class="highlight javascript"><span class="p">{</span>
+    <span class="na">device</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
+    <span class="na">browserName</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+    <span class="na">version</span><span class="p">:</span> <span class="s1">'2.3'</span><span class="p">,</span>
+    <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span><span class="p">,</span>
+    <span class="s1">'app-package'</span><span class="p">:</span> <span class="nx">myAppPackage</span><span class="p">,</span>
+    <span class="s1">'app-activity'</span><span class="p">:</span> <span class="nx">myAppActivity</span>
+<span class="p">}</span>
+</pre>
+
+<p>這樣Appium就會使用 Selendroid 取代預設的測試會話。使用 Selendroid 的缺點是有時候它的API跟 Appium 非常不同。所以我們建議你在為你的舊設備或著混合app寫測試腳本之前先仔細的閱讀<a href="http://selendroid.io/native.html">Selendroid 的說明文檔</a>。</p>
+
+<h1 id="appium-服务器参数">
+<span id="server-args.cn.md"></span>Appium 服务器参数</h1>
+
+<p>使用方法: <code class="prettyprint">node . [标志]</code></p>
+
+<p>所有的标志都是可选的，但是有一些标志需要组合在一起才能生效。</p>
+
+<p class="expand_table"></p>
+
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>默认值</th>
+<th>描述</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="prettyprint">--shell</code></td>
+<td>null</td>
+<td>进入 REPL 模式</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--app</code></td>
+<td>null</td>
+<td>iOS: 基于模拟器编译的 app 的绝对路径或者设备目标的 bundle_id； Android: apk 文件的绝对路径</td>
+<td><code class="prettyprint">--app /abs/path/to/my.app</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--ipa</code></td>
+<td>null</td>
+<td>(IOS-only)  .ipa 文件的绝对路径</td>
+<td><code class="prettyprint">--ipa /abs/path/to/my.ipa</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-q</code>, <code class="prettyprint">--quiet</code>
+</td>
+<td>false</td>
+<td>不输出具体日志</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-U</code>, <code class="prettyprint">--udid</code>
+</td>
+<td>null</td>
+<td>连接的物理实体机的 udid</td>
+<td><code class="prettyprint">--udid 1adsf-sdfas-asdf-123sdf</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-a</code>, <code class="prettyprint">--address</code>
+</td>
+<td>0.0.0.0</td>
+<td>监听的 ip 地址</td>
+<td><code class="prettyprint">--address 0.0.0.0</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-p</code>, <code class="prettyprint">--port</code>
+</td>
+<td>4723</td>
+<td>监听的端口</td>
+<td><code class="prettyprint">--port 4723</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-dp</code>, <code class="prettyprint">--device-port</code>
+</td>
+<td>4724</td>
+<td>(Android-only) 连接设备的端口号</td>
+<td><code class="prettyprint">--device-port 4724</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-k</code>, <code class="prettyprint">--keep-artifacts</code>
+</td>
+<td>false</td>
+<td>(IOS-only) 保留 Instruments trace 目录</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-r</code>, <code class="prettyprint">--backend-retries</code>
+</td>
+<td>3</td>
+<td>(iOS-only) 遇到 crash 或者 超时，Instrument 重新参试启动的次数。</td>
+<td><code class="prettyprint">--backend-retries 3</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--session-override</code></td>
+<td>false</td>
+<td>允许 session 覆盖 (冲突的话)</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--full-reset</code></td>
+<td>false</td>
+<td>(iOS) 删除整个模拟器目录。 (Android) 通过卸载应用（而不是清楚数据）重置应用状态。在 Android 上，session 完成后也会删除应用。</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--no-reset</code></td>
+<td>false</td>
+<td>session 之间不充值应用状态 (IOS: 不删除应用的 plist 文件； Android: 在创建一个新的 session 前不删除应用。)</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-l</code>, <code class="prettyprint">--pre-launch</code>
+</td>
+<td>false</td>
+<td>在第一个 session 前，预启动应用 (iOS 需要 –app 参数，Android 需要 –app-pkg 和 –app-activity)</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-lt</code>, <code class="prettyprint">--launch-timeout</code>
+</td>
+<td>90000</td>
+<td>(iOS-only) 等待 Instruments 启动的时间</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-g</code>, <code class="prettyprint">--log</code>
+</td>
+<td>null</td>
+<td>将日志输出到指定文件</td>
+<td><code class="prettyprint">--log /path/to/appium.log</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--log-timestamp</code></td>
+<td>false</td>
+<td>在终端输出里显示时间戳</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--log-no-colors</code></td>
+<td>false</td>
+<td>不在终端输出中显示颜色</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-G</code>, <code class="prettyprint">--webhook</code>
+</td>
+<td>null</td>
+<td>同时发送日志到 HTTP 监听器</td>
+<td><code class="prettyprint">--webhook localhost:9876</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--native-instruments-lib</code></td>
+<td>false</td>
+<td>(IOS-only) iOS 内建了一个怪异的不可能避免的延迟。我们在 Appium 里修复了它。如果你想用原来的，你可以使用这个参数。</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">--merciful</code>, <code class="prettyprint">-m</code>
+</td>
+<td>false</td>
+<td>不运行强制关闭没有响应的 instruments 的监视进程</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--app-pkg</code></td>
+<td>null</td>
+<td>(Android-only) 你要运行的apk的java 包。 (例如， com.example.android.myApp)</td>
+<td><code class="prettyprint">--app-pkg com.example.android.myApp</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--app-activity</code></td>
+<td>null</td>
+<td>(Android-only) 打开应用时，启动的 Activity 的名字(比如， MainActivity)</td>
+<td><code class="prettyprint">--app-activity MainActivity</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--app-wait-package</code></td>
+<td>false</td>
+<td>(Android-only) 你想等待的 Activity 的 包名。(比如， com.example.android.myApp)</td>
+<td><code class="prettyprint">--app-wait-package com.example.android.myApp</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--app-wait-activity</code></td>
+<td>false</td>
+<td>(Android-only) 你想等待的 Activity 名字(比如， SplashActivity)</td>
+<td><code class="prettyprint">--app-wait-activity SplashActivity</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--android-coverage</code></td>
+<td>false</td>
+<td>(Android-only) 完全符合条件的 instrumentation 类. 作为命令 adb shell am instrument -e coverage true -w 的 -w 的参数</td>
+<td><code class="prettyprint">--android-coverage com.my.Pkg/com.my.Pkg.instrumentation.MyInstrumentation</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--avd</code></td>
+<td>null</td>
+<td>要启动的 avd 的名字</td>
+<td><code class="prettyprint">--avd @default</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--device-ready-timeout</code></td>
+<td>5</td>
+<td>(Android-only) 等待设备准备好的时间，以秒为单位</td>
+<td><code class="prettyprint">--device-ready-timeout 5</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--safari</code></td>
+<td>false</td>
+<td>(IOS-Only) 使用 Safari 应用</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--device-name</code></td>
+<td>null</td>
+<td>(IOS-Simulator-only) 待使用的 iOS 设备名字</td>
+<td><code class="prettyprint">--device-name iPhone Retina (4-inch)</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">--default-device</code>, <code class="prettyprint">-dd</code>
+</td>
+<td>false</td>
+<td>(IOS-Simulator-only) instruments 启动时使用默认的模拟器</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--force-iphone</code></td>
+<td>false</td>
+<td>(IOS-only) 无论应用要用什么模拟器，强制使用 iPhone 模拟器</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--force-ipad</code></td>
+<td>false</td>
+<td>(IOS-only) 无论应用要用什么模拟器，强制使用 iPad 模拟器</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--language</code></td>
+<td>null</td>
+<td>(IOS-only) iOS 模拟器的语言</td>
+<td><code class="prettyprint">--language en</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--locale</code></td>
+<td>null</td>
+<td>(IOS-only) iOS simulator 的区域</td>
+<td><code class="prettyprint">--locale en_US</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--calendar-format</code></td>
+<td>null</td>
+<td>(IOS-only) iOS 模拟器的日历格式</td>
+<td><code class="prettyprint">--calendar-format gregorian</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--orientation</code></td>
+<td>null</td>
+<td>(IOS-only) 初始化请求时，使用 LANDSCAPE 或者 PORTRAIT</td>
+<td><code class="prettyprint">--orientation LANDSCAPE</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--tracetemplate</code></td>
+<td>null</td>
+<td>(IOS-only) 指定 Instruments 使用的 .tracetemplate 文件</td>
+<td><code class="prettyprint">--tracetemplate /Users/me/Automation.tracetemplate</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--show-sim-log</code></td>
+<td>false</td>
+<td>(IOS-only) 如果设置了， iOS 模拟器的日志会写到终端上来</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--nodeconfig</code></td>
+<td>null</td>
+<td>指定 JSON 格式的配置文件 ，用来在 selenium grid 里注册 appium</td>
+<td><code class="prettyprint">--nodeconfig /abs/path/to/nodeconfig.json</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-ra</code>, <code class="prettyprint">--robot-address</code>
+</td>
+<td>0.0.0.0</td>
+<td>robot 的 ip 地址</td>
+<td><code class="prettyprint">--robot-address 0.0.0.0</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-rp</code>, <code class="prettyprint">--robot-port</code>
+</td>
+<td>-1</td>
+<td>robot 的端口地址</td>
+<td><code class="prettyprint">--robot-port 4242</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--selendroid-port</code></td>
+<td>8080</td>
+<td>用来和 Selendroid 交互的本地端口</td>
+<td><code class="prettyprint">--selendroid-port 8080</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--chromedriver-port</code></td>
+<td>9515</td>
+<td>ChromeDriver运行的端口</td>
+<td><code class="prettyprint">--chromedriver-port 9515</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--use-keystore</code></td>
+<td>false</td>
+<td>(Android-only) 设置签名 apk 的 keystore</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--keystore-path</code></td>
+<td>/Users/user/.android/debug.keystore</td>
+<td>(Android-only) keystore 的路径</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--keystore-password</code></td>
+<td>android</td>
+<td>(Android-only) keystore 的密码</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--key-alias</code></td>
+<td>androiddebugkey</td>
+<td>(Android-only) Key 的别名</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--key-password</code></td>
+<td>android</td>
+<td>(Android-only) Key 的密码</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--show-config</code></td>
+<td>false</td>
+<td>打印 Appium 服务器的配置信息，然后退出</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--keep-keychains</code></td>
+<td>false</td>
+<td>(iOS) 当 Appium 启动或者关闭的时候，是否保有 keychains (Library/Keychains)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="触摸动作（touch-actions）">
+<span id="touch-actions.cn.md"></span>触摸动作（touch actions）</h1>
+
+<p>WebDriver 提供了一个 API 来发送触摸手势给设备。
+例如， 长按某个元素你可以：</p>
+
+<p>iOS 应用：</p>
+<pre class="highlight java"><span class="kd">final</span> <span class="n">WebElement</span> <span class="n">imageView</span> <span class="o">=</span> <span class="n">searchResults</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"ImageView"</span><span class="o">));</span>
+<span class="k">new</span> <span class="nf">TouchActions</span><span class="p">(</span><span class="n">driver</span><span class="o">).</span><span class="na">longPress</span><span class="o">(</span><span class="n">imageView</span><span class="o">).</span><span class="na">perform</span><span class="o">();</span>
+</pre>
+
+<p>Android 应用：</p>
+
+<p>Java:</p>
+<pre class="highlight java"><span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"API Demo"</span><span class="o">));</span>
+<span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">wd</span><span class="o">;</span>
+<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tapObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+<span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
+<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: longClick"</span><span class="o">,</span> <span class="n">tapObject</span><span class="o">);</span>
+</pre>
+
+<p>Python:</p>
+<pre class="highlight python"><span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"your_element_xpath"</span><span class="p">)</span>
+<span class="n">wd</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: longClick"</span><span class="p">,{</span> <span class="s">"touchCount"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"x"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"y"</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s">"element"</span><span class="p">:</span><span class="n">element</span><span class="o">.</span><span class="nb">id</span> <span class="p">})</span>
+</pre>
+
+<p>目前， Appium 支持 Touch Actions API 的部分手势：</p>
+
+<ul>
+<li>flick （轻触）</li>
+<li>long press （长按）</li>
+<li>single tap （单击）</li>
+</ul>
+
+<p>其他手势通过 “Alternative access method” 支持，参见 <a href="#gestures.cn.md">自动化手机手势</a></p>
+
+<h1 id="appium-故障调试">
+<span id="troubleshooting.cn.md"></span>Appium 故障调试</h1>
+
+<p>如果你遇到问题，先不要提交 ticket 到 github 或者发信去 appium-disscuss 邮件列表求教，这里教你如何处理。</p>
+
+<h2 id="一般问题">一般问题</h2>
+
+<ul>
+<li>确保你是根据 <a href="#README.md">README</a> 里面的入门指南按部就班的。</li>
+<li>确保你的系统配置好了(比如， xCode 是最新的，Android SDK 安装好了， <code class="prettyprint">ANDROID_HOME</code> 配置好了，参照 <a href="#running-on-osx.md">setup instructions</a> ).</li>
+<li>确保你应用的路径正确。</li>
+</ul>
+
+<h2 id="如果你从-appium.app-运行的话-(通过-dmg-安装的)">如果你从 Appium.app 运行的话 (通过 dmg 安装的)</h2>
+
+<ul>
+<li>升级应用，然后重启。 如果你提示你无法升级，从<a href="http://appium.io">appium.io</a>重新下载。</li>
+</ul>
+
+<h2 id="如果你从源代码运行-appium-的话">如果你从源代码运行 Appium 的话</h2>
+
+<ul>
+<li>在源代码目录下运行 <code class="prettyprint">git pull</code> 确保你使用的是最新的代码。</li>
+<li>
+<p>根据你想要自动化的平台运行 <code class="prettyprint">reset.sh</code> :</p>
+
+<p>./reset.sh               # 所有平台
+./reset.sh –ios         # ios-only
+./reset.sh –android     # android-only
+./reset.sh –selendroid  # selendroid-only</p>
+</li>
+<li><p>你可能会用到 <code class="prettyprint">--dev</code>，如果你想下载和构建测试应用的话。</p></li>
+<li><p>你也能使用 <code class="prettyprint">appium-doctor</code> 来自动验证所有依赖是否符合。如果从源代码运行，你可以使用<code class="prettyprint">bin/appium-doctor.js</code> 或者 <code class="prettyprint">node bin/appium-doctor.js</code>。</p></li>
+<li><p>如果你升级到 Android SDK 22，然后得到了如下错误：
+<code class="prettyprint">{ANDROID_HOME}/tools/ant/uibuild.xml:155: SDK does not have any Build Tools installed.</code>
+在 Android SDK 22 里，platform 和 build 工具被拆分到它们各自项中去。你需要确保安装了 build-tool 和 platform-tool。</p></li>
+</ul>
+
+<h2 id="android">Android</h2>
+
+<ul>
+<li>确保 Android 模拟器启动并运行着。</li>
+<li>有时候需要运行 <code class="prettyprint">adb kill-server &amp;&amp; adb devices</code>。它可以帮助重置和Android设备之间的连接。</li>
+<li>Make sure you know about the <code class="prettyprint">app-package</code>, <code class="prettyprint">app-activity</code>, and <code class="prettyprint">app-wait-activity</code> desiredCapabilities (see <a href="#running-tests.md">this doc</a> for more information).</li>
+<li>你得知道 <code class="prettyprint">app-package</code>， <code class="prettyprint">app-activity</code> 和 <code class="prettyprint">app-wait-activity</code> (详见 <a href="#running-tests.md">文档</a>.</li>
+</ul>
+
+<h2 id="ios">IOS</h2>
+
+<ul>
+<li>确保 Instruments.app 没打开。</li>
+<li>If you’re running the simulator, make sure your actual device is not plugged in</li>
+<li>如果你运行模拟器，确保没有连接真机。</li>
+<li>确保你的 Setting 里面 accessibility 辅助功能已经关闭 </li>
+<li>确保 APP 是为这个版本的模拟器编译的。</li>
+<li>如果你曾经用 sudo 运行过 Appium， 你需要先删除<code class="prettyprint">/tmp/instruments_sock</code>， <code class="prettyprint">sudo rm /tmp/instruments_sock</code>。然后不要使用 sudo 启动 Appium。</li>
+<li>如果你第一次运行 Appium，先授权使用 Instruments。通常会有一个对话框弹出让你输入你的密码。如果你从源代码运行 Appium，你只需简单的运行 <code class="prettyprint">sudo grunt authorize</code>。如果用 npm 安装的话，运行 <code class="prettyprint">sudo authorize_ios</code> 即可。</li>
+<li>如果你看到 <code class="prettyprint">iOS Simulator failed to install the application.</code> 而且 App 的路径都正确的，那么重启下电脑看看。</li>
+</ul>
+
+<h2 id="webview/hybrid/safari-app-支持">Webview/Hybrid/Safari app 支持</h2>
+
+<ul>
+<li>确保真机上的'Web Inspector'激活了。</li>
+<li>确保你激活了模拟器上的 Safari 的开发模式。Safari - Advance Preferences- Developer menu</li>
+</ul>
+
+<h2 id="firefoxos">FirefoxOS</h2>
+
+<ul>
+<li>确保 Boot-to-Gecko 模拟器启动并运行着。</li>
+<li>确保模拟器的屏幕是亮着并没用锁屏的(可能需要重启 B2G).</li>
+</ul>
+
+<h2 id="告诉社区">告诉社区</h2>
+
+<p>如果你通过以上方法都不能解决问题，你可以做：</p>
+
+<p>如果你可以确认你发现的是个bug，来给我们报bug吧。<a href="https://github.com/appium/appium/issues">issue tracker</a></p>
+
+<p>如果你的 Appium 无法正常工作，然后错误信息不够清晰，欢迎加入<a href="https://groups.google.com/d/forum/appium-discuss">mailing list</a>。 给大家发邮件询问，但是请包含以下信息：</p>
+
+<ul>
+<li>你是如何运行 Appium 的 (Appium.app, npm, source)</li>
+<li>客户端和服务端的错误信息</li>
+<li>除了上述， 贴出 Appium 服务器端的输出也非常重要，特别是运行在 verbose 模式。这样我们可以分析诊断问题在哪里。</li>
+</ul>
+
+<h2 id="known-issues">Known Issues</h2>
+
+<ul>
+<li>如果你从 Node 官网安装的 Node，那需要你使用 sudo 运行 npm。这其实并不好，试试看用 <code class="prettyprint">brew install node</code>。</li>
+<li>使用 proxy，Webview 可以支持 iOS 真机。 见 <a href="https://groups.google.com/d/msg/appium-discuss/u1ropm4OEbY/uJ3y422a5_kJ">discussion</a>.</li>
+<li>有时候， iOS 的 UI 元素在定位到之后几毫秒会突然变得无效。这会导致一个类似<code class="prettyprint">(null) cannot be tapped</code>的错误。唯一的解决方法就是把finding-and-acting的代码放到 retry 块里。参见 <code class="prettyprint">mobile: findAndAct</code> <a href="#finding-elements.md">finding elements doc page</a>
+</li>
+<li>如果你通过 MacPorts 安装的 node 和 npm，那么确保 MacPorts 的 bin 文件夹 (<code class="prettyprint">/opt/local/bin</code>) 被添加到环境变量 <code class="prettyprint">PATH</code> 中去。</li>
+</ul>
+
+<h2 id="specific-errors">Specific Errors</h2>
+
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Error</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Running reset.sh</td>
+<td>xcodebuild: error: SDK “iphonesimulator6.1” cannot be located</td>
+<td>安装 iPhone 6.1 SDK 或者 使用单独的 SDK 构建 待测应用 比如： <code class="prettyprint">grunt buildApp:UICatalog:iphonesimulator5.1</code>
+</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="dark-box">
+          <div id="lang-selector">
+                <a href="#" data-language-name="ruby">Ruby</a>
+                <a href="#" data-language-name="python">Python</a>
+                <a href="#" data-language-name="java">Java</a>
+                <a href="#" data-language-name="javascript">JavaScript</a>
+                <a href="#" data-language-name="php">PHP</a>
+                <a href="#" data-language-name="csharp">C#</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

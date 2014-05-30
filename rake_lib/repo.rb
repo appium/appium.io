@@ -120,6 +120,7 @@ v1.0.0-beta.1
       sh clone_appium unless File.exists? path
 
       sh 'git reset --hard'
+      sh 'git fetch --tags'
 
       update_branches
 
