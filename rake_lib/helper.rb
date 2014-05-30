@@ -181,8 +181,12 @@ module AppiumIo
 
       File.open('_data/slate.yml', 'w') do |f|
         result = ''
-        metadata.each do |key, values|
+
+        # promote en to first
+        metadata_keys = (metadata.keys - ['en']).insert(0, 'en')
+        metadata_keys.each do |key|
           result += "\n#{key}:\n"
+          values = metadata[key]
           values.each do |tag|
             # must be exactly two spaces before tag or YAML parsing fails
             result += "  - #{tag}\n"
