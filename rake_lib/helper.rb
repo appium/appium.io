@@ -136,6 +136,13 @@ module AppiumIo
         data = File.read readme_dst
         data.gsub!('](docs/en/)', '](#)')
         data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
+
+        # remove badges (image links) when readme is copied into docs
+        # [![NPM version](https://badge.fury.io/js/appium.png)](https://npmjs.org/package/appium)
+        data.gsub!(/ \[ ! \[ [^\]]* \] \( [^)]+ \) \] \( [^)]+ \)/mx) do |full|
+          ''
+        end
+
         File.open(readme_dst, 'w') { |f| f.write data }
 
         # copy english dot app into the english docs

@@ -152,7 +152,7 @@ which support Appium’s extensions to the WebDriver protocol. When using Appium
 you want to use these client libraries instead of your regular WebDriver
 client. You can view the full list of libraries <a href="#appium-clients.md">here</a>.</p>
 
-<p><strong>Appium.app, Appium.exe</strong><br>
+<p><strong><a href="https://github.com/appium/appium-dot-app">Appium.app</a>, <a href="https://github.com/appium/appium-dot-exe">Appium.exe</a></strong><br>
 There exist GUI wrappers around the Appium server that can be downloaded.
 These come bundled with everything required to run the Appium server,
 so you don’t need to worry about Node. They also come with an Inspector,
@@ -167,14 +167,6 @@ more detailed requirements and instructions?</p>
 
 <h1 id="appium">
 <span id="README.md"></span>Appium</h1>
-
-<p><a href="https://npmjs.org/package/appium"><img alt="NPM version" src="https://badge.fury.io/js/appium.png"></a>
-<a href="https://david-dm.org/appium/appium"><img alt="Dependency Status" src="https://david-dm.org/appium/appium.svg"></a>
-<a href="https://david-dm.org/appium/appium#info=devDependencies"><img alt="devDependency Status" src="https://david-dm.org/appium/appium/dev-status.svg"></a>
-<a href="https://travis-ci.org/appium/appium"><img alt="Build Status" src="https://api.travis-ci.org/appium/appium.png?branch=master"></a>
-<a href="https://saucelabs.com/u/appium"><img alt="Selenium Test Status" src="https://saucelabs.com/buildstatus/appium"></a></p>
-
-<p><a href="https://saucelabs.com/u/appium"><img alt="Selenium Test Status" src="https://saucelabs.com/browser-matrix/appium.svg"></a></p>
 
 <p>Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, FirefoxOS).</p>
 
@@ -472,9 +464,9 @@ can connect to ADB and has Developer Mode enabled.</p>
 <ul>
 <li>Appium requires Mac OS X 10.7, but 10.8 is recommended.</li>
 <li>Make sure you have XCode and the iOS SDK(s) installed. (Appium currently
-supports Xcode 4.6.3 for iOS up to 6.1 and Xcode 5 for iOS 7.0. Note that
-testing against iOS versions below 7.0 using Xcode 5 is not recommended. See
-the next section for more information.)</li>
+supports Xcode 4.6.3 for iOS up to 6.1 and Xcode 5 for iOS 7.0 and 7.1. Note
+that testing against iOS versions below 7.0 using Xcode 5 is not recommended.
+See the next section for more information.)</li>
 <li>You need to authorize use of the iOS Simulator. If you are running Appium
 from NPM, you’ll do this by running <code class="prettyprint">sudo authorize_ios</code> (<code class="prettyprint">authorize_ios</code> is
 a binary made available by the Appium npm package). If you’re running Appium
@@ -487,7 +479,7 @@ are running <code class="prettyprint">Appium.app</code>, you can authorize iOS t
 <p>Apple’s <code class="prettyprint">instruments</code> binary, which Appium uses to launch the iOS simulator, by
 default uses the currently-selected Xcode, and the highest iOS SDK installed
 with that version of Xcode. This means that if you want to test iOS 6.1, but
-have iOS 7.0 installed, Appium will be forced to use the 7.0 Simulator
+have iOS 7.1 installed, Appium will be forced to use the 7.1 Simulator
 regardless. The only way around this is to have multiple copies of Xcode
 installed with different sets of SDKs. You can then switch to the particular
 copy of Xcode that has the versions you want to test with before starting
@@ -506,7 +498,7 @@ Then we use the following command:</p>
 
 <p>sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/</p>
 
-<p>To go back to iOS 7.0 testing.</p>
+<p>To go back to iOS 7.1 testing.</p>
 
 <h2 id="system-setup-(android)">System setup (Android)</h2>
 
@@ -551,7 +543,7 @@ apps because Appium relies on OS X-only libraries to support iOS testing.</p>
 <p>To get started:</p>
 
 <ol>
-<li>Install <a href="http://nodejs.org/download/">node.js</a> (v.0.8 or greater). Use the
+<li>Install <a href="http://nodejs.org/download/">node.js</a> (v.0.10 or greater). Use the
 installer from nodejs.org.</li>
 <li>Install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>.
 You will need to run the ‘android’ tool (included in the SDK) and make sure
@@ -681,14 +673,14 @@ want to zip it up, you can.</p>
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
 <pre class="highlight javascript"><span class="p">{</span>
     <span class="na">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span><span class="p">,</span>
-    <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'6.1'</span><span class="p">,</span>
+    <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'7.1'</span><span class="p">,</span>
     <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span><span class="p">,</span>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </pre>
 <pre class="highlight python"><span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
-    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'6.1'</span><span class="p">,</span>
+    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
     <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span><span class="p">,</span>
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
@@ -733,14 +725,14 @@ otherwise failing, you can restart it by running:</p>
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
 <pre class="highlight javascript"><span class="p">{</span>
     <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
-    <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'4.2'</span><span class="p">,</span>
+    <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'4.4'</span><span class="p">,</span>
     <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </pre>
 <pre class="highlight python"><span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
-    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.2'</span><span class="p">,</span>
+    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.4'</span><span class="p">,</span>
     <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'Android Emulator'</span><span class="p">,</span>
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
@@ -949,6 +941,12 @@ will download the coverage.ec file for that particular run. Note that you can
 <td>null</td>
 <td>Enter REPL mode</td>
 <td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--localizable-strings-dir</code></td>
+<td>en.lproj</td>
+<td>IOS only: the relative path of the dir where Localizable.strings file resides</td>
+<td><code class="prettyprint">--localizable-strings-dir en.lproj</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">--app</code></td>
@@ -1317,6 +1315,12 @@ will download the coverage.ec file for that particular run. Note that you can
 <td></td>
 </tr>
 <tr>
+<td><code class="prettyprint">--strict-caps</code></td>
+<td>false</td>
+<td>Cause sessions to fail if desired caps are sent in that Appium does not recognize as valid for the selected device</td>
+<td></td>
+</tr>
+<tr>
 <td><code class="prettyprint">--tmp</code></td>
 <td>null</td>
 <td>Absolute path to directory Appium can use to manage temporary files, like built-in iOS apps it needs to move around. On *nix/Mac defaults to /tmp, on Windows defaults to C:\Windows\Temp</td>
@@ -1391,6 +1395,31 @@ will download the coverage.ec file for that particular run. Note that you can
 <code class="prettyprint">true</code>, <code class="prettyprint">false</code>
 </td>
 </tr>
+<tr>
+<td><code class="prettyprint">language</code></td>
+<td>(Sim/Emu-only) Language to set for the iOS Simulator</td>
+<td>e.g. <code class="prettyprint">fr</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">locale</code></td>
+<td>(Sim/Emu-only) Locale to set for the iOS Simulator</td>
+<td>e.g. <code class="prettyprint">fr_CA</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">udid</code></td>
+<td>Unique device identifier of the connected physical device</td>
+<td>e.g. <code class="prettyprint">1ae203187fc012g</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">orientation</code></td>
+<td>(Sim/Emu-only) start in a certain orientation</td>
+<td>
+<code class="prettyprint">LANDSCAPE</code> or <code class="prettyprint">PORTRAIT</code>
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -1451,6 +1480,18 @@ will download the coverage.ec file for that particular run. Note that you can
 </td>
 </tr>
 <tr>
+<td><code class="prettyprint">androidDeviceReadyTimeout</code></td>
+<td>Timeout in seconds used to wait for a device to become ready after booting</td>
+<td>e.g., <code class="prettyprint">30</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">avd</code></td>
+<td>Name of avd to launch</td>
+<td>e.g., <code class="prettyprint">api19</code>
+</td>
+</tr>
+<tr>
 <td><code class="prettyprint">avdLaunchTimeout</code></td>
 <td>How long to wait in milliseconds for an avd to launch and connect to ADB (default <code class="prettyprint">120000</code>)</td>
 <td><code class="prettyprint">300000</code></td>
@@ -1459,6 +1500,44 @@ will download the coverage.ec file for that particular run. Note that you can
 <td><code class="prettyprint">avdReadyTimeout</code></td>
 <td>How long to wait in milliseconds for an avd to finish its boot animations (default <code class="prettyprint">120000</code>)</td>
 <td><code class="prettyprint">300000</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">avdArgs</code></td>
+<td>Additional emulator arguments used when launching an avd</td>
+<td>e.g., <code class="prettyprint">-netfast</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">useKeystore</code></td>
+<td>Use a custom keystore to sign apks, default <code class="prettyprint">false</code>
+</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keystorePath</code></td>
+<td>Path to custom keystore, default ~/.android/debug.keystore</td>
+<td>e.g., <code class="prettyprint">/path/to.keystore</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keystorePassword</code></td>
+<td>Password for custom keystore</td>
+<td>e.g., <code class="prettyprint">foo</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keyAlias</code></td>
+<td>Alias for key</td>
+<td>e.g., <code class="prettyprint">androiddebugkey</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keyPassword</code></td>
+<td>Password for key</td>
+<td>e.g., <code class="prettyprint">foo</code>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1489,21 +1568,9 @@ will download the coverage.ec file for that particular run. Note that you can
 </td>
 </tr>
 <tr>
-<td><code class="prettyprint">language</code></td>
-<td>(Sim-only) Language to set for the iOS Simulator</td>
-<td>e.g. <code class="prettyprint">fr</code>
-</td>
-</tr>
-<tr>
 <td><code class="prettyprint">launchTimeout</code></td>
 <td>Amount of time in ms to wait for instruments before assuming it hung and failing the session</td>
 <td>e.g. <code class="prettyprint">20000</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">locale</code></td>
-<td>(Sim-only) Locale to set for the iOS Simulator</td>
-<td>e.g. <code class="prettyprint">fr_CA</code>
 </td>
 </tr>
 <tr>
@@ -1568,6 +1635,12 @@ will download the coverage.ec file for that particular run. Note that you can
 <td>
 <code class="prettyprint">true</code> or <code class="prettyprint">false</code>
 </td>
+</tr>
+<tr>
+<td><code class="prettyprint">localizableStringsDir</code></td>
+<td>Where to look for localizable strings. Default <code class="prettyprint">en.lproj</code>
+</td>
+<td><code class="prettyprint">en.lproj</code></td>
 </tr>
 </tbody>
 </table>
@@ -1657,7 +1730,7 @@ you will see your device on the grid console page:</p>
       [
         {
           "browserName": "<span class="nt">&lt;e.g._iPhone5_or_iPad4&gt;</span>",
-          "version":"<span class="nt">&lt;version_of_iOS_e.g._6.1&gt;</span>",
+          "version":"<span class="nt">&lt;version_of_iOS_e.g._7.1&gt;</span>",
           "maxInstances": 1,
           "platform":"<span class="nt">&lt;platform_e.g._MAC_or_ANDROID&gt;</span>"
         }
@@ -2030,14 +2103,14 @@ attempting to use Appium.</p>
 <p>Then, use desired capabilities like these to run your test in mobile Safari:</p>
 <pre class="highlight javascript"><span class="p">{</span>
   <span class="na">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span>
-  <span class="p">,</span> <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'6.1'</span>
+  <span class="p">,</span> <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'7.1'</span>
   <span class="p">,</span> <span class="na">browserName</span><span class="p">:</span> <span class="s1">'Safari'</span>
   <span class="p">,</span> <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span>
 <span class="p">}</span>
 </pre>
 <pre class="highlight python"><span class="p">{</span>
   <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
-  <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'6.1'</span><span class="p">,</span>
+  <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
   <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Safari'</span><span class="p">,</span>
   <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span>
 <span class="p">}</span>
@@ -2650,7 +2723,7 @@ myVariable === undefined
 <span class="nx">h</span><span class="p">.</span><span class="nx">driver</span>
   <span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"'nan'--"</span><span class="p">)</span>
     <span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">rejectedWith</span><span class="p">(</span><span class="s2">"status: 13"</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">done</span><span class="p">);</span>        
+  <span class="p">.</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">done</span><span class="p">);</span>
 </pre>
 
 <h1 id="appium-grunt-commands">
@@ -2681,7 +2754,7 @@ kinds of appium dev tasks. Here’s what you can do:</p>
 </tr>
 <tr>
 <td>grunt buildApp:&lt;AppName&gt;:&lt;SDK&gt;</td>
-<td>Build an iOS app for the iPhone Simulator.  Expects there to be a .app at <code class="prettyprint">sample-code/apps/&lt;AppName&gt;/build/Release-iphonesimulator/&lt;AppName&gt;.app</code>. Default SDK is ‘iphonesimulator6.0’</td>
+<td>Build an iOS app for the iPhone Simulator.  Expects there to be a .app at <code class="prettyprint">sample-code/apps/&lt;AppName&gt;/build/Release-iphonesimulator/&lt;AppName&gt;.app</code>. Default SDK is ‘iphonesimulator7.1’</td>
 </tr>
 <tr>
 <td>grunt signApp:&lt;certName&gt;</td>
@@ -2738,11 +2811,11 @@ kinds of appium dev tasks. Here’s what you can do:</p>
 
 <h2 id="miscellaneous-notes">Miscellaneous notes</h2>
 
-<p>By default, <code class="prettyprint">grunt buildApp</code> builds apps using the iPhone 6.1 simulator SDK.
+<p>By default, <code class="prettyprint">grunt buildApp</code> builds apps using the iPhone 7.1 simulator SDK.
 You can overwrite the simulator by passing another SDK to grunt (to figure out
 which SDKs you have available, try <code class="prettyprint">xcodebuild -showsdks</code>:</p>
 
-<p>&gt; grunt buildApp:UICatalog:iphonesimulator6.0</p>
+<p>&gt; grunt buildApp:UICatalog:iphonesimulator6.1</p>
 
 <h1 id="how-to-write-docs">
 <span id="how-to-write-docs.md"></span>How to write docs</h1>
@@ -3476,7 +3549,7 @@ part of the capabilities object when you connect.</li>
 <li>
 <strong>Wait For Activity</strong>: Android Activity you wish Appium to wait for upon launch.</li>
 <li>
-<strong>Use Android Browser</strong>: Launch the Android browser.</li>
+<strong>Use Browser</strong>: Launch the specified Android browser (e.g. <code class="prettyprint">Chrome</code>).</li>
 <li>
 <strong>Full Reset</strong>: Reset app state by uninstalling app instead of clearing app data and also remove the app after the
 session is complete.</li>
@@ -3508,6 +3581,10 @@ session is complete.</li>
 <strong>Platform Version</strong>: Version of the mobile platform.</li>
 <li>
 <strong>Device Name</strong>: Name of the mobile device to use.</li>
+<li>
+<strong>Language</strong>: Language for the Emulator.</li>
+<li>
+<strong>Locale</strong>: Locale for the Emulator.</li>
 </ul>
 </li>
 <li>
