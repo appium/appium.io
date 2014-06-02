@@ -109,6 +109,24 @@ module AppiumIo
       end
     end
 
+    def _process_appium_readme readme_src, readme_dst
+      # readme may not exist at this point in the git history
+      return unless exists?(expand_path(readme_src))
+      copy_entry readme_src, readme_dst
+      # fix readme links for Slate
+      data = File.read readme_dst
+      data.gsub!('](docs/en/)', '](#)')
+      data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
+
+      # remove badges (image links) when readme is copied into docs
+      # [![NPM version](https://badge.fury.io/js/appium.png)](https://npmjs.org/package/appium)
+      data.gsub!(/ \[ ! \[ [^\]]* \] \( [^)]+ \) \] \( [^)]+ \)/mx) do |full|
+        ''
+      end
+
+      File.open(readme_dst, 'w') { |f| f.write data }
+    end
+
     # docs are published exactly once per tag
     # the docs never change after publishing
     def update_docs
@@ -131,19 +149,14 @@ module AppiumIo
         # copy english readme into the english docs
         readme_src = join appium_repo.path, 'README.md'
         readme_dst = join appium_repo.path, 'docs', 'en', 'README.md'
-        copy_entry readme_src, readme_dst
-        # fix readme links for Slate
-        data = File.read readme_dst
-        data.gsub!('](docs/en/)', '](#)')
-        data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
+        _process_appium_readme readme_src, readme_dst
 
-        # remove badges (image links) when readme is copied into docs
-        # [![NPM version](https://badge.fury.io/js/appium.png)](https://npmjs.org/package/appium)
-        data.gsub!(/ \[ ! \[ [^\]]* \] \( [^)]+ \) \] \( [^)]+ \)/mx) do |full|
-          ''
-        end
-
-        File.open(readme_dst, 'w') { |f| f.write data }
+        # process cn readme
+        cn_readme_src = join appium_repo.path, 'docs', 'cn', 'README.md'
+        cn_readme_dst = join appium_repo.path, 'docs', 'cn', 'README.md.tmp'
+        _process_appium_readme cn_readme_src, cn_readme_dst
+        copy_entry cn_readme_dst, cn_readme_src # use tmp to override old
+        File.unlink cn_readme_dst # delete temp file
 
         # copy english dot app into the english docs
         dot_app_readme_src = join dot_app_repo.path, 'README.md'
@@ -187,7 +200,7 @@ module AppiumIo
       update_tutorial
 
       File.open('_data/slate.yml', 'w') do |f|
-        result = ''
+        result        = ''
 
         # promote en to first
         metadata_keys = (metadata.keys - ['en']).insert(0, 'en')
