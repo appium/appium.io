@@ -149,7 +149,7 @@ module AppiumIo
         dot_app_readme_src = join dot_app_repo.path, 'README.md'
         dot_app_readme_dst = join appium_repo.path, 'docs', 'en', 'dot_app.md'
         copy_entry dot_app_readme_src, dot_app_readme_dst
-        # fix links for Slate
+        # fix dot app links for Slate
         data = File.read dot_app_readme_dst
         data.gsub!('](/README-files/images/', '](../../images/')
         File.open(dot_app_readme_dst, 'w') { |f| f.write data }

@@ -168,13 +168,6 @@ more detailed requirements and instructions?</p>
 <h1 id="appium">
 <span id="README.md"></span>Appium</h1>
 
-<p><a href="https://npmjs.org/package/appium"><img alt="NPM version" src="https://badge.fury.io/js/appium.png"></a>
-<a href="https://travis-ci.org/appium/appium"><img alt="Build Status" src="https://api.travis-ci.org/appium/appium.png?branch=master"></a>
-<a href="https://gemnasium.com/appium/appium"><img alt="Dependency Status" src="https://gemnasium.com/appium/appium.png"></a>
-<a href="https://saucelabs.com/u/appium"><img alt="Selenium Test Status" src="https://saucelabs.com/buildstatus/appium"></a></p>
-
-<p><a href="https://saucelabs.com/u/appium"><img alt="Selenium Test Status" src="https://saucelabs.com/browser-matrix/appium.svg"></a></p>
-
 <p>Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, FirefoxOS).</p>
 
 <p><strong>Note:</strong> we have just recently released Appium 1.0. If you already have a bunch of Appium tests, you might want to check out the <a href="#migrating-to-1-0.md">Migrating to 1.0</a> doc!</p>
@@ -3469,7 +3462,7 @@ part of the capabilities object when you connect.</li>
 <li>
 <strong>Wait For Activity</strong>: Android Activity you wish Appium to wait for upon launch.</li>
 <li>
-<strong>Use Android Browser</strong>: Launch the Android browser.</li>
+<strong>Use Browser</strong>: Launch the specified Android browser (e.g. <code class="prettyprint">Chrome</code>).</li>
 <li>
 <strong>Full Reset</strong>: Reset app state by uninstalling app instead of clearing app data and also remove the app after the
 session is complete.</li>
@@ -3501,6 +3494,10 @@ session is complete.</li>
 <strong>Platform Version</strong>: Version of the mobile platform.</li>
 <li>
 <strong>Device Name</strong>: Name of the mobile device to use.</li>
+<li>
+<strong>Language</strong>: Language for the Emulator.</li>
+<li>
+<strong>Locale</strong>: Locale for the Emulator.</li>
 </ul>
 </li>
 <li>
