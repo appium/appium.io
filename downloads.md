@@ -15,6 +15,7 @@ Appium has libraries for:
 - [JavaScript][npm]
 - [PHP][php]
 - [C#][nuget]
+- [RobotFramework][robot]
 
 [rubygems]: http://rubygems.org/gems/appium_lib
 [pypi]:     https://pypi.python.org/pypi/Appium-Python-Client
@@ -22,6 +23,7 @@ Appium has libraries for:
 [npm]:      https://www.npmjs.org/package/wd
 [php]:      https://github.com/appium/php-client
 [nuget]:    http://www.nuget.org/packages/Appium.WebDriver/
+[robot]:   https://github.com/jollychang/robotframework-appiumlibrary
 
 # Appium Desktop Apps
 
