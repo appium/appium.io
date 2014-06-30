@@ -6,3 +6,7 @@ gem 'nokogiri', '>= 1.6.1'
 gem 'posix-spawn', '>= 0.3.8'
 gem 'rake', '>= 10.3.2'
 gem 'appium_doc_lint', '~> 0.0.9'
+
+# these gems are used by appium/tutorial
+gem 'escape_utils', '~> 1.0.1'
+gem 'rspec', '~> 3.0.0'
