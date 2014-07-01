@@ -272,6 +272,7 @@ transforms into:
 
       # lint input directory
       @api_docs_repo.sh 'appium_doc_lint', input
+
       # merge into one .md file
       @api_docs_repo.sh "rake md[#{input}]"
       # generate html
@@ -357,7 +358,7 @@ YAML
       # - sample code links to github
       data.gsub!('](CONTRIBUTING.md)', '](/slate/en/master/#CONTRIBUTING.md)')
       data.gsub!('](docs/en/)', '](/slate/en/master/)')
-      data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
+      data.gsub!('](/sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
 
       File.open(dest, 'w') { |f| f.write(yaml + data) }
     end
