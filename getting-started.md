@@ -33,7 +33,7 @@ See the  [platform support doc](/slate/en/master/#platform-support.md) for more 
    to use of standard automation APIs on all platforms.
 2. You can write tests with your favorite dev tools using any [WebDriver](https://code.google.com/p/selenium/wiki/JsonWireProtocol)-compatible
    language such as Java, [Objective-C](https://github.com/appium/selenium-objective-c),
-   JavaScript with Node.js (in both [callback](https://github.com/admc/wd) and [yield-based](https://github.com/jlipps/yiewd) flavors),
+   JavaScript with Node.js (in [promise, callback](https://github.com/admc/wd) or [generator](https://github.com/jlipps/yiewd) flavors),
    PHP, Python, [Ruby](https://github.com/appium/ruby_lib), C#, Clojure, or Perl
    with the Selenium WebDriver API and language-specific client libraries.
 3. You can use any testing framework.
@@ -55,7 +55,9 @@ Your environment needs to be setup for the particular mobile platforms that you
 want to run tests on. See below for particular platform requirements.
 
 If you want to run Appium via an `npm install`, hack with or contribute to Appium, you will need
-[node.js and npm](http://nodejs.org) 0.10 or greater (`brew install node`: make sure you have not installed Node or Appium with `sudo`, otherwise you'll run into problems). We recommend the latest stable version.
+[node.js and npm](http://nodejs.org) 0.10 or greater (use [n](https://github.com/visionmedia/n) or 
+`brew install node` to install Node.js. Make sure you have not installed Node or Appium with `sudo`, 
+otherwise you'll run into problems). We recommend the latest stable version.
 
 To verify that all of Appium's dependencies are met you can use `appium-doctor`.
 Run `appium-doctor` and supply the `--ios` or `--android` flags to verify that all
@@ -106,11 +108,11 @@ The main guide for getting started writing and running tests is  [the running te
 Essentially, we support a subset of the [Selenium WebDriver JSON Wire Protocol](https://code.google.com/p/selenium/wiki/JsonWireProtocol), and extend it so that you can specify mobile-targeted  [desired capabilities](/slate/en/master/#caps.md) to run your test through Appium.
 
 You find elements by using a subset of WebDriver's element-finding strategies.
-See  [finding elements](/slate/en/master/#finding-elements.md) for detailed information. We also have several extensions to the JSON Wire Protocol for  [automating mobile gestures](/slate/en/master/#gestures.md) like tap, flick, and swipe.
+See  [finding elements](/slate/en/master/#finding-elements.md) for detailed information. We also have several extensions to the JSON Wire Protocol for  [automating mobile gestures](/slate/en/master/#touch-actions.md) like tap, flick, and swipe.
 
 You can also automate web views in hybrid apps! See the  [hybrid app guide](/slate/en/master/#hybrid.md)
 
-This repository contains [many examples of tests in a variety of different languages](https://github.com/appium/appium/tree/master/sample-code/examples)!
+This repository contains [many examples of tests in a variety of different languages](sample-code/examples)!
 
 For the full list of Appium doc pages, visit [this directory](/slate/en/master/).
 
