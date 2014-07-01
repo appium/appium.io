@@ -173,6 +173,7 @@ module AppiumIo
 
         source = join @appium_repo.path, 'docs', '*'
         Dir.glob(source) do |path|
+          next unless File.directory?(path) # languages must be folders not files.
           path               = expand_path path
           language           = basename path
           dest               = join Dir.pwd, 'docs', language, tag
@@ -271,6 +272,7 @@ transforms into:
       publish_folder = join Dir.pwd, 'slate', language, tag
 
       # lint input directory
+      puts "linting: #{input}"
       @api_docs_repo.sh 'appium_doc_lint', input
 
       # merge into one .md file
