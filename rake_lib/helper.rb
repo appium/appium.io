@@ -272,11 +272,11 @@ transforms into:
       publish_folder = join Dir.pwd, 'slate', language, tag
 
       # lint input directory
-      puts "linting: #{input}"
       @api_docs_repo.sh 'appium_doc_lint', input
 
       # merge into one .md file
       @api_docs_repo.sh "rake md[#{input}]"
+
       # generate html
       @api_docs_repo.sh 'rake build'
 
@@ -354,14 +354,14 @@ YAML
 
       data = rewrite_github_links data
 
-      # Fix readme links for Jekyll
+      # Fix readme links
+      # https://raw.githubusercontent.com/appium/appium/master/README.md
       # - contributing lacks docs/ prefix
       # - docs/en links to github
       # - sample code links to github
       data.gsub!('](CONTRIBUTING.md)', '](/slate/en/master/#CONTRIBUTING.md)')
       data.gsub!('](docs/en/)', '](/slate/en/master/)')
-      data.gsub!('](/sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
-
+      data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
       File.open(dest, 'w') { |f| f.write(yaml + data) }
     end
 
