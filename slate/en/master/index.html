@@ -39,7 +39,8 @@
       <div class="content">
         <h1 id="toc_0">About Appium</h1>
 
-<h2 id="toc_1">Introduction to Appium</h2>
+<h2 id="toc_1">
+<span id="intro.md"></span>Introduction to Appium</h2>
 
 <p>Appium is an open-source tool for automating native,
 mobile web, and hybrid applications on iOS and Android platforms.
@@ -54,7 +55,7 @@ a native wrapper, creating a hybrid app.</p>
 multiple platforms (iOS, Android), using the same API. This enables code reuse between iOS and Android testsuites.</p>
 
 <p>For specific information about what it means for Appium to “support” its
-platforms, and automation modalities, please see the <a href="/docs/en/appium-setup/platform-support.md">platform support doc</a>.</p>
+platforms, and automation modalities, please see the <a href="#platform-support.md">platform support doc</a>.</p>
 
 <h3 id="toc_2">Appium Philosophy</h3>
 
@@ -133,7 +134,7 @@ For example, we might set the <code class="prettyprint">platformName</code> capa
 Appium that we want an iOS session, rather than an Android one. Or we might
 set the <code class="prettyprint">safariAllowPopups</code> capability to <code class="prettyprint">true</code> in order to ensure that,
 during a Safari automation session, we’re allowed to use JavaScript to open
-up new windows. See the <a href="/docs/en/writing-running-appium/caps.md">capabilities doc</a> for the complete list of capabilities available for Appium.</p>
+up new windows. See the <a href="#caps.md">capabilities doc</a> for the complete list of capabilities available for Appium.</p>
 
 <p><strong>Appium Server</strong><br>
 Appium is a server written in Node.js. It can be built and installed from source or installed directly from NPM.</p>
@@ -154,7 +155,8 @@ which enables you to check out the hierarchy of your app. This can come in handy
 
 <p>Congratulations! You are now armed with enough knowledge to begin using Appium. Why not head to the <a href="/README.md">getting started doc</a> for more detailed requirements and instructions?</p>
 
-<h2 id="toc_6">List of client libraries with Appium server support</h2>
+<h2 id="toc_6">
+<span id="appium-clients.md"></span>List of client libraries with Appium server support</h2>
 
 <p>These libraries wrap standard Selenium client libraries to provide all the regular selenium commands dictated by the <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON Wire protocol</a>, and add extra commands related to controlling mobile devices, such as <strong>multi-touch gestures</strong> and <strong>screen orientation</strong>.</p>
 
@@ -203,7 +205,8 @@ which enables you to check out the hierarchy of your app. This can come in handy
 
 <h1 id="toc_7">Setting up Appium</h1>
 
-<h2 id="toc_8">Appium Platform Support</h2>
+<h2 id="toc_8">
+<span id="platform-support.md"></span>Appium Platform Support</h2>
 
 <p>Appium supports a variety of platforms and testing modalities (native,
 hybrid, web, real devices, simulators, etc…). This document is designed to
@@ -223,9 +226,9 @@ Apple’s <a href="https://developer.apple.com/library/ios/documentation/Develop
 framework.</li>
 <li>Mobile web support: Yes, via automation of mobile Safari. For real devices,
 ios-webkit-remote-debugger is required, and automation of native aspects of
-the Safari interface is not possible. See the <a href="/docs/en/writing-running-appium/mobile-web.md">mobile web doc</a> for instructions.</li>
+the Safari interface is not possible. See the <a href="#mobile-web.md">mobile web doc</a> for instructions.</li>
 <li>Hybrid support: Yes. For real devices, ios-webkit-remote-debugger is
-required. See the <a href="/docs/en/advanced-concepts/hybrid.md">hybrid doc</a> for instructions.</li>
+required. See the <a href="#hybrid.md">hybrid doc</a> for instructions.</li>
 <li>Support for automating multiple apps in one session: No</li>
 <li>Support for automating multiple devices simultaneously: No</li>
 <li>Support for automating vendor-provided or third-party apps: Only
@@ -259,7 +262,7 @@ is effected using a bundled <a href="https://code.google.com/p/selenium/wiki/Chr
 server as a proxy. With 4.2 and 4.3, automation works on official Chrome
 browser or Chromium only. With 4.4+, automation also works on the built-in
 “Browser” app. Chrome/Chromium/Browser must already be installed on the
-device under test. See the <a href="/docs/en/writing-running-appium/mobile-web.md">mobile web doc</a> for instructions.</li>
+device under test. See the <a href="#mobile-web.md">mobile web doc</a> for instructions.</li>
 <li>Hybrid support: Yes. See the <a href="#hybrid.md">hybrid doc</a> for instructions.
 
 <ul>
@@ -272,14 +275,15 @@ using the Selendroid backend)</li>
 <li>Support for automating multiple devices simultaneously: Yes,
 though Appium must be started using different ports for the server
 parameters <code class="prettyprint">--port</code>, <code class="prettyprint">--bootstrap-port</code> (or <code class="prettyprint">--selendroid-port</code>) and/or
-<code class="prettyprint">--chromedriver-port</code>. See the <a href="/docs/en/writing-running-appium/server-args.md">server args doc</a> for more
+<code class="prettyprint">--chromedriver-port</code>. See the <a href="#server-args.md">server args doc</a> for more
 information on these parameters.</li>
 <li>Support for automating vendor-provided or third-party apps: Yes (but not
 when using the Selendroid backend)</li>
 <li>Support for automating custom, non-standard UI controls: No</li>
 </ul>
 
-<h2 id="toc_11">Appium on real iOS devices</h2>
+<h2 id="toc_11">
+<span id="real-devices.md"></span>Appium on real iOS devices</h2>
 
 <p>Appium has support for real device testing.</p>
 
@@ -320,7 +324,7 @@ a specific UDID, then you may use the below command:</p>
 
 <p>This will start Appium and have Appium use the device to test the app.</p>
 
-<p>Refer to the <a href="/docs/en/writing-running-appium/server-args.md">Appium server arguments</a> page for more detail on
+<p>Refer to the <a href="#server-args.md">Appium server arguments</a> page for more detail on
 the arguments that you can use.</p>
 
 <h3 id="toc_15">Desired Capabilities</h3>
@@ -354,7 +358,8 @@ can connect to ADB and has Developer Mode enabled. For testing Chrome on a real
 device, you’re responsible for ensuring that Chrome of an appropriate version
 is installed.</p>
 
-<h2 id="toc_18">Running Appium on Mac OS X</h2>
+<h2 id="toc_18">
+<span id="running-on-osx.md"></span>Running Appium on Mac OS X</h2>
 
 <p>Appium on OS X supports iOS and Android testing.</p>
 
@@ -405,9 +410,10 @@ Then we use the following command:</p>
 <h3 id="toc_21">System setup (Android)</h3>
 
 <p>Instructions for setting up Android and running tests on Mac OS X are the same as
-those on Linux. See the <a href="/docs/en/appium-setup/android-setup.md">Android setup docs</a>.</p>
+those on Linux. See the <a href="#android-setup.md">Android setup docs</a>.</p>
 
-<h2 id="toc_22">Running Appium on Windows</h2>
+<h2 id="toc_22">
+<span id="running-on-windows.md"></span>Running Appium on Windows</h2>
 
 <h3 id="toc_23">Limitations</h3>
 
@@ -458,7 +464,7 @@ node.js:</p>
 <pre><code class="highlight plaintext">node .
 </code></pre>
 
-<p>See the <a href="/docs/en/writing-running-appium/server-args.md">server documentation</a> for all the command line
+<p>See the <a href="#server-args.md">server documentation</a> for all the command line
 arguments.</p>
 
 <h3 id="toc_26">Notes</h3>
@@ -468,11 +474,12 @@ arguments.</p>
 Android to work on Windows.</li>
 <li>There exists a hardware accelerated emulator for Android, it has it’s own
 limitations. For more information you can check out this
-<a href="/docs/en/appium-setup/android-hax-emulator.md">page</a>.</li>
+<a href="#android-hax-emulator.md">page</a>.</li>
 <li>Make sure that <code class="prettyprint">hw.battery=yes</code> in your AVD’s <code class="prettyprint">config.ini</code>.</li>
 </ul>
 
-<h2 id="toc_27">Running Appium on Linux</h2>
+<h2 id="toc_27">
+<span id="running-on-linux.md"></span>Running Appium on Linux</h2>
 
 <h3 id="toc_28">Limitations</h3>
 
@@ -483,9 +490,10 @@ apps because Appium relies on OS X-only libraries to support iOS testing.</p>
 <h3 id="toc_29">Setup (Android)</h3>
 
 <p>Instructions for setting up Android and running tests on Linux are the same as
-those on Mac OS X. See the <a href="/docs/en/appium-setup/android-setup.md">Android setup docs</a>.</p>
+those on Mac OS X. See the <a href="#android-setup.md">Android setup docs</a>.</p>
 
-<h2 id="toc_30">Android Setup</h2>
+<h2 id="toc_30">
+<span id="android-setup.md"></span>Android Setup</h2>
 
 <p>To get started, you’ll need to install node.js (v0.10 or greater). Just
 follow the <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">instructions for your flavor of linux</a>.</p>
@@ -526,19 +534,20 @@ newer installed (<code class="prettyprint">mvn</code>).</li>
 running an AVD with API Level 17 or greater. Then run Appium (<code class="prettyprint">appium</code>) after
 installing via NPM, or <code class="prettyprint">node .</code> in the source directory if running from source.</p>
 
-<p>See the <a href="/docs/en/writing-running-appium/server-args.md">server documentation</a> for all the command line arguments.</p>
+<p>See the <a href="#server-args.md">server documentation</a> for all the command line arguments.</p>
 
 <h3 id="toc_33">Notes</h3>
 
 <ul>
 <li>There exists a hardware accelerated emulator for android, it has its own
 limitations. For more information you can check out this
-<a href="/docs/en/appium-setup/android-hax-emulator.md">page</a>.</li>
+<a href="#android-hax-emulator.md">page</a>.</li>
 <li>Make sure that <code class="prettyprint">hw.battery=yes</code> in your AVD’s <code class="prettyprint">config.ini</code>, if you want to
 run any of the Appium tests, or use any of the power commands.</li>
 </ul>
 
-<h2 id="toc_34">Intel® Hardware Accelerated Execution Manager</h2>
+<h2 id="toc_34">
+<span id="android-hax-emulator.md"></span>Intel® Hardware Accelerated Execution Manager</h2>
 
 <p>If you find the android emulator a slow and your system runs on an Intel®
 cpu, you can check out HAXM. HAXM lets you leverage your hardware for
@@ -554,7 +563,8 @@ under Extras.</li>
 do so successfully, depending on the version you might have installed</li>
 </ul>
 
-<h2 id="toc_35">Deploying an iOS app to a real device</h2>
+<h2 id="toc_35">
+<span id="ios-deploy.md"></span>Deploying an iOS app to a real device</h2>
 
 <p>To prepare for your Appium tests to run on a real device, you will need to:</p>
 
@@ -617,8 +627,7 @@ you are doing this via a Rakefile and a <code class="prettyprint">go_device.sh</
    echo "$line" | grep "text to identify successful launch"
    if [ $? = 0 ]
    then
-## &lt;span id="ios-deploy.md"&gt;&lt;/span&gt;Actions
-
+   # Actions
        echo "App finished launching: $line"
        sleep 5
        kill -9 `ps -aef | grep fruitstrap | grep -v grep | awk '{print $2}'`
@@ -630,7 +639,8 @@ you are doing this via a Rakefile and a <code class="prettyprint">go_device.sh</
 
 <p>Next: <a href="#real-devices.md">Running Appium on Real Devices</a></p>
 
-<h2 id="toc_38">Troubleshooting Appium</h2>
+<h2 id="toc_38">
+<span id="troubleshooting.md"></span>Troubleshooting Appium</h2>
 
 <p>Here’s what to do if you’re experiencing problems, before you submit a ticket
 to github or write to the <a href="https://groups.google.com/forum/#!forum/appium-discuss">appium-discuss mailing list</a>.</p>
@@ -831,7 +841,8 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 
 <h1 id="toc_49">Running Appium tests</h1>
 
-<h2 id="toc_50">Appium server arguments</h2>
+<h2 id="toc_50">
+<span id="server-args.md"></span>Appium server arguments</h2>
 
 <p>Usage: <code class="prettyprint">node . [flags]</code></p>
 
@@ -1286,7 +1297,8 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tbody>
 </table>
 
-<h2 id="toc_52">Appium server capabilities</h2>
+<h2 id="toc_52">
+<span id="caps.md"></span>Appium server capabilities</h2>
 
 <p class="expand_table"></p>
 
@@ -1695,7 +1707,8 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tbody>
 </table>
 
-<h2 id="toc_55">Finding and interacting with elements</h2>
+<h2 id="toc_55">
+<span id="finding-elements.md"></span>Finding and interacting with elements</h2>
 
 <p>Appium supports a subset of the WebDriver locator strategies:</p>
 
@@ -1753,7 +1766,8 @@ navigator, showing me both the id and element type of the button I clicked.</p>
 
 <p><img alt="Step 1" src="https://raw.github.com/appium/appium/master/assets/InspectorImages/Step2.png"></p>
 
-<h2 id="toc_60">Automating mobile web apps</h2>
+<h2 id="toc_60">
+<span id="mobile-web.md"></span>Automating mobile web apps</h2>
 
 <p>If you’re interested in automating your web app in Mobile Safari on iOS or
 Chrome on Android, Appium can help you. Basically, you write a normal WebDriver
@@ -1777,8 +1791,7 @@ attempting to use Appium.</p>
   <span class="p">,</span> <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c">## &lt;span id="mobile-web.md"&gt;&lt;/span&gt;python</span>
-
+<pre><code class="highlight python"><span class="c"># python</span>
 <span class="p">{</span>
   <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
   <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
@@ -1978,7 +1991,8 @@ public static $browsers = array(
 
 <p>Note that on 4.4+ devices, you can also use the ‘Browser’ <code class="prettyprint">browserName</code> cap to automate the built-in browser. On all devices you can use the ‘Chromium’ <code class="prettyprint">browserName</code> cap to automate a build of Chromium.</p>
 
-<h2 id="toc_68">Running Tests</h2>
+<h2 id="toc_68">
+<span id="running-tests.md"></span>Running Tests</h2>
 
 <h3 id="toc_69">Preparing your app for test (iOS)</h3>
 
@@ -2018,8 +2032,7 @@ want to zip it up, you can.</p>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c">## &lt;span id="running-tests.md"&gt;&lt;/span&gt;python</span>
-
+<pre><code class="highlight python"><span class="c"># python</span>
 <span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
@@ -2191,7 +2204,8 @@ sometimes significantly with Appium’s. Therefore we recommend you thoroughly
 read <a href="http://selendroid.io/native.html">Selendroid’s documentation</a> before
 writing your scripts for older devices or hybrid apps.</p>
 
-<h2 id="toc_74">Automating mobile gestures</h2>
+<h2 id="toc_74">
+<span id="touch-actions.md"></span>Automating mobile gestures</h2>
 
 <p>While the Selenium WebDriver spec has support for certain kinds of mobile
 interaction, its parameters are not always easily mappable to the functionality
@@ -2324,7 +2338,8 @@ See examples below:</p>
 
 <p>The best way to interact with the slider on Android is with TouchActions.</p>
 
-<h2 id="toc_79">Appium Client Libraries</h2>
+<h2 id="toc_79">
+<span id="appium-bindings.md"></span>Appium Client Libraries</h2>
 
 <p>Appium has libraries for:</p>
 
@@ -2371,8 +2386,7 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <h3 id="toc_80">Lock</h3>
 
 <p>Lock the screen.</p>
-<pre><code class="highlight ruby"><span class="c1">## &lt;span id="appium-bindings.md"&gt;&lt;/span&gt;ruby</span>
-
+<pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">lock</span> <span class="mi">5</span>
 </code></pre>
 <pre><code class="highlight python"><span class="c"># python</span>
@@ -3003,7 +3017,8 @@ $this-&gt;pushFile($path, base64_encode($data));
 <li><a href="https://bitbucket.org/appium/appium.app/downloads/">Appium.exe for Windows</a></li>
 </ul>
 
-<h2 id="toc_104">iOS Predicate</h2>
+<h2 id="toc_104">
+<span id="ios_predicate.md"></span>iOS Predicate</h2>
 
 <p>It is worth looking at <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>.
 <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
@@ -3220,8 +3235,7 @@ same in Xpath: /*[1]/UIATableView[1]/UIATableCell[count(UIAStaticText) &gt; 2]
 </ul>
 
 <p>Here’s a Ruby example:</p>
-<pre><code class="highlight ruby"><span class="c1">## &lt;span id="ios_predicate.md"&gt;&lt;/span&gt;Ruby example</span>
-
+<pre><code class="highlight ruby"><span class="c1"># Ruby example</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s1">'Various uses'</span>
 <span class="n">predicate</span> <span class="o">=</span> <span class="s2">"name contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || label contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || value contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">'"</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">execute_script</span><span class="p">(</span><span class="sx">%Q(au.mainApp().getFirstWithPredicate("</span><span class="si">#{</span><span class="n">predicate</span><span class="si">}</span><span class="sx">");)</span><span class="p">)</span>
@@ -3229,7 +3243,8 @@ same in Xpath: /*[1]/UIATableView[1]/UIATableCell[count(UIAStaticText) &gt; 2]
 <span class="nb">puts</span> <span class="n">element</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># Buttons, Various uses of UIButton</span>
 </code></pre>
 
-<h2 id="toc_114">Adjusting Network Connection</h2>
+<h2 id="toc_114">
+<span id="network_connection.md"></span>Adjusting Network Connection</h2>
 
 <p>The Selenium <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">Mobile JSON Wire Protocol Specification</a> supports an <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile#104">API</a> for getting and setting the network connection for a device. The API works through a bitmask, assigning an integer to each possible state:</p>
 
@@ -3323,7 +3338,8 @@ the status can be decoded.</p>
 <span class="p">});</span>
 </code></pre>
 
-<h2 id="toc_117">uiautomator UiSelector</h2>
+<h2 id="toc_117">
+<span id="uiautomator_uiselector.md"></span>uiautomator UiSelector</h2>
 
 <p>Appium enables searching using <a href="http://developer.android.com/tools/help/uiautomator/UiSelector.html">UiSelectors</a>.
 <a href="http://developer.android.com/tools/help/uiautomator/UiScrollable.html">UiScrollable</a>
@@ -3333,8 +3349,7 @@ is also supported.</p>
 following examples are written against the api demos apk using Ruby.</p>
 
 <p>Find the first textview.</p>
-<pre><code class="highlight ruby"><span class="c1">## &lt;span id="uiautomator_uiselector.md"&gt;&lt;/span&gt;ruby</span>
-
+<pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">first_textview</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiSelector().className("android.widget.TextView").instance(0)'</span><span class="p">);</span>
 </code></pre>
 
@@ -3357,7 +3372,8 @@ scrollIntoView allows scrolling to any UiSelector.</p>
 <span class="n">element</span><span class="p">.</span><span class="nf">text</span> <span class="c1"># "WebView"</span>
 </code></pre>
 
-<h2 id="toc_118">Multi-lingual Support</h2>
+<h2 id="toc_118">
+<span id="unicode.md"></span>Multi-lingual Support</h2>
 
 <p>By default the automation tools for both iOS and Android do not support non-ASCII
 characters sent to editable fields through the keyboard.</p>
@@ -3425,13 +3441,13 @@ Unicode keyboard will remain enabled on the device after the tests are completed
 
 <h1 id="toc_121">Advanced Concepts</h1>
 
-<h2 id="toc_122">Selenium Grid</h2>
+<h2 id="toc_122">
+<span id="grid.md"></span>Selenium Grid</h2>
 
 <p>You are able to register your appium server with a local <a href="https://code.google.com/p/selenium/wiki/Grid2">Selenium grid</a> by using the
 <code class="prettyprint">--nodeconfig</code> server parameter.</p>
 <pre><code class="highlight shell"><span class="gp">&gt; </span>appium --nodeconfig /path/to/nodeconfig.json
-<span class="c">## &lt;span id="grid.md"&gt;&lt;/span&gt;or, if running from source:</span>
-
+<span class="c"># or, if running from source:</span>
 <span class="gp">&gt; </span>node . --nodeconfig /path/to/nodeconfig.json
 </code></pre>
 
@@ -3480,7 +3496,8 @@ you will see your device on the grid console page:</p>
 <p>If <code class="prettyprint">url</code>, <code class="prettyprint">host</code>, and <code class="prettyprint">port</code> are not given, the config will be auto updated
 to point to localhost:whatever-port-Appium-started-on.</p>
 
-<h2 id="toc_124">Automating hybrid apps</h2>
+<h2 id="toc_124">
+<span id="hybrid.md"></span>Automating hybrid apps</h2>
 
 <p>One of the core principles of Appium is that you shouldn’t have to change
 your app to test it. In line with that methodology, it is possible to test
@@ -3545,8 +3562,7 @@ context id to leave the web frame.</li>
 
 <span class="n">driver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight ruby"><span class="c1">## &lt;span id="hybrid.md"&gt;&lt;/span&gt;ruby</span>
-
+<pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="c1"># assuming we have a set of capabilities</span>
 <span class="vi">@driver</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="p">.</span><span class="nf">for</span><span class="p">(</span><span class="ss">:remote</span><span class="p">,</span> <span class="ss">:desired_capabilities</span> <span class="o">=&gt;</span> <span class="n">capabilities</span><span class="p">,</span> <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">SERVER_URL</span><span class="p">)</span>
 
@@ -3670,13 +3686,14 @@ part of iOS 6</strong> and was not available previously.</p>
 
 <p>Now you can start an appium test session and follow the generalized instructions above.</p>
 
-<h2 id="toc_128">Migrating your tests from Appium 0.18.x to Appium 1.x</h2>
+<h2 id="toc_128">
+<span id="migrating-to-1-0.md"></span>Migrating your tests from Appium 0.18.x to Appium 1.x</h2>
 
 <p>Appium 1.0 has removed a number of deprecated features from the previous versions. This guide will help you know what needs to change in your test suite to take advantage of Appium 1.0.</p>
 
 <h3 id="toc_129">New client libraries</h3>
 
-<p>The biggest thing you need to worry about is using the new Appium client libraries instead of the vanilla WebDriver clients you are currently using. Visit the <a href="/docs/en/about-appium/appium-clients.md">Appium client list</a> to find the client for your language. Downloads and instructions for integrating into your code are available on the individual client websites.</p>
+<p>The biggest thing you need to worry about is using the new Appium client libraries instead of the vanilla WebDriver clients you are currently using. Visit the <a href="#appium-clients.md">Appium client list</a> to find the client for your language. Downloads and instructions for integrating into your code are available on the individual client websites.</p>
 
 <p>Ultimately, you’ll be doing something like (to use Python as an example):</p>
 <pre><code class="highlight plaintext">from appium import webdriver
@@ -3759,8 +3776,7 @@ part of iOS 6</strong> and was not available previously.</p>
 </ul>
 
 <p>Now Appium supports the more conceptually consistent concept of “context”. To get all of the available contexts, or the particular context the application is is, you use</p>
-<pre><code class="highlight python"><span class="c">## &lt;span id="migrating-to-1-0.md"&gt;&lt;/span&gt;python</span>
-
+<pre><code class="highlight python"><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
 <span class="n">current</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">context</span>
 </code></pre>
