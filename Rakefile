@@ -1,5 +1,12 @@
 require_relative 'rake_lib/helper.rb'
 
+desc 'Install gems'
+task :install do
+  system 'bundle install'
+  AppiumIo::Helper.new
+  system 'bundle install'  
+end
+
 # clone from forks for now
 desc 'Update appium docs, readme, and intro'
 task :appium do

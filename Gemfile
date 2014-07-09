@@ -11,6 +11,11 @@ gem 'appium_doc_lint', '~> 0.0.9'
 gem 'escape_utils', '~> 1.0.1'
 gem 'rspec', '~> 3.0.0'
 
+# Cross-templating language block fix for Ruby 1.8
+platforms :mri_18 do
+  gem "ruby18_source_location"
+end
+
 def eval_gemfile root_path
   gem_path = File.expand_path(File.join(root_path, 'Gemfile'))
   gem_str = File.read(gem_path)
