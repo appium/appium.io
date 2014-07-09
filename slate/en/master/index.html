@@ -1861,20 +1861,20 @@ advanced**, only for iOS 6.0 and up)</li>
 </ul>
 
 <p>Now that you have a profile open a terminal and run the following commands:</p>
-<pre><code class="highlight shell"><span class="gp">$ </span>git clone https://github.com/appium/appium.git
-<span class="gp">$ </span><span class="nb">cd </span>appium
+<pre><code class="highlight plaintext">$ git clone https://github.com/appium/appium.git
+$ cd appium
 
-<span class="c"># Option 1: You dont define any parameters and it will set the code signing identity to 'iPhone Developer'</span>
-<span class="gp">$ </span>./reset.sh --ios --real-safari
+# Option 1: You dont define any parameters and it will set the code signing identity to 'iPhone Developer'
+$ ./reset.sh --ios --real-safari
 
-<span class="c"># Option 2: You define the code signing identity and allow xcode to select the profile identity code (if it can).</span>
-<span class="gp">$ </span>./reset.sh --ios --real-safari --code-sign <span class="s1">'&lt;code signing idendity&gt;'</span>
+# Option 2: You define the code signing identity and allow xcode to select the profile identity code (if it can).
+$ ./reset.sh --ios --real-safari --code-sign '&lt;code signing idendity&gt;'
 
-<span class="c"># Option 3: You define both the code signing identity and profile identity code.</span>
-<span class="gp">$ </span>./reset.sh --ios --real-safari --code-sign <span class="s1">'&lt;code signing idendity&gt;'</span> --profile <span class="s1">'&lt;retrieved profile identity code&gt;'</span>
+# Option 3: You define both the code signing identity and profile identity code.
+$ ./reset.sh --ios --real-safari --code-sign '&lt;code signing idendity&gt;' --profile '&lt;retrieved profile identity code&gt;'
 
-<span class="c"># Once successfully configured and with the safari launcher built, start the server as per usual</span>
-<span class="gp">$ </span>node /lib/server/main.js -U &lt;UDID&gt;
+# Once successfully configured and with the safari launcher built, start the server as per usual
+$ node /lib/server/main.js -U &lt;UDID&gt;
 </code></pre>
 
 <h3 id="toc_64">Running your test</h3>
@@ -3446,9 +3446,9 @@ Unicode keyboard will remain enabled on the device after the tests are completed
 
 <p>You are able to register your appium server with a local <a href="https://code.google.com/p/selenium/wiki/Grid2">Selenium grid</a> by using the
 <code class="prettyprint">--nodeconfig</code> server parameter.</p>
-<pre><code class="highlight shell"><span class="gp">&gt; </span>appium --nodeconfig /path/to/nodeconfig.json
-<span class="c"># or, if running from source:</span>
-<span class="gp">&gt; </span>node . --nodeconfig /path/to/nodeconfig.json
+<pre><code class="highlight plaintext">&gt; appium --nodeconfig /path/to/nodeconfig.json
+# or, if running from source:
+&gt; node . --nodeconfig /path/to/nodeconfig.json
 </code></pre>
 
 <p>In the node config file you have to define the <code class="prettyprint">browserName</code>,
