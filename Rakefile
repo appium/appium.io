@@ -16,6 +16,14 @@ task :appium do
   h.update_intro
 end
 
+desc 'Rebuild the site without deleting everything'
+task :dev_rebuild do
+  h = AppiumIo::Helper.new refresh: false
+  h.update_docs
+  h.update_readme
+  h.update_intro
+end
+
 desc 'Publish changes to github'
 task :publish => :appium do
   sh 'git add --all .'

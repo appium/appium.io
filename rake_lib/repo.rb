@@ -9,10 +9,16 @@ module AppiumIo
     # clone - the url to clone from
     # if master is set then tags/branches are ignored
     def initialize opts={}
+      opts = {:refresh => true}.merge(opts)
       @path  = opts[:path]
       @clone = opts[:clone]
       @master = opts.fetch :master, false
-      refresh
+      if opts[:refresh]
+        refresh
+      else
+        update_branches
+        update_tags
+      end
     end
 
     # Checks out the target tag after a hard reset

@@ -27,6 +27,8 @@ module AppiumIo
     # appium_dir - clone of appium/appium
     # api_docs_dir - clone of appium/api-docs
     def initialize opts={}
+      opts = {:refresh => true}.merge(opts)
+
       @@slate_published_once = false
       @git_dir               = expand_path '../appium.io_workspace'
       @default_checkout      = 'master'
@@ -34,22 +36,22 @@ module AppiumIo
       # appium repo. always fetch from appium/appium. ignore @username
       appium_path            = repo_path 'appium.git'
       appium_clone_url       = 'https://github.com/appium/appium.git'
-      @appium_repo           = Repo.new path: appium_path, clone: appium_clone_url
+      @appium_repo           = Repo.new path: appium_path, clone: appium_clone_url, refresh: opts[:refresh]
 
       # api docs repo
       api_docs_path          = repo_path 'api-docs.git'
       api_docs_clone_url     = 'https://github.com/appium/api-docs.git'
-      @api_docs_repo         = Repo.new path: api_docs_path, clone: api_docs_clone_url, master: true
+      @api_docs_repo         = Repo.new path: api_docs_path, clone: api_docs_clone_url, master: true, refresh: opts[:refresh]
 
       # tutorial repo
       tutorial_path          = repo_path 'tutorial.git'
       tutorial_clone_url     = 'https://github.com/appium/tutorial.git'
-      @tutorial_repo         = Repo.new path: tutorial_path, clone: tutorial_clone_url, master: true
+      @tutorial_repo         = Repo.new path: tutorial_path, clone: tutorial_clone_url, master: true, refresh: opts[:refresh]
 
       # appium-dot-app
       dot_app_path           = repo_path 'dot_app'
       dot_app_clone_url      = 'https://github.com/appium/appium-dot-app.git'
-      @dot_app_repo          = Repo.new path: dot_app_path, clone: dot_app_clone_url, master: true
+      @dot_app_repo          = Repo.new path: dot_app_path, clone: dot_app_clone_url, master: true, refresh: opts[:refresh]
     end
 
     def repo_path path
