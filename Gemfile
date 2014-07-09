@@ -13,7 +13,15 @@ gem 'rspec', '~> 3.0.0'
 
 def eval_gemfile root_path
   gem_path = File.expand_path(File.join(root_path, 'Gemfile'))
-  eval(File.read(gem_path), nil, 'Gemfile')
+  gem_str = File.read(gem_path)
+
+  # ignoring rake and rspec
+  gem_str.gsub!(/^gem ['"]rake['"].*$/, "# ignoring rake") 
+  gem_str.gsub!(/^gem ['"]rspec['"].*$/, "# ignoring rspec") 
+  # ignoring redcarpet (version incompatibility)
+  gem_str.gsub!(/^gem ['"]redcarpet['"].*$/, "# ignoring rspec") 
+  
+  eval(gem_str, nil, 'Gemfile')
 end
 
 workspace = 'appium.io_workspace'

@@ -136,8 +136,8 @@ module AppiumIo
       # tags = @appium_repo.branches
 
       # also publish branches
-      branches = %w[master 0.18.x]
-      tags     += branches
+      branches = %w[master v0.18.x]
+      tags.unshift(branches[0]).push(branches[1]);
 
       update_dot_app_images
 
@@ -153,10 +153,13 @@ module AppiumIo
 
         # process cn readme
         cn_readme_src = join appium_repo.path, 'docs', 'cn', 'README.md'
-        cn_readme_dst = join appium_repo.path, 'docs', 'cn', 'README.md.tmp'
-        _process_appium_readme cn_readme_src, cn_readme_dst
-        copy_entry cn_readme_dst, cn_readme_src # use tmp to override old
-        File.unlink cn_readme_dst # delete temp file
+        if exists?(cn_readme_src)
+          # cn may be deprecated
+          cn_readme_dst = join appium_repo.path, 'docs', 'cn', 'README.md.tmp'
+          _process_appium_readme cn_readme_src, cn_readme_dst
+          copy_entry cn_readme_dst, cn_readme_src # use tmp to override old
+          File.unlink cn_readme_dst # delete temp file
+        end
 
         # copy english dot app into the english docs
         dot_app_readme_src = join dot_app_repo.path, 'README.md'
@@ -176,6 +179,10 @@ module AppiumIo
           next unless File.directory?(path) # languages must be folders not files.
           path               = expand_path path
           language           = basename path
+
+          # `old` dir contains deprecated doc 
+          next if language == 'old'
+
           dest               = join Dir.pwd, 'docs', language, tag
 
           # update metadata before skipping
@@ -272,7 +279,7 @@ transforms into:
       publish_folder = join Dir.pwd, 'slate', language, tag
 
       # lint input directory
-      @api_docs_repo.sh 'appium_doc_lint', input
+      #@api_docs_repo.sh 'appium_doc_lint', input
 
       # merge into one .md file
       @api_docs_repo.sh "rake md[#{input}]"
@@ -371,7 +378,9 @@ YAML
       @appium_repo.checkout branch
 
       # intro.md doesn't exist in some early tags
-      source = join @appium_repo.path, 'docs', 'en', 'intro.md'
+      source = join @appium_repo.path, 'docs', 'en', 'about-appium','intro.md' 
+      # previous location
+      source = join @appium_repo.path, 'docs', 'en', 'intro.md' unless File.exist?(source)
 
       # if there's not a tagged version, use the master branch
       unless File.exist?(source)
