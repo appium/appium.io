@@ -178,6 +178,7 @@ module AppiumIo
 
         source = join @appium_repo.path, 'docs', '*'
         Dir.glob(source) do |path|
+          
           next unless File.directory?(path) # languages must be folders not files.
           path               = expand_path path
           language           = basename path
@@ -192,12 +193,6 @@ module AppiumIo
 
           # delete existing branches
           rm_rf dest if exists?(dest) && branches.include?(tag)
-
-          # tags never change. check folder exists in docs/
-          if exists?(dest)
-            puts "Skipping: #{dest}"
-            next
-          end
 
           copy_entry path, dest
 

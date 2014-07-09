@@ -9,11 +9,12 @@ module AppiumIo
     # clone - the url to clone from
     # if master is set then tags/branches are ignored
     def initialize opts={}
-      @refresh = opts[:refresh], true
+      @refresh = opts[:refresh]
       @path  = opts[:path]
       @clone = opts[:clone]
-      @master = opts.fetch :master, false
-      if @refresh == true
+      @master = opts.fetch :master, false      
+
+      if @refresh
         refresh
       else
         update_branches
@@ -26,7 +27,7 @@ module AppiumIo
     # @param tag [String] the target tag
     # @return [void]
     def checkout tag
-      if @refresh == true
+      if @refresh
         sh 'git reset --hard'
       else
         sh 'git stash'
