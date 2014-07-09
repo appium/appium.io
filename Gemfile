@@ -19,7 +19,7 @@ def eval_gemfile root_path
   gem_str.gsub!(/^gem ['"]rake['"].*$/, "# ignoring rake") 
   gem_str.gsub!(/^gem ['"]rspec['"].*$/, "# ignoring rspec") 
   # ignoring redcarpet (version incompatibility)
-  gem_str.gsub!(/^gem ['"]redcarpet['"].*$/, "# ignoring rspec") 
+  gem_str.gsub!(/^gem ['"]redcarpet['"].*$/, "# ignoring redcarpet") 
   
   eval(gem_str, nil, 'Gemfile')
 end
