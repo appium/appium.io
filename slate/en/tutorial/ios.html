@@ -28,15 +28,15 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="native-ios-automation">Native iOS Automation</h1>
+        <h1 id="toc_0">Native iOS Automation</h1>
 
 <p>This tutorial covers automating native iOS apps in Ruby and Java. To select the
 active language, click <code class="prettyprint">Ruby</code> or <code class="prettyprint">Java</code> on the left hand side. Code samples and
 content will change based on the selected language.</p>
 
-<h1 id="getting-started-with-appium">Getting started with appium</h1>
+<h1 id="toc_1">Getting started with appium</h1>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="toc_2">Introduction</h2>
 
 <p>Appium enables iOS and Android automation using Selenium WebDriver.
 The same WebDriver bindings can be used across web and mobile.</p>
@@ -62,61 +62,61 @@ The same WebDriver bindings can be used across web and mobile.</p>
 
 <p>In this chapter, we’ll be preparing to automate a native iOS application.</p>
 
-<h2 id="install-overview">Install Overview</h2>
+<h2 id="toc_3">Install Overview</h2>
 
 <p>This document is written for OS X 10.9.2 or better.</p>
 
 <table>
 <thead>
 <tr>
-<th style="text-align: right">Tool</th>
-<th style="text-align: left">Description</th>
+<th align="right">Tool</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right">OS X</td>
-<td style="text-align: left">The mac operating system</td>
+<td align="right">OS X</td>
+<td align="left">The mac operating system</td>
 </tr>
 <tr>
-<td style="text-align: right">Xcode</td>
-<td style="text-align: left">Apple’s integrated development environment</td>
+<td align="right">Xcode</td>
+<td align="left">Apple’s integrated development environment</td>
 </tr>
 <tr>
-<td style="text-align: right">rvm</td>
-<td style="text-align: left">The ruby version manager. Helps install ruby</td>
+<td align="right">rvm</td>
+<td align="left">The ruby version manager. Helps install ruby</td>
 </tr>
 <tr>
-<td style="text-align: right">gem</td>
-<td style="text-align: left">The rubygems command. A package manager for Ruby</td>
+<td align="right">gem</td>
+<td align="left">The rubygems command. A package manager for Ruby</td>
 </tr>
 <tr>
-<td style="text-align: right">Java</td>
-<td style="text-align: left">A programming language and software development kit</td>
+<td align="right">Java</td>
+<td align="left">A programming language and software development kit</td>
 </tr>
 <tr>
-<td style="text-align: right">bundler</td>
-<td style="text-align: left">Enables managing gem dependencies</td>
+<td align="right">bundler</td>
+<td align="left">Enables managing gem dependencies</td>
 </tr>
 <tr>
-<td style="text-align: right">brew</td>
-<td style="text-align: left">Helps install software on Macs</td>
+<td align="right">brew</td>
+<td align="left">Helps install software on Macs</td>
 </tr>
 <tr>
-<td style="text-align: right">npm</td>
-<td style="text-align: left">Node’s package manager</td>
+<td align="right">npm</td>
+<td align="left">Node’s package manager</td>
 </tr>
 <tr>
-<td style="text-align: right">grunt</td>
-<td style="text-align: left">A command line task runner for node.js</td>
+<td align="right">grunt</td>
+<td align="left">A command line task runner for node.js</td>
 </tr>
 <tr>
-<td style="text-align: right">ant</td>
-<td style="text-align: left">A java build system</td>
+<td align="right">ant</td>
+<td align="left">A java build system</td>
 </tr>
 <tr>
-<td style="text-align: right">maven</td>
-<td style="text-align: left">A java build system with improved dependency management</td>
+<td align="right">maven</td>
+<td align="left">A java build system with improved dependency management</td>
 </tr>
 </tbody>
 </table>
@@ -134,7 +134,7 @@ Alternatively, download them directly from <a href="https://developer.apple.com/
 <li>Install <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a>.</li>
 </ul>
 
-<h2 id="install-ruby">Install Ruby</h2>
+<h2 id="toc_4">Install Ruby</h2>
 
 <ul>
 <li>Install the latest stable release of Ruby.</li>
@@ -283,7 +283,7 @@ running the grunt task. If you’re only testing Android, this can be skipped.</
 
 <p><code class="prettyprint">$ node .</code></p>
 
-<h2 id="bash-profile">Bash Profile</h2>
+<h2 id="toc_5">Bash Profile</h2>
 
 <ul>
 <li>You may have to add grunt as well <code class="prettyprint">/usr/local/share/npm/bin/grunt</code>
@@ -298,7 +298,7 @@ export JAVA_HOME="`/System/Library/Frameworks/JavaVM.framework/Versions/Current/
 export PATH
 </code></p>
 
-<h2 id="troubleshooting">Troubleshooting</h2>
+<h2 id="toc_6">Troubleshooting</h2>
 
 <ul>
 <li>If install fails, keep trying to install a few times.</li>
@@ -322,7 +322,7 @@ rm -rf /usr/local/lib/node_modules/
 <li><a href="https://gist.github.com/bootstraponline/5580587">Helper bash methods</a></li>
 </ul>
 
-<h2 id="ssl-issues">SSL Issues</h2>
+<h2 id="toc_7">SSL Issues</h2>
 
 <p><code class="prettyprint">Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed</code></p>
 
@@ -335,13 +335,13 @@ rm -rf /usr/local/lib/node_modules/
 rvm osx-ssl-certs status all
 </code></p>
 
-<h2 id="maven-on-os-x-10.9">Maven on OS X 10.9</h2>
+<h2 id="toc_8">Maven on OS X 10.9</h2>
 
 <p><code>brew update
 brew install maven
 </code></p>
 
-<h2 id="corrupt-ruby-gems">Corrupt ruby gems</h2>
+<h2 id="toc_9">Corrupt ruby gems</h2>
 
 <p>If you see:</p>
 
@@ -349,7 +349,7 @@ brew install maven
 
 <p>Then run <code class="prettyprint">rm -rf ~/.rvm</code> and reinstall RVM.</p>
 
-<h2 id="ruby-ide">Ruby IDE</h2>
+<h2 id="toc_10">Ruby IDE</h2>
 
 <p>I recommend the <a href="http://www.jetbrains.com/ruby/whatsnew/index.html">RubyMine IDE</a>.
 For professional work, features such as auto completion, jump to definition,
@@ -357,7 +357,7 @@ and refactoring are valuable.</p>
 
 <p>If you have a preferred editor already, then feel free to continue using it.</p>
 
-<h2 id="java-ide">Java IDE</h2>
+<h2 id="toc_11">Java IDE</h2>
 
 <p>Java has a number of popular editors. For this module,
 we’ll be using <code class="prettyprint">IntelliJ IDEA Community Edition</code>, an open source IDE by
@@ -366,36 +366,36 @@ JetBrains. The software is available <a href="http://www.jetbrains.com/idea/down
 <p>If you already have a preferred editor, feel free to continue using it. The
 sample projects use Maven and work with Eclipse, NetBeans, and IntelliJ.</p>
 
-<h2 id="helpful-links">Helpful Links</h2>
+<h2 id="toc_12">Helpful Links</h2>
 
 <table>
 <thead>
 <tr>
-<th style="text-align: right">Link</th>
-<th style="text-align: left">Summary</th>
+<th align="right">Link</th>
+<th align="left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right"><a href="https://www.npmjs.org/">npm</a></td>
-<td style="text-align: left">The main registry for npm packages. Appium is published here.</td>
+<td align="right"><a href="https://www.npmjs.org/">npm</a></td>
+<td align="left">The main registry for npm packages. Appium is published here.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="http://rubygems.org/">rubygems</a></td>
-<td style="text-align: left">The main registry for Ruby gems. The appium ruby bindings are published here.</td>
+<td align="right"><a href="http://rubygems.org/">rubygems</a></td>
+<td align="left">The main registry for Ruby gems. The appium ruby bindings are published here.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="http://rvm.io/">RVM</a></td>
-<td style="text-align: left">RVM’s homepage. Extensive documentation is available.</td>
+<td align="right"><a href="http://rvm.io/">RVM</a></td>
+<td align="left">RVM’s homepage. Extensive documentation is available.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://www.ruby-lang.org/en/">Ruby</a></td>
-<td style="text-align: left">The Ruby language homepage. Useful for keeping up to date with Ruby releases.</td>
+<td align="right"><a href="https://www.ruby-lang.org/en/">Ruby</a></td>
+<td align="left">The Ruby language homepage. Useful for keeping up to date with Ruby releases.</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="summary">Summary</h2>
+<h2 id="toc_13">Summary</h2>
 
 <p>We learned about the appium project and how it’s useful for automating mobile
 applications. Then we installed all the necessary software to begin
@@ -403,9 +403,9 @@ automation. Finally, helpful links were reviewed.</p>
 
 <p>In the next chapter, we’ll look at writing tests interactively using a console.</p>
 
-<h1 id="appium-ruby-console">Appium Ruby Console</h1>
+<h1 id="toc_14">Appium Ruby Console</h1>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="toc_15">Introduction</h2>
 
 <p>A read-eval-print loop, REPL, is a great way to learn a new technology.
 In this chapter, we’ll be using the Appium Ruby Console (ARC) to write tests.</p>
@@ -413,7 +413,7 @@ In this chapter, we’ll be using the Appium Ruby Console (ARC) to write tests.<
 <p>An open source mobile app will be used to demonstrate the standard test workflow.
 We’ll also look at a desktop app that makes writing tests a bit easier.</p>
 
-<h2 id="compiling-the-ios-sample-app">Compiling the iOS sample app</h2>
+<h2 id="toc_16">Compiling the iOS sample app</h2>
 
 <p><code class="prettyprint">cd</code> into the appium repository root. Running <code class="prettyprint">./reset.sh --ios --dev</code> will
  build the sample iOS app UICatalog.</p>
@@ -431,7 +431,7 @@ Builds for physical iOS devices only work on physical iOS devices.</p>
 <p>Appium supports physical devices however this tutorial focuses
 on virtual devices.</p>
 
-<h2 id="prebuilt-ios-sample-app">Prebuilt iOS Sample App</h2>
+<h2 id="toc_17">Prebuilt iOS Sample App</h2>
 
 <p>To make it easier to get started, I’ve uploaded a prebuilt version of the
 iOS sample app. If for some reason this app doesn’t work on your system, you
@@ -441,7 +441,7 @@ source are in the previous lesson.</p>
 <p>UICatalog.app is available <a href="https://github.com/appium/ruby_lib/raw/master/ruby_lib_ios/UICatalog.app.zip">as a zip</a>. I
 recommend unzipping the app before using it with appium.</p>
 
-<h2 id="starting-the-console">Starting the Console</h2>
+<h2 id="toc_18">Starting the Console</h2>
 
 <p>To start the Appium Ruby Console for use with iOS, the app path is required.</p>
 
@@ -468,7 +468,7 @@ tab, run the <code class="prettyprint">arc</code> command from within the direct
 The arc console will read appium.txt, launch the iOS simulator,
 and allow you to enter commands.</p>
 
-<h2 id="page-command">Page Command</h2>
+<h2 id="toc_19">Page Command</h2>
 
 <p>With the console started, the next step is to begin automation.
 The <code class="prettyprint">page</code> command prints a list of elements that are of interest.</p>
@@ -655,7 +655,7 @@ command will give you an overview of what classes exist on the current page.</p>
 interested in automating. I encourage you to read through the existing docs
 and try the methods on different elements.</p>
 
-<h2 id="ending-the-session">Ending the session</h2>
+<h2 id="toc_20">Ending the session</h2>
 
 <p>Once we’re done with a testing session, it’s very important to cleanly quit.
 If a session is not terminated properly then appium will consider the session
@@ -672,7 +672,7 @@ use driver_quit.</p>
 All the selenium bindings offer a quit method. This should be invoked once
 the testing session is over.</p>
 
-<h2 id="appium.app-inspector">Appium.app Inspector</h2>
+<h2 id="toc_21">Appium.app Inspector</h2>
 
 <p>We’ve covered finding elements using the page command on the terminal.
 Appium also has a GUI tool on OS X called Appium.app.</p>
@@ -702,50 +702,50 @@ the page command that we used in the last lesson.</p>
 
 <p><img src="../../images/inspector_ios.png"></p>
 
-<h2 id="helpful-links">Helpful Links</h2>
+<h2 id="toc_22">Helpful Links</h2>
 
 <table>
 <thead>
 <tr>
-<th style="text-align: right">Link</th>
-<th style="text-align: left">Summary</th>
+<th align="right">Link</th>
+<th align="left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right"><a href="https://github.com/appium/appium/tree/master/docs">Appium</a></td>
-<td style="text-align: left">New versions of Appium.app are available on the appium homepage.</td>
+<td align="right"><a href="https://github.com/appium/appium/tree/master/docs">Appium</a></td>
+<td align="left">New versions of Appium.app are available on the appium homepage.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem</a></td>
-<td style="text-align: left">Appium’s ruby library is on GitHub.</td>
+<td align="right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem</a></td>
+<td align="left">Appium’s ruby library is on GitHub.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://github.com/appium/ruby_console">appium_console gem</a></td>
-<td style="text-align: left">Appium’s Ruby Console is also on GitHub.</td>
+<td align="right"><a href="https://github.com/appium/ruby_console">appium_console gem</a></td>
+<td align="left">Appium’s Ruby Console is also on GitHub.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
-<td style="text-align: left">The network traffic displayed in the console conforms to the JSON Wire Protocol.</td>
+<td align="right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td align="left">The network traffic displayed in the console conforms to the JSON Wire Protocol.</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="summary">Summary</h2>
+<h2 id="toc_23">Summary</h2>
 
 <p>We covered using the ruby console to interactively explore apps and write
 tests. An open source iOS app was used for testing. In addition to the terminal
 workflow, we covered Appium.app which is an excellent visual based tool.</p>
 
-<h1 id="writing-your-first-test">Writing your first test</h1>
+<h1 id="toc_24">Writing your first test</h1>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="toc_25">Introduction</h2>
 
 <p>Now that we’ve looked at the commands in the console,
 it’s time to write our first test. This involves using a test framework,
 following the page object pattern, and running the test automatically.</p>
 
-<h2 id="automating-a-simple-action">Automating a simple action</h2>
+<h2 id="toc_26">Automating a simple action</h2>
 
 <p><aside class="notice">
 Click on <code class="prettyprint">Java</code> and <code class="prettyprint">Ruby</code> to toggle the language examples
@@ -787,7 +787,7 @@ git clone https://github.com/appium/tutorial.git</aside></p>
 
 <p>We’re going to verify each element brings us to the correct page.</p>
 
-<h3 id="click-&amp;-verify">Click &amp; verify</h3>
+<h3 id="toc_27">Click &amp; verify</h3>
 <pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span>
 <span class="n">text_exact</span> <span class="s1">'Buttons'</span>
@@ -807,7 +807,7 @@ element not found exception is raised.</p>
 
 <p>To overcome these timing problems, the wait helper method is useful.</p>
 
-<h3 id="using-a-wait">Using a wait</h3>
+<h3 id="toc_28">Using a wait</h3>
 <pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
 <span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="s1">'Buttons'</span> <span class="p">}</span>
@@ -825,7 +825,7 @@ is not rescued then the test will end in failure.</p>
 <p>Another problem with the test code is that we’re depending on the exact text
 value. When the app changes, our tests will break.</p>
 
-<h3 id="dynamic-values">Dynamic values</h3>
+<h3 id="toc_29">Dynamic values</h3>
 <pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span> <span class="mi">2</span> <span class="p">}</span>
 <span class="n">page_title</span> <span class="o">=</span> <span class="n">cell_1</span><span class="p">.</span><span class="nf">name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">).</span><span class="nf">first</span>
@@ -846,7 +846,7 @@ first cell. Index 1 is the table header. After that we’re extracting the name
 and dynamically finding the title <code class="prettyprint">Buttons</code>. The test will continue working
 even after small changes to the string values.</p>
 
-<h3 id="12-cells">12 cells</h3>
+<h3 id="toc_30">12 cells</h3>
 
 <p>To conclude this lesson, we’ll look at the code to automate all 12 cells.</p>
 <pre><code class="highlight ruby"><span class="c1"># ruby</span>
@@ -883,7 +883,7 @@ mvn -Dtest=appium.tutorial.ios.AutomatingASimpleActionTest clean test
 */</span>
 </code></pre>
 
-<h2 id="page-object-pattern">Page Object Pattern</h2>
+<h2 id="toc_31">Page Object Pattern</h2>
 
 <span class="desc ruby">
 
@@ -1033,7 +1033,7 @@ Selenium’s Java bindings.</p>
 
 </span>
 
-<h2 id="running-the-test">Running the test</h2>
+<h2 id="toc_32">Running the test</h2>
 
 <span class="desc ruby">
 
@@ -1322,33 +1322,33 @@ end the session.</p>
 
 </span>
 
-<h2 id="helpful-links">Helpful Links</h2>
+<h2 id="toc_33">Helpful Links</h2>
 
 <span class="desc ruby">
 
 <table>
 <thead>
 <tr>
-<th style="text-align: right">Link</th>
-<th style="text-align: left">Summary</th>
+<th align="right">Link</th>
+<th align="left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem docs</a></td>
-<td style="text-align: left">The Ruby lib has extensive documentation. A number of Ruby helper methods are available.</td>
+<td align="right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem docs</a></td>
+<td align="left">The Ruby lib has extensive documentation. A number of Ruby helper methods are available.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/RubyBindings">Selenium Ruby bindings</a></td>
-<td style="text-align: left">The full API of the selenium ruby bindings is available. Under the hood the ruby bindings for appium use the selenium ruby bindings.</td>
+<td align="right"><a href="https://code.google.com/p/selenium/wiki/RubyBindings">Selenium Ruby bindings</a></td>
+<td align="left">The full API of the selenium ruby bindings is available. Under the hood the ruby bindings for appium use the selenium ruby bindings.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
-<td style="text-align: left">The page object pattern is explained in great detail.</td>
+<td align="right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
+<td align="left">The page object pattern is explained in great detail.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="http://rake.rubyforge.org/">Rake</a></td>
-<td style="text-align: left">The Rake homepage contains an overview of the tool.</td>
+<td align="right"><a href="http://rake.rubyforge.org/">Rake</a></td>
+<td align="left">The Rake homepage contains an overview of the tool.</td>
 </tr>
 </tbody>
 </table>
@@ -1360,53 +1360,53 @@ end the session.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: right">Link</th>
-<th style="text-align: left">Summary</th>
+<th align="right">Link</th>
+<th align="left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right"><a href="http://maven.apache.org/">Apache Maven</a></td>
-<td style="text-align: left">Maven’s homepage contains extensive documentation</td>
+<td align="right"><a href="http://maven.apache.org/">Apache Maven</a></td>
+<td align="left">Maven’s homepage contains extensive documentation</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="http://junit.org/">JUnit</a></td>
-<td style="text-align: left">JUnit is on GitHub</td>
+<td align="right"><a href="http://junit.org/">JUnit</a></td>
+<td align="left">JUnit is on GitHub</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
-<td style="text-align: left">Selenium’s wiki has an excellent article about page objects</td>
+<td align="right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
+<td align="left">Selenium’s wiki has an excellent article about page objects</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://developer.apple.com/library/ios/samplecode/uicatalog/introduction/intro.html">Apple’s uicatalog</a></td>
-<td style="text-align: left">Apple hosts the sample code for the UICatalog app we’ve been testing</td>
+<td align="right"><a href="https://developer.apple.com/library/ios/samplecode/uicatalog/introduction/intro.html">Apple’s uicatalog</a></td>
+<td align="left">Apple hosts the sample code for the UICatalog app we’ve been testing</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="http://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></td>
-<td style="text-align: left">JetBrains has a free open source IntelliJ IDEA IDE that works well for Java</td>
+<td align="right"><a href="http://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></td>
+<td align="left">JetBrains has a free open source IntelliJ IDEA IDE that works well for Java</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="http://www.eclipse.org/downloads/">Eclipse</a></td>
-<td style="text-align: left">Eclipse is another popular IDE</td>
+<td align="right"><a href="http://www.eclipse.org/downloads/">Eclipse</a></td>
+<td align="left">Eclipse is another popular IDE</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://netbeans.org/downloads/">NetBeans</a></td>
-<td style="text-align: left">NetBeans is a Java IDE by Oracle</td>
+<td align="right"><a href="https://netbeans.org/downloads/">NetBeans</a></td>
+<td align="left">NetBeans is a Java IDE by Oracle</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="http://developer.android.com/sdk/installing/studio.html">Android Studio</a></td>
-<td style="text-align: left">If you’re developing for android, you may already have Android Studio installed.</td>
+<td align="right"><a href="http://developer.android.com/sdk/installing/studio.html">Android Studio</a></td>
+<td align="left">If you’re developing for android, you may already have Android Studio installed.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
-<td style="text-align: left">The commands generated by using the Selenium bindings conform to the JSON Wire Protocol</td>
+<td align="right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td align="left">The commands generated by using the Selenium bindings conform to the JSON Wire Protocol</td>
 </tr>
 </tbody>
 </table>
 
 </span>
 
-<h2 id="summary">Summary</h2>
+<h2 id="toc_34">Summary</h2>
 
 <p>We successfully wrote a complete test and applied the page object pattern to it.
 After that, we ran the test. The appium server output was reviewed to 
@@ -1414,9 +1414,9 @@ understand how the code is translated into selenium commands.</p>
 
 <p>In the next chapter, we’re going to look at even more ways to run tests.</p>
 
-<h1 id="running-tests">Running tests</h1>
+<h1 id="toc_35">Running tests</h1>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="toc_36">Introduction</h2>
 
 <span class="desc ruby">
 
@@ -1434,7 +1434,7 @@ cover running via Jenkins, and on Sauce.</p>
 
 </span>
 
-<h2 id="flaky-gem">Flaky Gem</h2>
+<h2 id="toc_37">Flaky Gem</h2>
 
 <span class="desc ruby">
 
@@ -1500,7 +1500,7 @@ stable they are.</p>
 
 </span>
 
-<h2 id="running-locally">Running Locally</h2>
+<h2 id="toc_38">Running Locally</h2>
 
 <span class="desc ruby">
 
@@ -1538,7 +1538,7 @@ Then clean is invoked, and test runs only the single test.</p>
 
 </span>
 
-<h2 id="running-using-jenkins-ci">Running using Jenkins CI</h2>
+<h2 id="toc_39">Running using Jenkins CI</h2>
 
 <p>Jenkins is a popular open source CI server. Appium works with any CI.</p>
 
@@ -1687,7 +1687,7 @@ instead of a LaunchDaemon.</p>
 means we don’t have to worry about setting up OS X build nodes or starting
 the appium server.</p>
 
-<h2 id="running-on-sauce">Running on Sauce</h2>
+<h2 id="toc_40">Running on Sauce</h2>
 
 <p>All the tools and techniques we’ve covered so far produce tests that run well
 on Sauce Labs.</p>
@@ -1814,37 +1814,37 @@ Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
 
 </span>
 
-<h2 id="helpful-links">Helpful Links</h2>
+<h2 id="toc_41">Helpful Links</h2>
 
 <span class="desc ruby">
 
 <table>
 <thead>
 <tr>
-<th style="text-align: right">Link</th>
-<th style="text-align: left">Summary</th>
+<th align="right">Link</th>
+<th align="left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
-<td style="text-align: left">The Jenkins homepage contains the latest releases and additional information.</td>
+<td align="right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
+<td align="left">The Jenkins homepage contains the latest releases and additional information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
-<td style="text-align: left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
+<td align="right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
+<td align="left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://github.com/appium/flaky">flaky gem</a></td>
-<td style="text-align: left">flaky is on GitHub.</td>
+<td align="right"><a href="https://github.com/appium/flaky">flaky gem</a></td>
+<td align="left">flaky is on GitHub.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
-<td style="text-align: left">The objective c code for recording Android/iOS is on GitHub</td>
+<td align="right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
+<td align="left">The objective c code for recording Android/iOS is on GitHub</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
-<td style="text-align: left">Sauce has great documentation for getting started on their platform.</td>
+<td align="right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
+<td align="left">Sauce has great documentation for getting started on their platform.</td>
 </tr>
 </tbody>
 </table>
@@ -1856,33 +1856,33 @@ Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
 <table>
 <thead>
 <tr>
-<th style="text-align: right">Link</th>
-<th style="text-align: left">Summary</th>
+<th align="right">Link</th>
+<th align="left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
-<td style="text-align: left">The Jenkins homepage contains the latest releases and additional information.</td>
+<td align="right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
+<td align="left">The Jenkins homepage contains the latest releases and additional information.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
-<td style="text-align: left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
+<td align="right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
+<td align="left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
-<td style="text-align: left">The objective c code for recording Android/iOS is on GitHub</td>
+<td align="right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
+<td align="left">The objective c code for recording Android/iOS is on GitHub</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
-<td style="text-align: left">Sauce has great documentation for getting started on their platform.</td>
+<td align="right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
+<td align="left">Sauce has great documentation for getting started on their platform.</td>
 </tr>
 </tbody>
 </table>
 
 </span>
 
-<h2 id="summary">Summary</h2>
+<h2 id="toc_42">Summary</h2>
 
 <span class="desc ruby">
 
@@ -1904,14 +1904,14 @@ writing production level automation.</p>
 
 </span>
 
-<h1 id="conclusion">Conclusion</h1>
+<h1 id="toc_43">Conclusion</h1>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="toc_44">Introduction</h2>
 
 <p>In this final chapter, we’ll look at resources, support,
 and how to search the source code.</p>
 
-<h2 id="additional-resources">Additional Resources</h2>
+<h2 id="toc_45">Additional Resources</h2>
 
 <p>Appium relies on Apple’s UI Automation for iOS support.</p>
 
@@ -1935,7 +1935,7 @@ and how to search the source code.</p>
 </li>
 </ul>
 
-<h2 id="community-support">Community Support</h2>
+<h2 id="toc_46">Community Support</h2>
 
 <p>Appium has community support in the form of a
 <a href="https://groups.google.com/d/forum/appium-discuss">Google discussion group</a>.</p>
@@ -1948,7 +1948,7 @@ the group archive to see if your question has already been asked.</p>
 <p>You may want to review <a href="http://www.catb.org/esr/faqs/smart-questions.html">How To Ask Questions The Smart Way</a>
 if you’re new to online discussion groups.</p>
 
-<h2 id="professional-support">Professional Support</h2>
+<h2 id="toc_47">Professional Support</h2>
 
 <p>Sauce Labs offers professional support for appium on their hosted cloud. If
 you are a Sauce Labs customer and encounter an issue on the Sauce platform,
@@ -1960,7 +1960,7 @@ reproduce without using appium,
 keeps all bugs private, it’s helpful to also duplicate the report to
 <a href="http://openradar.appspot.com/">open radar</a>.</p>
 
-<h2 id="searching-the-source-code">Searching the Source Code</h2>
+<h2 id="toc_48">Searching the Source Code</h2>
 
 <p>Appium is fully open source. Very few parts of the automation stack are not
 available on GitHub. The Apple tooling, for example Instruments,
@@ -1985,36 +1985,36 @@ From there we can tell what the source contains and how it’s built.</p>
 <a href="https://github.com/jaykz52/mechanic/search?q=setup+a+map&amp;type=Code">search for setup a map</a>
 on the mechanic project.</p>
 
-<h2 id="helpful-links">Helpful Links</h2>
+<h2 id="toc_49">Helpful Links</h2>
 
 <table>
 <thead>
 <tr>
-<th style="text-align: right">Link</th>
-<th style="text-align: left">Summary</th>
+<th align="right">Link</th>
+<th align="left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right"><a href="http://saucelabs.com/">Sauce Labs</a></td>
-<td style="text-align: left">Sauce Labs supports appium for automated mobile testing in the cloud.</td>
+<td align="right"><a href="http://saucelabs.com/">Sauce Labs</a></td>
+<td align="left">Sauce Labs supports appium for automated mobile testing in the cloud.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://github.com/">GitHub</a></td>
-<td style="text-align: left">GitHub contains all the appium source code.</td>
+<td align="right"><a href="https://github.com/">GitHub</a></td>
+<td align="left">GitHub contains all the appium source code.</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://github.com/appium/appium/tree/master/docs">Appium docs</a></td>
-<td style="text-align: left">Appium has documentation inside the git repository</td>
+<td align="right"><a href="https://github.com/appium/appium/tree/master/docs">Appium docs</a></td>
+<td align="left">Appium has documentation inside the git repository</td>
 </tr>
 <tr>
-<td style="text-align: right"><a href="https://developer.apple.com/wwdc/videos/">Apple’s developer videos</a></td>
-<td style="text-align: left">Apple posts session videos from WWDC</td>
+<td align="right"><a href="https://developer.apple.com/wwdc/videos/">Apple’s developer videos</a></td>
+<td align="left">Apple posts session videos from WWDC</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="summary">Summary</h2>
+<h2 id="toc_50">Summary</h2>
 
 <p>We covered a number of resources from Apple WWDC videos to the Google
 discussion group. In addition to community support, appium is available for
