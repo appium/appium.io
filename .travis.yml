@@ -15,6 +15,7 @@ script:
   - pkill -9 -f jekyll
   # rebuilding
   - rake install
+  - bundle exec rake specs
   - bundle exec rake clean
   - bundle exec rake full_build
   # checking again 
