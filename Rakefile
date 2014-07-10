@@ -39,9 +39,9 @@ desc 'Usage'
 task :usage do
   puts 'Usage:'
   puts '    rake install                 --> Initial Download and gem install.'
-  puts '    bundle exec rake full_build  --> Download and build.'
-  puts '    bundle exec rake quick_build --> Quick dev rebuild.'
-  puts '    bundle exec rake publish     --> Download , build and publish site.'
+  puts '    bundle exec rake full_build  --> Download and build (will reset appium.io_workspace repos, so commit changes first).'
+  puts '    bundle exec rake quick_build --> Quick dev rebuild (will stash appium.io_workspace repos, so commit changes first).'
+  puts '    bundle exec rake publish     --> Download , build and publish site (will reset appium.io_workspace repos, so commit changes first).'
   puts '    bundle exec rake clean       --> Delete site and doc folders'
 end
 
