@@ -1365,13 +1365,13 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tr>
 <tr>
 <td><code class="prettyprint">language</code></td>
-<td>(Sim/Emu-only) Language to set for the iOS Simulator</td>
+<td>(Sim/Emu-only) Language to set for the simulator / emulator</td>
 <td>e.g. <code class="prettyprint">fr</code>
 </td>
 </tr>
 <tr>
 <td><code class="prettyprint">locale</code></td>
-<td>(Sim/Emu-only) Locale to set for the iOS Simulator</td>
+<td>(Sim/Emu-only) Locale to set for the simulator / emulator</td>
 <td>e.g. <code class="prettyprint">fr_CA</code>
 </td>
 </tr>
@@ -3444,7 +3444,7 @@ Unicode keyboard will remain enabled on the device after the tests are completed
 <h2 id="toc_122">
 <span id="grid.md"></span>Selenium Grid</h2>
 
-<p>You are able to register your appium server with a local <a href="https://code.google.com/p/selenium/wiki/Grid2">Selenium grid</a> by using the
+<p>You are able to register your appium server with a local <a href="https://code.google.com/p/selenium/wiki/Grid2">Selenium grid</a> (<a href="http://docs.seleniumhq.org/docs/07_selenium_grid.jsp">setup docs</a>) by using the
 <code class="prettyprint">--nodeconfig</code> server parameter.</p>
 <pre><code class="highlight plaintext">&gt; appium --nodeconfig /path/to/nodeconfig.json
 # or, if running from source:
