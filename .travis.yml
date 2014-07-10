@@ -14,9 +14,9 @@ script:
   - linkchecker -t 3 -r -1 http://0.0.0.0:4000 --check-extern
   - pkill -9 -f jekyll
   # rebuilding
-  - rm -rf docs/* slate/*
   - rake install
-  - bundle exec rake
+  - bundle exec rake clean
+  - bundle exec rake full_build
   # checking again 
   - bash -c "jekyll serve &"
   - sleep 10
