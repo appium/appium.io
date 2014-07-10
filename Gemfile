@@ -25,7 +25,10 @@ def eval_gemfile root_path
   gem_str.gsub!(/^gem ['"]rspec['"].*$/, "# ignoring rspec") 
   # ignoring redcarpet (version incompatibility)
   gem_str.gsub!(/^gem ['"]redcarpet['"].*$/, "# ignoring redcarpet") 
-  
+  # avoiding duplicates
+  gem_str.gsub!(/^gem ['"]escape_utils['"].*$/, "# ignoring escape_utils") 
+  gem_str.gsub!(/^\s*gem ['"]ruby18_source_location['"].*$/, "# ignoring ruby18_source_location") 
+  gem_str.gsub!(/^\s*gem ['"]appium_doc_lint['"].*$/, "# ignoring appium_doc_lint")
   eval(gem_str, nil, 'Gemfile')
 end
 
