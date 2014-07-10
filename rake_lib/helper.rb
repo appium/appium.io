@@ -301,15 +301,14 @@ transforms into:
       end
     end
 
-    def rewrite_github_links data, prefix='docs/'
-      data.gsub(/(?<!!) \[ ( [^\[]* ) \] \( ( [^)]+ ) \)/mx) do |full|
+    def self.rewrite_github_links data, prefix=/\/?docs\//
+      data = data.gsub(/(?<!!) \[ ( [^\[]* ) \] \( ( [^)]+ ) \)/mx) do |full|
         result = full
-
         link_text   = $1
         link_target = $2
         link_target = link_target.strip if link_target
 
-        if link_target && link_target.start_with?(prefix)
+        if link_target && link_target =~ prefix
           link_target = File.basename link_target
           ext         = File.extname link_target
 
@@ -323,9 +322,9 @@ transforms into:
             end
           end
         end
-
         result
       end
+      data
     end
 
     # readme is always updated from the newest tag
@@ -356,7 +355,7 @@ YAML
       # for legacy reasons, the readme may have yaml already
       data.gsub! /^---.*---$/m, ''
 
-      data = rewrite_github_links data
+      data = self.class.rewrite_github_links data
 
       # Fix readme links
       # https://raw.githubusercontent.com/appium/appium/master/README.md
@@ -401,7 +400,7 @@ YAML
       copy_entry source, dest
 
       # Prepend with yaml
-      data = rewrite_github_links File.read(dest), ''
+      data = self.class.rewrite_github_links File.read(dest), prefix=/.*/
       File.open(dest, 'w') { |f| f.write(yaml + data) }
     end
   end # class Helper

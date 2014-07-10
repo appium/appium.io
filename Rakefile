@@ -35,6 +35,11 @@ task :clean do
   sh 'rm -rf slate docs'
 end
 
+desc 'Run specs'
+task :specs do
+  sh 'rspec test/specs/*-specs.rb'
+end
+
 desc 'Usage'
 task :usage do
   puts 'Usage:'
@@ -43,6 +48,7 @@ task :usage do
   puts '    bundle exec rake quick_build --> Quick dev rebuild (will stash appium.io_workspace repos, so commit changes first).'
   puts '    bundle exec rake publish     --> Download , build and publish site (will reset appium.io_workspace repos, so commit changes first).'
   puts '    bundle exec rake clean       --> Delete site and doc folders'
+  puts '    bundle exec rake specs       --> Run specs'
 end
 
 task :default => :usage
