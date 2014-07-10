@@ -1,0 +1,23 @@
+branches:
+  only:
+  - gh-pages
+language: ruby
+rvm:
+  - 2.1.2
+before_script: 
+  - sudo pip install LinkChecker
+  - gem install --no-rdoc --no-ri jekyll jekyll-mentions jemoji jekyll-redirect-from jekyll-sitemap    
+script:
+  # checking what's deployed 
+  - bash -c "jekyll serve &"
+  - sleep 10
+  - linkchecker -t 3 -r -1 http://0.0.0.0:4000 --check-extern
+  - pkill -9 -f jekyll
+  # rebuilding
+  - rm -rf docs/* slate/*
+  - rake install
+  - bundle exec rake
+  # checking again 
+  - bash -c "jekyll serve &"
+  - sleep 10
+  - linkchecker -t 3 -r -1 http://0.0.0.0:4000 --check-extern
