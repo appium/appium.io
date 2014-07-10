@@ -5,25 +5,24 @@ language: ruby
 env:
   global:
   - LINKCHECKER_THREAD=3
+  - LINKCHECKER_PAUSE=5
 rvm:
   - 2.1.2
-before_script: 
+before_script:   
   - sudo pip install LinkChecker
-  - gem install --no-rdoc --no-ri jekyll jekyll-mentions jemoji jekyll-redirect-from jekyll-sitemap    
 script:
   # checking what's deployed 
-  - jekyll serve &
+  - bundle exec jekyll serve &
   - sleep 10
   - rake linkchecker_local
-  - rake kill_jekyll
+  - pkill -9 -f jekyll || true
   # rebuilding
   - rake install
   - bundle exec rake specs
   - bundle exec rake clean
   - bundle exec rake full_build
   # checking again 
-  - jekyll serve &
+  - bundle exec jekyll serve &
   - sleep 10
   - rake linkchecker_local
-  - rake kill_jekyll
- 
+  - pkill -9 -f jekyll || true
