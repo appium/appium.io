@@ -114,7 +114,7 @@ You can also automate web views in hybrid apps! See the  [hybrid app guide](/sla
 
 This repository contains [many examples of tests in a variety of different languages](https://github.com/appium/appium/tree/master/sample-code/examples)!
 
-For the full list of Appium doc pages, visit [this directory](/docs/en/).
+For the full list of Appium doc pages, visit [this directory](/documentation.html?lang=en).
 
 ### How It Works
 

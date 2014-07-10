@@ -307,8 +307,13 @@ transforms into:
         link_text   = $1
         link_target = $2
         link_target = link_target.strip if link_target
-
-        if link_target && link_target =~ prefix
+        if(link_target =~  /^\/?docs\/.*\/$/ )
+          # links to main doc page
+          result = link_target.gsub(/^\/?docs\/(.*)\/$/) do |lang|
+            res = '[%s](/documentation.html?lang=%s)' % [link_text, $1] 
+          end
+        elsif link_target && link_target =~ prefix
+          # links to specific doc sections
           link_target = File.basename link_target
           ext         = File.extname link_target
 

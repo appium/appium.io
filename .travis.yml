@@ -2,6 +2,9 @@ branches:
   only:
   - gh-pages
 language: ruby
+env:
+  global:
+  - LINKCHECKER_THREAD=3
 rvm:
   - 2.1.2
 before_script: 
@@ -9,16 +12,18 @@ before_script:
   - gem install --no-rdoc --no-ri jekyll jekyll-mentions jemoji jekyll-redirect-from jekyll-sitemap    
 script:
   # checking what's deployed 
-  - bash -c "jekyll serve &"
+  - jekyll serve &
   - sleep 10
-  - linkchecker -t 3 -r -1 http://0.0.0.0:4000 --check-extern
-  - pkill -9 -f jekyll
+  - rake linkchecker_local
+  - rake kill_jekyll
   # rebuilding
   - rake install
   - bundle exec rake specs
   - bundle exec rake clean
   - bundle exec rake full_build
   # checking again 
-  - bash -c "jekyll serve &"
+  - jekyll serve &
   - sleep 10
-  - linkchecker -t 3 -r -1 http://0.0.0.0:4000 --check-extern
+  - rake linkchecker_local
+  - rake kill_jekyll
+ 
