@@ -12,7 +12,7 @@ module AppiumIo
       @refresh = opts[:refresh]
       @path  = opts[:path]
       @clone = opts[:clone]
-      @master = opts.fetch :master, false      
+      @master = opts.fetch :master, false
 
       if @refresh
         refresh
@@ -33,6 +33,10 @@ module AppiumIo
         sh 'git stash'
       end
       sh "git checkout #{tag}"
+    end
+
+    def clean
+      sh 'git reset --hard && git clean -dfx'
     end
 
     # Execute shell command within the appium dir

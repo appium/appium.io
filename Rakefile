@@ -2,25 +2,27 @@ require_relative 'rake_lib/helper.rb'
 
 desc 'Initial Download and gem install'
 task :install do
-  system 'bundle install'
+  sh 'bundle install'
   AppiumIo::Helper.new
-  system 'bundle install'  
+  sh 'bundle install'
 end
 
 desc 'Quick dev rebuild'
 task :quick_build do
   h = AppiumIo::Helper.new refresh: false
-  h.update_docs
-  h.update_readme
-  h.update_intro
+  h.update_intro_readme_docs false
+end
+
+desc 'Quick master rebuild'
+task :master_build do
+  h = AppiumIo::Helper.new refresh: false
+  h.update_intro_readme_docs true
 end
 
 desc 'Download and build'
 task :full_build do
   h = AppiumIo::Helper.new
-  h.update_docs
-  h.update_readme
-  h.update_intro
+  h.update_intro_readme_docs false
 end
 
 desc 'Clean, download , build and publish site'
@@ -94,7 +96,7 @@ task :usage do
   puts '    You should do subpackage dev in the ../appium.io_workspace/* folders, using'
   puts '    the quick_build task. Be carefull with the full_build and publish tasks, they'
   puts '    are a little bit hardcore.'
-   
+
 end
 
 task :default => :usage
