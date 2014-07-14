@@ -479,8 +479,8 @@ and the bundle ID (if the app is installed on the device) or the path to the
 
 <p>For example, if you are prelaunching your app and wish for Appium to force use
 a specific UDID, then you may use the below command:</p>
-<pre><code class="highlight plaintext">appium -U &lt;udid&gt; --app &lt;path or bundle&gt;
-</code></pre>
+
+<p class="centercode"><code>appium -U &lt;udid&gt; --app &lt;path or bundle&gt;</code></p>
 
 <p>This will start Appium and have Appium use the device to test the app.</p>
 
@@ -611,8 +611,8 @@ windows to run in the regular command prompt.</li>
 
 <p>Now that you’ve downloaded everything, if you’re running from source, run the
 following .bat file in the folder where you cloned appium:</p>
-<pre><code class="highlight plaintext">reset.bat
-</code></pre>
+
+<p class="centercode"><code>reset.bat</code></p>
 
 <h3 id="toc_43">Running Appium</h3>
 
@@ -621,8 +621,8 @@ an Android Device connected that is running an AVD with API Level 17 or
 greater. Then run Appium on the command line (via the <code class="prettyprint">appium</code> command), or if
 you’re running from source, inside the folder where you installed appium, using
 node.js:</p>
-<pre><code class="highlight plaintext">node .
-</code></pre>
+
+<p class="centercode"><code>node .</code></p>
 
 <p>See the <a href="#server-args.md">server documentation</a> for all the command line
 arguments.</p>
@@ -737,24 +737,24 @@ to deploy this build to your device</li>
 <h3 id="toc_54">Xcodebuild with parameters:</h3>
 
 <p>A newer xcodebuild now allows settings to be specified. Taken from <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>:</p>
-<pre><code class="highlight plaintext">xcodebuild [-project projectname] [-target targetname ...]
+
+<p class="centercode"><code>xcodebuild [-project projectname] [-target targetname ...]
              [-configuration configurationname] [-sdk [sdkfullpath | sdkname]]
-             [buildaction ...] [setting=value ...] [-userdefault=value ...]
-</code></pre>
+             [buildaction ...] [setting=value ...] [-userdefault=value ...]</code></p>
 
 <p>This is a resource to explore the available <a href="https://developer.apple.com/library/mac/#documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html#//apple_ref/doc/uid/TP40003931-CH3-DontLinkElementID_10">settings</a></p>
-<pre><code class="highlight plaintext">CODE_SIGN_IDENTITY (Code Signing Identity)
+
+<p class="centercode"><code>CODE_SIGN_IDENTITY (Code Signing Identity)
     Description: Identifier. Specifies the name of a code signing identity.
-    Example value: iPhone Developer
-</code></pre>
+    Example value: iPhone Developer</code></p>
 
 <p>PROVISIONING_PROFILE is missing from the index of available commands,
 but may be necessary.</p>
 
 <p>Specify “CODE_SIGN_IDENTITY” &amp; “PROVISIONING_PROFILE” settings in the
 xcodebuild command:</p>
-<pre><code class="highlight plaintext">xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
-</code></pre>
+
+<p class="centercode"><code>xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"</code></p>
 
 <p>On success, the app will be built to your <code class="prettyprint">&lt;app_dir&gt;/build/&lt;configuration&gt;-iphoneos/&lt;app_name&gt;.app</code></p>
 
@@ -770,20 +770,21 @@ parent directory.</p>
 
 <p>Execute fruitstrap after a clean build by running (commands available depend
 on your fork of fruitstrap):</p>
-<pre><code class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;
-</code></pre>
+
+<p class="centercode"><code>./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;</code></p>
 
 <p>If you are aiming to use continuous integration in this setup,
 you may find it useful to want to log the output of fruitstrap to both
 command line and log, like so:</p>
-<pre><code class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out
-</code></pre>
+
+<p class="centercode"><code>./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out</code></p>
 
 <p>Since fruitstrap will need to be killed before the node server can be
 launched, an option is to scan the output of the fruitstrap launch for some
 telling sign that the app has completed launching. This may prove useful if
 you are doing this via a Rakefile and a <code class="prettyprint">go_device.sh</code> script:</p>
-<pre><code class="highlight plaintext">bundle exec rake ci:fruit_deploy_app | while read line ; do
+
+<p class="centercode"><code>bundle exec rake ci:fruit_deploy_app | while read line ; do
    echo "$line" | grep "text to identify successful launch"
    if [ $? = 0 ]
    then
@@ -792,8 +793,7 @@ you are doing this via a Rakefile and a <code class="prettyprint">go_device.sh</
        sleep 5
        kill -9 `ps -aef | grep fruitstrap | grep -v grep | awk '{print $2}'`
    fi
- done
-</code></pre>
+ done</code></p>
 
 <p>Once fruitstrap is killed, node server can be launched and Appium tests can run!</p>
 
@@ -1076,6 +1076,22 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </td>
 <td>4723</td>
 <td>port to listen on</td>
+<td><code class="prettyprint">--port 4723</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-ca</code>, <code class="prettyprint">--callback-address</code>
+</td>
+<td>(same as –address)</td>
+<td>IP Address to use to for http callback</td>
+<td><code class="prettyprint">--callback-address 127.0.0.1</code></td>
+</tr>
+<tr>
+<td>
+<code class="prettyprint">-cp</code>, <code class="prettyprint">--callback-port</code>
+</td>
+<td>(same as –port)</td>
+<td>port to use to for http callback</td>
 <td><code class="prettyprint">--port 4723</code></td>
 </tr>
 <tr>
@@ -2027,7 +2043,8 @@ advanced**, only for iOS 6.0 and up)</li>
 </ul>
 
 <p>Now that you have a profile open a terminal and run the following commands:</p>
-<pre><code class="highlight plaintext">$ git clone https://github.com/appium/appium.git
+
+<p class="centercode"><code>$ git clone https://github.com/appium/appium.git
 $ cd appium
 
 # Option 1: You dont define any parameters and it will set the code signing identity to 'iPhone Developer'
@@ -2040,8 +2057,7 @@ $ ./reset.sh --ios --real-safari --code-sign '&lt;code signing idendity&gt;'
 $ ./reset.sh --ios --real-safari --code-sign '&lt;code signing idendity&gt;' --profile '&lt;retrieved profile identity code&gt;'
 
 # Once successfully configured and with the safari launcher built, start the server as per usual
-$ node /lib/server/main.js -U &lt;UDID&gt;
-</code></pre>
+$ node /lib/server/main.js -U &lt;UDID&gt;</code></p>
 
 <h3 id="toc_82">Running your test</h3>
 
@@ -2406,8 +2422,8 @@ chain of events.</p>
  * perform</p>
 
 <p>Here’s an example of creating an action in pseudocode:</p>
-<pre><code class="highlight plaintext">TouchAction().press(el0).moveTo(el1).release()
-</code></pre>
+
+<p class="centercode"><code>TouchAction().press(el0).moveTo(el1).release()</code></p>
 
 <p>The above simulates a user pressing down on an element, sliding their finger
 to another position, and removing their finger from the screen.</p>
@@ -2428,10 +2444,10 @@ driver object, rather than calling the <code class="prettyprint">perform</code> 
 object.</p>
 
 <p>In pseudocode, both of the following are equivalent:</p>
-<pre><code class="highlight plaintext">TouchAction().tap(el).perform()
 
-driver.perform(TouchAction().tap(el))
-</code></pre>
+<p class="centercode"><code>TouchAction().tap(el).perform()
+
+driver.perform(TouchAction().tap(el))</code></p>
 
 <h3 id="toc_95">MultiTouch</h3>
 
@@ -2447,10 +2463,10 @@ same time. Appium first performs the first event of all TouchActions together,
 then the second, etc.</p>
 
 <p>Pseudocode example of tapping with two fingers:</p>
-<pre><code class="highlight plaintext">action0 = TouchAction().tap(el)
+
+<p class="centercode"><code>action0 = TouchAction().tap(el)
 action1 = TouchAction().tap(el)
-MultiAction().add(action0).add(action1).perform()
-</code></pre>
+MultiAction().add(action0).add(action1).perform()</code></p>
 
 <h3 id="toc_96">Bugs and Workarounds</h3>
 
@@ -3188,9 +3204,9 @@ $this-&gt;pushFile($path, base64_encode($data));
 
 <p>It is worth looking at <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>.
 <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
-<pre><code class="highlight plaintext">(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
-(UIAElementArray) UIAElementArray.withPredicate(PredicateString predicateString)
-</code></pre>
+
+<p class="centercode"><code>(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
+(UIAElementArray) UIAElementArray.withPredicate(PredicateString predicateString)</code></p>
 
 <p>Native JS search strategy (powered by Apple) provides much more flexibility and is like Xpath.
 <strong><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/predicates.html">Predicates</a></strong> can be used to restrict an elements set to select only those ones for which some condition is true.</p>
@@ -3208,11 +3224,10 @@ $this-&gt;pushFile($path, base64_encode($data));
 
 <p>= , ==
 - The left-hand expression is equal to the right-hand expression:
-“`
-tableViews()<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>.cells().firstWithPredicate("label == ‘Olivia’ ”)</p>
+</p>
+<p class="centercode"><code>tableViews()<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>.cells().firstWithPredicate("label == 'Olivia' ")</code></p>
 
-<p>same in Xpath: /UIATableView[2]/UIATableCell<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">@label = ‘Olivia’</a>
-“`</p>
+<p>same in Xpath: /UIATableView[2]/UIATableCell<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">@label = 'Olivia'</a></p>
 
 <p>&gt;= , =&gt;
 - The left-hand expression is greater than or equal to the right-hand expression.</p>
@@ -3232,9 +3247,9 @@ tableViews()<a href="http://software.intel.com/en-us/articles/intel-hardware-acc
 <p>BETWEEN
 - The left-hand expression is between, or equal to either of, the values specified in the right-hand side. The right-hand side is a two value array (an array is required to specify order) giving upper and lower bounds. For example, <code class="prettyprint">1 BETWEEN { 0 , 33 }</code>, or <code class="prettyprint">$INPUT BETWEEN { $LOWER, $UPPER }</code>.
 In Objective-C, you could create a BETWEEN predicate as shown in the following example:</p>
-<pre><code class="highlight plaintext">NSPredicate *betweenPredicate =
-    [NSPredicate predicateWithFormat: @"attributeName BETWEEN %@", @[@1, @10]];
-</code></pre>
+
+<p class="centercode"><code>NSPredicate *betweenPredicate =
+    [NSPredicate predicateWithFormat: @"attributeName BETWEEN %@", @[@1, @10]];</code></p>
 
 <p>This creates a predicate that matches <code class="prettyprint">( ( 1 &lt;= attributeValue ) &amp;&amp; ( attributeValue &lt;= 10 ) )</code></p>
 
@@ -3263,43 +3278,43 @@ In Objective-C, you could create a BETWEEN predicate as shown in the following e
 
 <p>BEGINSWITH
 - The left-hand expression begins with the right-hand expression.</p>
-<pre><code class="highlight plaintext">scrollViews()[3].buttons().firstWithPredicate("name BEGINSWITH 'results toggle' ")
 
-same in Xpath: /UIAScrollView[4]/UIAButton[starts-with(@name, 'results toggle')][1]
-</code></pre>
+<p class="centercode"><code>scrollViews()[3].buttons().firstWithPredicate("name BEGINSWITH 'results toggle' ")
+
+same in Xpath: /UIAScrollView[4]/UIAButton[starts-with(@name, 'results toggle')][1]</code></p>
 
 <p>CONTAINS
 - The left-hand expression contains the right-hand expression.</p>
-<pre><code class="highlight plaintext">tableViews()[1].cells().withPredicate("ANY collectionViews[0].buttons.name CONTAINS 'opera'")
 
-same in Xpath: /UIATableView[2]/UIATableCell[UIACollectionView[1]/UIAButton[contains(@name, 'opera')]]
-</code></pre>
+<p class="centercode"><code>tableViews()[1].cells().withPredicate("ANY collectionViews[0].buttons.name CONTAINS 'opera'")
+
+same in Xpath: /UIATableView[2]/UIATableCell[UIACollectionView[1]/UIAButton[contains(@name, 'opera')]]</code></p>
 
 <p>ENDSWITH
 - The left-hand expression ends with the right-hand expression.</p>
 
 <p>LIKE
 - The left hand expression equals the right-hand expression: ? and * are allowed as wildcard characters, where ? matches 1 character and * matches 0 or more characters. In Mac OS X v10.4, wildcard characters do not match newline characters.</p>
-<pre><code class="highlight plaintext">tableViews()[0].cells().firstWithPredicate("name LIKE '*Total: $*' ")
 
-same in Xpath: /UIATableView[1]/UIATableCell[matches(@name, '.*Total: \$.*')][1]
-</code></pre>
+<p class="centercode"><code>tableViews()[0].cells().firstWithPredicate("name LIKE '*Total: $*' ")
+
+same in Xpath: /UIATableView[1]/UIATableCell[matches(@name, '.*Total: \$.*')][1]</code></p>
 
 <p>MATCHES
 - The left hand expression equals the right hand expression using a regex -style comparison according to ICU v3 (for more details see the ICU User Guide for <a href="http://userguide.icu-project.org/strings/regexp">Regular Expressions</a>).</p>
-<pre><code class="highlight plaintext">tableViews().firstWithPredicate("value MATCHES '.*of 7' ")
 
-same in Xpath: /UIATableView[matches(@value, '.*of 7')][1]
-</code></pre>
+<p class="centercode"><code>tableViews().firstWithPredicate("value MATCHES '.*of 7' ")
+
+same in Xpath: /UIATableView[matches(@value, '.*of 7')][1]</code></p>
 
 <h3 id="toc_127">Aggregate Operations</h3>
 
 <p>ANY , SOME
 - Specifies any of the elements in the following expression. For example <code class="prettyprint">ANY children.age &lt; 18</code> .</p>
-<pre><code class="highlight plaintext">tableViews()[0].cells().firstWithPredicate("SOME staticTexts.name = 'red'").staticTexts().withName('red')
 
-same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIAStaticText[@name = 'red']
-</code></pre>
+<p class="centercode"><code>tableViews()[0].cells().firstWithPredicate("SOME staticTexts.name = 'red'").staticTexts().withName('red')
+
+same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIAStaticText[@name = 'red']</code></p>
 
 <p>ALL
 - Specifies all of the elements in the following expression. For example <code class="prettyprint">ALL children.age &lt; 18</code> .</p>
@@ -3321,10 +3336,9 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
 
 <p>array[SIZE]
 - Specifies the size of the array
-<code class="prettyprint">
-elements()[0].tableViews()[0].cells().withPredicate("staticTexts[SIZE] &gt; 2")
-same in Xpath: /*[1]/UIATableView[1]/UIATableCell[count(UIAStaticText) &gt; 2]
-</code></p>
+</p>
+<p class="centercode"><code>elements()[0].tableViews()[0].cells().withPredicate("staticTexts[SIZE] &gt; 2")
+same in Xpath: /*<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>/UIATableView<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>/UIATableCell[count(UIAStaticText) &gt; 2]</code></p>
 
 <h3 id="toc_128">Identifiers</h3>
 
@@ -3359,7 +3373,7 @@ same in Xpath: /*[1]/UIATableView[1]/UIATableCell[count(UIAStaticText) &gt; 2]
 <p>SELF
 - Represents the object being evaluated.</p>
 
-<p>"text”
+<p>“text”
 - A character string.</p>
 
 <p>‘text’
@@ -3612,10 +3626,10 @@ Unicode keyboard will remain enabled on the device after the tests are completed
 
 <p>You are able to register your appium server with a local <a href="https://code.google.com/p/selenium/wiki/Grid2">Selenium grid</a> (<a href="http://docs.seleniumhq.org/docs/07_selenium_grid.jsp">setup docs</a>) by using the
 <code class="prettyprint">--nodeconfig</code> server parameter.</p>
-<pre><code class="highlight plaintext">&gt; appium --nodeconfig /path/to/nodeconfig.json
+
+<p class="centercode"><code>&gt; appium --nodeconfig /path/to/nodeconfig.json
 # or, if running from source:
-&gt; node . --nodeconfig /path/to/nodeconfig.json
-</code></pre>
+&gt; node . --nodeconfig /path/to/nodeconfig.json</code></p>
 
 <p>In the node config file you have to define the <code class="prettyprint">browserName</code>,
 <code class="prettyprint">version</code> and <code class="prettyprint">platform</code> and based on these parameters the grid
@@ -3822,28 +3836,28 @@ connection we use the <a href="https://github.com/google/ios-webkit-debug-proxy"
 
 <p>To install the latest tagged version of the ios-webkit-debug-proxy using
 brew, run the following commands in the terminal:</p>
-<pre><code class="highlight shell"><span class="c"># The first command is only required if you don't have brew installed.</span>
-<span class="gp">&gt; </span>ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.github.com/mxcl/homebrew/go/install<span class="k">)</span><span class="s2">"</span>
-<span class="gp">&gt; </span>brew update
-<span class="gp">&gt; </span>brew install ios-webkit-debug-proxy
-</code></pre>
+
+<p class="centercode"><code># The first command is only required if you don't have brew installed.
+&gt; ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+&gt; brew update
+&gt; brew install ios-webkit-debug-proxy</code></p>
 
 <p>You can also install the latest proxy by cloning it from git and installing
 it yourself:</p>
-<pre><code class="highlight shell"><span class="c"># Please be aware that this will install the proxy with the latest code (and not a tagged version).</span>
-<span class="gp">&gt; </span>git clone https://github.com/google/ios-webkit-debug-proxy.git
-<span class="gp">&gt; </span><span class="nb">cd </span>ios-webkit-debug-proxy
-<span class="gp">&gt; </span>./autogen.sh
-<span class="gp">&gt; </span>./configure
-<span class="gp">&gt; </span>make
-<span class="gp">&gt; </span>sudo make install
-</code></pre>
+
+<p class="centercode"><code># Please be aware that this will install the proxy with the latest code (and not a tagged version).
+&gt; git clone https://github.com/google/ios-webkit-debug-proxy.git
+&gt; cd ios-webkit-debug-proxy
+&gt; ./autogen.sh
+&gt; ./configure
+&gt; make
+&gt; sudo make install</code></p>
 
 <p>Once installed you can start the proxy with the following command:</p>
-<pre><code class="highlight shell"><span class="c"># Change the udid to be the udid of the attached device and make sure to set the port to 27753</span>
-<span class="c"># as that is the port the remote-debugger uses.</span>
-<span class="gp">&gt; </span>ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
-</code></pre>
+
+<p class="centercode"><code># Change the udid to be the udid of the attached device and make sure to set the port to 27753
+# as that is the port the remote-debugger uses.
+&gt; ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d</code></p>
 
 <p><strong>NOTE:</strong> the proxy requires the <strong>“web inspector”</strong> to be turned on to
 allow a connection to be established. Turn it on by going to <strong>settings &gt;
@@ -3862,12 +3876,12 @@ part of iOS 6</strong> and was not available previously.</p>
 <p>The biggest thing you need to worry about is using the new Appium client libraries instead of the vanilla WebDriver clients you are currently using. Visit the <a href="#appium-clients.md">Appium client list</a> to find the client for your language. Downloads and instructions for integrating into your code are available on the individual client websites.</p>
 
 <p>Ultimately, you’ll be doing something like (to use Python as an example):</p>
-<pre><code class="highlight plaintext">from appium import webdriver
-</code></pre>
+
+<p class="centercode"><code>from appium import webdriver</code></p>
 
 <p>Instead of:</p>
-<pre><code class="highlight plaintext">from selenium import webdriver
-</code></pre>
+
+<p class="centercode"><code>from selenium import webdriver</code></p>
 
 <h3 id="toc_148">New desired capabilities</h3>
 
@@ -3909,12 +3923,12 @@ part of iOS 6</strong> and was not available previously.</p>
 <p><code class="prettyprint">tag name</code> has been replaced by <code class="prettyprint">class name</code>. So to find an element by its UI type, use the class name locator strategy for your client.</p>
 
 <p>Note about <code class="prettyprint">class name</code> and <code class="prettyprint">xpath</code> strategies: these now require the fully-qualified class name for your element. This means that if you had an xpath selector that looked like this:</p>
-<pre><code class="highlight plaintext">//table/cell/button
-</code></pre>
+
+<p class="centercode"><code>//table/cell/button</code></p>
 
 <p>It would now need to be:</p>
-<pre><code class="highlight plaintext">//UIATableView/UIATableCell/UIAButton
-</code></pre>
+
+<p class="centercode"><code>//UIATableView/UIATableCell/UIAButton</code></p>
 
 <p>(And likewise for Android: <code class="prettyprint">button</code> now needs to be <code class="prettyprint">android.widget.Button</code>)</p>
 
@@ -4264,6 +4278,8 @@ commands.</li>
 <li>
 <strong>Force Scroll Log to Bottom</strong>: Force the log to scroll to the bottom when there is new output, regardless of
 the position.</li>
+<li>
+<strong>Use Local Timezone</strong>: Use local timezone for timestamps.</li>
 </ul>
 </li>
 </ul>
