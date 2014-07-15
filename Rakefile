@@ -15,7 +15,7 @@ end
 
 desc 'Quick master rebuild'
 task :master_build do
-  h = AppiumIo::Helper.new refresh: false
+  h = AppiumIo::Helper.new refresh: true
   h.update_intro_readme_docs true
 end
 
