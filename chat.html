@@ -1,12 +1,86 @@
-<!doctype html>
+---
+---
+<!DOCTYPE html>
 <html>
-  <head>
-  </head>
-  <body>
+{% include head.html %}
+<body onload="load()">
+<script>
+    function load() {
+        var downloadLink = document.getElementById('downloadLink');
+        if (navigator.appVersion.indexOf("Win") != -1) {
+            downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows-1.0.0.zip";
+        } else {
+            downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/appium-1.2.0.dmg";
+        }
+    }
+    var toggleVideo = function () {
+        var vid = $("#show-demo-video");
+        if (vid.css("display") == "none") {
+            vid.css("display", "");
+        }
+        else {
+            vid.css("display", "none");
+        }
+    };
+</script>
 
-  <!-- when appium.io/chat is loaded, redirect to the public appium hipchat room -->
-  <script>window.location = "https://www.hipchat.com/gTJJXSZBF";</script>
-  <meta http-equiv="refresh" content="0;url=https://www.hipchat.com/gTJJXSZBF">
+{% include navbar.html %}
 
-  </body>
+<div class="jumbotron masthead">
+    <div class="container">
+        <h1 class="img-responsive appium-logo">Appium</h1>
+        <img class="img-responsive code-bg" src="img/code-bg.gif"/>
+
+	<p data-localize="jumbotron-heading">Automation for Apps</p>
+
+        <p class="small"><span data-localize="jumbotron-p-pt1">Appium is an open source test automation framework for
+            use with native and</span> <a
+                    href="/slate/en/master/#hybrid.md"><span data-localize="jumbotron-p-pt2">hybrid</span></a><span data-localize="jumbotron-p-pt3"> mobile apps.</span> <br /><span data-localize="jumbotron-p-pt4">It drives iOS and Android apps using the WebDriver</span>
+            <a href="http://code.google.com/p/selenium/wiki/JsonWireProtocol"><span data-localize="jumbotron-p-pt5">JSON
+                wire protocol</span></a><span data-localize="jumbotron-p-pt6">.</span></p>
+        <p>
+            <!-- <a href="https://github.com/appium/appium/zipball/master" class="btn btn-primary btn-large">Download .zip</a> -->
+            <!-- <a href="https://github.com/appium/appium/tarball/master" class="btn btn-primary btn-large">Download .tar.gz</a> -->
+            <a id="downloadLink" data-localize="downloadLink"
+               href="https://bitbucket.org/appium/appium.app/downloads/"
+               class="btn btn-primary btn-lg" role="button">Download Appium</a>
+        </p>
+    </div>
+</div>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav navbar-nav-center">
+                <li><a href="https://github.com/appium/appium" data-localize="jumbotron-github">View on GitHub</a></li>
+                <li><a href="/downloads.html" data-localize="jumbotron-downloads">Downloads</a></li>
+                <li><a href="https://github.com/appium/appium/tree/master/sample-code/examples" data-localize="jumbotron-examples">Examples</a></li>
+                <li><a href="/slate/en/master/#credits.md" data-localize="jumbotron-contributions">Contributions</a></li>
+                <li><a href="https://travis-ci.org/appium/appium"><img
+                        src="https://api.travis-ci.org/appium/appium.png?branch=master"
+                        alt="Build Status"></a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<h1 class="page-header"><a href="https://www.hipchat.com/gTJJXSZBF">Appium Public HipChat (No account required)</a></h1>
+
+<h1 class="page-header"><a href="https://www.hipchat.com/invite/107647/7a3bbdd0bb2a8a07f98df7fbe3db8206">Create Free HipChat Account (enables viewing chat history)</a></h1>
+
+{% include footer.html %}
+<script>
+</script>
+</body>
 </html>
