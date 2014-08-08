@@ -28,15 +28,15 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="toc_0">Native Android Automation</h1>
+        <h1 id="native-android-automation">Native Android Automation</h1>
 
 <p>This tutorial covers automating native Android apps in Ruby and Java. To select
 the active language, click <code class="prettyprint">Ruby</code> or <code class="prettyprint">Java</code> on the left hand side. Code 
 samples and content will change based on the selected language.</p>
 
-<h1 id="toc_1">Getting started with appium</h1>
+<h1 id="getting-started-with-appium">Getting started with appium</h1>
 
-<h2 id="toc_2">Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 
 <p>Appium enables iOS and Android automation using Selenium WebDriver.
 The same WebDriver bindings can be used across web and mobile.</p>
@@ -62,61 +62,61 @@ The same WebDriver bindings can be used across web and mobile.</p>
 
 <p>In this chapter, we’ll be preparing to automate a native Android app.</p>
 
-<h2 id="toc_3">Install Overview</h2>
+<h2 id="install-overview">Install Overview</h2>
 
 <p>This document is written for OS X 10.9.2 or better.</p>
 
 <table>
 <thead>
 <tr>
-<th align="right">Tool</th>
-<th align="left">Description</th>
+<th style="text-align: right">Tool</th>
+<th style="text-align: left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right">OS X</td>
-<td align="left">The mac operating system</td>
+<td style="text-align: right">OS X</td>
+<td style="text-align: left">The mac operating system</td>
 </tr>
 <tr>
-<td align="right">Xcode</td>
-<td align="left">Apple’s integrated development environment</td>
+<td style="text-align: right">Xcode</td>
+<td style="text-align: left">Apple’s integrated development environment</td>
 </tr>
 <tr>
-<td align="right">rvm</td>
-<td align="left">The ruby version manager. Helps install ruby</td>
+<td style="text-align: right">rvm</td>
+<td style="text-align: left">The ruby version manager. Helps install ruby</td>
 </tr>
 <tr>
-<td align="right">gem</td>
-<td align="left">The rubygems command. A package manager for Ruby</td>
+<td style="text-align: right">gem</td>
+<td style="text-align: left">The rubygems command. A package manager for Ruby</td>
 </tr>
 <tr>
-<td align="right">Java</td>
-<td align="left">A programming language and software development kit</td>
+<td style="text-align: right">Java</td>
+<td style="text-align: left">A programming language and software development kit</td>
 </tr>
 <tr>
-<td align="right">bundler</td>
-<td align="left">Enables managing gem dependencies</td>
+<td style="text-align: right">bundler</td>
+<td style="text-align: left">Enables managing gem dependencies</td>
 </tr>
 <tr>
-<td align="right">brew</td>
-<td align="left">Helps install software on Macs</td>
+<td style="text-align: right">brew</td>
+<td style="text-align: left">Helps install software on Macs</td>
 </tr>
 <tr>
-<td align="right">npm</td>
-<td align="left">Node’s package manager</td>
+<td style="text-align: right">npm</td>
+<td style="text-align: left">Node’s package manager</td>
 </tr>
 <tr>
-<td align="right">grunt</td>
-<td align="left">A command line task runner for node.js</td>
+<td style="text-align: right">grunt</td>
+<td style="text-align: left">A command line task runner for node.js</td>
 </tr>
 <tr>
-<td align="right">ant</td>
-<td align="left">A java build system</td>
+<td style="text-align: right">ant</td>
+<td style="text-align: left">A java build system</td>
 </tr>
 <tr>
-<td align="right">maven</td>
-<td align="left">A java build system with improved dependency management</td>
+<td style="text-align: right">maven</td>
+<td style="text-align: left">A java build system with improved dependency management</td>
 </tr>
 </tbody>
 </table>
@@ -134,7 +134,7 @@ Alternatively, download them directly from <a href="https://developer.apple.com/
 <li>Install <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a>.</li>
 </ul>
 
-<h2 id="toc_4">Install Ruby</h2>
+<h2 id="install-ruby">Install Ruby</h2>
 
 <ul>
 <li>Install the latest stable release of Ruby.</li>
@@ -283,7 +283,7 @@ running the grunt task. If you’re only testing Android, this can be skipped.</
 
 <p><code class="prettyprint">$ node .</code></p>
 
-<h2 id="toc_5">Bash Profile</h2>
+<h2 id="bash-profile">Bash Profile</h2>
 
 <ul>
 <li>You may have to add grunt as well <code class="prettyprint">/usr/local/share/npm/bin/grunt</code>
@@ -298,7 +298,7 @@ export JAVA_HOME="`/System/Library/Frameworks/JavaVM.framework/Versions/Current/
 export PATH
 </code></p>
 
-<h2 id="toc_6">Troubleshooting</h2>
+<h2 id="troubleshooting">Troubleshooting</h2>
 
 <ul>
 <li>If install fails, keep trying to install a few times.</li>
@@ -322,7 +322,7 @@ rm -rf /usr/local/lib/node_modules/
 <li><a href="https://gist.github.com/bootstraponline/5580587">Helper bash methods</a></li>
 </ul>
 
-<h2 id="toc_7">SSL Issues</h2>
+<h2 id="ssl-issues">SSL Issues</h2>
 
 <p><code class="prettyprint">Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed</code></p>
 
@@ -335,13 +335,13 @@ rm -rf /usr/local/lib/node_modules/
 rvm osx-ssl-certs status all
 </code></p>
 
-<h2 id="toc_8">Maven on OS X 10.9</h2>
+<h2 id="maven-on-os-x-10.9">Maven on OS X 10.9</h2>
 
 <p><code>brew update
 brew install maven
 </code></p>
 
-<h2 id="toc_9">Corrupt ruby gems</h2>
+<h2 id="corrupt-ruby-gems">Corrupt ruby gems</h2>
 
 <p>If you see:</p>
 
@@ -351,7 +351,7 @@ brew install maven
 
 <span class="desc ruby">
 
-<h2 id="toc_10">Ruby IDE</h2>
+<h2 id="ruby-ide">Ruby IDE</h2>
 
 <p>I recommend the <a href="http://www.jetbrains.com/ruby/whatsnew/index.html">RubyMine IDE</a>.
 For professional work, features such as auto completion, jump to definition,
@@ -363,7 +363,7 @@ and refactoring are valuable.</p>
 
 <span class="desc java">
 
-<h2 id="toc_11">Java IDE</h2>
+<h2 id="java-ide">Java IDE</h2>
 
 <p>Java has a number of popular editors. For this module,
 we’ll be using <code class="prettyprint">IntelliJ IDEA Community Edition</code>, an open source IDE by
@@ -374,11 +374,11 @@ sample projects use Maven and work with Eclipse, NetBeans, and IntelliJ.</p>
 
 </span>
 
-<h2 id="toc_12">Install Android</h2>
+<h2 id="install-android">Install Android</h2>
 
 <p>The following instructions are specific to installing Android on OS X.</p>
 
-<h3 id="toc_13">Bash Profile</h3>
+<h3 id="bash-profile">Bash Profile</h3>
 
 <ul>
 <li>Add the Android SDK tools folder to your path so you can run <code class="prettyprint">android</code>.</li>
@@ -452,36 +452,36 @@ time to launch the appium console. Make sure the ENV vars are exported.</p></li>
 </li>
 </ul>
 
-<h2 id="toc_14">Helpful Links</h2>
+<h2 id="helpful-links">Helpful Links</h2>
 
 <table>
 <thead>
 <tr>
-<th align="right">Link</th>
-<th align="left">Summary</th>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><a href="https://www.npmjs.org/">npm</a></td>
-<td align="left">The main registry for npm packages. Appium is published here.</td>
+<td style="text-align: right"><a href="https://www.npmjs.org/">npm</a></td>
+<td style="text-align: left">The main registry for npm packages. Appium is published here.</td>
 </tr>
 <tr>
-<td align="right"><a href="http://rubygems.org/">rubygems</a></td>
-<td align="left">The main registry for Ruby gems. The appium ruby bindings are published here.</td>
+<td style="text-align: right"><a href="http://rubygems.org/">rubygems</a></td>
+<td style="text-align: left">The main registry for Ruby gems. The appium ruby bindings are published here.</td>
 </tr>
 <tr>
-<td align="right"><a href="http://rvm.io/">RVM</a></td>
-<td align="left">RVM’s homepage. Extensive documentation is available.</td>
+<td style="text-align: right"><a href="http://rvm.io/">RVM</a></td>
+<td style="text-align: left">RVM’s homepage. Extensive documentation is available.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://www.ruby-lang.org/en/">Ruby</a></td>
-<td align="left">The Ruby language homepage. Useful for keeping up to date with Ruby releases.</td>
+<td style="text-align: right"><a href="https://www.ruby-lang.org/en/">Ruby</a></td>
+<td style="text-align: left">The Ruby language homepage. Useful for keeping up to date with Ruby releases.</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="toc_15">Summary</h2>
+<h2 id="summary">Summary</h2>
 
 <p>We learned about the appium project and how it’s useful for automating mobile
 applications. Then we installed all the necessary software to begin
@@ -489,9 +489,9 @@ automation. Finally, helpful links were reviewed.</p>
 
 <p>In the next chapter, we’ll look at writing tests interactively using a console.</p>
 
-<h1 id="toc_16">Appium Ruby Console</h1>
+<h1 id="appium-ruby-console">Appium Ruby Console</h1>
 
-<h2 id="toc_17">Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 
 <p>A read-eval-print loop, REPL, is a great way to learn a new technology.
 In this chapter, we’ll be using the Appium Ruby Console (ARC) to write tests.</p>
@@ -499,7 +499,7 @@ In this chapter, we’ll be using the Appium Ruby Console (ARC) to write tests.<
 <p>An open source mobile app will be used to demonstrate the standard test workflow.
 We’ll also look at a desktop app that makes writing tests a bit easier.</p>
 
-<h2 id="toc_18">Compiling the Android sample app</h2>
+<h2 id="compiling-the-android-sample-app">Compiling the Android sample app</h2>
 
 <p><code class="prettyprint">cd</code> into the appium repository root. Running <code class="prettyprint">./reset.sh --android --dev</code> will
 build the sample AndroidApp app ApiDemos.</p>
@@ -514,14 +514,14 @@ you’ll find appium’s custom api demos at this location:</p>
 <p>Appium uses a modified ApiDemo app so make sure to use this version instead of
 what’s provided in the SDK. The Appium fork of API Demos is <a href="https://github.com/appium/android-apidemos">on GitHub</a>.</p>
 
-<h2 id="toc_19">Origin of Api Demos</h2>
+<h2 id="origin-of-api-demos">Origin of Api Demos</h2>
 
 <p>The ApiDemos app is <a href="http://developer.android.com/sdk/exploring.html">provided by Google</a>
 in the Android SDK. Running the <code class="prettyprint">$ android</code> command will allow you to download
 <code class="prettyprint">Samples for SDK</code> for each platform version. Once downloaded,
 you can find the app at <code class="prettyprint">$ANDROID_HOME/platforms/android-VERSION/samples/</code></p>
 
-<h2 id="toc_20">Prebuilt Android Sample App</h2>
+<h2 id="prebuilt-android-sample-app">Prebuilt Android Sample App</h2>
 
 <p>I have a compiled version of the Api Demos apk on GitHub.</p>
 
@@ -529,7 +529,7 @@ you can find the app at <code class="prettyprint">$ANDROID_HOME/platforms/androi
 
 <p>Downloading from the above link will be faster than building from source.</p>
 
-<h2 id="toc_21">Starting the console</h2>
+<h2 id="starting-the-console">Starting the console</h2>
 
 <p>Appium Ruby Console needs a platform and app path to get started.</p>
 
@@ -565,7 +565,7 @@ and allow you to enter commands.</p>
 <p>To assist with opening three tabs, I have a bash script on <a href="https://gist.github.com/bootstraponline/5580587">GitHub</a>
 that starts appium, the emulator, and changes the working directory.</p>
 
-<h2 id="toc_22">Page Command</h2>
+<h2 id="page-command">Page Command</h2>
 
 <p>With the console started, the next step is to begin automation.
 The <code class="prettyprint">page</code> command prints a list of elements that are of interest.</p>
@@ -732,7 +732,7 @@ command will give you an overview of what classes exist on the current page.</p>
 interested in automating. I encourage you to read through the existing docs
 and try the methods on different elements.</p>
 
-<h2 id="toc_23">Ending the session</h2>
+<h2 id="ending-the-session">Ending the session</h2>
 
 <p>Once we’re done with a testing session, it’s very important to cleanly quit.
 If a session is not terminated properly then appium will consider the session
@@ -749,7 +749,7 @@ use driver_quit.</p>
 All the selenium bindings offer a quit method. This should be invoked once
 the testing session is over.</p>
 
-<h2 id="toc_24">Appium.app Inspector</h2>
+<h2 id="appium.app-inspector">Appium.app Inspector</h2>
 
 <p>We’ve covered finding elements using the page command on the terminal.
 Appium also has a GUI tool on OS X called Appium.app.</p>
@@ -779,7 +779,7 @@ as the page command that we used in the last lesson.</p>
 
 <p><img src="../../images/inspector_android.png"></p>
 
-<h2 id="toc_25">uiautomatorviewer</h2>
+<h2 id="uiautomatorviewer">uiautomatorviewer</h2>
 
 <p>Google includes the uiautomatorviewer tool in the Android SDK.
 uiautomator requires API 16 (Android 4.1, Jelly Bean) or above. Appium’s
@@ -803,36 +803,36 @@ with a red circle. The following is a screenshot of the end result:</p>
 <p>Once you’re done with uiautomatorviewer, you may want to restore the Host GPU
 option. The Android emulator is significantly faster with it enabled.</p>
 
-<h2 id="toc_26">Helpful Links</h2>
+<h2 id="helpful-links">Helpful Links</h2>
 
 <table>
 <thead>
 <tr>
-<th align="right">Link</th>
-<th align="left">Summary</th>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><a href="https://github.com/appium/appium/tree/master/docs">Appium</a></td>
-<td align="left">New versions of Appium.app are available on the appium homepage.</td>
+<td style="text-align: right"><a href="https://github.com/appium/appium/tree/master/docs">Appium</a></td>
+<td style="text-align: left">New versions of Appium.app are available on the appium homepage.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem</a></td>
-<td align="left">Appium’s ruby library is on GitHub.</td>
+<td style="text-align: right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem</a></td>
+<td style="text-align: left">Appium’s ruby library is on GitHub.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://github.com/appium/ruby_console">appium_console gem</a></td>
-<td align="left">Appium’s Ruby Console is also on GitHub.</td>
+<td style="text-align: right"><a href="https://github.com/appium/ruby_console">appium_console gem</a></td>
+<td style="text-align: left">Appium’s Ruby Console is also on GitHub.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
-<td align="left">The network traffic displayed in the console conforms to the JSON Wire Protocol.</td>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td style="text-align: left">The network traffic displayed in the console conforms to the JSON Wire Protocol.</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="toc_27">Summary</h2>
+<h2 id="summary">Summary</h2>
 
 <p>We compiled the open source API Demos app from source. Then the Appium
 Ruby Console was used find elements with the page command. After ending the
@@ -841,15 +841,15 @@ gestures and uiautomatorviewer helps inspect elements on the page visually.</p>
 
 <p>In the next chapter, we’ll write our first test.</p>
 
-<h1 id="toc_28">Writing your first test</h1>
+<h1 id="writing-your-first-test">Writing your first test</h1>
 
-<h2 id="toc_29">Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 
 <p>Now that we’ve looked at the commands in the console,
 it’s time to write our first test. This involves using a test framework,
 following the page object pattern, and running the test automatically.</p>
 
-<h2 id="toc_30">Automating a simple action</h2>
+<h2 id="automating-a-simple-action">Automating a simple action</h2>
 
 <span class="desc ruby">
 
@@ -902,7 +902,7 @@ reordered or the content description changes.</p>
 <p>To conclude this lesson, we’ll look at the code to automate all 12 cells.</p>
 <pre><code class="highlight ruby"><span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'android.widget.TextView'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
 
-<span class="n">cell_names</span><span class="o">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">cell_name</span><span class="o">|</span>
+<span class="n">cell_names</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">cell_name</span><span class="o">|</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">scroll_to_exact</span><span class="p">(</span><span class="n">cell_name</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
   <span class="n">wait_true</span> <span class="p">{</span> <span class="o">!</span> <span class="n">exists</span> <span class="p">{</span> <span class="n">find_exact</span> <span class="n">cell_name</span> <span class="p">}</span> <span class="p">}</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">back</span> <span class="p">}</span>
@@ -1074,7 +1074,7 @@ looking for the next element.</p>
 
 </span>
 
-<h2 id="toc_31">Page Object Pattern</h2>
+<h2 id="page-object-pattern">Page Object Pattern</h2>
 
 <span class="desc ruby">
 
@@ -1225,7 +1225,7 @@ Selenium’s Java bindings.</p>
 
 </span>
 
-<h2 id="toc_32">Running the test</h2>
+<h2 id="running-the-test">Running the test</h2>
 
 <span class="desc ruby">
 
@@ -1314,7 +1314,7 @@ enabled. This makes it possible to use the flake gem with Sauce Labs.</p>
 }
 </code></pre>
 
-<p><a href="http://developer.android.com/tools/help/uiautomator/UiDevice.html#setCompressedLayoutHeirarchy(boolean">compressXml</a>)
+<p><a href="http://developer.android.com/tools/help/uiautomator/UiDevice.html#setCompressedLayoutHeirarchy(boolean)">compressXml</a>
 only works on API 18 or above so it’s disabled by default. When enabled,
 the source output and XPaths are much cleaner.</p>
 
@@ -1557,33 +1557,33 @@ end the session.</p>
 
 </span>
 
-<h2 id="toc_33">Helpful Links</h2>
+<h2 id="helpful-links">Helpful Links</h2>
 
 <span class="desc ruby">
 
 <table>
 <thead>
 <tr>
-<th align="right">Link</th>
-<th align="left">Summary</th>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem docs</a></td>
-<td align="left">The Ruby lib has extensive documentation. A number of Ruby helper methods are available.</td>
+<td style="text-align: right"><a href="https://github.com/appium/ruby_lib/tree/master/docs">appium_lib gem docs</a></td>
+<td style="text-align: left">The Ruby lib has extensive documentation. A number of Ruby helper methods are available.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://code.google.com/p/selenium/wiki/RubyBindings">Selenium Ruby bindings</a></td>
-<td align="left">The full API of the selenium ruby bindings is available. Under the hood the ruby bindings for appium use the selenium ruby bindings.</td>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/RubyBindings">Selenium Ruby bindings</a></td>
+<td style="text-align: left">The full API of the selenium ruby bindings is available. Under the hood the ruby bindings for appium use the selenium ruby bindings.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
-<td align="left">The page object pattern is explained in great detail.</td>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
+<td style="text-align: left">The page object pattern is explained in great detail.</td>
 </tr>
 <tr>
-<td align="right"><a href="http://rake.rubyforge.org/">Rake</a></td>
-<td align="left">The Rake homepage contains an overview of the tool.</td>
+<td style="text-align: right"><a href="http://rake.rubyforge.org/">Rake</a></td>
+<td style="text-align: left">The Rake homepage contains an overview of the tool.</td>
 </tr>
 </tbody>
 </table>
@@ -1595,53 +1595,53 @@ end the session.</p>
 <table>
 <thead>
 <tr>
-<th align="right">Link</th>
-<th align="left">Summary</th>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><a href="http://maven.apache.org/">Apache Maven</a></td>
-<td align="left">Maven’s homepage contains extensive documentation</td>
+<td style="text-align: right"><a href="http://maven.apache.org/">Apache Maven</a></td>
+<td style="text-align: left">Maven’s homepage contains extensive documentation</td>
 </tr>
 <tr>
-<td align="right"><a href="http://junit.org/">JUnit</a></td>
-<td align="left">JUnit is on GitHub</td>
+<td style="text-align: right"><a href="http://junit.org/">JUnit</a></td>
+<td style="text-align: left">JUnit is on GitHub</td>
 </tr>
 <tr>
-<td align="right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
-<td align="left">Selenium’s wiki has an excellent article about page objects</td>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/PageObjects">Selenium page objects</a></td>
+<td style="text-align: left">Selenium’s wiki has an excellent article about page objects</td>
 </tr>
 <tr>
-<td align="right"><a href="https://developer.apple.com/library/ios/samplecode/uicatalog/introduction/intro.html">Apple’s uicatalog</a></td>
-<td align="left">Apple hosts the sample code for the UICatalog app we’ve been testing</td>
+<td style="text-align: right"><a href="https://developer.apple.com/library/ios/samplecode/uicatalog/introduction/intro.html">Apple’s uicatalog</a></td>
+<td style="text-align: left">Apple hosts the sample code for the UICatalog app we’ve been testing</td>
 </tr>
 <tr>
-<td align="right"><a href="http://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></td>
-<td align="left">JetBrains has a free open source IntelliJ IDEA IDE that works well for Java</td>
+<td style="text-align: right"><a href="http://www.jetbrains.com/idea/download/">IntelliJ IDEA</a></td>
+<td style="text-align: left">JetBrains has a free open source IntelliJ IDEA IDE that works well for Java</td>
 </tr>
 <tr>
-<td align="right"><a href="http://www.eclipse.org/downloads/">Eclipse</a></td>
-<td align="left">Eclipse is another popular IDE</td>
+<td style="text-align: right"><a href="http://www.eclipse.org/downloads/">Eclipse</a></td>
+<td style="text-align: left">Eclipse is another popular IDE</td>
 </tr>
 <tr>
-<td align="right"><a href="https://netbeans.org/downloads/">NetBeans</a></td>
-<td align="left">NetBeans is a Java IDE by Oracle</td>
+<td style="text-align: right"><a href="https://netbeans.org/downloads/">NetBeans</a></td>
+<td style="text-align: left">NetBeans is a Java IDE by Oracle</td>
 </tr>
 <tr>
-<td align="right"><a href="http://developer.android.com/sdk/installing/studio.html">Android Studio</a></td>
-<td align="left">If you’re developing for android, you may already have Android Studio installed.</td>
+<td style="text-align: right"><a href="http://developer.android.com/sdk/installing/studio.html">Android Studio</a></td>
+<td style="text-align: left">If you’re developing for android, you may already have Android Studio installed.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
-<td align="left">The commands generated by using the Selenium bindings conform to the JSON Wire Protocol</td>
+<td style="text-align: right"><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">Selenium JsonWireProtocol</a></td>
+<td style="text-align: left">The commands generated by using the Selenium bindings conform to the JSON Wire Protocol</td>
 </tr>
 </tbody>
 </table>
 
 </span>
 
-<h2 id="toc_34">Summary</h2>
+<h2 id="summary">Summary</h2>
 
 <p>We successfully wrote a complete test and applied the page object pattern to it.
 After that, we ran the test. The appium server output was reviewed to 
@@ -1649,9 +1649,9 @@ understand how the code is translated into selenium commands.</p>
 
 <p>In the next chapter, we’re going to look at even more ways to run tests.</p>
 
-<h1 id="toc_35">Running tests</h1>
+<h1 id="running-tests">Running tests</h1>
 
-<h2 id="toc_36">Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 
 <span class="desc ruby">
 
@@ -1669,7 +1669,7 @@ cover running via Jenkins, and on Sauce.</p>
 
 </span>
 
-<h2 id="toc_37">Flaky Gem</h2>
+<h2 id="flaky-gem">Flaky Gem</h2>
 
 <span class="desc ruby">
 
@@ -1735,7 +1735,7 @@ stable they are.</p>
 
 </span>
 
-<h2 id="toc_38">Running Locally</h2>
+<h2 id="running-locally">Running Locally</h2>
 
 <span class="desc ruby">
 
@@ -1769,7 +1769,7 @@ Then clean is invoked, and test runs only the single test.</p>
 
 </span>
 
-<h2 id="toc_39">Running using Jenkins CI</h2>
+<h2 id="running-using-jenkins-ci">Running using Jenkins CI</h2>
 
 <p>Jenkins is a popular open source CI server. Appium works with any CI.</p>
 
@@ -1798,7 +1798,7 @@ select <code class="prettyprint">Build a free-style software project</code> then
 
 <span class="c1"># http://ncona.com/2014/01/detect-when-android-emulator-is-ready/</span>
 <span class="n">svc_bootanim</span><span class="o">=</span><span class="s1">''</span>
-<span class="k">while</span> <span class="o">[[</span> <span class="s1">'stopped'</span> <span class="o">!=</span> <span class="err">$</span><span class="p">{</span><span class="n">svc_bootanim</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span> <span class="o">]]</span><span class="p">;</span> <span class="k">do</span>
+<span class="k">while</span> <span class="p">[[</span> <span class="s1">'stopped'</span> <span class="o">!=</span> <span class="err">$</span><span class="p">{</span><span class="n">svc_bootanim</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span> <span class="p">]];</span> <span class="k">do</span>
   <span class="nb">sleep</span> <span class="mi">3</span>
   <span class="n">svc_bootanim</span><span class="o">=</span><span class="sb">`adb shell getprop init.svc.bootanim`</span>
   <span class="n">adb</span> <span class="n">kill</span><span class="o">-</span><span class="n">server</span><span class="p">;</span> <span class="n">adb</span> <span class="n">devices</span>
@@ -1808,7 +1808,7 @@ select <code class="prettyprint">Build a free-style software project</code> then
 
 <span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span>
 <span class="n">bundle</span> <span class="n">update</span>
-<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
 
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">emulator64</span><span class="o">-</span><span class="n">x86</span>
 </code></pre>
@@ -1959,7 +1959,7 @@ are also a number of other helpful plugins such as <a href="https://wiki.jenkins
 <p>In the next lesson, we’ll look at running the same test on Sauce Labs. This
 means we don’t have to worry about setting up build nodes.</p>
 
-<h2 id="toc_40">Running on Sauce</h2>
+<h2 id="running-on-sauce">Running on Sauce</h2>
 
 <p>All the tools and techniques we’ve covered so far produce tests that run well
 on Sauce Labs.</p>
@@ -1983,15 +1983,15 @@ app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">st
 <span class="n">export</span> <span class="no">SAUCE_PATH</span><span class="o">=</span><span class="s2">"sauce-storage:api.apk"</span>
 <span class="n">export</span> <span class="no">APP_NAME</span><span class="o">=</span><span class="s2">"Ruby Android Appium tutorial"</span>
 
-<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
 </code></pre>
 
 <p>Now when we run the job, instead of using a local emulator, it’ll run on the
 Sauce cloud.</p>
 <pre><code class="highlight ruby"><span class="no">Started</span> <span class="n">by</span> <span class="n">user</span> <span class="n">anonymous</span>
 <span class="no">Building</span> <span class="k">in</span> <span class="n">workspace</span> <span class="sr">/.jenkins/</span><span class="n">jobs</span><span class="o">/</span><span class="no">Android</span> <span class="n">on</span> <span class="no">Sauce</span><span class="o">/</span><span class="n">workspace</span>
-<span class="o">[</span><span class="n">workspace</span><span class="o">]</span> <span class="err">$</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span> <span class="sr">/var/</span><span class="n">folders</span><span class="o">/</span><span class="n">w7</span><span class="o">/</span><span class="n">c1yh5bps5dnc0frz0tbj_dmh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">hudson4299606924074097008</span><span class="p">.</span><span class="nf">sh</span>
-<span class="no">Fetching</span> <span class="n">gem</span> <span class="n">metadata</span> <span class="n">from</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/............
+<span class="p">[</span><span class="n">workspace</span><span class="p">]</span> <span class="err">$</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span> <span class="sr">/var/</span><span class="n">folders</span><span class="o">/</span><span class="n">w7</span><span class="o">/</span><span class="n">c1yh5bps5dnc0frz0tbj_dmh0000gn</span><span class="o">/</span><span class="no">T</span><span class="o">/</span><span class="n">hudson4299606924074097008</span><span class="p">.</span><span class="nf">sh</span>
+<span class="no">Fetching</span> <span class="n">gem</span> <span class="n">metadata</span> <span class="n">from</span> <span class="n">https</span><span class="p">:</span><span class="sr">//</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/............
 Fetching additional metadata from https:/</span><span class="o">/</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/..
 Resolving dependencies...
 Using rake (10.1.1)
@@ -2026,15 +2026,15 @@ Your bundle is updated!
 File already uploaded
 Recording Video: false
 Running test 1x
-cmd: cd /</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span><span class="p">;</span> <span class="n">rake</span> <span class="n">android</span><span class="o">[</span><span class="s1">'test'</span><span class="p">,</span><span class="kp">true</span><span class="o">]</span>
-<span class="err"></span><span class="o">[</span><span class="mi">36</span><span class="n">m</span>
- <span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span> <span class="err"></span><span class="o">[</span><span class="mi">0</span><span class="n">m</span><span class="err"></span><span class="o">[</span><span class="mi">32</span><span class="n">m</span> <span class="err">✓</span><span class="o">[</span><span class="mi">0</span><span class="n">m</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">saucelabs</span><span class="p">.</span><span class="nf">com</span><span class="sr">/tests/</span><span class="n">fd94de19e2d84beaa7e93e0853137bde</span>
+cmd: cd /</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span><span class="p">;</span> <span class="n">rake</span> <span class="n">android</span><span class="p">[</span><span class="s1">'test'</span><span class="p">,</span><span class="kp">true</span><span class="p">]</span>
+<span class="err"></span><span class="p">[</span><span class="mi">36</span><span class="n">m</span>
+ <span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span> <span class="err"></span><span class="p">[</span><span class="mi">0</span><span class="n">m</span><span class="err"></span><span class="p">[</span><span class="mi">32</span><span class="n">m</span> <span class="err">✓</span><span class="p">[</span><span class="mi">0</span><span class="n">m</span> <span class="n">https</span><span class="p">:</span><span class="sr">//s</span><span class="n">aucelabs</span><span class="p">.</span><span class="nf">com</span><span class="sr">/tests/</span><span class="n">fd94de19e2d84beaa7e93e0853137bde</span>
 
 
 <span class="mi">1</span> <span class="no">Tests</span>
 
 <span class="no">Success</span> <span class="p">(</span><span class="mi">1</span><span class="p">):</span>
-<span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span><span class="p">,</span> <span class="ss">runs: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">pass: </span><span class="mi">1</span><span class="p">,</span> <span class="nb">fail</span><span class="p">:</span> <span class="mi">0</span> 
+<span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span><span class="p">,</span> <span class="ss">runs: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">pass: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">fail: </span><span class="mi">0</span> 
 
 <span class="no">Finished</span> <span class="k">in</span> <span class="mi">33</span> <span class="n">secs</span>
 <span class="no">Mar</span> <span class="mi">16</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">36</span> <span class="n">pm</span> <span class="o">-</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">36</span> <span class="n">pm</span>
@@ -2087,37 +2087,37 @@ it’ll run on the Sauce cloud. The following links are from running on Sauce.</
 <p>Visiting <a href="https://saucelabs.com/tests/fd94de19e2d84beaa7e93e0853137bde">the link on Sauce</a>
 will allow you to review the test logs, video recordings, and other information.</p>
 
-<h2 id="toc_41">Helpful Links</h2>
+<h2 id="helpful-links">Helpful Links</h2>
 
 <span class="desc ruby">
 
 <table>
 <thead>
 <tr>
-<th align="right">Link</th>
-<th align="left">Summary</th>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
-<td align="left">The Jenkins homepage contains the latest releases and additional information.</td>
+<td style="text-align: right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
+<td style="text-align: left">The Jenkins homepage contains the latest releases and additional information.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
-<td align="left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
+<td style="text-align: right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
+<td style="text-align: left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://github.com/appium/flaky">flaky gem</a></td>
-<td align="left">flaky is on GitHub.</td>
+<td style="text-align: right"><a href="https://github.com/appium/flaky">flaky gem</a></td>
+<td style="text-align: left">flaky is on GitHub.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
-<td align="left">The objective c code for recording Android/iOS is on GitHub</td>
+<td style="text-align: right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
+<td style="text-align: left">The objective c code for recording Android/iOS is on GitHub</td>
 </tr>
 <tr>
-<td align="right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
-<td align="left">Sauce has great documentation for getting started on their platform.</td>
+<td style="text-align: right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
+<td style="text-align: left">Sauce has great documentation for getting started on their platform.</td>
 </tr>
 </tbody>
 </table>
@@ -2129,33 +2129,33 @@ will allow you to review the test logs, video recordings, and other information.
 <table>
 <thead>
 <tr>
-<th align="right">Link</th>
-<th align="left">Summary</th>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
-<td align="left">The Jenkins homepage contains the latest releases and additional information.</td>
+<td style="text-align: right"><a href="http://jenkins-ci.org/">Jenkins CI</a></td>
+<td style="text-align: left">The Jenkins homepage contains the latest releases and additional information.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
-<td align="left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
+<td style="text-align: right"><a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins">Jenkins Plugins</a></td>
+<td style="text-align: left">One of the best parts of Jenkins is the extensive amount of plugins.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
-<td align="left">The objective c code for recording Android/iOS is on GitHub</td>
+<td style="text-align: right"><a href="https://github.com/appium/screen_recording">screen_recording</a></td>
+<td style="text-align: left">The objective c code for recording Android/iOS is on GitHub</td>
 </tr>
 <tr>
-<td align="right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
-<td align="left">Sauce has great documentation for getting started on their platform.</td>
+<td style="text-align: right"><a href="https://saucelabs.com/appium/tutorial">Sauce appium tutorial</a></td>
+<td style="text-align: left">Sauce has great documentation for getting started on their platform.</td>
 </tr>
 </tbody>
 </table>
 
 </span>
 
-<h2 id="toc_42">Summary</h2>
+<h2 id="summary">Summary</h2>
 
 <p>We successfully wrote a complete test and applied the page object pattern to it.
 After that, we ran the test. The appium server output was reviewed to 
@@ -2163,14 +2163,14 @@ understand how the code is translated into selenium commands.</p>
 
 <p>In the next chapter, we’re going to look at even more ways to run tests.</p>
 
-<h1 id="toc_43">Conclusion</h1>
+<h1 id="conclusion">Conclusion</h1>
 
-<h2 id="toc_44">Introduction</h2>
+<h2 id="introduction">Introduction</h2>
 
 <p>In this final chapter, we’ll look at resources, support,
 and how to search the source code.</p>
 
-<h2 id="toc_45">Additional Resources</h2>
+<h2 id="additional-resources">Additional Resources</h2>
 
 <p>Appium relies on uiautomator for Android automation. Selendroid is also
 supported for Android and is particularly useful for older devices and
@@ -2214,7 +2214,7 @@ The project has since <a href="https://code.google.com/p/android-test-kit/">been
 </li>
 </ul>
 
-<h2 id="toc_46">Community Support</h2>
+<h2 id="community-support">Community Support</h2>
 
 <p>Appium has community support in the form of a
 <a href="https://groups.google.com/d/forum/appium-discuss">Google discussion group</a>.</p>
@@ -2227,7 +2227,7 @@ the group archive to see if your question has already been asked.</p>
 <p>You may want to review <a href="http://www.catb.org/esr/faqs/smart-questions.html">How To Ask Questions The Smart Way</a>
 if you’re new to online discussion groups.</p>
 
-<h2 id="toc_47">Professional Support</h2>
+<h2 id="professional-support">Professional Support</h2>
 
 <p>Sauce Labs offers professional support for appium on their hosted cloud. If
 you are a Sauce Labs customer and encounter an issue on the Sauce platform,
@@ -2241,7 +2241,7 @@ platform then <a href="https://code.google.com/p/android/issues/list">let them k
 It’s best to make sure that the bug is in Android itself instead of in appium
 before opening an android issue.</p>
 
-<h2 id="toc_48">Searching the Source Code</h2>
+<h2 id="searching-the-source-code">Searching the Source Code</h2>
 
 <p>Appium is fully open source. Very few parts of the automation stack are not
 available on GitHub. The Apple tooling, for example Instruments,
@@ -2271,36 +2271,36 @@ the location is dynamically defined depending on where the device has it’s
 data directory. Open source is wonderful for quickly understanding the best
 way to automate on Android.</p>
 
-<h2 id="toc_49">Helpful Links</h2>
+<h2 id="helpful-links">Helpful Links</h2>
 
 <table>
 <thead>
 <tr>
-<th align="right">Link</th>
-<th align="left">Summary</th>
+<th style="text-align: right">Link</th>
+<th style="text-align: left">Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><a href="http://saucelabs.com/">Sauce Labs</a></td>
-<td align="left">Sauce Labs supports appium for automated mobile testing in the cloud.</td>
+<td style="text-align: right"><a href="http://saucelabs.com/">Sauce Labs</a></td>
+<td style="text-align: left">Sauce Labs supports appium for automated mobile testing in the cloud.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://github.com/">GitHub</a></td>
-<td align="left">GitHub contains all the appium source code.</td>
+<td style="text-align: right"><a href="https://github.com/">GitHub</a></td>
+<td style="text-align: left">GitHub contains all the appium source code.</td>
 </tr>
 <tr>
-<td align="right"><a href="https://github.com/appium/appium/tree/master/docs">Appium docs</a></td>
-<td align="left">Appium has documentation inside the git repository</td>
+<td style="text-align: right"><a href="https://github.com/appium/appium/tree/master/docs">Appium docs</a></td>
+<td style="text-align: left">Appium has documentation inside the git repository</td>
 </tr>
 <tr>
-<td align="right"><a href="http://developer.android.com/tools/help/uiautomator/index.html">uiautomator docs</a></td>
-<td align="left">Google’s documentation for uiautomator.</td>
+<td style="text-align: right"><a href="http://developer.android.com/tools/help/uiautomator/index.html">uiautomator docs</a></td>
+<td style="text-align: left">Google’s documentation for uiautomator.</td>
 </tr>
 </tbody>
 </table>
 
-<h2 id="toc_50">Summary</h2>
+<h2 id="summary">Summary</h2>
 
 <p>We covered a number of resources from Google GTAC videos to reading the
 Android source code. In addition to community support, appium is available for
