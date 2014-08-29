@@ -569,7 +569,7 @@ that starts appium, the emulator, and changes the working directory.</p>
 
 <p>With the console started, the next step is to begin automation.
 The <code class="prettyprint">page</code> command prints a list of elements that are of interest.</p>
-<pre class="highlight plaintext">&gt; page
+<pre><code class="highlight plaintext">&gt; page
 post /execute
 {
     :script =&gt; "mobile: getStrings"
@@ -643,7 +643,7 @@ TextView
   class: android.widget.TextView
   text, name: Views
   resource_id: android:id/text1
-</pre>
+</code></pre>
 
 <p>Let’s review in detail what this output means.</p>
 
@@ -861,9 +861,9 @@ brings you to a dedicated page about that text. Accessibility triggers the
 Accessibility page, Animation triggers Animation, and so on.</p>
 
 <p>We’re going to verify each element brings us to the correct page.</p>
-<pre class="highlight ruby"><span class="n">text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span>
+<pre><code class="highlight ruby"><span class="n">text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span>
 <span class="n">text_exact</span> <span class="s1">'Accessibility Node Provider'</span>
-</pre>
+</code></pre>
 
 <p>For the first entry, we click on Accessibility and then assert that the
 Accessibility page is displayed. The code is valid however there’s an issue
@@ -874,9 +874,9 @@ That means when an element isn’t found the test ends immediately because an
 element not found exception is raised.</p>
 
 <p>To overcome these timing problems, the wait helper method is useful.</p>
-<pre class="highlight ruby"><span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
+<pre><code class="highlight ruby"><span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
 <span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="s1">'Accessibility Node Provider'</span> <span class="p">}</span>
-</pre>
+</code></pre>
 
 <p>Now the code will wait up to 30 seconds for the command to succeed. If it
 succeeds then the next line is executed immediately. If the
@@ -885,11 +885,11 @@ is not rescued then the test will end in failure.</p>
 
 <p>Another problem with the test code is that we’re depending on the exact text
 value. When the app changes, our tests will break.</p>
-<pre class="highlight ruby"><span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span> <span class="mi">2</span> <span class="p">}</span>
+<pre><code class="highlight ruby"><span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span> <span class="mi">2</span> <span class="p">}</span>
 
 <span class="n">wait</span> <span class="p">{</span> <span class="n">cell_1</span><span class="p">.</span><span class="nf">click</span> <span class="p">}</span>
 <span class="n">wait</span> <span class="p">{</span> <span class="n">find_exact</span> <span class="s1">'Accessibility Node Provider'</span> <span class="p">}</span>
-</pre>
+</code></pre>
 
 <p>In this code, we’re finding the first text by index. Index 2 contains the
 first cell. Index 1 is the header <code class="prettyprint">API Demo</code>. To verify we’re on the
@@ -900,19 +900,19 @@ is now resilient to text changes. It’ll break only when the elements are
 reordered or the content description changes.</p>
 
 <p>To conclude this lesson, we’ll look at the code to automate all 12 cells.</p>
-<pre class="highlight ruby"><span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'android.widget.TextView'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
+<pre><code class="highlight ruby"><span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'android.widget.TextView'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
 
-<span class="n">cell_names</span><span class="o">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">cell_name</span><span class="o">|</span>
+<span class="n">cell_names</span><span class="p">[</span><span class="mi">1</span><span class="p">.</span><span class="nf">.</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">cell_name</span><span class="o">|</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">scroll_to_exact</span><span class="p">(</span><span class="n">cell_name</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
   <span class="n">wait_true</span> <span class="p">{</span> <span class="o">!</span> <span class="n">exists</span> <span class="p">{</span> <span class="n">find_exact</span> <span class="n">cell_name</span> <span class="p">}</span> <span class="p">}</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">back</span> <span class="p">}</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">find_exact</span><span class="p">(</span><span class="s1">'Accessibility'</span><span class="p">);</span> <span class="n">find_exact</span><span class="p">(</span><span class="s1">'Animation'</span><span class="p">)</span>  <span class="p">}</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>First we’re finding all <code class="prettyprint">android.widget.TextView</code> using the shortcut tag name
  `text. After that, we’re saving the names to the cell_names array.</p>
-<pre class="highlight plaintext"> [ 0] "API Demos",
+<pre><code class="highlight plaintext"> [ 0] "API Demos",
  [ 1] "Accessibility",
  [ 2] "Animation",
  [ 3] "App",
@@ -924,7 +924,7 @@ reordered or the content description changes.</p>
  [ 9] "Preference",
  [10] "Text",
  [11] "Views"
-</pre>
+</code></pre>
 
 <p>The first item in the array is the page header. That’s discarded with
 <code class="prettyprint">cell_names[1..-1]</code>. For the remaining elements, we’re scrolling to and
@@ -972,10 +972,10 @@ directory to your computer.</p>
 </ul>
 
 <p>We’re going to verify each element brings us to the correct page.</p>
-<pre class="highlight java"><span class="c1">// java</span>
+<pre><code class="highlight java"><span class="c1">// java</span>
 <span class="n">text</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
 <span class="n">text_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">);</span>
-</pre>
+</code></pre>
 
 <p>For the first entry, we click on Accessibility and then assert that the
 Accessibility page is displayed. The code is valid however there’s an issue
@@ -986,10 +986,10 @@ That means when an element isn’t found the test ends immediately because an
 element not found exception is raised.</p>
 
 <p>To overcome these timing problems, the wait helper method is useful.</p>
-<pre class="highlight java"><span class="c1">// java</span>
+<pre><code class="highlight java"><span class="c1">// java</span>
 <span class="n">wait</span><span class="o">(</span><span class="n">for_text</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
 <span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">));</span>
-</pre>
+</code></pre>
 
 <p>Now the code will wait up to 30 seconds for the command to succeed. If it
 succeeds then the next line is executed immediately. If the
@@ -998,10 +998,10 @@ is not rescued then the test will end in failure.</p>
 
 <p>Another problem with the test code is that we’re depending on the exact text
 value. When the app changes, our tests will break.</p>
-<pre class="highlight java"><span class="c1">// java</span>
+<pre><code class="highlight java"><span class="c1">// java</span>
 <span class="n">wait</span><span class="o">(</span><span class="n">for_text</span><span class="o">(</span><span class="mi">2</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
 <span class="n">find_exact</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">);</span>
-</pre>
+</code></pre>
 
 <p>In this code, we’re finding the first text by index. Index 2 contains the
 first cell. Index 1 is the header <code class="prettyprint">API Demo</code>. To verify we’re on the
@@ -1012,7 +1012,7 @@ is now resilient to text changes. It’ll break only when the elements are
 reordered or the content description changes.</p>
 
 <p>To conclude this lesson, we’ll look at the code to automate all 12 cells.</p>
-<pre class="highlight java"><span class="n">setWait</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">setWait</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
 
 <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">cell_names</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
 
@@ -1032,7 +1032,7 @@ reordered or the content description changes.</p>
 <span class="o">}</span>
 
 <span class="n">setWait</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span> <span class="c1">// restore old implicit wait</span>
-</pre>
+</code></pre>
 
 <p>The implicit wait in the console is 0. Since we’ll be checking for elements
 that don’t exist, the wait is set to 0 <code class="prettyprint">setWait(0)</code>.  Next all the text tags
@@ -1068,9 +1068,9 @@ disabling animations under in <code class="prettyprint">Dev Settings</code>. Thi
 
 <p>Finally, we’re checking to ensure we’ve returned to the homepage before
 looking for the next element.</p>
-<pre class="highlight java"><span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">));</span>
+<pre><code class="highlight java"><span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">));</span>
 <span class="n">wait</span><span class="o">(</span><span class="n">for_find_exact</span><span class="o">(</span><span class="s">"Animation"</span><span class="o">));</span>
-</pre>
+</code></pre>
 
 </span>
 
@@ -1092,44 +1092,44 @@ directory to your computer.</p>
 
 <p>The pages are contained within the page folder, and the test inside specs.
 The test code is:</p>
-<pre class="highlight ruby"><span class="n">home</span><span class="p">.</span><span class="nf">accessibility_click</span>
+<pre><code class="highlight ruby"><span class="n">home</span><span class="p">.</span><span class="nf">accessibility_click</span>
 <span class="n">back_click</span>
 
 <span class="n">home</span><span class="p">.</span><span class="nf">animation_click</span>
 <span class="n">back_click</span>
-</pre>
+</code></pre>
 
 <p>This says from the home page, find the accessibility element and click it.
 Then go back, find the animation element and click it,
 and finally go back once more. The page objects are implemented using modules.</p>
-<pre class="highlight ruby"><span class="k">module</span> <span class="nn">APIDemos</span>
+<pre><code class="highlight ruby"><span class="k">module</span> <span class="nn">APIDemos</span>
   <span class="k">module</span> <span class="nn">Home</span>
     <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-</pre>
+</code></pre>
 
 <p>There’s a top level <code class="prettyprint">APIDemos</code> module followed by a module for the
 individual page. After that the <code class="prettyprint">class &lt;&lt; self</code> line makes the following
 methods static.</p>
-<pre class="highlight ruby">  <span class="k">def</span> <span class="nf">accessibility_click</span>
+<pre><code class="highlight ruby">  <span class="k">def</span> <span class="nf">accessibility_click</span>
     <span class="nb">self</span><span class="p">.</span><span class="nf">assert</span>
     <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
     <span class="n">accessibility</span><span class="p">.</span><span class="nf">assert</span>
   <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>This is the first element method. First the method asserts that the app
 is on the home page. Self in this case refers to the Home module. <code class="prettyprint">self
 .assert</code> is the same as <code class="prettyprint">home.assert</code>. After that the second static text
 is clicked. Finally, the code asserts the app is on the accessibility page.
 The accessibility page object defines the assert methods:</p>
-<pre class="highlight ruby">  <span class="k">def</span> <span class="nf">assert_exists</span>
+<pre><code class="highlight ruby">  <span class="k">def</span> <span class="nf">assert_exists</span>
     <span class="n">text_exact</span> <span class="s1">'Accessibility Node Querying'</span>
   <span class="k">end</span>
 
   <span class="k">def</span> <span class="nf">assert</span>
     <span class="n">wait</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">assert_exists</span> <span class="p">}</span>
   <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>We’re looking for an exact text match to detect the accessibility page.</p>
 
@@ -1168,20 +1168,20 @@ directory to your computer.</p>
 
 <p>The pages are contained within the page folder, and the test inside specs.
 The test code is:</p>
-<pre class="highlight java"><span class="c1">// PageObjectPatternTest.java</span>
+<pre><code class="highlight java"><span class="c1">// PageObjectPatternTest.java</span>
 <span class="n">home</span><span class="o">.</span><span class="na">accessibilityClick</span><span class="o">();</span>
 <span class="n">back</span><span class="o">();</span>
 
 <span class="n">home</span><span class="o">.</span><span class="na">animationClick</span><span class="o">();</span>
 <span class="n">back</span><span class="o">();</span>
-</pre>
+</code></pre>
 
 <p>This says from the home page, find the accessibility element and click it. Then
 go back, find the animation element and click it, and finally go back once
 more.</p>
 
 <p>The page objects are implemented using abstract classes.</p>
-<pre class="highlight java"><span class="c1">// HomePage.java</span>
+<pre><code class="highlight java"><span class="c1">// HomePage.java</span>
 <span class="kn">package</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">page</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">org.openqa.selenium.By</span><span class="o">;</span>
@@ -1190,28 +1190,28 @@ more.</p>
 
 <span class="cm">/** Page object for the home page **/</span>
 <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="o">{</span>
-</pre>
+</code></pre>
 
 <p>We’re using a helpers class to find elements using Selenium’s By class. The
 element method is imported statically so <code class="prettyprint">element()</code> can be used instead of
 <code class="prettyprint">Helpers.element()</code>.</p>
-<pre class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">accessibilityClick</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">accessibilityClick</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">loaded</span><span class="o">();</span>
     <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
     <span class="n">AccessibilityPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
 <span class="o">}</span>
-</pre>
+</code></pre>
 
 <p>This is the first method in the HomePage class. The method starts by asserting
 that the app is on the home page. <code class="prettyprint">loaded();</code> in this context is the same as
 <code class="prettyprint">HomePage.loaded();</code> After that, we’re finding the “Accessibility” element by
 name then clicking on it. Finally, the code asserts the app is on
 the accessibility page. The AccessibilityPage page object defines the assert methods:</p>
-<pre class="highlight java"><span class="cm">/** Verify the accessibility page has loaded **/</span>
+<pre><code class="highlight java"><span class="cm">/** Verify the accessibility page has loaded **/</span>
 <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">loaded</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Accessibility Node Provider"</span><span class="o">));</span>
 <span class="o">}</span>
-</pre>
+</code></pre>
 
 <p>We’re looking for an element that’s known to be present to verify the
 currently loaded page is the accessibility page. The accessibility page has
@@ -1251,7 +1251,7 @@ test will be run in continuous integration. If there are timing issues then
 they will be apparent when everything is run together.</p>
 
 <p>The rake output for our simple 4 line test is below:</p>
-<pre class="highlight plaintext">$ rake android[test]
+<pre><code class="highlight plaintext">$ rake android[test]
 adb uninstall com.example.android.apis
 WARNING: linker: libdvm.so has text relocations. This is wasting memory and is a security risk. Please fix.
 Success
@@ -1268,7 +1268,7 @@ Loading /tutorial/modules/source/ruby_android/appium.txt
         [1] "./appium/android/common.rb"
     ]
 }
-</pre>
+</code></pre>
 
 <p>First the rake task uninstalls any existing version of the apk. The android 
 emulator comes preloaded with an API Demos that’s different from what we’re 
@@ -1278,7 +1278,7 @@ Uninstalling ensures we’re testing against the correct version.</p>
 <p>We’ve loaded appium.txt and then used bundle exec to run a ruby command with
 the gems defined in the Gemfile. The appium.txt defines what device to use,
 the app to install, and the files to load.</p>
-<pre class="highlight plaintext">Start driver
+<pre><code class="highlight plaintext">Start driver
 Use selendroid? false
 Debug is: true
 {
@@ -1288,14 +1288,14 @@ Debug is: true
     :export_session =&gt; true
 }
 Device is: Android
-</pre>
+</code></pre>
 
 <p>The driver is started in debug mode and we’re able to see the session traffic.
 The session capabilities are sent to the appium server. We’re using
 uiautomator (Device Android) instead of selendroid. The reset method fast
 clear is enabled. The implicit wait is set to 1 second. Export session is
 enabled. This makes it possible to use the flake gem with Sauce Labs.</p>
-<pre class="highlight plaintext">post /session
+<pre><code class="highlight plaintext">post /session
 {
     :desiredCapabilities =&gt; {
                  :compressXml =&gt; false,
@@ -1312,7 +1312,7 @@ enabled. This makes it possible to use the flake gem with Sauce Labs.</p>
                          :app =&gt; "/tutorial/modules/source/ruby_android/api.apk"
     }
 }
-</pre>
+</code></pre>
 
 <p><a href="http://developer.android.com/tools/help/uiautomator/UiDevice.html#setCompressedLayoutHeirarchy(boolean)">compressXml</a>
 only works on API 18 or above so it’s disabled by default. When enabled,
@@ -1321,7 +1321,7 @@ the source output and XPaths are much cleaner.</p>
 <p>app-package, app-activity, and app-wait-activity are set to nil. By omitting
 these in the desired capabilities, appium will inspect the APK and use
 reasonable defaults.</p>
-<pre class="highlight plaintext">post /execute
+<pre><code class="highlight plaintext">post /execute
 {
     :script =&gt; "mobile: setCommandTimeout",
       :args =&gt; [
@@ -1330,32 +1330,32 @@ reasonable defaults.</p>
         }
     ]
 }
-</pre>
+</code></pre>
 
 <p>The command timeout is set to a high value. That means if there’s a long
 pause between sending commands to appium, the test will not automatically fail.</p>
-<pre class="highlight plaintext">post /timeouts/implicit_wait
+<pre><code class="highlight plaintext">post /timeouts/implicit_wait
 {
     :ms =&gt; 1000
 }
-</pre>
+</code></pre>
 
 <p>By default, we’re waiting 1 second for an element to show up. Even though
 implicit wait is used, we’re also taking advantage of a client side wait.</p>
-<pre class="highlight plaintext">Loading one test: /tutorial/modules/source/ruby_android/appium/android/specs/./test.rb
-</pre>
+<pre><code class="highlight plaintext">Loading one test: /tutorial/modules/source/ruby_android/appium/android/specs/./test.rb
+</code></pre>
 
 <p>We’ve found one test, <code class="prettyprint">test.rb</code>, and execution begins.</p>
-<pre class="highlight plaintext">test | 1 |android/specs/test.rb:5
-</pre>
+<pre><code class="highlight plaintext">test | 1 |android/specs/test.rb:5
+</code></pre>
 
 <p>This is the 1st test in test.rb and it’s named <code class="prettyprint">test</code>.</p>
-<pre class="highlight plaintext">    home.accessibility_click
-</pre>
+<pre><code class="highlight plaintext">    home.accessibility_click
+</code></pre>
 
 <p>The actual line of code from test.rb that’s running is displayed in the
 console.</p>
-<pre class="highlight plaintext">post /element
+<pre><code class="highlight plaintext">post /element
 {
     :using =&gt; "xpath",
     :value =&gt; "text[@text='Accessibility']"
@@ -1376,21 +1376,21 @@ post /element
     :using =&gt; "xpath",
     :value =&gt; "text[@text='Accessibility Node Querying']"
 }
-</pre>
+</code></pre>
 
 <p>That one call to <code class="prettyprint">home.accessibility_click</code> generated 5 network requests. The
 first two are for home.assert, the third and fourth are for clicking on the
 button, and finally we’re asserting we made it to the accessibility page.</p>
-<pre class="highlight plaintext">    back_click
+<pre><code class="highlight plaintext">    back_click
 def back_click
   sleep 2
   back
 post /back
-</pre>
+</code></pre>
 
 <p>The back_click logic sleeps two seconds to prevent flakiness and then invokes
 the back method on the appium server.</p>
-<pre class="highlight plaintext">    home.animation_click
+<pre><code class="highlight plaintext">    home.animation_click
 post /element
 {
     :using =&gt; "xpath",
@@ -1412,23 +1412,23 @@ post /element
     :using =&gt; "xpath",
     :value =&gt; "text[@text='Bouncing Balls']"
 }
-</pre>
+</code></pre>
 
 <p>This is the second button. The app is on the animation page.</p>
-<pre class="highlight plaintext">    back_click
+<pre><code class="highlight plaintext">    back_click
 def back_click
   sleep 2
   back
 post /back
 end
-</pre>
+</code></pre>
 
 <p>And now the app is on the home page.</p>
-<pre class="highlight plaintext">Finished in 14 secs
+<pre><code class="highlight plaintext">Finished in 14 secs
 
 1 runs, 0 assertions, 0 failures, 0 errors, 0 skips
 delete 
-</pre>
+</code></pre>
 
 <p>At the end of the test, statistics are displayed. This is a successful run
 because there are no failures, errors, or skips. The final <code class="prettyprint">delete</code> is the
@@ -1454,80 +1454,80 @@ execute each test that has the JUnit <code class="prettyprint">@org.junit.Test</
 To run all the tests, there’s the <code class="prettyprint">mvn clean test</code> command. First clean is
 run, then all the tests are executed. We’re going to investigate the appium
 server output for the PageObjectPatternTest test.</p>
-<pre class="highlight plaintext">debug: Request received with params:
+<pre><code class="highlight plaintext">debug: Request received with params:
 { "platformVersion": "4.4",
   "platform": "OS X 10.9",
   "app": "/tutorial/modules/source/java_android/api.apk",
   "platformName": "Android"
 }
-</pre>
+</code></pre>
 
 <p>The desired capabilities tell appium what device to use,
 the app to install, and the requested simulator version.</p>
-<pre class="highlight java"><span class="c1">// AppiumTest.java</span>
+<pre><code class="highlight java"><span class="c1">// AppiumTest.java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">timeouts</span><span class="o">().</span><span class="na">implicitlyWait</span><span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
-</pre>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/timeouts/implicit_wait
+</code></pre>
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/timeouts/implicit_wait
 debug: Request received with params: {"ms":30000}
 info: Set Android implicit wait to 30000ms
-</pre>
+</code></pre>
 
 <p>The <code class="prettyprint">driver.manage().timeouts()</code> line of Java code requested that appium wait
 30 seconds for elements to appear before giving up.</p>
-<pre class="highlight java"><span class="c1">// HomePage.java</span>
+<pre><code class="highlight java"><span class="c1">// HomePage.java</span>
 <span class="n">accessibilityClick</span><span class="o">()</span> <span class="o">{</span>
   <span class="n">loaded</span><span class="o">();</span>
   <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Accessibility"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
   <span class="n">AccessibilityPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
 <span class="o">}</span>
-</pre>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+</code></pre>
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
 debug: Request received with params: {"using":"name","value":"NFC"}
-</pre>
+</code></pre>
 
 <p>The first method that executes is accessibilityClick. The logs show that loaded is
 checking for the NFC name to verify the homepage is displayed.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
 debug: Request received with params: {"using":"name","value":"Accessibility"}
-</pre>
+</code></pre>
 
 <p>Next the code looks for the “Accessibility” element.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element/2/click
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element/2/click
 debug: Request received with params: {"id":"2"}
-</pre>
+</code></pre>
 
 <p>That element is found, assigned the id of 2, and then clicked.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
 debug: Request received with params: {"using":"name","value":"Accessibility Node Provider"}
-</pre>
+</code></pre>
 
 <p>Now the code looks to see if the Accessibility page has loaded.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/back
-</pre>
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/back
+</code></pre>
 
 <p>After finding the accessibility page, it’s time to return to the home page
 using <code class="prettyprint">back</code>.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
 debug: Request received with params: {"using":"name","value":"NFC"}
-</pre>
+</code></pre>
 
 <p>The code verifies we successfully returned to the home page.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
 debug: Request received with params: {"using":"name","value":"Animation"}
 debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element/5/click
-</pre>
+</code></pre>
 
 <p>Now the “Animation” element is found and clicked.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/element
 debug: Request received with params: {"using":"name","value":"Bouncing Balls"}
-</pre>
+</code></pre>
 
 <p>Searching for “Bouncing Balls” verifies we’ve made it to the animation page.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/back
-</pre>
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb/back
+</code></pre>
 
 <p>Finally, we’re returning to the home page once more and the test is complete.</p>
-<pre class="highlight plaintext">-------------------------------------------------------
+<pre><code class="highlight plaintext">-------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running appium.tutorial.android.PageObjectPatternTest
@@ -1545,12 +1545,12 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Finished at: Sat Mar 22 19:14:23 EDT 2014
 [INFO] Final Memory: 16M/185M
 [INFO] ------------------------------------------------------------------------
-</pre>
+</code></pre>
 
 <p>At the end of the test, statistics are displayed. This is a successful run
 because there are no failures, errors, or skips.</p>
-<pre class="highlight plaintext">DELETE /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb 200 525ms - 89b
-</pre>
+<pre><code class="highlight plaintext">DELETE /wd/hub/session/25382a24-5507-4e13-a86e-e3561b1479eb 200 525ms - 89b
+</code></pre>
 
 <p>The final <code class="prettyprint">delete</code> is the result of calling driver.quit which tells appium to
 end the session.</p>
@@ -1705,7 +1705,7 @@ some of the open source code may still be valuable.</p>
 <p>flaky uses the same test syntax as rake.</p>
 
 <p>To run the <code class="prettyprint">test.rb</code> from the last lesson 3 times, use <code class="prettyprint">flake 3 android[test]</code></p>
-<pre class="highlight plaintext">$ flake 3 android[test]
+<pre><code class="highlight plaintext">$ flake 3 android[test]
 Recording Video: true
 Running test 3x
 
@@ -1720,7 +1720,7 @@ Finished in 1 min 6 secs
 Mar 16 12:55 pm - 12:56 pm
 3/16/2014   1   0   1   100
 --
-</pre>
+</code></pre>
 
 <p>This output shows that we’re able to run the test 3 times without issue.
 Additional information is saved in <code class="prettyprint">/tmp/flaky</code>. It’s not uncommon to have a
@@ -1790,7 +1790,7 @@ select <code class="prettyprint">Build a free-style software project</code> then
 . Add the following:</p>
 
 <span class="desc ruby">
-<pre class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
+<pre><code class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
 
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">emulator64</span><span class="o">-</span><span class="n">x86</span>
 <span class="n">emulator</span> <span class="vi">@tutorial</span> <span class="o">&amp;</span>
@@ -1798,7 +1798,7 @@ select <code class="prettyprint">Build a free-style software project</code> then
 
 <span class="c1"># http://ncona.com/2014/01/detect-when-android-emulator-is-ready/</span>
 <span class="n">svc_bootanim</span><span class="o">=</span><span class="s1">''</span>
-<span class="k">while</span> <span class="o">[[</span> <span class="s1">'stopped'</span> <span class="o">!=</span> <span class="err">$</span><span class="p">{</span><span class="n">svc_bootanim</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span> <span class="o">]]</span><span class="p">;</span> <span class="k">do</span>
+<span class="k">while</span> <span class="p">[[</span> <span class="s1">'stopped'</span> <span class="o">!=</span> <span class="err">$</span><span class="p">{</span><span class="n">svc_bootanim</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span> <span class="p">]];</span> <span class="k">do</span>
   <span class="nb">sleep</span> <span class="mi">3</span>
   <span class="n">svc_bootanim</span><span class="o">=</span><span class="sb">`adb shell getprop init.svc.bootanim`</span>
   <span class="n">adb</span> <span class="n">kill</span><span class="o">-</span><span class="n">server</span><span class="p">;</span> <span class="n">adb</span> <span class="n">devices</span>
@@ -1808,15 +1808,15 @@ select <code class="prettyprint">Build a free-style software project</code> then
 
 <span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span>
 <span class="n">bundle</span> <span class="n">update</span>
-<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
 
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">emulator64</span><span class="o">-</span><span class="n">x86</span>
-</pre>
+</code></pre>
 
 <p>Press <code class="prettyprint">OK</code>, and then <code class="prettyprint">Build Now</code> near the top left of the page. Click on the
 build link inside the <code class="prettyprint">Build History</code> tab. Finally select <code class="prettyprint">Console Output</code>.
 You should see something like this:</p>
-<pre class="highlight plaintext">Started by user anonymous
+<pre><code class="highlight plaintext">Started by user anonymous
 Building in workspace /.jenkins/jobs/Android/workspace
 [workspace] $ /bin/bash --login /var/folders/w7/c1yh5bps5dnc0frz0tbj_dmh0000gn/T/hudson5624873839237212617.sh
 No matching processes belonging to you were found
@@ -1880,12 +1880,12 @@ Mar 16  1:09 pm -  1:10 pm
 3/16/2014   1   0   1   100
 --
 Finished: SUCCESS
-</pre>
+</code></pre>
 
 </span>
 
 <span class="desc java">
-<pre class="highlight shell"><span class="c">#!/bin/bash --login</span>
+<pre><code class="highlight shell"><span class="c">#!/bin/bash --login</span>
 
 killall -9 node &amp;&gt; /dev/null
 
@@ -1909,7 +1909,7 @@ mvn clean <span class="nb">test
 
 </span>killall -9 node &amp;&gt; /dev/null
 killall -9 emulator64-x86
-</pre>
+</code></pre>
 
 <p>Make sure that APPIUM_HOME is set in your <code class="prettyprint">~/.bash_profile</code></p>
 
@@ -1920,7 +1920,7 @@ export APPIUM_HOME="path/to/appium"
 <p>Press <code class="prettyprint">OK</code>, and then <code class="prettyprint">Build Now</code> near the top left of the page. Click on the
 build link inside the <code class="prettyprint">Build History</code> tab. Finally select <code class="prettyprint">Console Output</code>.
 You should see results in the Jenkins console once the job completes.</p>
-<pre class="highlight plaintext">-------------------------------------------------------
+<pre><code class="highlight plaintext">-------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running appium.tutorial.android.AutomatingASimpleActionTest
@@ -1945,7 +1945,7 @@ Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Final Memory: 19M/180M
 [INFO] ------------------------------------------------------------------------
 Finished: SUCCESS
-</pre>
+</code></pre>
 
 </span>
 
@@ -1971,7 +1971,7 @@ we’ll be running on Sauce very quickly. <code class="prettyprint">upload.rb</c
 app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">storage API</a>.</p>
 
 <span class="desc ruby">
-<pre class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
+<pre><code class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
 <span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span>
 <span class="n">bundle</span> <span class="n">update</span>
 
@@ -1983,15 +1983,15 @@ app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">st
 <span class="n">export</span> <span class="no">SAUCE_PATH</span><span class="o">=</span><span class="s2">"sauce-storage:api.apk"</span>
 <span class="n">export</span> <span class="no">APP_NAME</span><span class="o">=</span><span class="s2">"Ruby Android Appium tutorial"</span>
 
-<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
-</pre>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
+</code></pre>
 
 <p>Now when we run the job, instead of using a local emulator, it’ll run on the
 Sauce cloud.</p>
-<pre class="highlight ruby"><span class="no">Started</span> <span class="n">by</span> <span class="n">user</span> <span class="n">anonymous</span>
+<pre><code class="highlight ruby"><span class="no">Started</span> <span class="n">by</span> <span class="n">user</span> <span class="n">anonymous</span>
 <span class="no">Building</span> <span class="k">in</span> <span class="n">workspace</span> <span class="sr">/.jenkins/</span><span class="n">jobs</span><span class="o">/</span><span class="no">Android</span> <span class="n">on</span> <span class="no">Sauce</span><span class="o">/</span><span class="n">workspace</span>
-<span class="o">[</span><span class="n">workspace</span><span class="o">]</span> <span class="err">$</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span> <span class="sr">/var/</span><span class="n">folders</span><span class="o">/</span><span class="n">w7</span><span class="o">/</span><span class="n">c1yh5bps5dnc0frz0tbj_dmh0000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">hudson4299606924074097008</span><span class="p">.</span><span class="nf">sh</span>
-<span class="no">Fetching</span> <span class="n">gem</span> <span class="n">metadata</span> <span class="n">from</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/............
+<span class="p">[</span><span class="n">workspace</span><span class="p">]</span> <span class="err">$</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span> <span class="sr">/var/</span><span class="n">folders</span><span class="o">/</span><span class="n">w7</span><span class="o">/</span><span class="n">c1yh5bps5dnc0frz0tbj_dmh0000gn</span><span class="o">/</span><span class="no">T</span><span class="o">/</span><span class="n">hudson4299606924074097008</span><span class="p">.</span><span class="nf">sh</span>
+<span class="no">Fetching</span> <span class="n">gem</span> <span class="n">metadata</span> <span class="n">from</span> <span class="n">https</span><span class="p">:</span><span class="sr">//</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/............
 Fetching additional metadata from https:/</span><span class="o">/</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/..
 Resolving dependencies...
 Using rake (10.1.1)
@@ -2026,48 +2026,48 @@ Your bundle is updated!
 File already uploaded
 Recording Video: false
 Running test 1x
-cmd: cd /</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span><span class="p">;</span> <span class="n">rake</span> <span class="n">android</span><span class="o">[</span><span class="s1">'test'</span><span class="p">,</span><span class="kp">true</span><span class="o">]</span>
-<span class="err"></span><span class="o">[</span><span class="mi">36</span><span class="n">m</span>
- <span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span> <span class="err"></span><span class="o">[</span><span class="mi">0</span><span class="n">m</span><span class="err"></span><span class="o">[</span><span class="mi">32</span><span class="n">m</span> <span class="err">✓</span><span class="o">[</span><span class="mi">0</span><span class="n">m</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">saucelabs</span><span class="p">.</span><span class="nf">com</span><span class="sr">/tests/</span><span class="n">fd94de19e2d84beaa7e93e0853137bde</span>
+cmd: cd /</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span><span class="p">;</span> <span class="n">rake</span> <span class="n">android</span><span class="p">[</span><span class="s1">'test'</span><span class="p">,</span><span class="kp">true</span><span class="p">]</span>
+<span class="err"></span><span class="p">[</span><span class="mi">36</span><span class="n">m</span>
+ <span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span> <span class="err"></span><span class="p">[</span><span class="mi">0</span><span class="n">m</span><span class="err"></span><span class="p">[</span><span class="mi">32</span><span class="n">m</span> <span class="err">✓</span><span class="p">[</span><span class="mi">0</span><span class="n">m</span> <span class="n">https</span><span class="p">:</span><span class="sr">//s</span><span class="n">aucelabs</span><span class="p">.</span><span class="nf">com</span><span class="sr">/tests/</span><span class="n">fd94de19e2d84beaa7e93e0853137bde</span>
 
 
 <span class="mi">1</span> <span class="no">Tests</span>
 
 <span class="no">Success</span> <span class="p">(</span><span class="mi">1</span><span class="p">):</span>
-<span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span><span class="p">,</span> <span class="ss">runs: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">pass: </span><span class="mi">1</span><span class="p">,</span> <span class="nb">fail</span><span class="p">:</span> <span class="mi">0</span> 
+<span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span><span class="p">,</span> <span class="ss">runs: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">pass: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">fail: </span><span class="mi">0</span> 
 
 <span class="no">Finished</span> <span class="k">in</span> <span class="mi">33</span> <span class="n">secs</span>
 <span class="no">Mar</span> <span class="mi">16</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">36</span> <span class="n">pm</span> <span class="o">-</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">36</span> <span class="n">pm</span>
 <span class="mi">3</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="mi">2014</span>   <span class="mi">1</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">100</span>
 <span class="o">--</span>
 <span class="no">Finished</span><span class="p">:</span> <span class="no">SUCCESS</span>
-</pre>
+</code></pre>
 
 </span>
 
 <span class="desc java">
-<pre class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
+<pre><code class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
 <span class="n">cd</span> <span class="o">~/</span><span class="n">woven</span><span class="o">/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">java_android</span>
-<span class="n">export</span> <span class="n">SAUCE_USER_NAME</span><span class="o">=</span><span class="s">"your username from sauce"</span>
-<span class="n">export</span> <span class="n">SAUCE_API_KEY</span><span class="o">=</span><span class="s">"your accesskey from sauce"</span>
+<span class="n">export</span> <span class="n">SAUCE_USERNAME</span><span class="o">=</span><span class="s">"your username from sauce"</span>
+<span class="n">export</span> <span class="n">SAUCE_ACCESS_KEY</span><span class="o">=</span><span class="s">"your accesskey from sauce"</span>
 
 <span class="n">mvn</span> <span class="o">-</span><span class="n">Dsauce</span><span class="o">=</span><span class="kc">true</span> <span class="n">clean</span> <span class="n">test</span>
-</pre>
+</code></pre>
 
 <p>Now when we run the job, instead of using a local simulator,
 it’ll run on the Sauce cloud. The following links are from running on Sauce.</p>
-<pre class="highlight java"><span class="o">-------------------------------------------------------</span>
+<pre><code class="highlight java"><span class="o">-------------------------------------------------------</span>
  <span class="n">T</span> <span class="n">E</span> <span class="n">S</span> <span class="n">T</span> <span class="n">S</span>
 <span class="o">-------------------------------------------------------</span>
 <span class="n">Running</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">AutomatingASimpleActionTest</span>
-  <span class="nl">test:</span> <span class="n">one</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/d785f5dfdc384998868ad951badbdc0d</span>
-  <span class="nl">test:</span> <span class="n">two</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/ec30035b44714c9c80c03b95ab1d898d</span>
-  <span class="nl">test:</span> <span class="n">four</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/8dcb1fdc2d0c4c4396b1077e427c41c5</span>
-  <span class="nl">test:</span> <span class="n">three</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/7a1812746c1d48c69d30fe67b6c7445d</span>
-<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">4</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">Time</span> <span class="nl">elapsed:</span> <span class="mf">257.266</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">in</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">AutomatingASimpleActionTest</span>
+  <span class="nl">test:</span> <span class="n">one</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/abf790b777c84b78ba0e998df0f84e02</span>
+  <span class="nl">test:</span> <span class="n">two</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/65dc81040cb149e29876f77baef6616b</span>
+  <span class="nl">test:</span> <span class="n">four</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/1e07f1b194ee4e7fa0752624cd5cfc9b</span>
+  <span class="nl">test:</span> <span class="n">three</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/bcf5e766653d4ca9a6291c2f30c1af28</span>
+<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">4</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">Time</span> <span class="nl">elapsed:</span> <span class="mf">207.491</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">in</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">AutomatingASimpleActionTest</span>
 <span class="n">Running</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">PageObjectPatternTest</span>
-  <span class="nl">test:</span> <span class="n">pageObject</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/9310b0779e0f488cb2683abd24a14856</span>
-<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">1</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">Time</span> <span class="nl">elapsed:</span> <span class="mf">40.323</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">in</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">PageObjectPatternTest</span>
+  <span class="nl">test:</span> <span class="n">pageObject</span> <span class="nl">https:</span><span class="c1">//saucelabs.com/tests/731d0287b19e48359ad948772d936c52</span>
+<span class="n">Tests</span> <span class="nl">run:</span> <span class="mi">1</span><span class="o">,</span> <span class="nl">Failures:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Errors:</span> <span class="mi">0</span><span class="o">,</span> <span class="nl">Skipped:</span> <span class="mi">0</span><span class="o">,</span> <span class="n">Time</span> <span class="nl">elapsed:</span> <span class="mf">47.615</span> <span class="n">sec</span> <span class="o">-</span> <span class="n">in</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">android</span><span class="o">.</span><span class="na">PageObjectPatternTest</span>
 
 <span class="n">Results</span> <span class="o">:</span>
 
@@ -2076,12 +2076,11 @@ it’ll run on the Sauce cloud. The following links are from running on Sauce.</
 <span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
 <span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
 <span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
-<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Total</span> <span class="nl">time:</span> <span class="mi">5</span><span class="o">:</span><span class="mf">01.891</span><span class="n">s</span>
-<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Finished</span> <span class="nl">at:</span> <span class="n">Tue</span> <span class="n">Apr</span> <span class="mi">01</span> <span class="mi">23</span><span class="o">:</span><span class="mi">28</span><span class="o">:</span><span class="mi">36</span> <span class="n">EDT</span> <span class="mi">2014</span>
-<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Final</span> <span class="nl">Memory:</span> <span class="mi">18</span><span class="n">M</span><span class="o">/</span><span class="mi">185</span><span class="n">M</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Total</span> <span class="nl">time:</span> <span class="mi">4</span><span class="o">:</span><span class="mf">19.319</span><span class="n">s</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Finished</span> <span class="nl">at:</span> <span class="n">Tue</span> <span class="n">Jun</span> <span class="mi">03</span> <span class="mi">23</span><span class="o">:</span><span class="mi">36</span><span class="o">:</span><span class="mi">45</span> <span class="n">EDT</span> <span class="mi">2014</span>
+<span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Final</span> <span class="nl">Memory:</span> <span class="mi">17</span><span class="n">M</span><span class="o">/</span><span class="mi">185</span><span class="n">M</span>
 <span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
-<span class="nl">Finished:</span> <span class="n">SUCCESS</span>
-</pre>
+</code></pre>
 
 </span>
 
@@ -2187,7 +2186,7 @@ number of excellent sessions related to user interface automation.</p>
 
 <ul>
 <li><a href="https://www.google.com/moderator/#15/e=203275&amp;t=203275.4d">Moderator GTAC 2013 Breaking the Matrix</a></li>
-<li>This session explains Google’s approach to android testing. A <a href="googletesting.blogspot.com/2013/08/how-google-team-tests-mobile-apps.html">blog post</a> is also available.</li>
+<li>This session explains Google’s approach to android testing. A <a href="http://googletesting.blogspot.com/2013/08/how-google-team-tests-mobile-apps.html">blog post</a> is also available.</li>
 </ul>
 </li>
 <li>

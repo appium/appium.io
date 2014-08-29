@@ -472,7 +472,7 @@ and allow you to enter commands.</p>
 
 <p>With the console started, the next step is to begin automation.
 The <code class="prettyprint">page</code> command prints a list of elements that are of interest.</p>
-<pre class="highlight plaintext">[1] pry(main)&gt; page class: :UIAStaticText
+<pre><code class="highlight plaintext">[1] pry(main)&gt; page class: :UIAStaticText
 UIAStaticText
    name, label, value: UICatalog
 UIAStaticText
@@ -526,7 +526,7 @@ UIAStaticText
    name, label: Transitions, Shows UIViewAnimationTransitions
    id: TransitionsExplain =&gt; Shows UIViewAnimationTransitions
        TransitionsTitle   =&gt; Transitions
-</pre>
+</code></pre>
 
 <p>Let’s review in detail what this output means.</p>
 
@@ -750,7 +750,7 @@ following the page object pattern, and running the test automatically.</p>
 <p><aside class="notice">
 Click on <code class="prettyprint">Java</code> and <code class="prettyprint">Ruby</code> to toggle the language examples
 </aside></p>
-<pre class="highlight ruby"><span class="cm">=begin
+<pre><code class="highlight ruby"><span class="cm">=begin
 Ruby notes:
 
 The commands in the test are exactly the same as those used in the console.
@@ -758,8 +758,8 @@ Code can be copied and pasted to and from the console to form production tests.
 
 Clone the git repository and open the projects/ruby_ios directory.
 =end</span>
-</pre>
-<pre class="highlight java"><span class="cm">/*
+</code></pre>
+<pre><code class="highlight java"><span class="cm">/*
 Java notes:
 
 The commands from the Ruby console are different from those in the Java
@@ -776,7 +776,7 @@ The project is setup using maven.
 - To use with IntelliJ, go to `File` then `Open` and select the `pom.xml`
 - To use with the command line, `mvn clean test` will run all the tests.
 */</span>
-</pre>
+</code></pre>
 
 <p>The basic structure of the UICatalog test app is that clicking on the text
 brings you to a dedicated page about that text. Buttons triggers the Buttons
@@ -788,14 +788,14 @@ git clone https://github.com/appium/tutorial.git</aside></p>
 <p>We’re going to verify each element brings us to the correct page.</p>
 
 <h3 id="click-&amp;-verify">Click &amp; verify</h3>
-<pre class="highlight ruby"><span class="c1"># ruby</span>
+<pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span>
 <span class="n">text_exact</span> <span class="s1">'Buttons'</span>
-</pre>
-<pre class="highlight java"><span class="c1">// java</span>
+</code></pre>
+<pre><code class="highlight java"><span class="c1">// java</span>
 <span class="n">text</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">).</span><span class="na">click</span><span class="o">();</span>
 <span class="n">text_exact</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">);</span>
-</pre>
+</code></pre>
 
 <p>For the first entry, we click on Buttons and then assert that the buttons
 page is displayed. The code is valid however there’s an issue related to
@@ -808,14 +808,14 @@ element not found exception is raised.</p>
 <p>To overcome these timing problems, the wait helper method is useful.</p>
 
 <h3 id="using-a-wait">Using a wait</h3>
-<pre class="highlight ruby"><span class="c1"># ruby</span>
+<pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
 <span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="s1">'Buttons'</span> <span class="p">}</span>
-</pre>
-<pre class="highlight java"><span class="c1">// java</span>
+</code></pre>
+<pre><code class="highlight java"><span class="c1">// java</span>
 <span class="n">wait</span><span class="o">(</span><span class="n">for_text</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
 <span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">));</span>
-</pre>
+</code></pre>
 
 <p>Now the code will wait up to 30 seconds for the command to succeed. If it
 succeeds then the next line is executed immediately. If the
@@ -826,20 +826,20 @@ is not rescued then the test will end in failure.</p>
 value. When the app changes, our tests will break.</p>
 
 <h3 id="dynamic-values">Dynamic values</h3>
-<pre class="highlight ruby"><span class="c1"># ruby</span>
+<pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span> <span class="mi">2</span> <span class="p">}</span>
 <span class="n">page_title</span> <span class="o">=</span> <span class="n">cell_1</span><span class="p">.</span><span class="nf">name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">).</span><span class="nf">first</span>
 
 <span class="n">wait</span> <span class="p">{</span> <span class="n">cell_1</span><span class="p">.</span><span class="nf">click</span> <span class="p">}</span>
 <span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="n">page_title</span> <span class="p">}</span>
-</pre>
-<pre class="highlight java"><span class="c1">// java</span>
+</code></pre>
+<pre><code class="highlight java"><span class="c1">// java</span>
 <span class="n">WebElement</span> <span class="n">cell_1</span> <span class="o">=</span> <span class="n">wait</span><span class="o">(</span><span class="n">for_text</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
 <span class="n">String</span> <span class="n">page_title</span> <span class="o">=</span> <span class="n">cell_1</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"name"</span><span class="o">).</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">)[</span><span class="mi">0</span><span class="o">];</span>
 
 <span class="n">cell_1</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
 <span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="n">page_title</span><span class="o">));</span>
-</pre>
+</code></pre>
 
 <p>In this code, we’re finding the first text by index. Index 2 contains the
 first cell. Index 1 is the table header. After that we’re extracting the name
@@ -849,7 +849,7 @@ even after small changes to the string values.</p>
 <h3 id="12-cells">12 cells</h3>
 
 <p>To conclude this lesson, we’ll look at the code to automate all 12 cells.</p>
-<pre class="highlight ruby"><span class="c1"># ruby</span>
+<pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">cell_names</span> <span class="o">=</span> <span class="n">tags</span><span class="p">(</span><span class="s1">'UIATableCell'</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">cell</span><span class="o">|</span> <span class="n">cell</span><span class="p">.</span><span class="nf">name</span> <span class="p">}</span>
 
 <span class="n">cell_names</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
@@ -857,8 +857,8 @@ even after small changes to the string values.</p>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">text_exact</span> <span class="nb">name</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">','</span><span class="p">).</span><span class="nf">first</span> <span class="p">}</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">back</span> <span class="p">}</span>
 <span class="k">end</span>
-</pre>
-<pre class="highlight java"><span class="c1">// java</span>
+</code></pre>
+<pre><code class="highlight java"><span class="c1">// java</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">cell_names</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
 
 <span class="k">for</span> <span class="o">(</span><span class="n">WebElement</span> <span class="n">cell</span> <span class="o">:</span> <span class="n">tags</span><span class="o">(</span><span class="s">"UIATableCell"</span><span class="o">))</span> <span class="o">{</span>
@@ -870,18 +870,18 @@ even after small changes to the string values.</p>
   <span class="n">wait</span><span class="o">(</span><span class="n">for_text_exact</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">)[</span><span class="mi">0</span><span class="o">]));</span>
   <span class="n">back</span><span class="o">();</span>
 <span class="o">}</span>
-</pre>
+</code></pre>
 
 <p>Notice that we didn’t have to scroll to the elements that were off screen. By
 default, we’re able to access off screen elements and they’re scrolled
 into view.</p>
-<pre class="highlight java"><span class="cm">/*
+<pre><code class="highlight java"><span class="cm">/*
 The Java code for the examples is in `/java_ios/src/test/java/appium/tutorial/ios/AutomatingASimpleActionTest.java`
 The tests from that file may be run from the command line with:
 
 mvn -Dtest=appium.tutorial.ios.AutomatingASimpleActionTest clean test
 */</span>
-</pre>
+</code></pre>
 
 <h2 id="page-object-pattern">Page Object Pattern</h2>
 
@@ -901,44 +901,44 @@ directory to your computer.</p>
 
 <p>The pages are contained within the page folder, and the test inside specs.
 The test code is:</p>
-<pre class="highlight ruby"><span class="n">home</span><span class="p">.</span><span class="nf">button_uses_click</span>
+<pre><code class="highlight ruby"><span class="n">home</span><span class="p">.</span><span class="nf">button_uses_click</span>
 <span class="n">back_click</span>
 
 <span class="n">home</span><span class="p">.</span><span class="nf">control_uses_click</span>
 <span class="n">back_click</span>
-</pre>
+</code></pre>
 
 <p>This says from the home page, find the buttons element and click it. Then go
 back, find the controls element and click it, and finally go back once more.
 The page objects are implemented using modules.</p>
-<pre class="highlight ruby"><span class="k">module</span> <span class="nn">UICatalog</span>
+<pre><code class="highlight ruby"><span class="k">module</span> <span class="nn">UICatalog</span>
   <span class="k">module</span> <span class="nn">Home</span>
     <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
-</pre>
+</code></pre>
 
 <p>There’s a top level <code class="prettyprint">UICatalog</code> module followed by a module for the
 individual page. After that the <code class="prettyprint">class &lt;&lt; self</code> line makes the following
 methods static.</p>
-<pre class="highlight ruby"><span class="k">def</span> <span class="nf">button_uses_click</span>
+<pre><code class="highlight ruby"><span class="k">def</span> <span class="nf">button_uses_click</span>
   <span class="nb">self</span><span class="p">.</span><span class="nf">assert</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">click</span> <span class="p">}</span>
   <span class="n">button_uses</span><span class="p">.</span><span class="nf">assert</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>This is the first element method. First the method asserts that the app
 is on the home page. Self in this case refers to the Home module. <code class="prettyprint">self
 .assert</code> is the same as <code class="prettyprint">home.assert</code>. After that the second static text
 is clicked. Finally, the code asserts the app is on the button uses page.
 The button_uses page object defines the assert methods:</p>
-<pre class="highlight ruby"><span class="k">def</span> <span class="nf">assert_exists</span>
+<pre><code class="highlight ruby"><span class="k">def</span> <span class="nf">assert_exists</span>
   <span class="n">text_exact</span> <span class="n">resolve_id</span> <span class="s1">'ButtonsTitle'</span>
 <span class="k">end</span>
 
 <span class="k">def</span> <span class="nf">assert</span>
   <span class="n">wait</span> <span class="p">{</span> <span class="nb">self</span><span class="p">.</span><span class="nf">assert_exists</span> <span class="p">}</span>
 <span class="k">end</span>
-</pre>
+</code></pre>
 
 <p>In this part of the app there’s an ID. We’re resolving that id to the text
 value and then performing an exact static text search. This is the same as
@@ -980,18 +980,18 @@ directory to your computer.</p>
 
 <p>The pages are contained within the page folder, and the test inside specs.
 The test code is:</p>
-<pre class="highlight java"><span class="c1">// PageObjectPatternTest.java</span>
+<pre><code class="highlight java"><span class="c1">// PageObjectPatternTest.java</span>
 <span class="n">home</span><span class="o">.</span><span class="na">buttonsClick</span><span class="o">();</span>
 <span class="n">back</span><span class="o">();</span>
 
 <span class="n">home</span><span class="o">.</span><span class="na">controlsClick</span><span class="o">();</span>
 <span class="n">back</span><span class="o">();</span>
-</pre>
+</code></pre>
 
 <p>This says from the home page, find the buttons element and click it. Then go
 back, find the controls element and click it, and finally go back once more.
 The page objects are implemented using abstract classes.</p>
-<pre class="highlight java"><span class="c1">// HomePage.java</span>
+<pre><code class="highlight java"><span class="c1">// HomePage.java</span>
 <span class="kn">package</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">page</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">org.openqa.selenium.By</span><span class="o">;</span>
@@ -1000,27 +1000,27 @@ The page objects are implemented using abstract classes.</p>
 
 <span class="cm">/** Page object for the home page **/</span>
 <span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="o">{</span>
-</pre>
+</code></pre>
 
 <p>We’re using a helpers class to find elements using Selenium’s By class. The
 element method is imported statically so <code class="prettyprint">element()</code> can be used instead of
 <code class="prettyprint">Helpers.element()</code>.</p>
-<pre class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">buttonsClick</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">buttonsClick</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">loaded</span><span class="o">();</span>
     <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
     <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
 <span class="o">}</span>
-</pre>
+</code></pre>
 
 <p>This is the first method in the HomePage class. The method starts by asserting
 that the app is on the home page. <code class="prettyprint">loaded();</code> in this context is the same as
 <code class="prettyprint">HomePage.loaded();</code> After that, we’re finding the “various uses of UIButton”
 element by name then clicking on it. Finally, the code asserts the app is on
 the buttons page. The ButtonsPage page object defines the assert methods:</p>
-<pre class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">loaded</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
+<pre><code class="highlight java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">loaded</span><span class="p">(</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons"</span><span class="o">));</span>
 <span class="o">}</span>
-</pre>
+</code></pre>
 
 <p>We’re looking for the title to verify the currently loaded page is the buttons
 page. The title element has a name attribute of “Buttons” so that’s how we’re
@@ -1057,7 +1057,7 @@ test will be run in continuous integration. If there are timing issues then
 they will be apparent when everything is run together.</p>
 
 <p>The rake output for our simple 4 line test is below:</p>
-<pre class="highlight plaintext">$ rake ios[test]
+<pre><code class="highlight plaintext">$ rake ios[test]
 Rake appium.txt path is: /tutorial/modules/source/ruby_ios/appium.txt
 bundle exec ruby ./lib/run.rb ios "test"
 appium.txt path: /tutorial/modules/source/ruby_ios/appium.txt
@@ -1071,12 +1071,12 @@ Loading /tutorial/modules/source/ruby_ios/appium.txt
         [1] "./lib/common.rb"
     ]
 }
-</pre>
+</code></pre>
 
 <p>We’ve loaded appium.txt and then used bundle exec to run a ruby command with
 the gems defined in the Gemfile. The appium.txt defines what device to use,
 the app to install, and the files to load.</p>
-<pre class="highlight plaintext">Start driver
+<pre><code class="highlight plaintext">Start driver
 Debug is: true
 {
     :debug =&gt; true,
@@ -1094,11 +1094,11 @@ post /session
                          :app =&gt; "/tutorial/modules/source/ruby_ios/UICatalog.app"
     }
 }
-</pre>
+</code></pre>
 
 <p>The driver is started in debug mode and we’re able to see the session traffic.
 The session capabilities are sent to the appium server.</p>
-<pre class="highlight plaintext">post /execute
+<pre><code class="highlight plaintext">post /execute
 {
     :script =&gt; "mobile: setCommandTimeout",
       :args =&gt; [
@@ -1107,33 +1107,33 @@ The session capabilities are sent to the appium server.</p>
         }
     ]
 }
-</pre>
+</code></pre>
 
 <p>The command timeout is set to a high value. That means if there’s a long
 pause between sending commands to appium, the test will not automatically fail.</p>
-<pre class="highlight plaintext">post /timeouts/implicit_wait
+<pre><code class="highlight plaintext">post /timeouts/implicit_wait
 {
     :ms =&gt; 30000
 }
-</pre>
+</code></pre>
 
 <p>By default, we’re waiting 30 seconds for an element to show up. Even though
 implicit wait is used, we’re also taking advantage of a client side wait. On
 iOS some errors will not be retried unless you’re catching them client side.</p>
-<pre class="highlight plaintext">Loading one test: /tutorial/modules/source/ruby_ios/lib/ios/specs/./test.rb
-</pre>
+<pre><code class="highlight plaintext">Loading one test: /tutorial/modules/source/ruby_ios/lib/ios/specs/./test.rb
+</code></pre>
 
 <p>We’ve found one test, <code class="prettyprint">test.rb</code>, and execution begins.</p>
-<pre class="highlight plaintext">test | 1 |ios/specs/test.rb:5
-</pre>
+<pre><code class="highlight plaintext">test | 1 |ios/specs/test.rb:5
+</code></pre>
 
 <p>This is the 1st test in test.rb and it’s named <code class="prettyprint">test</code>.</p>
-<pre class="highlight plaintext">    home.button_uses_click
-</pre>
+<pre><code class="highlight plaintext">    home.button_uses_click
+</code></pre>
 
 <p>The actual line of code from test.rb that’s running is displayed in the
 console.</p>
-<pre class="highlight plaintext">post /element
+<pre><code class="highlight plaintext">post /element
 {
     :using =&gt; "xpath",
     :value =&gt; "text[@text='UICatalog']"
@@ -1153,24 +1153,24 @@ post /element
     :using =&gt; "xpath",
     :value =&gt; "text[@text='Buttons']"
 }
-</pre>
+</code></pre>
 
 <p>That one call to <code class="prettyprint">home.button_uses_click</code> generated 3 network requests. The
 first is for home.assert, the second and third are for clicking on the
 button, and finally we’re asserting we made it to the buttons page.</p>
-<pre class="highlight plaintext">    back_click
+<pre><code class="highlight plaintext">    back_click
 post /execute
 {
     :script =&gt; "au.mainApp().getAllWithPredicate(\"name contains[c] 'back' || label contains[c] 'back'\");"
 }
 get /element/3/displayed
 post /element/3/click
-</pre>
+</code></pre>
 
 <p>The back_click logic identifies the first back button that’s visible. iOS
 will return invisible elements that can’t be clicked on so it’s important to
 filter on visibility.</p>
-<pre class="highlight plaintext">    home.control_uses_click
+<pre><code class="highlight plaintext">    home.control_uses_click
 post /element
 {
     :using =&gt; "xpath",
@@ -1187,24 +1187,24 @@ post /element
     :using =&gt; "xpath",
     :value =&gt; "text[@text='Controls']"
 }
-</pre>
+</code></pre>
 
 <p>This is the second button, we’ve navigated to the Controls page.</p>
-<pre class="highlight plaintext">    back_click
+<pre><code class="highlight plaintext">    back_click
 post /execute
 {
     :script =&gt; "au.mainApp().getAllWithPredicate(\"name contains[c] 'back' || label contains[c] 'back'\");"
 }
 get /element/9/displayed
 post /element/9/click
-</pre>
+</code></pre>
 
 <p>And now we’re back to the home page.</p>
-<pre class="highlight plaintext">Finished in 5 secs
+<pre><code class="highlight plaintext">Finished in 5 secs
 
 1 runs, 0 assertions, 0 failures, 0 errors, 0 skips
 delete 
-</pre>
+</code></pre>
 
 <p>At the end of the test, statistics are displayed. This is a successful run
 because there are no failures, errors, or skips. The final <code class="prettyprint">delete</code> is the
@@ -1228,80 +1228,80 @@ execute each test that has the JUnit <code class="prettyprint">@org.junit.Test</
 To run all the tests, there’s the <code class="prettyprint">mvn clean test</code> command. First clean is
 run, then all the tests are executed. We’re going to investigate the appium
 server output for the PageObjectPatternTest test.</p>
-<pre class="highlight plaintext">debug: Request received with params:
+<pre><code class="highlight plaintext">debug: Request received with params:
 {"desiredCapabilities"=&gt;
   {"platform"=&gt;"OS X 10.9",
    "app"=&gt;"/tutorial/modules/source/java_ios/UICatalog.app",
    "device"=&gt;"iPhone Simulator",
    "version"=&gt;"7.1"}}
-</pre>
+</code></pre>
 
 <p>The desired capabilities tell appium what device to use,
 the app to install, and the requested simulator version.</p>
-<pre class="highlight java"><span class="c1">// AppiumTest.java</span>
+<pre><code class="highlight java"><span class="c1">// AppiumTest.java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">timeouts</span><span class="o">().</span><span class="na">implicitlyWait</span><span class="o">(</span><span class="mi">30</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">SECONDS</span><span class="o">);</span>
-</pre>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/timeouts/implicit_wait
+</code></pre>
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/timeouts/implicit_wait
 debug: Request received with params: {"ms":30000}
 info: Set iOS implicit wait to 30000ms
-</pre>
+</code></pre>
 
 <p>The <code class="prettyprint">driver.manage().timeouts()</code> line of Java code requested that appium wait
 30 seconds for elements to appear before giving up.</p>
-<pre class="highlight java"><span class="c1">// HomePage.java</span>
+<pre><code class="highlight java"><span class="c1">// HomePage.java</span>
 <span class="n">buttonsClick</span><span class="o">()</span> <span class="o">{</span>
   <span class="n">loaded</span><span class="o">();</span>
   <span class="n">element</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Buttons, Various uses of UIButton"</span><span class="o">)).</span><span class="na">click</span><span class="o">();</span>
   <span class="n">ButtonsPage</span><span class="o">.</span><span class="na">loaded</span><span class="o">();</span>
 <span class="o">}</span>
-</pre>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+</code></pre>
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
 debug: Request received with params: {"using":"name","value":"UICatalog"}
-</pre>
+</code></pre>
 
 <p>The first method that executes is buttonsClick. The logs show that loaded is
 checking for the UICatalog name to verify the homepage is displayed.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
 debug: Request received with params: {"using":"name","value":"Buttons, Various uses of UIButton"}
-</pre>
+</code></pre>
 
 <p>Next the code looks for the “Various uses of UIButton” element.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element/1/click
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element/1/click
 debug: Request received with params: {"id":"1"}
-</pre>
+</code></pre>
 
 <p>That element is found, assigned the id of 1, and then clicked.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
 debug: Request received with params: {"using":"name","value":"Buttons"}
-</pre>
+</code></pre>
 
 <p>Now the code looks to see if the Buttons page has loaded.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/back
-</pre>
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/back
+</code></pre>
 
 <p>After finding the buttons page, it’s time to return to the home page using
 <code class="prettyprint">back</code>.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
 debug: Request received with params: {"using":"name","value":"UICatalog"}
-</pre>
+</code></pre>
 
 <p>The code verifies we successfully returned to the home page.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
 debug: Request received with params: {"using":"name","value":"Controls, Various uses of UIControl"}
 debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element/4/click
-</pre>
+</code></pre>
 
 <p>Now the “uses of UIControl” is found and clicked.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/element
 debug: Request received with params: {"using":"name","value":"Controls"}
-</pre>
+</code></pre>
 
 <p>Searching for “Controls” verifies we’ve made it to the controls page.</p>
-<pre class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/back
-</pre>
+<pre><code class="highlight plaintext">debug: Appium request initiated at /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692/back
+</code></pre>
 
 <p>Finally, we’re returning to the home page once more and the test is complete.</p>
-<pre class="highlight plaintext">-------------------------------------------------------
+<pre><code class="highlight plaintext">-------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running appium.tutorial.ios.PageObjectPatternTest
@@ -1310,12 +1310,12 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.95 sec - in a
 Results :
 
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
-</pre>
+</code></pre>
 
 <p>At the end of the test, statistics are displayed. This is a successful run
 because there are no failures, errors, or skips.</p>
-<pre class="highlight plaintext">DELETE /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692 200 794ms - 89b
-</pre>
+<pre><code class="highlight plaintext">DELETE /wd/hub/session/b0bfb78a-51d5-4e25-8a59-60fb49229692 200 794ms - 89b
+</code></pre>
 
 <p>The final <code class="prettyprint">delete</code> is the result of calling driver.quit which tells appium to
 end the session.</p>
@@ -1470,7 +1470,7 @@ some of the open source code may still be valuable.</p>
 <p>flaky uses the same test syntax as rake.</p>
 
 <p>To run the <code class="prettyprint">test.rb</code> from the last lesson 3 times, use <code class="prettyprint">flake 3 ios[test]</code></p>
-<pre class="highlight plaintext">$ flake 3 ios[test]
+<pre><code class="highlight plaintext">$ flake 3 ios[test]
 Recording Video: true
 Running test 3x
 
@@ -1485,7 +1485,7 @@ Finished in 1 min 24 secs
 Mar 13 10:24 pm - 10:26 pm
 3/13/2014   1   0   1   100
 --
-</pre>
+</code></pre>
 
 <p>This output shows that we’re able to run the test 3 times without issue.
 Additional information is saved in <code class="prettyprint">/tmp/flaky</code>. It’s not uncommon to have a
@@ -1559,7 +1559,7 @@ select <code class="prettyprint">Build a free-style software project</code> then
 . Add the following:</p>
 
 <span class="desc ruby">
-<pre class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
+<pre><code class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
 
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="s2">"iPhone Simulator"</span> <span class="o">&amp;&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span>
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">ruby</span> <span class="o">&amp;&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span>
@@ -1568,13 +1568,13 @@ select <code class="prettyprint">Build a free-style software project</code> then
 
 <span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_ios</span>
 <span class="n">bundle</span> <span class="n">update</span>
-<span class="n">flake</span> <span class="mi">1</span> <span class="n">ios</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
-</pre>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">ios</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
+</code></pre>
 
 <p>Press <code class="prettyprint">OK</code>, and then <code class="prettyprint">Build Now</code> near the top left of the page. Click on the
 build link inside the <code class="prettyprint">Build History</code> tab. Finally select <code class="prettyprint">Console Output</code>.
 You should see something like this:</p>
-<pre class="highlight plaintext">Started by user anonymous
+<pre><code class="highlight plaintext">Started by user anonymous
 Building in workspace ~/.jenkins/jobs/Appium job/workspace
 [workspace] $ /bin/bash --login /var/folders/w7/c1yh5bps5dnc0frz0tbj_dmh0000gn/T/hudson2187792489954812978.sh
 Fetching gem metadata from https://rubygems.org/............
@@ -1622,12 +1622,12 @@ Mar 13 10:41 pm - 10:41 pm
 3/13/2014   1   0   1   100
 --
 Finished: SUCCESS
-</pre>
+</code></pre>
 
 </span>
 
 <span class="desc java">
-<pre class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
+<pre><code class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
 
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="s">"iPhone Simulator"</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="kc">null</span>
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">node</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="kc">null</span>
@@ -1642,7 +1642,7 @@ Finished: SUCCESS
 <span class="err">#</span> <span class="n">end</span> <span class="n">appium</span> <span class="n">when</span> <span class="n">the</span> <span class="n">job</span> <span class="n">is</span> <span class="n">done</span> <span class="n">to</span> <span class="n">prevent</span>
 <span class="err">#</span> <span class="n">leaking</span> <span class="n">file</span> <span class="n">descriptors</span>
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">node</span> <span class="o">&amp;&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="kc">null</span>
-</pre>
+</code></pre>
 
 <p>Make sure that APPIUM_HOME is set in your <code class="prettyprint">~/.bash_profile</code></p>
 
@@ -1653,7 +1653,7 @@ export APPIUM_HOME="path/to/appium"
 <p>Press <code class="prettyprint">OK</code>, and then <code class="prettyprint">Build Now</code> near the top left of the page. Click on the
 build link inside the <code class="prettyprint">Build History</code> tab. Finally select <code class="prettyprint">Console Output</code>.
 You should see results in the Jenkins console once the job completes.</p>
-<pre class="highlight java"><span class="o">-------------------------------------------------------</span>
+<pre><code class="highlight java"><span class="o">-------------------------------------------------------</span>
  <span class="n">T</span> <span class="n">E</span> <span class="n">S</span> <span class="n">T</span> <span class="n">S</span>
 <span class="o">-------------------------------------------------------</span>
 <span class="n">Running</span> <span class="n">appium</span><span class="o">.</span><span class="na">tutorial</span><span class="o">.</span><span class="na">ios</span><span class="o">.</span><span class="na">AutomatingASimpleActionTest</span>
@@ -1673,7 +1673,7 @@ You should see results in the Jenkins console once the job completes.</p>
 <span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="n">Final</span> <span class="nl">Memory:</span> <span class="mi">16</span><span class="n">M</span><span class="o">/</span><span class="mi">114</span><span class="n">M</span>
 <span class="o">[</span><span class="n">INFO</span><span class="o">]</span> <span class="o">------------------------------------------------------------------------</span>
 <span class="nl">Finished:</span> <span class="n">SUCCESS</span>
-</pre>
+</code></pre>
 
 </span>
 
@@ -1699,7 +1699,7 @@ we’ll be running on Sauce very quickly. <code class="prettyprint">upload.rb</c
 app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">storage API</a>.</p>
 
 <span class="desc ruby">
-<pre class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
+<pre><code class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
 <span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_ios</span>
 <span class="n">bundle</span> <span class="n">update</span>
 
@@ -1711,12 +1711,12 @@ app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">st
 <span class="n">export</span> <span class="no">SAUCE_PATH</span><span class="o">=</span><span class="s2">"sauce-storage:UICatalog6.1.app.zip"</span>
 <span class="n">export</span> <span class="no">APP_NAME</span><span class="o">=</span><span class="s2">"Ruby iOS Appium tutorial"</span>
 
-<span class="n">flake</span> <span class="mi">1</span> <span class="n">ios</span><span class="o">[</span><span class="nb">test</span><span class="o">]</span>
-</pre>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">ios</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
+</code></pre>
 
 <p>Now when we run the job, instead of using a local simulator,
 it’ll run on the Sauce cloud.</p>
-<pre class="highlight plaintext">Started by user anonymous
+<pre><code class="highlight plaintext">Started by user anonymous
 Building in workspace ~/.jenkins/jobs/Appium job/workspace
 [workspace] $ /bin/bash --login /var/folders/w7/c1yh5bps5dnc0frz0tbj_dmh0000gn/T/hudson8501646461828669419.sh
 Fetching gem metadata from https://rubygems.org/............
@@ -1768,7 +1768,7 @@ Mar 13 11:08 pm - 11:08 pm
 3/13/2014   1   0   1   100
 --
 Finished: SUCCESS
-</pre>
+</code></pre>
 
 <p>Visiting <a href="https://saucelabs.com/tests/60e7ef4226874cd8b4540a8141bf8bbf">the link on Sauce</a> will allow you to review the test logs,
 video recordings, and other information.</p>
@@ -1776,28 +1776,28 @@ video recordings, and other information.</p>
 </span>
 
 <span class="desc java">
-<pre class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
+<pre><code class="highlight java"><span class="err">#</span><span class="o">!/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span>
 <span class="n">cd</span> <span class="o">~/</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">java_ios</span>
-<span class="n">export</span> <span class="n">SAUCE_USER_NAME</span><span class="o">=</span><span class="s">"your username from sauce"</span>
-<span class="n">export</span> <span class="n">SAUCE_API_KEY</span><span class="o">=</span><span class="s">"your accesskey from sauce"</span>
+<span class="n">export</span> <span class="n">SAUCE_USERNAME</span><span class="o">=</span><span class="s">"your username from sauce"</span>
+<span class="n">export</span> <span class="n">SAUCE_ACCESS_KEY</span><span class="o">=</span><span class="s">"your accesskey from sauce"</span>
 
 <span class="n">mvn</span> <span class="o">-</span><span class="n">Dsauce</span><span class="o">=</span><span class="kc">true</span> <span class="n">clean</span> <span class="n">test</span>
-</pre>
+</code></pre>
 
 <p>Now when we run the job, instead of using a local simulator,
 it’ll run on the Sauce cloud.</p>
-<pre class="highlight plaintext">-------------------------------------------------------
+<pre><code class="highlight plaintext">-------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running appium.tutorial.ios.AutomatingASimpleActionTest
-  test: one https://saucelabs.com/tests/59c95c8df1104065a051de31095f97fe
-  test: two https://saucelabs.com/tests/a882c59795d546578c633dee0f11c6e3
-  test: four https://saucelabs.com/tests/be89de1f417b44dea2d806350ff0f296
-  test: three https://saucelabs.com/tests/413d750a36004d1f94603c2614011704
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 222.53 sec - in appium.tutorial.ios.AutomatingASimpleActionTest
+  test: one https://saucelabs.com/tests/d4f71ccd5cdf48d18993eb6da0c3a1cb
+  test: two https://saucelabs.com/tests/ee53c486deec4330b0c0fe70d6a8c1e9
+  test: four https://saucelabs.com/tests/d201285f5ced4abf831629a7ea100e38
+  test: three https://saucelabs.com/tests/76efbd4840b34f01b908633b131c572b
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 261.724 sec - in appium.tutorial.ios.AutomatingASimpleActionTest
 Running appium.tutorial.ios.PageObjectPatternTest
-  test: pageObject https://saucelabs.com/tests/162533a139bd4bc6b436e51a4de63815
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 49.818 sec - in appium.tutorial.ios.PageObjectPatternTest
+  test: pageObject https://saucelabs.com/tests/2640bb259a814aa4876ac8636f28a9f1
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 54.265 sec - in appium.tutorial.ios.PageObjectPatternTest
 
 Results :
 
@@ -1806,12 +1806,11 @@ Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 4:36.305s
-[INFO] Finished at: Tue Apr 01 23:20:40 EDT 2014
-[INFO] Final Memory: 16M/185M
+[INFO] Total time: 5:19.745s
+[INFO] Finished at: Tue Jun 03 23:28:05 EDT 2014
+[INFO] Final Memory: 17M/185M
 [INFO] ------------------------------------------------------------------------
-Finished: SUCCESS
-</pre>
+</code></pre>
 
 </span>
 

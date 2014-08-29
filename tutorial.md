@@ -1,4 +1,5 @@
 ---
+permalink: /tutorial.html
 layout: default
 title: Tutorial
 description: Appium Tutorials

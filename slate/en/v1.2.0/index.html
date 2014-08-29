@@ -118,7 +118,8 @@ connections from a client, listens for commands, executes those commands on a
 mobile device, and responds with an HTTP response representing the result of
 the command execution. The fact that we have a client/server architecture
 opens up a lot of possibilities: we can write our test code in any language
-that has a client. We can put the server on a different machine than our
+that has a http client API, but it is easier to use one of the Appium client
+library. We can put the server on a different machine than our
 tests are running on. We can write test code and rely on a cloud service
 like <a href="https://saucelabs.com/mobile">Sauce Labs</a> to receive and interpret the commands.</p>
 
@@ -152,7 +153,7 @@ which support Appium’s extensions to the WebDriver protocol. When using Appium
 you want to use these client libraries instead of your regular WebDriver
 client. You can view the full list of libraries <a href="#appium-clients.md">here</a>.</p>
 
-<p><strong>Appium.app, Appium.exe</strong><br>
+<p><strong><a href="https://github.com/appium/appium-dot-app">Appium.app</a>, <a href="https://github.com/appium/appium-dot-exe">Appium.exe</a></strong><br>
 There exist GUI wrappers around the Appium server that can be downloaded.
 These come bundled with everything required to run the Appium server,
 so you don’t need to worry about Node. They also come with an Inspector,
@@ -249,45 +250,65 @@ when using the Selendroid backend)</li>
 
 <p>To get started on a real device, you will need the following:</p>
 
-<ol>
-<li>An Apple Developer ID and a valid Developer Account with a configured
-distribution certificate and provisioning profile.</li>
+<ul>
+<li>An <a href="https://developer.apple.com/programs/ios/">Apple Developer ID</a>
+and a valid Developer Account with a configured distribution certificate and
+provisioning profile.</li>
 <li>An iPad or iPhone.</li>
 <li>The source code of your app.</li>
-<li>A Mac with XCode and the XCode Command Line Developer Tools</li>
-</ol>
+<li>A Mac with <a href="https://itunes.apple.com/en/app/xcode/id497799835?mt=12">Xcode</a>
+and the Xcode Command Line Developer Tools.</li>
+</ul>
 
 <h2 id="provisioning-profile">Provisioning Profile</h2>
 
 <p>A valid iOS Development Distribution Certificate and Provisioning Profile are
-necessary to test on a real device. You can find information about
-configuring these in the <a href="http://developer.apple.com/library/ios/#documentation/ToolsLanguages/Conceptual/YourFirstAppStoreSubmission/TestYourApponManyDevicesandiOSVersions/TestYourApponManyDevicesandiOSVersions.html">Apple documentation</a></p>
+necessary to test on a real device. Your app will also need to be signed. You
+can find information about this in the <a href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/TestingYouriOSApp/TestingYouriOSApp.html">Apple documentation</a>.</p>
 
-<p>You will also need to <a href="http://developer.apple.com/library/ios/#documentation/ToolsLanguages/Conceptual/YourFirstAppStoreSubmission/ProvisionYourDevicesforDevelopment/ProvisionYourDevicesforDevelopment.html#//apple_ref/doc/uid/TP40011375-CH4-SW1">sign your app</a>.</p>
-
-<p>Appium will attempt to install your app using Fruitstrap,
-but it is often easier to pre-install your app using Xcode to ensure there
-are no problems.</p>
+<p>Appium will attempt to install your app using Fruitstrap, but it is often easier
+to pre-install your app using Xcode to ensure there are no problems.</p>
 
 <h2 id="running-your-tests-with-appium">Running your tests with Appium</h2>
 
 <p>Once your device and app are configured, you can run tests on that device by
-passing the -U flag to the server, and passing the bundle ID (if the app is
-installed on the device) or the path to the .ipa file via the <code class="prettyprint">--app</code> flag or
- the <code class="prettyprint">app</code> desired capability:</p>
-<pre><code class="highlight plaintext">node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
+passing the <code class="prettyprint">-U</code> or <code class="prettyprint">--udid</code> flag to the server or the <code class="prettyprint">udid</code> desired capability,
+and the bundle ID (if the app is installed on the device) or the path to the
+<code class="prettyprint">.ipa</code> or <code class="prettyprint">.apk</code> file via the <code class="prettyprint">--app</code> flag or the <code class="prettyprint">app</code> desired capability.</p>
+
+<h2 id="server-arguments">Server Arguments</h2>
+
+<p>For example, if you are prelaunching your app and wish for Appium to force use
+a specific UDID, then you may use the below command:</p>
+<pre><code class="highlight plaintext">appium -U &lt;udid&gt; --app &lt;path or bundle&gt;
 </code></pre>
 
 <p>This will start Appium and have Appium use the device to test the app.</p>
 
+<p>Refer to the <a href="#server-args.md">Appium server arguments</a> page for more detail on
+the arguments that you can use.</p>
+
+<h2 id="desired-capabilities">Desired Capabilities</h2>
+
+<p>You can launch the app on a device by including the following desired
+capabilities in your tests:</p>
+
+<ul>
+<li><code class="prettyprint">app</code></li>
+<li><code class="prettyprint">udid</code></li>
+</ul>
+
+<p>Refer to the <a href="#caps.md">Appium server capabilities</a> page for more detail on
+the capabilities that you can use.</p>
+
 <h2 id="troubleshooting-ideas">Troubleshooting ideas</h2>
 
 <ol>
-<li>Make sure UDID is correct by checking it in xcode organizer or itunes. It
-is a long string (20+ chars)</li>
-<li>Make sure that you can run your tests against simulator</li>
-<li>Double check that you can invoke your automation from instruments.</li>
-<li>Make sure instruments in closed already</li>
+<li>Make sure UDID is correct by checking it in Xcode Organizer or iTunes. It
+is a long string (20+ chars).</li>
+<li>Make sure that you can run your tests against the Simulator.</li>
+<li>Double check that you can invoke your automation from Instruments.</li>
+<li>Make sure Instruments in closed already.</li>
 </ol>
 
 <h2 id="appium-on-real-android-devices">Appium on real Android devices</h2>
@@ -305,15 +326,16 @@ can connect to ADB and has Developer Mode enabled.</p>
 
 <ul>
 <li>Appium requires Mac OS X 10.7, but 10.8 is recommended.</li>
-<li>Make sure you have XCode and the iOS SDK(s) installed. (Appium currently
-supports Xcode 4.6.3 for iOS up to 6.1 and Xcode 5 for iOS 7.0. Note that
-testing against iOS versions below 7.0 using Xcode 5 is not recommended. See
-the next section for more information.)</li>
+<li>Make sure you have Xcode and the iOS SDK(s) installed. (Appium currently
+supports Xcode 4.6.3 for iOS up to 6.1 and Xcode 5 for iOS 7.0 and 7.1. Note
+that testing against iOS versions below 7.0 using Xcode 5 is not recommended.
+See the next section for more information.)</li>
 <li>You need to authorize use of the iOS Simulator. If you are running Appium
 from NPM, you’ll do this by running <code class="prettyprint">sudo authorize_ios</code> (<code class="prettyprint">authorize_ios</code> is
 a binary made available by the Appium npm package). If you’re running Appium
 from source, simply run <code class="prettyprint">sudo grunt authorize</code> to do the same thing. If you
-are running <code class="prettyprint">Appium.app</code>, you can authorize iOS through the GUI.</li>
+are running <a href="https://github.com/appium/appium-dot-app">Appium.app</a>, you can
+authorize iOS through the GUI.</li>
 </ul>
 
 <h2 id="testing-against-multiple-ios-sdks">Testing against multiple iOS SDKs</h2>
@@ -321,7 +343,7 @@ are running <code class="prettyprint">Appium.app</code>, you can authorize iOS t
 <p>Apple’s <code class="prettyprint">instruments</code> binary, which Appium uses to launch the iOS simulator, by
 default uses the currently-selected Xcode, and the highest iOS SDK installed
 with that version of Xcode. This means that if you want to test iOS 6.1, but
-have iOS 7.0 installed, Appium will be forced to use the 7.0 Simulator
+have iOS 7.1 installed, Appium will be forced to use the 7.1 Simulator
 regardless. The only way around this is to have multiple copies of Xcode
 installed with different sets of SDKs. You can then switch to the particular
 copy of Xcode that has the versions you want to test with before starting
@@ -340,19 +362,22 @@ Then we use the following command:</p>
 
 <p>sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/</p>
 
-<p>To go back to iOS 7.0 testing.</p>
+<p>To go back to iOS 7.1 testing.</p>
 
 <h2 id="system-setup-(android)">System setup (Android)</h2>
 
 <ul>
-<li>Make sure you have the <a href="http://developer.android.com/sdk/index.html">Android SDK installed</a>.</li>
+<li>Make sure you have the
+<a href="http://developer.android.com/sdk/index.html">Android SDK installed</a>.</li>
 <li>Make sure you have Android SDK API &gt;= 17 installed. To do this, run the
-Android SDK Manager (<code class="prettyprint">android</code>) and select the API in the extra packages you can install.</li>
+Android SDK Manager (<code class="prettyprint">android</code>) and select the API in the extra packages you
+can install.</li>
 <li>Make sure you have <code class="prettyprint">ant</code> installed. Ant is used to build the Appium bootstrap
 jar as well as the test applications. Mac OS X Mavericks no longer comes
-pre-packaged with <code class="prettyprint">ant</code> so you will need to <a href="http://ant.apache.org/bindownload.cgi">download and install it</a>.</li>
+pre-packaged with <code class="prettyprint">ant</code> so you will need to
+<a href="http://ant.apache.org/bindownload.cgi">download and install it</a>.</li>
 <li>
-<p>Make sure you have exported <code class="prettyprint">$ANDROID_HOME</code>, containing your android sdk
+<p>Make sure you have exported <code class="prettyprint">$ANDROID_HOME</code>, containing your Android sdk
 path. If you unzipped the Android SDK to <code class="prettyprint">/usr/local/adt/</code>, for example, you
 should add this to your shell startup:</p>
 
@@ -376,16 +401,19 @@ limitations. For more information you can check out this
 
 <h2 id="limitations">Limitations</h2>
 
-<p>If you are running Appium on Windows, you cannot use the prebuilt ‘.app’,
-which is built for OS X only. Additionally, you will not be able to test iOS
-apps because Appium relies on OS X-only libraries to support iOS testing.</p>
+<p>If you are running Appium on Windows, you can use the
+<a href="https://github.com/appium/appium-dot-exe">Appium.exe</a> client, which will allow
+you to quickly launch an Appium server and use the Inspector. You will not be
+able to test iOS apps on a locally hosted server, because Appium relies on OS
+X-only libraries to support iOS testing. You can however use the <code class="prettyprint">Remote Server</code>
+option to connect to an Appium server running on a Mac.</p>
 
 <h2 id="setup">Setup</h2>
 
 <p>To get started:</p>
 
 <ol>
-<li>Install <a href="http://nodejs.org/download/">node.js</a> (v.0.8 or greater). Use the
+<li>Install <a href="http://nodejs.org/download/">node.js</a> (v.0.10 or greater). Use the
 installer from nodejs.org.</li>
 <li>Install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>.
 You will need to run the ‘android’ tool (included in the SDK) and make sure
@@ -402,8 +430,7 @@ installed in, and set M2 to %M2HOME\bin. Add the path you used for M2 to
 your PATH.</li>
 <li>Install <a href="http://git-scm.com/download/win">Git</a> Be sure to install Git for
 windows to run in the regular command prompt.</li>
-<li>Instal <a href="http://curl.haxx.se/download.html">cURL</a>
-</li>
+<li>Install <a href="http://curl.haxx.se/download.html">cURL</a>.</li>
 </ol>
 
 <p>Now that you’ve downloaded everything, run:</p>
@@ -418,15 +445,15 @@ windows to run in the regular command prompt.</li>
 
 <p>node .</p>
 
-<p>See the <a href="#server-args.md">server documentation</a>
-for all the command line arguments.</p>
+<p>See the <a href="#server-args.md">server documentation</a> for all the command line
+arguments.</p>
 
 <h2 id="notes">Notes</h2>
 
 <ul>
-<li>you must supply the –no-reset and –full-reset flags currently for android
-to work on Windows.</li>
-<li>There exists a hardware accelerated emulator for android, it has it’s own
+<li>You must supply the <code class="prettyprint">--no-reset</code> and <code class="prettyprint">--full-reset</code> flags currently for
+Android to work on Windows.</li>
+<li>There exists a hardware accelerated emulator for Android, it has it’s own
 limitations. For more information you can check out this
 <a href="#android-hax-emulator.md">page</a>.</li>
 <li>Make sure that <code class="prettyprint">hw.battery=yes</code> in your AVD’s <code class="prettyprint">config.ini</code>.</li>
@@ -443,7 +470,7 @@ apps because Appium relies on OS X-only libraries to support iOS testing.</p>
 
 <h2 id="setup">Setup</h2>
 
-<p>To get started, you’ll need to install node.js (v.0.8 or greater). Just
+<p>To get started, you’ll need to install node.js (v.0.10 or greater). Just
 follow the <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">instructions for your flavor of linux</a>.</p>
 
 <p>Once you’ve got node.js installed, install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>.
@@ -515,24 +542,42 @@ want to zip it up, you can.</p>
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
 <pre><code class="highlight javascript"><span class="p">{</span>
     <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span><span class="p">,</span>
-    <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'6.1'</span><span class="p">,</span>
+    <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'7.1'</span><span class="p">,</span>
     <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'iPhone Simulator'</span><span class="p">,</span>
     <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
 <pre><code class="highlight python"><span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
-    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'6.1'</span><span class="p">,</span>
+    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
     <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span><span class="p">,</span>
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
+</code></pre>
+<pre><code class="highlight php">public static $browsers = array(
+    array(
+        'desiredCapabilities' =&gt; array(
+            'platformName' =&gt; 'iOS',
+            'platformVersion' =&gt; '7.1',
+            'deviceName' =&gt; 'iPhone Simulator',
+            'app' =&gt; $myApp
+        )
+    )
+);
+</code></pre>
+<pre><code class="highlight java"><span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformName"</span><span class="o">,</span> <span class="s">"iOS"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformVersion"</span><span class="o">,</span> <span class="s">"7.1"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"deviceName"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="n">myApp</span><span class="o">);</span>
 </code></pre>
 
 <p>In this set of capabilities, <code class="prettyprint">myApp</code> must be either:</p>
 
 <ul>
 <li>A local absolute path to your simulator-compiled .app directory or .zip</li>
-<li>A url of a zip file containg your .app package</li>
+<li>A url of a zip file containing your .app package</li>
+<li>A path to one of the sample app relative to the appium install root</li>
 </ul>
 
 <p>Using your WebDriver library of choice, set the remote session to use these
@@ -567,24 +612,42 @@ otherwise failing, you can restart it by running:</p>
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
 <pre><code class="highlight javascript"><span class="p">{</span>
     <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
-    <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'4.2'</span><span class="p">,</span>
+    <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'4.4'</span><span class="p">,</span>
     <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
     <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
 <pre><code class="highlight python"><span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
-    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.2'</span><span class="p">,</span>
+    <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.4'</span><span class="p">,</span>
     <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'Android Emulator'</span><span class="p">,</span>
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
+</code></pre>
+<pre><code class="highlight php">public static $browsers = array(
+    array(
+        'desiredCapabilities' =&gt; array(
+            'platformName' =&gt; 'Android',
+            'platformVersion' =&gt; '4.4',
+            'deviceName' =&gt; 'Android Emulator',
+            'app' =&gt; $myApp
+        )
+    )
+);
+</code></pre>
+<pre><code class="highlight java"><span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformName"</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformVersion"</span><span class="o">,</span> <span class="s">"4.4"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"deviceName"</span><span class="o">,</span> <span class="s">"Android Emulator"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="n">myApp</span><span class="o">);</span>
 </code></pre>
 
 <p>In this set of capabilities, <code class="prettyprint">myApp</code> must be either:</p>
 
 <ul>
 <li>A local absolute path to your .apk or a .zip of it</li>
-<li>A url of a zip file containg your .apk</li>
+<li>A url of a zip file containing your .apk</li>
+<li>A path to one of the sample app relative to the appium install root</li>
 </ul>
 
 <p>Using your WebDriver library of choice, set the remote session to use these
@@ -608,7 +671,6 @@ and specifying the Selendroid automation backend.</p>
     <span class="nx">platformName</span><span class="err">:</span> <span class="s1">'Android'</span><span class="p">,</span>
     <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'2.3'</span><span class="p">,</span>
     <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
-    <span class="nx">version</span><span class="err">:</span> <span class="s1">'2.3'</span><span class="p">,</span>
     <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
@@ -617,9 +679,27 @@ and specifying the Selendroid automation backend.</p>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'2.3'</span><span class="p">,</span>
     <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'Android Emulator'</span><span class="p">,</span>
-    <span class="s">'version'</span><span class="p">:</span> <span class="s">'2.3'</span><span class="p">,</span>
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
+</code></pre>
+<pre><code class="highlight php">public static $browsers = array(
+    array(
+        'desiredCapabilities' =&gt; array(
+            'automationName' =&gt; 'Selendroid',
+            'platformName' =&gt; 'Android',
+            'platformVersion' =&gt; '2.3',
+            'deviceName' =&gt; 'Android Emulator',
+            'app' =&gt; $myApp
+        )
+    )
+);
+</code></pre>
+<pre><code class="highlight java"><span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"automationName"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformName"</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformVersion"</span><span class="o">,</span> <span class="s">"2.3"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"deviceName"</span><span class="o">,</span> <span class="s">"Android Emulator"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="n">myApp</span><span class="o">);</span>
 </code></pre>
 
 <p>Now Appium will start up a Selendroid test session instead of the default test
@@ -645,118 +725,6 @@ under Extras.</li>
 do so successfully.</li>
 </ul>
 
-<h1 id="android-coverage">
-<span id="android_coverage.md"></span>Android Coverage</h1>
-
-<p>Android coverage requires the emulator or a rooted device. Build your app
-using the instrument target, for example <code class="prettyprint">$ ant instrument</code></p>
-
-<p>Pass <code class="prettyprint">androidCoverage</code> to your device capabilities and set it to your
-instrumentation class.</p>
-<pre><code class="highlight ruby"><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">androidCoverage: </span><span class="s1">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
-</code></pre>
-<pre><code class="highlight python"><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'androidCoverage'</span><span class="p">:</span> <span class="s">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
-</code></pre>
-
-<p>Appium will start your app like this:</p>
-
-<p><code class="prettyprint">adb shell am instrument -e coverage true -w com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation</code></p>
-
-<p>After your test completes, it’s time to end the coverage collection and pull
-the coverage.ec file from the device.</p>
-<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="ss">:endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
-</code></pre>
-<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">end_test_coverage</span><span class="p">(</span><span class="n">intent</span><span class="o">=</span><span class="s">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s">'/mnt/sdcard/coverage.ec'</span><span class="p">)</span>
-</code></pre>
-
-<p><code class="prettyprint">AndroidManifest.xml</code> defines the instrumentation and broadcast receiver.</p>
-<pre><code class="highlight xml">    <span class="nt">&lt;instrumentation</span>
-        <span class="na">android:name=</span><span class="s">"com.example.pkg.instrumentation.MyInstrumentation"</span>
-        <span class="na">android:targetPackage=</span><span class="s">"com.example.pkg"</span> <span class="nt">&gt;</span>
-    <span class="nt">&lt;/instrumentation&gt;</span>
-
-    <span class="c">&lt;!-- adb shell am broadcast -a com.example.pkg.END_EMMA --&gt;</span>
-    <span class="nt">&lt;receiver</span> <span class="na">android:name=</span><span class="s">"com.example.pkg.instrumentation.EndEmmaBroadcast"</span> <span class="nt">&gt;</span>
-       <span class="nt">&lt;intent-filter&gt;</span>
-           <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"com.example.pkg.END_EMMA"</span> <span class="nt">/&gt;</span>
-       <span class="nt">&lt;/intent-filter&gt;</span>
-    <span class="nt">&lt;/receiver&gt;</span>
-</code></pre>
-
-<p><code class="prettyprint">EndEmmaBroadcast.java</code> is defined as:</p>
-<pre><code class="highlight java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.annotation.SuppressLint</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.BroadcastReceiver</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.Context</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Process</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.util.Log</span><span class="o">;</span>
-
-<span class="c1">// adb shell am broadcast -a com.example.pkg.END_EMMA</span>
-<span class="nd">@SuppressLint</span><span class="o">(</span><span class="s">"SdCardPath"</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EndEmmaBroadcast</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="kt">int</span><span class="n">ent</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"AppiumEmma"</span><span class="o">,</span> <span class="s">"EndEmmaBroadcast broadcast received!"</span><span class="o">);</span>
-        <span class="c1">// reflection is used so emma doesn't cause problems for other build targets</span>
-        <span class="c1">// that do not include emma.</span>
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"com.vladium.emma.rt.RT"</span><span class="o">)</span>
-                    <span class="o">.</span><span class="na">getMethod</span><span class="o">(</span><span class="s">"dumpCoverageData"</span><span class="o">,</span> <span class="n">File</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="kt">boolean</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
-                    <span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">"/mnt/sdcard/coverage.ec"</span><span class="o">),</span> <span class="kc">false</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"AppiumEmma"</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-        <span class="o">}</span>
-
-        <span class="c1">// once coverage is dumped, the processes is ended.</span>
-        <span class="n">Process</span><span class="o">.</span><span class="na">killProcess</span><span class="o">(</span><span class="n">Process</span><span class="o">.</span><span class="na">myPid</span><span class="o">());</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-
-<p><code class="prettyprint">MyInstrumentation.java</code> is defined as:</p>
-<pre><code class="highlight java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">android.app.Instrumentation</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.content.IntentFilter</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.os.Bundle</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">android.support.v4.content.LocalBroadcastManager</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyInstrumentation</span> <span class="kd">extends</span> <span class="n">Instrumentation</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">Intent</span> <span class="kt">int</span><span class="n">ent</span><span class="o">;</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">arguments</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span><span class="n">ent</span> <span class="o">=</span> <span class="n">getTargetContext</span><span class="o">().</span><span class="na">getPackageManager</span><span class="o">()</span>
-                <span class="o">.</span><span class="na">getLaunchIntentForPackage</span><span class="o">(</span><span class="s">"com.example.pkg"</span><span class="o">)</span>
-                <span class="o">.</span><span class="na">setFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
-        <span class="n">start</span><span class="o">();</span> <span class="c1">// creates new thread which invokes onStart</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onStart</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">startActivitySync</span><span class="o">(</span><span class="kt">int</span><span class="n">ent</span><span class="o">);</span>
-        <span class="n">LocalBroadcastManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">getTargetContext</span><span class="o">()).</span><span class="na">registerReceiver</span><span class="o">(</span>
-                <span class="k">new</span> <span class="n">EndEmmaBroadcast</span><span class="o">(),</span> <span class="k">new</span> <span class="n">IntentFilter</span><span class="o">(</span><span class="s">"com.example.pkg.END_EMMA"</span><span class="o">));</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-
-<h2 id="coverage-reports">Coverage Reports</h2>
-
-<p><code class="prettyprint">ant instrument</code> generates a <code class="prettyprint">coverage.em</code> file. The <code class="prettyprint">mobile :endCoverage</code>
-will download the coverage.ec file for that particular run. Note that you can
- have any number of coverage.ec files. To merge them all together into a
- report, use this command:</p>
-
-<blockquote>
-<p>java -cp /path/to/android-sdk-macosx/tools/lib/emma_device.jar emma report -r html -in coverage.em,coverage0.ec,coverage1.ec -sp /path/to/your-app/src</p>
-</blockquote>
-
 <h1 id="appium-server-arguments">
 <span id="server-args.md"></span>Appium server arguments</h1>
 
@@ -765,6 +733,8 @@ will download the coverage.ec file for that particular run. Note that you can
 <h2 id="server-flags">Server flags</h2>
 
 <p>All flags are optional, but some are required in conjunction with certain others.</p>
+
+<p class="expand_table"></p>
 
 <table>
 <thead>
@@ -783,6 +753,12 @@ will download the coverage.ec file for that particular run. Note that you can
 <td></td>
 </tr>
 <tr>
+<td><code class="prettyprint">--localizable-strings-dir</code></td>
+<td>en.lproj</td>
+<td>IOS only: the relative path of the dir where Localizable.strings file resides</td>
+<td><code class="prettyprint">--localizable-strings-dir en.lproj</code></td>
+</tr>
+<tr>
 <td><code class="prettyprint">--app</code></td>
 <td>null</td>
 <td>IOS: abs path to simulator-compiled .app file or the bundle_id of the desired target on device; Android: abs path to .apk file</td>
@@ -799,7 +775,7 @@ will download the coverage.ec file for that particular run. Note that you can
 <code class="prettyprint">-q</code>, <code class="prettyprint">--quiet</code>
 </td>
 <td>false</td>
-<td>Don’t use verbose logging output</td>
+<td>Don’t use verbose logging output (deprecated, use –log-level instead)</td>
 <td></td>
 </tr>
 <tr>
@@ -893,6 +869,12 @@ will download the coverage.ec file for that particular run. Note that you can
 <td><code class="prettyprint">--log /path/to/appium.log</code></td>
 </tr>
 <tr>
+<td><code class="prettyprint">--log-level</code></td>
+<td>debug</td>
+<td>log level (default: debug)</td>
+<td><code class="prettyprint">--log-level debug</code></td>
+</tr>
+<tr>
 <td><code class="prettyprint">--log-timestamp</code></td>
 <td>false</td>
 <td>Show timestamps in console output</td>
@@ -916,14 +898,6 @@ will download the coverage.ec file for that particular run. Note that you can
 <td><code class="prettyprint">--native-instruments-lib</code></td>
 <td>false</td>
 <td>(IOS-only) IOS has a weird built-in unavoidable delay. We patch this in appium. If you do not want it patched, pass in this flag.</td>
-<td></td>
-</tr>
-<tr>
-<td>
-<code class="prettyprint">--force-quit-instruments</code>, <code class="prettyprint">-fqi</code>
-</td>
-<td>false</td>
-<td>Run the watcher process that will force-kill an unresponsive instruments</td>
 <td></td>
 </tr>
 <tr>
@@ -973,6 +947,33 @@ will download the coverage.ec file for that particular run. Note that you can
 <td>5</td>
 <td>(Android-only) Timeout in seconds while waiting for device to become ready</td>
 <td><code class="prettyprint">--device-ready-timeout 5</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--intent-action</code></td>
+<td><code class="prettyprint">android.intent.action.MAIN</code></td>
+<td>(Android-only) Intent action which will be used to start activity</td>
+<td><code class="prettyprint">android.intent.action.VIEW</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--intent-category</code></td>
+<td><code class="prettyprint">android.intent.category.LAUNCHER</code></td>
+<td>(Android-only) Intent category which will be used to start activity</td>
+<td><code class="prettyprint">android.intent.category.APP_CONTACTS</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--intent-flags</code></td>
+<td><code class="prettyprint">0x10200000</code></td>
+<td>(Android-only) Flags that will be used to start activity</td>
+<td><code class="prettyprint">0x10200000</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--intent-args</code></td>
+<td>null</td>
+<td>(Android-only) Additional intent arguments that will be used to start activity. See <a href="http://developer.android.com/tools/help/adb.html#IntentSpec">Intent arguments</a>
+</td>
+<td>
+<code class="prettyprint">--esn &lt;EXTRA_KEY&gt;</code>, <code class="prettyprint">--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code>
+</td>
 </tr>
 <tr>
 <td><code class="prettyprint">--safari</code></td>
@@ -1033,13 +1034,13 @@ will download the coverage.ec file for that particular run. Note that you can
 <tr>
 <td><code class="prettyprint">--language</code></td>
 <td>null</td>
-<td>(IOS-only) language for the iOS simulator</td>
+<td>Language for the iOS simulator / Android Emulator</td>
 <td><code class="prettyprint">--language en</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">--locale</code></td>
 <td>null</td>
-<td>(IOS-only) locale for the iOS simulator</td>
+<td>Locale for the iOS simulator / Android Emulator</td>
 <td><code class="prettyprint">--locale en_US</code></td>
 </tr>
 <tr>
@@ -1101,6 +1102,12 @@ will download the coverage.ec file for that particular run. Note that you can
 <td><code class="prettyprint">--chromedriver-port 9515</code></td>
 </tr>
 <tr>
+<td><code class="prettyprint">--chromedriver-executable</code></td>
+<td>null</td>
+<td>ChromeDriver executable full path</td>
+<td></td>
+</tr>
+<tr>
 <td><code class="prettyprint">--use-keystore</code></td>
 <td>false</td>
 <td>(Android-only) When set the keystore will be used to sign apks.</td>
@@ -1137,6 +1144,12 @@ will download the coverage.ec file for that particular run. Note that you can
 <td></td>
 </tr>
 <tr>
+<td><code class="prettyprint">--no-perms-check</code></td>
+<td>false</td>
+<td>Bypass Appium’s checks to ensure we can read/write necessary files</td>
+<td></td>
+</tr>
+<tr>
 <td><code class="prettyprint">--command-timeout</code></td>
 <td>60</td>
 <td>The default command timeout for the server to use for all sessions. Will still be overridden by newCommandTimeout cap</td>
@@ -1148,11 +1161,25 @@ will download the coverage.ec file for that particular run. Note that you can
 <td>(iOS) Whether to keep keychains (Library/Keychains) when reset app between sessions</td>
 <td></td>
 </tr>
+<tr>
+<td><code class="prettyprint">--strict-caps</code></td>
+<td>false</td>
+<td>Cause sessions to fail if desired caps are sent in that Appium does not recognize as valid for the selected device</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--tmp</code></td>
+<td>null</td>
+<td>Absolute path to directory Appium can use to manage temporary files, like built-in iOS apps it needs to move around. On *nix/Mac defaults to /tmp, on Windows defaults to C:\Windows\Temp</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 
 <h1 id="appium-server-capabilities">
 <span id="caps.md"></span>Appium server capabilities</h1>
+
+<p class="expand_table"></p>
 
 <table>
 <thead>
@@ -1215,10 +1242,45 @@ will download the coverage.ec file for that particular run. Note that you can
 <code class="prettyprint">true</code>, <code class="prettyprint">false</code>
 </td>
 </tr>
+<tr>
+<td><code class="prettyprint">language</code></td>
+<td>(Sim/Emu-only) Language to set for the iOS Simulator</td>
+<td>e.g. <code class="prettyprint">fr</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">locale</code></td>
+<td>(Sim/Emu-only) Locale to set for the iOS Simulator</td>
+<td>e.g. <code class="prettyprint">fr_CA</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">udid</code></td>
+<td>Unique device identifier of the connected physical device</td>
+<td>e.g. <code class="prettyprint">1ae203187fc012g</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">orientation</code></td>
+<td>(Sim/Emu-only) start in a certain orientation</td>
+<td>
+<code class="prettyprint">LANDSCAPE</code> or <code class="prettyprint">PORTRAIT</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">autoWebview</code></td>
+<td>Move directly into Webview context. Default <code class="prettyprint">false</code>
+</td>
+<td>
+<code class="prettyprint">true</code>, <code class="prettyprint">false</code>
+</td>
+</tr>
 </tbody>
 </table>
 
 <h3 id="android-only">Android Only</h3>
+
+<p class="expand_table"></p>
 
 <table>
 <thead>
@@ -1261,11 +1323,6 @@ will download the coverage.ec file for that particular run. Note that you can
 <td><code class="prettyprint">5</code></td>
 </tr>
 <tr>
-<td><code class="prettyprint">compressXml</code></td>
-<td><a href="http://developer.android.com/tools/help/uiautomator/UiDevice.html#setCompressedLayoutHeirarchy%28boolean%29">setCompressedLayoutHeirarchy(true)</a></td>
-<td><code class="prettyprint">true</code></td>
-</tr>
-<tr>
 <td><code class="prettyprint">androidCoverage</code></td>
 <td>Fully qualified instrumentation class. Passed to -w in adb shell am instrument -e coverage true -w</td>
 <td><code class="prettyprint">com.my.Pkg/com.my.Pkg.instrumentation.MyInstrumentation</code></td>
@@ -1278,6 +1335,24 @@ will download the coverage.ec file for that particular run. Note that you can
 </td>
 </tr>
 <tr>
+<td><code class="prettyprint">androidDeviceReadyTimeout</code></td>
+<td>Timeout in seconds used to wait for a device to become ready after booting</td>
+<td>e.g., <code class="prettyprint">30</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">androidDeviceSocket</code></td>
+<td>Devtools socket name. Needed only when tested app is a Chromium embedding browser. The socket is open by the browser and Chromedriver connects to it as a devtools client.</td>
+<td>e.g., <code class="prettyprint">chrome_devtools_remote</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">avd</code></td>
+<td>Name of avd to launch</td>
+<td>e.g., <code class="prettyprint">api19</code>
+</td>
+</tr>
+<tr>
 <td><code class="prettyprint">avdLaunchTimeout</code></td>
 <td>How long to wait in milliseconds for an avd to launch and connect to ADB (default <code class="prettyprint">120000</code>)</td>
 <td><code class="prettyprint">300000</code></td>
@@ -1287,10 +1362,108 @@ will download the coverage.ec file for that particular run. Note that you can
 <td>How long to wait in milliseconds for an avd to finish its boot animations (default <code class="prettyprint">120000</code>)</td>
 <td><code class="prettyprint">300000</code></td>
 </tr>
+<tr>
+<td><code class="prettyprint">avdArgs</code></td>
+<td>Additional emulator arguments used when launching an avd</td>
+<td>e.g., <code class="prettyprint">-netfast</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">useKeystore</code></td>
+<td>Use a custom keystore to sign apks, default <code class="prettyprint">false</code>
+</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keystorePath</code></td>
+<td>Path to custom keystore, default ~/.android/debug.keystore</td>
+<td>e.g., <code class="prettyprint">/path/to.keystore</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keystorePassword</code></td>
+<td>Password for custom keystore</td>
+<td>e.g., <code class="prettyprint">foo</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keyAlias</code></td>
+<td>Alias for key</td>
+<td>e.g., <code class="prettyprint">androiddebugkey</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">keyPassword</code></td>
+<td>Password for key</td>
+<td>e.g., <code class="prettyprint">foo</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">chromedriverExecutable</code></td>
+<td>The absolute local path to webdriver executable (if Chromium embedder provides its own webdriver, it should be used instead of original chromedriver bundled with Appium)</td>
+<td><code class="prettyprint">/abs/path/to/webdriver</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">specialChromedriverSessionArgs</code></td>
+<td>Custom arguments passed directly to chromedriver in chromeOptions capability. Passed as object which properties depend on a specific webdriver.</td>
+<td>e.g., <code class="prettyprint">{'androidDeviceSocket': 'opera_beta_devtools_remote',}</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">autoWebviewTimeout</code></td>
+<td>Amount of time to wait for Webview context to become active, in ms. Defaults to <code class="prettyprint">2000</code>
+</td>
+<td>e.g. <code class="prettyprint">4</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intentAction</code></td>
+<td>Intent action which will be used to start activity (default <code class="prettyprint">android.intent.action.MAIN</code>)</td>
+<td>e.g.<code class="prettyprint">android.intent.action.MAIN</code>, <code class="prettyprint">android.intent.action.VIEW</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intentCategory</code></td>
+<td>Intent category which will be used to start activity (default <code class="prettyprint">android.intent.category.LAUNCHER</code>)</td>
+<td>e.g. <code class="prettyprint">android.intent.category.LAUNCHER</code>, <code class="prettyprint">android.intent.category.APP_CONTACTS</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">intentFlags</code></td>
+<td>Flags that will be used to start activity (default <code class="prettyprint">0x10200000</code>)</td>
+<td>e.g. <code class="prettyprint">0x10200000</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">optionalIntentArguments</code></td>
+<td>Additional intent arguments that will be used to start activity. See <a href="http://developer.android.com/tools/help/adb.html#IntentSpec">Intent arguments</a>
+</td>
+<td>e.g. <code class="prettyprint">--esn &lt;EXTRA_KEY&gt;</code>, <code class="prettyprint">--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code>, etc.</td>
+</tr>
+<tr>
+<td><code class="prettyprint">unicodeKeyboard</code></td>
+<td>Enable Unicode input, default <code class="prettyprint">false</code>
+</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">resetKeyboard</code></td>
+<td>Reset keyboard to its original state, after running Unicode tests with <code class="prettyprint">unicodeKeyboard</code> capability. Ignored if used alone. Default <code class="prettyprint">false</code>
+</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
 </tbody>
 </table>
 
 <h3 id="ios-only">iOS Only</h3>
+
+<p class="expand_table"></p>
 
 <table>
 <thead>
@@ -1314,21 +1487,9 @@ will download the coverage.ec file for that particular run. Note that you can
 </td>
 </tr>
 <tr>
-<td><code class="prettyprint">language</code></td>
-<td>(Sim-only) Language to set for the iOS Simulator</td>
-<td>e.g. <code class="prettyprint">fr</code>
-</td>
-</tr>
-<tr>
 <td><code class="prettyprint">launchTimeout</code></td>
 <td>Amount of time in ms to wait for instruments before assuming it hung and failing the session</td>
 <td>e.g. <code class="prettyprint">20000</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">locale</code></td>
-<td>(Sim-only) Locale to set for the iOS Simulator</td>
-<td>e.g. <code class="prettyprint">fr_CA</code>
 </td>
 </tr>
 <tr>
@@ -1392,6 +1553,18 @@ will download the coverage.ec file for that particular run. Note that you can
 <td>(Sim-only) Whether to keep keychains (Library/Keychains) when appium session is started/finished</td>
 <td>
 <code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">localizableStringsDir</code></td>
+<td>Where to look for localizable strings. Default <code class="prettyprint">en.lproj</code>
+</td>
+<td><code class="prettyprint">en.lproj</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">processArguments</code></td>
+<td>Arguments to pass to the AUT using instruments</td>
+<td>e.g., <code class="prettyprint">-myflag</code>
 </td>
 </tr>
 </tbody>
@@ -1482,7 +1655,7 @@ you will see your device on the grid console page:</p>
       [
         {
           "browserName": "<span class="nt">&lt;e.g._iPhone5_or_iPad4&gt;</span>",
-          "version":"<span class="nt">&lt;version_of_iOS_e.g._6.1&gt;</span>",
+          "version":"<span class="nt">&lt;version_of_iOS_e.g._7.1&gt;</span>",
           "maxInstances": 1,
           "platform":"<span class="nt">&lt;platform_e.g._MAC_or_ANDROID&gt;</span>"
         }
@@ -1545,7 +1718,7 @@ context id to leave the web frame.</li>
 
 <h2 id="execution-against-a-real-ios-device">Execution against a real iOS device</h2>
 
-<p>To interrogate and interact with a web view appium establishes a connection
+<p>To interact with a web view appium establishes a connection
 using a remote debugger. When executing the examples below against a
 simulator this connection can be established directly as the simulator and
 the appium server are on the same machine. When executing against a real
@@ -1583,61 +1756,48 @@ allow a connection to be established. Turn it on by going to <strong>settings &g
 safari &gt; advanced</strong>. Please be aware that the web inspector was <strong>added as
 part of iOS 6</strong> and was not available previously.</p>
 
-<h2 id="wd.js-code-example">Wd.js Code example</h2>
-<pre><code class="highlight javascript">  <span class="c1">// assuming we have an initialized `driver` object working on the UICatalog app</span>
-  <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// find button to nav to view</span>
-    <span class="nx">el</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// nav to UIWebView</span>
-      <span class="nx">driver</span><span class="p">.</span><span class="nx">contexts</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get list of available views</span>
-        <span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="nx">contexts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// choose what is probably the webview context</span>
-          <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get webpage elements by css</span>
-            <span class="nx">els</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// there should be some!</span>
-            <span class="nx">els</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">elText</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get text of the first element</span>
-              <span class="nx">elText</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="s2">"My very own text"</span><span class="p">);</span> <span class="c1">// it should be extremely personal and awesome</span>
-              <span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="s1">'NATIVE_APP'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// leave webview context</span>
-                <span class="c1">// do more native stuff here if we want</span>
-                <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span> <span class="c1">// stop webdrivage</span>
-              <span class="p">});</span>
-            <span class="p">});</span>
-          <span class="p">});</span>
-        <span class="p">});</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
-</code></pre>
-
 <ul>
-<li>For the full context, see <a href="https://github.com/appium/appium/tree/master/sample-code/examples/node/hybrid.js">this node example</a>
-</li>
-<li>*we’re working on filling out the methods available in web view contexts. <a href="http://appium.io/get-involved.html">Join us in our quest!</a>
+<li>We’re working on filling out the methods available in web view contexts. <a href="http://appium.io/get-involved.html">Join us in our quest!</a>
 </li>
 </ul>
-
-<h2 id="wd.java-code-example">Wd.java Code example</h2>
-<pre><code class="highlight java">  <span class="c1">//setup the web driver and launch the webview app.</span>
-  <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
-  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
-  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"http://appium.s3.amazonaws.com/WebViewApp6.0.app.zip"</span><span class="o">);</span>
-  <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
-  <span class="n">RemoteWebDriver</span> <span class="n">remoteWebDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">desiredCapabilities</span><span class="o">);</span>
-
-  <span class="c1">//switch to the latest web view</span>
-  <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">contextHandle</span> <span class="o">:</span> <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">getContexts</span><span class="o">()){</span>
-    <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">context</span><span class="o">(</span><span class="n">contextHandle</span><span class="o">);</span>
-  <span class="o">}</span>
-
-  <span class="c1">//Interact with the elements on the guinea-pig page using id.</span>
-  <span class="n">WebElement</span> <span class="n">div</span> <span class="o">=</span> <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"i_am_an_id"</span><span class="o">));</span>
-  <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="s">"I am a div"</span><span class="o">,</span> <span class="n">div</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span> <span class="c1">//check the text retrieved matches expected value</span>
-  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"comments"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"My comment"</span><span class="o">);</span> <span class="c1">//populate the comments field by id.</span>
-
-  <span class="c1">//leave the webview to go back to native app.</span>
-  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">context</span><span class="o">(</span><span class="err">'</span><span class="n">NATIVE_APP</span><span class="err">'</span><span class="o">)</span>
-
-  <span class="c1">//close the app.</span>
-  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
+<pre><code class="highlight javascript"><span class="c1">// assuming we have an initialized `driver` object working on the UICatalog app</span>
+<span class="k">return</span> <span class="nx">driver</span>
+  <span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">)</span> <span class="c1">// find button to nav to view</span>
+    <span class="p">.</span><span class="nx">click</span><span class="p">()</span> <span class="c1">// nav to UIWebView</span>
+  <span class="p">.</span><span class="nx">contexts</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get list of available views</span>
+    <span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="nx">contexts</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// choose what is probably the webview context</span>
+  <span class="p">}).</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get webpage elements by css</span>
+    <span class="nx">els</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// there should be some!</span>
+    <span class="k">return</span> <span class="nx">els</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="p">}).</span><span class="nx">text</span><span class="p">()</span> <span class="c1">// get text of the first element</span>
+    <span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">become</span><span class="p">(</span><span class="s2">"My very own text"</span><span class="p">)</span> <span class="c1">// it should be extremely personal and awesome</span>
+  <span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="s1">'NATIVE_APP'</span><span class="p">)</span> <span class="c1">// leave webview context</span>
+  <span class="c1">// do more native stuff here if we want</span>
+  <span class="p">.</span><span class="nx">quit</span><span class="p">()</span> <span class="c1">// stop webdrivage</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">();</span> <span class="c1">// end promise chain (may not be needed)</span>
 </code></pre>
+<pre><code class="highlight java"><span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">CapabilityType</span><span class="o">.</span><span class="na">BROWSER_NAME</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformVersion"</span><span class="o">,</span> <span class="s">"7.1"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformName"</span><span class="o">,</span> <span class="s">"iOS"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"deviceName"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">SetCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="n">app</span><span class="o">);</span>
 
-<h2 id="wd.rb-code-example-using-cucumber">Wd.rb Code example using cucumber</h2>
+<span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AppiumDriver</span><span class="o">(</span><span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">),</span> <span class="n">capabilities</span><span class="o">);</span>
+
+<span class="n">WebElement</span> <span class="n">button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"buttonStartWebview"</span><span class="o">));</span>
+<span class="n">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+<span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">6000</span><span class="o">);</span>
+<span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">contextNames</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">contextName</span> <span class="o">:</span> <span class="n">contextNames</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">contextName</span><span class="o">);</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">contextName</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"WEBVIEW"</span><span class="o">)){</span>
+    <span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">(</span><span class="n">contextName</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">WebElement</span> <span class="n">inputField</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"name_input"</span><span class="o">));</span>
+<span class="n">inputField</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Some name"</span><span class="o">);</span>
+</code></pre>
 <pre><code class="highlight ruby"><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
 <span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span>
 <span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
@@ -1670,15 +1830,6 @@ part of iOS 6</strong> and was not available previously.</p>
   <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span><span class="p">(</span><span class="ss">:css</span><span class="p">,</span> <span class="s2">".green_button"</span><span class="p">).</span><span class="nf">click</span>
 <span class="k">end</span>
 </code></pre>
-
-<h3 id="troubleshooting-webview-with-ruby:">Troubleshooting Webview with Ruby:</h3>
-
-<p>I created a quick function in my helper class to find web elements no matter
-what window its in (this is useful if your webview id changes or if you are
-using the same codebase to test android and ios)
-https://gist.github.com/feelobot/7309729</p>
-
-<h2 id="wd.py-code-example">Wd.py Code example</h2>
 <pre><code class="highlight python"><span class="n">APP_PATH</span> <span class="o">=</span> <span class="s">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
 <span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'iOS 6.0'</span><span class="p">,</span>
@@ -1701,55 +1852,87 @@ https://gist.github.com/feelobot/7309729</p>
 
 <span class="c"># Now you can use CSS to select an element inside your webview</span>
 </code></pre>
+<pre><code class="highlight php">APP_PATH = 'https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip'
+class ContextTests extends PHPUnit_Extensions_AppiumTestCase
+{
+    public static $browsers = array(
+        array(
+            'desiredCapabilities' =&gt; array(
+                'platformName' =&gt; 'iOS',
+                'platformVersion' =&gt; '7.1',
+                'deviceName' =&gt; 'iPhone Simulator',
+                'app' =&gt; $myApp,
+                'name' =&gt; 'Example Hybrid PHP Test'
+            )
+        )
+    );
+
+    public function testThings()
+    {
+        $expected_contexts = array(
+            0 =&gt; 'NATIVE_APP',
+            1 =&gt; 'WEBVIEW_1'
+        );
+
+        $contexts = $this-&gt;contexts();
+        $this-&gt;assertEquals($expected_contexts, $contexts);
+
+        $this-&gt;context('WEBVIEW_1');
+        $context = $this-&gt;context();
+        $this-&gt;assertEquals('WEBVIEW_1', $context);
+
+        // do webby stuff
+
+        $this-&gt;context('NATIVE_APP');
+
+        // do mobile stuff
+    }
+}
+</code></pre>
 
 <h2 id="automating-hybrid-android-apps">Automating hybrid Android apps</h2>
 
 <p>Appium comes with built-in hybrid support via Chromedriver. Appium also uses
 Selendroid under the hood for webview support on devices older than 4.4. (In
-that case, you’ll want to specify <code class="prettyprint">"device": "selendroid"</code> as a desired
+that case, you’ll want to specify <code class="prettyprint">"automationName": "selendroid"</code> as a desired
 capability). Then follow all the same steps as above for iOS, i.e.,
 switching contexts, etc…</p>
 
-<h2 id="wd.js-code-example">Wd.js Code example</h2>
+<p>Make sure
+<a href="http://developer.android.com/reference/android/webkit/WebView.html#setWebContentsDebuggingEnabled(boolean)">setWebContentsDebuggingEnabled</a> is set to true as described in the <a href="https://developer.chrome.com/devtools/docs/remote-debugging#configure-webview">remote debugging docs</a>.</p>
 <pre><code class="highlight javascript"><span class="c1">// assuming we have an initialized `driver` object working on a hybrid app</span>
-<span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// choose the only available view</span>
-  <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get webpage elements by css</span>
+<span class="k">return</span> <span class="nx">driver</span>
+  <span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">)</span> <span class="c1">// choose the only available view</span>
+  <span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get webpage elements by css</span>
     <span class="nx">els</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// there should be some!</span>
-    <span class="nx">els</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">elText</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get text of the first element</span>
-      <span class="nx">elText</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eql</span><span class="p">(</span><span class="s2">"My very own text"</span><span class="p">);</span> <span class="c1">// it should be extremely personal and awesome</span>
-      <span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="s2">"NATIVE_APP"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// leave webview context</span>
-        <span class="c1">// do more native stuff here if we want</span>
-        <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span> <span class="c1">// stop webdrivage</span>
-      <span class="p">});</span>
-    <span class="p">});</span>
-  <span class="p">});</span>
-<span class="p">});</span>
+    <span class="k">return</span> <span class="nx">els</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="p">}).</span><span class="nx">text</span><span class="p">()</span> <span class="c1">// get text of the first element</span>
+    <span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">become</span><span class="p">(</span><span class="s2">"My very own text"</span><span class="p">)</span> <span class="c1">// it should be extremely personal and awesome</span>
+  <span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="s2">"NATIVE_APP"</span><span class="p">)</span> <span class="c1">// leave webview context</span>
+  <span class="c1">// do more native stuff here if we want</span>
+  <span class="p">.</span><span class="nx">quit</span><span class="p">()</span> <span class="c1">// stop webdrivage</span>
+  <span class="p">.</span><span class="nx">done</span><span class="p">();</span> <span class="c1">// end promise chain (may not be needed)</span>
 </code></pre>
+<pre><code class="highlight java"><span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">CapabilityType</span><span class="o">.</span><span class="na">BROWSER_NAME</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"automationName"</span><span class="o">,</span><span class="s">"Selendroid"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformName"</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="n">myApp</span><span class="o">);</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AppiumDriver</span><span class="o">(</span><span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">),</span> <span class="n">capabilities</span><span class="o">);</span>
 
-<h2 id="wd.java-code-example">Wd.java Code example</h2>
-<pre><code class="highlight java">  <span class="c1">//setup the web driver and launch the webview app.</span>
-  <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
-  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
-  <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"/path/to/some.apk"</span><span class="o">);</span>
-  <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
-  <span class="n">RemoteWebDriver</span> <span class="n">remoteWebDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">desiredCapabilities</span><span class="o">);</span>
-
-  <span class="c1">//switch to the web view</span>
-  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">context</span><span class="o">(</span><span class="s">"WEBVIEW"</span><span class="o">);</span>
-
-  <span class="c1">//Interact with the elements on the guinea-pig page using id.</span>
-  <span class="n">WebElement</span> <span class="n">div</span> <span class="o">=</span> <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"i_am_an_id"</span><span class="o">));</span>
-  <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="s">"I am a div"</span><span class="o">,</span> <span class="n">div</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span> <span class="c1">//check the text retrieved matches expected value</span>
-  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"comments"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"My comment"</span><span class="o">);</span> <span class="c1">//populate the comments field by id.</span>
-
-  <span class="c1">//leave the webview to go back to native app.</span>
-  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">switchTo</span><span class="o">().</span><span class="na">context</span><span class="o">(</span><span class="s">"NATIVE_APP"</span><span class="o">);</span>
-
-  <span class="c1">//close the app.</span>
-  <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
+<span class="n">WebElement</span> <span class="n">button</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"buttonStartWebview"</span><span class="o">));</span>
+<span class="n">button</span><span class="o">.</span><span class="na">click</span><span class="o">();</span>
+<span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">6000</span><span class="o">);</span>
+<span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">contextNames</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">contextName</span> <span class="o">:</span> <span class="n">contextNames</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">contextName</span><span class="o">);</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">contextName</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"WEBVIEW"</span><span class="o">)){</span>
+    <span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">(</span><span class="n">contextName</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">WebElement</span> <span class="n">inputField</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">id</span><span class="o">(</span><span class="s">"name_input"</span><span class="o">));</span>
+<span class="n">inputField</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Some name"</span><span class="o">);</span>
 </code></pre>
-
-<h2 id="wd.py-code-example">Wd.py Code example</h2>
 <pre><code class="highlight python"><span class="c"># assuming we have an initialized `driver` object working on a hybrid app</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
 <span class="n">elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s">'.some-class'</span><span class="p">)</span>
@@ -1854,16 +2037,35 @@ attempting to use Appium.</p>
 
 <p>Then, use desired capabilities like these to run your test in mobile Safari:</p>
 <pre><code class="highlight javascript"><span class="p">{</span>
-  <span class="nl">app</span><span class="p">:</span> <span class="s1">'safari'</span>
-  <span class="p">,</span> <span class="nx">device</span><span class="err">:</span> <span class="s1">'iPhone Simulator'</span>
-  <span class="p">,</span> <span class="nx">version</span><span class="err">:</span> <span class="s1">'6.1'</span>
+  <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span>
+  <span class="p">,</span> <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'7.1'</span>
+  <span class="p">,</span> <span class="nx">browserName</span><span class="err">:</span> <span class="s1">'Safari'</span>
+  <span class="p">,</span> <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'iPhone Simulator'</span>
 <span class="p">}</span>
 </code></pre>
 <pre><code class="highlight python"><span class="p">{</span>
-    <span class="s">'app'</span><span class="p">:</span> <span class="s">'safari'</span><span class="p">,</span>
-    <span class="s">'device'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span><span class="p">,</span>
-    <span class="s">'version'</span><span class="p">:</span> <span class="s">'6.1'</span>
+  <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
+  <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
+  <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Safari'</span><span class="p">,</span>
+  <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span>
 <span class="p">}</span>
+</code></pre>
+<pre><code class="highlight php">public static $browsers = array(
+    array(
+        'desiredCapabilities' =&gt; array(
+            'platformName' =&gt; 'iOS',
+            'platformVersion' =&gt; '7.1',
+            'browserName' =&gt; 'Safari',
+            'deviceName' =&gt; 'iPhone Simulator'
+        )
+    )
+);
+</code></pre>
+<pre><code class="highlight java"><span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformName"</span><span class="o">,</span> <span class="s">"iOS"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformVersion"</span><span class="o">,</span> <span class="s">"7.1"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"browserName"</span><span class="o">,</span> <span class="s">"Safari"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"deviceName"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
 </code></pre>
 
 <h2 id="mobile-safari-on-a-real-ios-device">Mobile Safari on a Real iOS Device</h2>
@@ -1881,7 +2083,7 @@ against your iOS device.</p>
 <h2 id="setup">Setup</h2>
 
 <p>Before you can run your tests against Safari on a real device you will need to:
-* Have the <strong>ios-webkit-debug-proxy</strong> installed and running (see the
+* Have the <strong>ios-webkit-debug-proxy</strong> installed, running and listening on port 27753 (see the
 <a href="#hybrid.md">hybrid docs</a> for instructions)
 * Turn on <strong>web inspector</strong> on iOS device (<strong>settings &gt; safari &gt;
 advanced</strong>, only for iOS 6.0 and up)
@@ -1914,12 +2116,12 @@ advanced</strong>, only for iOS 6.0 and up)
 
 <h2 id="running-your-test">Running your test</h2>
 
-<p>To configure you test to run against safari simply set the <strong>“app”</strong> to be <strong>“safari”</strong>.</p>
+<p>To configure you test to run against safari simply set the <strong>“browserName”</strong> to be <strong>“Safari”</strong>.</p>
 
 <h2 id="java-example">Java Example</h2>
 <pre><code class="highlight java"><span class="c1">//setup the web driver and launch the webview app.</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
-<span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"safari"</span><span class="o">);</span>
+<span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"browserName"</span><span class="o">,</span> <span class="s">"Safari"</span><span class="o">);</span>
 <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
 <span class="n">RemoteWebDriver</span> <span class="n">remoteWebDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RemoteWebDriver</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">desiredCapabilities</span><span class="o">);</span>
 
@@ -1935,7 +2137,7 @@ advanced</strong>, only for iOS 6.0 and up)
 
 <h2 id="python-example">Python Example</h2>
 <pre><code class="highlight python"><span class="c"># setup the web driver and launch the webview app.</span>
-<span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'app'</span><span class="p">:</span> <span class="s">'safari'</span> <span class="p">}</span>
+<span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Safari'</span> <span class="p">}</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Remote</span><span class="p">(</span><span class="s">'http://localhost:4723/wd/hub'</span><span class="p">,</span> <span class="n">capabilities</span><span class="p">)</span>
 
 <span class="c"># Navigate to the page and interact with the elements on the guinea-pig page using id.</span>
@@ -1945,10 +2147,34 @@ advanced</strong>, only for iOS 6.0 and up)
 <span class="n">assertEqual</span><span class="p">(</span><span class="s">'I am a div'</span><span class="p">,</span> <span class="n">div</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
 <span class="c"># populate the comments field by id</span>
-<span class="n">driver</span><span class="o">.</span><span class="n">find_lement_by_id</span><span class="p">(</span><span class="s">'comments'</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">'My comment'</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="s">'comments'</span><span class="p">)</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s">'My comment'</span><span class="p">)</span>
 
 <span class="c"># close the driver</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</code></pre>
+<pre><code class="highlight php">class ContextTests extends PHPUnit_Extensions_AppiumTestCase
+{
+    public static $browsers = array(
+        array(
+            'desiredCapabilities' =&gt; array(
+                'platformName' =&gt; 'iOS',
+                'platformVersion' =&gt; '7.1',
+                'browserName' =&gt; 'Safari',
+                'deviceName' =&gt; 'iPhone Simulator'
+            )
+        )
+    );
+
+    public function testThings()
+    {
+        $this-&gt;get('http://saucelabs.com/test/guinea-pig');
+
+        $div = $this-&gt;byId('i_am_an_id');
+        $this-&gt;assertEquals('I am a div', $div-&gt;text());
+
+        $this-&gt;byId('comments')-&gt;sendKeys('My comment');
+    }
+}
 </code></pre>
 
 <h2 id="mobile-chrome-on-emulator-or-real-device">Mobile Chrome on Emulator or Real Device</h2>
@@ -1962,15 +2188,169 @@ advanced</strong>, only for iOS 6.0 and up)
 
 <p>Then, use desired capabilities like these to run your test in Chrome:</p>
 <pre><code class="highlight javascript"><span class="p">{</span>
-  <span class="nl">app</span><span class="p">:</span> <span class="s1">'chrome'</span>
-  <span class="p">,</span> <span class="nx">device</span><span class="err">:</span> <span class="s1">'Android'</span>
+  <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'Android'</span>
+  <span class="p">,</span> <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'4.4'</span>
+  <span class="p">,</span> <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'Android Emulator'</span>
+  <span class="p">,</span> <span class="nx">browserName</span><span class="err">:</span> <span class="s1">'Chrome'</span>
 <span class="p">};</span>
 </code></pre>
 <pre><code class="highlight python"><span class="p">{</span>
-    <span class="s">'app'</span><span class="p">:</span> <span class="s">'chrome'</span><span class="p">,</span>
-    <span class="s">'device'</span><span class="p">:</span> <span class="s">'Android'</span>
-<span class="p">};</span>
+  <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
+  <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.4'</span><span class="p">,</span>
+  <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'Android Emulator'</span><span class="p">,</span>
+  <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Chrome'</span>
+<span class="p">}</span>
 </code></pre>
+<pre><code class="highlight php">public static $browsers = array(
+    array(
+        'desiredCapabilities' =&gt; array(
+            'platformName' =&gt; 'Android',
+            'platformVersion' =&gt; '4.4',
+            'browserName' =&gt; 'Chrome',
+            'deviceName' =&gt; 'Android Emulator'
+        )
+    )
+);
+</code></pre>
+<pre><code class="highlight java"><span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformName"</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"platformVersion"</span><span class="o">,</span> <span class="s">"4.4"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"deviceName"</span><span class="o">,</span> <span class="s">"Android Emulator"</span><span class="o">);</span>
+<span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"browserName"</span><span class="o">,</span> <span class="s">"Chrome"</span><span class="o">);</span>
+</code></pre>
+
+<p>Note that on 4.4+ devices, you can also use the ‘Browser’ <code class="prettyprint">browserName</code> cap to automate the built-in browser. On all devices you can use the ‘Chromium’ <code class="prettyprint">browserName</code> cap to automate a build of Chromium.</p>
+
+<h1 id="automating-mobile-gestures">
+<span id="touch-actions.md"></span>Automating mobile gestures</h1>
+
+<p>While the Selenium WebDriver spec has support for certain kinds of mobile
+interaction, its parameters are not always easily mappable to the functionality
+that the underlying device automation (like UIAutomation in the case of iOS)
+provides. To that end, Appium implements the new TouchAction / MultiAction API
+defined in the newest version of the spec
+(<a href="https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html#multiactions-1">https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html#multiactions-1</a>).
+Note that this is different from the earlier version of the TouchAction API in
+the original JSON Wire Protocol.</p>
+
+<p>These APIs allow you to build up arbitrary gestures with multiple actuators.
+Please see the Appium client docs for your language in order to find examples
+of using this API.</p>
+
+<h2 id="an-overview-of-the-touchaction-/-multiaction-api">An Overview of the TouchAction / MultiAction API</h2>
+
+<h2 id="touchaction">TouchAction</h2>
+
+<p><em>TouchAction</em> objects contain a chain of events.</p>
+
+<p>In all the appium client libraries, touch objects are created and are given a
+chain of events.</p>
+
+<p>The available events from the spec are:
+ * press
+ * release
+ * moveTo
+ * tap
+ * wait
+ * longPress
+ * cancel
+ * perform</p>
+
+<p>Here’s an example of creating an action in pseudocode:</p>
+<pre><code class="highlight plaintext">TouchAction().press(el0).moveTo(el1).release()
+</code></pre>
+
+<p>The above simulates a user pressing down on an element, sliding their finger
+to another position, and removing their finger from the screen.</p>
+
+<p>Appium performs the events in sequence. You can add a <code class="prettyprint">wait</code> event to control
+the timing of the gesture.</p>
+
+<p>The appium client libraries have different ways of implementing this, for example:
+you can pass in coordinates or an element to a <code class="prettyprint">moveTo</code> event. Passing both
+coordinates <em>and</em> an element will treat the coordinates as relative to the
+elements position, rather than absolute.</p>
+
+<p>Calling the <code class="prettyprint">perform</code> event sends the entire sequence of events to appium,
+and the touch gesture is run on your device.</p>
+
+<p>Appium clients also allow one to directly execute a TouchAction through the
+driver object, rather than calling the <code class="prettyprint">perform</code> event on the TouchAction
+object.</p>
+
+<p>In pseudocode, both of the following are equivalent:</p>
+<pre><code class="highlight plaintext">TouchAction().tap(el).perform()
+
+driver.perform(TouchAction().tap(el))
+</code></pre>
+
+<h2 id="multitouch">MultiTouch</h2>
+
+<p><em>MultiTouch</em> objects are collections of TouchActions.</p>
+
+<p>MultiTouch gestures only have two methods, <code class="prettyprint">add</code>, and <code class="prettyprint">perform</code>.</p>
+
+<p><code class="prettyprint">add</code> is used to add another TouchAction to this MultiTouch.</p>
+
+<p>When <code class="prettyprint">perform</code> is called, all the TouchActions which were added to the
+MultiTouch are sent to appium and performed as if they happened at the
+same time. Appium first performs the first event of all TouchActions together,
+then the second, etc.</p>
+
+<p>Pseudocode example of tapping with two fingers:</p>
+<pre><code class="highlight plaintext">action0 = TouchAction().tap(el)
+action1 = TouchAction().tap(el)
+MultiAction().add(action0).add(action1).perform()
+</code></pre>
+
+<h2 id="bugs-and-workarounds">Bugs and Workarounds</h2>
+
+<p>An unfortunate bug exists in the iOS 7.x Simulator where ScrollViews don’t
+recognize gestures initiated by UIAutomation (which Appium uses under the hood
+for iOS). To work around this, we have provided access to a different
+function, <code class="prettyprint">scroll</code>, which in many cases allows you to do what you wanted to do
+with a ScrollView, namely, scroll it!</p>
+
+<p><strong>Scrolling</strong></p>
+
+<p>To allow access to this special feature, we override the <code class="prettyprint">execute</code> or
+<code class="prettyprint">executeScript</code> methods in the driver, and prefix the command with <code class="prettyprint">mobile:</code>.
+See examples below:</p>
+
+<ul>
+<li><strong>WD.js:</strong></li>
+</ul>
+<pre><code class="highlight javascript"><span class="c1">// scroll the view down</span>
+<span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: scroll"</span><span class="p">,</span> <span class="p">[{</span><span class="na">direction</span><span class="p">:</span> <span class="s1">'down'</span><span class="p">}])</span>
+<span class="c1">// continue testing</span>
+</code></pre>
+
+<ul>
+<li><strong>Java:</strong></li>
+</ul>
+<pre><code class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+<span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"direction"</span><span class="o">,</span> <span class="s">"down"</span><span class="o">);</span>
+<span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
+<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: scroll"</span><span class="o">,</span> <span class="n">scrollObject</span><span class="o">);</span>
+</code></pre>
+
+<p><strong>Automating Sliders</strong></p>
+
+<p><strong>iOS</strong></p>
+
+<ul>
+<li><strong>Java</strong></li>
+</ul>
+<pre><code class="highlight java"><span class="c1">// slider values can be string representations of numbers between 0 and 1</span>
+<span class="c1">// e.g., "0.1" is 10%, "1.0" is 100%</span>
+<span class="n">WebElement</span> <span class="n">slider</span> <span class="o">=</span>  <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/slider[1]"</span><span class="o">));</span>
+<span class="n">slider</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
+</code></pre>
+
+<p><strong>Android</strong></p>
+
+<p>The best way to interact with the slider on Android is with TouchActions.</p>
 
 <h1 id="troubleshooting-appium">
 <span id="troubleshooting.md"></span>Troubleshooting Appium</h1>
@@ -2094,7 +2474,8 @@ output when it’s run in verbose mode so that we can diagnose what’s going on
 
 <ul>
 <li>If you’ve installed Node from the Node website, it requires that you use sudo
-for <code class="prettyprint">npm</code>. This is not ideal. Try to get node with <code class="prettyprint">brew install node</code> instead!</li>
+for <code class="prettyprint">npm</code>. This is not ideal. Try to get node with 
+<a href="https://github.com/visionmedia/n">n</a> or <code class="prettyprint">brew install node</code> instead!</li>
 <li>Webview support works on real iOS devices with a proxy, see <a href="https://groups.google.com/d/msg/appium-discuss/u1ropm4OEbY/uJ3y422a5_kJ">discussion</a>.</li>
 <li>Sometimes iOS UI elements become invalidated milliseconds after they are
 found. This results in an error that looks like <code class="prettyprint">(null) cannot be tapped</code>.
@@ -2122,6 +2503,11 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td>xcodebuild: error: SDK "iphonesimulator6.1” cannot be located</td>
 <td>Install the iPhone 6.1 SDK <em>or</em> build the test apps with a separate SDK, e.g., <code class="prettyprint">grunt buildApp:UICatalog:iphonesimulator5.1</code>
 </td>
+</tr>
+<tr>
+<td>Running reset.sh</td>
+<td>Warning: Task “setGitRev” not found. Use –force to continue.</td>
+<td>Update the submodules with <code class="prettyprint">git submodule update --init</code> and run <code class="prettyprint">reset.sh</code> again</td>
 </tr>
 </tbody>
 </table>
@@ -2205,6 +2591,29 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 
 <p>App source methods, which previously returned JSON, now return XML, so if you have code that relies on parsing the app source, it will need to be updated.</p>
 
+<h2 id="hybrid-support-through-context,-not-window">Hybrid support through context, not window</h2>
+
+<p>Hybrid apps were previously supported by switching between “windows” using</p>
+
+<ul>
+<li><code class="prettyprint">window_handles</code></li>
+<li><code class="prettyprint">window</code></li>
+<li><code class="prettyprint">switch_to.window</code></li>
+</ul>
+
+<p>Now Appium supports the more conceptually consistent concept of “context”. To get all of the available contexts, or the particular context the application is is, you use</p>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
+<span class="n">current</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">context</span>
+</code></pre>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">contexts</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
+</code></pre>
+
+<p>And to switch between them, you use</p>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
+</code></pre>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">currentContext</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
+</code></pre>
+
 <h2 id='no-more-execute_script("mobile:-xxx")'>No more <code class="prettyprint">execute_script("mobile: xxx")</code>
 </h2>
 
@@ -2268,9 +2677,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">lockScreen</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">lock</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;lock(3);
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">LockDevice</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
 </code></pre>
@@ -2284,25 +2693,26 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">runAppInBackground</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">backgroundApp</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;backgroundApp(5);
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
 </code></pre>
 
-<h2 id="hide-keyboard-(ios-only)">Hide Keyboard (iOS only)</h2>
+<h2 id="hide-keyboard">Hide Keyboard</h2>
 
-<p>Hide the keyboard on iOS</p>
+<p>Hide the keyboard.</p>
 <pre><code class="highlight ruby"><span class="n">hide_keyboard</span>
 </code></pre>
 <pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">hide_keyboard</span><span class="p">()</span>
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">hideKeyboard</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">hideKeyboard</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;hideKeyboard();
+$this-&gt;hideKeyboard(array('strategy' =&gt; 'pressKey', 'key' =&gt; 'Done'));
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">HideKeyboard</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
 </code></pre>
@@ -2316,9 +2726,10 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">isAppInstalled</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">isAppInstalled</span><span class="p">(</span><span class="s2">"com.example.android.apis"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">isAppInstalled</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;isAppInstalled('com.example.android.apis');
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">IsAppInstalled</span><span class="p">(</span><span class="s">"com.example.android.apis-"</span><span class="p">);</span>
 </code></pre>
@@ -2332,9 +2743,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">installApp</span><span class="o">(</span><span class="s">"path/to/my.apk"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">installApp</span><span class="p">(</span><span class="s2">"path/to/my.apk"</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;installApp('path/to/my.apk');
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">InstallApp</span><span class="p">(</span><span class="s">"path/to/my.apk"</span><span class="p">);</span>
 </code></pre>
@@ -2348,9 +2759,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">removeApp</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">removeApp</span><span class="p">(</span><span class="s2">"com.example.android.apis"</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;removeApp('com.example.android.apis');
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">RemoveApp</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">);</span>
 </code></pre>
@@ -2364,9 +2775,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">shake</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">shake</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;shake();
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">ShakeDevice</span><span class="p">();</span>
 </code></pre>
@@ -2380,9 +2791,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">closeApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">closeApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;closeApp();
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">CloseApp</span><span class="p">();</span>
 </code></pre>
@@ -2396,9 +2807,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">launchApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">launchApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;launchApp();
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">LaunchApp</span><span class="p">();</span>
 </code></pre>
@@ -2412,9 +2823,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">resetApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">resetApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;reset();
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">ResetApp</span><span class="p">();</span>
 </code></pre>
@@ -2428,9 +2839,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">contexts</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;contexts();
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span><span class="p">()</span>
 </code></pre>
@@ -2444,9 +2855,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getContext</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">currentContext</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;context();
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">()</span>
 </code></pre>
@@ -2460,9 +2871,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;context(NULL);
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span><span class="p">();</span>
 </code></pre>
@@ -2476,9 +2887,10 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getAppString</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">getAppStrings</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">appStrings</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;appStrings();
+$this-&gt;appStrings('ru');
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetAppStrings</span><span class="p">();</span>
 </code></pre>
@@ -2492,9 +2904,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">sendKeyEvent</span><span class="o">(</span><span class="n">AndroidKeyCode</span><span class="o">.</span><span class="na">HOME</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">deviceKeyEvent</span><span class="p">(</span><span class="nx">wd</span><span class="p">.</span><span class="nx">SPECIAL_KEYS</span><span class="p">.</span><span class="nx">Home</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;keyEvent('176');
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">KeyEvent</span><span class="p">(</span><span class="s">"176"</span><span class="p">);</span>
 </code></pre>
@@ -2508,9 +2920,9 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">currentActivity</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">getCurrentActivity</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">activity</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;currentActivity();
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
 </code></pre>
@@ -2531,17 +2943,39 @@ expanded upon soon.</p>
 <span class="o">.</span><span class="na">release</span><span class="o">().</span>
 <span class="n">perform</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="nx">driver</span><span class="p">);</span>
+<span class="nx">action</span>
+  <span class="p">.</span><span class="nx">tap</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">,</span> <span class="na">x</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
+  <span class="p">.</span><span class="nx">release</span><span class="p">();</span>
+<span class="k">return</span> <span class="nx">action</span><span class="p">.</span><span class="nx">perform</span><span class="p">();</span> <span class="c1">// returns a promise</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$action = $this-&gt;initiateTouchAction();
+               -&gt;press(array('element' =&gt; $el))
+               -&gt;release()
+               -&gt;perform();
+
+$action1 = $this-&gt;initiateTouchAction();
+$action1-&gt;press(array('element' =&gt; $els[0]))
+        -&gt;moveTo(array('x' =&gt; 10, 'y' =&gt; 0))
+        -&gt;moveTo(array('x' =&gt; 10, 'y' =&gt; -75))
+        -&gt;moveTo(array('x' =&gt; 10, 'y' =&gt; -600))
+        -&gt;release();
+
+$action2 = $this-&gt;initiateTouchAction();
+$action2-&gt;press(array('element' =&gt; $els[1]))
+        -&gt;moveTo(array('x' =&gt; 10, 'y' =&gt; 10))
+        -&gt;moveTo(array('x' =&gt; 10, 'y' =&gt; -300))
+        -&gt;moveTo(array('x' =&gt; 10, 'y' =&gt; -600))
+        -&gt;release();
+
+$multiAction = $this-&gt;initiateMultiAction();
+$multiAction-&gt;add($action1);
+$multiAction-&gt;add($action2);
+$multiAction-&gt;perform();
 </code></pre>
-<pre><code class="highlight csharp"><span class="n">var</span> <span class="n">touchAction1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TouchActions</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-<span class="n">touchAction1</span><span class="p">.</span><span class="nf">Down</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">).</span><span class="nf">Up</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">multiTouchAction</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MultiTouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-<span class="n">multiTouchAction</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">touchAction1</span><span class="p">);</span>
-
-<span class="nf">PerformMultiTouchAction</span><span class="p">(</span><span class="n">multiTouchAction</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">ITouchAction</span> <span class="n">action</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">);</span>
+<span class="n">action</span><span class="p">.</span><span class="nf">Press</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">).</span><span class="nf">Release</span><span class="p">();</span>
+<span class="n">action</span><span class="p">.</span><span class="nf">Perform</span> <span class="p">();</span>
 </code></pre>
 
 <h2 id="swipe">Swipe</h2>
@@ -2553,9 +2987,21 @@ expanded upon soon.</p>
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">swipe</span><span class="o">(</span><span class="n">startx</span><span class="o">=</span><span class="mi">75</span><span class="o">,</span> <span class="n">starty</span><span class="o">=</span><span class="mi">500</span><span class="o">,</span> <span class="n">endx</span><span class="o">=</span><span class="mi">75</span><span class="o">,</span> <span class="n">endy</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">800</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="kd">function</span> <span class="nx">swipe</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="nx">action</span>
+    <span class="p">.</span><span class="nx">press</span><span class="p">({</span><span class="na">x</span><span class="p">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">startX</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">startY</span><span class="p">})</span>
+    <span class="p">.</span><span class="nx">wait</span><span class="p">(</span><span class="nx">opts</span><span class="p">.</span><span class="nx">duration</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">moveTo</span><span class="p">({</span><span class="na">x</span><span class="p">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">endX</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="nx">opts</span><span class="p">.</span><span class="nx">endY</span><span class="p">})</span>
+    <span class="p">.</span><span class="nx">release</span><span class="p">();</span>
+  <span class="k">return</span> <span class="nx">action</span><span class="p">.</span><span class="nx">perform</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="nx">wd</span><span class="p">.</span><span class="nx">addPromiseChainMethod</span><span class="p">(</span><span class="s1">'swipe'</span><span class="p">,</span> <span class="nx">swipe</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">swipe</span><span class="p">({</span> <span class="na">startX</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="na">startY</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+  <span class="na">endX</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>  <span class="na">endY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">duration</span><span class="p">:</span> <span class="mi">800</span> <span class="p">});</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;swipe(75, 500, 75, 0, 800);
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">todo</span><span class="p">:</span> <span class="n">c</span><span class="err">#</span>
 </code></pre>
@@ -2569,9 +3015,36 @@ expanded upon soon.</p>
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">pinch</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="kd">function</span> <span class="nx">pinch</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">getSize</span><span class="p">(),</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">getLocation</span><span class="p">(),</span>
+  <span class="p">]).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">size</span> <span class="o">=</span> <span class="nx">res</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">loc</span> <span class="o">=</span> <span class="nx">res</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">center</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">x</span><span class="p">:</span> <span class="nx">loc</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">size</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> 
+      <span class="na">y</span><span class="p">:</span> <span class="nx">loc</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">size</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="nx">a1</span><span class="p">.</span><span class="nx">press</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">,</span> <span class="na">x</span><span class="p">:</span> <span class="nx">center</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span><span class="nx">center</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">100</span><span class="p">}).</span><span class="nx">moveTo</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">}).</span><span class="nx">release</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">a2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="nx">a2</span><span class="p">.</span><span class="nx">press</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">,</span> <span class="na">x</span><span class="p">:</span> <span class="nx">center</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="nx">center</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">100</span><span class="p">}).</span><span class="nx">moveTo</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">}).</span><span class="nx">release</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">MultiAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="nx">m</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">a1</span><span class="p">,</span> <span class="nx">a2</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nx">perform</span><span class="p">();</span>
+  <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+<span class="p">};</span> 
+<span class="nx">wd</span><span class="p">.</span><span class="nx">addPromiseChainMethod</span><span class="p">(</span><span class="s1">'pinch'</span><span class="p">,</span> <span class="nx">pinch</span><span class="p">);</span>
+<span class="nx">wd</span><span class="p">.</span><span class="nx">addElementPromiseChainMethod</span><span class="p">(</span><span class="s1">'pinch'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">pinch</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> 
+<span class="p">});</span>
+<span class="c1">// ...</span>
+<span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">pinch</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">pinch</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;pinch($el);
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">Pinch</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">25</span><span class="p">)</span>
 </code></pre>
@@ -2585,11 +3058,61 @@ expanded upon soon.</p>
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">zoom</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="kd">function</span> <span class="nx">zoom</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getWindowSize</span><span class="p">(),</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getLocation</span><span class="p">(</span><span class="nx">el</span><span class="p">),</span>
+  <span class="p">]).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">size</span> <span class="o">=</span> <span class="nx">res</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">loc</span> <span class="o">=</span> <span class="nx">res</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">center</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">x</span><span class="p">:</span> <span class="nx">loc</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">size</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> 
+      <span class="na">y</span><span class="p">:</span> <span class="nx">loc</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">size</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="nx">a1</span><span class="p">.</span><span class="nx">press</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">}).</span><span class="nx">moveTo</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">,</span> <span class="na">x</span><span class="p">:</span> <span class="nx">center</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="nx">center</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="mi">100</span><span class="p">}).</span><span class="nx">release</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">a2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="nx">a2</span><span class="p">.</span><span class="nx">press</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">}).</span><span class="nx">moveTo</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">,</span> <span class="na">x</span><span class="p">:</span> <span class="nx">center</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="nx">center</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="mi">100</span><span class="p">}).</span><span class="nx">release</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">MultiAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="nx">m</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">a1</span><span class="p">,</span> <span class="nx">a2</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nx">perform</span><span class="p">();</span>
+  <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+<span class="p">};</span> 
+<span class="nx">wd</span><span class="p">.</span><span class="nx">addPromiseChainMethod</span><span class="p">(</span><span class="s1">'zoom'</span><span class="p">,</span> <span class="nx">zoom</span><span class="p">);</span>
+<span class="nx">wd</span><span class="p">.</span><span class="nx">addElementPromiseChainMethod</span><span class="p">(</span><span class="s1">'zoom'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">browser</span><span class="p">.</span><span class="nx">zoom</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> 
+<span class="p">});</span>
+<span class="c1">// ...</span>
+<span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">zoom</span><span class="p">(</span><span class="nx">el</span><span class="p">);</span>
+<span class="c1">// ...</span>
+<span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">zoom</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;zoom($el);
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">Zoom</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">200</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="scroll-to">Scroll To</h2>
+
+<p>Scroll to an element.</p>
+<pre><code class="highlight ruby"><span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Element Name'</span>
+<span class="n">execute_script</span> <span class="s2">"mobile: scrollTo"</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">element</span><span class="p">.</span><span class="nf">ref</span>
+</code></pre>
+<pre><code class="highlight python"><span class="n">todo</span><span class="p">:</span> <span class="n">python</span>
+</code></pre>
+<pre><code class="highlight java"><span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Element Name"</span><span class="o">));</span>
+<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">arguments</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+<span class="n">arguments</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="n">element</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+<span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span><span class="n">driver</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: scrollTo"</span><span class="o">,</span> <span class="n">arguments</span><span class="o">);</span>
+</code></pre>
+<pre><code class="highlight javascript"><span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">'mobile: scrollTo'</span><span class="p">,</span> <span class="p">{</span><span class="na">element</span><span class="p">:</span> <span class="nx">el</span><span class="p">.</span><span class="nx">value</span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+<pre><code class="highlight php">$els = $this-&gt;elements($this-&gt;using('class name')-&gt;value('android.widget.TextView'));
+$this-&gt;scroll($els[count($els) - 1], $els[0]);
+</code></pre>
+<pre><code class="highlight csharp"><span class="n">todo</span><span class="p">:</span> <span class="n">csharp</span>
 </code></pre>
 
 <h2 id="pull-file">Pull file</h2>
@@ -2601,9 +3124,10 @@ expanded upon soon.</p>
 </code></pre>
 <pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">pullFile</span><span class="o">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">pullFile</span><span class="p">(</span><span class="s2">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">base64File</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$this-&gt;pullFile('Library/AddressBook/AddressBook.sqlitedb');
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">PullFile</span><span class="p">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">);</span>
 </code></pre>
@@ -2623,9 +3147,11 @@ expanded upon soon.</p>
 <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span><span class="o">;</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">pushFile</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">pushFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">todo: php
+<pre><code class="highlight php">$path = 'data/local/tmp/test_push_file.txt';
+$data = 'This is the contents of the file to push to the device.';
+$this-&gt;pushFile($path, base64_encode($data));
 </code></pre>
 <pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">PushFile</span><span class="p">(</span><span class="s">"/data/local/tmp/file.txt"</span><span class="p">,</span> <span class="s">"some data for the file"</span><span class="p">);</span>
 </code></pre>
@@ -2658,6 +3184,419 @@ expanded upon soon.</p>
 </ul>
 
 <p>Please see each library for installation instructions.</p>
+
+<h1 id="ios-predicate">
+<span id="ios_predicate.md"></span>iOS Predicate</h1>
+
+<p>It is worth looking at <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>.
+<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
+<pre><code class="highlight plaintext">(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
+(UIAElementArray) UIAElementArray.withPredicate(PredicateString predicateString)
+</code></pre>
+
+<p>Native JS search strategy (powered by Apple) provides much more flexibility and is like Xpath.
+<strong><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/predicates.html">Predicates</a></strong> can be used to restrict an elements set to select only those ones for which some condition is true.</p>
+
+<p>For example:</p>
+<pre><code class="highlight java"><span class="n">appiumDriver</span><span class="o">.</span><span class="na">findElementsByIosUIAutomation</span><span class="o">(</span><span class="s">"collectionViews()[0].cells().withPredicate(\"ANY staticTexts.isVisible == TRUE\")"</span><span class="o">)</span>
+</code></pre>
+
+<p>-  will select only those  <code class="prettyprint">UIACollectionCell</code> elements that have visible <code class="prettyprint">UIAStaticText</code> child elements, and themselves are childs of 1st <code class="prettyprint">UIACollectionView</code> element that should be located under the main app window.  Here <code class="prettyprint">staticTexts()</code> and <code class="prettyprint">isVisible()</code> are methods available in <code class="prettyprint">UIAElementArray</code> and <code class="prettyprint">UIAElement</code> classes respectively. <strong>Note that <code class="prettyprint">UIAElementArray</code> numbering begins with <code class="prettyprint">0</code> unlike Xpath where indexes counting starts from <code class="prettyprint">1</code></strong></p>
+
+<p>Here’s a list of available Predicates (mostly taken from <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/predicates.html">Predicates Programming Guide</a>)</p>
+
+<h2 id="basic-comparisons">Basic Comparisons</h2>
+
+<p>= , ==
+- The left-hand expression is equal to the right-hand expression:
+“`
+tableViews()<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>.cells().firstWithPredicate("label == ‘Olivia’ ”)</p>
+
+<p>same in Xpath: /UIATableView[2]/UIATableCell<a href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">@label = ‘Olivia’</a>
+“`</p>
+
+<p>&gt;= , =&gt;
+- The left-hand expression is greater than or equal to the right-hand expression.</p>
+
+<p>&lt;= , =&lt;
+- The left-hand expression is less than or equal to the right-hand expression.</p>
+
+<p>&gt;
+- The left-hand expression is greater than the right-hand expression.</p>
+
+<p>&lt;
+- The left-hand expression is less than the right-hand expression.</p>
+
+<p>!= , &lt;&gt;
+- The left-hand expression is not equal to the right-hand expression.</p>
+
+<p>BETWEEN
+- The left-hand expression is between, or equal to either of, the values specified in the right-hand side. The right-hand side is a two value array (an array is required to specify order) giving upper and lower bounds. For example, <code class="prettyprint">1 BETWEEN { 0 , 33 }</code>, or <code class="prettyprint">$INPUT BETWEEN { $LOWER, $UPPER }</code>.
+In Objective-C, you could create a BETWEEN predicate as shown in the following example:</p>
+<pre><code class="highlight plaintext">NSPredicate *betweenPredicate =
+    [NSPredicate predicateWithFormat: @"attributeName BETWEEN %@", @[@1, @10]];
+</code></pre>
+
+<p>This creates a predicate that matches <code class="prettyprint">( ( 1 &lt;= attributeValue ) &amp;&amp; ( attributeValue &lt;= 10 ) )</code></p>
+
+<h2 id="boolean-value-predicates">Boolean Value Predicates</h2>
+
+<p>TRUEPREDICATE
+- A predicate that always evaluates to <code class="prettyprint">TRUE</code> .</p>
+
+<p>FALSEPREDICATE
+- A predicate that always evaluates to <code class="prettyprint">FALSE</code>.</p>
+
+<h2 id="basic-compound-predicates">Basic Compound Predicates</h2>
+
+<p>AND , &amp;&amp;
+- Logical AND.</p>
+
+<p>OR , ||
+- Logical OR.</p>
+
+<p>NOT , !
+- Logical NOT.</p>
+
+<h2 id="string-comparisons">String Comparisons</h2>
+
+<p>String comparisons are by default case and diacritic sensitive. You can modify an operator using the key characters <code class="prettyprint">c</code> and <code class="prettyprint">d</code> within square braces to specify case and diacritic insensitivity respectively, for example <code class="prettyprint">firstName BEGINSWITH[cd] $FIRST_NAME</code></p>
+
+<p>BEGINSWITH
+- The left-hand expression begins with the right-hand expression.</p>
+<pre><code class="highlight plaintext">scrollViews()[3].buttons().firstWithPredicate("name BEGINSWITH 'results toggle' ")
+
+same in Xpath: /UIAScrollView[4]/UIAButton[starts-with(@name, 'results toggle')][1]
+</code></pre>
+
+<p>CONTAINS
+- The left-hand expression contains the right-hand expression.</p>
+<pre><code class="highlight plaintext">tableViews()[1].cells().withPredicate("ANY collectionViews[0].buttons.name CONTAINS 'opera'")
+
+same in Xpath: /UIATableView[2]/UIATableCell[UIACollectionView[1]/UIAButton[contains(@name, 'opera')]]
+</code></pre>
+
+<p>ENDSWITH
+- The left-hand expression ends with the right-hand expression.</p>
+
+<p>LIKE
+- The left hand expression equals the right-hand expression: ? and * are allowed as wildcard characters, where ? matches 1 character and * matches 0 or more characters. In Mac OS X v10.4, wildcard characters do not match newline characters.</p>
+<pre><code class="highlight plaintext">tableViews()[0].cells().firstWithPredicate("name LIKE '*Total: $*' ")
+
+same in Xpath: /UIATableView[1]/UIATableCell[matches(@name, '.*Total: \$.*')][1]
+</code></pre>
+
+<p>MATCHES
+- The left hand expression equals the right hand expression using a regex -style comparison according to ICU v3 (for more details see the ICU User Guide for <a href="http://userguide.icu-project.org/strings/regexp">Regular Expressions</a>).</p>
+<pre><code class="highlight plaintext">tableViews().firstWithPredicate("value MATCHES '.*of 7' ")
+
+same in Xpath: /UIATableView[matches(@value, '.*of 7')][1]
+</code></pre>
+
+<h2 id="aggregate-operations">Aggregate Operations</h2>
+
+<p>ANY , SOME
+- Specifies any of the elements in the following expression. For example <code class="prettyprint">ANY children.age &lt; 18</code> .</p>
+<pre><code class="highlight plaintext">tableViews()[0].cells().firstWithPredicate("SOME staticTexts.name = 'red'").staticTexts().withName('red')
+
+same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIAStaticText[@name = 'red']
+</code></pre>
+
+<p>ALL
+- Specifies all of the elements in the following expression. For example <code class="prettyprint">ALL children.age &lt; 18</code> .</p>
+
+<p>NONE
+- Specifies none of the elements in the following expression. For example, <code class="prettyprint">NONE children.age &lt; 18</code> . This is logically equivalent to <code class="prettyprint">NOT (ANY ...)</code> .</p>
+
+<p>IN
+- Equivalent to an SQL IN operation, the left-hand side must appear in the collection specified by the right-hand side. For example, <code class="prettyprint">name IN { 'Ben', 'Melissa', 'Matthew' }</code> . The collection may be an array, a set, or a dictionary—in the case of a dictionary, its values are used.</p>
+
+<p>array[index]
+- Specifies the element at the specified index in the array.</p>
+
+<p>array[FIRST]
+- Specifies the first element in the array.</p>
+
+<p>array[LAST]
+- Specifies the last element in the array.</p>
+
+<p>array[SIZE]
+- Specifies the size of the array
+<code class="prettyprint">
+elements()[0].tableViews()[0].cells().withPredicate("staticTexts[SIZE] &gt; 2")
+same in Xpath: /*[1]/UIATableView[1]/UIATableCell[count(UIAStaticText) &gt; 2]
+</code></p>
+
+<h2 id="identifiers">Identifiers</h2>
+
+<p><strong>C style identifier</strong>
+- Any C style identifier that is not a reserved word.</p>
+
+<p><strong>#symbol</strong>
+- Used to escape a reserved word into a user identifier.</p>
+
+<p><strong>[\]{octaldigit}{3}</strong>
+- Used to escape an octal number ( <code class="prettyprint">\</code> followed by 3 octal digits).</p>
+
+<p><strong>[\][xX]{hexdigit}{2}</strong>
+- Used to escape a hex number ( <code class="prettyprint">\x</code> or <code class="prettyprint">\X</code> followed by 2 hex digits).</p>
+
+<p><strong>[\][uU]{hexdigit}{4}</strong>
+- Used to escape a Unicode number ( <code class="prettyprint">\u</code> or <code class="prettyprint">\U</code> followed by 4 hex digits).</p>
+
+<h2 id="literals">Literals</h2>
+
+<p>Single and double quotes produce the same result, but they do not terminate each other. For example, <code class="prettyprint">"abc"</code> and <code class="prettyprint">'abc'</code> are identical, whereas <code class="prettyprint">"a'b'c"</code> is equivalent to a space-separated concatenation of <code class="prettyprint">a, 'b', c</code>.</p>
+
+<p>FALSE , NO
+- Logical false.</p>
+
+<p>TRUE , YES
+- Logical true.</p>
+
+<p>NULL , NIL
+- A null value.</p>
+
+<p>SELF
+- Represents the object being evaluated.</p>
+
+<p>"text”
+- A character string.</p>
+
+<p>‘text’
+- A character string.</p>
+
+<p><strong>Comma-separated literal array</strong>
+- For example, <code class="prettyprint">{ 'comma', 'separated', 'literal', 'array' }</code> .</p>
+
+<p><strong>Standard integer and fixed-point notations</strong>
+- For example, <code class="prettyprint">1 , 27 , 2.71828 , 19.75</code> .</p>
+
+<p><strong>Floating-point notation with exponentiation</strong>
+- For example, <code class="prettyprint">9.2e-5</code> .</p>
+
+<p>0x
+- Prefix used to denote a hexadecimal digit sequence.</p>
+
+<p>0o
+- Prefix used to denote an octal digit sequence.</p>
+
+<p>0b
+- Prefix used to denote a binary digit sequence.</p>
+
+<h2 id="reserved-words">Reserved Words</h2>
+
+<p>The following words are reserved:</p>
+
+<p><code class="prettyprint">AND, OR, IN, NOT, ALL, ANY, SOME, NONE, LIKE, CASEINSENSITIVE, CI, MATCHES, CONTAINS, BEGINSWITH, ENDSWITH, BETWEEN, NULL, NIL, SELF, TRUE, YES, FALSE, NO, FIRST, LAST, SIZE, ANYKEY, SUBQUERY, CAST, TRUEPREDICATE, FALSEPREDICATE</code></p>
+
+<h2 id="appium-predicate-helpers">Appium predicate helpers</h2>
+
+<p>Appium has <a href="https://github.com/appium/appium-uiauto/blob/3052dace828db2ab3d722281fb7853cbcbc3252f/uiauto/appium/app.js#L68">helpers for predicate search</a> in app.js:</p>
+
+<ul>
+<li><code class="prettyprint">getFirstWithPredicate</code></li>
+<li><code class="prettyprint">getFirstWithPredicateWeighted</code></li>
+<li><code class="prettyprint">getAllWithPredicate</code></li>
+<li><code class="prettyprint">getNameContains</code></li>
+</ul>
+
+<p>Here’s a Ruby example:</p>
+<pre><code class="highlight ruby"><span class="c1"># Ruby example</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">'Various uses'</span>
+<span class="n">predicate</span> <span class="o">=</span> <span class="s2">"name contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || label contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || value contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">'"</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">execute_script</span><span class="p">(</span><span class="sx">%Q(au.mainApp().getFirstWithPredicate("</span><span class="si">#{</span><span class="n">predicate</span><span class="si">}</span><span class="sx">");)</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="n">element</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># Buttons, Various uses of UIButton</span>
+</code></pre>
+
+<h1 id="adjusting-network-connection">
+<span id="network_connection.md"></span>Adjusting Network Connection</h1>
+
+<p>The Selenium <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">Mobile JSON Wire Protocol Specification</a> supports an <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile#104">API</a> for getting and setting the network connection for a device. The API works through a bitmask, assigning an integer to each possible state:</p>
+
+<table>
+<thead>
+<tr>
+<th>Value (Alias)</th>
+<th>Data</th>
+<th>Wifi</th>
+<th>Airplane Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 (None)</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1 (Airplane Mode)</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2 (Wifi only)</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4 (Data only)</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6 (All network on)</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="ios">iOS</h2>
+
+<p>Unfortunately, at the moment Appium does not support the Selenium network
+connection API for iOS.</p>
+
+<h2 id="android">Android</h2>
+
+<p>Choose the setting you would like to use, and then send the correct bitmask from
+the table above.</p>
+<pre><code class="highlight javascript"><span class="c1">// set airplane mode</span>
+<span class="nx">driver</span><span class="p">.</span><span class="nx">setNetworkConnection</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">// set wifi only</span>
+<span class="nx">driver</span><span class="p">.</span><span class="nx">setNetworkConnection</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">// set data only</span>
+<span class="nx">driver</span><span class="p">.</span><span class="nx">setNetworkConnection</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1">// set wifi and data</span>
+<span class="nx">driver</span><span class="p">.</span><span class="nx">setNetworkConnection</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</code></pre>
+
+<p>Retrieving the network connection settings returns the same bitmask, from which
+the status can be decoded.</p>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">getNetworkConnection</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">connectionType</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nx">connectionType</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span><span class="err">:</span>
+      <span class="c1">// no network connection</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="err">:</span>
+      <span class="c1">// airplane mode</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="err">:</span>
+      <span class="c1">// wifi</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">4</span><span class="err">:</span>
+      <span class="c1">// data</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="mi">6</span><span class="err">:</span>
+      <span class="c1">// wifi and data</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>  
+<span class="p">});</span>
+</code></pre>
+
+<h1 id="uiautomator-uiselector">
+<span id="uiautomator_uiselector.md"></span>uiautomator UiSelector</h1>
+
+<p>Appium enables searching using <a href="http://developer.android.com/tools/help/uiautomator/UiSelector.html">UiSelectors</a>.
+<a href="http://developer.android.com/tools/help/uiautomator/UiScrollable.html">UiScrollable</a>
+is also supported.</p>
+
+<p>Note that the index selector is unreliable so prefer instance instead. The
+following examples are written against the api demos apk using Ruby.</p>
+
+<p>Find the first textview.</p>
+<pre><code class="highlight ruby"><span class="n">first_textview</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiSelector().className("android.widget.TextView").instance(0)'</span><span class="p">);</span>
+</code></pre>
+
+<p>Find the first element by text.</p>
+<pre><code class="highlight ruby"><span class="n">first_text</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiSelector().text("Animation")'</span><span class="p">)</span>
+<span class="n">first_text</span><span class="p">.</span><span class="nf">text</span> <span class="c1"># "Animation"</span>
+</code></pre>
+
+<p>Find the first scrollable element, then find a TextView with the text “Tabs”.
+The “Tabs” element will be scrolled into view.</p>
+<pre><code class="highlight ruby"><span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiScrollable(new UiSelector().scrollable(true).instance(0)).getChildByText(new UiSelector().className("android.widget.TextView"), "Tabs")'</span><span class="p">)</span>
+</code></pre>
+
+<p>As a special case, scrollIntoView returns the element that is scrolled into view.
+scrollIntoView allows scrolling to any UiSelector.</p>
+<pre><code class="highlight ruby"><span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text("WebView").instance(0));'</span><span class="p">)</span>
+<span class="n">element</span><span class="p">.</span><span class="nf">text</span> <span class="c1"># "WebView"</span>
+</code></pre>
+
+<h1 id="multi-lingual-support">
+<span id="unicode.md"></span>Multi-lingual Support</h1>
+
+<p>By default the automation tools for both iOS and Android do not support non-ASCII
+characters sent to editable fields through the keyboard.</p>
+
+<h2 id="ios">iOS</h2>
+
+<p>Appium sends non-ASCII characters to iOS editable fields directly, bypassing the
+keyboard altogether. While this allows the text to be inputted in tests, it should
+be kept in mind that any business logic triggered by keyboard input will therefore
+not be tested.</p>
+
+<p>One main caveat to this behavior is the encoding of the strings sent and received.
+Unicode also has the concept of “combining characters”, which are diacritical
+modifications of other characters. Rather than a single character representing
+what is seen, two (or more, in the case of heavily accented characters) separate
+characters are sometimes used to represent one, with the system overlaying them.</p>
+
+<p>Thus, while in Unicode the letter <code class="prettyprint">é</code> (Unicode’s “LATIN SMALL LETTER E WITH ACUTE”)
+can be encoded as a single letter, the iOS simulator will return the equally
+valid representation of the letter <code class="prettyprint">e</code> followed by the accent, <code class="prettyprint">́</code> (“COMBINING
+ACUTE ACCENT”). When this occurs a test may be reported but the expected
+and actual results will look exactly the same. The solution to this is to
+<a href="http://www.unicode.org/faq/normalization.html">normalize</a> the text before asserting
+on it.</p>
+<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">testText</span> <span class="o">=</span> <span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s2">"é Œ ù ḍ"</span><span class="p">);</span>
+<span class="nx">driver</span>
+  <span class="p">.</span><span class="nx">elementsByClassName</span><span class="p">(</span><span class="s1">'UIATextField'</span><span class="p">).</span><span class="nx">at</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">sendKeys</span><span class="p">(</span><span class="nx">testText</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">become</span><span class="p">(</span><span class="nx">testText</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">done</span><span class="p">);</span>
+</code></pre>
+
+<h2 id="android">Android</h2>
+
+<p>Android tests allow for Unicode input by installing and using a <a href="https://github.com/appium/io.appium.android.ime">specialized
+keyboard</a> that allows the text
+to be passed as ASCII text between Appium and the application being tested.</p>
+
+<p>In order to utilize this functionality, set the <code class="prettyprint">unicodeKeyboard</code> desired capability
+is set to <code class="prettyprint">true</code>. If the keyboard should be returned to its original state, the
+<code class="prettyprint">resetKeyboard</code> desired capability should also be set to <code class="prettyprint">true</code>. Otherwise Appium’s
+Unicode keyboard will remain enabled on the device after the tests are completed.</p>
+
+<p>Then tests can pass Unicode text to editable fields using <code class="prettyprint">send_keys</code>.</p>
+<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">desired</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">app</span><span class="p">:</span> <span class="s1">'/path/to/app'</span><span class="p">,</span>
+  <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
+  <span class="na">deviceVersion</span><span class="p">:</span> <span class="s1">'4.4'</span><span class="p">,</span>
+  <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
+  <span class="na">unicodeKeyboard</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">resetKeyboard</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">testText</span> <span class="o">=</span> <span class="s1">'é Œ ù ḍ'</span><span class="p">;</span>
+<span class="nx">driver</span>
+  <span class="p">.</span><span class="nx">elementByClassName</span><span class="p">(</span><span class="s1">'android.widget.EditText'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">sendKeys</span><span class="p">(</span><span class="nx">testText</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">text</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eventually</span><span class="p">.</span><span class="nx">become</span><span class="p">(</span><span class="nx">testText</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">done</span><span class="p">);</span>
+</code></pre>
 
       </div>
       <div class="dark-box">

@@ -1,0 +1,28 @@
+branches:
+  only:
+  - gh-pages
+language: ruby
+env:
+  global:
+  - LINKCHECKER_THREAD=3
+  - LINKCHECKER_PAUSE=5
+rvm:
+  - 2.1.2
+before_script:   
+  - sudo pip install LinkChecker
+script:
+  # checking what's deployed 
+  - bundle exec jekyll serve &
+  - sleep 10
+  - rake linkchecker_local
+  - pkill -9 -f jekyll || true
+  # rebuilding
+  - rake install
+  - bundle exec rake specs
+  - bundle exec rake clean
+  - bundle exec rake full_build
+  # checking again 
+  - bundle exec jekyll serve &
+  - sleep 10
+  - rake linkchecker_local
+  - pkill -9 -f jekyll || true

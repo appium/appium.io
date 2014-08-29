@@ -1,0 +1,3 @@
+[filtering]
+ignore=npmjs\.org|developer\.chrome\.com|rake\.rubyforge\.org|developer\.android\.com|localhost:8080
+ignorewarnings=https-certificate-error

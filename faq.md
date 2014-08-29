@@ -34,5 +34,5 @@ use Appium.
 Once we've got the mobile spec stuff merged into the official WebDriver 
 clients, for most users, you probably won't need an Appium client.
 
-For more on this question, see [this discussion thread](https://groups.google
-.com/forum/#!topic/appium-discuss/eVsPcm4ycIc).
+For more on this question, see 
+[this discussion thread](https://groups.google.com/forum/#!topic/appium-discuss/eVsPcm4ycIc).
