@@ -216,7 +216,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <p>Appium 会用类似的命令启动应用：<code class="prettyprint">adb shell am instrument -e coverage true -w com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation</code></p>
 
 <p>当你的测试完成时，我们就可以结束覆盖率收集，然后将 coverage.ec 文件从设备里取出来。</p>
-<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="ss">:endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
+<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="p">:</span><span class="n">endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
 </code></pre>
 
 <p>在 <code class="prettyprint">AndroidManifest.xml</code> 里定义 instrumentation 和 broadcast 接收器。</p>
@@ -249,7 +249,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <span class="nd">@SuppressLint</span><span class="o">(</span><span class="s">"SdCardPath"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">EndEmmaBroadcast</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="kt">int</span><span class="n">ent</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"AppiumEmma"</span><span class="o">,</span> <span class="s">"EndEmmaBroadcast broadcast received!"</span><span class="o">);</span>
         <span class="c1">// reflection is used so emma doesn't cause problems for other build targets</span>
         <span class="c1">// that do not include emma.</span>
@@ -277,11 +277,11 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <span class="kn">import</span> <span class="nn">android.support.v4.content.LocalBroadcastManager</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyInstrumentation</span> <span class="kd">extends</span> <span class="n">Instrumentation</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">Intent</span> <span class="kt">int</span><span class="n">ent</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">;</span>
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">arguments</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span><span class="n">ent</span> <span class="o">=</span> <span class="n">getTargetContext</span><span class="o">().</span><span class="na">getPackageManager</span><span class="o">()</span>
+        <span class="n">intent</span> <span class="o">=</span> <span class="n">getTargetContext</span><span class="o">().</span><span class="na">getPackageManager</span><span class="o">()</span>
                 <span class="o">.</span><span class="na">getLaunchIntentForPackage</span><span class="o">(</span><span class="s">"com.example.pkg"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">setFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
         <span class="n">start</span><span class="o">();</span> <span class="c1">// creates new thread which invokes onStart</span>
@@ -289,7 +289,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">onStart</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">startActivitySync</span><span class="o">(</span><span class="kt">int</span><span class="n">ent</span><span class="o">);</span>
+        <span class="n">startActivitySync</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
         <span class="n">LocalBroadcastManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">getTargetContext</span><span class="o">()).</span><span class="na">registerReceiver</span><span class="o">(</span>
                 <span class="k">new</span> <span class="n">EndEmmaBroadcast</span><span class="o">(),</span> <span class="k">new</span> <span class="n">IntentFilter</span><span class="o">(</span><span class="s">"com.example.pkg.END_EMMA"</span><span class="o">));</span>
     <span class="o">}</span>
@@ -679,7 +679,7 @@ expanded upon soon.</p>
 <p>生成触摸动作的接口。这部分文档很快将会补充更多的内容进来。</p>
 <pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">touch_action</span> <span class="o">=</span> <span class="no">Appium</span><span class="o">::</span><span class="no">TouchAction</span><span class="p">.</span><span class="nf">new</span>
-<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
+<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="p">:</span><span class="nb">name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
 <span class="n">touch_action</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="ss">element: </span><span class="n">element</span><span class="p">,</span> <span class="ss">x: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">y: </span><span class="mi">10</span><span class="p">).</span><span class="nf">perform</span>
 </code></pre>
 <pre><code class="highlight python"><span class="c"># python</span>

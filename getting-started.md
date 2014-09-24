@@ -112,7 +112,7 @@ See  [finding elements](/slate/en/master/#finding-elements.md) for detailed info
 
 You can also automate web views in hybrid apps! See the  [hybrid app guide](/slate/en/master/#hybrid.md)
 
-This repository contains [many examples of tests in a variety of different languages](https://github.com/appium/appium/tree/master/sample-code/examples)!
+This repository contains [many examples of tests in a variety of different languages](https://github.com/appium/sample-code)!
 
 For the full list of Appium doc pages, visit [this directory](/documentation.html?lang=en).
 
@@ -142,7 +142,7 @@ for instructions on how to build, test and run Appium from source.
 
 ### Mailing List
 
-Announcements and debates often take place on the [Discussion Group](https://groups.google.com/d/forum/appium-discuss), be sure to sign up!
+Announcements and debates often take place on the [Discussion Group](https://discuss.appium.io), be sure to sign up!
 
 ### Troubleshooting
 

@@ -638,7 +638,7 @@ instrumentation class.</p>
 
 <p>After your test completes, it’s time to end the coverage collection and pull
 the coverage.ec file from the device.</p>
-<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="ss">:endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
+<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="p">:</span><span class="n">endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
 </code></pre>
 
 <p><code class="prettyprint">AndroidManifest.xml</code> defines the instrumentation and broadcast receiver.</p>
@@ -671,7 +671,7 @@ the coverage.ec file from the device.</p>
 <span class="nd">@SuppressLint</span><span class="o">(</span><span class="s">"SdCardPath"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">EndEmmaBroadcast</span> <span class="kd">extends</span> <span class="n">BroadcastReceiver</span> <span class="o">{</span>
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="kt">int</span><span class="n">ent</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onReceive</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">,</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">Log</span><span class="o">.</span><span class="na">d</span><span class="o">(</span><span class="s">"AppiumEmma"</span><span class="o">,</span> <span class="s">"EndEmmaBroadcast broadcast received!"</span><span class="o">);</span>
         <span class="c1">// reflection is used so emma doesn't cause problems for other build targets</span>
         <span class="c1">// that do not include emma.</span>
@@ -699,11 +699,11 @@ the coverage.ec file from the device.</p>
 <span class="kn">import</span> <span class="nn">android.support.v4.content.LocalBroadcastManager</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyInstrumentation</span> <span class="kd">extends</span> <span class="n">Instrumentation</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="n">Intent</span> <span class="kt">int</span><span class="n">ent</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Intent</span> <span class="n">intent</span><span class="o">;</span>
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">arguments</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span><span class="n">ent</span> <span class="o">=</span> <span class="n">getTargetContext</span><span class="o">().</span><span class="na">getPackageManager</span><span class="o">()</span>
+        <span class="n">intent</span> <span class="o">=</span> <span class="n">getTargetContext</span><span class="o">().</span><span class="na">getPackageManager</span><span class="o">()</span>
                 <span class="o">.</span><span class="na">getLaunchIntentForPackage</span><span class="o">(</span><span class="s">"com.example.pkg"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">setFlags</span><span class="o">(</span><span class="n">Intent</span><span class="o">.</span><span class="na">FLAG_ACTIVITY_NEW_TASK</span><span class="o">);</span>
         <span class="n">start</span><span class="o">();</span> <span class="c1">// creates new thread which invokes onStart</span>
@@ -711,7 +711,7 @@ the coverage.ec file from the device.</p>
 
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="n">onStart</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">startActivitySync</span><span class="o">(</span><span class="kt">int</span><span class="n">ent</span><span class="o">);</span>
+        <span class="n">startActivitySync</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
         <span class="n">LocalBroadcastManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(</span><span class="n">getTargetContext</span><span class="o">()).</span><span class="na">registerReceiver</span><span class="o">(</span>
                 <span class="k">new</span> <span class="n">EndEmmaBroadcast</span><span class="o">(),</span> <span class="k">new</span> <span class="n">IntentFilter</span><span class="o">(</span><span class="s">"com.example.pkg.END_EMMA"</span><span class="o">));</span>
     <span class="o">}</span>
@@ -2505,7 +2505,7 @@ specified by passing the <code class="prettyprint">--chromedriver-version</code>
 <p>Mobile reset will reset the app’s state.</p>
 
 <p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
-<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="ss">:reset</span>
+<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="p">:</span><span class="n">reset</span>
 </code></pre>
 
 <p>Ruby without the gem</p>
@@ -2524,7 +2524,7 @@ application’s .app directory</p>
 <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: pullFile'</span><span class="p">,</span> <span class="p">{</span><span class="ss">path: </span><span class="s1">'/Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">}</span> <span class="c1">#=&gt; /Library/AddressBook/AddressBook.sqlitedb</span>
 
 <span class="c1">#iOS only</span>
-<span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: pullFile, {path: '</span><span class="o">/</span><span class="no">UICatalog</span><span class="p">.</span><span class="nf">app</span><span class="sr">/logfile.log'} #=&gt; /</span><span class="no">Applications</span><span class="o">/</span><span class="mi">12323</span><span class="o">-</span><span class="mi">452262</span><span class="o">-</span><span class="mi">24241</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">124124</span><span class="o">/</span><span class="no">UICatalog</span><span class="p">.</span><span class="nf">app</span><span class="sr">/logfile.log
+<span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: pullFile, {path: '</span><span class="o">/</span><span class="no">UICatalog</span><span class="p">.</span><span class="nf">app</span><span class="sr">/logfile.log'} #=&gt; /</span><span class="no">Applications</span><span class="sr">/</span>/<span class="sr">12323-452262-24241-23-124124/</span><span class="no">UICatalog</span><span class="p">.</span><span class="nf">app</span><span class="sr">/logfile.log
 </span></code></pre>
 
 <p>Ruby</p>
@@ -2545,7 +2545,7 @@ enables sending a keycode to Android.</p>
 </code></pre>
 
 <p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
-<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="ss">:keyevent</span><span class="p">,</span> <span class="ss">keycode: </span><span class="mi">82</span>
+<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="p">:</span><span class="n">keyevent</span><span class="p">,</span> <span class="ss">keycode: </span><span class="mi">82</span>
 </code></pre>
 
 <p>Ruby without the gem</p>

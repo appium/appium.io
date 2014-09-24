@@ -2932,7 +2932,7 @@ $this-&gt;appStrings('ru');
 <p>An API for generating touch actions. This section of the documentation will be
 expanded upon soon.</p>
 <pre><code class="highlight ruby"><span class="n">touch_action</span> <span class="o">=</span> <span class="no">Appium</span><span class="o">::</span><span class="no">TouchAction</span><span class="p">.</span><span class="nf">new</span>
-<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
+<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="p">:</span><span class="nb">name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
 <span class="n">touch_action</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="ss">element: </span><span class="n">element</span><span class="p">,</span> <span class="ss">x: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">y: </span><span class="mi">10</span><span class="p">).</span><span class="nf">perform</span>
 </code></pre>
 <pre><code class="highlight python"><span class="n">action</span> <span class="o">=</span> <span class="n">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
@@ -3095,7 +3095,7 @@ $multiAction-&gt;perform();
 <h2 id="scroll-to">Scroll To</h2>
 
 <p>Scroll to an element.</p>
-<pre><code class="highlight ruby"><span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Element Name'</span>
+<pre><code class="highlight ruby"><span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span> <span class="p">:</span><span class="nb">name</span><span class="p">,</span> <span class="s1">'Element Name'</span>
 <span class="n">execute_script</span> <span class="s2">"mobile: scrollTo"</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">element</span><span class="p">.</span><span class="nf">ref</span>
 </code></pre>
 <pre><code class="highlight python"><span class="n">todo</span><span class="p">:</span> <span class="n">python</span>
