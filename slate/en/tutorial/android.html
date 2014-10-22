@@ -1806,7 +1806,7 @@ select <code class="prettyprint">Build a free-style software project</code> then
 
 <span class="n">adb</span> <span class="n">uninstall</span> <span class="n">com</span><span class="p">.</span><span class="nf">example</span><span class="p">.</span><span class="nf">android</span><span class="p">.</span><span class="nf">apis</span>
 
-<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="sr">/</span>/<span class="sr">source/</span><span class="n">ruby_android</span>
+<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span>
 <span class="n">bundle</span> <span class="n">update</span>
 <span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
 
@@ -1972,26 +1972,26 @@ app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">st
 
 <span class="desc ruby">
 <pre><code class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
-<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="sr">/</span>/<span class="sr">source/</span><span class="n">ruby_android</span>
+<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span>
 <span class="n">bundle</span> <span class="n">update</span>
 
 <span class="n">export</span> <span class="no">SAUCE_USERNAME</span><span class="o">=</span><span class="s2">"your username from sauce"</span>
 <span class="n">export</span> <span class="no">SAUCE_ACCESS_KEY</span><span class="o">=</span><span class="s2">"your accesskey from sauce"</span>
 <span class="n">export</span> <span class="no">UPLOAD_FILE</span><span class="o">=</span><span class="s1">'api.apk'</span>
-<span class="n">ruby</span> <span class="p">.</span><span class="nf">/</span><span class="n">upload</span><span class="sr">/</span>/<span class="sr">upload.rb
+<span class="n">ruby</span> <span class="p">.</span><span class="nf">/</span><span class="n">upload</span><span class="o">/</span><span class="n">upload</span><span class="p">.</span><span class="nf">rb</span>
 
-export SAUCE_PATH="sauce-storage:api.apk"
-export APP_NAME="Ruby Android Appium tutorial"
+<span class="n">export</span> <span class="no">SAUCE_PATH</span><span class="o">=</span><span class="s2">"sauce-storage:api.apk"</span>
+<span class="n">export</span> <span class="no">APP_NAME</span><span class="o">=</span><span class="s2">"Ruby Android Appium tutorial"</span>
 
-flake 1 android[test]
-</span></code></pre>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">android</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
+</code></pre>
 
 <p>Now when we run the job, instead of using a local emulator, it’ll run on the
 Sauce cloud.</p>
 <pre><code class="highlight ruby"><span class="no">Started</span> <span class="n">by</span> <span class="n">user</span> <span class="n">anonymous</span>
-<span class="no">Building</span> <span class="k">in</span> <span class="n">workspace</span> <span class="sr">/</span>/<span class="sr">.jenkins/</span><span class="n">jobs</span><span class="sr">/</span>/<span class="sr">Android on Sauce/</span><span class="n">workspace</span>
-<span class="p">[</span><span class="n">workspace</span><span class="p">]</span> <span class="err">$</span> <span class="o">/</span><span class="n">bin</span><span class="sr">/</span>/<span class="sr">bash --login /</span><span class="n">var</span><span class="sr">/</span>/<span class="sr">folders/</span><span class="n">w7</span><span class="sr">/</span>/<span class="sr">c1yh5bps5dnc0frz0tbj_dmh0000gn/</span><span class="no">T</span><span class="sr">/</span>/<span class="sr">hudson4299606924074097008.sh
-Fetching gem metadata from https:/</span><span class="o">/</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/............
+<span class="no">Building</span> <span class="k">in</span> <span class="n">workspace</span> <span class="sr">/.jenkins/</span><span class="n">jobs</span><span class="o">/</span><span class="no">Android</span> <span class="n">on</span> <span class="no">Sauce</span><span class="o">/</span><span class="n">workspace</span>
+<span class="p">[</span><span class="n">workspace</span><span class="p">]</span> <span class="err">$</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">--</span><span class="n">login</span> <span class="sr">/var/</span><span class="n">folders</span><span class="o">/</span><span class="n">w7</span><span class="o">/</span><span class="n">c1yh5bps5dnc0frz0tbj_dmh0000gn</span><span class="o">/</span><span class="no">T</span><span class="o">/</span><span class="n">hudson4299606924074097008</span><span class="p">.</span><span class="nf">sh</span>
+<span class="no">Fetching</span> <span class="n">gem</span> <span class="n">metadata</span> <span class="n">from</span> <span class="n">https</span><span class="p">:</span><span class="sr">//</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/............
 Fetching additional metadata from https:/</span><span class="o">/</span><span class="n">rubygems</span><span class="p">.</span><span class="nf">org</span><span class="sr">/..
 Resolving dependencies...
 Using rake (10.1.1)
@@ -2026,15 +2026,15 @@ Your bundle is updated!
 File already uploaded
 Recording Video: false
 Running test 1x
-cmd: cd /</span><span class="n">tutorial</span><span class="sr">/</span>/<span class="sr">modules/sou</span><span class="n">rce</span><span class="sr">/</span>/<span class="sr">ruby_android; rake android['test',true]
-[36m
- android/s</span><span class="n">pecs</span><span class="sr">/</span>/<span class="sr">test [0m[32m ✓[0m https:/</span><span class="o">/</span><span class="n">saucelabs</span><span class="p">.</span><span class="nf">com</span><span class="sr">/tests/</span><span class="n">fd94de19e2d84beaa7e93e0853137bde</span>
+cmd: cd /</span><span class="n">tutorial</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_android</span><span class="p">;</span> <span class="n">rake</span> <span class="n">android</span><span class="p">[</span><span class="s1">'test'</span><span class="p">,</span><span class="kp">true</span><span class="p">]</span>
+<span class="err"></span><span class="p">[</span><span class="mi">36</span><span class="n">m</span>
+ <span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span> <span class="err"></span><span class="p">[</span><span class="mi">0</span><span class="n">m</span><span class="err"></span><span class="p">[</span><span class="mi">32</span><span class="n">m</span> <span class="err">✓</span><span class="p">[</span><span class="mi">0</span><span class="n">m</span> <span class="n">https</span><span class="p">:</span><span class="sr">//s</span><span class="n">aucelabs</span><span class="p">.</span><span class="nf">com</span><span class="sr">/tests/</span><span class="n">fd94de19e2d84beaa7e93e0853137bde</span>
 
 
 <span class="mi">1</span> <span class="no">Tests</span>
 
 <span class="no">Success</span> <span class="p">(</span><span class="mi">1</span><span class="p">):</span>
-<span class="n">android</span><span class="sr">/</span>/<span class="sr">specs/</span><span class="nb">test</span><span class="p">,</span> <span class="ss">runs: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">pass: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">fail: </span><span class="mi">0</span> 
+<span class="n">android</span><span class="o">/</span><span class="n">specs</span><span class="o">/</span><span class="nb">test</span><span class="p">,</span> <span class="ss">runs: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">pass: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">fail: </span><span class="mi">0</span> 
 
 <span class="no">Finished</span> <span class="k">in</span> <span class="mi">33</span> <span class="n">secs</span>
 <span class="no">Mar</span> <span class="mi">16</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">36</span> <span class="n">pm</span> <span class="o">-</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">36</span> <span class="n">pm</span>

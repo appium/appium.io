@@ -349,6 +349,10 @@ check out the <a href="https://github.com/appium/robots">Appium Robots</a> proje
 <td><a href="https://github.com/admc/wd">https://github.com/admc/wd</a></td>
 </tr>
 <tr>
+<td>Objective C</td>
+<td><a href="https://github.com/appium/selenium-objective-c">https://github.com/appium/selenium-objective-c</a></td>
+</tr>
+<tr>
 <td>PHP</td>
 <td><a href="https://github.com/appium/php-client">https://github.com/appium/php-client</a></td>
 </tr>
@@ -540,6 +544,21 @@ a binary made available by the Appium npm package). If you’re running Appium
 from source, simply run <code class="prettyprint">sudo grunt authorize</code> to do the same thing. If you
 are running <a href="https://github.com/appium/appium-dot-app">Appium.app</a>, you can
 authorize iOS through the GUI.</li>
+<li>If you’re on Xcode 6, you need to launch each simulator you intend to use
+with appium in advance, and change the default to actually show the soft
+keyboard if you want sendKeys to work. You can do this by clicking on any
+textfield and hitting command-K until you notice the soft keyboard show up.</li>
+<li>If you’re on Xcode 6, you have a feature in Xcode called Devices
+(command-shift-2). You need to make sure that whichever deviceName you choose
+to use with Appium in your capabilities, there is only one of those per sdk
+version. In other words, if you send in a deviceName cap of “iPhone 5s” and
+a platformVersion cap of “8.0”, you need to make sure that there is exactly
+one device with the name “iPhone 5s” and the 8.0 sdk in your devices list.
+Otherwise, Appium won’t know which one to use.</li>
+<li>In iOS8, devices each have their own setting which enables or disables
+UIAutomation. It lives in a “Developer” view in the Settings app. You need to
+verify that UIAutomaion is enabled in this view before the simulator or
+device can be automated.</li>
 </ul>
 
 <h3 id="testing-against-multiple-ios-sdks">Testing against multiple iOS SDKs</h3>
@@ -1431,7 +1450,7 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tr>
 <tr>
 <td><code class="prettyprint">--keystore-path</code></td>
-<td>/Users/saucelabs/.android/debug.keystore</td>
+<td>/Users/user/.android/debug.keystore</td>
 <td>(Android-only) Path to keystore</td>
 <td></td>
 </tr>
@@ -1481,6 +1500,12 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td><code class="prettyprint">--strict-caps</code></td>
 <td>false</td>
 <td>Cause sessions to fail if desired caps are sent in that Appium does not recognize as valid for the selected device</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--isolate-sim-device</code></td>
+<td>false</td>
+<td>Xcode 6 has a bug on some platforms where a certain simulator can only be launched without error if all other simulator devices are first deleted. This option causes Appium to delete all devices other than the one being used by Appium. Note that this is a permanent deletion, and you are responsible for using simctl or xcode to manage the categories of devices used with Appium.</td>
 <td></td>
 </tr>
 <tr>
@@ -2642,6 +2667,10 @@ See examples below:</p>
 <td style="text-align: left"><a href="http://www.nuget.org/packages/Appium.WebDriver/">C#</a></td>
 <td style="text-align: right"><a href="https://github.com/appium/appium-dotnet-driver">GitHub</a></td>
 </tr>
+<tr>
+<td style="text-align: left"><a href="https://github.com/appium/selenium-objective-c">Objective-C</a></td>
+<td style="text-align: right"><a href="https://github.com/appium/selenium-objective-c">GitHub</a></td>
+</tr>
 </tbody>
 </table>
 
@@ -2670,6 +2699,9 @@ $this-&gt;lock(3);
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">LockDevice</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver lockDeviceScreen:3];
+</code></pre>
 
 <h3 id="background-app">Background app</h3>
 
@@ -2691,6 +2723,9 @@ $this-&gt;backgroundApp(5);
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver runAppInBackground:3];
 </code></pre>
 
 <h3 id="hide-keyboard">Hide Keyboard</h3>
@@ -2715,6 +2750,9 @@ $this-&gt;hideKeyboard(array('strategy' =&gt; 'pressKey', 'key' =&gt; 'Done'));
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">HideKeyboard</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver hideKeyboard];
+</code></pre>
 
 <h3 id="start-activity">Start Activity</h3>
 
@@ -2738,6 +2776,9 @@ $this-&gt;hideKeyboard(array('strategy' =&gt; 'pressKey', 'key' =&gt; 'Done'));
 $this-&gt;startActivity(array("appPackage" =&gt; "com.example.android.apis",
                             "appActivity" =&gt; ".Foo"));
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver startActivity:@"com.example.android.apis" package:@".Foo"];
+</code></pre>
 
 <h3 id="open-notifications">Open Notifications</h3>
 
@@ -2759,6 +2800,9 @@ $this-&gt;startActivity(array("appPackage" =&gt; "com.example.android.apis",
 </code></pre>
 <pre><code class="highlight php">// php
 $this-&gt;openNotifications();
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver openNotifications];
 </code></pre>
 
 <h3 id="is-installed">Is installed</h3>
@@ -2783,6 +2827,9 @@ $this-&gt;isAppInstalled('com.example.android.apis');
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">IsAppInstalled</span><span class="p">(</span><span class="s">"com.example.android.apis-"</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver isAppInstalled:@"com.example.android.apis-"];
+</code></pre>
 
 <h3 id="install-app">Install App</h3>
 
@@ -2804,6 +2851,9 @@ $this-&gt;installApp('path/to/my.apk');
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">InstallApp</span><span class="p">(</span><span class="s">"path/to/my.apk"</span><span class="p">);</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver installAppAtPath:@"path/to/my.apk"];
 </code></pre>
 
 <h3 id="remove-app">Remove App</h3>
@@ -2827,6 +2877,9 @@ $this-&gt;removeApp('com.example.android.apis');
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">RemoveApp</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver removeApp:@"com.example.android.apis"];
+</code></pre>
 
 <h3 id="shake">Shake</h3>
 
@@ -2848,6 +2901,9 @@ $this-&gt;shake();
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">ShakeDevice</span><span class="p">();</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver shakeDevice];
 </code></pre>
 
 <h3 id="close-app">Close app</h3>
@@ -2871,10 +2927,17 @@ $this-&gt;closeApp();
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">CloseApp</span><span class="p">();</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver closeApp];
+</code></pre>
 
 <h3 id="launch">Launch</h3>
 
-<p>Launch the app</p>
+<p>Launch the session for the desired capabilities. Note that this is the
+companion to the autoLaunch=false capability. This is not for launching
+arbitrary apps/activities—for that use <code class="prettyprint">start_activity</code>. This is for
+continuing the initialization (“launch”) process if you have used
+autoLaunch=false.</p>
 <pre><code class="highlight ruby"><span class="c1"># ruby</span>
 <span class="n">launch</span>
 </code></pre>
@@ -2892,6 +2955,9 @@ $this-&gt;launchApp();
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">LaunchApp</span><span class="p">();</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver launchApp];
 </code></pre>
 
 <h3 id="reset">Reset</h3>
@@ -2915,6 +2981,9 @@ $this-&gt;reset();
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">ResetApp</span><span class="p">();</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver resetApp];
+</code></pre>
 
 <h3 id="available-contexts">Available Contexts</h3>
 
@@ -2936,6 +3005,9 @@ $this-&gt;contexts();
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span><span class="p">()</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+NSArray *contexts = driver.allContexts;
 </code></pre>
 
 <h3 id="current-context">Current context</h3>
@@ -2959,6 +3031,9 @@ $this-&gt;context();
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">()</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+NSString *context = driver.context;
+</code></pre>
 
 <h3 id="switch-to-default-context">Switch to default context</h3>
 
@@ -2980,6 +3055,9 @@ $this-&gt;context(NULL);
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span><span class="p">();</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver setContext:nil];
 </code></pre>
 
 <h3 id="app-strings">App Strings</h3>
@@ -3004,6 +3082,10 @@ $this-&gt;appStrings('ru');
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetAppStrings</span><span class="p">();</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver appStrings];
+[driver appStringsForLanguage:"@ru"];
+</code></pre>
 
 <h3 id="key-event">Key Event</h3>
 
@@ -3026,6 +3108,10 @@ $this-&gt;keyEvent('176');
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">KeyEvent</span><span class="p">(</span><span class="s">"176"</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+NSError *err;
+[driver triggerKeyEvent:176 metastate:0 error:&amp;err];
+</code></pre>
 
 <h3 id="current-activity">Current Activity</h3>
 
@@ -3047,6 +3133,10 @@ $this-&gt;currentActivity();
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+NSError *err;
+[driver currentActivity];
 </code></pre>
 
 <h3 id="touchaction-/-multitouchaction">TouchAction / MultiTouchAction</h3>
@@ -3833,6 +3923,8 @@ you will see your device on the grid console page:</p>
 <p>If <code class="prettyprint">url</code>, <code class="prettyprint">host</code>, and <code class="prettyprint">port</code> are not given, the config will be auto updated
 to point to localhost:whatever-port-Appium-started-on.</p>
 
+<p>If your Appium server is running on a different machine to your Selenium Grid server, make sure you use an external name/IP address in your <code class="prettyprint">host</code> &amp; <code class="prettyprint">url</code> docs; <code class="prettyprint">localhost</code> and <code class="prettyprint">127.0.0.1</code> will prevent Selenium Grid from connecting correctly.</p>
+
 <h2 id="automating-hybrid-apps">
 <span id="hybrid.md"></span>Automating hybrid apps</h2>
 
@@ -4580,6 +4672,9 @@ you have recorded.</li>
 
 <p>If you are new to Appium then please see the <a href="http://appium.io/getting-started.html">Getting started</a> guide for more information
 about the project.</p>
+
+<p>Pre-req:
+* Need .NET Framework 4.5 redistributable libraries</p>
 
 <p>To install:</p>
 

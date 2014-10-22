@@ -349,6 +349,10 @@ check out the <a href="https://github.com/appium/robots">Appium Robots</a> proje
 <td><a href="https://github.com/admc/wd">https://github.com/admc/wd</a></td>
 </tr>
 <tr>
+<td>Objective C</td>
+<td><a href="https://github.com/appium/selenium-objective-c">https://github.com/appium/selenium-objective-c</a></td>
+</tr>
+<tr>
 <td>PHP</td>
 <td><a href="https://github.com/appium/php-client">https://github.com/appium/php-client</a></td>
 </tr>
@@ -2642,6 +2646,10 @@ See examples below:</p>
 <td style="text-align: left"><a href="http://www.nuget.org/packages/Appium.WebDriver/">C#</a></td>
 <td style="text-align: right"><a href="https://github.com/appium/appium-dotnet-driver">GitHub</a></td>
 </tr>
+<tr>
+<td style="text-align: left"><a href="https://github.com/appium/selenium-objective-c">Objective-C</a></td>
+<td style="text-align: right"><a href="https://github.com/appium/selenium-objective-c">GitHub</a></td>
+</tr>
 </tbody>
 </table>
 
@@ -2670,6 +2678,9 @@ $this-&gt;lock(3);
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">LockDevice</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver lockDeviceScreen:3];
+</code></pre>
 
 <h3 id="background-app">Background app</h3>
 
@@ -2691,6 +2702,9 @@ $this-&gt;backgroundApp(5);
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver runAppInBackground:3];
 </code></pre>
 
 <h3 id="hide-keyboard">Hide Keyboard</h3>
@@ -2715,6 +2729,9 @@ $this-&gt;hideKeyboard(array('strategy' =&gt; 'pressKey', 'key' =&gt; 'Done'));
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">HideKeyboard</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver hideKeyboard];
+</code></pre>
 
 <h3 id="start-activity">Start Activity</h3>
 
@@ -2738,6 +2755,9 @@ $this-&gt;hideKeyboard(array('strategy' =&gt; 'pressKey', 'key' =&gt; 'Done'));
 $this-&gt;startActivity(array("appPackage" =&gt; "com.example.android.apis",
                             "appActivity" =&gt; ".Foo"));
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver startActivity:@"com.example.android.apis" package:@".Foo"];
+</code></pre>
 
 <h3 id="open-notifications">Open Notifications</h3>
 
@@ -2759,6 +2779,9 @@ $this-&gt;startActivity(array("appPackage" =&gt; "com.example.android.apis",
 </code></pre>
 <pre><code class="highlight php">// php
 $this-&gt;openNotifications();
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver openNotifications];
 </code></pre>
 
 <h3 id="is-installed">Is installed</h3>
@@ -2783,6 +2806,9 @@ $this-&gt;isAppInstalled('com.example.android.apis');
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">IsAppInstalled</span><span class="p">(</span><span class="s">"com.example.android.apis-"</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver isAppInstalled:@"com.example.android.apis-"];
+</code></pre>
 
 <h3 id="install-app">Install App</h3>
 
@@ -2804,6 +2830,9 @@ $this-&gt;installApp('path/to/my.apk');
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">InstallApp</span><span class="p">(</span><span class="s">"path/to/my.apk"</span><span class="p">);</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver installAppAtPath:@"path/to/my.apk"];
 </code></pre>
 
 <h3 id="remove-app">Remove App</h3>
@@ -2827,6 +2856,9 @@ $this-&gt;removeApp('com.example.android.apis');
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">RemoveApp</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver removeApp:@"com.example.android.apis"];
+</code></pre>
 
 <h3 id="shake">Shake</h3>
 
@@ -2848,6 +2880,9 @@ $this-&gt;shake();
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">ShakeDevice</span><span class="p">();</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver shakeDevice];
 </code></pre>
 
 <h3 id="close-app">Close app</h3>
@@ -2871,6 +2906,9 @@ $this-&gt;closeApp();
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">CloseApp</span><span class="p">();</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver closeApp];
+</code></pre>
 
 <h3 id="launch">Launch</h3>
 
@@ -2892,6 +2930,9 @@ $this-&gt;launchApp();
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">LaunchApp</span><span class="p">();</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver launchApp];
 </code></pre>
 
 <h3 id="reset">Reset</h3>
@@ -2915,6 +2956,9 @@ $this-&gt;reset();
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">ResetApp</span><span class="p">();</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver resetApp];
+</code></pre>
 
 <h3 id="available-contexts">Available Contexts</h3>
 
@@ -2936,6 +2980,9 @@ $this-&gt;contexts();
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span><span class="p">()</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+NSArray *contexts = driver.allContexts;
 </code></pre>
 
 <h3 id="current-context">Current context</h3>
@@ -2959,6 +3006,9 @@ $this-&gt;context();
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">()</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+NSString *context = driver.context;
+</code></pre>
 
 <h3 id="switch-to-default-context">Switch to default context</h3>
 
@@ -2980,6 +3030,9 @@ $this-&gt;context(NULL);
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span><span class="p">();</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver setContext:nil];
 </code></pre>
 
 <h3 id="app-strings">App Strings</h3>
@@ -3004,6 +3057,10 @@ $this-&gt;appStrings('ru');
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetAppStrings</span><span class="p">();</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+[driver appStrings];
+[driver appStringsForLanguage:"@ru"];
+</code></pre>
 
 <h3 id="key-event">Key Event</h3>
 
@@ -3026,6 +3083,10 @@ $this-&gt;keyEvent('176');
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">KeyEvent</span><span class="p">(</span><span class="s">"176"</span><span class="p">);</span>
 </code></pre>
+<pre><code class="highlight plaintext">// objective c
+NSError *err;
+[driver triggerKeyEvent:176 metastate:0 error:&amp;err];
+</code></pre>
 
 <h3 id="current-activity">Current Activity</h3>
 
@@ -3047,6 +3108,10 @@ $this-&gt;currentActivity();
 </code></pre>
 <pre><code class="highlight csharp"><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
+</code></pre>
+<pre><code class="highlight plaintext">// objective c
+NSError *err;
+[driver currentActivity];
 </code></pre>
 
 <h3 id="touchaction-/-multitouchaction">TouchAction / MultiTouchAction</h3>

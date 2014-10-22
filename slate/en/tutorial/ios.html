@@ -451,7 +451,6 @@ that path.</p>
 <p><code>$ nano appium.txt
 [caps]
 platformName = "ios"
-deviceName = "iPhone Simulator"
 app = "./UICatalog.app"
 </code></p>
 
@@ -1567,7 +1566,7 @@ select <code class="prettyprint">Build a free-style software project</code> then
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">node</span> <span class="o">&amp;&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span>
 <span class="n">killall</span> <span class="o">-</span><span class="mi">9</span> <span class="n">instruments</span> <span class="o">&amp;&gt;</span> <span class="sr">/dev/nu</span><span class="n">ll</span>
 
-<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="sr">/</span>/<span class="sr">source/</span><span class="n">ruby_ios</span>
+<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_ios</span>
 <span class="n">bundle</span> <span class="n">update</span>
 <span class="n">flake</span> <span class="mi">1</span> <span class="n">ios</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
 </code></pre>
@@ -1701,19 +1700,19 @@ app to Sauce Labs using the <a href="https://saucelabs.com/docs/rest#storage">st
 
 <span class="desc ruby">
 <pre><code class="highlight ruby"><span class="c1">#!/bin/bash --login</span>
-<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="sr">/</span>/<span class="sr">source/</span><span class="n">ruby_ios</span>
+<span class="n">cd</span> <span class="o">~</span><span class="sr">/tutorial/mo</span><span class="n">dules</span><span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">ruby_ios</span>
 <span class="n">bundle</span> <span class="n">update</span>
 
 <span class="n">export</span> <span class="no">SAUCE_USERNAME</span><span class="o">=</span><span class="s2">"your username from sauce"</span>
 <span class="n">export</span> <span class="no">SAUCE_ACCESS_KEY</span><span class="o">=</span><span class="s2">"your accesskey from sauce"</span>
 <span class="n">export</span> <span class="no">UPLOAD_FILE</span><span class="o">=</span><span class="s1">'UICatalog6.1.app.zip'</span>
-<span class="n">ruby</span> <span class="p">.</span><span class="nf">/</span><span class="n">upload</span><span class="sr">/</span>/<span class="sr">upload.rb
+<span class="n">ruby</span> <span class="p">.</span><span class="nf">/</span><span class="n">upload</span><span class="o">/</span><span class="n">upload</span><span class="p">.</span><span class="nf">rb</span>
 
-export SAUCE_PATH="sauce-storage:UICatalog6.1.app.zip"
-export APP_NAME="Ruby iOS Appium tutorial"
+<span class="n">export</span> <span class="no">SAUCE_PATH</span><span class="o">=</span><span class="s2">"sauce-storage:UICatalog6.1.app.zip"</span>
+<span class="n">export</span> <span class="no">APP_NAME</span><span class="o">=</span><span class="s2">"Ruby iOS Appium tutorial"</span>
 
-flake 1 ios[test]
-</span></code></pre>
+<span class="n">flake</span> <span class="mi">1</span> <span class="n">ios</span><span class="p">[</span><span class="nb">test</span><span class="p">]</span>
+</code></pre>
 
 <p>Now when we run the job, instead of using a local simulator,
 it’ll run on the Sauce cloud.</p>
