@@ -3,7 +3,7 @@ require 'date'
 
 # ruby gems
 require 'rubygems'
-require 'posix/spawn'
+require 'posix-spawn'
 require 'nokogiri'
 
 # local
