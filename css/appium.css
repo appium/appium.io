@@ -62,13 +62,13 @@ body {
 }
 
 .jumbotron::after {
-  background: rgba(0, 28, 49, 0.74);
-  background: -moz-linear-gradient(45deg, rgba(10, 4, 14, 0.92) 0%, rgba(0, 28, 49, 0.74) 100%);
-  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(10, 4, 14, 0.92)), color-stop(100%, rgba(0, 28, 49, 0.74)));
-  background: -webkit-linear-gradient(45deg, rgba(10, 4, 14, 0.92) 0%, rgba(0, 28, 49, 0.74) 100%);
-  background: -o-linear-gradient(45deg, rgba(10, 4, 14, 0.92) 0%, rgba(0, 28, 49, 0.74) 100%);
-  background: -ms-linear-gradient(45deg, rgba(10, 4, 14, 0.92) 0%, rgba(0, 28, 49, 0.74) 100%);
-  background: linear-gradient(45deg, rgba(10, 4, 14, 0.92) 0%, rgba(0, 28, 49, 0.74) 100%);
+  background: rgba(78, 72, 83, 0.74);
+  background: -moz-linear-gradient(45deg, rgba(116, 108, 122, 0.92) 0%, rgba(78, 72, 83, 0.74) 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(116, 108, 122, 0.92)), color-stop(100%, rgba(78, 72, 83, 0.74)));
+  background: -webkit-linear-gradient(45deg, rgba(116, 108, 122, 0.92) 0%, rgba(78, 72, 83, 0.74) 100%);
+  background: -o-linear-gradient(45deg, rgba(116, 108, 122, 0.92) 0%, rgba(78, 72, 83, 0.74) 100%);
+  background: -ms-linear-gradient(45deg, rgba(116, 108, 122, 0.92) 0%, rgba(78, 72, 83, 0.74) 100%);
+  background: linear-gradient(45deg, rgba(116, 108, 122, 0.92) 0%, rgba(78, 72, 83, 0.74) 100%);
   content: '';
   display: block;
   position: absolute;
