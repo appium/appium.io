@@ -53,7 +53,7 @@ body {
 }
 
 .jumbotron h1.appium-logo {
-  background: url(../img/appium-logo-white.png);
+  background: url(../img/appium-logo-sauce-white.png);
   width: 354px;
   height: 107px;
   overflow: hidden;
