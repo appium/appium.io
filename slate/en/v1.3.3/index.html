@@ -382,7 +382,7 @@ make explicit the level of support and requirements for each of these.</p>
 instructions.</p>
 
 <ul>
-<li>Versions: 6.0, 6.1, 7.0, 7.1, 8.0, and 8.1</li>
+<li>Versions: 6.0, 6.1, 7.0, and 7.1</li>
 <li>Devices: iPhone Simulator, iPad Simulator, and real iPhones and iPads</li>
 <li>Native app support: Yes, with debug version of .app (simulator),
 or correctly-signed .ipa (real devices). Underlying support is provided by
@@ -1511,7 +1511,7 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <tr>
 <td><code class="prettyprint">--tmp</code></td>
 <td>null</td>
-<td>Absolute path to directory Appium can use to manage temporary files, like built-in iOS apps it needs to move around. Defaults to the <code class="prettyprint">APPIUM_TMP_DIR</code> variable and then to <code class="prettyprint">/tmp</code> on *nix/Mac and to the <code class="prettyprint">TEMP</code> variable on windows.</td>
+<td>Absolute path to directory Appium can use to manage temporary files, like built-in iOS apps it needs to move around. On *nix/Mac defaults to /tmp, on Windows defaults to C:\Windows\Temp</td>
 <td></td>
 </tr>
 <tr>
@@ -1991,12 +1991,6 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td>
 <code class="prettyprint">oneByOne</code>, <code class="prettyprint">grouped</code> or setValue</td>
 </tr>
-<tr>
-<td><code class="prettyprint">screenshotWaitTimeout</code></td>
-<td>Max timeout in sec to wait for a screenshot to be generated. default: 10</td>
-<td>e.g., <code class="prettyprint">5</code>
-</td>
-</tr>
 </tbody>
 </table>
 
@@ -2400,42 +2394,6 @@ otherwise failing, you can restart it by running:</p>
 <p>Now, make sure Appium is running:</p>
 
 <p>node .</p>
-
-<p>There are several ways to start an Appium application (it works exactly
-the same as when the application is started via adb):</p>
-
-<ul>
-<li>apk or zip only, the default activity will be launched (‘app’ capability)</li>
-<li>apk + activity (‘app’ + ‘appActivity’ capabilities)</li>
-<li>apk + activity + intent (‘app’ + ‘appActivity’ + ‘appIntent’ capabilities)</li>
-<li>…</li>
-</ul>
-
-<p>Activities may be specified in the following way:</p>
-
-<ul>
-<li>absolute (e.g. appActivity: ‘com.helloworld.SayHello’).</li>
-<li>relative to appPackage (e.g. appPackage: ‘com.helloworld’, appActivity=‘.SayHello’)</li>
-</ul>
-
-<p>If the ‘appWaitPackage’ and ‘appWaitActivity’ caps are specified, Appium
-automatically spins until those activities are launched. You may specify
-multiple wait activities for instance:</p>
-
-<ul>
-<li>appActivity: ‘com.splash.SplashScreen’</li>
-<li>appPackage: ‘com.splash’ appActivity: ‘.SplashScreen’</li>
-<li>appPackage: ‘com.splash’ appActivity: ‘.SplashScreen,.LandingPage,com.why.GoThere’</li>
-</ul>
-
-<p>If you are not sure what activity are configured in your apk, you can
-proceed in one of the following ways:</p>
-
-<ul>
-<li>Mac/Linux: ‘adb shell dumpsys window windows | grep mFocusedApp’</li>
-<li>In the Ruby console: ‘adb shell dumpsys window windows`.each_line.grep(/mFocusedApp/).first.strip’</li>
-<li>In Windows terminal run ‘adb shell dumpsys window windows’ and manually look for the mFocusedApp line.</li>
-</ul>
 
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
 <pre><code class="highlight javascript"><span class="c1">// javascript</span>
@@ -3860,78 +3818,29 @@ scrollIntoView allows scrolling to any UiSelector.</p>
 <h2 id="multi-lingual-support">
 <span id="unicode.md"></span>Multi-lingual Support</h2>
 
-<p>One problem with dealing with non-Latin characters programmatically is that, for characters
-with accents, there can be multiple ways of encoding the form. So, for the letter
-<code class="prettyprint">é</code>, there are two encodings: a single combining character <code class="prettyprint">é</code> (Unicode’s
-<code class="prettyprint">LATIN SMALL LETTER E WITH ACUTE</code>), and the combination of the letter <code class="prettyprint">e</code> followed
-by the accent, <code class="prettyprint">́</code> (<code class="prettyprint">COMBINING ACUTE ACCENT</code>). In order to deal with this, there
-is <code class="prettyprint">normalization</code>, an operation that makes <a href="http://www.unicode.org/reports/tr15/">“equivalent strings have a unique
-binary representation”</a>.</p>
-
-<p>Luckily, normalizing ASCII text (i.e., text that doesn’t need to be normalized)
-does not cause any changes, and performing
-the operation multiple times does not have an effect. Thus a normalization
-function can be called on text without risking adverse effects.</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
-<span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
-
-<span class="s1">'some ASCII text'</span> <span class="o">===</span> <span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s1">'some ASCII text'</span><span class="p">);</span>
-<span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s1">'Adélaïde Hervé'</span><span class="p">)</span> <span class="o">===</span> <span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s1">'Adélaïde Hervé'</span><span class="p">));</span>
-</code></pre>
-
-<p>So, when dealing with unicode text within a test, you need to normalize, preferably
-on both the text expected and that received from Appium. There are a number of
-ways to do the normalization, so be sure to perform the same operation on both
-strings!</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
-<span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
-<span class="nx">driver</span>
-  <span class="p">.</span><span class="nx">elementByAccessibilityId</span><span class="p">(</span><span class="s1">'find'</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">text</span><span class="p">()</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">txt</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="nx">txt</span><span class="p">).</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">(</span><span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s2">"é Œ ù ḍ"</span><span class="p">));</span>
-    <span class="p">});</span>
-</code></pre>
-
-<p>One tell-tale sign that the problem is with the encoding of the unicode text is
-an assertion that fails but reports what look to be the same string:</p>
-<pre><code class="highlight shell">AssertionError: expected <span class="s1">'François Gérard'</span> to deeply equal <span class="s1">'François Gérard'</span>
-      + expected - actual
-
-      +<span class="s2">"François Gérard"</span>
-      -<span class="s2">"François Gérard"</span>
-</code></pre>
-
-<p>Since the error is just encoding, the output <em>looks</em> the same. Normalized, these
-should equal programmatically as well as visually.</p>
-
-<h3 id="finders">Finders</h3>
-
-<p>Finding by text can also require normalization. For instance, if you have a button
-in an iOS app with the name <code class="prettyprint">Найти</code> you may need to normalize the text within the
-find command.</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
-<span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
-<span class="nx">driver</span>
-  <span class="p">.</span><span class="nx">findElementByXPath</span><span class="p">(</span><span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s2">"//UIAButton[@name='Найти']"</span><span class="p">))</span>
-    <span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">eventually</span><span class="p">.</span><span class="nx">exist</span><span class="p">;</span>
-</code></pre>
-
-<p>Otherwise the elements may not be found.</p>
-
-<h3 id="text-fields">Text Fields</h3>
-
 <p>By default the automation tools for both iOS and Android do not support non-ASCII
 characters sent to editable fields through the keyboard.</p>
 
-<h4 id="ios">iOS</h4>
+<h3 id="ios">iOS</h3>
 
 <p>Appium sends non-ASCII characters to iOS editable fields directly, bypassing the
 keyboard altogether. While this allows the text to be inputted in tests, it should
 be kept in mind that any business logic triggered by keyboard input will therefore
 not be tested.</p>
 
-<p>As above, the text received may need to be normalized before asserting on it.</p>
+<p>One main caveat to this behavior is the encoding of the strings sent and received.
+Unicode also has the concept of “combining characters”, which are diacritical
+modifications of other characters. Rather than a single character representing
+what is seen, two (or more, in the case of heavily accented characters) separate
+characters are sometimes used to represent one, with the system overlaying them.</p>
+
+<p>Thus, while in Unicode the letter <code class="prettyprint">é</code> (Unicode’s “LATIN SMALL LETTER E WITH ACUTE”)
+can be encoded as a single letter, the iOS simulator will return the equally
+valid representation of the letter <code class="prettyprint">e</code> followed by the accent, <code class="prettyprint">́</code> (“COMBINING
+ACUTE ACCENT”). When this occurs a test may be reported but the expected
+and actual results will look exactly the same. The solution to this is to
+<a href="http://www.unicode.org/faq/normalization.html">normalize</a> the text before asserting
+on it.</p>
 <pre><code class="highlight javascript"><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">testText</span> <span class="o">=</span> <span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s2">"é Œ ù ḍ"</span><span class="p">);</span>
@@ -3943,7 +3852,7 @@ not be tested.</p>
   <span class="p">.</span><span class="nx">nodeify</span><span class="p">(</span><span class="nx">done</span><span class="p">);</span>
 </code></pre>
 
-<h4 id="android">Android</h4>
+<h3 id="android">Android</h3>
 
 <p>Android tests allow for Unicode input by installing and using a <a href="https://github.com/appium/io.appium.android.ime">specialized
 keyboard</a> that allows the text
@@ -4209,23 +4118,11 @@ it yourself:</p>
 &gt; make
 &gt; sudo make install</code></p>
 
-<p>If you use a recent device, you may need to install the latest
-ideviceinstaller, this is optional:</p>
-<pre><code class="highlight plaintext">brew install --HEAD ideviceinstaller
-</code></pre>
-
 <p>Once installed you can start the proxy with the following command:</p>
 
 <p class="centercode"><code># Change the udid to be the udid of the attached device and make sure to set the port to 27753
 # as that is the port the remote-debugger uses.
 &gt; ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d</code></p>
-
-<p>You may also use the ios-webkit-debug-proxy-launcher to launch the
-proxy. It monitors the proxy log for errors, and relaunch the proxy
-where needed. This is also optional and may help with recent devices:</p>
-
-<p class="centercode"><code># change the udid
-&gt; ./bin/ios-webkit-debug-proxy-launcher.js -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d</code></p>
 
 <p><strong>NOTE:</strong> the proxy requires the <strong>“web inspector”</strong> to be turned on to
 allow a connection to be established. Turn it on by going to <strong>settings &gt;
