@@ -2039,7 +2039,7 @@ preferences so that the remote debugger port is open.</p>
 attempting to use Appium.</p>
 
 <p>Then, use desired capabilities like these to run your test in mobile Safari:</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
   <span class="na">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span>
   <span class="p">,</span> <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'7.1'</span>
@@ -2047,7 +2047,7 @@ attempting to use Appium.</p>
   <span class="p">,</span> <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
   <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
   <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
@@ -2055,7 +2055,7 @@ attempting to use Appium.</p>
   <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2067,7 +2067,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"iOS"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_VERSION</span><span class="o">,</span> <span class="s">"7.1"</span><span class="o">);</span>
@@ -2138,7 +2138,7 @@ $ node /lib/server/main.js -U &lt;UDID&gt;</code></p>
 <p>To configure you test to run against safari simply set the <strong>“browserName”</strong> to be <strong>“Safari”</strong>.</p>
 
 <h3 id="java-example">Java Example</h3>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="c1">//setup the web driver and launch the webview app.</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">BROWSER_NAME</span><span class="o">,</span> <span class="s">"Safari"</span><span class="o">);</span>
@@ -2156,7 +2156,7 @@ $ node /lib/server/main.js -U &lt;UDID&gt;</code></p>
 </code></pre>
 
 <h3 id="python-example">Python Example</h3>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="c"># setup the web driver and launch the webview app.</span>
 <span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Safari'</span> <span class="p">}</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Remote</span><span class="p">(</span><span class="s">'http://localhost:4723/wd/hub'</span><span class="p">,</span> <span class="n">capabilities</span><span class="p">)</span>
@@ -2173,7 +2173,7 @@ $ node /lib/server/main.js -U &lt;UDID&gt;</code></p>
 <span class="c"># close the driver</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 class ContextTests extends PHPUnit_Extensions_AppiumTestCase
 {
     public static $browsers = array(
@@ -2209,7 +2209,7 @@ class ContextTests extends PHPUnit_Extensions_AppiumTestCase
 </ul>
 
 <p>Then, use desired capabilities like these to run your test in Chrome:</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
   <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span>
   <span class="p">,</span> <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'4.4'</span>
@@ -2217,7 +2217,7 @@ class ContextTests extends PHPUnit_Extensions_AppiumTestCase
   <span class="p">,</span> <span class="na">browserName</span><span class="p">:</span> <span class="s1">'Chrome'</span>
 <span class="p">};</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
   <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
   <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.4'</span><span class="p">,</span>
@@ -2225,7 +2225,7 @@ class ContextTests extends PHPUnit_Extensions_AppiumTestCase
   <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Chrome'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2237,7 +2237,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_VERSION</span><span class="o">,</span> <span class="s">"4.4"</span><span class="o">);</span>
@@ -2291,7 +2291,7 @@ want to zip it up, you can.</p>
 <p>node .</p>
 
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
     <span class="na">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span><span class="p">,</span>
     <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'7.1'</span><span class="p">,</span>
@@ -2299,7 +2299,7 @@ want to zip it up, you can.</p>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
@@ -2307,7 +2307,7 @@ want to zip it up, you can.</p>
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2319,7 +2319,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"iOS"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_VERSION</span><span class="o">,</span> <span class="s">"7.1"</span><span class="o">);</span>
@@ -2365,7 +2365,7 @@ otherwise failing, you can restart it by running:</p>
 <p>node .</p>
 
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
     <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
     <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'4.4'</span><span class="p">,</span>
@@ -2373,7 +2373,7 @@ otherwise failing, you can restart it by running:</p>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.4'</span><span class="p">,</span>
@@ -2381,7 +2381,7 @@ otherwise failing, you can restart it by running:</p>
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2393,7 +2393,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_VERSION</span><span class="o">,</span> <span class="s">"4.4"</span><span class="o">);</span>
@@ -2425,7 +2425,7 @@ Appium comes bundled with another automation backend called <a href="http://sele
 <p>To use Selendroid, all that is required is to slightly change the set of
 desired capabilities mentioned above, by adding the <code class="prettyprint">automationName</code> capability
 and specifying the Selendroid automation backend.</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
     <span class="na">automationName</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
     <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
@@ -2434,7 +2434,7 @@ and specifying the Selendroid automation backend.</p>
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
     <span class="s">'automationName'</span><span class="p">:</span> <span class="s">'Selendroid'</span><span class="p">,</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
@@ -2443,7 +2443,7 @@ and specifying the Selendroid automation backend.</p>
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2456,7 +2456,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">AUTOMATION_NAME</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
@@ -2570,7 +2570,7 @@ See examples below:</p>
 <ul>
 <li><strong>WD.js:</strong></li>
 </ul>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="c1">// scroll the view down</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: scroll"</span><span class="p">,</span> <span class="p">[{</span><span class="na">direction</span><span class="p">:</span> <span class="s1">'down'</span><span class="p">}])</span>
 <span class="c1">// continue testing</span>
@@ -2579,7 +2579,7 @@ See examples below:</p>
 <ul>
 <li><strong>Java:</strong></li>
 </ul>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
 <span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"direction"</span><span class="o">,</span> <span class="s">"down"</span><span class="o">);</span>
@@ -2594,7 +2594,7 @@ See examples below:</p>
 <ul>
 <li><strong>Java</strong></li>
 </ul>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="c1">// slider values can be string representations of numbers between 0 and 1</span>
 <span class="c1">// e.g., "0.1" is 10%, "1.0" is 100%</span>
 <span class="n">WebElement</span> <span class="n">slider</span> <span class="o">=</span>  <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/slider[1]"</span><span class="o">));</span>
@@ -2652,89 +2652,89 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <h3 id="lock">Lock</h3>
 
 <p>Lock the screen.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">lock</span> <span class="mi">5</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">lock</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">lockScreen</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">lock</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;lock(3);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">LockDevice</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="background-app">Background app</h3>
 
 <p>Send the currently active app to the background.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">background_app</span> <span class="mi">5</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">background_app</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">runAppInBackground</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">backgroundApp</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;backgroundApp(5);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="hide-keyboard">Hide Keyboard</h3>
 
 <p>Hide the keyboard.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">hide_keyboard</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">hide_keyboard</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">hideKeyboard</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">hideKeyboard</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;hideKeyboard();
 $this-&gt;hideKeyboard(array('strategy' =&gt; 'pressKey', 'key' =&gt; 'Done'));
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">HideKeyboard</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="start-activity">Start Activity</h3>
 
 <p>Open an activity in the current app or start a new app and open an activity <em>Android only</em></p>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">startActivity</span><span class="o">(</span><span class="s">"appPackage"</span><span class="o">,</span><span class="s">"com.example.android.apis"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">startActivity</span><span class="p">({</span><span class="na">appPackage</span><span class="p">:</span> <span class="s1">'com.example.android.apis'</span><span class="p">,</span> <span class="na">appActivity</span><span class="p">:</span> <span class="s1">'.Foo'</span><span class="p">},</span> <span class="nx">cb</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">start_activity</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">,</span> <span class="s">'.Foo'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">start_activity</span> <span class="ss">app_package: </span><span class="s1">'io.appium.android.apis'</span><span class="p">,</span> <span class="ss">app_activity: </span><span class="s1">'.accessibility.AccessibilityNodeProviderActivity'</span>
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">StartActivity</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">,</span> <span class="s">".Foo"</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;startActivity(array("appPackage" =&gt; "com.example.android.apis",
                             "appActivity" =&gt; ".Foo"));
 </code></pre>
@@ -2742,310 +2742,310 @@ $this-&gt;startActivity(array("appPackage" =&gt; "com.example.android.apis",
 <h3 id="open-notifications">Open Notifications</h3>
 
 <p>Open the notification shade <em>Android only</em></p>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">openNotifications</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">openNotifications</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">open_notifications</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">openNotifications</span>
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">OpenNotifications</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;openNotifications();
 </code></pre>
 
 <h3 id="is-installed">Is installed</h3>
 
 <p>Check if an app is installed</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">is_installed?</span> <span class="s2">"com.example.android.apis"</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">is_app_installed</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">isAppInstalled</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">isAppInstalled</span><span class="p">(</span><span class="s2">"com.example.android.apis"</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">isAppInstalled</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;isAppInstalled('com.example.android.apis');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">IsAppInstalled</span><span class="p">(</span><span class="s">"com.example.android.apis-"</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="install-app">Install App</h3>
 
 <p>Install an app to the device.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">install</span> <span class="s1">'path/to/my.apk'</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">install_app</span><span class="p">(</span><span class="s">'path/to/my.apk'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">installApp</span><span class="o">(</span><span class="s">"path/to/my.apk"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">installApp</span><span class="p">(</span><span class="s2">"path/to/my.apk"</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;installApp('path/to/my.apk');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">InstallApp</span><span class="p">(</span><span class="s">"path/to/my.apk"</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="remove-app">Remove App</h3>
 
 <p>Remove an app from the device.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">remove</span> <span class="s1">'com.example.android.apis'</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">remove_app</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">removeApp</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">removeApp</span><span class="p">(</span><span class="s2">"com.example.android.apis"</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;removeApp('com.example.android.apis');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">RemoveApp</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="shake">Shake</h3>
 
 <p>Simulate the device shaking.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">shake</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">shake</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">shake</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">shake</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;shake();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">ShakeDevice</span><span class="p">();</span>
 </code></pre>
 
 <h3 id="close-app">Close app</h3>
 
 <p>Close the app</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">close_app</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">close_app</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">closeApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">closeApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;closeApp();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">CloseApp</span><span class="p">();</span>
 </code></pre>
 
 <h3 id="launch">Launch</h3>
 
 <p>Launch the app</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">launch</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">launch_app</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">launchApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">launchApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;launchApp();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">LaunchApp</span><span class="p">();</span>
 </code></pre>
 
 <h3 id="reset">Reset</h3>
 
 <p>Reset the app.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">reset</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">resetApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">resetApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;reset();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">ResetApp</span><span class="p">();</span>
 </code></pre>
 
 <h3 id="available-contexts">Available Contexts</h3>
 
 <p>List all available contexts</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">context_array</span> <span class="o">=</span> <span class="n">available_contexts</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">contexts</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;contexts();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span><span class="p">()</span>
 </code></pre>
 
 <h3 id="current-context">Current context</h3>
 
 <p>List the current context</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">context</span> <span class="o">=</span> <span class="n">current_context</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">current_context</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">getContext</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">currentContext</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;context();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">()</span>
 </code></pre>
 
 <h3 id="switch-to-default-context">Switch to default context</h3>
 
 <p>Change the context to the default.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">switch_to_default_context</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;context(NULL);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span><span class="p">();</span>
 </code></pre>
 
 <h3 id="app-strings">App Strings</h3>
 
 <p>Get the app’s strings.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">strings</span> <span class="o">=</span> <span class="n">app_strings</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">app_strings</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">getAppStrings</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">getAppStrings</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">appStrings</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;appStrings();
 $this-&gt;appStrings('ru');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetAppStrings</span><span class="p">();</span>
 </code></pre>
 
 <h3 id="key-event">Key Event</h3>
 
 <p>Send a key event to the device.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">key_event</span> <span class="mi">176</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">keyevent</span><span class="p">(</span><span class="mi">176</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">sendKeyEvent</span><span class="o">(</span><span class="n">AndroidKeyCode</span><span class="o">.</span><span class="na">HOME</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">deviceKeyEvent</span><span class="p">(</span><span class="nx">wd</span><span class="p">.</span><span class="nx">SPECIAL_KEYS</span><span class="p">.</span><span class="nx">Home</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;keyEvent('176');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">KeyEvent</span><span class="p">(</span><span class="s">"176"</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="current-activity">Current Activity</h3>
 
 <p>Android only. Get the current activity.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">current_activity</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">current_activity</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">currentActivity</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">getCurrentActivity</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">activity</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;currentActivity();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
 </code></pre>
 
@@ -3053,29 +3053,29 @@ $this-&gt;currentActivity();
 
 <p>An API for generating touch actions. This section of the documentation will be
 expanded upon soon.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">touch_action</span> <span class="o">=</span> <span class="no">Appium</span><span class="o">::</span><span class="no">TouchAction</span><span class="p">.</span><span class="nf">new</span>
-<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="p">:</span><span class="nb">name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
+<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
 <span class="n">touch_action</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="ss">element: </span><span class="n">element</span><span class="p">,</span> <span class="ss">x: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">y: </span><span class="mi">10</span><span class="p">).</span><span class="nf">perform</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">action</span> <span class="o">=</span> <span class="n">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
 <span class="n">action</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">release</span><span class="p">()</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">TouchAction</span> <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TouchAction</span><span class="o">(</span><span class="n">driver</span><span class="o">)</span>
 <span class="o">.</span><span class="na">press</span><span class="o">(</span><span class="n">mapview</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
 <span class="o">.</span><span class="na">release</span><span class="o">().</span>
 <span class="n">perform</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="nx">driver</span><span class="p">);</span>
 <span class="nx">action</span>
   <span class="p">.</span><span class="nx">tap</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">,</span> <span class="na">x</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
   <span class="p">.</span><span class="nx">release</span><span class="p">();</span>
 <span class="k">return</span> <span class="nx">action</span><span class="p">.</span><span class="nx">perform</span><span class="p">();</span> <span class="c1">// returns a promise</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $action = $this-&gt;initiateTouchAction();
                -&gt;press(array('element' =&gt; $el))
                -&gt;release()
@@ -3100,7 +3100,7 @@ $multiAction-&gt;add($action1);
 $multiAction-&gt;add($action2);
 $multiAction-&gt;perform();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">ITouchAction</span> <span class="n">action</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">);</span>
 <span class="n">action</span><span class="p">.</span><span class="nf">Press</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">).</span><span class="nf">Release</span><span class="p">();</span>
 <span class="n">action</span><span class="p">.</span><span class="nf">Perform</span> <span class="p">();</span>
@@ -3109,16 +3109,16 @@ $multiAction-&gt;perform();
 <h3 id="swipe">Swipe</h3>
 
 <p>Simulate a user swipe.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">swipe</span> <span class="ss">start_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">start_y: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">end_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">end_y: </span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration: </span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">swipe</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">starty</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">endx</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">endy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">swipe</span><span class="o">(</span><span class="mi">75</span><span class="o">,</span> <span class="mi">500</span><span class="o">,</span> <span class="mi">75</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mf">0.8</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">function</span> <span class="nx">swipe</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
   <span class="nx">action</span>
@@ -3133,26 +3133,26 @@ $multiAction-&gt;perform();
 <span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">swipe</span><span class="p">({</span> <span class="na">startX</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="na">startY</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
   <span class="na">endX</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>  <span class="na">endY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">duration</span><span class="p">:</span> <span class="mi">800</span> <span class="p">});</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;swipe(75, 500, 75, 0, 800);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">todo</span><span class="p">:</span> <span class="n">c</span><span class="err">#</span>
 </code></pre>
 
 <h3 id="pinch">Pinch</h3>
 
 <p>Pinch the screen.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">pinch</span> <span class="mi">75</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">pinch</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">pinch</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">function</span> <span class="nx">pinch</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">getSize</span><span class="p">(),</span>
@@ -3182,25 +3182,25 @@ $this-&gt;swipe(75, 500, 75, 0, 800);
 <span class="c1">// ...</span>
 <span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">pinch</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight php">$this-&gt;pinch($el);
+<pre class="highlight php"><code>$this-&gt;pinch($el);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">Pinch</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">25</span><span class="p">)</span>
 </code></pre>
 
 <h3 id="zoom">Zoom</h3>
 
 <p>Zoom the screen.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">zoom</span> <span class="mi">200</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">zoom</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">function</span> <span class="nx">zoom</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">getWindowSize</span><span class="p">(),</span>
@@ -3230,92 +3230,92 @@ $this-&gt;swipe(75, 500, 75, 0, 800);
 <span class="c1">// ...</span>
 <span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">zoom</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;zoom($el);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">Zoom</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">200</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="scroll-to">Scroll To</h3>
 
 <p>Scroll to an element.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
-<span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span> <span class="p">:</span><span class="nb">name</span><span class="p">,</span> <span class="s1">'Element Name'</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Element Name'</span>
 <span class="n">execute_script</span> <span class="s2">"mobile: scrollTo"</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">element</span><span class="p">.</span><span class="nf">ref</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">todo</span><span class="p">:</span> <span class="n">python</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Element Name"</span><span class="o">));</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">arguments</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
 <span class="n">arguments</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="n">element</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
 <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span><span class="n">driver</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: scrollTo"</span><span class="o">,</span> <span class="n">arguments</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">'mobile: scrollTo'</span><span class="p">,</span> <span class="p">{</span><span class="na">element</span><span class="p">:</span> <span class="nx">el</span><span class="p">.</span><span class="nx">value</span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $els = $this-&gt;elements($this-&gt;using('class name')-&gt;value('android.widget.TextView'));
 $this-&gt;scroll($els[count($els) - 1], $els[0]);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">todo</span><span class="p">:</span> <span class="n">csharp</span>
 </code></pre>
 
 <h3 id="pull-file">Pull file</h3>
 
 <p>Pulls a file from the device.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">pull_file</span> <span class="s1">'Library/AddressBook/AddressBook.sqlitedb'</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">pull_file</span><span class="p">(</span><span class="s">'Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">pullFile</span><span class="o">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">pullFile</span><span class="p">(</span><span class="s2">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">base64File</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;pullFile('Library/AddressBook/AddressBook.sqlitedb');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">PullFile</span><span class="p">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="push-file">Push File</h3>
 
 <p>Pushes a file to the device.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">data</span> <span class="o">=</span> <span class="s2">"some data for the file"</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s2">"/data/local/tmp/file.txt"</span>
 <span class="n">push_file</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">data</span> <span class="o">=</span> <span class="s">"some data for the file"</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">push_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">))</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encodeBase64</span><span class="o">(</span><span class="s">"some data for the file"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
 <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span><span class="o">;</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">pushFile</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">pushFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $path = 'data/local/tmp/test_push_file.txt';
 $data = 'This is the contents of the file to push to the device.';
 $this-&gt;pushFile($path, base64_encode($data));
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">PushFile</span><span class="p">(</span><span class="s">"/data/local/tmp/file.txt"</span><span class="p">,</span> <span class="s">"some data for the file"</span><span class="p">);</span>
 </code></pre>
 
@@ -3324,24 +3324,24 @@ $this-&gt;pushFile($path, base64_encode($data));
 <p>Here you will find sample code for getting/setting appium serverSetting.
 For more information on how they work, and which settings are supported, see
 [the settings docs][/docs/en/advanced-concepts/settings.md]</p>
-<pre><code class="highlight ruby"><span class="n">current_settings</span> <span class="o">=</span> <span class="n">get_settings</span>
+<pre class="highlight ruby"><code><span class="n">current_settings</span> <span class="o">=</span> <span class="n">get_settings</span>
 <span class="n">update_settings</span> <span class="ss">someSetting: </span><span class="kp">true</span>
 </code></pre>
-<pre><code class="highlight python"><span class="n">current_settings</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
+<pre class="highlight python"><code><span class="n">current_settings</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span><span class="s">"someSetting"</span><span class="p">:</span> <span class="n">true</span><span class="p">})</span>
 </code></pre>
-<pre><code class="highlight java"><span class="n">JsonObject</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">getSettings</span><span class="o">()</span>
+<pre class="highlight java"><code><span class="n">JsonObject</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">getSettings</span><span class="o">()</span>
 <span class="c1">// java-client doesn't support setting arbitrary settings, just settings which are already provided by appium.</span>
 <span class="c1">// So for the 'ignoreUnimportantViews' setting, the following method exists:</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">ignoreUnimportantViews</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">settings</span><span class="p">();</span>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">settings</span><span class="p">();</span>
 <span class="nx">browser</span><span class="p">.</span><span class="nx">updateSettings</span><span class="p">({</span><span class="s1">'someSetting'</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
 </code></pre>
-<pre><code class="highlight php">$settings = $this-&gt;getSettings();
+<pre class="highlight php"><code>$settings = $this-&gt;getSettings();
 $this-&gt;updateSettings(array('cyberdelia' =&gt; "open"));
 </code></pre>
-<pre><code class="highlight csharp"><span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Object</span><span class="p">&gt;</span><span class="n">settings</span> <span class="p">=</span> <span class="n">driver</span><span class="p">.</span><span class="nf">GetSettings</span><span class="p">();</span>
+<pre class="highlight csharp"><code><span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Object</span><span class="p">&gt;</span><span class="n">settings</span> <span class="p">=</span> <span class="n">driver</span><span class="p">.</span><span class="nf">GetSettings</span><span class="p">();</span>
 <span class="c1">// dotnet-driver doesn't support setting arbitrary settings, just settings which are already provided by appium.
 // So for the 'ignoreUnimportantViews' setting, the following method exists:
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">IgnoreUnimportantViews</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
@@ -3369,7 +3369,7 @@ $this-&gt;updateSettings(array('cyberdelia' =&gt; "open"));
 <strong><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/predicates.html">Predicates</a></strong> can be used to restrict an elements set to select only those ones for which some condition is true.</p>
 
 <p>For example:</p>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">appiumDriver</span><span class="o">.</span><span class="na">findElementsByIosUIAutomation</span><span class="o">(</span><span class="s">"collectionViews()[0].cells().withPredicate(\"ANY staticTexts.isVisible == TRUE\")"</span><span class="o">)</span>
 </code></pre>
 
@@ -3572,7 +3572,7 @@ same in Xpath: /*<a href="http://software.intel.com/en-us/articles/intel-hardwar
 </ul>
 
 <p>Here’s a Ruby example:</p>
-<pre><code class="highlight ruby"><span class="c1"># Ruby example</span>
+<pre class="highlight ruby"><code><span class="c1"># Ruby example</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s1">'Various uses'</span>
 <span class="n">predicate</span> <span class="o">=</span> <span class="s2">"name contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || label contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || value contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">'"</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">execute_script</span><span class="p">(</span><span class="sx">%Q(au.mainApp().getFirstWithPredicate("</span><span class="si">#{</span><span class="n">predicate</span><span class="si">}</span><span class="sx">");)</span><span class="p">)</span>
@@ -3637,7 +3637,7 @@ connection API for iOS.</p>
 
 <p>Choose the setting you would like to use, and then send the correct bitmask from
 the table above.</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="c1">// set airplane mode</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">setNetworkConnection</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -3653,7 +3653,7 @@ the table above.</p>
 
 <p>Retrieving the network connection settings returns the same bitmask, from which
 the status can be decoded.</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">getNetworkConnection</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">connectionType</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">switch</span> <span class="p">(</span><span class="nx">connectionType</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">case</span> <span class="mi">0</span><span class="err">:</span>
@@ -3686,25 +3686,25 @@ is also supported.</p>
 following examples are written against the api demos apk using Ruby.</p>
 
 <p>Find the first textview.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">first_textview</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiSelector().className("android.widget.TextView").instance(0)'</span><span class="p">);</span>
 </code></pre>
 
 <p>Find the first element by text.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">first_text</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiSelector().text("Animation")'</span><span class="p">)</span>
 <span class="n">first_text</span><span class="p">.</span><span class="nf">text</span> <span class="c1"># "Animation"</span>
 </code></pre>
 
 <p>Find the first scrollable element, then find a TextView with the text “Tabs”.
 The “Tabs” element will be scrolled into view.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiScrollable(new UiSelector().scrollable(true).instance(0)).getChildByText(new UiSelector().className("android.widget.TextView"), "Tabs")'</span><span class="p">)</span>
 </code></pre>
 
 <p>As a special case, scrollIntoView returns the element that is scrolled into view.
 scrollIntoView allows scrolling to any UiSelector.</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text("WebView").instance(0));'</span><span class="p">)</span>
 <span class="n">element</span><span class="p">.</span><span class="nf">text</span> <span class="c1"># "WebView"</span>
 </code></pre>
@@ -3735,7 +3735,7 @@ ACUTE ACCENT”). When this occurs a test may be reported but the expected
 and actual results will look exactly the same. The solution to this is to
 <a href="http://www.unicode.org/faq/normalization.html">normalize</a> the text before asserting
 on it.</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">testText</span> <span class="o">=</span> <span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s2">"é Œ ù ḍ"</span><span class="p">);</span>
 <span class="nx">driver</span>
@@ -3758,7 +3758,7 @@ is set to <code class="prettyprint">true</code>. If the keyboard should be retur
 Unicode keyboard will remain enabled on the device after the tests are completed.</p>
 
 <p>Then tests can pass Unicode text to editable fields using <code class="prettyprint">send_keys</code>.</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">desired</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">app</span><span class="p">:</span> <span class="s1">'/path/to/app'</span><span class="p">,</span>
   <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
@@ -3801,7 +3801,7 @@ you will see your device on the grid console page:</p>
 <p>“http://<strong>&lt;grid-ip-adress&gt;</strong>:<strong>&lt;grid-port&gt;</strong>/grid/console”</p>
 
 <h3 id="grid-node-configuration-example-json-file">Grid Node Configuration Example json file</h3>
-<pre><code class="highlight xml">{
+<pre class="highlight xml"><code>{
   "capabilities":
       [
         {
@@ -3864,7 +3864,7 @@ so in the wrong context you will receive an error message).</li>
 native portion of the app, simply call <code class="prettyprint">context</code> again with the native
 context id to leave the web frame.</li>
 </ol>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="c1">// assuming we have an initialized `driver` object for an app</span>
 <span class="nx">driver</span>
     <span class="p">.</span><span class="nx">contexts</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get list of available views. Returns array: ["NATIVE_APP","WEBVIEW_1"]</span>
@@ -3880,7 +3880,7 @@ context id to leave the web frame.</li>
 
     <span class="p">.</span><span class="nx">quit</span><span class="p">()</span> <span class="c1">// stop webdrivage</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="c1">// assuming we have a set of capabilities</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AppiumDriver</span><span class="o">(</span><span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">),</span> <span class="n">capabilities</span><span class="o">);</span>
 
@@ -3899,7 +3899,7 @@ context id to leave the web frame.</li>
 
 <span class="n">driver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="c1"># assuming we have a set of capabilities</span>
 <span class="vi">@driver</span> <span class="o">=</span> <span class="no">Selenium</span><span class="o">::</span><span class="no">WebDriver</span><span class="p">.</span><span class="nf">for</span><span class="p">(</span><span class="ss">:remote</span><span class="p">,</span> <span class="ss">:desired_capabilities</span> <span class="o">=&gt;</span> <span class="n">capabilities</span><span class="p">,</span> <span class="ss">:url</span> <span class="o">=&gt;</span> <span class="no">SERVER_URL</span><span class="p">)</span>
 
@@ -3922,7 +3922,7 @@ context id to leave the web frame.</li>
     <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span><span class="p">(</span><span class="ss">:css</span><span class="p">,</span> <span class="s2">".green_button"</span><span class="p">).</span><span class="nf">click</span>
 <span class="k">end</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="c"># assuming we have an initialized `driver` object for an app</span>
 
 <span class="c"># switch to webview</span>
@@ -3939,7 +3939,7 @@ context id to leave the web frame.</li>
 
 <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 // assuming we have an initialized `driver` object in an AppiumTestCase
 
 public function testThings()
@@ -4113,47 +4113,47 @@ part of iOS 6</strong> and was not available previously.</p>
 </ul>
 
 <p>Now Appium supports the more conceptually consistent concept of “context”. To get all of the available contexts, or the particular context the application is is, you use</p>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
 <span class="n">current</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">context</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">contexts</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span> <span class="p">()</span>
 <span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span> <span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">contextNames</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">();</span>
 <span class="n">String</span> <span class="n">context</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">getContext</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $contexts = $this-&gt;contexts();
 $context = $this-&gt;context();
 </code></pre>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">contexts</span> <span class="o">=</span> <span class="n">available_contexts</span>
 <span class="n">context</span> <span class="o">=</span> <span class="n">current_context</span>
 </code></pre>
 
 <p>And to switch between them, you use</p>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">currentContext</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span> <span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight java"><span class="n">java</span>
+<pre class="highlight java"><code><span class="n">java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">(</span><span class="n">contextName</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;context('WEBVIEW');
 </code></pre>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">set_context</span> <span class="s2">"WEBVIEW"</span>
 </code></pre>
 
