@@ -7,7 +7,7 @@ description: Appium libraries & apps
 
 # Appium Client Libraries
 
-Appium has libraries for:
+Appium has language bindings for:
 
 - [Ruby][rubygems]
 - [Python][pypi]
