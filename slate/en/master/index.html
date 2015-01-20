@@ -251,8 +251,8 @@ You can run an Appium server using node.js or using the application, see below.<
 
 <h4 id="using-node.js">Using Node.js</h4>
 
-<p>$ npm install -g appium
-    $ appium &amp;</p>
+<p class="centercode"><code>$ npm install -g appium
+$ appium &amp;</code></p>
 
 <h4 id="using-the-app">Using the App</h4>
 
@@ -1830,6 +1830,14 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td>e.g. <code class="prettyprint">--esn &lt;EXTRA_KEY&gt;</code>, <code class="prettyprint">--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code>, etc.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">stopAppOnReset</code></td>
+<td>Stops the process of the app under test, before starting the app using adb. If the app under test is created by another anchor app, setting this false, allows the process of the anchor app to be still alive, during the start of the test app using adb, default <code class="prettyprint">true</code>
+</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
 <td><code class="prettyprint">unicodeKeyboard</code></td>
 <td>Enable Unicode input, default <code class="prettyprint">false</code>
 </td>
@@ -1923,6 +1931,13 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </td>
 </tr>
 <tr>
+<td><code class="prettyprint">autoDismissAlerts</code></td>
+<td>Dismiss iOS privacy access permission alerts (e.g., location, contacts, photos) automatically if they pop up. Default is false.</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
 <td><code class="prettyprint">nativeInstrumentsLib</code></td>
 <td>Use native intruments lib (ie disable instruments-without-delay).</td>
 <td>
@@ -1992,9 +2007,11 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tr>
 <tr>
 <td><code class="prettyprint">sendKeyStrategy</code></td>
-<td>strategy to use to type test into a test field. Simulator default: <code class="prettyprint">oneByOne</code>. Real device default: ‘grouped’</td>
+<td>strategy to use to type test into a test field. Simulator default: <code class="prettyprint">oneByOne</code>. Real device default: <code class="prettyprint">grouped</code>
+</td>
 <td>
-<code class="prettyprint">oneByOne</code>, <code class="prettyprint">grouped</code> or setValue</td>
+<code class="prettyprint">oneByOne</code>, <code class="prettyprint">grouped</code> or <code class="prettyprint">setValue</code>
+</td>
 </tr>
 <tr>
 <td><code class="prettyprint">screenshotWaitTimeout</code></td>
@@ -2005,7 +2022,8 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <tr>
 <td><code class="prettyprint">waitForAppScript</code></td>
 <td>The ios automation script used to determined if the app has been launched, by default the system wait for the page source not to be empty. The result must be a boolean</td>
-<td>e.g. <code class="prettyprint">true;</code>, <code class="prettyprint">target.elements().length &gt; 0;</code>, ‘$.delay(5000); true;`</td>
+<td>e.g. <code class="prettyprint">true;</code>, <code class="prettyprint">target.elements().length &gt; 0;</code>, <code class="prettyprint">$.delay(5000); true;</code>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2292,7 +2310,7 @@ public static $browsers = array(
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">BROWSER_NAME</span><span class="o">,</span> <span class="s">"Chrome"</span><span class="o">);</span>
 </code></pre>
 
-<p>Note that on 4.4+ devices, you can also use the 'Browser’ <code class="prettyprint">browserName</code> cap to automate the built-in browser. On all devices you can use the ‘Chromium’ <code class="prettyprint">browserName</code> cap to automate a build of Chromium.</p>
+<p>Note that on 4.4+ devices, you can also use the ‘Browser’ <code class="prettyprint">browserName</code> cap to automate the built-in browser. On all devices you can use the ‘Chromium’ <code class="prettyprint">browserName</code> cap to automate a build of Chromium.</p>
 
 <h4 id="troubleshooting-chromedriver">Troubleshooting chromedriver</h4>
 
@@ -4693,6 +4711,9 @@ commands.</li>
 <strong>Logging</strong>
 
 <ul>
+<li>
+<strong>Maximum Log Length</strong>: The maximum number of characters that are allowed in the console. Lower this value if
+you find that the GUI slows down after long use.</li>
 <li>
 <strong>Quiet Logging</strong>: Don’t use verbose logging output.</li>
 <li>
