@@ -93,7 +93,7 @@ You can run an Appium server using node.js or using the application, see below.
 
 #### Using Node.js
 
-```center
+```
 $ npm install -g appium
 $ appium &
 ```
