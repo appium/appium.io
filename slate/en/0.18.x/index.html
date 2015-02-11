@@ -264,7 +264,7 @@ are no problems.</p>
 passing the -U flag to the server, and passing the bundle ID (if the app is
 installed on the device) or the path to the .ipa file via the <code class="prettyprint">--app</code> flag or
 the <code class="prettyprint">app</code> desired capability:</p>
-<pre class="highlight plaintext"><code># appium 0.x
+<pre><code class="highlight plaintext"># appium 0.x
 node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
 # appium 1.x
 node . -U &lt;UDID&gt; --app &lt;bundle_id&gt; --platform-name &lt;iOS|android&gt;
@@ -505,7 +505,7 @@ want to zip it up, you can.</p>
 <p>node .</p>
 
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
     <span class="nl">device</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span><span class="p">,</span>
     <span class="nx">browserName</span><span class="err">:</span> <span class="s1">''</span><span class="p">,</span>
     <span class="nx">version</span><span class="err">:</span> <span class="s1">'6.1'</span><span class="p">,</span>
@@ -550,7 +550,7 @@ otherwise failing, you can restart it by running:</p>
 <p>node .</p>
 
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
     <span class="nl">device</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
     <span class="nx">browserName</span><span class="err">:</span> <span class="s1">''</span><span class="p">,</span>
     <span class="nx">version</span><span class="err">:</span> <span class="s1">'4.2'</span><span class="p">,</span>
@@ -588,7 +588,7 @@ Appium comes bundled with another automation backend called <a href="http://sele
 
 <p>To use Selendroid, all that is required is to slightly change the set of
 desired capabilities mentioned above, by replacing ‘Android’ with ‘Selendroid’:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
     <span class="nl">device</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
     <span class="nx">browserName</span><span class="err">:</span> <span class="s1">''</span><span class="p">,</span>
     <span class="nx">version</span><span class="err">:</span> <span class="s1">'2.3'</span><span class="p">,</span>
@@ -629,7 +629,7 @@ using the instrument target, for example <code class="prettyprint">$ ant instrum
 
 <p>Pass <code class="prettyprint">androidCoverage</code> to your device capabilities and set it to your
 instrumentation class.</p>
-<pre class="highlight ruby"><code><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">androidCoverage: </span><span class="s1">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
+<pre><code class="highlight ruby"><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">androidCoverage: </span><span class="s1">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
 </code></pre>
 
 <p>Appium will start your app like this:</p>
@@ -638,11 +638,11 @@ instrumentation class.</p>
 
 <p>After your test completes, it’s time to end the coverage collection and pull
 the coverage.ec file from the device.</p>
-<pre class="highlight ruby"><code><span class="n">mobile</span> <span class="ss">:endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
+<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="p">:</span><span class="n">endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
 </code></pre>
 
 <p><code class="prettyprint">AndroidManifest.xml</code> defines the instrumentation and broadcast receiver.</p>
-<pre class="highlight xml"><code>    <span class="nt">&lt;instrumentation</span>
+<pre><code class="highlight xml">    <span class="nt">&lt;instrumentation</span>
         <span class="na">android:name=</span><span class="s">"com.example.pkg.instrumentation.MyInstrumentation"</span>
         <span class="na">android:targetPackage=</span><span class="s">"com.example.pkg"</span> <span class="nt">&gt;</span>
     <span class="nt">&lt;/instrumentation&gt;</span>
@@ -656,7 +656,7 @@ the coverage.ec file from the device.</p>
 </code></pre>
 
 <p><code class="prettyprint">EndEmmaBroadcast.java</code> is defined as:</p>
-<pre class="highlight java"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
+<pre><code class="highlight java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
 
@@ -690,7 +690,7 @@ the coverage.ec file from the device.</p>
 </code></pre>
 
 <p><code class="prettyprint">MyInstrumentation.java</code> is defined as:</p>
-<pre class="highlight java"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
+<pre><code class="highlight java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">android.app.Instrumentation</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
@@ -1425,7 +1425,7 @@ there’s time to interact with them. We’re working on a fix</p>
 <h2 id="find-all-the-uiabuttons-on-the-screen">Find all the UIAButtons on the screen</h2>
 
 <p>WD.js:</p>
-<pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByTagName</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">)</span> <span class="p">{</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByTagName</span><span class="p">(</span><span class="s1">'button'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">buttons</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// tap all the buttons</span>
   <span class="kd">var</span> <span class="nx">tapNextButton</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">buttons</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
@@ -1442,18 +1442,18 @@ there’s time to interact with them. We’re working on a fix</p>
 </code></pre>
 
 <p>Ruby:</p>
-<pre class="highlight ruby"><code><span class="n">buttons</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_elements</span> <span class="ss">:tag_name</span><span class="p">,</span> <span class="ss">:button</span>
+<pre><code class="highlight ruby"><span class="n">buttons</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_elements</span> <span class="ss">:tag_name</span><span class="p">,</span> <span class="ss">:button</span>
 <span class="n">buttons</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">b</span><span class="o">|</span> <span class="n">b</span><span class="p">.</span><span class="nf">click</span> <span class="p">}</span>
 </code></pre>
 
 <p>Python:</p>
-<pre class="highlight python"><code><span class="p">[</span><span class="n">button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span> <span class="k">for</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'button'</span><span class="p">)]</span>
+<pre><code class="highlight python"><span class="p">[</span><span class="n">button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span> <span class="k">for</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'button'</span><span class="p">)]</span>
 </code></pre>
 
 <h2 id='find-the-element-with-the-text-(or-accessibilityidentifier)-"go"'>Find the element with the text (or accessibilityIdentifier) “Go”</h2>
 
 <p>WD.js:</p>
-<pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Go'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Go'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">el</span><span class="p">.</span><span class="nx">tap</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
   <span class="p">});</span>
@@ -1461,17 +1461,17 @@ there’s time to interact with them. We’re working on a fix</p>
 </code></pre>
 
 <p>Ruby:</p>
-<pre class="highlight ruby"><code><span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s1">'Go'</span><span class="p">).</span><span class="nf">click</span>
+<pre><code class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="s1">'Go'</span><span class="p">).</span><span class="nf">click</span>
 </code></pre>
 
 <p>Python:</p>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s">'Go'</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s">'Go'</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </code></pre>
 
 <h2 id='find-the-nav-bar-text-element-where-the-text-begins-with-"hi,-"'>Find the nav bar text element where the text begins with “Hi, ”</h2>
 
 <p>WD.js:</p>
-<pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByXpath</span><span class="p">(</span><span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByXpath</span><span class="p">(</span><span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">el</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
     <span class="nx">driver</span><span class="p">.</span><span class="nx">quit</span><span class="p">();</span>
@@ -1480,13 +1480,13 @@ there’s time to interact with them. We’re working on a fix</p>
 </code></pre>
 
 <p>Ruby:</p>
-<pre class="highlight ruby"><code><span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:xpath</span><span class="p">,</span> <span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span>
+<pre><code class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:xpath</span><span class="p">,</span> <span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span>
 </code></pre>
 
 <h2 id="find-an-element-by-tagname">Find an element by tagName</h2>
 
 <p>Java:</p>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">)).</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
 
 <span class="n">WebELement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"button"</span><span class="o">));</span>
 <span class="n">element</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"Hi"</span><span class="o">);</span>
@@ -1496,19 +1496,19 @@ there’s time to interact with them. We’re working on a fix</p>
 </code></pre>
 
 <p>Python:</p>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'tableCell'</span><span class="p">)[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'tableCell'</span><span class="p">)[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </code></pre>
 
 <h2 id='using-the-"-ios-uiautomation"-locator-strategy'>Using the “-ios uiautomation” locator strategy</h2>
 
 <p>WD.js:</p>
-<pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="s1">'-ios uiautomation'</span><span class="p">,</span> <span class="s1">'.elements()[1].cells()[2]'</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="s1">'-ios uiautomation'</span><span class="p">,</span> <span class="s1">'.elements()[1].cells()[2]'</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
 </code></pre>
 
 <h2 id='using-the-"-android-uiautomator"-locator-strategy'>Using the “-android uiautomator” locator strategy</h2>
 
 <p>WD.js:</p>
-<pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="s1">'-android uiautomator'</span><span class="p">,</span> <span class="s1">'new UiSelector().clickable(true)'</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="s1">'-android uiautomator'</span><span class="p">,</span> <span class="s1">'new UiSelector().clickable(true)'</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="findandact">FindAndAct</h2>
@@ -1518,14 +1518,14 @@ For example, you can find and click on an element in one call to Appium,
 using a special <code class="prettyprint">mobile: findAndAct</code> command.</p>
 
 <p>Python:</p>
-<pre class="highlight python"><code><span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s">'strategy'</span><span class="p">:</span> <span class="s">'tag_name'</span><span class="p">,</span> <span class="s">'selector'</span><span class="p">:</span> <span class="s">'button'</span><span class="p">,</span> <span class="s">'action'</span><span class="p">:</span> <span class="s">'tap'</span><span class="p">}</span>
+<pre><code class="highlight python"><span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s">'strategy'</span><span class="p">:</span> <span class="s">'tag_name'</span><span class="p">,</span> <span class="s">'selector'</span><span class="p">:</span> <span class="s">'button'</span><span class="p">,</span> <span class="s">'action'</span><span class="p">:</span> <span class="s">'tap'</span><span class="p">}</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: findAndAct"</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 </code></pre>
 
 <h3 id="pull-to-refresh-using-a-swipe-gesture">Pull to refresh using a swipe gesture</h3>
 
 <p>Python:</p>
-<pre class="highlight python"><code><span class="n">js_snippet</span> <span class="o">=</span> <span class="s">"mobile: swipe"</span>
+<pre><code class="highlight python"><span class="n">js_snippet</span> <span class="o">=</span> <span class="s">"mobile: swipe"</span>
 <span class="n">args</span> <span class="o">=</span> <span class="p">{</span><span class="s">'startX'</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s">'startY'</span><span class="p">:</span><span class="mf">0.2</span><span class="p">,</span> <span class="s">'endX'</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s">'endY'</span><span class="p">:</span><span class="mf">0.95</span><span class="p">,</span> <span class="s">'tapCount'</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s">'duration'</span><span class="p">:</span><span class="mi">10</span><span class="p">}</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="n">js_snippet</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 </code></pre>
@@ -1760,7 +1760,7 @@ endpoint).</p>
 the parameters for the corresponding function. So, let’s say I want to call
 <code class="prettyprint">tap</code> on a certain screen position. I can do so by calling <code class="prettyprint">driver.execute</code>
 with these JSON parameters:</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre><code class="highlight json"><span class="p">{</span><span class="w">
   </span><span class="s2">"script"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mobile: tap"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
     </span><span class="s2">"x"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w">
@@ -1781,7 +1781,7 @@ params as described above.</p>
 <ul>
 <li><strong>WD.js:</strong></li>
 </ul>
-<pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByTagName</span><span class="p">(</span><span class="s1">'tableCell'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByTagName</span><span class="p">(</span><span class="s1">'tableCell'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span>
 <span class="kd">var</span> <span class="nx">tapOpts</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">x</span><span class="p">:</span> <span class="mi">150</span> <span class="c1">// in pixels from left</span>
   <span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">30</span> <span class="c1">// in pixels from top</span>
@@ -1796,7 +1796,7 @@ params as described above.</p>
 <ul>
 <li><strong>Java:</strong></li>
 </ul>
-<pre class="highlight java"><code><span class="n">WebElement</span> <span class="n">row</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElements</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"tableCell"</span><span class="o">)).</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">WebElement</span> <span class="n">row</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElements</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"tableCell"</span><span class="o">)).</span><span class="na">get</span><span class="o">(</span><span class="mi">4</span><span class="o">);</span>
 <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">tapObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
 <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"x"</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span> <span class="c1">// in pixels from left</span>
@@ -1804,7 +1804,7 @@ params as described above.</p>
 <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">row</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span> <span class="c1">// the id of the element we want to tap</span>
 <span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: tap"</span><span class="o">,</span> <span class="n">tapObject</span><span class="o">);</span>
 </code></pre>
-<pre class="highlight java"><code><span class="c1">//In iOS app, if UI element visbile property is "false".</span>
+<pre><code class="highlight java"><span class="c1">//In iOS app, if UI element visbile property is "false".</span>
 <span class="c1">//Using element location tap on it.</span>
 <span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/scrollview[1]/image[1]"</span><span class="o">));</span>
 <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">wd</span><span class="o">;</span>
@@ -1818,26 +1818,26 @@ params as described above.</p>
 <ul>
 <li><strong>Python:</strong></li>
 </ul>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: tap"</span><span class="p">,</span> <span class="p">{</span><span class="s">"touchCount"</span><span class="p">:</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">:</span><span class="s">"0.9"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">:</span><span class="s">"0.8"</span><span class="p">,</span> <span class="s">"element"</span><span class="p">:</span><span class="n">element</span><span class="o">.</span><span class="nb">id</span><span class="p">})</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: tap"</span><span class="p">,</span> <span class="p">{</span><span class="s">"touchCount"</span><span class="p">:</span><span class="s">"1"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">:</span><span class="s">"0.9"</span><span class="p">,</span> <span class="s">"y"</span><span class="p">:</span><span class="s">"0.8"</span><span class="p">,</span> <span class="s">"element"</span><span class="p">:</span><span class="n">element</span><span class="o">.</span><span class="nb">id</span><span class="p">})</span>
 </code></pre>
 
 <ul>
 <li><strong>Ruby:</strong></li>
 </ul>
-<pre class="highlight ruby"><code><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">150</span><span class="p">,</span> <span class="ss">:y</span> <span class="o">=&gt;</span> <span class="mi">30</span>
+<pre><code class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:x</span> <span class="o">=&gt;</span> <span class="mi">150</span><span class="p">,</span> <span class="ss">:y</span> <span class="o">=&gt;</span> <span class="mi">30</span>
 </code></pre>
 
 <ul>
 <li><strong>Ruby:</strong></li>
 </ul>
-<pre class="highlight ruby"><code><span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
+<pre><code class="highlight ruby"><span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
 <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nf">ref</span>
 </code></pre>
 
 <ul>
 <li><strong>C#:</strong></li>
 </ul>
-<pre class="highlight csharp"><code><span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Double</span><span class="p">&gt;</span> <span class="n">coords</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">double</span><span class="p">&gt;();</span>
+<pre><code class="highlight csharp"><span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Double</span><span class="p">&gt;</span> <span class="n">coords</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">double</span><span class="p">&gt;();</span>
 <span class="n">coords</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"x"</span><span class="p">,</span> <span class="m">12</span><span class="p">);</span>
 <span class="n">coords</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"y"</span><span class="p">,</span> <span class="m">12</span><span class="p">);</span>
 <span class="n">driver</span><span class="p">.</span><span class="nf">ExecuteScript</span><span class="p">(</span><span class="s">"mobile: tap"</span><span class="p">,</span> <span class="n">coords</span><span class="p">);</span>
@@ -1848,7 +1848,7 @@ params as described above.</p>
 <ul>
 <li><strong>WD.js:</strong></li>
 </ul>
-<pre class="highlight javascript"><code><span class="c1">// options for a 2-finger flick from the center of the screen to the top left</span>
+<pre><code class="highlight javascript"><span class="c1">// options for a 2-finger flick from the center of the screen to the top left</span>
 <span class="kd">var</span> <span class="nx">flickOpts</span> <span class="o">=</span> <span class="p">{</span>
 <span class="na">endX</span><span class="p">:</span> <span class="mi">0</span>
 <span class="p">,</span> <span class="na">endY</span><span class="p">:</span> <span class="mi">0</span>
@@ -1862,7 +1862,7 @@ params as described above.</p>
 <ul>
 <li><strong>Java:</strong></li>
 </ul>
-<pre class="highlight java"><code><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+<pre><code class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">flickObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
 <span class="n">flickObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endX"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
 <span class="n">flickObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"endY"</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
@@ -1879,7 +1879,7 @@ cases.</p>
 <ul>
 <li><strong>WD.js:</strong></li>
 </ul>
-<pre class="highlight javascript"><code><span class="c1">// options for a slow swipe from the right edge of the screen to the left</span>
+<pre><code class="highlight javascript"><span class="c1">// options for a slow swipe from the right edge of the screen to the left</span>
 <span class="kd">var</span> <span class="nx">swipeOpts</span> <span class="o">=</span> <span class="p">{</span>
 <span class="na">startX</span><span class="p">:</span> <span class="mf">0.95</span>
 <span class="p">,</span> <span class="na">startY</span><span class="p">:</span> <span class="mf">0.5</span>
@@ -1895,7 +1895,7 @@ cases.</p>
 <ul>
 <li><strong>Java:</strong></li>
 </ul>
-<pre class="highlight java"><code><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+<pre><code class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;</span> <span class="n">swipeObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Double</span><span class="o">&gt;();</span>
 <span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startX"</span><span class="o">,</span> <span class="mf">0.95</span><span class="o">);</span>
 <span class="n">swipeObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"startY"</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">);</span>
@@ -1910,7 +1910,7 @@ cases.</p>
 <ul>
 <li><strong>WD.js:</strong></li>
 </ul>
-<pre class="highlight javascript"><code><span class="c1">// scroll the view down</span>
+<pre><code class="highlight javascript"><span class="c1">// scroll the view down</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: scroll"</span><span class="p">,</span> <span class="p">[{</span><span class="na">direction</span><span class="p">:</span> <span class="s1">'down'</span><span class="p">}],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
 <span class="c1">// continue testing</span>
 <span class="p">});</span>
@@ -1919,7 +1919,7 @@ cases.</p>
 <ul>
 <li><strong>Java:</strong></li>
 </ul>
-<pre class="highlight java"><code><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+<pre><code class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
 <span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"direction"</span><span class="o">,</span> <span class="s">"down"</span><span class="o">);</span>
 <span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
@@ -1933,7 +1933,7 @@ cases.</p>
 <ul>
 <li><strong>Java</strong></li>
 </ul>
-<pre class="highlight java"><code><span class="c1">// slider values can be string representations of numbers between 0 and 1</span>
+<pre><code class="highlight java"><span class="c1">// slider values can be string representations of numbers between 0 and 1</span>
 <span class="c1">// e.g., "0.1" is 10%, "1.0" is 100%</span>
 <span class="n">WebElement</span> <span class="n">slider</span> <span class="o">=</span>  <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/slider[1]"</span><span class="o">));</span>
 <span class="n">slider</span><span class="o">.</span><span class="na">sendKeys</span><span class="o">(</span><span class="s">"0.1"</span><span class="o">);</span>
@@ -1949,7 +1949,7 @@ it is recommended to write tests that focus on minimum, 50%, and maximum.</p>
 <ul>
 <li><strong>Ruby</strong></li>
 </ul>
-<pre class="highlight ruby"><code><span class="c1"># 0%</span>
+<pre><code class="highlight ruby"><span class="c1"># 0%</span>
 <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: tap'</span><span class="p">,</span> <span class="ss">:x</span> <span class="o">=&gt;</span><span class="n">slider</span><span class="p">.</span><span class="nf">location</span><span class="p">.</span><span class="nf">x</span><span class="p">,</span> <span class="ss">:y</span> <span class="o">=&gt;</span><span class="n">slider</span><span class="p">.</span><span class="nf">location</span><span class="p">.</span><span class="nf">y</span>
 
 <span class="c1"># 100%</span>
@@ -1964,7 +1964,7 @@ it is recommended to write tests that focus on minimum, 50%, and maximum.</p>
 <ul>
 <li><strong>WD.js:</strong></li>
 </ul>
-<pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">setOrientation</span><span class="p">(</span><span class="s2">"LANDSCAPE"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+<pre><code class="highlight javascript"><span class="nx">driver</span><span class="p">.</span><span class="nx">setOrientation</span><span class="p">(</span><span class="s2">"LANDSCAPE"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
 <span class="c1">// continue testing</span>
 <span class="p">});</span>
 </code></pre>
@@ -1972,14 +1972,14 @@ it is recommended to write tests that focus on minimum, 50%, and maximum.</p>
 <ul>
 <li><strong>Python:</strong></li>
 </ul>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s">"LANDSCAPE"</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s">"LANDSCAPE"</span>
 </code></pre>
 
 <h3 id="scroll-to">Scroll To</h3>
-<pre class="highlight ruby"><code>  <span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
+<pre><code class="highlight ruby">  <span class="n">b</span> <span class="o">=</span> <span class="vi">@driver</span><span class="p">.</span><span class="nf">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Sign In'</span>
   <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: scrollTo'</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">b</span><span class="p">.</span><span class="nf">ref</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+<pre><code class="highlight java"><span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
 <span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Log In"</span><span class="o">));;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollToObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
 <span class="n">scrollToObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
@@ -1991,7 +1991,7 @@ it is recommended to write tests that focus on minimum, 50%, and maximum.</p>
 <ul>
 <li><strong>c#</strong></li>
 </ul>
-<pre class="highlight csharp"><code><span class="c1">// long tap an element
+<pre><code class="highlight csharp"><span class="c1">// long tap an element
 //
 </span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;();</span>
 <span class="n">parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"using"</span><span class="p">,</span> <span class="n">_attributeType</span><span class="p">);</span>
@@ -2014,7 +2014,7 @@ it is recommended to write tests that focus on minimum, 50%, and maximum.</p>
 
 <p>You are able to register your appium server with a local grid by using the
 <strong>“–nodeconfig”</strong> server parameter.</p>
-<pre class="highlight shell"><code><span class="gp">&gt; </span>node . -V --nodeconfig /path/to/nodeconfig.json
+<pre><code class="highlight shell"><span class="gp">&gt; </span>node . -V --nodeconfig /path/to/nodeconfig.json
 </code></pre>
 
 <p>In the node config file you have to define the <strong>“browserName”</strong>,
@@ -2030,7 +2030,7 @@ you will see your device on the grid console page:</p>
 <p>“http://<strong>&lt;grid-ip-adress&gt;</strong>:<strong>&lt;grid-port&gt;</strong>/grid/console”</p>
 
 <h2 id="grid-node-configuration-example-json-file">Grid Node Configuration Example json file</h2>
-<pre class="highlight xml"><code>{
+<pre><code class="highlight xml">{
   "capabilities":
       [
         {
@@ -2115,7 +2115,7 @@ connection we use the <a href="https://github.com/google/ios-webkit-debug-proxy"
 
 <p>To install the latest tagged version of the ios-webkit-debug-proxy using
 brew, run the following commands in the terminal:</p>
-<pre class="highlight shell"><code><span class="c"># The first command is only required if you don't have brew installed.</span>
+<pre><code class="highlight shell"><span class="c"># The first command is only required if you don't have brew installed.</span>
 <span class="gp">&gt; </span>ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.github.com/mxcl/homebrew/go/install<span class="k">)</span><span class="s2">"</span>
 <span class="gp">&gt; </span>brew update
 <span class="gp">&gt; </span>brew install ios-webkit-debug-proxy
@@ -2123,7 +2123,7 @@ brew, run the following commands in the terminal:</p>
 
 <p>You can also install the latest proxy by cloning it from git and installing
 it yourself:</p>
-<pre class="highlight shell"><code><span class="c"># Please be aware that this will install the proxy with the latest code (and not a tagged version).</span>
+<pre><code class="highlight shell"><span class="c"># Please be aware that this will install the proxy with the latest code (and not a tagged version).</span>
 <span class="gp">&gt; </span>git clone https://github.com/google/ios-webkit-debug-proxy.git
 <span class="gp">&gt; </span><span class="nb">cd </span>ios-webkit-debug-proxy
 <span class="gp">&gt; </span>./autogen.sh
@@ -2133,7 +2133,7 @@ it yourself:</p>
 </code></pre>
 
 <p>Once installed you can start the proxy with the following command:</p>
-<pre class="highlight shell"><code><span class="c"># Change the udid to be the udid of the attached device and make sure to set the port to 27753 </span>
+<pre><code class="highlight shell"><span class="c"># Change the udid to be the udid of the attached device and make sure to set the port to 27753 </span>
 <span class="c"># as that is the port the remote-debugger uses.</span>
 <span class="gp">&gt; </span>ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
 </code></pre>
@@ -2144,7 +2144,7 @@ advanced <strong>. Please be aware that the web inspector was **added as part of
 iOS 6</strong> and was not available previously.</p>
 
 <h2 id="wd.js-code-example">Wd.js Code example</h2>
-<pre class="highlight javascript"><code>  <span class="c1">// assuming we have an initialized `driver` object working on the UICatalog app</span>
+<pre><code class="highlight javascript">  <span class="c1">// assuming we have an initialized `driver` object working on the UICatalog app</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// find button to nav to view</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// nav to UIWebView</span>
       <span class="nx">driver</span><span class="p">.</span><span class="nx">windowHandles</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">handles</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get list of available views</span>
@@ -2173,7 +2173,7 @@ iOS 6</strong> and was not available previously.</p>
 </ul>
 
 <h2 id="wd.java-code-example">Wd.java Code example</h2>
-<pre class="highlight java"><code><span class="c1">//setup the web driver and launch the webview app.</span>
+<pre><code class="highlight java"><span class="c1">//setup the web driver and launch the webview app.</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"http://appium.s3.amazonaws.com/WebViewApp6.0.app.zip"</span><span class="o">);</span>
@@ -2198,7 +2198,7 @@ iOS 6</strong> and was not available previously.</p>
 </code></pre>
 
 <h2 id="wd.rb-code-example-using-cucumber">Wd.rb Code example using cucumber</h2>
-<pre class="highlight ruby"><code><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
+<pre><code class="highlight ruby"><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
 <span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span> 
 <span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
 <span class="n">capabilities</span> <span class="o">=</span>
@@ -2269,7 +2269,7 @@ native portion of the app, simply call <code class="prettyprint">window</code> a
  Appium hybrid support, so we show that here for parity.</p>
 
 <h2 id="wd.js-code-example">Wd.js Code example</h2>
-<pre class="highlight javascript"><code><span class="c1">// assuming we have an initialized `driver` object working on a hybrid app</span>
+<pre><code class="highlight javascript"><span class="c1">// assuming we have an initialized `driver` object working on a hybrid app</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nb">window</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// choose the only available view</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get webpage elements by css</span>
     <span class="nx">els</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// there should be some!</span>
@@ -2285,7 +2285,7 @@ native portion of the app, simply call <code class="prettyprint">window</code> a
 </code></pre>
 
 <h2 id="wd.java-code-example">Wd.java Code example</h2>
-<pre class="highlight java"><code><span class="c1">//setup the web driver and launch the webview app.</span>
+<pre><code class="highlight java"><span class="c1">//setup the web driver and launch the webview app.</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"/path/to/some.apk"</span><span class="o">);</span>
@@ -2321,13 +2321,13 @@ to deploy this build to your device</li>
 <h2 id="xcodebuild-with-parameters:">Xcodebuild with parameters:</h2>
 
 <p>A newer xcodebuild now allows settings to be specified. Taken from <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>:</p>
-<pre class="highlight plaintext"><code>xcodebuild [-project projectname] [-target targetname ...]
+<pre><code class="highlight plaintext">xcodebuild [-project projectname] [-target targetname ...]
              [-configuration configurationname] [-sdk [sdkfullpath | sdkname]]
              [buildaction ...] [setting=value ...] [-userdefault=value ...]
 </code></pre>
 
 <p>This is a resource to explore the available <a href="https://developer.apple.com/library/mac/#documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html#//apple_ref/doc/uid/TP40003931-CH3-DontLinkElementID_10">settings</a></p>
-<pre class="highlight plaintext"><code>CODE_SIGN_IDENTITY (Code Signing Identity)
+<pre><code class="highlight plaintext">CODE_SIGN_IDENTITY (Code Signing Identity)
     Description: Identifier. Specifies the name of a code signing identity.
     Example value: iPhone Developer
 </code></pre>
@@ -2337,7 +2337,7 @@ but may be necessary.</p>
 
 <p>Specify “CODE_SIGN_IDENTITY” &amp; “PROVISIONING_PROFILE” settings in the
 xcodebuild command:</p>
-<pre class="highlight plaintext"><code>xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+<pre><code class="highlight plaintext">xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
 </code></pre>
 
 <p>On success, the app will be built to your <code class="prettyprint">&lt;app_dir&gt;/build/&lt;configuration&gt;-iphoneos/&lt;app_name&gt;.app</code></p>
@@ -2354,20 +2354,20 @@ parent directory.</p>
 
 <p>Execute fruitstrap after a clean build by running (commands available depend
 on your fork of fruitstrap):</p>
-<pre class="highlight plaintext"><code>./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;
+<pre><code class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;
 </code></pre>
 
 <p>If you are aiming to use continuous integration in this setup,
 you may find it useful to want to log the output of fruitstrap to both
 command line and log, like so:</p>
-<pre class="highlight plaintext"><code>./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out
+<pre><code class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out
 </code></pre>
 
 <p>Since fruitstrap will need to be killed before the node server can be
 launched, an option is to scan the output of the fruitstrap launch for some
 telling sign that the app has completed launching. This may prove useful if
 you are doing this via a Rakefile and a <code class="prettyprint">go_device.sh</code> script:</p>
-<pre class="highlight plaintext"><code>bundle exec rake ci:fruit_deploy_app | while read line ; do 
+<pre><code class="highlight plaintext">bundle exec rake ci:fruit_deploy_app | while read line ; do 
    echo "$line" | grep "text to identify successful launch" 
    if [ $? = 0 ] 
    then 
@@ -2400,7 +2400,7 @@ preferences so that the remote debugger port is open.</p>
 attempting to use Appium.</p>
 
 <p>Then, use desired capabilities like these to run your test in mobile Safari:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
   <span class="nl">app</span><span class="p">:</span> <span class="s1">'safari'</span>
   <span class="p">,</span> <span class="nx">device</span><span class="err">:</span> <span class="s1">'iPhone Simulator'</span>
   <span class="p">,</span> <span class="nx">version</span><span class="err">:</span> <span class="s1">'6.1'</span>
@@ -2435,7 +2435,7 @@ advanced</strong>, only for iOS 6.0 and up)
   * <strong>Step 6:</strong> Search for the <strong>UUID</strong> and the string for it is your <strong>identity code</strong>.</p>
 
 <p>Now that you have a profile open a terminal and run the following commands:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>git clone https://github.com/appium/appium.git
+<pre><code class="highlight shell"><span class="gp">$ </span>git clone https://github.com/appium/appium.git
 <span class="gp">$ </span><span class="nb">cd </span>appium
 
 <span class="c"># Option 1: You dont define any parameters and it will set the code signing identity to 'iPhone Developer'</span>
@@ -2456,7 +2456,7 @@ advanced</strong>, only for iOS 6.0 and up)
 <p>To configure you test to run against safari simpley set the <strong>“app”</strong> to be <strong>“safari”</strong>.</p>
 
 <h3 id="java-example">Java Example</h3>
-<pre class="highlight java"><code><span class="c1">//setup the web driver and launch the webview app.</span>
+<pre><code class="highlight java"><span class="c1">//setup the web driver and launch the webview app.</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"safari"</span><span class="o">);</span>
 <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
@@ -2491,7 +2491,7 @@ specified by passing the <code class="prettyprint">--chromedriver-version</code>
 </ul>
 
 <p>Then, use desired capabilities like these to run your test in Chrome:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
   <span class="nl">app</span><span class="p">:</span> <span class="s1">'chrome'</span>
   <span class="p">,</span> <span class="nx">device</span><span class="err">:</span> <span class="s1">'Android'</span>
 <span class="p">};</span>
@@ -2505,11 +2505,11 @@ specified by passing the <code class="prettyprint">--chromedriver-version</code>
 <p>Mobile reset will reset the app’s state.</p>
 
 <p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
-<pre class="highlight ruby"><code><span class="n">mobile</span> <span class="ss">:reset</span>
+<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="p">:</span><span class="n">reset</span>
 </code></pre>
 
 <p>Ruby without the gem</p>
-<pre class="highlight ruby"><code><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: reset'</span>
+<pre><code class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: reset'</span>
 </code></pre>
 
 <h2 id="pullfile">pullFile</h2>
@@ -2520,7 +2520,7 @@ specified by passing the <code class="prettyprint">--chromedriver-version</code>
 to the file (relative to the root of the app’s file system).  On iOS only,
 if path starts with <code class="prettyprint">/AppName.app</code>, which will be replaced with the
 application’s .app directory</p>
-<pre class="highlight ruby"><code><span class="c1"># Android and iOS</span>
+<pre><code class="highlight ruby"><span class="c1"># Android and iOS</span>
 <span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: pullFile'</span><span class="p">,</span> <span class="p">{</span><span class="ss">path: </span><span class="s1">'/Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">}</span> <span class="c1">#=&gt; /Library/AddressBook/AddressBook.sqlitedb</span>
 
 <span class="c1">#iOS only</span>
@@ -2528,7 +2528,7 @@ application’s .app directory</p>
 </span></code></pre>
 
 <p>Ruby</p>
-<pre class="highlight ruby"><code><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span><span class="p">(</span><span class="s1">'mobile: pullFile'</span><span class="p">,</span> <span class="p">{</span><span class="ss">path: </span><span class="s1">'/Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">})</span>
+<pre><code class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span><span class="p">(</span><span class="s1">'mobile: pullFile'</span><span class="p">,</span> <span class="p">{</span><span class="ss">path: </span><span class="s1">'/Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">})</span>
 </code></pre>
 
 <h2 id="android-mobile-methods">Android mobile methods</h2>
@@ -2539,17 +2539,17 @@ application’s .app directory</p>
 enables sending a keycode to Android.</p>
 
 <p>Press the system menu button in Java.</p>
-<pre class="highlight java"><code><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">keycode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
+<pre><code class="highlight java"><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">keycode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;();</span>
 <span class="n">keycode</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"keycode"</span><span class="o">,</span> <span class="mi">82</span><span class="o">);</span>
 <span class="o">((</span><span class="n">JavascriptExecutor</span><span class="o">)</span><span class="n">driver</span><span class="o">).</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: keyevent"</span><span class="o">,</span> <span class="n">keycode</span><span class="o">);</span>
 </code></pre>
 
 <p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
-<pre class="highlight ruby"><code><span class="n">mobile</span> <span class="ss">:keyevent</span><span class="p">,</span> <span class="ss">keycode: </span><span class="mi">82</span>
+<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="p">:</span><span class="n">keyevent</span><span class="p">,</span> <span class="ss">keycode: </span><span class="mi">82</span>
 </code></pre>
 
 <p>Ruby without the gem</p>
-<pre class="highlight ruby"><code><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: keyevent'</span><span class="p">,</span> <span class="ss">:keycode</span> <span class="o">=&gt;</span> <span class="mi">82</span>
+<pre><code class="highlight ruby"><span class="vi">@driver</span><span class="p">.</span><span class="nf">execute_script</span> <span class="s1">'mobile: keyevent'</span><span class="p">,</span> <span class="ss">:keycode</span> <span class="o">=&gt;</span> <span class="mi">82</span>
 </code></pre>
 
 <h3 id="mobile-find">Mobile find</h3>
@@ -2559,7 +2559,7 @@ enables sending a keycode to Android.</p>
 <p>See <a href="https://github.com/appium/appium/tree/master/sample-code/examples/java/junit/src/test/java/com/saucelabs/appium/MobileFindJavaTest.java">MobileFindJavaTest.java</a></p>
 
 <p>Ruby + <a href="https://github.com/appium/ruby_lib">appium_lib gem</a></p>
-<pre class="highlight ruby"><code><span class="n">scroll_to</span> <span class="s1">'Gallery'</span>
+<pre><code class="highlight ruby"><span class="n">scroll_to</span> <span class="s1">'Gallery'</span>
 </code></pre>
 
 <h1 id="touch-actions">
@@ -2569,14 +2569,14 @@ enables sending a keycode to Android.</p>
 for example, to long press an element you can do:</p>
 
 <p>For iOS Application:</p>
-<pre class="highlight java"><code><span class="kd">final</span> <span class="n">WebElement</span> <span class="n">imageView</span> <span class="o">=</span> <span class="n">searchResults</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"ImageView"</span><span class="o">));</span>
+<pre><code class="highlight java"><span class="kd">final</span> <span class="n">WebElement</span> <span class="n">imageView</span> <span class="o">=</span> <span class="n">searchResults</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">tagName</span><span class="o">(</span><span class="s">"ImageView"</span><span class="o">));</span>
 <span class="k">new</span> <span class="nf">TouchActions</span><span class="p">(</span><span class="n">driver</span><span class="o">).</span><span class="na">longPress</span><span class="o">(</span><span class="n">imageView</span><span class="o">).</span><span class="na">perform</span><span class="o">();</span>
 </code></pre>
 
 <p>For Android Application:</p>
 
 <p>Java:</p>
-<pre class="highlight java"><code><span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"API Demo"</span><span class="o">));</span>
+<pre><code class="highlight java"><span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"API Demo"</span><span class="o">));</span>
 <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">wd</span><span class="o">;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">tapObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
 <span class="n">tapObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
@@ -2584,7 +2584,7 @@ for example, to long press an element you can do:</p>
 </code></pre>
 
 <p>Python:</p>
-<pre class="highlight python"><code><span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"your_element_xpath"</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">element</span> <span class="o">=</span> <span class="n">wd</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"your_element_xpath"</span><span class="p">)</span>
 <span class="n">wd</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: longClick"</span><span class="p">,{</span> <span class="s">"touchCount"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"x"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"y"</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s">"element"</span><span class="p">:</span><span class="n">element</span><span class="o">.</span><span class="nb">id</span> <span class="p">})</span>
 </code></pre>
 

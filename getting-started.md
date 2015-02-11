@@ -10,10 +10,8 @@ description: Want to rock your mobile app automation? This is how you get starte
 [![NPM version](https://badge.fury.io/js/appium.png)](https://npmjs.org/package/appium)
 [![Dependency Status](https://david-dm.org/appium/appium.svg)](https://david-dm.org/appium/appium)
 [![devDependency Status](https://david-dm.org/appium/appium/dev-status.svg)](https://david-dm.org/appium/appium#info=devDependencies)
-[![Build Status](https://api.travis-ci.org/appium/appium.png?branch=master)](https://travis-ci.org/appium/appium)
-[![Selenium Test Status](https://saucelabs.com/buildstatus/appium)](https://saucelabs.com/u/appium)
 
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/appium.svg)](https://saucelabs.com/u/appium)
+[![Build Status](https://team-appium.ci.cloudbees.com/buildStatus/icon?job=Appium)](https://team-appium.ci.cloudbees.com/job/Appium/)
 
 Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, FirefoxOS).
 
@@ -93,7 +91,7 @@ You can run an Appium server using node.js or using the application, see below.
 
 #### Using Node.js
 
-```
+```center
 $ npm install -g appium
 $ appium &
 ```

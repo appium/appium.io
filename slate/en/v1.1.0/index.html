@@ -275,7 +275,7 @@ are no problems.</p>
 passing the -U flag to the server, and passing the bundle ID (if the app is
 installed on the device) or the path to the .ipa file via the <code class="prettyprint">--app</code> flag or
  the <code class="prettyprint">app</code> desired capability:</p>
-<pre class="highlight plaintext"><code>node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
+<pre><code class="highlight plaintext">node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
 </code></pre>
 
 <p>This will start Appium and have Appium use the device to test the app.</p>
@@ -513,14 +513,14 @@ want to zip it up, you can.</p>
 <p>node .</p>
 
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
     <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span><span class="p">,</span>
     <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'6.1'</span><span class="p">,</span>
     <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'iPhone Simulator'</span><span class="p">,</span>
     <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre class="highlight python"><code><span class="p">{</span>
+<pre><code class="highlight python"><span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'6.1'</span><span class="p">,</span>
     <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span><span class="p">,</span>
@@ -565,14 +565,14 @@ otherwise failing, you can restart it by running:</p>
 <p>node .</p>
 
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
     <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
     <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'4.2'</span><span class="p">,</span>
     <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
     <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre class="highlight python"><code><span class="p">{</span>
+<pre><code class="highlight python"><span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.2'</span><span class="p">,</span>
     <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'Android Emulator'</span><span class="p">,</span>
@@ -603,7 +603,7 @@ Appium comes bundled with another automation backend called <a href="http://sele
 <p>To use Selendroid, all that is required is to slightly change the set of
 desired capabilities mentioned above, by adding the <code class="prettyprint">automationName</code> capability
 and specifying the Selendroid automation backend.</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
     <span class="nl">automationName</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
     <span class="nx">platformName</span><span class="err">:</span> <span class="s1">'Android'</span><span class="p">,</span>
     <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'2.3'</span><span class="p">,</span>
@@ -612,7 +612,7 @@ and specifying the Selendroid automation backend.</p>
     <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre class="highlight python"><code><span class="p">{</span>
+<pre><code class="highlight python"><span class="p">{</span>
     <span class="s">'automationName'</span><span class="p">:</span> <span class="s">'Selendroid'</span><span class="p">,</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'2.3'</span><span class="p">,</span>
@@ -653,9 +653,9 @@ using the instrument target, for example <code class="prettyprint">$ ant instrum
 
 <p>Pass <code class="prettyprint">androidCoverage</code> to your device capabilities and set it to your
 instrumentation class.</p>
-<pre class="highlight ruby"><code><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">androidCoverage: </span><span class="s1">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
+<pre><code class="highlight ruby"><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">androidCoverage: </span><span class="s1">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'androidCoverage'</span><span class="p">:</span> <span class="s">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
+<pre><code class="highlight python"><span class="n">caps</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'androidCoverage'</span><span class="p">:</span> <span class="s">'com.example.pkg/com.example.pkg.instrumentation.MyInstrumentation'</span> <span class="p">}</span>
 </code></pre>
 
 <p>Appium will start your app like this:</p>
@@ -664,13 +664,13 @@ instrumentation class.</p>
 
 <p>After your test completes, it’s time to end the coverage collection and pull
 the coverage.ec file from the device.</p>
-<pre class="highlight ruby"><code><span class="n">mobile</span> <span class="ss">:endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
+<pre><code class="highlight ruby"><span class="n">mobile</span> <span class="p">:</span><span class="n">endCoverage</span><span class="p">,</span> <span class="ss">intent: </span><span class="s1">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="ss">path: </span><span class="s1">'/mnt/sdcard/coverage.ec'</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">end_test_coverage</span><span class="p">(</span><span class="n">intent</span><span class="o">=</span><span class="s">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s">'/mnt/sdcard/coverage.ec'</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">end_test_coverage</span><span class="p">(</span><span class="n">intent</span><span class="o">=</span><span class="s">'com.example.pkg.END_EMMA'</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s">'/mnt/sdcard/coverage.ec'</span><span class="p">)</span>
 </code></pre>
 
 <p><code class="prettyprint">AndroidManifest.xml</code> defines the instrumentation and broadcast receiver.</p>
-<pre class="highlight xml"><code>    <span class="nt">&lt;instrumentation</span>
+<pre><code class="highlight xml">    <span class="nt">&lt;instrumentation</span>
         <span class="na">android:name=</span><span class="s">"com.example.pkg.instrumentation.MyInstrumentation"</span>
         <span class="na">android:targetPackage=</span><span class="s">"com.example.pkg"</span> <span class="nt">&gt;</span>
     <span class="nt">&lt;/instrumentation&gt;</span>
@@ -684,7 +684,7 @@ the coverage.ec file from the device.</p>
 </code></pre>
 
 <p><code class="prettyprint">EndEmmaBroadcast.java</code> is defined as:</p>
-<pre class="highlight java"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
+<pre><code class="highlight java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
 
@@ -718,7 +718,7 @@ the coverage.ec file from the device.</p>
 </code></pre>
 
 <p><code class="prettyprint">MyInstrumentation.java</code> is defined as:</p>
-<pre class="highlight java"><code><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
+<pre><code class="highlight java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">example</span><span class="o">.</span><span class="na">pkg</span><span class="o">.</span><span class="na">instrumentation</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">android.app.Instrumentation</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">android.content.Intent</span><span class="o">;</span>
@@ -1464,7 +1464,7 @@ navigator, showing me both the id and element type of the button I clicked.</p>
 
 <p>You are able to register your appium server with a local grid by using the
 <strong>“–nodeconfig”</strong> server parameter.</p>
-<pre class="highlight shell"><code><span class="gp">&gt; </span>node . -V --nodeconfig /path/to/nodeconfig.json
+<pre><code class="highlight shell"><span class="gp">&gt; </span>node . -V --nodeconfig /path/to/nodeconfig.json
 </code></pre>
 
 <p>In the node config file you have to define the <strong>“browserName”</strong>,
@@ -1480,7 +1480,7 @@ you will see your device on the grid console page:</p>
 <p>“http://<strong>&lt;grid-ip-adress&gt;</strong>:<strong>&lt;grid-port&gt;</strong>/grid/console”</p>
 
 <h2 id="grid-node-configuration-example-json-file">Grid Node Configuration Example json file</h2>
-<pre class="highlight xml"><code>{
+<pre><code class="highlight xml">{
   "capabilities":
       [
         {
@@ -1558,7 +1558,7 @@ connection we use the <a href="https://github.com/google/ios-webkit-debug-proxy"
 
 <p>To install the latest tagged version of the ios-webkit-debug-proxy using
 brew, run the following commands in the terminal:</p>
-<pre class="highlight shell"><code><span class="c"># The first command is only required if you don't have brew installed.</span>
+<pre><code class="highlight shell"><span class="c"># The first command is only required if you don't have brew installed.</span>
 <span class="gp">&gt; </span>ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.github.com/mxcl/homebrew/go/install<span class="k">)</span><span class="s2">"</span>
 <span class="gp">&gt; </span>brew update
 <span class="gp">&gt; </span>brew install ios-webkit-debug-proxy
@@ -1566,7 +1566,7 @@ brew, run the following commands in the terminal:</p>
 
 <p>You can also install the latest proxy by cloning it from git and installing
 it yourself:</p>
-<pre class="highlight shell"><code><span class="c"># Please be aware that this will install the proxy with the latest code (and not a tagged version).</span>
+<pre><code class="highlight shell"><span class="c"># Please be aware that this will install the proxy with the latest code (and not a tagged version).</span>
 <span class="gp">&gt; </span>git clone https://github.com/google/ios-webkit-debug-proxy.git
 <span class="gp">&gt; </span><span class="nb">cd </span>ios-webkit-debug-proxy
 <span class="gp">&gt; </span>./autogen.sh
@@ -1576,7 +1576,7 @@ it yourself:</p>
 </code></pre>
 
 <p>Once installed you can start the proxy with the following command:</p>
-<pre class="highlight shell"><code><span class="c"># Change the udid to be the udid of the attached device and make sure to set the port to 27753</span>
+<pre><code class="highlight shell"><span class="c"># Change the udid to be the udid of the attached device and make sure to set the port to 27753</span>
 <span class="c"># as that is the port the remote-debugger uses.</span>
 <span class="gp">&gt; </span>ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
 </code></pre>
@@ -1587,7 +1587,7 @@ safari &gt; advanced</strong>. Please be aware that the web inspector was <stron
 part of iOS 6</strong> and was not available previously.</p>
 
 <h2 id="wd.js-code-example">Wd.js Code example</h2>
-<pre class="highlight javascript"><code>  <span class="c1">// assuming we have an initialized `driver` object working on the UICatalog app</span>
+<pre><code class="highlight javascript">  <span class="c1">// assuming we have an initialized `driver` object working on the UICatalog app</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// find button to nav to view</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// nav to UIWebView</span>
       <span class="nx">driver</span><span class="p">.</span><span class="nx">contexts</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get list of available views</span>
@@ -1616,7 +1616,7 @@ part of iOS 6</strong> and was not available previously.</p>
 </ul>
 
 <h2 id="wd.java-code-example">Wd.java Code example</h2>
-<pre class="highlight java"><code>  <span class="c1">//setup the web driver and launch the webview app.</span>
+<pre><code class="highlight java">  <span class="c1">//setup the web driver and launch the webview app.</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"http://appium.s3.amazonaws.com/WebViewApp6.0.app.zip"</span><span class="o">);</span>
@@ -1641,7 +1641,7 @@ part of iOS 6</strong> and was not available previously.</p>
 </code></pre>
 
 <h2 id="wd.rb-code-example-using-cucumber">Wd.rb Code example using cucumber</h2>
-<pre class="highlight ruby"><code><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
+<pre><code class="highlight ruby"><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
 <span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span>
 <span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
 <span class="n">capabilities</span> <span class="o">=</span>
@@ -1682,7 +1682,7 @@ using the same codebase to test android and ios)
 https://gist.github.com/feelobot/7309729</p>
 
 <h2 id="wd.py-code-example">Wd.py Code example</h2>
-<pre class="highlight python"><code><span class="n">APP_PATH</span> <span class="o">=</span> <span class="s">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
+<pre><code class="highlight python"><span class="n">APP_PATH</span> <span class="o">=</span> <span class="s">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
 <span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'iOS 6.0'</span><span class="p">,</span>
     <span class="s">'platform'</span><span class="p">:</span> <span class="s">'Mac 10.8'</span><span class="p">,</span>
@@ -1714,7 +1714,7 @@ capability). Then follow all the same steps as above for iOS, i.e.,
 switching contexts, etc…</p>
 
 <h2 id="wd.js-code-example">Wd.js Code example</h2>
-<pre class="highlight javascript"><code><span class="c1">// assuming we have an initialized `driver` object working on a hybrid app</span>
+<pre><code class="highlight javascript"><span class="c1">// assuming we have an initialized `driver` object working on a hybrid app</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// choose the only available view</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get webpage elements by css</span>
     <span class="nx">els</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// there should be some!</span>
@@ -1730,7 +1730,7 @@ switching contexts, etc…</p>
 </code></pre>
 
 <h2 id="wd.java-code-example">Wd.java Code example</h2>
-<pre class="highlight java"><code>  <span class="c1">//setup the web driver and launch the webview app.</span>
+<pre><code class="highlight java">  <span class="c1">//setup the web driver and launch the webview app.</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"/path/to/some.apk"</span><span class="o">);</span>
@@ -1753,7 +1753,7 @@ switching contexts, etc…</p>
 </code></pre>
 
 <h2 id="wd.py-code-example">Wd.py Code example</h2>
-<pre class="highlight python"><code><span class="c"># assuming we have an initialized `driver` object working on a hybrid app</span>
+<pre><code class="highlight python"><span class="c"># assuming we have an initialized `driver` object working on a hybrid app</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
 <span class="n">elements</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_css_selector</span><span class="p">(</span><span class="s">'.some-class'</span><span class="p">)</span>
 <span class="n">assertLess</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">elements</span><span class="p">))</span>
@@ -1777,13 +1777,13 @@ to deploy this build to your device</li>
 <h2 id="xcodebuild-with-parameters:">Xcodebuild with parameters:</h2>
 
 <p>A newer xcodebuild now allows settings to be specified. Taken from <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>:</p>
-<pre class="highlight plaintext"><code>xcodebuild [-project projectname] [-target targetname ...]
+<pre><code class="highlight plaintext">xcodebuild [-project projectname] [-target targetname ...]
              [-configuration configurationname] [-sdk [sdkfullpath | sdkname]]
              [buildaction ...] [setting=value ...] [-userdefault=value ...]
 </code></pre>
 
 <p>This is a resource to explore the available <a href="https://developer.apple.com/library/mac/#documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html#//apple_ref/doc/uid/TP40003931-CH3-DontLinkElementID_10">settings</a></p>
-<pre class="highlight plaintext"><code>CODE_SIGN_IDENTITY (Code Signing Identity)
+<pre><code class="highlight plaintext">CODE_SIGN_IDENTITY (Code Signing Identity)
     Description: Identifier. Specifies the name of a code signing identity.
     Example value: iPhone Developer
 </code></pre>
@@ -1793,7 +1793,7 @@ but may be necessary.</p>
 
 <p>Specify “CODE_SIGN_IDENTITY” &amp; “PROVISIONING_PROFILE” settings in the
 xcodebuild command:</p>
-<pre class="highlight plaintext"><code>xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+<pre><code class="highlight plaintext">xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
 </code></pre>
 
 <p>On success, the app will be built to your <code class="prettyprint">&lt;app_dir&gt;/build/&lt;configuration&gt;-iphoneos/&lt;app_name&gt;.app</code></p>
@@ -1810,20 +1810,20 @@ parent directory.</p>
 
 <p>Execute fruitstrap after a clean build by running (commands available depend
 on your fork of fruitstrap):</p>
-<pre class="highlight plaintext"><code>./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;
+<pre><code class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;
 </code></pre>
 
 <p>If you are aiming to use continuous integration in this setup,
 you may find it useful to want to log the output of fruitstrap to both
 command line and log, like so:</p>
-<pre class="highlight plaintext"><code>./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out
+<pre><code class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out
 </code></pre>
 
 <p>Since fruitstrap will need to be killed before the node server can be
 launched, an option is to scan the output of the fruitstrap launch for some
 telling sign that the app has completed launching. This may prove useful if
 you are doing this via a Rakefile and a <code class="prettyprint">go_device.sh</code> script:</p>
-<pre class="highlight plaintext"><code>bundle exec rake ci:fruit_deploy_app | while read line ; do 
+<pre><code class="highlight plaintext">bundle exec rake ci:fruit_deploy_app | while read line ; do 
    echo "$line" | grep "text to identify successful launch" 
    if [ $? = 0 ] 
    then 
@@ -1856,14 +1856,14 @@ preferences so that the remote debugger port is open.</p>
 attempting to use Appium.</p>
 
 <p>Then, use desired capabilities like these to run your test in mobile Safari:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
   <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span>
   <span class="p">,</span> <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'6.1'</span>
   <span class="p">,</span> <span class="nx">browserName</span><span class="err">:</span> <span class="s1">'Safari'</span>
   <span class="p">,</span> <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'iPhone Simulator'</span>
 <span class="p">}</span>
 </code></pre>
-<pre class="highlight python"><code><span class="p">{</span>
+<pre><code class="highlight python"><span class="p">{</span>
   <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
   <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'6.1'</span><span class="p">,</span>
   <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Safari'</span><span class="p">,</span>
@@ -1901,7 +1901,7 @@ advanced</strong>, only for iOS 6.0 and up)
   * <strong>Step 6:</strong> Search for the <strong>UUID</strong> and the string for it is your <strong>identity code</strong>.</p>
 
 <p>Now that you have a profile open a terminal and run the following commands:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>git clone https://github.com/appium/appium.git
+<pre><code class="highlight shell"><span class="gp">$ </span>git clone https://github.com/appium/appium.git
 <span class="gp">$ </span><span class="nb">cd </span>appium
 
 <span class="c"># Option 1: You dont define any parameters and it will set the code signing identity to 'iPhone Developer'</span>
@@ -1922,7 +1922,7 @@ advanced</strong>, only for iOS 6.0 and up)
 <p>To configure you test to run against safari simply set the <strong>“browserName”</strong> to be <strong>“Safari”</strong>.</p>
 
 <h2 id="java-example">Java Example</h2>
-<pre class="highlight java"><code><span class="c1">//setup the web driver and launch the webview app.</span>
+<pre><code class="highlight java"><span class="c1">//setup the web driver and launch the webview app.</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"browserName"</span><span class="o">,</span> <span class="s">"Safari"</span><span class="o">);</span>
 <span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">"http://127.0.0.1:4723/wd/hub"</span><span class="o">);</span>
@@ -1939,7 +1939,7 @@ advanced</strong>, only for iOS 6.0 and up)
 </code></pre>
 
 <h2 id="python-example">Python Example</h2>
-<pre class="highlight python"><code><span class="c"># setup the web driver and launch the webview app.</span>
+<pre><code class="highlight python"><span class="c"># setup the web driver and launch the webview app.</span>
 <span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Safari'</span> <span class="p">}</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Remote</span><span class="p">(</span><span class="s">'http://localhost:4723/wd/hub'</span><span class="p">,</span> <span class="n">capabilities</span><span class="p">)</span>
 
@@ -1966,14 +1966,14 @@ advanced</strong>, only for iOS 6.0 and up)
 </ul>
 
 <p>Then, use desired capabilities like these to run your test in Chrome:</p>
-<pre class="highlight javascript"><code><span class="p">{</span>
+<pre><code class="highlight javascript"><span class="p">{</span>
   <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'Android'</span>
   <span class="p">,</span> <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'4.4'</span>
   <span class="p">,</span> <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'Android Emulator'</span>
   <span class="p">,</span> <span class="nx">browserName</span><span class="err">:</span> <span class="s1">'Chrome'</span>
 <span class="p">};</span>
 </code></pre>
-<pre class="highlight python"><code><span class="p">{</span>
+<pre><code class="highlight python"><span class="p">{</span>
   <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
   <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.4'</span><span class="p">,</span>
   <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'Android Emulator'</span><span class="p">,</span>
@@ -2147,11 +2147,11 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <p>The biggest thing you need to worry about is using the new Appium client libraries instead of the vanilla WebDriver clients you are currently using. Visit the <a href="#appium-clients.md">Appium client list</a> to find the client for your language. Downloads and instructions for integrating into your code are available on the individual client websites.</p>
 
 <p>Ultimately, you’ll be doing something like (to use Python as an example):</p>
-<pre class="highlight plaintext"><code>from appium import webdriver
+<pre><code class="highlight plaintext">from appium import webdriver
 </code></pre>
 
 <p>Instead of:</p>
-<pre class="highlight plaintext"><code>from selenium import webdriver
+<pre><code class="highlight plaintext">from selenium import webdriver
 </code></pre>
 
 <h2 id="new-desired-capabilities">New desired capabilities</h2>
@@ -2194,11 +2194,11 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <p><code class="prettyprint">tag name</code> has been replaced by <code class="prettyprint">class name</code>. So to find an element by its UI type, use the class name locator strategy for your client.</p>
 
 <p>Note about <code class="prettyprint">class name</code> and <code class="prettyprint">xpath</code> strategies: these now require the fully-qualified class name for your element. This means that if you had an xpath selector that looked like this:</p>
-<pre class="highlight plaintext"><code>//table/cell/button
+<pre><code class="highlight plaintext">//table/cell/button
 </code></pre>
 
 <p>It would now need to be:</p>
-<pre class="highlight plaintext"><code>//UIATableView/UIATableCell/UIAButton
+<pre><code class="highlight plaintext">//UIATableView/UIATableCell/UIAButton
 </code></pre>
 
 <p>(And likewise for Android: <code class="prettyprint">button</code> now needs to be <code class="prettyprint">android.widget.Button</code>)</p>
@@ -2227,12 +2227,12 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </ul>
 
 <p>Now Appium supports the more conceptually consistent concept of “context”. To get all of the available contexts, or the particular context the application is is, you use</p>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
 <span class="n">current</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">context</span>
 </code></pre>
 
 <p>And to switch between them, you use</p>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
 </code></pre>
 
 <h2 id='no-more-execute_script("mobile:-xxx")'>No more <code class="prettyprint">execute_script("mobile: xxx")</code>
@@ -2292,280 +2292,280 @@ is resolved. If you want to use them anyway, consult the documentation for the b
 <h2 id="lock">Lock</h2>
 
 <p>Lock the screen.</p>
-<pre class="highlight ruby"><code><span class="n">lock</span> <span class="mi">5</span>
+<pre><code class="highlight ruby"><span class="n">lock</span> <span class="mi">5</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">lock</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">lock</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">lockScreen</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">lockScreen</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">LockDevice</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">LockDevice</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="background-app">Background app</h2>
 
 <p>Send the currently active app to the background.</p>
-<pre class="highlight ruby"><code><span class="n">background_app</span> <span class="mi">5</span>
+<pre><code class="highlight ruby"><span class="n">background_app</span> <span class="mi">5</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">background_app</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">background_app</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">runAppInBackground</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">runAppInBackground</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="hide-keyboard-(ios-only)">Hide Keyboard (iOS only)</h2>
 
 <p>Hide the keyboard on iOS</p>
-<pre class="highlight ruby"><code><span class="n">hide_keyboard</span>
+<pre><code class="highlight ruby"><span class="n">hide_keyboard</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">hide_keyboard</span><span class="p">()</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">hide_keyboard</span><span class="p">()</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">hideKeyboard</span><span class="o">();</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">hideKeyboard</span><span class="o">();</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">HideKeyboard</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">HideKeyboard</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="is-installed">Is installed</h2>
 
 <p>Check if an app is installed</p>
-<pre class="highlight ruby"><code><span class="n">is_installed?</span> <span class="s2">"com.example.android.apis"</span>
+<pre><code class="highlight ruby"><span class="n">is_installed?</span> <span class="s2">"com.example.android.apis"</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">is_app_installed</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">is_app_installed</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">isAppInstalled</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">isAppInstalled</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">IsAppInstalled</span><span class="p">(</span><span class="s">"com.example.android.apis-"</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">IsAppInstalled</span><span class="p">(</span><span class="s">"com.example.android.apis-"</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="install-app">Install App</h2>
 
 <p>Install an app to the device.</p>
-<pre class="highlight ruby"><code><span class="n">install</span> <span class="s1">'path/to/my.apk'</span>
+<pre><code class="highlight ruby"><span class="n">install</span> <span class="s1">'path/to/my.apk'</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">install_app</span><span class="p">(</span><span class="s">'path/to/my.apk'</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">install_app</span><span class="p">(</span><span class="s">'path/to/my.apk'</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">installApp</span><span class="o">(</span><span class="s">"path/to/my.apk"</span><span class="o">)</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">installApp</span><span class="o">(</span><span class="s">"path/to/my.apk"</span><span class="o">)</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">InstallApp</span><span class="p">(</span><span class="s">"path/to/my.apk"</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">InstallApp</span><span class="p">(</span><span class="s">"path/to/my.apk"</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="remove-app">Remove App</h2>
 
 <p>Remove an app from the device.</p>
-<pre class="highlight ruby"><code><span class="n">remove</span> <span class="s1">'com.example.android.apis'</span>
+<pre><code class="highlight ruby"><span class="n">remove</span> <span class="s1">'com.example.android.apis'</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">remove_app</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">remove_app</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">removeApp</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">removeApp</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">RemoveApp</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">RemoveApp</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="shake">Shake</h2>
 
 <p>Simulate the device shaking.</p>
-<pre class="highlight ruby"><code><span class="n">shake</span>
+<pre><code class="highlight ruby"><span class="n">shake</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">shake</span><span class="p">()</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">shake</span><span class="p">()</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">shake</span><span class="o">()</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">shake</span><span class="o">()</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">ShakeDevice</span><span class="p">();</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">ShakeDevice</span><span class="p">();</span>
 </code></pre>
 
 <h2 id="close-app">Close app</h2>
 
 <p>Close the app</p>
-<pre class="highlight ruby"><code><span class="n">close_app</span>
+<pre><code class="highlight ruby"><span class="n">close_app</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">close_app</span><span class="p">();</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">close_app</span><span class="p">();</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">closeApp</span><span class="o">()</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">closeApp</span><span class="o">()</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">CloseApp</span><span class="p">();</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">CloseApp</span><span class="p">();</span>
 </code></pre>
 
 <h2 id="launch">Launch</h2>
 
 <p>Launch the app</p>
-<pre class="highlight ruby"><code><span class="n">launch</span>
+<pre><code class="highlight ruby"><span class="n">launch</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">launch_app</span><span class="p">()</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">launch_app</span><span class="p">()</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">launchApp</span><span class="o">()</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">launchApp</span><span class="o">()</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">LaunchApp</span><span class="p">();</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">LaunchApp</span><span class="p">();</span>
 </code></pre>
 
 <h2 id="reset">Reset</h2>
 
 <p>Reset the app.</p>
-<pre class="highlight ruby"><code><span class="n">reset</span>
+<pre><code class="highlight ruby"><span class="n">reset</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">resetApp</span><span class="o">()</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">resetApp</span><span class="o">()</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">ResetApp</span><span class="p">();</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">ResetApp</span><span class="p">();</span>
 </code></pre>
 
 <h2 id="available-contexts">Available Contexts</h2>
 
 <p>List all available contexts</p>
-<pre class="highlight ruby"><code><span class="n">context_array</span> <span class="o">=</span> <span class="n">available_contexts</span>
+<pre><code class="highlight ruby"><span class="n">context_array</span> <span class="o">=</span> <span class="n">available_contexts</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">()</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">()</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span><span class="p">()</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span><span class="p">()</span>
 </code></pre>
 
 <h2 id="current-context">Current context</h2>
 
 <p>List the current context</p>
-<pre class="highlight ruby"><code><span class="n">context</span> <span class="o">=</span> <span class="n">current_context</span>
+<pre><code class="highlight ruby"><span class="n">context</span> <span class="o">=</span> <span class="n">current_context</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">current_context</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">current_context</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">getContext</span><span class="o">()</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getContext</span><span class="o">()</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">()</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">()</span>
 </code></pre>
 
 <h2 id="switch-to-default-context">Switch to default context</h2>
 
 <p>Change the context to the default.</p>
-<pre class="highlight ruby"><code><span class="n">switch_to_default_context</span>
+<pre><code class="highlight ruby"><span class="n">switch_to_default_context</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">();</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">();</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span><span class="p">();</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span><span class="p">();</span>
 </code></pre>
 
 <h2 id="app-strings">App Strings</h2>
 
 <p>Get the app’s strings.</p>
-<pre class="highlight ruby"><code><span class="n">strings</span> <span class="o">=</span> <span class="n">app_strings</span>
+<pre><code class="highlight ruby"><span class="n">strings</span> <span class="o">=</span> <span class="n">app_strings</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">app_strings</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">app_strings</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">getAppString</span><span class="o">();</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">getAppString</span><span class="o">();</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">GetAppStrings</span><span class="p">();</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetAppStrings</span><span class="p">();</span>
 </code></pre>
 
 <h2 id="key-event">Key Event</h2>
 
 <p>Send a key event to the device.</p>
-<pre class="highlight ruby"><code><span class="n">key_event</span> <span class="mi">176</span>
+<pre><code class="highlight ruby"><span class="n">key_event</span> <span class="mi">176</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">keyevent</span><span class="p">(</span><span class="mi">176</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">keyevent</span><span class="p">(</span><span class="mi">176</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">sendKeyEvent</span><span class="o">(</span><span class="n">AndroidKeyCode</span><span class="o">.</span><span class="na">HOME</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">sendKeyEvent</span><span class="o">(</span><span class="n">AndroidKeyCode</span><span class="o">.</span><span class="na">HOME</span><span class="o">);</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">KeyEvent</span><span class="p">(</span><span class="s">"176"</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">KeyEvent</span><span class="p">(</span><span class="s">"176"</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="current-activity">Current Activity</h2>
 
 <p>Android only. Get the current activity.</p>
-<pre class="highlight ruby"><code><span class="n">current_activity</span>
+<pre><code class="highlight ruby"><span class="n">current_activity</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">current_activity</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">current_activity</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">currentActivity</span><span class="o">();</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">currentActivity</span><span class="o">();</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
 </code></pre>
 
 <h2 id="touchaction-/-multitouchaction">TouchAction / MultiTouchAction</h2>
 
 <p>An API for generating touch actions. This section of the documentation will be
 expanded upon soon.</p>
-<pre class="highlight ruby"><code><span class="n">touch_action</span> <span class="o">=</span> <span class="no">Appium</span><span class="o">::</span><span class="no">TouchAction</span><span class="p">.</span><span class="nf">new</span>
-<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
+<pre><code class="highlight ruby"><span class="n">touch_action</span> <span class="o">=</span> <span class="no">Appium</span><span class="o">::</span><span class="no">TouchAction</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="p">:</span><span class="nb">name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
 <span class="n">touch_action</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="ss">element: </span><span class="n">element</span><span class="p">,</span> <span class="ss">x: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">y: </span><span class="mi">10</span><span class="p">).</span><span class="nf">perform</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">action</span> <span class="o">=</span> <span class="n">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">action</span> <span class="o">=</span> <span class="n">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
 <span class="n">action</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">release</span><span class="p">()</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">TouchAction</span> <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TouchAction</span><span class="o">(</span><span class="n">driver</span><span class="o">)</span>
+<pre><code class="highlight java"><span class="n">TouchAction</span> <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TouchAction</span><span class="o">(</span><span class="n">driver</span><span class="o">)</span>
 <span class="o">.</span><span class="na">press</span><span class="o">(</span><span class="n">mapview</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
 <span class="o">.</span><span class="na">release</span><span class="o">().</span>
 <span class="n">perform</span><span class="o">();</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">var</span> <span class="n">touchAction1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TouchActions</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">var</span> <span class="n">touchAction1</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TouchActions</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
 <span class="n">touchAction1</span><span class="p">.</span><span class="nf">Down</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">).</span><span class="nf">Up</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
 
 <span class="n">var</span> <span class="n">multiTouchAction</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MultiTouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
@@ -2577,87 +2577,87 @@ expanded upon soon.</p>
 <h2 id="swipe">Swipe</h2>
 
 <p>Simulate a user swipe.</p>
-<pre class="highlight ruby"><code><span class="n">swipe</span> <span class="ss">start_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">start_y: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">end_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">end_y: </span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration: </span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span>
+<pre><code class="highlight ruby"><span class="n">swipe</span> <span class="ss">start_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">start_y: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">end_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">end_y: </span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration: </span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">swipe</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">swipe</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">swipe</span><span class="o">(</span><span class="n">startx</span><span class="o">=</span><span class="mi">75</span><span class="o">,</span> <span class="n">starty</span><span class="o">=</span><span class="mi">500</span><span class="o">,</span> <span class="n">endx</span><span class="o">=</span><span class="mi">75</span><span class="o">,</span> <span class="n">endy</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">800</span><span class="o">)</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">swipe</span><span class="o">(</span><span class="n">startx</span><span class="o">=</span><span class="mi">75</span><span class="o">,</span> <span class="n">starty</span><span class="o">=</span><span class="mi">500</span><span class="o">,</span> <span class="n">endx</span><span class="o">=</span><span class="mi">75</span><span class="o">,</span> <span class="n">endy</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">800</span><span class="o">)</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">todo</span><span class="p">:</span> <span class="n">c</span><span class="err">#</span>
+<pre><code class="highlight csharp"><span class="n">todo</span><span class="p">:</span> <span class="n">c</span><span class="err">#</span>
 </code></pre>
 
 <h2 id="pinch">Pinch</h2>
 
 <p>Pinch the screen.</p>
-<pre class="highlight ruby"><code><span class="n">pinch</span> <span class="mi">75</span>
+<pre><code class="highlight ruby"><span class="n">pinch</span> <span class="mi">75</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">pinch</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">pinch</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">pinch</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">pinch</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">Pinch</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">25</span><span class="p">)</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">Pinch</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">25</span><span class="p">)</span>
 </code></pre>
 
 <h2 id="zoom">Zoom</h2>
 
 <p>Zoom the screen.</p>
-<pre class="highlight ruby"><code><span class="n">zoom</span> <span class="mi">200</span>
+<pre><code class="highlight ruby"><span class="n">zoom</span> <span class="mi">200</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">zoom</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">zoom</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">Zoom</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">200</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">Zoom</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">200</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="pull-file">Pull file</h2>
 
 <p>Pulls a file from the device.</p>
-<pre class="highlight ruby"><code><span class="n">pull_file</span> <span class="s1">'Library/AddressBook/AddressBook.sqlitedb'</span>
+<pre><code class="highlight ruby"><span class="n">pull_file</span> <span class="s1">'Library/AddressBook/AddressBook.sqlitedb'</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">pull_file</span><span class="p">(</span><span class="s">'Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">)</span>
+<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">pull_file</span><span class="p">(</span><span class="s">'Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight java"><code><span class="n">driver</span><span class="o">.</span><span class="na">pullFile</span><span class="o">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="o">);</span>
+<pre><code class="highlight java"><span class="n">driver</span><span class="o">.</span><span class="na">pullFile</span><span class="o">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="o">);</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">PullFile</span><span class="p">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">PullFile</span><span class="p">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="push-file">Push File</h2>
 
 <p>Pushes a file to the device.</p>
-<pre class="highlight ruby"><code><span class="n">data</span> <span class="o">=</span> <span class="s2">"some data for the file"</span>
+<pre><code class="highlight ruby"><span class="n">data</span> <span class="o">=</span> <span class="s2">"some data for the file"</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s2">"/data/local/tmp/file.txt"</span>
 <span class="n">push_file</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span>
 </code></pre>
-<pre class="highlight python"><code><span class="n">data</span> <span class="o">=</span> <span class="s">"some data for the file"</span>
+<pre><code class="highlight python"><span class="n">data</span> <span class="o">=</span> <span class="s">"some data for the file"</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">push_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">))</span>
 </code></pre>
-<pre class="highlight java"><code><span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encodeBase64</span><span class="o">(</span><span class="s">"some data for the file"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
+<pre><code class="highlight java"><span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encodeBase64</span><span class="o">(</span><span class="s">"some data for the file"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
 <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span><span class="o">;</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">pushFile</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
+<pre><code class="highlight javascript"><span class="nx">todo</span><span class="err">:</span> <span class="nx">javascript</span>
 </code></pre>
-<pre class="highlight php"><code>todo: php
+<pre><code class="highlight php">todo: php
 </code></pre>
-<pre class="highlight csharp"><code><span class="n">driver</span><span class="p">.</span><span class="nf">PushFile</span><span class="p">(</span><span class="s">"/data/local/tmp/file.txt"</span><span class="p">,</span> <span class="s">"some data for the file"</span><span class="p">);</span>
+<pre><code class="highlight csharp"><span class="n">driver</span><span class="p">.</span><span class="nf">PushFile</span><span class="p">(</span><span class="s">"/data/local/tmp/file.txt"</span><span class="p">,</span> <span class="s">"some data for the file"</span><span class="p">);</span>
 </code></pre>
 
 <h2 id="appium-desktop-apps">Appium Desktop Apps</h2>
@@ -2693,7 +2693,7 @@ expanded upon soon.</p>
 <span id="ios_predicate.md"></span>iOS Predicate</h1>
 
 <p>I’d like to share my experience in using <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>. After using Instruments/UIAutomation tool for a long time I paid attention on the following methods in <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation JavaScript API</a>:</p>
-<pre class="highlight java"><code><span class="o">(</span><span class="n">UIAElement</span><span class="o">)</span> <span class="n">UIAElementArray</span><span class="o">.</span><span class="na">firstWithPredicate</span><span class="o">(</span><span class="n">PredicateString</span> <span class="n">predicateString</span><span class="o">)</span>
+<pre><code class="highlight java"><span class="o">(</span><span class="n">UIAElement</span><span class="o">)</span> <span class="n">UIAElementArray</span><span class="o">.</span><span class="na">firstWithPredicate</span><span class="o">(</span><span class="n">PredicateString</span> <span class="n">predicateString</span><span class="o">)</span>
 <span class="o">(</span><span class="n">UIAElementArray</span><span class="o">)</span> <span class="n">UIAElementArray</span><span class="o">.</span><span class="na">withPredicate</span><span class="o">(</span><span class="n">PredicateString</span> <span class="n">predicateString</span><span class="o">)</span>
 </code></pre>
 
@@ -2701,7 +2701,7 @@ expanded upon soon.</p>
 <strong><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/predicates.html">Predicates</a></strong> can be used to restrict an elements set to select only those ones for which some condition is true.</p>
 
 <p>For example:</p>
-<pre class="highlight java"><code><span class="n">appiumDriver</span><span class="o">.</span><span class="na">findElementsByIosUIAutomation</span><span class="o">(</span><span class="s">"collectionViews()[0].cells().withPredicate(\"ANY staticTexts.isVisible == TRUE\")"</span><span class="o">)</span>
+<pre><code class="highlight java"><span class="n">appiumDriver</span><span class="o">.</span><span class="na">findElementsByIosUIAutomation</span><span class="o">(</span><span class="s">"collectionViews()[0].cells().withPredicate(\"ANY staticTexts.isVisible == TRUE\")"</span><span class="o">)</span>
 </code></pre>
 
 <p>-  will select only those  <code class="prettyprint">UIACollectionCell</code> elements that have visible <code class="prettyprint">UIAStaticText</code> child elements, and themselves are childs of 1st <code class="prettyprint">UIACollectionView</code> element that should be located under the main app window.  Here <code class="prettyprint">staticTexts()</code> and <code class="prettyprint">isVisible()</code> are methods available in <code class="prettyprint">UIAElementArray</code> and <code class="prettyprint">UIAElement</code> classes respectively. <strong>Note that <code class="prettyprint">UIAElementArray</code> numbering begins with <code class="prettyprint">0</code> unlike Xpath where indexes counting starts from <code class="prettyprint">1</code></strong></p>
@@ -2736,7 +2736,7 @@ tableViews()<a href="http://software.intel.com/en-us/articles/intel-hardware-acc
 <p>BETWEEN
 - The left-hand expression is between, or equal to either of, the values specified in the right-hand side. The right-hand side is a two value array (an array is required to specify order) giving upper and lower bounds. For example, <code class="prettyprint">1 BETWEEN { 0 , 33 }</code>, or <code class="prettyprint">$INPUT BETWEEN { $LOWER, $UPPER }</code>.
 In Objective-C, you could create a BETWEEN predicate as shown in the following example:</p>
-<pre class="highlight plaintext"><code>NSPredicate *betweenPredicate =
+<pre><code class="highlight plaintext">NSPredicate *betweenPredicate =
     [NSPredicate predicateWithFormat: @"attributeName BETWEEN %@", @[@1, @10]];
 </code></pre>
 
@@ -2767,14 +2767,14 @@ In Objective-C, you could create a BETWEEN predicate as shown in the following e
 
 <p>BEGINSWITH
 - The left-hand expression begins with the right-hand expression.</p>
-<pre class="highlight javascript"><code><span class="nx">scrollViews</span><span class="p">()[</span><span class="mi">3</span><span class="p">].</span><span class="nx">buttons</span><span class="p">().</span><span class="nx">firstWithPredicate</span><span class="p">(</span><span class="s2">"name BEGINSWITH 'results toggle' "</span><span class="p">)</span>
+<pre><code class="highlight javascript"><span class="nx">scrollViews</span><span class="p">()[</span><span class="mi">3</span><span class="p">].</span><span class="nx">buttons</span><span class="p">().</span><span class="nx">firstWithPredicate</span><span class="p">(</span><span class="s2">"name BEGINSWITH 'results toggle' "</span><span class="p">)</span>
 
 <span class="nx">same</span> <span class="k">in</span> <span class="nx">Xpath</span><span class="err">:</span> <span class="o">/</span><span class="nx">UIAScrollView</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">/</span><span class="nx">UIAButton</span><span class="p">[</span><span class="nx">starts</span><span class="o">-</span><span class="kd">with</span><span class="p">(</span><span class="err">@</span><span class="nx">name</span><span class="p">,</span> <span class="s1">'results toggle'</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span>
 </code></pre>
 
 <p>CONTAINS
 - The left-hand expression contains the right-hand expression.</p>
-<pre class="highlight javascript"><code><span class="nx">tableViews</span><span class="p">()[</span><span class="mi">1</span><span class="p">].</span><span class="nx">cells</span><span class="p">().</span><span class="nx">withPredicate</span><span class="p">(</span><span class="s2">"ANY collectionViews[0].buttons.name CONTAINS 'opera'"</span><span class="p">)</span>
+<pre><code class="highlight javascript"><span class="nx">tableViews</span><span class="p">()[</span><span class="mi">1</span><span class="p">].</span><span class="nx">cells</span><span class="p">().</span><span class="nx">withPredicate</span><span class="p">(</span><span class="s2">"ANY collectionViews[0].buttons.name CONTAINS 'opera'"</span><span class="p">)</span>
 
 <span class="nx">same</span> <span class="k">in</span> <span class="nx">Xpath</span><span class="err">:</span> <span class="o">/</span><span class="nx">UIATableView</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="nx">UIATableCell</span><span class="p">[</span><span class="nx">UIACollectionView</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="nx">UIAButton</span><span class="p">[</span><span class="nx">contains</span><span class="p">(</span><span class="err">@</span><span class="nx">name</span><span class="p">,</span> <span class="s1">'opera'</span><span class="p">)]]</span>
 </code></pre>
@@ -2784,14 +2784,14 @@ In Objective-C, you could create a BETWEEN predicate as shown in the following e
 
 <p>LIKE
 - The left hand expression equals the right-hand expression: ? and * are allowed as wildcard characters, where ? matches 1 character and * matches 0 or more characters. In Mac OS X v10.4, wildcard characters do not match newline characters.</p>
-<pre class="highlight javascript"><code><span class="nx">tableViews</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="nx">cells</span><span class="p">().</span><span class="nx">firstWithPredicate</span><span class="p">(</span><span class="s2">"name LIKE '*Total: $*' "</span><span class="p">)</span>
+<pre><code class="highlight javascript"><span class="nx">tableViews</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="nx">cells</span><span class="p">().</span><span class="nx">firstWithPredicate</span><span class="p">(</span><span class="s2">"name LIKE '*Total: $*' "</span><span class="p">)</span>
 
 <span class="nx">same</span> <span class="k">in</span> <span class="nx">Xpath</span><span class="err">:</span> <span class="o">/</span><span class="nx">UIATableView</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="nx">UIATableCell</span><span class="p">[</span><span class="nx">matches</span><span class="p">(</span><span class="err">@</span><span class="nx">name</span><span class="p">,</span> <span class="s1">'.*Total: \$.*'</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span>
 </code></pre>
 
 <p>MATCHES
 - The left hand expression equals the right hand expression using a regex -style comparison according to ICU v3 (for more details see the ICU User Guide for <a href="http://userguide.icu-project.org/strings/regexp">Regular Expressions</a>).</p>
-<pre class="highlight javascript"><code><span class="nx">tableViews</span><span class="p">().</span><span class="nx">firstWithPredicate</span><span class="p">(</span><span class="s2">"value MATCHES '.*of 7' "</span><span class="p">)</span>
+<pre><code class="highlight javascript"><span class="nx">tableViews</span><span class="p">().</span><span class="nx">firstWithPredicate</span><span class="p">(</span><span class="s2">"value MATCHES '.*of 7' "</span><span class="p">)</span>
 
 <span class="nx">same</span> <span class="k">in</span> <span class="nx">Xpath</span><span class="err">:</span> <span class="o">/</span><span class="nx">UIATableView</span><span class="p">[</span><span class="nx">matches</span><span class="p">(</span><span class="err">@</span><span class="nx">value</span><span class="p">,</span> <span class="s1">'.*of 7'</span><span class="p">)][</span><span class="mi">1</span><span class="p">]</span>
 </code></pre>
@@ -2800,7 +2800,7 @@ In Objective-C, you could create a BETWEEN predicate as shown in the following e
 
 <p>ANY , SOME
 - Specifies any of the elements in the following expression. For example <code class="prettyprint">ANY children.age &lt; 18</code> .</p>
-<pre class="highlight javascript"><code><span class="nx">tableViews</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="nx">cells</span><span class="p">().</span><span class="nx">firstWithPredicate</span><span class="p">(</span><span class="s2">"SOME staticTexts.name = 'red'"</span><span class="p">).</span><span class="nx">staticTexts</span><span class="p">().</span><span class="nx">withName</span><span class="p">(</span><span class="s1">'red'</span><span class="p">)</span>
+<pre><code class="highlight javascript"><span class="nx">tableViews</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="nx">cells</span><span class="p">().</span><span class="nx">firstWithPredicate</span><span class="p">(</span><span class="s2">"SOME staticTexts.name = 'red'"</span><span class="p">).</span><span class="nx">staticTexts</span><span class="p">().</span><span class="nx">withName</span><span class="p">(</span><span class="s1">'red'</span><span class="p">)</span>
 
 <span class="nx">same</span> <span class="k">in</span> <span class="nx">Xpath</span><span class="err">:</span> <span class="o">/</span><span class="nx">UIATableView</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="nx">UIATableCell</span><span class="p">[</span><span class="nx">UIAStaticText</span><span class="o">/</span><span class="err">@</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'red'</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="nx">UIAStaticText</span><span class="p">[</span><span class="err">@</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'red'</span><span class="p">]</span>
 </code></pre>
@@ -2906,7 +2906,7 @@ elements()[0].tableViews()[0].cells().withPredicate(“staticTexts[SIZE] &gt; 2�
 </ul>
 
 <p>Here’s a Ruby example:</p>
-<pre class="highlight ruby"><code><span class="c1"># Ruby example</span>
+<pre><code class="highlight ruby"><span class="c1"># Ruby example</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s1">'Various uses'</span>
 <span class="n">predicate</span> <span class="o">=</span> <span class="s2">"name contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || label contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || value contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">'"</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">execute_script</span><span class="p">(</span><span class="sx">%Q(au.mainApp().getFirstWithPredicate("</span><span class="si">#{</span><span class="n">predicate</span><span class="si">}</span><span class="sx">");)</span><span class="p">)</span>
