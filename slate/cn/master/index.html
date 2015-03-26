@@ -233,13 +233,13 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 <span id="ios-deploy.cn.md"></span>Xcodebuild 命令的参数：</h2>
 
 <p>新的参数运行指定设置. 参考 <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>：</p>
-<pre><code class="highlight plaintext">xcodebuild [-project projectname] [-target targetname ...]
+<pre class="highlight plaintext"><code>xcodebuild [-project projectname] [-target targetname ...]
              [-configuration configurationname] [-sdk [sdkfullpath | sdkname]]
              [buildaction ...] [setting=value ...] [-userdefault=value ...]
 </code></pre>
 
 <p>这有一个资料来参考可用的<a href="https://developer.apple.com/library/mac/#documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html#//apple_ref/doc/uid/TP40003931-CH3-DontLinkElementID_10">设置</a></p>
-<pre><code class="highlight plaintext">CODE_SIGN_IDENTITY (Code Signing Identity)
+<pre class="highlight plaintext"><code>CODE_SIGN_IDENTITY (Code Signing Identity)
     介绍: 标识符，指定一个签名。
     例如: iPhone Developer
 </code></pre>
@@ -247,7 +247,7 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 <p>PROVISIONING_PROFILE 已经从可用的的命令中消失了，但还是有必要设置的。</p>
 
 <p>在xcodebuild命令中设置 “CODE_SIGN_IDENTITY” &amp; “PROVISIONING_PROFILE"：</p>
-<pre><code class="highlight plaintext">xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+<pre class="highlight plaintext"><code>xcodebuild -sdk &lt;iphoneos&gt; -target &lt;target_name&gt; -configuration &lt;Debug&gt; CODE_SIGN_IDENTITY="iPhone Developer: Mister Smith" PROVISIONING_PROFILE="XXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
 </code></pre>
 
 <p>成功的话， app会构建到如下目录 <code class="prettyprint">&lt;app_dir&gt;/build/&lt;configuration&gt;-iphoneos/&lt;app_name&gt;.app</code></p>
@@ -260,15 +260,15 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 然后, 然后复制生成的 <code class="prettyprint">fruitstrap</code>到app的所在的目录或上级目录下。</p>
 
 <p>运行fruitstrap 通过输入以下命令 (命令是否可用依赖于你fork的 fruitstrap)：</p>
-<pre><code class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;
+<pre class="highlight plaintext"><code>./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt;
 </code></pre>
 
 <p>如果是为了持续集成，你可以发现很有用的方法来记录fruitstrap命令行和日志文件中的记录， 像这样：</p>
-<pre><code class="highlight plaintext">./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out
+<pre class="highlight plaintext"><code>./fruitstrap -d -b &lt;PATH_TO_APP&gt; -i &lt;Device_UDID&gt; 2&gt;&amp;1 | tee fruit.out
 </code></pre>
 
 <p>在node服务启动前fruitstrap进行需要被结束， 一个方法是扫描fruitstrap的输出来得知app完成启动。 有一个有效的方法是通过一个Rakefile 和一个 <code class="prettyprint">go_device.sh</code> 脚本：</p>
-<pre><code class="highlight plaintext">bundle exec rake ci:fruit_deploy_app | while read line ; do 
+<pre class="highlight plaintext"><code>bundle exec rake ci:fruit_deploy_app | while read line ; do 
    echo "$line" | grep "text to identify successful launch" 
    if [ $? = 0 ] 
    then 
@@ -399,7 +399,7 @@ Appimu的时候支持的平台版本和上述测试方式的必备条件。</p>
 <h2 id="使用appium运行你的测试">使用Appium运行你的测试</h2>
 
 <p>一旦你的设备和应用设置好了之后，你就能够用如下的命令在你的机器上执行测试：</p>
-<pre><code class="highlight plaintext">node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
+<pre class="highlight plaintext"><code>node . -U &lt;UDID&gt; --app &lt;bundle_id&gt;
 </code></pre>
 
 <p>这将会启动Appium并且开始在真机上测试应用。</p>
@@ -769,278 +769,278 @@ simulators）</li>
 <h3 id="锁定">锁定</h3>
 
 <p>锁定屏幕</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">lock</span> <span class="mi">5</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">lock</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">lockScreen</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">lock</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;lock(3);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">LockDevice</span><span class="p">(</span><span class="m">3</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver lockDeviceScreen:3];
 </code></pre>
 
 <h3 id="将-app-置于后台">将 app 置于后台</h3>
 
 <p>把当前应用放到后台去</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">background_app</span> <span class="mi">5</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">background_app</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">runAppInBackground</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">backgroundApp</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;backgroundApp(5);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver runAppInBackground:3];
 </code></pre>
 
 <h3 id="收起键盘">收起键盘</h3>
 
 <p>收起键盘</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">hide_keyboard</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">hide_keyboard</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">hideKeyboard</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">hideKeyboard</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;hideKeyboard();
 $this-&gt;hideKeyboard(array('strategy' =&gt; 'pressKey', 'key' =&gt; 'Done'));
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">HideKeyboard</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver hideKeyboard];
 </code></pre>
 
 <h3 id="启动-activity">启动 Activity</h3>
 
 <p>在当前应用中打开一个 activity 或者启动一个新应用并打开一个 activity 。 <em>只能在 Android 上使用</em></p>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">startActivity</span><span class="o">(</span><span class="s">"appPackage"</span><span class="o">,</span><span class="s">"com.example.android.apis"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">startActivity</span><span class="p">({</span><span class="na">appPackage</span><span class="p">:</span> <span class="s1">'com.example.android.apis'</span><span class="p">,</span> <span class="na">appActivity</span><span class="p">:</span> <span class="s1">'.Foo'</span><span class="p">},</span> <span class="nx">cb</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">start_activity</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">,</span> <span class="s">'.Foo'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">start_activity</span> <span class="ss">app_package: </span><span class="s1">'io.appium.android.apis'</span><span class="p">,</span> <span class="ss">app_activity: </span><span class="s1">'.accessibility.AccessibilityNodeProviderActivity'</span>
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">StartActivity</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">,</span> <span class="s">".Foo"</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;startActivity(array("appPackage" =&gt; "com.example.android.apis",
                             "appActivity" =&gt; ".Foo"));
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver startActivity:@"com.example.android.apis" package:@".Foo"];
 </code></pre>
 
 <h3 id="打开通知栏-(notifications)">打开通知栏 (Notifications)</h3>
 
 <p>打开下拉通知栏 <em>只能在 Android 上使用</em></p>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">openNotifications</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">openNotifications</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">open_notifications</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">openNotifications</span>
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">OpenNotifications</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;openNotifications();
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver openNotifications];
 </code></pre>
 
 <h3 id="是否已经安装">是否已经安装</h3>
 
 <p>检查应用是否已经安装</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">is_installed?</span> <span class="s2">"com.example.android.apis"</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">is_app_installed</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">isAppInstalled</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">isAppInstalled</span><span class="p">(</span><span class="s2">"com.example.android.apis"</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">isAppInstalled</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;isAppInstalled('com.example.android.apis');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">IsAppInstalled</span><span class="p">(</span><span class="s">"com.example.android.apis-"</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver isAppInstalled:@"com.example.android.apis-"];
 </code></pre>
 
 <h3 id="安装应用">安装应用</h3>
 
 <p>安装应用到设备中去</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">install</span> <span class="s1">'path/to/my.apk'</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">install_app</span><span class="p">(</span><span class="s">'path/to/my.apk'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">installApp</span><span class="o">(</span><span class="s">"path/to/my.apk"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">installApp</span><span class="p">(</span><span class="s2">"path/to/my.apk"</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;installApp('path/to/my.apk');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">InstallApp</span><span class="p">(</span><span class="s">"path/to/my.apk"</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver installAppAtPath:@"path/to/my.apk"];
 </code></pre>
 
 <h3 id="删除应用">删除应用</h3>
 
 <p>从设备中删除一个应用</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">remove</span> <span class="s1">'com.example.android.apis'</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">remove_app</span><span class="p">(</span><span class="s">'com.example.android.apis'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">removeApp</span><span class="o">(</span><span class="s">"com.example.android.apis"</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">removeApp</span><span class="p">(</span><span class="s2">"com.example.android.apis"</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;removeApp('com.example.android.apis');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">RemoveApp</span><span class="p">(</span><span class="s">"com.example.android.apis"</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver removeApp:@"com.example.android.apis"];
 </code></pre>
 
 <h3 id="摇晃-(shake)">摇晃 (Shake)</h3>
 
 <p>模拟设备摇晃</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">shake</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">shake</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">shake</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">shake</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;shake();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">ShakeDevice</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver shakeDevice];
 </code></pre>
 
 <h3 id="关闭应用">关闭应用</h3>
 
 <p>关闭应用</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">close_app</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">close_app</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">closeApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">closeApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;closeApp();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">CloseApp</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver closeApp];
 </code></pre>
 
 <h3 id="启动-(launch)">启动 (Launch)</h3>
 
 <p>根据服务关键字 (desired capabilities) 启动会话 (session) 。请注意这必须在设定 <code class="prettyprint">autoLaunch=false</code> 关键字时才能生效。这不是用于启动指定的 app/activities ————你可以使用 <code class="prettyprint">start_activity</code> 做到这个效果————这是用来继续进行使用了 <code class="prettyprint">autoLaunch=false</code> 关键字时的初始化 (Launch) 流程的。</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">launch</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">launch_app</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">launchApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">launchApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;launchApp();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">LaunchApp</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver launchApp];
 </code></pre>
 
@@ -1049,25 +1049,25 @@ $this-&gt;launchApp();
 <p>应用重置</p>
 
 <p>(翻译者注：相当于卸载重装应用) </p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">reset</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">resetApp</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">resetApp</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;reset();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">ResetApp</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver resetApp];
 </code></pre>
 
@@ -1076,101 +1076,101 @@ $this-&gt;reset();
 <p>列出所有的可用上下文</p>
 
 <p>翻译备注：context可以理解为 可进入的窗口 。例如，对于原生应用，可用的context和默认context均为<code class="prettyprint">NATIVE_APP</code>。详情可查看<a href="http://appium.io/slate/en/v1.3.4/?ruby#automating-hybrid-apps">对混合应用进行自动化测试</a></p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">context_array</span> <span class="o">=</span> <span class="n">available_contexts</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">getContextHandles</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">contexts</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">contexts</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;contexts();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContexts</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 NSArray *contexts = driver.allContexts;
 </code></pre>
 
 <h3 id="当前上下文-(context)">当前上下文 (context)</h3>
 
 <p>列出当前上下文</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">context</span> <span class="o">=</span> <span class="n">current_context</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">current_context</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">getContext</span><span class="o">()</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">currentContext</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">context</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;context();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetContext</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 NSString *context = driver.context;
 </code></pre>
 
 <h3 id="切换到默认的上下文-(context)">切换到默认的上下文 (context)</h3>
 
 <p>将上下文切换到默认上下文</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">switch_to_default_context</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">context</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">context</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;context(NULL);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">SetContext</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver setContext:nil];
 </code></pre>
 
 <h3 id="应用的字符串-(app-strings)">应用的字符串 (App Strings)</h3>
 
 <p>获取应用的字符串</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">strings</span> <span class="o">=</span> <span class="n">app_strings</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">app_strings</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">getAppStrings</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">getAppStrings</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">appStrings</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;appStrings();
 $this-&gt;appStrings('ru');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetAppStrings</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 [driver appStrings];
 [driver appStringsForLanguage:"@ru"];
 </code></pre>
@@ -1178,25 +1178,25 @@ $this-&gt;appStrings('ru');
 <h3 id="按键事件-(key-event)">按键事件 (Key Event)</h3>
 
 <p>给设备发送一个按键事件</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">key_event</span> <span class="mi">176</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">keyevent</span><span class="p">(</span><span class="mi">176</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">sendKeyEvent</span><span class="o">(</span><span class="n">AndroidKeyCode</span><span class="o">.</span><span class="na">HOME</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">deviceKeyEvent</span><span class="p">(</span><span class="nx">wd</span><span class="p">.</span><span class="nx">SPECIAL_KEYS</span><span class="p">.</span><span class="nx">Home</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;keyEvent('176');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">KeyEvent</span><span class="p">(</span><span class="s">"176"</span><span class="p">);</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 NSError *err;
 [driver triggerKeyEvent:176 metastate:0 error:&amp;err];
 </code></pre>
@@ -1204,25 +1204,25 @@ NSError *err;
 <h3 id="当前-activity">当前 Activity</h3>
 
 <p>获取当前 activity。只能在 Android 上使用</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">current_activity</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">current_activity</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">currentActivity</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">getCurrentActivity</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">activity</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;currentActivity();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight plaintext">// objective c
+<pre class="highlight plaintext"><code>// objective c
 NSError *err;
 [driver currentActivity];
 </code></pre>
@@ -1230,29 +1230,29 @@ NSError *err;
 <h3 id="触摸动作(touchaction)-/-多点触摸动作(multitouchaction)">触摸动作(TouchAction) / 多点触摸动作(MultiTouchAction)</h3>
 
 <p>生成触摸动作的接口。这部分文档很快将会补充更多的内容进来。</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">touch_action</span> <span class="o">=</span> <span class="no">Appium</span><span class="o">::</span><span class="no">TouchAction</span><span class="p">.</span><span class="nf">new</span>
-<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="p">:</span><span class="nb">name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
+<span class="n">element</span>  <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Buttons, Various uses of UIButton'</span>
 <span class="n">touch_action</span><span class="p">.</span><span class="nf">press</span><span class="p">(</span><span class="ss">element: </span><span class="n">element</span><span class="p">,</span> <span class="ss">x: </span><span class="mi">10</span><span class="p">,</span> <span class="ss">y: </span><span class="mi">10</span><span class="p">).</span><span class="nf">perform</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">action</span> <span class="o">=</span> <span class="n">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">)</span>
 <span class="n">action</span><span class="o">.</span><span class="n">press</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">release</span><span class="p">()</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">TouchAction</span> <span class="n">action</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TouchAction</span><span class="o">(</span><span class="n">driver</span><span class="o">)</span>
 <span class="o">.</span><span class="na">press</span><span class="o">(</span><span class="n">mapview</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
 <span class="o">.</span><span class="na">release</span><span class="o">().</span>
 <span class="n">perform</span><span class="o">();</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="nx">driver</span><span class="p">);</span>
 <span class="nx">action</span>
   <span class="p">.</span><span class="nx">tap</span><span class="p">({</span><span class="na">el</span><span class="p">:</span> <span class="nx">el</span><span class="p">,</span> <span class="na">x</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
   <span class="p">.</span><span class="nx">release</span><span class="p">();</span>
 <span class="k">return</span> <span class="nx">action</span><span class="p">.</span><span class="nx">perform</span><span class="p">();</span> <span class="c1">// returns a promise</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $action = $this-&gt;initiateTouchAction();
                -&gt;press(array('element' =&gt; $el))
                -&gt;release()
@@ -1277,7 +1277,7 @@ $multiAction-&gt;add($action1);
 $multiAction-&gt;add($action2);
 $multiAction-&gt;perform();
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">ITouchAction</span> <span class="n">action</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TouchAction</span><span class="p">(</span><span class="n">driver</span><span class="p">);</span>
 <span class="n">action</span><span class="p">.</span><span class="nf">Press</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">).</span><span class="nf">Release</span><span class="p">();</span>
 <span class="n">action</span><span class="p">.</span><span class="nf">Perform</span> <span class="p">();</span>
@@ -1286,16 +1286,16 @@ $multiAction-&gt;perform();
 <h3 id="滑动(swipe)">滑动(Swipe)</h3>
 
 <p>模拟用户滑动</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">swipe</span> <span class="ss">start_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">start_y: </span><span class="mi">500</span><span class="p">,</span> <span class="ss">end_x: </span><span class="mi">75</span><span class="p">,</span> <span class="ss">end_y: </span><span class="mi">0</span><span class="p">,</span> <span class="ss">duration: </span><span class="mi">0</span><span class="o">.</span><span class="mi">8</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">swipe</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">starty</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">endx</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">endy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">swipe</span><span class="o">(</span><span class="mi">75</span><span class="o">,</span> <span class="mi">500</span><span class="o">,</span> <span class="mi">75</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mf">0.8</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">function</span> <span class="nx">swipe</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">action</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">wd</span><span class="p">.</span><span class="nx">TouchAction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
   <span class="nx">action</span>
@@ -1310,26 +1310,26 @@ $multiAction-&gt;perform();
 <span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">swipe</span><span class="p">({</span> <span class="na">startX</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="na">startY</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
   <span class="na">endX</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>  <span class="na">endY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">duration</span><span class="p">:</span> <span class="mi">800</span> <span class="p">});</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;swipe(75, 500, 75, 0, 800);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">todo</span><span class="p">:</span> <span class="n">c</span><span class="err">#</span>
 </code></pre>
 
 <h3 id="捏-(pinch)">捏 (Pinch)</h3>
 
 <p>捏屏幕 (双指往内移动来缩小屏幕) </p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">pinch</span> <span class="mi">75</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">pinch</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">pinch</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">function</span> <span class="nx">pinch</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">getSize</span><span class="p">(),</span>
@@ -1359,25 +1359,25 @@ $this-&gt;swipe(75, 500, 75, 0, 800);
 <span class="c1">// ...</span>
 <span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">pinch</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight php">$this-&gt;pinch($el);
+<pre class="highlight php"><code>$this-&gt;pinch($el);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">Pinch</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">25</span><span class="p">)</span>
 </code></pre>
 
 <h3 id="放大-(zoom)">放大 (Zoom)</h3>
 
 <p>放大屏幕 (双指往外移动来放大屏幕) </p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">zoom</span> <span class="mi">200</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">zoom</span><span class="p">(</span><span class="n">element</span><span class="o">=</span><span class="n">el</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">zoom</span><span class="o">(</span><span class="n">element</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">function</span> <span class="nx">zoom</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">getWindowSize</span><span class="p">(),</span>
@@ -1407,92 +1407,92 @@ $this-&gt;swipe(75, 500, 75, 0, 800);
 <span class="c1">// ...</span>
 <span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">zoom</span><span class="p">();</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;zoom($el);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">Zoom</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">200</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="滑动到-(scroll-to)">滑动到 (Scroll To)</h3>
 
 <p>滑动到某个元素。</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
-<span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span> <span class="p">:</span><span class="nb">name</span><span class="p">,</span> <span class="s1">'Element Name'</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span> <span class="ss">:name</span><span class="p">,</span> <span class="s1">'Element Name'</span>
 <span class="n">execute_script</span> <span class="s2">"mobile: scrollTo"</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">element</span><span class="p">.</span><span class="nf">ref</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">todo</span><span class="p">:</span> <span class="n">python</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Element Name"</span><span class="o">));</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">arguments</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
 <span class="n">arguments</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="n">element</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
 <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span><span class="n">driver</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: scrollTo"</span><span class="o">,</span> <span class="n">arguments</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s1">'mobile: scrollTo'</span><span class="p">,</span> <span class="p">{</span><span class="na">element</span><span class="p">:</span> <span class="nx">el</span><span class="p">.</span><span class="nx">value</span><span class="p">});</span>
 <span class="p">});</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $els = $this-&gt;elements($this-&gt;using('class name')-&gt;value('android.widget.TextView'));
 $this-&gt;scroll($els[count($els) - 1], $els[0]);
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">todo</span><span class="p">:</span> <span class="n">csharp</span>
 </code></pre>
 
 <h3 id="拉出文件-(pull-file)">拉出文件 (Pull File)</h3>
 
 <p>从设备中拉出文件</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">pull_file</span> <span class="s1">'Library/AddressBook/AddressBook.sqlitedb'</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">pull_file</span><span class="p">(</span><span class="s">'Library/AddressBook/AddressBook.sqlitedb'</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">pullFile</span><span class="o">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">pullFile</span><span class="p">(</span><span class="s2">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">base64File</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/*...*/</span> <span class="p">})</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $this-&gt;pullFile('Library/AddressBook/AddressBook.sqlitedb');
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">PullFile</span><span class="p">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">);</span>
 </code></pre>
 
 <h3 id="推送文件(push-file)">推送文件(Push file)</h3>
 
 <p>推送文件到设备中去</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">data</span> <span class="o">=</span> <span class="s2">"some data for the file"</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s2">"/data/local/tmp/file.txt"</span>
 <span class="n">push_file</span> <span class="n">path</span><span class="p">,</span> <span class="n">data</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="n">data</span> <span class="o">=</span> <span class="s">"some data for the file"</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">push_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">'base64'</span><span class="p">))</span>
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="kt">byte</span><span class="o">[]</span> <span class="n">data</span> <span class="o">=</span> <span class="n">Base64</span><span class="o">.</span><span class="na">encodeBase64</span><span class="o">(</span><span class="s">"some data for the file"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">());</span>
 <span class="n">String</span> <span class="n">path</span> <span class="o">=</span> <span class="s">"/data/local/tmp/file.txt"</span><span class="o">;</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">pushFile</span><span class="o">(</span><span class="n">path</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">pushFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 $path = 'data/local/tmp/test_push_file.txt';
 $data = 'This is the contents of the file to push to the device.';
 $this-&gt;pushFile($path, base64_encode($data));
 </code></pre>
-<pre><code class="highlight csharp"><span class="c1">// c#
+<pre class="highlight csharp"><code><span class="c1">// c#
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">PushFile</span><span class="p">(</span><span class="s">"/data/local/tmp/file.txt"</span><span class="p">,</span> <span class="s">"some data for the file"</span><span class="p">);</span>
 </code></pre>
 
@@ -1500,24 +1500,24 @@ $this-&gt;pushFile($path, base64_encode($data));
 
 <p>从这里你可以获取/设置 appium 的服务器设置。
 想知道它如何工作，以及它支持哪些设置，请查看<a href="#settings.cn.md">关于设置的文档</a></p>
-<pre><code class="highlight ruby"><span class="n">current_settings</span> <span class="o">=</span> <span class="n">get_settings</span>
+<pre class="highlight ruby"><code><span class="n">current_settings</span> <span class="o">=</span> <span class="n">get_settings</span>
 <span class="n">update_settings</span> <span class="ss">someSetting: </span><span class="kp">true</span>
 </code></pre>
-<pre><code class="highlight python"><span class="n">current_settings</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
+<pre class="highlight python"><code><span class="n">current_settings</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">get_settings</span><span class="p">()</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span><span class="s">"someSetting"</span><span class="p">:</span> <span class="n">true</span><span class="p">})</span>
 </code></pre>
-<pre><code class="highlight java"><span class="n">JsonObject</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">getSettings</span><span class="o">()</span>
+<pre class="highlight java"><code><span class="n">JsonObject</span> <span class="n">settings</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">getSettings</span><span class="o">()</span>
 <span class="c1">// java-client doesn't support setting arbitrary settings, just settings which are already provided by appium.</span>
 <span class="c1">// So for the 'ignoreUnimportantViews' setting, the following method exists:</span>
 <span class="n">driver</span><span class="o">.</span><span class="na">ignoreUnimportantViews</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 </code></pre>
-<pre><code class="highlight javascript"><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">settings</span><span class="p">();</span>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">settings</span><span class="p">();</span>
 <span class="nx">browser</span><span class="p">.</span><span class="nx">updateSettings</span><span class="p">({</span><span class="s1">'someSetting'</span><span class="p">:</span> <span class="kc">true</span><span class="p">});</span>
 </code></pre>
-<pre><code class="highlight php">$settings = $this-&gt;getSettings();
+<pre class="highlight php"><code>$settings = $this-&gt;getSettings();
 $this-&gt;updateSettings(array('cyberdelia' =&gt; "open"));
 </code></pre>
-<pre><code class="highlight csharp"><span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Object</span><span class="p">&gt;</span><span class="n">settings</span> <span class="p">=</span> <span class="n">driver</span><span class="p">.</span><span class="nf">GetSettings</span><span class="p">();</span>
+<pre class="highlight csharp"><code><span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Object</span><span class="p">&gt;</span><span class="n">settings</span> <span class="p">=</span> <span class="n">driver</span><span class="p">.</span><span class="nf">GetSettings</span><span class="p">();</span>
 <span class="c1">// dotnet-driver doesn't support setting arbitrary settings, just settings which are already provided by appium.
 // So for the 'ignoreUnimportantViews' setting, the following method exists:
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">IgnoreUnimportantViews</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
@@ -2064,7 +2064,7 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
 <p>（翻译备注：XPath 是一门用来定位 xml 文档中的元素的语言，能提供基于路径、元素属性等条件的定位策略）</p>
 
 <p>例如:</p>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">appiumDriver</span><span class="o">.</span><span class="na">findElementsByIosUIAutomation</span><span class="o">(</span><span class="s">"collectionViews()[0].cells().withPredicate(\"ANY staticTexts.isVisible == TRUE\")"</span><span class="o">)</span>
 </code></pre>
 
@@ -2273,7 +2273,7 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
 </ul>
 
 <p>如下是个Ruby的例子</p>
-<pre><code class="highlight ruby"><span class="c1"># Ruby example</span>
+<pre class="highlight ruby"><code><span class="c1"># Ruby example</span>
 <span class="n">text</span> <span class="o">=</span> <span class="s1">'Various uses'</span>
 <span class="n">predicate</span> <span class="o">=</span> <span class="s2">"name contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || label contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">' || value contains[c] '</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">'"</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">execute_script</span><span class="p">(</span><span class="sx">%Q(au.mainApp().getFirstWithPredicate("</span><span class="si">#{</span><span class="n">predicate</span><span class="si">}</span><span class="sx">");)</span><span class="p">)</span>
@@ -2295,7 +2295,7 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
 <p>不管你使用模拟器还是真机，你必须使用Appium开始之前先开启Safari。</p>
 
 <p>然后设置如下显示的这些信息以便于在设备中的Safari执行测试：</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
   <span class="na">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span>
   <span class="p">,</span> <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'7.1'</span>
@@ -2303,7 +2303,7 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
   <span class="p">,</span> <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
   <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
   <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
@@ -2311,7 +2311,7 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
   <span class="s">'deviceName'</span><span class="p">:</span> <span class="s">'iPhone Simulator'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2323,7 +2323,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"iOS"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_VERSION</span><span class="o">,</span> <span class="s">"7.1"</span><span class="o">);</span>
@@ -2379,7 +2379,7 @@ $ node /lib/server/main.js -U &lt;UDID&gt;</code></p>
 <p>如果要在safari下的运行你的测试, 只需要简单的配置<strong>"browserName”</strong>为safari即可</p>
 
 <h3 id="java-范例">Java 范例</h3>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="c1">// 配置web driver并启动webview应用</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">BROWSER_NAME</span><span class="o">,</span> <span class="s">"Safari"</span><span class="o">);</span>
@@ -2397,7 +2397,7 @@ $ node /lib/server/main.js -U &lt;UDID&gt;</code></p>
 </code></pre>
 
 <h3 id="python-范例">Python 范例</h3>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="c"># 配置web driver并启动webview应用</span>
 <span class="n">capabilities</span> <span class="o">=</span> <span class="p">{</span> <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Safari'</span> <span class="p">}</span>
 <span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Remote</span><span class="p">(</span><span class="s">'http://localhost:4723/wd/hub'</span><span class="p">,</span> <span class="n">capabilities</span><span class="p">)</span>
@@ -2414,7 +2414,7 @@ $ node /lib/server/main.js -U &lt;UDID&gt;</code></p>
 <span class="c"># 关闭应用</span>
 <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 class ContextTests extends PHPUnit_Extensions_AppiumTestCase
 {
     public static $browsers = array(
@@ -2453,7 +2453,7 @@ class ContextTests extends PHPUnit_Extensions_AppiumTestCase
 </ul>
 
 <p>接着,像这样设置就可以在Chrome上执行测试了:</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
   <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span>
   <span class="p">,</span> <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'4.4'</span>
@@ -2461,7 +2461,7 @@ class ContextTests extends PHPUnit_Extensions_AppiumTestCase
   <span class="p">,</span> <span class="na">browserName</span><span class="p">:</span> <span class="s1">'Chrome'</span>
 <span class="p">};</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
   <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
   <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.4'</span><span class="p">,</span>
@@ -2469,7 +2469,7 @@ class ContextTests extends PHPUnit_Extensions_AppiumTestCase
   <span class="s">'browserName'</span><span class="p">:</span> <span class="s">'Chrome'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2481,7 +2481,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_VERSION</span><span class="o">,</span> <span class="s">"4.4"</span><span class="o">);</span>
@@ -2559,7 +2559,7 @@ public static $browsers = array(
 <h3 id="android">Android</h3>
 
 <p>选择你想使用的设置，然后根据上面的表格发送正确的位掩码(bitmask)。</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="c1">// 设置网络连接为飞行模式</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">setNetworkConnection</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -2574,7 +2574,7 @@ public static $browsers = array(
 </code></pre>
 
 <p>获取网络连接设置会返回基于同样规则的位掩码，你可以将其解码来获得网络设置。</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">getNetworkConnection</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">connectionType</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">switch</span> <span class="p">(</span><span class="nx">connectionType</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">case</span> <span class="mi">0</span><span class="err">:</span>
@@ -2602,7 +2602,7 @@ public static $browsers = array(
 <span id="running-tests.cn.md"></span>准备被测应用 (iOS)</h2>
 
 <p>在模拟器上测试apps必须要用模拟器专用的编译器，例如使用下列的命令来编译Xcode项目：</p>
-<pre><code class="highlight plaintext">    &gt; xcodebuild -sdk iphonesimulator6.0
+<pre class="highlight plaintext"><code>    &gt; xcodebuild -sdk iphonesimulator6.0
 </code></pre>
 
 <p>这行指令在Xcode项目底下创建了一个<code class="prettyprint">build/Release-iphonesimulator</code>目录，并且生成一个可以透过Appium服务器来通讯的的<code class="prettyprint">.app</code>封包。</p>
@@ -2620,7 +2620,7 @@ public static $browsers = array(
 <p><a href="https://github.com/appium/sample-code/tree/master/sample-code/examples/node">Node.js</a> | <a href="https://github.com/appium/sample-code%20/tree/master/sample-code/examples/python">Python</a> | <a href="https://github.com/appium/sample-code/tree/master/sample-code/examples/php">PHP</a> | <a href="https://github.com/appium/sample-code/tree/master/sample-code/examples/ruby">Ruby</a> | <a href="https://github.com/appium/sample-code/tree/master/sample-code/examples/java">Java</a></p>
 
 <p>基本上来说，首先先确定你启动了Appium:</p>
-<pre><code class="highlight plaintext">    node .
+<pre class="highlight plaintext"><code>    node .
 </code></pre>
 
 <p>然后执行你的WebDriver测试脚本，脚本必须包含下列的环境参数：
@@ -2633,7 +2633,7 @@ public static $browsers = array(
     app: myApp
 }
 </code></p>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'iOS'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'7.1'</span><span class="p">,</span>
@@ -2641,7 +2641,7 @@ public static $browsers = array(
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2653,7 +2653,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"iOS"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_VERSION</span><span class="o">,</span> <span class="s">"7.1"</span><span class="o">);</span>
@@ -2674,15 +2674,15 @@ public static $browsers = array(
 <h2 id="用appium测试你的app-(android)">用Appium测试你的app (Android)</h2>
 
 <p>首先，先确定你有一个而且必须是只能一个Android模拟器或者设备连接着。如果你输入<code class="prettyprint">adb devices</code>，你应该只看到一个设备连接着。这将是Appium所用来测试的设备。当然，要连接一个设备，你需要准备好一个Android AVD (参考(<a href="#running-on-windows.cn.md">Windows</a>，<a href="#running-on-osx.cn.md">Mac</a>，或者<a href="#running-on-linux.cn.md">Linux</a>)以了解更多)。 如果Android SDK工具在你的环境变量path下，你可以简单的执行:</p>
-<pre><code class="highlight plaintext">    emulator -avd &lt;我的Avd名称&gt;
+<pre class="highlight plaintext"><code>    emulator -avd &lt;我的Avd名称&gt;
 </code></pre>
 
 <p>然后等android模拟器启动。有时候，因为某些原因，<code class="prettyprint">adb</code>会卡住。如果它没有显示任何的设备或其他故障，你可以使用下列指令来重启:</p>
-<pre><code class="highlight plaintext">    adb kill-server &amp;&amp; adb devices
+<pre class="highlight plaintext"><code>    adb kill-server &amp;&amp; adb devices
 </code></pre>
 
 <p>现在，确认Appium已经启动:</p>
-<pre><code class="highlight plaintext">    node .
+<pre class="highlight plaintext"><code>    node .
 </code></pre>
 
 <p>有几种方法来启动一个Appium程序（效果和通过adb启动一模一样）：</p>
@@ -2719,7 +2719,7 @@ public static $browsers = array(
 </ul>
 
 <p>然后执行你的WebDriver测试脚本，脚本必须包含下列的环境参数：</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
     <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
     <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'4.4'</span><span class="p">,</span>
@@ -2727,7 +2727,7 @@ public static $browsers = array(
     <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
     <span class="s">'platformVersion'</span><span class="p">:</span> <span class="s">'4.4'</span><span class="p">,</span>
@@ -2735,7 +2735,7 @@ public static $browsers = array(
     <span class="s">'app'</span><span class="p">:</span> <span class="n">myApp</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2747,7 +2747,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_VERSION</span><span class="o">,</span> <span class="s">"4.4"</span><span class="o">);</span>
@@ -2774,7 +2774,7 @@ public static $browsers = array(
 <p>低于4.2版本的Android设备(API Level 17) 没有安装 Google 的<a href="http://developer.android.com/tools/help/uiautomator/index.html">UiAutomator framework</a>.下面的范例是早期Appium在这些设备上的测试方法。对于早期的设备以及使用混合模式(webview-based)制作的apps, Appium 包含了另一种自动化测试工具<a href="http://selendroid.io/">Selendroid</a>。</p>
 
 <p>要使用Selendroid, 只需要在之前提到的环境参数上稍作修改即可，添加 <code class="prettyprint">automationName</code> 参数并指定Seledroid作为测试工具。通常你还需要在你的activity名称前加上<code class="prettyprint">.</code> (如：在<code class="prettyprint">appActivity</code>参数中使用<code class="prettyprint">.MainActivity</code> 而不是 <code class="prettyprint">MainActivity</code>) :</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
     <span class="na">automationName</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
     <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
@@ -2785,7 +2785,7 @@ public static $browsers = array(
     <span class="na">appActivity</span><span class="p">:</span> <span class="s1">'.MainActivity'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight python"><span class="c"># python</span>
+<pre class="highlight python"><code><span class="c"># python</span>
 <span class="p">{</span>
     <span class="s">'automationName'</span><span class="p">:</span> <span class="s">'Selendroid'</span><span class="p">,</span>
     <span class="s">'platformName'</span><span class="p">:</span> <span class="s">'Android'</span><span class="p">,</span>
@@ -2796,7 +2796,7 @@ public static $browsers = array(
     <span class="s">'appActivity'</span><span class="p">:</span> <span class="s">'.MainActivity'</span>
 <span class="p">}</span>
 </code></pre>
-<pre><code class="highlight php">// php
+<pre class="highlight php"><code>// php
 public static $browsers = array(
     array(
         'desiredCapabilities' =&gt; array(
@@ -2811,7 +2811,7 @@ public static $browsers = array(
     )
 );
 </code></pre>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">DesiredCapabilities</span> <span class="n">capabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">AUTOMATION_NAME</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">PLATFORM_NAME</span><span class="o">,</span> <span class="s">"Android"</span><span class="o">);</span>
@@ -3388,7 +3388,7 @@ MultiAction().add(action0).add(action1).perform()</code></p>
 <ul>
 <li><strong>WD.js:</strong></li>
 </ul>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="c1">// 把视图往下滑动</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: scroll"</span><span class="p">,</span> <span class="p">[{</span><span class="na">direction</span><span class="p">:</span> <span class="s1">'down'</span><span class="p">}])</span>
 <span class="c1">// 继续测试</span>
@@ -3397,7 +3397,7 @@ MultiAction().add(action0).add(action1).perform()</code></p>
 <ul>
 <li><strong>Java:</strong></li>
 </ul>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
 <span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"direction"</span><span class="o">,</span> <span class="s">"down"</span><span class="o">);</span>
@@ -3412,7 +3412,7 @@ MultiAction().add(action0).add(action1).perform()</code></p>
 <ul>
 <li><strong>Java</strong></li>
 </ul>
-<pre><code class="highlight java"><span class="c1">// java</span>
+<pre class="highlight java"><code><span class="c1">// java</span>
 <span class="c1">// 滑动值使用0到1之间的数字以字符串的形式表示</span>
 <span class="c1">// 例如，“0.1”代表10％，“1.0”代表100％</span>
 <span class="n">WebElement</span> <span class="n">slider</span> <span class="o">=</span>  <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">xpath</span><span class="o">(</span><span class="s">"//window[1]/slider[1]"</span><span class="o">));</span>
@@ -3435,25 +3435,25 @@ MultiAction().add(action0).add(action1).perform()</code></p>
 <p>翻译者备注：UiSelectors 和 UiScrollable 均是 Android UiAutomator 中的对象，因此以下用法仅适用于 Android 。</p>
 
 <p>找到第一个文本控件 (TextView) 。</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">first_textview</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiSelector().className("android.widget.TextView").instance(0)'</span><span class="p">);</span>
 </code></pre>
 
 <p>根据文本 (text) 找到第一个元素。</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">first_text</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiSelector().text("Animation")'</span><span class="p">)</span>
 <span class="n">first_text</span><span class="p">.</span><span class="nf">text</span> <span class="c1"># "Animation"</span>
 </code></pre>
 
 <p>找到第一个可滚动的元素， 然后找到文本是 “Tabs” 的文本控件。
 “Tabs” 元素就是将要滚动到的控件。</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiScrollable(new UiSelector().scrollable(true).instance(0)).getChildByText(new UiSelector().className("android.widget.TextView"), "Tabs")'</span><span class="p">)</span>
 </code></pre>
 
 <p>scrollIntoView 是一个特例，会返回滚动到指定控件的元素。
 scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
-<pre><code class="highlight ruby"><span class="c1"># ruby</span>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">element</span> <span class="o">=</span> <span class="n">find_element</span><span class="p">(</span><span class="ss">:uiautomator</span><span class="p">,</span> <span class="s1">'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text("WebView").instance(0));'</span><span class="p">)</span>
 <span class="n">element</span><span class="p">.</span><span class="nf">text</span> <span class="c1"># "WebView"</span>
 </code></pre>
@@ -3465,7 +3465,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 
 <p>幸运的是，对ASCII字符（例如 不需要进行标准化的字符）进行标准化将不会产生任何变化，并且多次进行标准化
 操作也不会发生额外的变化。因此，可以对所有字符使用标准化函数而不用担心产生不良影响。</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
 
 <span class="s1">'some ASCII text'</span> <span class="o">===</span> <span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s1">'some ASCII text'</span><span class="p">);</span>
@@ -3474,7 +3474,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 
 <p>在测试的时候遇到Unicode字符，你需要对字符进行标准化，确保期望的值和接收到的值一致。
 有很多方法可以用来进行标准化，所以你要确保执行的是同样的方法！</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
 <span class="nx">driver</span>
   <span class="p">.</span><span class="nx">elementByAccessibilityId</span><span class="p">(</span><span class="s1">'find'</span><span class="p">)</span>
@@ -3485,7 +3485,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 </code></pre>
 
 <p>一个由不同unicode文本编码导致的问题的标志是断言失败但报告却显示两个看起来一模一样的字符串：</p>
-<pre><code class="highlight shell">AssertionError: expected <span class="s1">'François Gérard'</span> to deeply equal <span class="s1">'François Gérard'</span>
+<pre class="highlight shell"><code>AssertionError: expected <span class="s1">'François Gérard'</span> to deeply equal <span class="s1">'François Gérard'</span>
       + expected - actual
 
       +<span class="s2">"François Gérard"</span>
@@ -3497,7 +3497,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 <h3 id="查找器-(finder)">查找器 (Finder)</h3>
 
 <p>需要被查找的字符也应该需要标准化。比如，你在一个iOS的app上有一个叫做<code class="prettyprint">Найти</code>的按钮，你也应该在find命令中标准化它。</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
 <span class="nx">driver</span>
   <span class="p">.</span><span class="nx">findElementByXPath</span><span class="p">(</span><span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s2">"//UIAButton[@name='Найти']"</span><span class="p">))</span>
@@ -3515,7 +3515,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 <p>Appium 完全绕过键盘直接向iOS设备的输入框发送非ASCII字符。虽然这让这些文本在测试中被成功输入，但必须记住由键盘输入触发的业务逻辑将不会被测试到。</p>
 
 <p>像上边说的一样，断言收到的文本前应该先标准化它。</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">unorm</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'unorm'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">testText</span> <span class="o">=</span> <span class="nx">unorm</span><span class="p">.</span><span class="nx">nfd</span><span class="p">(</span><span class="s2">"é Œ ù ḍ"</span><span class="p">);</span>
 <span class="nx">driver</span>
@@ -3536,7 +3536,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 <p>翻译备注：这个Unicode键盘并非虚拟键盘，在界面上不会显示出来，所以要进行其他类型的测试必须切换回其他输入法。</p>
 
 <p>测试时可以通过<code class="prettyprint">send_keys</code>向输入框输入Unicode字符。</p>
-<pre><code class="highlight javascript"><span class="c1">// javascript</span>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="kd">var</span> <span class="nx">desired</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">app</span><span class="p">:</span> <span class="s1">'/path/to/app'</span><span class="p">,</span>
   <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
@@ -3559,7 +3559,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 <h1 id="selenium-grid">Selenium Grid</h1>
 
 <p>使用 <b>“–nodeconfig”</b> 服务器参数，你可以在本地 selenium grid 里注册你的 appium 服务器。</p>
-<pre><code class="highlight shell"><span class="gp">&gt; </span>node . -V --nodeconfig /path/to/nodeconfig.json
+<pre class="highlight shell"><code><span class="gp">&gt; </span>node . -V --nodeconfig /path/to/nodeconfig.json
 </code></pre>
 
 <p>在 node 的配置文件里，你需要定义 <b>“browserName”</b>，<b>“version”</b> 和 <b>“platform”</b>。
@@ -3572,7 +3572,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 
 <h2 id="grid-配置文件例子">
 <span id="grid.cn.md"></span>Grid 配置文件例子</h2>
-<pre><code class="highlight xml">{
+<pre class="highlight xml"><code>{
   "capabilities":
       [
         {
@@ -3635,14 +3635,14 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 <p>当在真机上运行用例时，appium 无法直接访问 web 视图，所以我们需要通过 USB 线缆来建立连接。我们使用 <a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debugger-proxy</a>建立连接。</p>
 
 <p>使用 brew 安装最新的 ios-webkit-debug-proxy。在终端运行一下命令:</p>
-<pre><code class="highlight shell"><span class="c"># 如果你没有安装 brew 的话，先安装 brew。</span>
+<pre class="highlight shell"><code><span class="c"># 如果你没有安装 brew 的话，先安装 brew。</span>
 <span class="gp">&gt; </span>ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.github.com/mxcl/homebrew/go/install<span class="k">)</span><span class="s2">"</span>
 <span class="gp">&gt; </span>brew update
 <span class="gp">&gt; </span>brew install ios-webkit-debug-proxy
 </code></pre>
 
 <p>你也可以通过 git 克隆项目来自己安装最新版本：</p>
-<pre><code class="highlight shell"><span class="c"># Please be aware that this will install the proxy with the latest code (and not a tagged version).</span>
+<pre class="highlight shell"><code><span class="c"># Please be aware that this will install the proxy with the latest code (and not a tagged version).</span>
 <span class="gp">&gt; </span>git clone https://github.com/google/ios-webkit-debug-proxy.git
 <span class="gp">&gt; </span><span class="nb">cd </span>ios-webkit-debug-proxy
 <span class="gp">&gt; </span>./autogen.sh
@@ -3652,7 +3652,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 </code></pre>
 
 <p>一旦安装好了， 你就可以启动代理：</p>
-<pre><code class="highlight shell"><span class="c"># 将udid替换成你的设备的udid。确保端口 27753 没有被占用</span>
+<pre class="highlight shell"><code><span class="c"># 将udid替换成你的设备的udid。确保端口 27753 没有被占用</span>
 <span class="c"># remote-debugger 将会使用这个端口。</span>
 <span class="gp">&gt; </span>ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
 </code></pre>
@@ -3660,7 +3660,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 <p><b>注意：</b> 这个 ios-webkit-debug-proxy 需要 <b>“web inspector”</b> 打开着以便建立连接。在 <b> settings &gt; safari &gt; advanced </b> 里打开它。请注意 web inspector <b>在 iOS6 时候加入的</b> 以前的版本没有。</p>
 
 <h2 id="wd.js-code-example">Wd.js Code example</h2>
-<pre><code class="highlight javascript">  <span class="c1">// 假设我们已经有一个初始化好了的 `driver` 对象。</span>
+<pre class="highlight javascript"><code>  <span class="c1">// 假设我们已经有一个初始化好了的 `driver` 对象。</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 找到按钮，打开 web 视图</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 引导到 UIWebView</span>
       <span class="nx">driver</span><span class="p">.</span><span class="nx">windowHandles</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">handles</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 得到能访问的视图列表。</span>
@@ -3689,7 +3689,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 </ul>
 
 <h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
-<pre><code class="highlight java">  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
+<pre class="highlight java"><code>  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"http://appium.s3.amazonaws.com/WebViewApp6.0.app.zip"</span><span class="o">);</span>  
@@ -3714,7 +3714,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 </code></pre>
 
 <h2 id="wd.rb-cucumber-的例子">Wd.rb cucumber 的例子</h2>
-<pre><code class="highlight ruby"><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
+<pre class="highlight ruby"><code><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
 <span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span>
 <span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
 <span class="n">capabilities</span> <span class="o">=</span>
@@ -3767,7 +3767,7 @@ https://gist.github.com/feelobot/7309729</p>
 <p>注意：我们可以像上面说的，使用同样的策略。然而，Selendroid 使用 <code class="prettyprint">WEBVIEW</code>/<code class="prettyprint">NATIVE_APP</code> 窗口设置策略。 Appium 常规的混合支持也使用这种策略。</p>
 
 <h2 id="wd.js-代码例子">Wd.js 代码例子</h2>
-<pre><code class="highlight javascript"><span class="c1">// 假设我们已经初始化了一个 `driver` 实例。</span>
+<pre class="highlight javascript"><code><span class="c1">// 假设我们已经初始化了一个 `driver` 实例。</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nb">window</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 选择唯一的 WebView</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 通过 CSS 取得元素</span>
     <span class="nx">els</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">above</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// 验证元素存在</span>
@@ -3783,7 +3783,7 @@ https://gist.github.com/feelobot/7309729</p>
 </code></pre>
 
 <h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
-<pre><code class="highlight java">  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
+<pre class="highlight java"><code>  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"app"</span><span class="o">,</span> <span class="s">"/path/to/some.apk"</span><span class="o">);</span>  
@@ -3822,7 +3822,7 @@ from appium import webdriver
 </code></p>
 
 <p>替换原来的:</p>
-<pre><code class="highlight plaintext">from selenium import webdriver
+<pre class="highlight plaintext"><code>from selenium import webdriver
 </code></pre>
 
 <h2 id="新的适配参数">新的适配参数</h2>
@@ -3862,11 +3862,11 @@ from appium import webdriver
 <p><code class="prettyprint">tag name</code>已经被替换为<code class="prettyprint">class name</code>. 所以想通过UI的类型来定位某个元素, 你需要使用class name定位方式</p>
 
 <p>关于<code class="prettyprint">class name</code>和<code class="prettyprint">xpath</code>的定位方式: 现在需要使用完整的全类名, 这意味着如果你有一个如下的定位用的xpath</p>
-<pre><code class="highlight plaintext">//table/cell/button
+<pre class="highlight plaintext"><code>//table/cell/button
 </code></pre>
 
 <p>现在需要改成</p>
-<pre><code class="highlight plaintext">//UIATableView/UIATableCell/UIAButton
+<pre class="highlight plaintext"><code>//UIATableView/UIATableCell/UIAButton
 </code></pre>
 
 <p>如果是android的话, <code class="prettyprint">button</code>需要改变成<code class="prettyprint">android.widget.Button</code></p>
@@ -3895,12 +3895,12 @@ from appium import webdriver
 </ul>
 
 <p>现在Appium支持"context" 概念了, 要获得当前环境下所有的上下文(contexts), 或者特定的context, 你可以用</p>
-<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
+<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">contexts</span>
 <span class="n">current</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">context</span>
 </code></pre>
 
 <p>在这些context之间切换, 可以使用</p>
-<pre><code class="highlight python"><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
+<pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
 </code></pre>
 
 <h2 id='没有了execute_script("mobile:-xxx")'>没有了<code class="prettyprint">execute_script("mobile: xxx")</code>
