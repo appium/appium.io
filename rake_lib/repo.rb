@@ -3,7 +3,7 @@ require_relative 'files'
 module AppiumIo
   class Repo
     include AppiumIo::Files
-    attr_reader :path, :clone, :newest_tag, :valid_tags, :branches, :master
+    attr_reader :path, :clone, :newest_tag, :valid_tags, :branches, :master, :documentation_publish_branches
 
     # path  - the on disk path to the folder containing the git repo
     # clone - the url to clone from
@@ -123,8 +123,10 @@ v1.0.0-beta.1
           valid_branches << line.split('/').last.strip
         end
       end
-
+      # Adding branches in format x.x.x as per new release guidelines
+      @documentation_publish_branches = valid_branches.select{ |branch| branch[/^\d*\.\d*.\d*$/] }
       @branches = valid_branches.uniq.sort
+      puts "Branches for which documentation will be published: #{documentation_publish_branches.join(', ')}"
     end
 
     # Clones the repository. Hard resets. Runs git pull with rebase.

@@ -159,6 +159,8 @@ module AppiumIo
       if is_master
         tags = %w[master]
       else
+        # Adding branches
+        tags = @appium_repo.documentation_publish_branches + tags
         tags.unshift(branches[0]).push(branches[1]);
       end
 
@@ -228,15 +230,12 @@ module AppiumIo
           # delete existing branches
           rm_rf dest if exists?(dest) && branches.include?(tag)
           copy_entry path, dest
-
-          # cleaning added files which are not part of repository
-          @appium_repo.clean
-
           puts "Processing with slate: #{language} #{tag}"
           process_with_slate input: dest, language: language, tag: tag
         end
+        # cleaning added files
+        @appium_repo.clean
       end # tags.each do |tag|
-
 
       unless is_master
         # update tutorial after docs are complete
