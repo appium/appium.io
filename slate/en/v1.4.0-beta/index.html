@@ -251,8 +251,8 @@ You can run an Appium server using node.js or using the application, see below.<
 
 <h4 id="using-node.js">Using Node.js</h4>
 
-<p>$ npm install -g appium
-    $ appium &amp;</p>
+<p class="centercode"><code>$ npm install -g appium
+$ appium &amp;</code></p>
 
 <h4 id="using-the-app">Using the App</h4>
 
@@ -967,7 +967,63 @@ run <code class="prettyprint">sudo authorize_ios</code> instead. You need to do 
 a new version of Xcode, as well.</li>
 <li>If you see <code class="prettyprint">iOS Simulator failed to install the application.</code> and the
 paths are correct, try restarting the computer.</li>
+<li>Tests on iOS may exhibit symptoms similar to a memory leak including sluggish
+performance or hangs. If you experience this problem, it’s likely due to a
+known issue with NSLog. One option is to remove NSLog from your code.
+However, there are several more nuanced approaches that may also help without
+requiring that you refactor.</li>
 </ul>
+
+<p>### Workaround 1
+  NSLog is a macro and can be redefined. E.g.,
+  “`objectivec
+  // <em>You’ll need to define TEST or TEST2 and then recompile.</em></p>
+
+<p>#ifdef TEST
+    #define NSLog(…) <em>BlackHoleTestLogger(</em><em>VA_ARGS</em><em>);
+  #endif // TEST
+  #ifdef TEST2
+    #define NSLog(…) _StdoutTestLogger(</em><em>VA_ARGS</em>_);
+  #endif // TEST2</p>
+
+<p>void _BlackHoleTestLogger(NSString *format, …) {
+      //
+  }</p>
+
+<p>void _StdoutTestLogger(NSString *format, …) {
+      va_list argumentList;
+      va_start(argumentList, format);
+      NSMutableString * message = [[NSMutableString alloc] initWithFormat:format
+                                                  arguments:argumentList];</p>
+
+<p>printf(message);</p>
+
+<p>va_end(argumentList);
+      [message release];
+  }
+  ”`</p>
+
+<p>### Workaround 2
+  Manually replace the underlying function that NSLog wraps. This method was recommended by
+  <a href="https://support.apple.com/kb/TA45403?locale=en_US&amp;viewlocale=en_US">Apple in a similar context.</a></p>
+<pre class="highlight plaintext"><code>  extern void _NSSetLogCStringFunction(void(*)(const char *, unsigned, BOOL));
+
+  static void _GarbageFreeLogCString(const char *message, unsigned length, BOOL withSyslogBanner) {
+     fprintf(stderr, "%s\\n", message);
+  }
+
+  int main (int argc, const char *argv[]) {
+     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+     int exitCode;
+
+     setbuf(stderr, NULL);
+
+     _NSSetLogCStringFunction(_GarbageFreeLogCString);
+     exitCode = WOApplicationMain(@"Application", argc, argv);
+     [pool release];
+     return exitCode;
+  }
+</code></pre>
 
 <h3 id="webview/hybrid/safari-app-support">Webview/Hybrid/Safari app support</h3>
 
@@ -1170,7 +1226,7 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <code class="prettyprint">-k</code>, <code class="prettyprint">--keep-artifacts</code>
 </td>
 <td>false</td>
-<td>deprecated, no effect, trace is now in tmp dir by default and is  cleared before each run. Please also refer to the –trace-dir flag.</td>
+<td>[DEPRECATED] no effect, trace is now in tmp dir by default and is  cleared before each run. Please also refer to the –trace-dir flag.</td>
 <td></td>
 </tr>
 <tr>
@@ -1396,6 +1452,12 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td><code class="prettyprint">--tracetemplate /Users/me/Automation.tracetemplate</code></td>
 </tr>
 <tr>
+<td><code class="prettyprint">--instruments</code></td>
+<td>null</td>
+<td>(IOS-only) custom path to the instruments commandline tool</td>
+<td><code class="prettyprint">--instruments /path/to/instruments</code></td>
+</tr>
+<tr>
 <td><code class="prettyprint">--show-sim-log</code></td>
 <td>false</td>
 <td>(IOS-only) if set, the iOS simulator log will be written to the console</td>
@@ -1516,7 +1578,7 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <tr>
 <td><code class="prettyprint">--tmp</code></td>
 <td>null</td>
-<td>Absolute path to directory Appium can use to manage temporary files, like built-in iOS apps it needs to move around. Defaults to the <code class="prettyprint">APPIUM_TMP_DIR</code> variable and then to <code class="prettyprint">/tmp</code> on *nix/Mac and to the <code class="prettyprint">TEMP</code> variable on windows.</td>
+<td>Absolute path to directory Appium can use to manage temporary files, like built-in iOS apps it needs to move around. On *nix/Mac defaults to /tmp, on Windows defaults to C:\Windows\Temp</td>
 <td></td>
 </tr>
 <tr>
@@ -1549,6 +1611,24 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td>null</td>
 <td>(Android-only) Additional intent arguments that will be used to start activity</td>
 <td><code class="prettyprint">--intent-args 0x10200000</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--dont-stop-app-on-reset</code></td>
+<td>false</td>
+<td>(Android-only) When included, refrains from stopping the app before restart</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--debug-log-spacing</code></td>
+<td>false</td>
+<td>Add exaggerated spacing in logs to help with visual inspection</td>
+<td></td>
+</tr>
+<tr>
+<td><code class="prettyprint">--suppress-adb-kill-server</code></td>
+<td>false</td>
+<td>(Android-only) If set, prevents Appium from killing the adb server instance</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1830,6 +1910,14 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td>e.g. <code class="prettyprint">--esn &lt;EXTRA_KEY&gt;</code>, <code class="prettyprint">--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code>, etc.</td>
 </tr>
 <tr>
+<td><code class="prettyprint">dontStopAppOnReset</code></td>
+<td>Doesn’t stop the process of the app under test, before starting the app using adb. If the app under test is created by another anchor app, setting this false, allows the process of the anchor app to be still alive, during the start of the test app using adb. In other words, with <code class="prettyprint">dontStopAppOnReset</code> set to <code class="prettyprint">true</code>, we will not include the <code class="prettyprint">-S</code> flag in the <code class="prettyprint">adb shell am start</code> call. With this capability omitted or set to <code class="prettyprint">false</code>, we include the <code class="prettyprint">-S</code> flag. Default <code class="prettyprint">false</code>
+</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
 <td><code class="prettyprint">unicodeKeyboard</code></td>
 <td>Enable Unicode input, default <code class="prettyprint">false</code>
 </td>
@@ -1856,6 +1944,14 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <tr>
 <td><code class="prettyprint">ignoreUnimportantViews</code></td>
 <td>Calls the <code class="prettyprint">setCompressedLayoutHierarchy()</code> uiautomator function. This capability can speed up test execution, since Accessibility commands will run faster ignoring some elements. The ignored elements will not be findable, which is why this capability has also been implemented as a toggle-able <em>setting</em> as well as a capability. Defaults to <code class="prettyprint">false</code>
+</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">disableAndroidWatchers</code></td>
+<td>Disables android watchers that watch for application not responding and application crash, this will reduce cpu usage on android device/emulator. This capability will work only with UiAutomator and not with selendroid, default <code class="prettyprint">false</code>
 </td>
 <td>
 <code class="prettyprint">true</code> or <code class="prettyprint">false</code>
@@ -1923,6 +2019,13 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </td>
 </tr>
 <tr>
+<td><code class="prettyprint">autoDismissAlerts</code></td>
+<td>Dismiss iOS privacy access permission alerts (e.g., location, contacts, photos) automatically if they pop up. Default is false.</td>
+<td>
+<code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
 <td><code class="prettyprint">nativeInstrumentsLib</code></td>
 <td>Use native intruments lib (ie disable instruments-without-delay).</td>
 <td>
@@ -1934,6 +2037,12 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td>(Sim-only) Enable “real”, non-javascript-based web taps in Safari. Default: <code class="prettyprint">false</code>. Warning: depending on viewport size/ratio this might not accurately tap an element</td>
 <td>
 <code class="prettyprint">true</code> or <code class="prettyprint">false</code>
+</td>
+</tr>
+<tr>
+<td><code class="prettyprint">safariInitialUrl</code></td>
+<td>(Sim-only) (&gt;= 8.1) Initial safari url, default is a local welcome page</td>
+<td>e.g. <code class="prettyprint">https://www.github.com</code>
 </td>
 </tr>
 <tr>
@@ -1992,9 +2101,11 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tr>
 <tr>
 <td><code class="prettyprint">sendKeyStrategy</code></td>
-<td>strategy to use to type test into a test field. Simulator default: <code class="prettyprint">oneByOne</code>. Real device default: ‘grouped’</td>
+<td>strategy to use to type test into a test field. Simulator default: <code class="prettyprint">oneByOne</code>. Real device default: <code class="prettyprint">grouped</code>
+</td>
 <td>
-<code class="prettyprint">oneByOne</code>, <code class="prettyprint">grouped</code> or setValue</td>
+<code class="prettyprint">oneByOne</code>, <code class="prettyprint">grouped</code> or <code class="prettyprint">setValue</code>
+</td>
 </tr>
 <tr>
 <td><code class="prettyprint">screenshotWaitTimeout</code></td>
@@ -2005,7 +2116,8 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <tr>
 <td><code class="prettyprint">waitForAppScript</code></td>
 <td>The ios automation script used to determined if the app has been launched, by default the system wait for the page source not to be empty. The result must be a boolean</td>
-<td>e.g. <code class="prettyprint">true;</code>, <code class="prettyprint">target.elements().length &gt; 0;</code>, ‘$.delay(5000); true;`</td>
+<td>e.g. <code class="prettyprint">true;</code>, <code class="prettyprint">target.elements().length &gt; 0;</code>, <code class="prettyprint">$.delay(5000); true;</code>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2124,15 +2236,15 @@ public static $browsers = array(
 
 <h3 id="mobile-safari-on-a-real-ios-device">Mobile Safari on a Real iOS Device</h3>
 
-<p>To be able to run your tests against mobile Safari we use the <a href="https://github.com/snevesbarros/SafariLauncher">SafariLauncher
- App</a> to launch Safari. Once
- Safari has been launched the Remote Debugger automatically connects using
- the <a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debug-proxy</a>.</p>
+<p>We use the <a href="https://github.com/snevesbarros/SafariLauncher">SafariLauncher
+ App</a> to launch Safari and run
+ tests against mobile Safari. Once Safari has been launched the Remote Debugger
+ automatically connects using the
+ <a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debug-proxy</a>. When
+ working with ios-webkit-debug-proxy, you have to trust the machine before you can
+ can run tests against your iOS device.</p>
 
-<p><strong>NOTE:</strong> There is currently <a href="https://github.com/google/ios-webkit-debug-proxy/issues/38">a bug</a>
-in the ios-webkit-debug-proxy. You have to trust the machine before you can
-run the ios-webkit-debug-proxy
-against your iOS device.</p>
+<p>For instruction on how to install and run ios-webkit-debugger-proxy see <a href="#ios-webkit-debug-proxy.md">iOS webKit debug proxy</a> documentation.</p>
 
 <h3 id="setup">Setup</h3>
 
@@ -2140,7 +2252,7 @@ against your iOS device.</p>
 
 <ul>
 <li>Have the <strong>ios-webkit-debug-proxy</strong> installed, running and listening on port 27753 (see the
-<a href="#hybrid.md">hybrid docs</a> for instructions)</li>
+<a href="#hybrid.md#execution-against-a-real-ios-device">hybrid docs</a> for instructions)</li>
 <li>Turn on <strong>web inspector</strong> on iOS device (<strong>settings &gt; safari &gt;
 advanced</strong>, only for iOS 6.0 and up)</li>
 <li>Create a <strong>provisioning profile</strong> that can be used to deploy the SafariLauncherApp.</li>
@@ -2292,7 +2404,7 @@ public static $browsers = array(
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">BROWSER_NAME</span><span class="o">,</span> <span class="s">"Chrome"</span><span class="o">);</span>
 </code></pre>
 
-<p>Note that on 4.4+ devices, you can also use the 'Browser’ <code class="prettyprint">browserName</code> cap to automate the built-in browser. On all devices you can use the ‘Chromium’ <code class="prettyprint">browserName</code> cap to automate a build of Chromium.</p>
+<p>Note that on 4.4+ devices, you can also use the ‘Browser’ <code class="prettyprint">browserName</code> cap to automate the built-in browser. On all devices you can use the ‘Chromium’ <code class="prettyprint">browserName</code> cap to automate a build of Chromium.</p>
 
 <h4 id="troubleshooting-chromedriver">Troubleshooting chromedriver</h4>
 
@@ -2648,11 +2760,12 @@ MultiAction().add(action0).add(action1).perform()</code></p>
 
 <h3 id="bugs-and-workarounds">Bugs and Workarounds</h3>
 
-<p>An unfortunate bug exists in the iOS 7.x Simulator where ScrollViews don’t
-recognize gestures initiated by UIAutomation (which Appium uses under the hood
-for iOS). To work around this, we have provided access to a different
-function, <code class="prettyprint">scroll</code>, which in many cases allows you to do what you wanted to do
-with a ScrollView, namely, scroll it!</p>
+<p>An unfortunate bug exists in the iOS 7.0 - 8.x Simulators where ScrollViews,
+CollectionViews, and TableViews don’t recognize gestures initiated by
+UIAutomation (which Appium uses under the hood for iOS). To work around this,
+we have provided access to a different function, <code class="prettyprint">scroll</code>, which in many cases
+allows you to do what you wanted to do with one of these views, namely, scroll
+it!</p>
 
 <p><strong>Scrolling</strong></p>
 
@@ -2660,24 +2773,56 @@ with a ScrollView, namely, scroll it!</p>
 <code class="prettyprint">executeScript</code> methods in the driver, and prefix the command with <code class="prettyprint">mobile:</code>.
 See examples below:</p>
 
-<ul>
-<li><strong>WD.js:</strong></li>
-</ul>
+<p>To scroll, pass direction in which you intend to scroll as parameter.</p>
 <pre class="highlight javascript"><code><span class="c1">// javascript</span>
-<span class="c1">// scroll the view down</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: scroll"</span><span class="p">,</span> <span class="p">[{</span><span class="na">direction</span><span class="p">:</span> <span class="s1">'down'</span><span class="p">}])</span>
-<span class="c1">// continue testing</span>
+</code></pre>
+<pre class="highlight java"><code><span class="c1">// java</span>
+<span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
+<span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+<span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"direction"</span><span class="o">,</span> <span class="s">"down"</span><span class="o">);</span>
+<span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: scroll"</span><span class="o">,</span> <span class="n">scrollObject</span><span class="o">);</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
+<span class="n">execute_script</span> <span class="s1">'mobile: scroll'</span><span class="p">,</span> <span class="ss">direction: </span><span class="s1">'down'</span>
+</code></pre>
+<pre class="highlight python"><code><span class="c"># python</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: scroll"</span><span class="p">,</span> <span class="p">{</span><span class="s">"direction"</span><span class="p">:</span> <span class="s">"down"</span><span class="p">})</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="c1">// c#
+</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">scrollObject</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;();</span>
+<span class="n">scrollObject</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"direction"</span><span class="p">,</span> <span class="s">"down"</span><span class="p">);</span>
+<span class="p">((</span><span class="n">IJavaScriptExecutor</span><span class="p">)</span><span class="n">driver</span><span class="p">).</span><span class="nf">ExecuteScript</span><span class="p">(</span><span class="s">"mobile: scroll"</span><span class="p">,</span> <span class="n">scrollObject</span><span class="p">));</span>
+</code></pre>
+<pre class="highlight php"><code>$params = array(array('direction' =&gt; 'down'));
+$driver-&gt;executeScript("mobile: scroll", $params);
 </code></pre>
 
-<ul>
-<li><strong>Java:</strong></li>
-</ul>
+<p>Sample to scroll using direction and element.</p>
+<pre class="highlight javascript"><code><span class="c1">// javascript</span>
+<span class="nx">driver</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="s2">"mobile: scroll"</span><span class="p">,</span> <span class="p">[{</span><span class="na">direction</span><span class="p">:</span> <span class="s1">'down'</span><span class="p">,</span> <span class="na">element</span><span class="p">:</span> <span class="nx">element</span><span class="p">.</span><span class="nx">value</span><span class="p">}]);</span>
+</code></pre>
 <pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">JavascriptExecutor</span> <span class="n">js</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavascriptExecutor</span><span class="o">)</span> <span class="n">driver</span><span class="o">;</span>
 <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">scrollObject</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
 <span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"direction"</span><span class="o">,</span> <span class="s">"down"</span><span class="o">);</span>
 <span class="n">scrollObject</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"element"</span><span class="o">,</span> <span class="o">((</span><span class="n">RemoteWebElement</span><span class="o">)</span> <span class="n">element</span><span class="o">).</span><span class="na">getId</span><span class="o">());</span>
 <span class="n">js</span><span class="o">.</span><span class="na">executeScript</span><span class="o">(</span><span class="s">"mobile: scroll"</span><span class="o">,</span> <span class="n">scrollObject</span><span class="o">);</span>
+</code></pre>
+<pre class="highlight ruby"><code><span class="c1"># ruby</span>
+<span class="n">execute_script</span> <span class="s1">'mobile: scroll'</span><span class="p">,</span> <span class="ss">direction: </span><span class="s1">'down'</span><span class="p">,</span> <span class="ss">element: </span><span class="n">element</span><span class="p">.</span><span class="nf">ref</span>
+</code></pre>
+<pre class="highlight python"><code><span class="c"># python</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: scroll"</span><span class="p">,</span> <span class="p">{</span><span class="s">"direction"</span><span class="p">:</span> <span class="s">"down"</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="n">getAttribute</span><span class="p">(</span><span class="s">"id"</span><span class="p">)})</span>
+</code></pre>
+<pre class="highlight csharp"><code><span class="c1">// c#
+</span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">scrollObject</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;();</span>
+<span class="n">scrollObject</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"direction"</span><span class="p">,</span> <span class="s">"down"</span><span class="p">);</span>
+<span class="n">scrollObject</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"element"</span><span class="p">,</span> <span class="p">&lt;</span><span class="n">element_id</span><span class="p">&gt;);</span>
+<span class="p">((</span><span class="n">IJavaScriptExecutor</span><span class="p">)</span><span class="n">driver</span><span class="p">).</span><span class="nf">ExecuteScript</span><span class="p">(</span><span class="s">"mobile: scroll"</span><span class="p">,</span> <span class="n">scrollObject</span><span class="p">));</span>
+</code></pre>
+<pre class="highlight php"><code>$params = array(array('direction' =&gt; 'down', 'element' =&gt; element.GetAttribute("id")));
+$driver-&gt;executeScript("mobile: scroll", $params);
 </code></pre>
 
 <p><strong>Automating Sliders</strong></p>
@@ -3403,7 +3548,7 @@ $this-&gt;zoom($el);
 <span class="n">execute_script</span> <span class="s2">"mobile: scrollTo"</span><span class="p">,</span> <span class="ss">:element</span> <span class="o">=&gt;</span> <span class="n">element</span><span class="p">.</span><span class="nf">ref</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c"># python</span>
-<span class="n">todo</span><span class="p">:</span> <span class="n">python</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"mobile: scrollTo"</span><span class="p">,</span> <span class="p">{</span><span class="s">"element"</span><span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="nb">id</span><span class="p">})</span>
 </code></pre>
 <pre class="highlight java"><code><span class="c1">// java</span>
 <span class="n">WebElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="na">findElement</span><span class="o">(</span><span class="n">By</span><span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s">"Element Name"</span><span class="o">));</span>
@@ -4047,7 +4192,8 @@ to point to localhost:whatever-port-Appium-started-on.</p>
 
 <p>One of the core principles of Appium is that you shouldn’t have to change
 your app to test it. In line with that methodology, it is possible to test
-hybrid web apps (e.g., the “UIWebView” elements in an iOS app) the same way
+hybrid web apps (e.g., the <a href="https://developer.apple.com/library/ios/documentation/ToolsLanguages/Reference/UIAWebViewClassReference/">UIAWebView</a>
+elements in an iOS app) the same way
 you can with Selenium for web apps. There is a bit of technical complexity
 required so that Appium knows whether you want to automate the native aspects
 of the app or the web views, but thankfully, we can stay within the
@@ -4200,47 +4346,7 @@ the appium server are on the same machine.</p>
 connection has to be established through the USB lead. To establish this
 connection we use the <a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debugger-proxy</a>.</p>
 
-<p>To install the latest tagged version of the ios-webkit-debug-proxy using
-brew, run the following commands in the terminal:</p>
-
-<p class="centercode"><code># The first command is only required if you don't have brew installed.
-&gt; ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
-&gt; brew update
-&gt; brew install ios-webkit-debug-proxy</code></p>
-
-<p>You can also install the latest proxy by cloning it from git and installing
-it yourself:</p>
-
-<p class="centercode"><code># Please be aware that this will install the proxy with the latest code (and not a tagged version).
-&gt; git clone https://github.com/google/ios-webkit-debug-proxy.git
-&gt; cd ios-webkit-debug-proxy
-&gt; ./autogen.sh
-&gt; ./configure
-&gt; make
-&gt; sudo make install</code></p>
-
-<p>If you use a recent device, you may need to install the latest
-ideviceinstaller, this is optional:</p>
-<pre class="highlight plaintext"><code>brew install --HEAD ideviceinstaller
-</code></pre>
-
-<p>Once installed you can start the proxy with the following command:</p>
-
-<p class="centercode"><code># Change the udid to be the udid of the attached device and make sure to set the port to 27753
-# as that is the port the remote-debugger uses.
-&gt; ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d</code></p>
-
-<p>You may also use the ios-webkit-debug-proxy-launcher to launch the
-proxy. It monitors the proxy log for errors, and relaunch the proxy
-where needed. This is also optional and may help with recent devices:</p>
-
-<p class="centercode"><code># change the udid
-&gt; ./bin/ios-webkit-debug-proxy-launcher.js -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d</code></p>
-
-<p><strong>NOTE:</strong> the proxy requires the <strong>“web inspector”</strong> to be turned on to
-allow a connection to be established. Turn it on by going to <strong>settings &gt;
-safari &gt; advanced</strong>. Please be aware that the web inspector was <strong>added as
-part of iOS 6</strong> and was not available previously.</p>
+<p>For instruction on how to install and run ios-webkit-debugger-proxy see <a href="#ios-webkit-debug-proxy.md">iOS webkit debug proxy</a> documentation.</p>
 
 <p>Now you can start an appium test session and follow the generalized instructions above.</p>
 
@@ -4289,6 +4395,72 @@ part of iOS 6</strong> and was not available previously.</p>
 <h3 id="supported-settings">Supported Settings</h3>
 
 <p><strong>“ignoreUnimportantViews”</strong> - Boolean which sets whether Android devices should use <code class="prettyprint">setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster.</p>
+
+<h2 id="ios-webkit-debug-proxy">
+<span id="ios-webkit-debug-proxy.md"></span>iOS WebKit Debug Proxy</h2>
+
+<p>For accessing web views on real iOS device appium uses <a href="https://github.com/google/ios-webkit-debug-proxy">ios_webkit_debug_proxy</a>.</p>
+
+<h3 id="installation">Installation</h3>
+
+<h4 id="using-homebrew">Using Homebrew</h4>
+
+<p>To install the latest tagged version of the ios-webkit-debug-proxy using
+Homebrew, run the following commands in the terminal:</p>
+
+<p></p>
+<p class="centercode"><code> # The first command is only required if you don't have brew installed.
+ &gt; ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+ &gt; brew update
+ &gt; brew install ios-webkit-debug-proxy</code></p>
+
+<p><strong>NOTE:</strong> As of April 2, 2015, the primary ios-webkit-debug-proxy repository
+has not been updated for some time. <strong>We currently recommend using <a href="https://github.com/jchuong/ios-webkit-debug-proxy">James Chuong’s
+fork</a></strong>. To do so, you’ll need
+to build from source. If you’re unfamiliar with building with GMake, try following
+the steps below.</p>
+
+<h4 id="building-ios-webkit-debug-proxy-from-source">Building ios-webkit-debug-proxy from source</h4>
+
+<p>Open the command terminal on your mac. You can find instructions on how to open the
+terminal via your favorite search engine. Once that is open, verify you have
+<a href="http://brew.sh/">Homebew</a> installed:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>brew -v
+</code></pre>
+
+<p>When you’re certain you have Homebrew, do the following (the $ indicates the command
+line prompt, do not enter it):</p>
+<pre class="highlight shell"><code><span class="gp">$ </span><span class="nb">cd</span>  ~
+<span class="gp">$ </span>git clone https://github.com/jchuong/ios-webkit-debug-proxy.git
+<span class="gp">$ </span><span class="nb">cd </span>ios-webkit-debug-proxy
+<span class="gp">$ </span>brew install autoconf automake libusb libplist usbmuxd
+<span class="gp">$ </span>brew install --HEAD ideviceinstaller
+<span class="gp">$ </span>./autogen.sh
+<span class="gp">$ </span>./configure
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+</code></pre>
+
+<h4 id="running-ios-webkit-debug-proxy">Running ios-webkit-debug-proxy</h4>
+
+<p>Once installed you can start the proxy with the following command:</p>
+
+<p class="centercode"><code># Change the udid to be the udid of the attached device and make sure to set the port to 27753
+# as that is the port the remote-debugger uses. You can learn how to retrieve the UDID from
+# Apple's developer resources.
+&gt; ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d</code></p>
+
+<p>You may also use the ios-webkit-debug-proxy-launcher to launch the
+proxy. It monitors the proxy log for errors, and relaunch the proxy
+where needed. This is also optional and may help with recent devices:</p>
+
+<p class="centercode"><code># change the udid
+&gt; ./bin/ios-webkit-debug-proxy-launcher.js -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d</code></p>
+
+<p><strong>NOTE:</strong> the proxy requires the <strong>“web inspector”</strong> to be turned on to
+allow a connection to be established. Turn it on by going to <strong>settings &gt;
+safari &gt; advanced</strong>. Please be aware that the web inspector was <strong>added as
+part of iOS 6</strong> and was not available previously.</p>
 
 <h2 id="migrating-your-tests-from-appium-0.18.x-to-appium-1.x">
 <span id="migrating-to-1-0.md"></span>Migrating your tests from Appium 0.18.x to Appium 1.x</h2>
