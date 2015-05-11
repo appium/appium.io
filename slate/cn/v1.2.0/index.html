@@ -1564,7 +1564,7 @@ https://gist.github.com/feelobot/7309729</p>
 使用以下的第三方框架：</p>
 
 <ul>
-<li>iOS: 苹果的 <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation</a>
+<li>iOS: 苹果的 <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation</a>
 </li>
 <li>Android 4.2+: Google’s <a href="http://developer.android.com/tools/help/uiautomator/index.html">UiAutomator</a>
 </li>
@@ -1579,7 +1579,7 @@ WebDriver （也就是 “Selenium WebDriver"） 指定了客户端到服务端�
 HTTP 客户，可以以任何你喜欢的方式潜入你的代码。换句话说，Appium 和 WebDriver 客户端不是技术意义上的“测试框架”，
 而是“自动化库”。你可以在你的测试环境中随意使用这些自动化库！</p>
 
-<p>事实上 WebDriver 已经成为 web 浏览器自动化的标准，也成了 W3C 的标准 —— <a href="https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html">W3C Working Draft</a>。
+<p>事实上 WebDriver 已经成为 web 浏览器自动化的标准，也成了 W3C 的标准 —— <a href="https://w3c.github.io/webdriver/webdriver-spec.html">W3C Working Draft</a>。
 我们又何必为移动做一个完全不同的呢？
 所以我们扩充了<a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">WebDriver 的协议</a>，
 在原有的基础上添加移动自动化相关的 API 方法，这也也满足了第三条理念。</p>
@@ -1697,7 +1697,7 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 <h1 id="ios-predicate">
 <span id="ios_predicate.cn.md"></span>iOS Predicate</h1>
 
-<p>I’d like to share my experience in using <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>. After using Instruments/UIAutomation tool for a long time I paid attention on the following methods in <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation JavaScript API</a>:</p>
+<p>I’d like to share my experience in using <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>. After using Instruments/UIAutomation tool for a long time I paid attention on the following methods in <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a>:</p>
 <pre class="highlight java"><code><span class="o">(</span><span class="n">UIAElement</span><span class="o">)</span> <span class="n">UIAElementArray</span><span class="o">.</span><span class="na">firstWithPredicate</span><span class="o">(</span><span class="n">PredicateString</span> <span class="n">predicateString</span><span class="o">)</span>
 <span class="o">(</span><span class="n">UIAElementArray</span><span class="o">)</span> <span class="n">UIAElementArray</span><span class="o">.</span><span class="na">withPredicate</span><span class="o">(</span><span class="n">PredicateString</span> <span class="n">predicateString</span><span class="o">)</span>
 </code></pre>
@@ -2141,7 +2141,7 @@ Appimu时候支持的平台版本和上述测试方式的必备条件。</p>
 <li>版本号：6.1 , 7.0 , and 7.1</li>
 <li>支持设备： iPhone 模拟器, iPad 模拟器以及iPhones 和 iPads真机</li>
 <li>是否支持原生应用：支持 。同时支持模拟器中调试应用版本和正确签名的真机ipa。
-其他相关支持由苹果的<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation</a>
+其他相关支持由苹果的<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation</a>
 框架提供。</li>
 <li>是否支持内嵌浏览器：支持, Safari浏览器已经通过测试。对于
 真机,则需要安装调试工具 ios-webkit-remote-debugger，很遗憾

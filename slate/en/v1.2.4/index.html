@@ -76,7 +76,7 @@ hood. That way, we don’t need to compile in any Appium-specific or
 third-party code or frameworks to your app. This means <strong>you’re testing the same app you’re shipping</strong>. The vendor-provided frameworks we use are:</p>
 
 <ul>
-<li>iOS: Apple’s <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation</a>
+<li>iOS: Apple’s <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation</a>
 </li>
 <li>Android 4.2+: Google’s <a href="http://developer.android.com/tools/help/uiautomator/index.html">UiAutomator</a>
 </li>
@@ -97,7 +97,7 @@ technically “test frameworks” – they are “automation libraries”. You c
 manage your test environment any way you like!</p>
 
 <p>We meet requirement #3 in the same way: WebDriver has become the de facto
-standard for automating web browsers, and is a <a href="https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html">W3C Working Draft</a>.
+standard for automating web browsers, and is a <a href="https://w3c.github.io/webdriver/webdriver-spec.html">W3C Working Draft</a>.
 Why do something totally different for mobile? Instead we have <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">extended the protocol</a>
 with extra API methods useful for mobile automation.</p>
 
@@ -386,7 +386,7 @@ instructions.</p>
 <li>Devices: iPhone Simulator, iPad Simulator, and real iPhones and iPads</li>
 <li>Native app support: Yes, with debug version of .app (simulator),
 or correctly-signed .ipa (real devices). Underlying support is provided by
-Apple’s <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation</a>
+Apple’s <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation</a>
 framework.</li>
 <li>Mobile web support: Yes, via automation of mobile Safari. For real devices,
 ios-webkit-remote-debugger is required, and automation of native aspects of
@@ -811,6 +811,44 @@ you are doing this via a Rakefile and a <code class="prettyprint">go_device.sh</
 
 <p>Next: <a href="#real-devices.md">Running Appium on Real Devices</a></p>
 
+<h2 id="parallel-android-tests">
+<span id="parallel_tests.md"></span>Parallel Android Tests</h2>
+
+<p>Appium provides a way for users to automate multiple Android sessions on a single machine. All it involves is starting multiple Appium servers with different flags. </p>
+
+<p>The important flags for automating multiple Android sessions are:</p>
+
+<ul>
+<li>
+<code class="prettyprint">-p</code> the main Appium port</li>
+<li>
+<code class="prettyprint">-U</code> the device id</li>
+<li>
+<code class="prettyprint">-bp</code> the Appium bootstrap port</li>
+<li>
+<code class="prettyprint">--chromedriver-port</code> the chromedriver port (if using webviews or chrome)</li>
+<li>
+<code class="prettyprint">--selendroid-port</code> the selendroid port (if using selendroid)</li>
+</ul>
+
+<p>More information on these flags can be found <a href="#caps.md">here</a>.</p>
+
+<p>If we had two devices with the ID’s 43364 and 32456, we would start two different Appium servers with the following commands:</p>
+
+<p><code class="prettyprint">node . -p 4492 -bp 2251  -U 32456</code></p>
+
+<p><code class="prettyprint">node . -p 4491  -bp 2252 -U 43364</code></p>
+
+<p>As long as your Appium and Appium bootstrap ports are between 0 and 65536, all they have to be is different so that two Appium servers aren’t trying to listen on the same port. Be sure that your -u flag corresponds with the correct device ID. This is how Appium knows which device to communicate with, so it must be accurate.  </p>
+
+<p>If you are using chromedriver or selendroid, set a different port for each server.</p>
+
+<h3 id="parallel-ios-tests">Parallel iOS Tests</h3>
+
+<p>Unfortunately, running local parallel iOS tests aren’t possible. Unlike Android, only one version of the iOS simulator can be launched at a time, making it run multiple tests at once.</p>
+
+<p>If you do want to run parallel iOS tests, you need to use Sauce. Simply upload your Appium test to Sauce, and it can run as many parallel iOS or Android tests as your account allows. See more about running your tests on Sauce <a href="https://docs.saucelabs.com/tutorials/appium/">here</a>.</p>
+
 <h2 id="troubleshooting-appium">
 <span id="troubleshooting.md"></span>Troubleshooting Appium</h2>
 
@@ -1011,44 +1049,6 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tr>
 </tbody>
 </table>
-
-<h2 id="parallel-android-tests">
-<span id="parallel_tests.md"></span>Parallel Android Tests</h2>
-
-<p>Appium provides a way for users to automate multiple Android sessions on a single machine. All it involves is starting multiple Appium servers with different flags. </p>
-
-<p>The important flags for automating multiple Android sessions are:</p>
-
-<ul>
-<li>
-<code class="prettyprint">-p</code> the main Appium port</li>
-<li>
-<code class="prettyprint">-U</code> the device id</li>
-<li>
-<code class="prettyprint">-bp</code> the Appium bootstrap port</li>
-<li>
-<code class="prettyprint">--chromedriver-port</code> the chromedriver port (if using webviews or chrome)</li>
-<li>
-<code class="prettyprint">--selendroid-port</code> the selendroid port (if using selendroid)</li>
-</ul>
-
-<p>More information on these flags can be found <a href="#caps.md">here</a>.</p>
-
-<p>If we had two devices with the ID’s 43364 and 32456, we would start two different Appium servers with the following commands:</p>
-
-<p><code class="prettyprint">node . -p 4492 -bp 2251  -U 32456</code></p>
-
-<p><code class="prettyprint">node . -p 4491  -bp 2252 -U 43364</code></p>
-
-<p>As long as your Appium and Appium bootstrap ports are between 0 and 65536, all they have to be is different so that two Appium servers aren’t trying to listen on the same port. Be sure that your -u flag corresponds with the correct device ID. This is how Appium knows which device to communicate with, so it must be accurate.  </p>
-
-<p>If you are using chromedriver or selendroid, set a different port for each server.</p>
-
-<h3 id="parallel-ios-tests">Parallel iOS Tests</h3>
-
-<p>Unfortunately, running local parallel iOS tests aren’t possible. Unlike Android, only one version of the iOS simulator can be launched at a time, making it run multiple tests at once.</p>
-
-<p>If you do want to run parallel iOS tests, you need to use Sauce. Simply upload your Appium test to Sauce, and it can run as many parallel iOS or Android tests as your account allows. See more about running your tests on Sauce <a href="https://docs.saucelabs.com/tutorials/appium/">here</a>.</p>
 
 <h1 id="running-appium-tests">Running Appium tests</h1>
 
@@ -2045,10 +2045,10 @@ attempting to use Appium.</p>
 <p>Then, use desired capabilities like these to run your test in mobile Safari:</p>
 <pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
-  <span class="na">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span>
-  <span class="p">,</span> <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'7.1'</span>
-  <span class="p">,</span> <span class="na">browserName</span><span class="p">:</span> <span class="s1">'Safari'</span>
-  <span class="p">,</span> <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span>
+  <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span>
+  <span class="p">,</span> <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'7.1'</span>
+  <span class="p">,</span> <span class="nx">browserName</span><span class="err">:</span> <span class="s1">'Safari'</span>
+  <span class="p">,</span> <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'iPhone Simulator'</span>
 <span class="p">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c"># python</span>
@@ -2215,10 +2215,10 @@ class ContextTests extends PHPUnit_Extensions_AppiumTestCase
 <p>Then, use desired capabilities like these to run your test in Chrome:</p>
 <pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
-  <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span>
-  <span class="p">,</span> <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'4.4'</span>
-  <span class="p">,</span> <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'Android Emulator'</span>
-  <span class="p">,</span> <span class="na">browserName</span><span class="p">:</span> <span class="s1">'Chrome'</span>
+  <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'Android'</span>
+  <span class="p">,</span> <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'4.4'</span>
+  <span class="p">,</span> <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'Android Emulator'</span>
+  <span class="p">,</span> <span class="nx">browserName</span><span class="err">:</span> <span class="s1">'Chrome'</span>
 <span class="p">};</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c"># python</span>
@@ -2297,10 +2297,10 @@ want to zip it up, you can.</p>
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
 <pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
-    <span class="na">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span><span class="p">,</span>
-    <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'7.1'</span><span class="p">,</span>
-    <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'iPhone Simulator'</span><span class="p">,</span>
-    <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
+    <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'iOS'</span><span class="p">,</span>
+    <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'7.1'</span><span class="p">,</span>
+    <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'iPhone Simulator'</span><span class="p">,</span>
+    <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c"># python</span>
@@ -2371,10 +2371,10 @@ otherwise failing, you can restart it by running:</p>
 <p>Then script your WebDriver test, sending in the following desired capabilities:</p>
 <pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
-    <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
-    <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'4.4'</span><span class="p">,</span>
-    <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
-    <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
+    <span class="nl">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
+    <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'4.4'</span><span class="p">,</span>
+    <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
+    <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c"># python</span>
@@ -2431,11 +2431,11 @@ desired capabilities mentioned above, by adding the <code class="prettyprint">au
 and specifying the Selendroid automation backend.</p>
 <pre class="highlight javascript"><code><span class="c1">// javascript</span>
 <span class="p">{</span>
-    <span class="na">automationName</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
-    <span class="na">platformName</span><span class="p">:</span> <span class="s1">'Android'</span><span class="p">,</span>
-    <span class="na">platformVersion</span><span class="p">:</span> <span class="s1">'2.3'</span><span class="p">,</span>
-    <span class="na">deviceName</span><span class="p">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
-    <span class="na">app</span><span class="p">:</span> <span class="nx">myApp</span>
+    <span class="nl">automationName</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
+    <span class="nx">platformName</span><span class="err">:</span> <span class="s1">'Android'</span><span class="p">,</span>
+    <span class="nx">platformVersion</span><span class="err">:</span> <span class="s1">'2.3'</span><span class="p">,</span>
+    <span class="nx">deviceName</span><span class="err">:</span> <span class="s1">'Android Emulator'</span><span class="p">,</span>
+    <span class="nx">app</span><span class="err">:</span> <span class="nx">myApp</span>
 <span class="p">}</span>
 </code></pre>
 <pre class="highlight python"><code><span class="c"># python</span>
@@ -2483,7 +2483,7 @@ interaction, its parameters are not always easily mappable to the functionality
 that the underlying device automation (like UIAutomation in the case of iOS)
 provides. To that end, Appium implements the new TouchAction / MultiAction API
 defined in the newest version of the spec
-(<a href="https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html#multiactions-1">https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html#multiactions-1</a>).
+(<a href="https://w3c.github.io/webdriver/webdriver-spec.html#multiactions-1">https://w3c.github.io/webdriver/webdriver-spec.html#multiactions-1</a>).
 Note that this is different from the earlier version of the TouchAction API in
 the original JSON Wire Protocol.</p>
 
@@ -3425,7 +3425,7 @@ $this-&gt;updateSettings(array('cyberdelia' =&gt; "open"));
 <span id="ios_predicate.md"></span>iOS Predicate</h2>
 
 <p>It is worth looking at <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>.
-<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/_index.html">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
+<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
 
 <p class="centercode"><code>(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
 (UIAElementArray) UIAElementArray.withPredicate(PredicateString predicateString)</code></p>
@@ -4088,6 +4088,52 @@ part of iOS 6</strong> and was not available previously.</p>
 
 <p>Now you can start an appium test session and follow the generalized instructions above.</p>
 
+<h2 id="settings">
+<span id="settings.md"></span>Settings</h2>
+
+<p>Settings are a new concept introduced by appium. They are currently not a part of the Mobile JSON Wire Protocol, or the Webdriver spec.</p>
+
+<p>Settings are a way to specify the behavior of the appium server.</p>
+
+<p>Settings are:
+ - Mutable, they can be changed during a session
+ - Only relevant during the session they are applied. They are reset for each new session.
+ - Control the way the appium server behaves during test automation. They do not apply to controlling the app or device under test.</p>
+
+<p>An example of a setting would be <code class="prettyprint">ignoreUnimportantViews</code> for Android. Android can be set to ignore elements in the View Hierarchy which it deems irrelevant. Setting this can cause tests to run faster. A user who <em>wants</em> to access the ignored elements however, would want to disable <code class="prettyprint">ignoreUnimportantViews</code>, and reenable it afterwards.</p>
+
+<p>Another example of a use-case for settings would be telling appium to ignore elements which are not visible.</p>
+
+<p>Settings are implemented via the following API endpoints:</p>
+
+<p><strong>POST</strong> /session/:sessionId/appium/settings</p>
+
+<blockquote>
+<p>Expects a JSON hash of settings, where keys correspond to setting names, and values to the value of the setting.
+<code class="prettyprint">
+{
+  settings: {
+   ignoreUnimportantViews : true  
+  }  
+}
+</code></p>
+</blockquote>
+
+<p><strong>GET</strong> /session/:sessionId/appium/settings</p>
+
+<blockquote>
+<p>Returns a JSON hash of all the currently specified settings.
+<code class="prettyprint">
+{
+  ignoreUnimportantViews : true  
+}
+</code></p>
+</blockquote>
+
+<h3 id="supported-settings">Supported Settings</h3>
+
+<p><strong>“ignoreUnimportantViews”</strong> - Boolean which sets whether Android devices should use <code class="prettyprint">setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster.</p>
+
 <h2 id="migrating-your-tests-from-appium-0.18.x-to-appium-1.x">
 <span id="migrating-to-1-0.md"></span>Migrating your tests from Appium 0.18.x to Appium 1.x</h2>
 
@@ -4230,52 +4276,6 @@ $this-&gt;context('WEBVIEW');
 <p>Of particular note, the gesture methods have been replaced by the new TouchAction / MultiAction API which allows for a much more powerful and general way of putting gestural automation together. Refer to your Appium client for usage notes on TouchAction / MultiAction.</p>
 
 <p>And that’s it! Happy migrating!</p>
-
-<h2 id="settings">
-<span id="settings.md"></span>Settings</h2>
-
-<p>Settings are a new concept introduced by appium. They are currently not a part of the Mobile JSON Wire Protocol, or the Webdriver spec.</p>
-
-<p>Settings are a way to specify the behavior of the appium server.</p>
-
-<p>Settings are:
- - Mutable, they can be changed during a session
- - Only relevant during the session they are applied. They are reset for each new session.
- - Control the way the appium server behaves during test automation. They do not apply to controlling the app or device under test.</p>
-
-<p>An example of a setting would be <code class="prettyprint">ignoreUnimportantViews</code> for Android. Android can be set to ignore elements in the View Hierarchy which it deems irrelevant. Setting this can cause tests to run faster. A user who <em>wants</em> to access the ignored elements however, would want to disable <code class="prettyprint">ignoreUnimportantViews</code>, and reenable it afterwards.</p>
-
-<p>Another example of a use-case for settings would be telling appium to ignore elements which are not visible.</p>
-
-<p>Settings are implemented via the following API endpoints:</p>
-
-<p><strong>POST</strong> /session/:sessionId/appium/settings</p>
-
-<blockquote>
-<p>Expects a JSON hash of settings, where keys correspond to setting names, and values to the value of the setting.
-<code class="prettyprint">
-{
-  settings: {
-   ignoreUnimportantViews : true  
-  }  
-}
-</code></p>
-</blockquote>
-
-<p><strong>GET</strong> /session/:sessionId/appium/settings</p>
-
-<blockquote>
-<p>Returns a JSON hash of all the currently specified settings.
-<code class="prettyprint">
-{
-  ignoreUnimportantViews : true  
-}
-</code></p>
-</blockquote>
-
-<h3 id="supported-settings">Supported Settings</h3>
-
-<p><strong>“ignoreUnimportantViews”</strong> - Boolean which sets whether Android devices should use <code class="prettyprint">setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster.</p>
 
 <h1 id="appium-gui">Appium GUI</h1>
 
