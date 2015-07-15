@@ -160,6 +160,8 @@ which enables you to check out the hierarchy of your app. This can come in handy
 
 <p>Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, FirefoxOS).</p>
 
+<p><strong>Note:</strong> we have just recently released Appium 1.0. If you already have a bunch of Appium tests, you might want to check out the <a href="#migrating-to-1-0.md">Migrating to 1.0</a> doc!</p>
+
 <h3 id="supported-platforms">Supported Platforms</h3>
 
 <ul>
@@ -293,10 +295,6 @@ Gecko-based platforms.</p>
 
 <p>Please take a look at our <a href="#CONTRIBUTING.md">contribution documentation</a>
 for instructions on how to build, test and run Appium from source.</p>
-
-<h3 id="roadmap">Roadmap</h3>
-
-<p>Interested in where Appium is heading in the future? Check out the <a href="#ROADMAP.md">Roadmap</a></p>
 
 <h3 id="project-credits-&amp;-inspiration">Project Credits &amp; Inspiration</h3>
 
@@ -2134,13 +2132,6 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td><code class="prettyprint">waitForAppScript</code></td>
 <td>The ios automation script used to determined if the app has been launched, by default the system wait for the page source not to be empty. The result must be a boolean</td>
 <td>e.g. <code class="prettyprint">true;</code>, <code class="prettyprint">target.elements().length &gt; 0;</code>, <code class="prettyprint">$.delay(5000); true;</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">webviewConnectRetries</code></td>
-<td>Number of times to send connection message to remote debugger, to get webview. Default: <code class="prettyprint">8</code>
-</td>
-<td>e.g., <code class="prettyprint">12</code>
 </td>
 </tr>
 </tbody>
