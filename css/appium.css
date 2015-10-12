@@ -375,3 +375,8 @@ bottom: 270px;
     background-color: #64318e;
     color:#fff;
 }
+
+.resource-title {
+    font-size: 14pt;
+    font-weight: bold;
+}
