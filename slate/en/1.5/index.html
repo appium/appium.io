@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>API Reference</title>
@@ -20,7 +21,7 @@
 
   <body class="index">
     <div class="tocify-wrapper">
-      <img src="../../images/logo.png" />
+      <img src="images/logo.png" />
       <div id="toc">
       </div>
         <ul class="toc-footer">
@@ -133,7 +134,11 @@ during a Safari automation session, we&rsquo;re allowed to use JavaScript to ope
 up new windows. See the <a href="#caps.md">capabilities doc</a> for the complete list of capabilities available for Appium.</p>
 
 <p><strong>Appium Server</strong><br/>
-Appium is a server written in Node.js. It can be built and installed from source or installed directly from NPM.</p>
+Appium is a server written in Node.js. It can be built and installed <a href="github.com/appium/appium">from source</a> or installed directly from NPM:
+<code class="prettyprint">
+$ npm install -g appium
+$ appium
+</code></p>
 
 <p><strong>Appium Clients</strong><br/>
 There are client libraries (in Java, Ruby, Python, PHP, JavaScript, and C#)
@@ -149,7 +154,7 @@ which enables you to check out the hierarchy of your app. This can come in handy
 
 <h3 id="getting-started">Getting Started</h3>
 
-<p>Congratulations! You are now armed with enough knowledge to begin using Appium. Why not head to the <a href="/README.md">getting started doc</a> for more detailed requirements and instructions?</p>
+<p>Congratulations! You are now armed with enough knowledge to begin using Appium. Why not head to the <a href="https://github.com/appium/appium/blob/master/README.md">getting started doc</a> for more detailed requirements and instructions?</p>
 
 <h2 id="list-of-client-libraries-with-appium-server-support"><span id="appium-clients.md"></span>List of client libraries with Appium server support</h2>
 
@@ -366,10 +371,7 @@ launching and doing their job correctly.</p>
 <li>Make sure you have Xcode and the iOS SDK(s) installed. Xcode version 7.1 is
 recommended as earlier versions of Xcode are limited in which versions of iOS
 they can test against. See the next section for more detail.</li>
-<li>You need to authorize use of the iOS Simulator by running <code class="prettyprint">sudo authorize_ios</code>
-(<code class="prettyprint">authorize_ios</code> is a binary made available by the Appium npm package). If you
-are running <a href="https://github.com/appium/appium-dot-app">Appium.app</a>, you can
-authorize iOS through the GUI.</li>
+<li>You need to authorize use of the iOS Simulator. See below.</li>
 <li>If you&rsquo;re on Xcode 7.x, Instruments Without Delay (IWD) does not work. You can
 enable IWD (which will significantly speed up your tests) using
 <a href="#iwd_xcode7.md">this method</a></li>
@@ -389,6 +391,27 @@ UIAutomation. It lives in a &ldquo;Developer&rdquo; view in the Settings app. Yo
 verify that UIAutomaion is enabled in this view before the simulator or
 device can be automated.</li>
 </ul>
+
+<h3 id="authorizing-ios-on-the-computer">Authorizing iOS on the computer</h3>
+
+<p>You need to authorize use of the iOS Simulator by running the <code class="prettyprint">authorize-ios</code>
+binary made available through <code class="prettyprint">npm</code>. If you installed globally, by running
+<code class="prettyprint">npm install -g appium</code>, use</p>
+<pre class="highlight plaintext"><code>sudo authorize-ios
+</code></pre>
+
+<p>If you installed locally, the binary will be installed within the <code class="prettyprint">node_modules/.bin</code>
+directory, so use</p>
+<pre class="highlight plaintext"><code>sudo node_modules/.bin/authorize-ios
+
+# alternatively
+sudo $(npm bin)/authorize-ios
+</code></pre>
+
+<p>If you are running <a href="https://github.com/appium/appium-dot-app">Appium.app</a>, you can
+authorize iOS through the GUI.</p>
+
+<p>You need to do this every time you install a new version of Xcode.</p>
 
 <h3 id="testing-against-multiple-ios-sdks">Testing against multiple iOS SDKs</h3>
 
@@ -720,11 +743,7 @@ a <code class="prettyprint">posix spawn</code> error.</li>
 <li>If you&rsquo;ve ever run Appium with sudo, you might need to <code class="prettyprint">sudo rm
 /tmp/instruments_sock</code> and try again as not-sudo.</li>
 <li>If this is the first time you&rsquo;ve run Appium, make sure to authorize the use
-of Instruments. Usually a box will pop up that you enter your password into
-. If you&rsquo;re running Appium from source, you can simply run <code class="prettyprint">sudo grunt authorize</code>
-from the main repo to avoid getting this popup. If you&rsquo;re running from npm,
-run <code class="prettyprint">sudo authorize_ios</code> instead. You need to do this every time you install
-a new version of Xcode, as well.</li>
+of Instruments. See <a href="./running-on-osx.md#authorizing-ios-on-the-computer">running on OSX documentation</a>.</li>
 <li>If you see <code class="prettyprint">iOS Simulator failed to install the application.</code> and the
 paths are correct, try restarting the computer.</li>
 <li>If you have custom elements in your app, they will not be automatable by
@@ -869,7 +888,7 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <tr>
 <td>Running mobile safari test</td>
 <td><code class="prettyprint">error: Could not prepare mobile safari with version &#39;7.1&#39;</code></td>
-<td>You probably need to run the authorize script again to make the iOS SDK files writeable. E.g., <code class="prettyprint">sudo authorize_ios</code></td>
+<td>You probably need to run the authorize script again to make the iOS SDK files writeable. See <a href="./running-on-osx.md#authorizing-ios-on-the-computer">running on OSX documentation</a></td>
 </tr>
 </tbody></table>
 
@@ -1132,8 +1151,8 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <tr>
 <td><code class="prettyprint">--default-capabilities</code></td>
 <td>{}</td>
-<td>Set the default desired capabilities, which will be set on each session unless overridden by received capabilities.</td>
-<td><code class="prettyprint">--default-capabilities {&quot;app&quot;: &quot;myapp.app&quot;, &quot;deviceName&quot;: &quot;iPhone Simulator&quot;}</code></td>
+<td>Set the default desired capabilities, which will be set on each session unless overridden by received capabilities. <a href="#default-capabilities-arg.md">More infomation</a>.</td>
+<td><code class="prettyprint">--default-capabilities &#39;{&quot;app&quot;: &quot;myapp.app&quot;, &quot;deviceName&quot;: &quot;iPhone Simulator&quot;}&#39;</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">-k</code>, <code class="prettyprint">--keep-artifacts</code></td>
@@ -1365,6 +1384,8 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <pre class="highlight plaintext"><code>--default-capabilities '{"app": "myapp.app", "deviceName": "iPhone Simulator"}'
 </code></pre>
 
+<p><strong>Windows users</strong> will need to escape the quotes: <code class="prettyprint">--default-capabilities &quot;{\&quot;app\&quot;: \&quot;myapp.app\&quot;}&quot;</code></p>
+
 <table><thead>
 <tr>
 <th>Flag</th>
@@ -1568,11 +1589,6 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td>e.g. <code class="prettyprint">60</code></td>
 </tr>
 <tr>
-<td><code class="prettyprint">autoLaunch</code></td>
-<td>Whether to have Appium install and launch the app automatically. Default <code class="prettyprint">true</code></td>
-<td><code class="prettyprint">true</code>, <code class="prettyprint">false</code></td>
-</tr>
-<tr>
 <td><code class="prettyprint">language</code></td>
 <td>(Sim/Emu-only) Language to set for the simulator / emulator</td>
 <td>e.g. <code class="prettyprint">fr</code></td>
@@ -1659,6 +1675,11 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td><code class="prettyprint">androidDeviceReadyTimeout</code></td>
 <td>Timeout in seconds used to wait for a device to become ready after booting</td>
 <td>e.g., <code class="prettyprint">30</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">adbPort</code></td>
+<td>Port used to connect to the ADB server (default <code class="prettyprint">5037</code>)</td>
+<td><code class="prettyprint">5037</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">androidDeviceSocket</code></td>
@@ -1825,12 +1846,12 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tr>
 <tr>
 <td><code class="prettyprint">autoAcceptAlerts</code></td>
-<td>Accept iOS privacy access permission alerts (e.g., location, contacts, photos) automatically if they pop up. Default is false.</td>
+<td>Accept all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false.</td>
 <td><code class="prettyprint">true</code> or <code class="prettyprint">false</code></td>
 </tr>
 <tr>
 <td><code class="prettyprint">autoDismissAlerts</code></td>
-<td>Dismiss iOS privacy access permission alerts (e.g., location, contacts, photos) automatically if they pop up. Default is false.</td>
+<td>Dismiss all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false.</td>
 <td><code class="prettyprint">true</code> or <code class="prettyprint">false</code></td>
 </tr>
 <tr>
@@ -1907,6 +1928,11 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td><code class="prettyprint">webviewConnectRetries</code></td>
 <td>Number of times to send connection message to remote debugger, to get webview. Default: <code class="prettyprint">8</code></td>
 <td>e.g., <code class="prettyprint">12</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">appName</code></td>
+<td>The display name of the application under test. Used to automate backgrounding the app in iOS 9+.</td>
+<td>e.g., <code class="prettyprint">UICatalog</code></td>
 </tr>
 </tbody></table>
 
@@ -2705,7 +2731,14 @@ $this-&gt;backgroundApp(5);
 
 <h3 id="hide-keyboard">Hide Keyboard</h3>
 
-<p>Hide the keyboard.</p>
+<p>Hide the keyboard. <em>Note</em>: on iOS, this helper function is not guaranteed to
+work. There is no automation hook for hiding the keyboard, and apps are free to
+allow the user to hide the keyboard using any of a variety of different
+strategies, whether that is tapping outside the keyboard, swiping down, etc&hellip;
+We encourage you, rather than using this method, to think about how a <em>user</em>
+would hide the keyboard in your app, and tell Appium to do that instead (swipe,
+tap on a certain coordinate, etc&hellip;). That being said, the default behavior
+here might help you.</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">hide_keyboard</span>
 </code></pre>
@@ -4157,15 +4190,9 @@ connection we use the <a href="https://github.com/google/ios-webkit-debug-proxy"
 Homebrew, run the following commands in the terminal:</p>
 
 <p><p class="centercode"><code> # The first command is only required if you don&#39;t have brew installed.
- &gt; ruby -e &quot;$(curl -fsSL https:&#47;&#47;raw.github.com&#47;mxcl&#47;homebrew&#47;go&#47;install)&quot;
+ &gt; ruby -e &quot;$(curl -fsSL https:&#47;&#47;raw.githubusercontent.com&#47;Homebrew&#47;install&#47;master&#47;install)&quot;
  &gt; brew update
  &gt; brew install ios-webkit-debug-proxy</code></p></p>
-
-<p><strong>NOTE:</strong> As of April 2, 2015, the primary ios-webkit-debug-proxy repository
-has not been updated for some time. <strong>We currently recommend using <a href="https://github.com/jchuong/ios-webkit-debug-proxy">James Chuong&rsquo;s
-fork</a></strong>. To do so, you&rsquo;ll need
-to build from source. If you&rsquo;re unfamiliar with building with GMake, try following
-the steps below.</p>
 
 <h4 id="building-ios-webkit-debug-proxy-from-source">Building ios-webkit-debug-proxy from source</h4>
 
@@ -4178,12 +4205,10 @@ terminal via your favorite search engine. Once that is open, verify you have
 <p>When you&rsquo;re certain you have Homebrew, do the following (the $ indicates the command
 line prompt, do not enter it):</p>
 <pre class="highlight shell"><code><span class="gp">$ </span><span class="nb">cd</span>  ~
-<span class="gp">$ </span>git clone https://github.com/jchuong/ios-webkit-debug-proxy.git
+<span class="gp">$ </span>sudo apt-get install autoconf automake libusb-dev libusb-1.0-0-dev libplist-dev libplist++-dev usbmuxd libtool libimobiledevice-dev
+<span class="gp">$ </span>git clone https://github.com/google/ios-webkit-debug-proxy.git
 <span class="gp">$ </span><span class="nb">cd </span>ios-webkit-debug-proxy
-<span class="gp">$ </span>brew install autoconf automake libusb libplist usbmuxd
-<span class="gp">$ </span>brew install --HEAD ideviceinstaller
 <span class="gp">$ </span>./autogen.sh
-<span class="gp">$ </span>./configure
 <span class="gp">$ </span>make
 <span class="gp">$ </span>sudo make install
 </code></pre>
@@ -4351,15 +4376,15 @@ $this-&gt;context('WEBVIEW');
 <p>For iOS &gt;= 9.0 instruments without delay (iwd) does not work by passing binaries through
 the command line (appium does this under the hood for xcode &lt; 7). See <a href="https://github.com/lawrencelomax/instruments-without-delay/tree/xcode7-quirks#xcode-7--ios-9-support">iwd</a></p>
 
-<p>For enabling iwd for xcode &gt;= 7, from your appium repository run:</p>
-<pre class="highlight plaintext"><code>sh ./bin/xcode_iwd.sh &lt;path to xcode&gt; &lt;path to appium&gt;
+<p>For enabling iwd for xcode &gt;= 7,
+- Checkout <a href="https://github.com/appium/appium-instruments">appium-instruments</a>
+- Run <code class="prettyprint">xcode_iwd.sh</code> present in <code class="prettyprint">&lt;appium-instruments&gt;/bin/</code></p>
+<pre class="highlight plaintext"><code>sh &lt;appium-instruments&gt;/bin/xcode_iwd.sh &lt;path to xcode&gt; &lt;path to appium-instruments&gt;
 </code></pre>
 
-<p>eg. <code class="prettyprint">sh ./bin/xcode_iwd.sh /Applications/Xcode.app /Users/xyz/appium/</code></p>
+<p>eg. <code class="prettyprint">sh ./bin/xcode_iwd.sh /Applications/Xcode.app /Users/xyz/appium-instruments/</code></p>
 
-<p>Note:
-- Make sure your appium version &gt;= 1.4.11 and node_modules are updated
-- iwd with xcode7 will only work for iOS &gt;= 9.0, you can switch to older xcode for iOS &lt; 9.0</p>
+<p>Note: iwd with xcode7 will only work for iOS &gt;= 9.0, you can switch to older xcode for iOS &lt; 9.0</p>
 
       </div>
       <div class="dark-box">
