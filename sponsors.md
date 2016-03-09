@@ -10,7 +10,7 @@ description: Appium Sponsors
 <table>
 <tr>
 <td style="vertical-align: top">
-<a href="https://saucelabs.com"><img src="img/sauce-logo.jpg" align="left" width="100" style="padding-right: 10px;" /></a>
+<a href="https://saucelabs.com"><img src="img/sauce-logo_@2x.jpg" align="left" width="100" style="margin-right: 10px;" /></a>
 </td>
 
 <td>
