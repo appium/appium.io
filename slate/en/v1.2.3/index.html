@@ -6,11 +6,11 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>API Reference</title>
 
-    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
-    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../javascripts/all.js" type="text/javascript"></script>
+    <script src="../../javascripts/all.js"></script>
 
       <script>
         $(function() {
@@ -121,7 +121,7 @@ like <a href="https://saucelabs.com/mobile">Sauce Labs</a> to receive and interp
 Automation is always performed in the context of a session. Clients initiate
 a session with a server in ways specific to each library,
 but they all end up sending a <code class="prettyprint">POST /session</code> request to the server,
-with a JSON object called  the ‘desired capabilities’ object. At this point
+with a JSON object called  the 'desired capabilities’ object. At this point
 the server will start up the automation session and respond with a session ID
 which is used for sending further commands.</p>
 
@@ -172,7 +172,7 @@ which enables you to check out the hierarchy of your app. This can come in handy
 
 <p>See the <a href="#platform-support.md">platform support doc</a> for more detailed information.</p>
 
-<h3 id="why-appium?">Why Appium?</h3>
+<h3 id="why-appium">Why Appium?</h3>
 
 <ol>
 <li>You don’t have to recompile your app or modify it in any way, due
@@ -192,7 +192,7 @@ using JavaScript and you can only run tests through the Instruments application.
 Similarly, with Google’s UiAutomator you can only write tests in Java. Appium
 opens up the possibility of true cross-platform native mobile automation. Finally!</p>
 
-<h3 id="i-don't-get-it-yet...">I don’t get it yet…</h3>
+<h3 id="i-don-39-t-get-it-yet">I don’t get it yet…</h3>
 
 <p>If you’re new to Appium, or want a fuller description of what this is all about, please read our <a href="#intro.md">Introduction to Appium Concepts</a>.</p>
 
@@ -249,7 +249,7 @@ directions for setting up your environment properly for testing on different OSe
 <p>Kick up an Appium server, and then run a test written in your favorite <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a>-compatible language!
 You can run an Appium server using node.js or using the application, see below.</p>
 
-<h4 id="using-node.js">Using Node.js</h4>
+<h4 id="using-node-js">Using Node.js</h4>
 
 <p>$ npm install -g appium
     $ appium &amp;</p>
@@ -296,7 +296,7 @@ Gecko-based platforms.</p>
 <p>Please take a look at our <a href="#CONTRIBUTING.md">contribution documentation</a>
 for instructions on how to build, test and run Appium from source.</p>
 
-<h3 id="project-credits-&amp;-inspiration">Project Credits &amp; Inspiration</h3>
+<h3 id="project-credits-amp-inspiration">Project Credits &amp; Inspiration</h3>
 
 <p><a href="#credits.md">Credits</a></p>
 
@@ -322,7 +322,7 @@ check out the <a href="https://github.com/appium/robots">Appium Robots</a> proje
 
 <p>Appium client libraries implement the <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">Mobile JSON Wire Protocol</a> (an official draft extension to the standard protocol), and elements of the <a href="https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html">W3C Webdriver spec</a> (a transport-agnostic automation spec; this is where the MultiAction API is defined).</p>
 
-<p>The Appium server itself defines custom extensions to the official protocols, giving Appium users helpful access to various device behaviors (such as installing/uninstalling apps during the course of a test session). This is why we need Appium-specific clients, not just the ‘vanilla’ Selenium clients. Of course, Appium client libraries only <strong>add</strong> functionality (in fact, they simply extend the standard Selenium clients), so they can still be used to run regular Selenium sessions.</p>
+<p>The Appium server itself defines custom extensions to the official protocols, giving Appium users helpful access to various device behaviors (such as installing/uninstalling apps during the course of a test session). This is why we need Appium-specific clients, not just the 'vanilla’ Selenium clients. Of course, Appium client libraries only <strong>add</strong> functionality (in fact, they simply extend the standard Selenium clients), so they can still be used to run regular Selenium sessions.</p>
 
 <table>
 <thead>
@@ -527,7 +527,7 @@ launching and doing their job correctly.</p>
 
 <p>Appium on OS X supports iOS and Android testing.</p>
 
-<h3 id="system-setup-(ios)">System setup (iOS)</h3>
+<h3 id="system-setup-ios">System setup (iOS)</h3>
 
 <ul>
 <li>Appium requires Mac OS X 10.7, but 10.8 or 10.9 is recommended.</li>
@@ -571,7 +571,7 @@ Then we use the following command:</p>
 
 <p>To go back to iOS 7.1 testing.</p>
 
-<h3 id="system-setup-(android)">System setup (Android)</h3>
+<h3 id="system-setup-android">System setup (Android)</h3>
 
 <p>Instructions for setting up Android and running tests on Mac OS X are the same as
 those on Linux. See the <a href="#android-setup.md">Android setup docs</a>.</p>
@@ -596,7 +596,7 @@ option to connect to an Appium server running on a Mac.</p>
 <li>Install <a href="http://nodejs.org/download/">node.js</a> (v.0.10 or greater). Use the
 installer from nodejs.org.</li>
 <li>Install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>.
-You will need to run the ‘android’ tool (included in the SDK, in the <code class="prettyprint">tools</code> folder) and make sure
+You will need to run the 'android’ tool (included in the SDK, in the <code class="prettyprint">tools</code> folder) and make sure
 you have an API Level 17 or greater API installed. Set <code class="prettyprint">ANDROID_HOME</code> to be
 your Android SDK path and add the <code class="prettyprint">tools</code> and <code class="prettyprint">platform-tools</code> folders to your
 PATH variable.</li>
@@ -648,11 +648,11 @@ limitations. For more information you can check out this
 
 <h3 id="limitations">Limitations</h3>
 
-<p>If you are running Appium on Linux, you cannot use the prebuilt ‘.app’,
+<p>If you are running Appium on Linux, you cannot use the prebuilt ’.app’,
 which is built for OS X only. Additionally, you will not be able to test iOS
 apps because Appium relies on OS X-only libraries to support iOS testing.</p>
 
-<h3 id="setup-(android)">Setup (Android)</h3>
+<h3 id="setup-android">Setup (Android)</h3>
 
 <p>Instructions for setting up Android and running tests on Linux are the same as
 those on Mac OS X. See the <a href="#android-setup.md">Android setup docs</a>.</p>
@@ -664,9 +664,9 @@ those on Mac OS X. See the <a href="#android-setup.md">Android setup docs</a>.</
 follow the <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">instructions for your flavor of linux</a>.</p>
 
 <p>Once you’ve got node.js installed, install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>.
-You will need to run the ‘android’ tool (included in the SDK, under the ‘tools’ directory).</p>
+You will need to run the 'android’ tool (included in the SDK, under the 'tools’ directory).</p>
 
-<p>Run the ‘android’ tool and use it to install an API Level 17 or greater.</p>
+<p>Run the 'android’ tool and use it to install an API Level 17 or greater.</p>
 
 <p>(If you want to run Appium from source, you will also need <a href="http://ant.apache.org/">Apache Ant</a> to build the bootstrap jar that Appium uses for running against Android simulators/devices.)</p>
 
@@ -714,7 +714,7 @@ run any of the Appium tests, or use any of the power commands.</li>
 please make sure your app has internet permission set when you are using selendroid or older versions of Android i.e. 2.3 to 4.1</li>
 </ul>
 
-<h2 id="intel®-hardware-accelerated-execution-manager">
+<h2 id="intelâ®-hardware-accelerated-execution-manager">
 <span id="android-hax-emulator.md"></span>Intel® Hardware Accelerated Execution Manager</h2>
 
 <p>If you find the android emulator a slow and your system runs on an Intel®
@@ -742,7 +742,7 @@ do so successfully, depending on the version you might have installed</li>
 to deploy this build to your device</li>
 </ol>
 
-<h3 id="xcodebuild-with-parameters:">Xcodebuild with parameters:</h3>
+<h3 id="xcodebuild-with-parameters">Xcodebuild with parameters:</h3>
 
 <p>A newer xcodebuild now allows settings to be specified. Taken from <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>:</p>
 
@@ -862,14 +862,14 @@ Android SDK is installed and <code class="prettyprint">ANDROID_HOME</code> is se
 <li>On windows run appium.app as administrator or when running from source you need to run cmd as administrator.</li>
 </ul>
 
-<h3 id="if-you're-running-appium.app">If you’re running Appium.app</h3>
+<h3 id="if-you-39-re-running-appium-app">If you’re running Appium.app</h3>
 
 <ul>
 <li>Update the app and restart. If you get a message saying the app can’t be updated,
 re-download it from <a href="http://appium.io">appium.io</a>.</li>
 </ul>
 
-<h3 id="if-you're-running-appium-from-source">If you’re running Appium from source</h3>
+<h3 id="if-you-39-re-running-appium-from-source">If you’re running Appium from source</h3>
 
 <ul>
 <li>
@@ -950,10 +950,10 @@ a new version of Xcode, as well.</li>
 paths are correct, try restarting the computer.</li>
 </ul>
 
-<h3 id="webview/hybrid/safari-app-support">Webview/Hybrid/Safari app support</h3>
+<h3 id="webview-hybrid-safari-app-support">Webview/Hybrid/Safari app support</h3>
 
 <ul>
-<li>Make Sure you enable the ‘Web Inspector’ on the real device.</li>
+<li>Make Sure you enable the 'Web Inspector’ on the real device.</li>
 <li>Make Sure you enable the Safari - Advance Preferences- Developer menu for
 simulators.</li>
 <li>Make sure you are properly switching contexts using the <code class="prettyprint">context</code> appium commands provided by your client library.</li>
@@ -1573,7 +1573,7 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <tr>
 <td><code class="prettyprint">browserName</code></td>
 <td>Name of mobile web browser to automate. Should be an empty string if automating an app instead.</td>
-<td>‘Safari’ for iOS and ‘Chrome’, ‘Chromium’, or ‘Browser’ for Android</td>
+<td>'Safari’ for iOS and 'Chrome’, 'Chromium’, or 'Browser’ for Android</td>
 </tr>
 <tr>
 <td><code class="prettyprint">newCommandTimeout</code></td>
@@ -1855,7 +1855,7 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 </tr>
 <tr>
 <td><code class="prettyprint">bundleId</code></td>
-<td>Bundle ID of the app under test. Useful for starting an app on a real device or for using other caps which require the bundle ID during test startup. To run a test on a real device using the bundle ID, you may omit the ‘app’ capability, but you must provide ‘udid’.</td>
+<td>Bundle ID of the app under test. Useful for starting an app on a real device or for using other caps which require the bundle ID during test startup. To run a test on a real device using the bundle ID, you may omit the 'app’ capability, but you must provide 'udid’.</td>
 <td>e.g. <code class="prettyprint">io.appium.TestApp</code>
 </td>
 </tr>
@@ -2245,7 +2245,7 @@ public static $browsers = array(
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">BROWSER_NAME</span><span class="o">,</span> <span class="s">"Chrome"</span><span class="o">);</span>
 </code></pre>
 
-<p>Note that on 4.4+ devices, you can also use the ‘Browser’ <code class="prettyprint">browserName</code> cap to automate the built-in browser. On all devices you can use the ‘Chromium’ <code class="prettyprint">browserName</code> cap to automate a build of Chromium.</p>
+<p>Note that on 4.4+ devices, you can also use the 'Browser’ <code class="prettyprint">browserName</code> cap to automate the built-in browser. On all devices you can use the 'Chromium’ <code class="prettyprint">browserName</code> cap to automate a build of Chromium.</p>
 
 <h4 id="troubleshooting-chromedriver">Troubleshooting chromedriver</h4>
 
@@ -2261,7 +2261,7 @@ to set Chrome’s command line arguments.</p>
 <h2 id="running-tests">
 <span id="running-tests.md"></span>Running Tests</h2>
 
-<h3 id="preparing-your-app-for-test-(ios)">Preparing your app for test (iOS)</h3>
+<h3 id="preparing-your-app-for-test-ios">Preparing your app for test (iOS)</h3>
 
 <p>Test apps run on the simulator have to be compiled specifically for the
 simulator, for example by executing the following command in the Xcode project:</p>
@@ -2275,12 +2275,12 @@ Appium server.</p>
 <p>If you want, you can zip up the .app directory into a .zip file! Appium will
 unpack it for you. Nice if you’re not using Appium locally.</p>
 
-<h3 id="preparing-your-app-for-test-(android)">Preparing your app for test (Android)</h3>
+<h3 id="preparing-your-app-for-test-android">Preparing your app for test (Android)</h3>
 
 <p>Nothing in particular needs to be done to run your .apk using Appium. If you
 want to zip it up, you can.</p>
 
-<h3 id="running-your-test-app-with-appium-(ios)">Running your test app with Appium (iOS)</h3>
+<h3 id="running-your-test-app-with-appium-ios">Running your test app with Appium (iOS)</h3>
 
 <p>The best way to see what to do currently is to look at the example tests:</p>
 
@@ -2340,7 +2340,7 @@ capabilities and connect to the server running at port 4723 of localhost (or
 whatever host and port you specified when you started Appium). You should be
 all set now!</p>
 
-<h3 id="running-your-test-app-with-appium-(android)">Running your test app with Appium (Android)</h3>
+<h3 id="running-your-test-app-with-appium-android">Running your test app with Appium (Android)</h3>
 
 <p>First, make sure you have one and only one Android emulator or device
 connected. If you run <code class="prettyprint">adb devices</code>, for example, you should see one device
@@ -2414,7 +2414,7 @@ capabilities and connect to the server running at port 4723 of localhost (or
 whatever host and port you specified when you started Appium). You should be
 all set now!</p>
 
-<h3 id="running-your-test-app-with-appium-(android-devices-&lt;-4.2,-and-hybrid-tests)">Running your test app with Appium (Android devices &lt; 4.2, and hybrid tests)</h3>
+<h3 id="running-your-test-app-with-appium-android-devices-lt-4-2-and-hybrid-tests">Running your test app with Appium (Android devices &lt; 4.2, and hybrid tests)</h3>
 
 <p>Android devices before version 4.2 (API Level 17) do not have Google’s
 <a href="http://developer.android.com/tools/help/uiautomator/index.html">UiAutomator framework</a>
@@ -2487,7 +2487,7 @@ the original JSON Wire Protocol.</p>
 Please see the Appium client docs for your language in order to find examples
 of using this API.</p>
 
-<h3 id="an-overview-of-the-touchaction-/-multiaction-api">An Overview of the TouchAction / MultiAction API</h3>
+<h3 id="an-overview-of-the-touchaction-multiaction-api">An Overview of the TouchAction / MultiAction API</h3>
 
 <h3 id="touchaction">TouchAction</h3>
 
@@ -3049,7 +3049,7 @@ $this-&gt;currentActivity();
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
 </code></pre>
 
-<h3 id="touchaction-/-multitouchaction">TouchAction / MultiTouchAction</h3>
+<h3 id="touchaction-multitouchaction">TouchAction / MultiTouchAction</h3>
 
 <p>An API for generating touch actions. This section of the documentation will be
 expanded upon soon.</p>
@@ -3359,7 +3359,7 @@ $this-&gt;updateSettings(array('cyberdelia' =&gt; "open"));
 <h2 id="ios-predicate">
 <span id="ios_predicate.md"></span>iOS Predicate</h2>
 
-<p>It is worth looking at <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>.
+<p>It is worth looking at <em>’-ios uiautomation’</em> search strategy with <strong>Predicates</strong>.
 <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
 
 <p class="centercode"><code>(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
@@ -3533,7 +3533,7 @@ same in Xpath: /*<a href="http://software.intel.com/en-us/articles/intel-hardwar
 <p>“text”
 - A character string.</p>
 
-<p>‘text’
+<p>'text’
 - A character string.</p>
 
 <p><strong>Comma-separated literal array</strong>
@@ -3850,7 +3850,7 @@ WebDriver protocol for everything.</p>
 <li> Navigate to a portion of your app where a web view is active</li>
 <li> Call <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">GET session/:sessionId/contexts</a>
 </li>
-<li> This returns a list of contexts we can access, like ‘NATIVE_APP’ or ‘WEBVIEW_1’</li>
+<li> This returns a list of contexts we can access, like 'NATIVE_APP’ or 'WEBVIEW_1’</li>
 <li> Call <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">POST session/:sessionId/context</a>
 with the id of the context you want to access</li>
 <li> (This puts your Appium session into a mode where all commands are
@@ -4069,7 +4069,7 @@ part of iOS 6</strong> and was not available previously.</p>
 
 <p><strong>“ignoreUnimportantViews”</strong> - Boolean which sets whether Android devices should use <code class="prettyprint">setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster.</p>
 
-<h2 id="migrating-your-tests-from-appium-0.18.x-to-appium-1.x">
+<h2 id="migrating-your-tests-from-appium-0-18-x-to-appium-1-x">
 <span id="migrating-to-1-0.md"></span>Migrating your tests from Appium 0.18.x to Appium 1.x</h2>
 
 <p>Appium 1.0 has removed a number of deprecated features from the previous versions. This guide will help you know what needs to change in your test suite to take advantage of Appium 1.0.</p>
@@ -4144,11 +4144,11 @@ part of iOS 6</strong> and was not available previously.</p>
 
 <p>Refer to your client for ways to use these new locator strategies.</p>
 
-<h3 id="xml,-not-json">XML, not JSON</h3>
+<h3 id="xml-not-json">XML, not JSON</h3>
 
 <p>App source methods, which previously returned JSON, now return XML, so if you have code that relies on parsing the app source, it will need to be updated.</p>
 
-<h3 id="hybrid-support-through-context,-not-window">Hybrid support through context, not window</h3>
+<h3 id="hybrid-support-through-context-not-window">Hybrid support through context, not window</h3>
 
 <p>Hybrid apps were previously supported by switching between “windows” using</p>
 
@@ -4203,7 +4203,7 @@ $this-&gt;context('WEBVIEW');
 <span class="n">set_context</span> <span class="s2">"WEBVIEW"</span>
 </code></pre>
 
-<h3 id='no-more-execute_script("mobile:-xxx")'>No more <code class="prettyprint">execute_script("mobile: xxx")</code>
+<h3 id="no-more-execute_script-quot-mobile-xxx-quot">No more <code class="prettyprint">execute_script("mobile: xxx")</code>
 </h3>
 
 <p>All the <code class="prettyprint">mobile:</code> methods have been removed, and have been replaced by native methods in the Appium client libraries. This means that a method call like <code class="prettyprint">driver.execute("mobile: lock", [5])</code> will now look something more like <code class="prettyprint">driver.lock(5)</code> (where <code class="prettyprint">lock</code> has been turned into a native client method). Of course, the details on calling these methods will differ by client.</p>
@@ -4229,6 +4229,22 @@ about the project.</p>
 <li>Mount the disk image.</li>
 <li>Drag Appium.app to your Applications folder.</li>
 </ol>
+
+<h3 id="build-with-xcode">Build with XCode</h3>
+
+<p>Install CocoaPods:</p>
+
+<ol>
+<li>Open Termianl</li>
+<li><code class="prettyprint">sudo gem install cocoapods</code></li>
+<li><code class="prettyprint">pod setup</code></li>
+<li><code class="prettyprint">cd appium-dot-app</code></li>
+<li><code class="prettyprint">pod install</code></li>
+</ol>
+
+<p>To Open in XCode: </p>
+
+<p>open the <code class="prettyprint">appium-dot-app/Appium.xcworkspace</code> project file</p>
 
 <h3 id="parameter-guide">Parameter Guide</h3>
 
@@ -4515,7 +4531,7 @@ supplying the debug-brk switch to node)</li>
 an option that cannot be adjusted using the Appium UI.</li>
 </ul>
 
-<h3 id="inspector-/-recorder">Inspector / Recorder</h3>
+<h3 id="inspector-recorder">Inspector / Recorder</h3>
 
 <p>Inspector can be accessed by clicking the magnifying glass next to the launch button once the Appium server has launched.
 Appium must be running with an app open for inspector to work. Otherwise, it will not work.
@@ -4782,7 +4798,7 @@ supplying the debug-brk switch to node)</li>
 an option that cannot be adjusted using the Appium UI.</li>
 </ul>
 
-<h3 id="inspector-/-recorder">Inspector / Recorder</h3>
+<h3 id="inspector-recorder">Inspector / Recorder</h3>
 
 <p>Inspector can be accessed by clicking the magnifying glass next to the launch button once the Appium server has launched.
 Appium must be running with an app open for inspector to work. Otherwise, it will not work.</p>

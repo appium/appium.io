@@ -45,7 +45,7 @@ third-party code or frameworks to your app. This means **you're testing the same
 We meet requirement #2 by wrapping the vendor-provided frameworks in one API,
 the [WebDriver](http://docs.seleniumhq.org/projects/webdriver/) API.
 WebDriver (aka "Selenium WebDriver") specifies a client-server protocol
-(known as the [JSON Wire Protocol](https://code.google.com/p/selenium/wiki/JsonWireProtocol)).
+(known as the [JSON Wire Protocol](https://w3c.github.io/webdriver/webdriver-spec.html)).
 Given this client-server architecture, a client written in any language can
 be used to send the appropriate HTTP requests to the server. There are
 already [clients written in every popular programming language](http://appium.io/downloads). This also
@@ -57,7 +57,7 @@ manage your test environment any way you like!
 
 We meet requirement #3 in the same way: WebDriver has become the de facto
 standard for automating web browsers, and is a [W3C Working Draft](https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html).
-Why do something totally different for mobile? Instead we have [extended the protocol](https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile)
+Why do something totally different for mobile? Instead we have  [extended the protocol](/slate/en/master/#spec-draft.md)
 with extra API methods useful for mobile automation.
 
 It should be obvious that requirement #4 is a given -- you're reading this
@@ -96,7 +96,11 @@ during a Safari automation session, we're allowed to use JavaScript to open
 up new windows. See the  [capabilities doc](/slate/en/master/#caps.md) for the complete list of capabilities available for Appium.
 
 **Appium Server**<br/>
-Appium is a server written in Node.js. It can be built and installed from source or installed directly from NPM.
+Appium is a server written in Node.js. It can be built and installed  [from source](/slate/en/master/#appium-from-source.md) or installed directly from NPM:
+```
+$ npm install -g appium
+$ appium
+```
 
 **Appium Clients**<br/>
 There are client libraries (in Java, Ruby, Python, PHP, JavaScript, and C#)

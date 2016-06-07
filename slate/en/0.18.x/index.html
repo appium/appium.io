@@ -6,11 +6,11 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>API Reference</title>
 
-    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
-    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../javascripts/all.js" type="text/javascript"></script>
+    <script src="../../javascripts/all.js"></script>
 
       <script>
         $(function() {
@@ -175,7 +175,7 @@ more detailed requirements and instructions?</p>
 
 <p>See the <a href="#platform-support.md">platform support doc</a> for more detailed information.</p>
 
-<h2 id="why-appium?">Why Appium?</h2>
+<h2 id="why-appium">Why Appium?</h2>
 
 <ol>
 <li>You don’t have to recompile your app or modify it in any way, due
@@ -195,7 +195,7 @@ using JavaScript and you can only run tests through the Instruments application.
 Similarly, with Google’s UiAutomator you can only write tests in Java. Appium
 opens up the possibility of true cross-platform native mobile automation. Finally!</p>
 
-<h2 id="i-don't-get-it-yet...">I don’t get it yet…</h2>
+<h2 id="i-don-39-t-get-it-yet">I don’t get it yet…</h2>
 
 <p>If you’re new to Appium, or want a fuller description of what this is all about, please read our <a href="#intro.md">Introduction to Appium Concepts</a>.</p>
 
@@ -248,7 +248,7 @@ directions for setting up your environment properly for testing on different OSe
 <p>Kick up an Appium server, and then run a test written in your favorite <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a>-compatible language!
 You can run an Appium server using node.js or using the application, see below.</p>
 
-<h3 id="using-node.js">Using Node.js</h3>
+<h3 id="using-node-js">Using Node.js</h3>
 
 <p>$ npm install -g appium
     $ appium &amp;</p>
@@ -295,7 +295,7 @@ Gecko-based platforms.</p>
 <p>Please take a look at our <a href="#CONTRIBUTING.md">contribution documentation</a>
 for instructions on how to build, test and run Appium from source.</p>
 
-<h2 id="project-credits-&amp;-inspiration">Project Credits &amp; Inspiration</h2>
+<h2 id="project-credits-amp-inspiration">Project Credits &amp; Inspiration</h2>
 
 <p><a href="#credits.md">Credits</a></p>
 
@@ -447,7 +447,7 @@ can connect to ADB and has Developer Mode enabled.</p>
 
 <p>Appium on OS X supports iOS and Android testing.</p>
 
-<h2 id="system-setup-(ios)">System setup (iOS)</h2>
+<h2 id="system-setup-ios">System setup (iOS)</h2>
 
 <ul>
 <li>Appium requires Mac OS X 10.7, but 10.8 is recommended.</li>
@@ -488,7 +488,7 @@ Then we use the following command:</p>
 
 <p>To go back to iOS 7.0 testing.</p>
 
-<h2 id="system-setup-(android)">System setup (Android)</h2>
+<h2 id="system-setup-android">System setup (Android)</h2>
 
 <ul>
 <li>Make sure you have the <a href="http://developer.android.com/sdk/index.html">Android SDK installed</a>.</li>
@@ -524,7 +524,7 @@ limitations. For more information you can check out this
 
 <h2 id="limitations">Limitations</h2>
 
-<p>If you are running Appium on Windows, you cannot use the prebuilt ‘.app’,
+<p>If you are running Appium on Windows, you cannot use the prebuilt ’.app’,
 which is built for OS X only. Additionally, you will not be able to test iOS
 apps because Appium relies on OS X-only libraries to support iOS testing.</p>
 
@@ -536,7 +536,7 @@ apps because Appium relies on OS X-only libraries to support iOS testing.</p>
 <li>Install <a href="http://nodejs.org/download/">node.js</a> (v.0.8 or greater). Use the
 installer from nodejs.org.</li>
 <li>Install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>.
-You will need to run the ‘android’ tool (included in the SDK) and make sure
+You will need to run the 'android’ tool (included in the SDK) and make sure
 you have an API Level 17 or greater API installed. Set <code class="prettyprint">ANDROID_HOME</code> to be
 your Android SDK path and add the tools and platform-tools folders to your
 PATH variable.</li>
@@ -585,7 +585,7 @@ limitations. For more information you can check out this
 
 <h2 id="limitations">Limitations</h2>
 
-<p>If you are running Appium on Linux, you cannot use the prebuilt ‘.app’,
+<p>If you are running Appium on Linux, you cannot use the prebuilt ’.app’,
 which is built for OS X only. Additionally, you will not be able to test iOS
 apps because Appium relies on OS X-only libraries to support iOS testing.</p>
 
@@ -595,7 +595,7 @@ apps because Appium relies on OS X-only libraries to support iOS testing.</p>
 follow the <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">instructions for your flavor of linux</a>.</p>
 
 <p>Once you’ve got node.js installed, install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>.
-You will need to run the ‘android’ tool (included in the SDK) and make sure
+You will need to run the 'android’ tool (included in the SDK) and make sure
 you have an API Level 17 or greater API installed. You will also need Ant to
 build the bootstrap jar that Appium uses for testing Android.</p>
 
@@ -629,7 +629,7 @@ limitations. For more information you can check out this
 <h1 id="running-tests">
 <span id="running-tests.md"></span>Running Tests</h1>
 
-<h2 id="preparing-your-app-for-test-(ios)">Preparing your app for test (iOS)</h2>
+<h2 id="preparing-your-app-for-test-ios">Preparing your app for test (iOS)</h2>
 
 <p>Test apps run on the simulator have to be compiled specifically for the
 simulator, for example by executing the following command in the Xcode project:</p>
@@ -643,12 +643,12 @@ Appium server.</p>
 <p>If you want, you can zip up the .app directory into a .zip file! Appium will
 unpack it for you. Nice if you’re not using Appium locally.</p>
 
-<h2 id="preparing-your-app-for-test-(android)">Preparing your app for test (Android)</h2>
+<h2 id="preparing-your-app-for-test-android">Preparing your app for test (Android)</h2>
 
 <p>Nothing in particular needs to be done to run your .apk using Appium. If you
 want to zip it up, you can.</p>
 
-<h2 id="running-your-test-app-with-appium-(ios)">Running your test app with Appium (iOS)</h2>
+<h2 id="running-your-test-app-with-appium-ios">Running your test app with Appium (iOS)</h2>
 
 <p>The best way to see what to do currently is to look at the example tests:</p>
 
@@ -679,7 +679,7 @@ capabilities and connect to the server running at port 4723 of localhost (or
 whatever host and port you specified when you started Appium). You should be
 all set now!</p>
 
-<h2 id="running-your-test-app-with-appium-(android)">Running your test app with Appium (Android)</h2>
+<h2 id="running-your-test-app-with-appium-android">Running your test app with Appium (Android)</h2>
 
 <p>First, make sure you have one and only one Android emulator or device
 connected. If you run <code class="prettyprint">adb devices</code>, for example, you should see one device
@@ -732,7 +732,7 @@ capabilities and connect to the server running at port 4723 of localhost (or
 whatever host and port you specified when you started Appium). You should be
 all set now!</p>
 
-<h2 id="running-your-test-app-with-appium-(android-devices-&lt;-4.2,-and-hybrid-tests)">Running your test app with Appium (Android devices &lt; 4.2, and hybrid tests)</h2>
+<h2 id="running-your-test-app-with-appium-android-devices-lt-4-2-and-hybrid-tests">Running your test app with Appium (Android devices &lt; 4.2, and hybrid tests)</h2>
 
 <p>Android devices before version 4.2 (API Level 17) do not have Google’s
 <a href="http://developer.android.com/tools/help/uiautomator/index.html">UiAutomator framework</a>
@@ -741,7 +741,7 @@ the device. For earlier devices or tests of hybrid (webview-based) apps,
 Appium comes bundled with another automation backend called <a href="http://selendroid.io/">Selendroid</a>.</p>
 
 <p>To use Selendroid, all that is required is to slightly change the set of
-desired capabilities mentioned above, by replacing ‘Android’ with ‘Selendroid’:</p>
+desired capabilities mentioned above, by replacing 'Android’ with 'Selendroid’:</p>
 <pre class="highlight javascript"><code><span class="p">{</span>
     <span class="nl">device</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
     <span class="nx">browserName</span><span class="err">:</span> <span class="s1">''</span><span class="p">,</span>
@@ -758,7 +758,7 @@ sometimes significantly with Appium’s. Therefore we recommend you thoroughly
 read <a href="http://selendroid.io/native.html">Selendroid’s documentation</a> before
 writing your scripts for older devices or hybrid apps.</p>
 
-<h1 id="intel®-hardware-accelerated-execution-manager">
+<h1 id="intelâ®-hardware-accelerated-execution-manager">
 <span id="android-hax-emulator.md"></span>Intel® Hardware Accelerated Execution Manager</h1>
 
 <p>If you find the android emulator a slow and your system runs on an Intel®
@@ -1541,7 +1541,7 @@ will download the coverage.ec file for that particular run. Note that you can
 <ul>
 <li>find by “tag name” (i.e., ui component type)</li>
 <li>find by “name” (i.e., the text, label, or developer-generated ID a.k.a
-‘accessibilityIdentifier’ of an element)
+'accessibilityIdentifier’ of an element)
 NOTE: the “name” locator strategy will be deprecated on mobile devices,
 and will not be a part of Appium v1.0</li>
 <li>find by “xpath” (i.e., an abstract representation of a path to an element,
@@ -1604,7 +1604,7 @@ there’s time to interact with them. We’re working on a fix</p>
 <pre class="highlight python"><code><span class="p">[</span><span class="n">button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span> <span class="k">for</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'button'</span><span class="p">)]</span>
 </code></pre>
 
-<h2 id='find-the-element-with-the-text-(or-accessibilityidentifier)-"go"'>Find the element with the text (or accessibilityIdentifier) “Go”</h2>
+<h2 id="find-the-element-with-the-text-or-accessibilityidentifier-quot-go-quot">Find the element with the text (or accessibilityIdentifier) “Go”</h2>
 
 <p>WD.js:</p>
 <pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Go'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
@@ -1622,7 +1622,7 @@ there’s time to interact with them. We’re working on a fix</p>
 <pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s">'Go'</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </code></pre>
 
-<h2 id='find-the-nav-bar-text-element-where-the-text-begins-with-"hi,-"'>Find the nav bar text element where the text begins with “Hi, ”</h2>
+<h2 id="find-the-nav-bar-text-element-where-the-text-begins-with-quot-hi-quot">Find the nav bar text element where the text begins with “Hi, ”</h2>
 
 <p>WD.js:</p>
 <pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByXpath</span><span class="p">(</span><span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
@@ -1653,13 +1653,13 @@ there’s time to interact with them. We’re working on a fix</p>
 <pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'tableCell'</span><span class="p">)[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </code></pre>
 
-<h2 id='using-the-"-ios-uiautomation"-locator-strategy'>Using the “-ios uiautomation” locator strategy</h2>
+<h2 id="using-the-quot-ios-uiautomation-quot-locator-strategy">Using the “-ios uiautomation” locator strategy</h2>
 
 <p>WD.js:</p>
 <pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="s1">'-ios uiautomation'</span><span class="p">,</span> <span class="s1">'.elements()[1].cells()[2]'</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
 </code></pre>
 
-<h2 id='using-the-"-android-uiautomator"-locator-strategy'>Using the “-android uiautomator” locator strategy</h2>
+<h2 id="using-the-quot-android-uiautomator-quot-locator-strategy">Using the “-android uiautomator” locator strategy</h2>
 
 <p>WD.js:</p>
 <pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span><span class="s1">'-android uiautomator'</span><span class="p">,</span> <span class="s1">'new UiSelector().clickable(true)'</span><span class="p">).</span><span class="nx">getAttribute</span><span class="p">(</span><span class="s1">'name'</span><span class="p">);</span>
@@ -1787,7 +1787,7 @@ an optional <code class="prettyprint">element</code> parameter. If present, this
 element which has already been retrieved. So in this case,
 the coordinates will be taken to refer to the rectangle of that element only
 . So <code class="prettyprint">{x: 0.5, y: 0.5, element: '3'}</code> means “the exact middle point of the
-element with ID ‘3’”.</p>
+element with ID '3’”.</p>
 
 <ul>
 <li>
@@ -2095,7 +2095,7 @@ cases.</p>
 
 <p><strong>Android</strong></p>
 
-<p>The best way to interact with the slider on Android is with the ‘mobile:
+<p>The best way to interact with the slider on Android is with the 'mobile:
 tap’ gesture. It is difficult to find a reliable way to set a specific
 percentage that works on all screen sizes, however. Therefore,
 it is recommended to write tests that focus on minimum, 50%, and maximum.</p>
@@ -2297,7 +2297,7 @@ a connection to be established. Turn it on by going to ** settings &gt; safari &
 advanced <strong>. Please be aware that the web inspector was **added as part of
 iOS 6</strong> and was not available previously.</p>
 
-<h2 id="wd.js-code-example">Wd.js Code example</h2>
+<h2 id="wd-js-code-example">Wd.js Code example</h2>
 <pre class="highlight javascript"><code>  <span class="c1">// assuming we have an initialized `driver` object working on the UICatalog app</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// find button to nav to view</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// nav to UIWebView</span>
@@ -2326,7 +2326,7 @@ iOS 6</strong> and was not available previously.</p>
 </li>
 </ul>
 
-<h2 id="wd.java-code-example">Wd.java Code example</h2>
+<h2 id="wd-java-code-example">Wd.java Code example</h2>
 <pre class="highlight java"><code><span class="c1">//setup the web driver and launch the webview app.</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
@@ -2351,7 +2351,7 @@ iOS 6</strong> and was not available previously.</p>
 <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
 </code></pre>
 
-<h2 id="wd.rb-code-example-using-cucumber">Wd.rb Code example using cucumber</h2>
+<h2 id="wd-rb-code-example-using-cucumber">Wd.rb Code example using cucumber</h2>
 <pre class="highlight ruby"><code><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
 <span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span> 
 <span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
@@ -2387,7 +2387,7 @@ iOS 6</strong> and was not available previously.</p>
 <span class="k">end</span>
 </code></pre>
 
-<h3 id="troubleshooting-webview-with-ruby:">Troubleshooting Webview with Ruby:</h3>
+<h3 id="troubleshooting-webview-with-ruby">Troubleshooting Webview with Ruby:</h3>
 
 <p>I created a quick function in <a href="https://gist.github.com/feelobot/7309729">my helper class</a>
 to find web elements no matter what window its in (this is useful if your
@@ -2422,7 +2422,7 @@ native portion of the app, simply call <code class="prettyprint">window</code> a
 <code class="prettyprint">WEBVIEW</code>/<code class="prettyprint">NATIVE_APP</code> window setting strategy, which also works with regular
  Appium hybrid support, so we show that here for parity.</p>
 
-<h2 id="wd.js-code-example">Wd.js Code example</h2>
+<h2 id="wd-js-code-example">Wd.js Code example</h2>
 <pre class="highlight javascript"><code><span class="c1">// assuming we have an initialized `driver` object working on a hybrid app</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nb">window</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// choose the only available view</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// get webpage elements by css</span>
@@ -2438,7 +2438,7 @@ native portion of the app, simply call <code class="prettyprint">window</code> a
 <span class="p">});</span>
 </code></pre>
 
-<h2 id="wd.java-code-example">Wd.java Code example</h2>
+<h2 id="wd-java-code-example">Wd.java Code example</h2>
 <pre class="highlight java"><code><span class="c1">//setup the web driver and launch the webview app.</span>
 <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
 <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
@@ -2472,7 +2472,7 @@ native portion of the app, simply call <code class="prettyprint">window</code> a
 to deploy this build to your device</li>
 </ol>
 
-<h2 id="xcodebuild-with-parameters:">Xcodebuild with parameters:</h2>
+<h2 id="xcodebuild-with-parameters">Xcodebuild with parameters:</h2>
 
 <p>A newer xcodebuild now allows settings to be specified. Taken from <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>:</p>
 <pre class="highlight plaintext"><code>xcodebuild [-project projectname] [-target targetname ...]
@@ -2771,14 +2771,14 @@ Android SDK is installed and <code class="prettyprint">ANDROID_HOME</code> is se
 <li>Make sure the paths to your applications are correct</li>
 </ul>
 
-<h2 id="if-you're-running-appium.app">If you’re running Appium.app</h2>
+<h2 id="if-you-39-re-running-appium-app">If you’re running Appium.app</h2>
 
 <ul>
 <li>Update the app and restart. If you get a message saying the app can’t be updated,
 re-download it from <a href="http://appium.io">appium.io</a>.</li>
 </ul>
 
-<h2 id="if-you're-running-appium-from-source">If you’re running Appium from source</h2>
+<h2 id="if-you-39-re-running-appium-from-source">If you’re running Appium from source</h2>
 
 <ul>
 <li>
@@ -2835,10 +2835,10 @@ run <code class="prettyprint">sudo authorize_ios</code> instead.</li>
 paths are correct, try restarting the computer.</li>
 </ul>
 
-<h2 id="webview/hybrid/safari-app-support">Webview/Hybrid/Safari app support</h2>
+<h2 id="webview-hybrid-safari-app-support">Webview/Hybrid/Safari app support</h2>
 
 <ul>
-<li>Make Sure you enable the ‘Web Inspector’ on the real device.</li>
+<li>Make Sure you enable the 'Web Inspector’ on the real device.</li>
 <li>Make Sure you enable the Safari - Advance Preferences- Developer menu for
 simulators.</li>
 <li>If you getting this error: select_port() failed, when trying to open the
@@ -3114,7 +3114,7 @@ supplying the debug-brk switch to node)</li>
 an option that cannot be adjusted using the Appium UI.</li>
 </ul>
 
-<h3 id="inspector-/-recorder">Inspector / Recorder</h3>
+<h3 id="inspector-recorder">Inspector / Recorder</h3>
 
 <p>Inspector can be accessed by clicking the magnifying glass next to the launch button once the Appium server has launched.
 Appium must be running with an app open for inspector to work. Otherwise, it will not work.</p>
@@ -3137,6 +3137,22 @@ about the project.</p>
 <li>Mount the disk image.</li>
 <li>Drag Appium.app to your Applications folder.</li>
 </ol>
+
+<h3 id="build-with-xcode">Build with XCode</h3>
+
+<p>Install CocoaPods:</p>
+
+<ol>
+<li>Open Termianl</li>
+<li><code class="prettyprint">sudo gem install cocoapods</code></li>
+<li><code class="prettyprint">pod setup</code></li>
+<li><code class="prettyprint">cd appium-dot-app</code></li>
+<li><code class="prettyprint">pod install</code></li>
+</ol>
+
+<p>To Open in XCode: </p>
+
+<p>open the <code class="prettyprint">appium-dot-app/Appium.xcworkspace</code> project file</p>
 
 <h3 id="parameter-guide">Parameter Guide</h3>
 
@@ -3423,7 +3439,7 @@ supplying the debug-brk switch to node)</li>
 an option that cannot be adjusted using the Appium UI.</li>
 </ul>
 
-<h3 id="inspector-/-recorder">Inspector / Recorder</h3>
+<h3 id="inspector-recorder">Inspector / Recorder</h3>
 
 <p>Inspector can be accessed by clicking the magnifying glass next to the launch button once the Appium server has launched.
 Appium must be running with an app open for inspector to work. Otherwise, it will not work.

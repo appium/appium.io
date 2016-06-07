@@ -6,11 +6,11 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>API Reference</title>
 
-    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
-    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../javascripts/all.js" type="text/javascript"></script>
+    <script src="../../javascripts/all.js"></script>
 
       <script>
         $(function() {
@@ -54,7 +54,7 @@
 <li>FirefoxOS</li>
 </ul>
 
-<h2 id="为什么选择appium-?">为什么选择appium ?</h2>
+<h2 id="为什么选择appium">为什么选择appium ?</h2>
 
 <ol>
 <li>你不需要以任何方式重新编译或者修改你的app,就可以在所有的平台上使用标准的自动化APIs</li>
@@ -114,7 +114,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <p>启动Appium server,并运行用你喜欢的 <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver</a> 兼容的语言编写的测试用例.
 你可以用node.js或者下面的应用程序来运行Appium</p>
 
-<h3 id="使用node.js">使用Node.js</h3>
+<h3 id="使用node-js">使用Node.js</h3>
 
 <p>$ npm install -g appium
     $ appium &amp;</p>
@@ -192,7 +192,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 <li>niweyzhuce</li>
 </ul>
 
-<h1 id="intel®-硬件加速器管理">
+<h1 id="intelâ®-硬件加速器管理">
 <span id="android-hax-emulator.cn.md"></span>Intel® 硬件加速器管理</h1>
 
 <p>如果你发现android虚拟机太慢, 并且你的系统运行在Intel® 的cpu上. 那么你可以尝试下HAXM, HAXM能够让你充分利用硬件虚拟化技术来加速android模拟器</p>
@@ -389,7 +389,7 @@ Appium最终开启了跨平台原生移动自动化的可能.</p>
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">BackgroundApp</span><span class="p">(</span><span class="m">5</span><span class="p">);</span>
 </code></pre>
 
-<h2 id="收起键盘(ios-only)">收起键盘(iOS only)</h2>
+<h2 id="收起键盘-ios-only">收起键盘(iOS only)</h2>
 
 <p>在 iOS 上收起键盘</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -671,7 +671,7 @@ Android 里是 strings.xml</p>
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">GetCurrentActivity</span><span class="p">();</span>
 </code></pre>
 
-<h2 id="触摸动作-/-多点触摸动作">触摸动作 / 多点触摸动作</h2>
+<h2 id="触摸动作-多点触摸动作">触摸动作 / 多点触摸动作</h2>
 
 <p>An API for generating touch actions. This section of the documentation will be
 expanded upon soon.</p>
@@ -1046,7 +1046,7 @@ https://github.com/appium/appium/blob/master/lib/devices/android/bootstrap/src/i
 <pre class="highlight python"><code><span class="p">[</span><span class="n">button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span> <span class="k">for</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_tag_name</span><span class="p">(</span><span class="s">'button'</span><span class="p">)]</span>
 </code></pre>
 
-<h3 id='找到所有文本内容(或者accessibilityidentifier)为"go"的元素'>找到所有文本内容(或者accessibilityIdentifier)为"Go"的元素</h3>
+<h3 id="找到所有文本内容-或者accessibilityidentifier-为-quot-go-quot-的元素">找到所有文本内容(或者accessibilityIdentifier)为"Go"的元素</h3>
 
 <p>WD.js:</p>
 <pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Go'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
@@ -1064,7 +1064,7 @@ https://github.com/appium/appium/blob/master/lib/devices/android/bootstrap/src/i
 <pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s">'Go'</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
 </code></pre>
 
-<h3 id='找到以"hi,-"开头的导航条元素'>找到以“Hi, "开头的导航条元素</h3>
+<h3 id="找到以-quot-hi-quot-开头的导航条元素">找到以“Hi, "开头的导航条元素</h3>
 
 <p>WD.js:</p>
 <pre class="highlight javascript"><code><span class="nx">driver</span><span class="p">.</span><span class="nx">elementByXpath</span><span class="p">(</span><span class="s1">'//navigationBar/text[contains(@value, "Hi, ")]'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
@@ -1385,7 +1385,7 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
 
 <p><b>注意：</b> 这个 ios-webkit-debug-proxy 需要 <b>“web inspector”</b> 打开着以便建立连接。在 <b> settings &gt; safari &gt; advanced </b> 里打开它。请注意 web inspector <b>在 iOS6 时候加入的</b> 以前的版本没有。</p>
 
-<h2 id="wd.js-code-example">Wd.js Code example</h2>
+<h2 id="wd-js-code-example">Wd.js Code example</h2>
 <pre class="highlight javascript"><code>  <span class="c1">// 假设我们已经有一个初始化好了的 `driver` 对象。</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 找到按钮，打开 web 视图</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 引导到 UIWebView</span>
@@ -1414,7 +1414,7 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
 </li>
 </ul>
 
-<h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
+<h2 id="wd-java-代码例子">Wd.java 代码例子</h2>
 <pre class="highlight java"><code>  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
@@ -1439,7 +1439,7 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
   <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
 </code></pre>
 
-<h2 id="wd.rb-cucumber-的例子">Wd.rb cucumber 的例子</h2>
+<h2 id="wd-rb-cucumber-的例子">Wd.rb cucumber 的例子</h2>
 <pre class="highlight ruby"><code><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
 <span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span>
 <span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
@@ -1492,7 +1492,7 @@ https://gist.github.com/feelobot/7309729</p>
 
 <p>注意：我们可以像上面说的，使用同样的策略。然而，Selendroid 使用 <code class="prettyprint">WEBVIEW</code>/<code class="prettyprint">NATIVE_APP</code> 窗口设置策略。 Appium 常规的混合支持也使用这种策略。</p>
 
-<h2 id="wd.js-代码例子">Wd.js 代码例子</h2>
+<h2 id="wd-js-代码例子">Wd.js 代码例子</h2>
 <pre class="highlight javascript"><code><span class="c1">// 假设我们已经初始化了一个 `driver` 实例。</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nb">window</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 选择唯一的 WebView</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 通过 CSS 取得元素</span>
@@ -1508,7 +1508,7 @@ https://gist.github.com/feelobot/7309729</p>
 <span class="p">});</span>
 </code></pre>
 
-<h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
+<h2 id="wd-java-代码例子">Wd.java 代码例子</h2>
 <pre class="highlight java"><code>  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
@@ -1639,7 +1639,7 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 <li>使用 <a href="https://github.com/ghughes/fruitstrap">fruitstrap</a>, 一个第三方程序，来部署你构建的app到手机上</li>
 </ol>
 
-<h2 id="xcodebuild-命令的参数:">Xcodebuild 命令的参数:</h2>
+<h2 id="xcodebuild-命令的参数">Xcodebuild 命令的参数:</h2>
 
 <p>新的参数运行指定设置. 参考 <a href="https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/xcodebuild.1.html">developer.apple.com</a>:</p>
 <pre class="highlight plaintext"><code>xcodebuild [-project projectname] [-target targetname ...]
@@ -1697,7 +1697,7 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 <h1 id="ios-predicate">
 <span id="ios_predicate.cn.md"></span>iOS Predicate</h1>
 
-<p>I’d like to share my experience in using <em>‘-ios uiautomation’</em> search strategy with <strong>Predicates</strong>. After using Instruments/UIAutomation tool for a long time I paid attention on the following methods in <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a>:</p>
+<p>I’d like to share my experience in using <em>’-ios uiautomation’</em> search strategy with <strong>Predicates</strong>. After using Instruments/UIAutomation tool for a long time I paid attention on the following methods in <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a>:</p>
 <pre class="highlight java"><code><span class="o">(</span><span class="n">UIAElement</span><span class="o">)</span> <span class="n">UIAElementArray</span><span class="o">.</span><span class="na">firstWithPredicate</span><span class="o">(</span><span class="n">PredicateString</span> <span class="n">predicateString</span><span class="o">)</span>
 <span class="o">(</span><span class="n">UIAElementArray</span><span class="o">)</span> <span class="n">UIAElementArray</span><span class="o">.</span><span class="na">withPredicate</span><span class="o">(</span><span class="n">PredicateString</span> <span class="n">predicateString</span><span class="o">)</span>
 </code></pre>
@@ -1718,9 +1718,9 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 <p>= , ==
 - The left-hand expression is equal to the right-hand expression:
 “`javascript
-tableViews()<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>.cells().firstWithPredicate("label == ‘Olivia’ ”)</p>
+tableViews()<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>.cells().firstWithPredicate("label == 'Olivia’ ”)</p>
 
-<p>same in Xpath: /UIATableView<a title="Hax all" href="http://software.intel.com/en-us/search/site/language/en?query=Intel%20Hardware%20Accelerated%20Execution%20Manager%20%28HAXM%29">2</a>/UIATableCell<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">@label = ‘Olivia’</a>
+<p>same in Xpath: /UIATableView<a title="Hax all" href="http://software.intel.com/en-us/search/site/language/en?query=Intel%20Hardware%20Accelerated%20Execution%20Manager%20%28HAXM%29">2</a>/UIATableCell<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">@label = 'Olivia’</a>
 “`</p>
 
 <p>&gt;= , =&gt;
@@ -1872,7 +1872,7 @@ elements()[0].tableViews()[0].cells().withPredicate(“staticTexts[SIZE] &gt; 2�
 <p>"text”
 - A character string.</p>
 
-<p>‘text’
+<p>'text’
 - A character string.</p>
 
 <p><strong>Comma-separated literal array</strong>
@@ -1919,7 +1919,7 @@ elements()[0].tableViews()[0].cells().withPredicate(“staticTexts[SIZE] &gt; 2�
 <span class="nb">puts</span> <span class="n">element</span><span class="p">.</span><span class="nf">name</span> <span class="c1"># Buttons, Various uses of UIButton</span>
 </code></pre>
 
-<h1 id="把appium-0.18.x上的测试用例集迁移到appium1.x上">
+<h1 id="把appium-0-18-x上的测试用例集迁移到appium1-x上">
 <span id="migrating-to-1-0.cn.md"></span>把appium 0.18.x上的测试用例集迁移到appium1.x上</h1>
 
 <p>Appium 1.0 已经从先前的版本中移除了一部分过时的特性, 这个指导文档会帮助你了解使用Appium 1.0需要做的具体改变.</p>
@@ -1994,11 +1994,11 @@ from appium import webdriver
 
 <p>根据你使用的客户端去相应的使用新的定位方式</p>
 
-<h2 id="使用xml,-不再是json了">使用xml, 不再是json了</h2>
+<h2 id="使用xml-不再是json了">使用xml, 不再是json了</h2>
 
 <p>App source方法先前返回JSON, 现在修改成返回XML. 所以如果你有代码是依赖解析app source的, 那么就需要更新</p>
 
-<h2 id="通过context支持混合应用,-不再是window了">通过context支持混合应用, 不再是window了</h2>
+<h2 id="通过context支持混合应用-不再是window了">通过context支持混合应用, 不再是window了</h2>
 
 <p>以前混合app的切换支持是通过"windows"</p>
 
@@ -2017,7 +2017,7 @@ from appium import webdriver
 <pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
 </code></pre>
 
-<h2 id='没有了execute_script("mobile:-xxx")'>没有了<code class="prettyprint">execute_script("mobile: xxx")</code>
+<h2 id="没有了execute_script-quot-mobile-xxx-quot">没有了<code class="prettyprint">execute_script("mobile: xxx")</code>
 </h2>
 
 <p>所有的<code class="prettyprint">mobile:</code>方法都已经被移除, 并且被替换为appium client libraries的原生方法. 这意味着如果一个方法调用原来的方式是
@@ -2247,7 +2247,7 @@ Chromium下才能运行自动化测试。 伴随着android 4.4+版本的
 
 <h3 id="限制">限制</h3>
 
-<p>如果你在 Linux 上使用 Appium， 那么你没法使用已经构建好的 ‘.app'，那是为 OS X 准备的。 另外由于 Appium 在测试 iOS 应用时 依赖 OS X 特有的库， 所以你也没有办法测试在 Linux 上测试 iOS 应用。</p>
+<p>如果你在 Linux 上使用 Appium， 那么你没法使用已经构建好的 ’.app'，那是为 OS X 准备的。 另外由于 Appium 在测试 iOS 应用时 依赖 OS X 特有的库， 所以你也没有办法测试在 Linux 上测试 iOS 应用。</p>
 
 <h2 id="配置">配置</h2>
 
@@ -2283,7 +2283,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 
 <p>在 OS X 上， Appium 支持 iOS 和 Android 测试</p>
 
-<h2 id="系统配置-(ios)">系统配置 (iOS)</h2>
+<h2 id="系统配置-ios">系统配置 (iOS)</h2>
 
 <ul>
 <li>Appium 需要 Mac OS X 10.7， 推荐 10.8。 （经过测试， 10.9 也能工作。）</li>
@@ -2303,7 +2303,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 
 <p>sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/</p>
 
-<h2 id="系统配置-(android)">系统配置 (Android)</h2>
+<h2 id="系统配置-android">系统配置 (Android)</h2>
 
 <ul>
 <li>确保你已经安装了 <a href="http://developer.android.com/sdk/index.html">Android SDK installed</a>。</li>
@@ -2384,7 +2384,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <h1 id="執行測試">
 <span id="running-tests.cn.md"></span>執行測試</h1>
 
-<h2 id="測試前的準備-(ios)">測試前的準備 (iOS)</h2>
+<h2 id="測試前的準備-ios">測試前的準備 (iOS)</h2>
 
 <p>在模擬器上測試apps必須要用模擬器專用的編譯器，例如說使用下列的命令來編譯 Xcode 項目：</p>
 
@@ -2394,11 +2394,11 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 
 <p>如果需要，你可以把.app 目錄壓縮成一個zip壓縮檔！Appium 會自行解壓縮。讓你能方便在非本地運行Appium。</p>
 
-<h2 id="測試前的準備-(android)">測試前的準備 (Android)</h2>
+<h2 id="測試前的準備-android">測試前的準備 (Android)</h2>
 
 <p>用Appium去執行你的.apk檔其實沒什麼特別需要注意的事項。如果需要，你可以把它壓縮成zip壓縮檔。</p>
 
-<h2 id="用appium測試你的app-(ios)">用Appium測試你的app (iOS)</h2>
+<h2 id="用appium測試你的app-ios">用Appium測試你的app (iOS)</h2>
 
 <p>目前最好的測試方式請參照測試範例：</p>
 
@@ -2426,7 +2426,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 
 <p>在你選擇的WebDriver庫裡，設定remote session使用上述的環境參數然後使用端口 4723來連接本地服務器 (或著是使用你在Appium啟動時所設定的任意端口)。現在你已經設置完成了！</p>
 
-<h2 id="用appium測試你的app-(android)">用Appium測試你的app (Android)</h2>
+<h2 id="用appium測試你的app-android">用Appium測試你的app (Android)</h2>
 
 <p>首先，先確定你有一個而且必須是只能一個Android模擬器或著設備連接著。如果你輸入<code class="prettyprint">adb devices</code>，你應該只看到一個設備連接著。這將是Appium所用來測試的設備。當然，要連接一個設備，你需要準備好一個Android AVD (參考 <a href="#system-setup.md">系統設置</a> 以了解更多). 如果Android SDK工具在你的路徑下，你可以簡單的執行:</p>
 
@@ -2464,11 +2464,11 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 
 <p>在你選擇的WebDriver庫裡，設定remote session使用上述的環境參數然後使用端口 4723來連接本地服務器 (或著是使用你在Appium啟動時所設定的任意端口)。現在你已經設置完成了！</p>
 
-<h2 id="用appium測試你的app-(android-設備-&lt;-4.2,-以及混合app測試)">用Appium測試你的app (Android 設備 &lt; 4.2, 以及混合app測試)</h2>
+<h2 id="用appium測試你的app-android-設備-lt-4-2-以及混合app測試">用Appium測試你的app (Android 設備 &lt; 4.2, 以及混合app測試)</h2>
 
 <p>低於4.2版本的Android設備 (API Level 17) 沒有安裝Google 的<a href="http://developer.android.com/tools/help/uiautomator/index.html">用戶界面自動化框架/UiAutomator framework</a>.下面的範例是早期Appium在這些設備上的測試方法。對於早期的設備以及使用混合模式(webview-based)製作的apps, Appium 包含了另一種自動化測試後端<a href="http://selendroid.io/">Selendroid</a>.</p>
 
-<p>要使用Selendroid, 只需要在之前提到的環境參數上稍作修改即可，把'Android’ 換成 ‘Selendroid’:</p>
+<p>要使用Selendroid, 只需要在之前提到的環境參數上稍作修改即可，把'Android’ 換成 'Selendroid’:</p>
 <pre class="highlight javascript"><code><span class="p">{</span>
     <span class="nl">device</span><span class="p">:</span> <span class="s1">'Selendroid'</span><span class="p">,</span>
     <span class="nx">browserName</span><span class="err">:</span> <span class="s1">''</span><span class="p">,</span>
@@ -3082,7 +3082,7 @@ myVariable === undefined
 <li>确保你应用的路径正确。</li>
 </ul>
 
-<h2 id="如果你从-appium.app-运行的话-(通过-dmg-安装的)">如果你从 Appium.app 运行的话 (通过 dmg 安装的)</h2>
+<h2 id="如果你从-appium-app-运行的话-通过-dmg-安装的">如果你从 Appium.app 运行的话 (通过 dmg 安装的)</h2>
 
 <ul>
 <li>升级应用，然后重启。 如果你提示你无法升级，从<a href="http://appium.io">appium.io</a>重新下载。</li>
@@ -3129,7 +3129,7 @@ myVariable === undefined
 <li>如果你看到 <code class="prettyprint">iOS Simulator failed to install the application.</code> 而且 App 的路径都正确的，那么重启下电脑看看。</li>
 </ul>
 
-<h2 id="webview/hybrid/safari-app-支持">Webview/Hybrid/Safari app 支持</h2>
+<h2 id="webview-hybrid-safari-app-支持">Webview/Hybrid/Safari app 支持</h2>
 
 <ul>
 <li>确保真机上的'Web Inspector'激活了。</li>

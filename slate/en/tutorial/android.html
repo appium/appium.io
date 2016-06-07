@@ -6,11 +6,11 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>Tutorial</title>
 
-    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
-    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../javascripts/all.js" type="text/javascript"></script>
+    <script src="../../javascripts/all.js"></script>
 
       <script>
         $(function() {
@@ -205,7 +205,7 @@ gem install --no-rdoc --no-ri flaky
 </li>
 </ul>
 
-<p><code class="prettyprint">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></p>
+<p><code class="prettyprint">ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</code></p>
 
 <ul>
 <li>Install <a href="http://nodejs.org/">nodejs</a> using brew.</li>
@@ -335,7 +335,7 @@ rm -rf /usr/local/lib/node_modules/
 rvm osx-ssl-certs status all
 </code></p>
 
-<h2 id="maven-on-os-x-10.9">Maven on OS X 10.9</h2>
+<h2 id="maven-on-os-x-10-9">Maven on OS X 10.9</h2>
 
 <p><code>brew update
 brew install maven
@@ -749,7 +749,7 @@ use driver_quit.</p>
 All the selenium bindings offer a quit method. This should be invoked once
 the testing session is over.</p>
 
-<h2 id="appium.app-inspector">Appium.app Inspector</h2>
+<h2 id="appium-app-inspector">Appium.app Inspector</h2>
 
 <p>We’ve covered finding elements using the page command on the terminal.
 Appium also has a GUI tool on OS X called Appium.app.</p>
@@ -786,11 +786,7 @@ uiautomator requires API 16 (Android 4.1, Jelly Bean) or above. Appium’s
 uiautomator support works best on API 17 (Android 4.2,
 Jelly Bean MR1) or above. For this tutorial, we’re interested in API 19.</p>
 
-<p>Run <code class="prettyprint">android avd</code>, select your Android emulator, press Edit, then ensure that
-‘Use Host GPU’ is not checked. If we’re using the Host GPU then uiautomatorviewer
-will be unable to capture screenshots.</p>
-
-<p>Also ensure that no Android appium sessions are running. Appium uses uiautomator
+<p>Ensure that no Android appium sessions are running. Appium uses uiautomator
 internally and this will prevent uiautomatorviewer from working if they’re both
 running at the same time.</p>
 
@@ -799,9 +795,6 @@ running at the same time.</p>
 with a red circle. The following is a screenshot of the end result:</p>
 
 <p><img src="../../images/uiautomatorviewer.png"></p>
-
-<p>Once you’re done with uiautomatorviewer, you may want to restore the Host GPU
-option. The Android emulator is significantly faster with it enabled.</p>
 
 <h2 id="helpful-links">Helpful Links</h2>
 
@@ -1079,7 +1072,7 @@ looking for the next element.</p>
 <span class="desc ruby">
 
 <p>Now that we have a test fully written, it’s time to apply the
-<a href="https://code.google.com/p/selenium/wiki/PageObjects">page object pattern</a>.</p>
+<a href="https://github.com/SeleniumHQ/selenium/wiki/PageObjects">page object pattern</a>.</p>
 
 <p>This pattern is language independent and applies to any Selenium testing,
 not just appium. The idea is to create an abstraction at the page level. Each
@@ -1142,7 +1135,7 @@ Rake.</p>
 <span class="desc java">
 
 <p>Now that we have a test fully written, it’s time to apply the
-<a href="https://code.google.com/p/selenium/wiki/PageObjects">page object pattern</a>.
+<a href="https://github.com/SeleniumHQ/selenium/wiki/PageObjects">page object pattern</a>.
 For this tutorial, we’re going to implement the page object pattern using
 abstract classes and static helper methods.</p>
 
@@ -1220,7 +1213,7 @@ finding it.</p>
 
 <p>I encourage you to review the full source of the example. This is one way to
 implement the page object pattern. There are many other alternatives such as the
-<a href="https://code.google.com/p/selenium/wiki/PageFactory">PageFactory</a> included in
+<a href="https://github.com/SeleniumHQ/selenium/wiki/PageFactory">PageFactory</a> included in
 Selenium’s Java bindings.</p>
 
 </span>

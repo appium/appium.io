@@ -6,11 +6,11 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>API Reference</title>
 
-    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
-    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../javascripts/all.js" type="text/javascript"></script>
+    <script src="../../javascripts/all.js"></script>
 
       <script>
         $(function() {
@@ -42,9 +42,9 @@
 <h2 id="客户端类库列表及appium服务端支持">
 <span id="appium-clients.cn.md"></span>客户端类库列表及Appium服务端支持</h2>
 
-<p>这些类库封装了标准Selenium客户端类库，为用户提供所有常见的<a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON</a> 格式selenium命令以及额外的移动设备控制相关的命令，如多点<strong>触控手势</strong>和<strong>屏幕朝向</strong>。</p>
+<p>这些类库封装了标准Selenium客户端类库，为用户提供所有常见的<a href="https://w3c.github.io/webdriver/webdriver-spec.html">JSON</a> 格式selenium命令以及额外的移动设备控制相关的命令，如多点<strong>触控手势</strong>和<strong>屏幕朝向</strong>。</p>
 
-<p>Appium客户端类库实现了<a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">Mobile JSON Wire Protocol</a>（一个标准协议的官方扩展草稿）和<a href="https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html">W3C Webdriver spec</a>（一个传输不可预知的自动化协议，该协议定义了MultiAction 接口）的元素。</p>
+<p>Appium客户端类库实现了<a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON Wire Protocol</a>（一个标准协议的官方扩展草稿）和<a href="https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html">W3C Webdriver spec</a>（一个传输不可预知的自动化协议，该协议定义了MultiAction 接口）的元素。</p>
 
 <p>Appium 服务端定义了官方协议的扩展，为Appium 用户提供了方便的接口来执行各种设备动作，例如在测试过程中安装/卸载app。这就是为什么我们需要Appium 特定的客户端，而不是通用的Selenium 客户端。当然，Appium 客户端类库只是增加了一些功能，而实际上这些功能就是简单的扩展了Selenium 客户端，所以他们仍然可以用来运行通用的selenium会话。</p>
 
@@ -126,10 +126,10 @@
 </ul>
 
 <p>为了满足第二点，我们把这些第三方框架封装成一套 API，<a href="http://docs.seleniumhq.org/projects/webdriver/">WebDriver</a> API.WebDriver（也就是 “Selenium WebDriver"） 指定了客户端到服务端的协议。
-(参见 <a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">JSON Wire Protocol</a>)。使用这种客户端-服务端的架构，我们可以使用任何语言来编写客户端，向服务端发送恰当的 HTTP 请求。
+(参见 <a href="https://w3c.github.io/webdriver/webdriver-spec.html">JSON Wire Protocol</a>)。使用这种客户端-服务端的架构，我们可以使用任何语言来编写客户端，向服务端发送恰当的 HTTP 请求。
 目前已经实现了大多数流行语言版本的客户端，这意味着你可以使用任何测试套件或者测试框架。客户端库就是简单的HTTP 客户，可以以任何你喜欢的方式潜入你的代码。换句话说，Appium 和 WebDriver 客户端不是技术意义上的“测试框架”，而是“自动化库”。你可以在你的测试环境中随意使用这些自动化库！</p>
 
-<p>事实上 WebDriver 已经成为 web 浏览器自动化的标准，也成了 W3C 的标准 —— <a href="https://w3c.github.io/webdriver/webdriver-spec.html">W3C Working Draft</a>。我们又何必为移动做一个完全不同的呢？所以我们扩充了<a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">WebDriver 的协议</a>，在原有的基础上添加移动自动化相关的 API 方法，这也满足了第三条理念。</p>
+<p>事实上 WebDriver 已经成为 web 浏览器自动化的标准，也成了 W3C 的标准 —— <a href="https://w3c.github.io/webdriver/webdriver-spec.html">W3C Working Draft</a>。我们又何必为移动做一个完全不同的呢？所以我们扩充了<a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">WebDriver 的协议</a>，在原有的基础上添加移动自动化相关的 API 方法，这也满足了第三条理念。</p>
 
 <p>第四条就不用说了，<a href="https://github.com/appium/appium">Appium 是开源的</a>。</p>
 
@@ -165,7 +165,7 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 
 <h1 id="setting-up-appium">Setting up Appium</h1>
 
-<h1 id="intel®-硬件加速器管理">Intel® 硬件加速器管理</h1>
+<h1 id="intelâ®-硬件加速器管理">Intel® 硬件加速器管理</h1>
 
 <p>如果你发现android模拟器太慢, 并且你的系统运行在Intel® 的cpu上. 那么你可以尝试下HAXM, HAXM能够让你充分利用硬件虚拟化技术来加速android模拟器。</p>
 
@@ -182,9 +182,9 @@ Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使
 <p>使用前，你需要安装node.js(版本大于等于0.10)。 请参照 <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">instructions for your flavor of linux</a>。</p>
 
 <p>当node.js安装成功后，请安装 <a href="http://developer.android.com/sdk/index.html">Android SDK</a>。
-运行'android' tool(位于SDK，tool文件目录下)。</p>
+运行'android’ tool(位于SDK，tool文件目录下)。</p>
 
-<p>运行'android' tool 来安装大于等于Level 17的API。</p>
+<p>运行'android’ tool 来安装大于等于Level 17的API。</p>
 
 <p>(如果你想从Appium的源码来运行，可在真机或者模拟器上用 <a href="http://ant.apache.org/">Apache Ant</a> 来编译bootstrap jar包)。</p>
 
@@ -417,7 +417,7 @@ Appimu的时候支持的平台版本和上述测试方式的必备条件。</p>
 
 <h3 id="限制">限制</h3>
 
-<p>如果你在 Linux 上使用 Appium， 那么你没法使用已经构建好的 ‘.app'，那是为 OS X 准备的。 另外由于 Appium 在测试 iOS 应用时 依赖 OS X 特有的库， 所以你也没有办法测试在 Linux 上测试 iOS 应用。</p>
+<p>如果你在 Linux 上使用 Appium， 那么你没法使用已经构建好的 ’.app'，那是为 OS X 准备的。 另外由于 Appium 在测试 iOS 应用时 依赖 OS X 特有的库， 所以你也没有办法测试在 Linux 上测试 iOS 应用。</p>
 
 <h2 id="配置">
 <span id="running-on-linux.cn.md"></span>配置</h2>
@@ -453,7 +453,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 
 <p>在 OS X 上， Appium 支持 iOS 和 Android 测试</p>
 
-<h2 id="系统配置-(ios)">
+<h2 id="系统配置-ios">
 <span id="running-on-osx.cn.md"></span>系统配置 (iOS)</h2>
 
 <ul>
@@ -477,7 +477,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 
 <p>sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/</p>
 
-<h2 id="系统配置-(android)">系统配置 (Android)</h2>
+<h2 id="系统配置-android">系统配置 (Android)</h2>
 
 <ul>
 <li>在Mac OSX 上运行Android项目所需要的配置，与Linux的配置方法是一致的，请参考 <a href="/docs/cn/appium-setup/android-setup.cn.md">Android setup docs</a>。</li>
@@ -557,7 +557,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>确保你的应用存放路径没有错误。</li>
 </ul>
 
-<h3 id="appium.app运行出现问题的解决办法">Appium.app运行出现问题的解决办法</h3>
+<h3 id="appium-app运行出现问题的解决办法">Appium.app运行出现问题的解决办法</h3>
 
 <ul>
 <li>升级Appium.app后重新打开即可解决。如果提示你不能升级，则需要重新下载Appium.app，下载地址：<a href="http://appium.io">appium.io</a>
@@ -627,7 +627,7 @@ Android 有一些硬件加速的模拟器，这些模拟器有自己的限制。
 <li>如果检查路径正确，但仍然报 <code class="prettyprint">iOS Simulator failed to install the application.</code>的错误的时候，请尝试重启你的电脑。</li>
 </ul>
 
-<h3 id="webview/hybrid/safari-应用支持">Webview/Hybrid/Safari 应用支持</h3>
+<h3 id="webview-hybrid-safari-应用支持">Webview/Hybrid/Safari 应用支持</h3>
 
 <ul>
 <li>确保真机上的'Web Inspector'为打开状态。</li>
@@ -867,7 +867,7 @@ $this-&gt;startActivity(array("appPackage" =&gt; "com.example.android.apis",
 [driver startActivity:@"com.example.android.apis" package:@".Foo"];
 </code></pre>
 
-<h3 id="打开通知栏-(notifications)">打开通知栏 (Notifications)</h3>
+<h3 id="打开通知栏-notifications">打开通知栏 (Notifications)</h3>
 
 <p>打开下拉通知栏 <em>只能在 Android 上使用</em></p>
 <pre class="highlight java"><code><span class="c1">// java</span>
@@ -968,7 +968,7 @@ $this-&gt;removeApp('com.example.android.apis');
 [driver removeApp:@"com.example.android.apis"];
 </code></pre>
 
-<h3 id="摇晃-(shake)">摇晃 (Shake)</h3>
+<h3 id="摇晃-shake">摇晃 (Shake)</h3>
 
 <p>模拟设备摇晃</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1018,7 +1018,7 @@ $this-&gt;closeApp();
 [driver closeApp];
 </code></pre>
 
-<h3 id="启动-(launch)">启动 (Launch)</h3>
+<h3 id="启动-launch">启动 (Launch)</h3>
 
 <p>根据服务关键字 (desired capabilities) 启动会话 (session) 。请注意这必须在设定 <code class="prettyprint">autoLaunch=false</code> 关键字时才能生效。这不是用于启动指定的 app/activities ————你可以使用 <code class="prettyprint">start_activity</code> 做到这个效果————这是用来继续进行使用了 <code class="prettyprint">autoLaunch=false</code> 关键字时的初始化 (Launch) 流程的。</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1043,7 +1043,7 @@ $this-&gt;launchApp();
 [driver launchApp];
 </code></pre>
 
-<h3 id="重置-(reset)">重置 (Reset)</h3>
+<h3 id="重置-reset">重置 (Reset)</h3>
 
 <p>应用重置</p>
 
@@ -1070,7 +1070,7 @@ $this-&gt;reset();
 [driver resetApp];
 </code></pre>
 
-<h3 id="可用上下文-(context)">可用上下文 (context)</h3>
+<h3 id="可用上下文-context">可用上下文 (context)</h3>
 
 <p>列出所有的可用上下文</p>
 
@@ -1097,7 +1097,7 @@ $this-&gt;contexts();
 NSArray *contexts = driver.allContexts;
 </code></pre>
 
-<h3 id="当前上下文-(context)">当前上下文 (context)</h3>
+<h3 id="当前上下文-context">当前上下文 (context)</h3>
 
 <p>列出当前上下文</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1122,7 +1122,7 @@ $this-&gt;context();
 NSString *context = driver.context;
 </code></pre>
 
-<h3 id="切换到默认的上下文-(context)">切换到默认的上下文 (context)</h3>
+<h3 id="切换到默认的上下文-context">切换到默认的上下文 (context)</h3>
 
 <p>将上下文切换到默认上下文</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1147,7 +1147,7 @@ $this-&gt;context(NULL);
 [driver setContext:nil];
 </code></pre>
 
-<h3 id="应用的字符串-(app-strings)">应用的字符串 (App Strings)</h3>
+<h3 id="应用的字符串-app-strings">应用的字符串 (App Strings)</h3>
 
 <p>获取应用的字符串</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1174,7 +1174,7 @@ $this-&gt;appStrings('ru');
 [driver appStringsForLanguage:"@ru"];
 </code></pre>
 
-<h3 id="按键事件-(key-event)">按键事件 (Key Event)</h3>
+<h3 id="按键事件-key-event">按键事件 (Key Event)</h3>
 
 <p>给设备发送一个按键事件</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1226,7 +1226,7 @@ NSError *err;
 [driver currentActivity];
 </code></pre>
 
-<h3 id="触摸动作(touchaction)-/-多点触摸动作(multitouchaction)">触摸动作(TouchAction) / 多点触摸动作(MultiTouchAction)</h3>
+<h3 id="触摸动作-touchaction-多点触摸动作-multitouchaction">触摸动作(TouchAction) / 多点触摸动作(MultiTouchAction)</h3>
 
 <p>生成触摸动作的接口。这部分文档很快将会补充更多的内容进来。</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1282,7 +1282,7 @@ $multiAction-&gt;perform();
 <span class="n">action</span><span class="p">.</span><span class="nf">Perform</span> <span class="p">();</span>
 </code></pre>
 
-<h3 id="滑动(swipe)">滑动(Swipe)</h3>
+<h3 id="滑动-swipe">滑动(Swipe)</h3>
 
 <p>模拟用户滑动</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1316,7 +1316,7 @@ $this-&gt;swipe(75, 500, 75, 0, 800);
 </span><span class="n">todo</span><span class="p">:</span> <span class="n">c</span><span class="err">#</span>
 </code></pre>
 
-<h3 id="捏-(pinch)">捏 (Pinch)</h3>
+<h3 id="捏-pinch">捏 (Pinch)</h3>
 
 <p>捏屏幕 (双指往内移动来缩小屏幕) </p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1364,7 +1364,7 @@ $this-&gt;swipe(75, 500, 75, 0, 800);
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">Pinch</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">25</span><span class="p">)</span>
 </code></pre>
 
-<h3 id="放大-(zoom)">放大 (Zoom)</h3>
+<h3 id="放大-zoom">放大 (Zoom)</h3>
 
 <p>放大屏幕 (双指往外移动来放大屏幕) </p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1413,7 +1413,7 @@ $this-&gt;zoom($el);
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">Zoom</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="m">200</span><span class="p">);</span>
 </code></pre>
 
-<h3 id="滑动到-(scroll-to)">滑动到 (Scroll To)</h3>
+<h3 id="滑动到-scroll-to">滑动到 (Scroll To)</h3>
 
 <p>滑动到某个元素。</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1442,7 +1442,7 @@ $this-&gt;scroll($els[count($els) - 1], $els[0]);
 </span><span class="n">todo</span><span class="p">:</span> <span class="n">csharp</span>
 </code></pre>
 
-<h3 id="拉出文件-(pull-file)">拉出文件 (Pull File)</h3>
+<h3 id="拉出文件-pull-file">拉出文件 (Pull File)</h3>
 
 <p>从设备中拉出文件</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1465,7 +1465,7 @@ $this-&gt;pullFile('Library/AddressBook/AddressBook.sqlitedb');
 </span><span class="n">driver</span><span class="p">.</span><span class="nf">PullFile</span><span class="p">(</span><span class="s">"Library/AddressBook/AddressBook.sqlitedb"</span><span class="p">);</span>
 </code></pre>
 
-<h3 id="推送文件(push-file)">推送文件(Push file)</h3>
+<h3 id="推送文件-push-file">推送文件(Push file)</h3>
 
 <p>推送文件到设备中去</p>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
@@ -1582,7 +1582,7 @@ $this-&gt;updateSettings(array('cyberdelia' =&gt; "open"));
 <tr>
 <td><code class="prettyprint">browserName</code></td>
 <td>需要进行自动化测试的手机 web 浏览器名称。如果是对应用进行自动化测试，这个关键字的值应为空。</td>
-<td>iOS 系统上可以用 'Safari’ ，Android 系统上可以用 ‘Chrome’, ‘Chromium’, 或 ‘Browser'。</td>
+<td>iOS 系统上可以用 ‘Safari’ ，Android 系统上可以用 'Chrome’, 'Chromium’, 或 'Browser'。</td>
 </tr>
 <tr>
 <td><code class="prettyprint">newCommandTimeout</code></td>
@@ -2011,7 +2011,7 @@ $this-&gt;updateSettings(array('cyberdelia' =&gt; "open"));
 <li>根据"xpath"定位 (例如，具有一定约束的路径抽象标示, 基于XPath方式)</li>
 </ul>
 
-<p>另外， Appium 还支持部分 <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">Mobile JSON 连接协议</a> 的定位策略</p>
+<p>另外， Appium 还支持部分 <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON 连接协议</a> 的定位策略</p>
 
 <ul>
 <li>
@@ -2049,10 +2049,10 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
 
 <p><img alt="Step 1" src="https://raw.github.com/appium/appium/master/assets/InspectorImages/Step2.png"></p>
 
-<h2 id="ios-谓词(predicate)">
+<h2 id="ios-谓词-predicate">
 <span id="ios_predicate.cn.md"></span>iOS 谓词(Predicate)</h2>
 
-<p>在查看 <em>’-ios uiautomation'</em> 搜索策略时了解 <strong>谓词(Predicate)</strong> 十分必要。 <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a>有下列几种非常有用的方法:</p>
+<p>在查看 <em>’-ios uiautomation’</em> 搜索策略时了解 <strong>谓词(Predicate)</strong> 十分必要。 <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a>有下列几种非常有用的方法:</p>
 
 <p class="centercode"><code>(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
 (UIAElementArray) UIAElementArray.withPredicate(PredicateString predicateString)</code></p>
@@ -2076,9 +2076,9 @@ UI导航器, 预览, 录制与刷新按钮, 和交互工具</p>
 <p>= , ==
 - 左边表达式等于右边表达式:
 ”`javascript
-tableViews()<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>.cells().firstWithPredicate(“label == ‘Olivia’ ”)</p>
+tableViews()<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">1</a>.cells().firstWithPredicate(“label == 'Olivia’ ”)</p>
 
-<p>same in Xpath: /UIATableView<a title="Hax all" href="http://software.intel.com/en-us/search/site/language/en?query=Intel%20Hardware%20Accelerated%20Execution%20Manager%20%28HAXM%29">2</a>/UIATableCell<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">@label = ‘Olivia’</a>
+<p>same in Xpath: /UIATableView<a title="Hax all" href="http://software.intel.com/en-us/search/site/language/en?query=Intel%20Hardware%20Accelerated%20Execution%20Manager%20%28HAXM%29">2</a>/UIATableCell<a title="Hax" href="http://software.intel.com/en-us/articles/intel-hardware-accelerated-execution-manager/">@label = 'Olivia’</a>
 “`</p>
 
 <p>&gt;= , =&gt;
@@ -2212,7 +2212,7 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
 <p><strong>[\][uU]{hexdigit}{4}</strong>
 - 用于表示 Unicode 编码 ( <code class="prettyprint">\u</code> 或 <code class="prettyprint">\U</code> 后面加上4个十六进制数字)。</p>
 
-<h3 id="文字-(literals)">文字 (Literals)</h3>
+<h3 id="文字-literals">文字 (Literals)</h3>
 
 <p>（翻译备注：Literals 在编程语言领域的意思是在代码中可以看得到的(或说可视的)那些值。例如字符串 <code class="prettyprint">"a"</code>，数组 <code class="prettyprint">[1, 2]</code>，你可以在代码中一眼看出这是一个字符串，数组还是别的数据类型并知道它的值。这一节说的就是这些值的写法）</p>
 
@@ -2233,7 +2233,7 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
 <p>"text”
 - 一个字符串。</p>
 
-<p>‘text’
+<p>'text’
 - 同上，也是一个字符串。</p>
 
 <p><strong>以逗号分隔的文本数组</strong>
@@ -2260,7 +2260,7 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
 
 <p><code class="prettyprint">AND, OR, IN, NOT, ALL, ANY, SOME, NONE, LIKE, CASEINSENSITIVE, CI, MATCHES, CONTAINS, BEGINSWITH, ENDSWITH, BETWEEN, NULL, NIL, SELF, TRUE, YES, FALSE, NO, FIRST, LAST, SIZE, ANYKEY, SUBQUERY, CAST, TRUEPREDICATE, FALSEPREDICATE</code></p>
 
-<h3 id="appium-谓词(predicate)帮助文档">Appium 谓词(predicate)帮助文档</h3>
+<h3 id="appium-谓词-predicate-帮助文档">Appium 谓词(predicate)帮助文档</h3>
 
 <p>Appium 在app.js中有 <a href="https://github.com/appium/appium-uiauto/blob/3052dace828db2ab3d722281fb7853cbcbc3252f/uiauto/appium/app.js#L68">专门的谓词(predicate)使用帮助文档</a> :</p>
 
@@ -2488,8 +2488,8 @@ public static $browsers = array(
 <span class="n">capabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="n">MobileCapabilityType</span><span class="o">.</span><span class="na">BROWSER_NAME</span><span class="o">,</span> <span class="s">"Chrome"</span><span class="o">);</span>
 </code></pre>
 
-<p>在4.4以上的版本，你也可以用‘Browser’ <code class="prettyprint">browserName</code> 来对内置浏览器进行自动化。
-在所有版本你都可以用‘Chromium’ <code class="prettyprint">browserName</code>来对Chromium进行自动化。</p>
+<p>在4.4以上的版本，你也可以用'Browser’ <code class="prettyprint">browserName</code> 来对内置浏览器进行自动化。
+在所有版本你都可以用'Chromium’ <code class="prettyprint">browserName</code>来对Chromium进行自动化。</p>
 
 <h4 id="chromedriver故障排查">chromedriver故障排查</h4>
 
@@ -2504,7 +2504,7 @@ public static $browsers = array(
 <h2 id="调整网络设置">
 <span id="network_connection.cn.md"></span>调整网络设置</h2>
 
-<p>Selenium 的 <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile">Mobile JSON Wire Protocol Specification</a> 支持一个获取和设置设备网络连接的 <a href="https://code.google.com/p/selenium/source/browse/spec-draft.md?repo=mobile#104">API</a> 。这个 API 通过位掩码（bitmask）工作，把所有可能的状态用一个整型数据表示：</p>
+<p>Selenium 的 <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON Wire Protocol Specification</a> 支持一个获取和设置设备网络连接的 <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md#104">API</a> 。这个 API 通过位掩码（bitmask）工作，把所有可能的状态用一个整型数据表示：</p>
 
 <table>
 <thead>
@@ -2597,7 +2597,7 @@ public static $browsers = array(
 
 <h1 id="执行测试">执行测试</h1>
 
-<h2 id="准备被测应用-(ios)">
+<h2 id="准备被测应用-ios">
 <span id="running-tests.cn.md"></span>准备被测应用 (iOS)</h2>
 
 <p>在模拟器上测试apps必须要用模拟器专用的编译器，例如使用下列的命令来编译Xcode项目：</p>
@@ -2608,11 +2608,11 @@ public static $browsers = array(
 
 <p>如果需要，你可以把.app 目录压缩成一个zip压缩档！ Appium 会自行解压缩。让你能方便在非本地运行Appium。</p>
 
-<h2 id="准备被测应用-(android)">准备被测应用 (Android)</h2>
+<h2 id="准备被测应用-android">准备被测应用 (Android)</h2>
 
 <p>用Appium去执行你的.apk档其实没什么特别需要注意的事项。如果需要，你可以把它压缩成zip压缩档。</p>
 
-<h2 id="用appium测试你的app-(ios)">用Appium测试你的app (iOS)</h2>
+<h2 id="用appium测试你的app-ios">用Appium测试你的app (iOS)</h2>
 
 <p>想知道如何编写测试脚本，请参照测试范例：</p>
 
@@ -2670,7 +2670,7 @@ public static $browsers = array(
 
 <p>在你选择的WebDriver库里，设定remote session使用上述的环境参数然后使用端口4723来连接本地服务器(或者使用你在Appium启动时所设定的端口)。现在你已经完成设置了！</p>
 
-<h2 id="用appium测试你的app-(android)">用Appium测试你的app (Android)</h2>
+<h2 id="用appium测试你的app-android">用Appium测试你的app (Android)</h2>
 
 <p>首先，先确定你有一个而且必须是只能一个Android模拟器或者设备连接着。如果你输入<code class="prettyprint">adb devices</code>，你应该只看到一个设备连接着。这将是Appium所用来测试的设备。当然，要连接一个设备，你需要准备好一个Android AVD (参考(<a href="#running-on-windows.cn.md">Windows</a>，<a href="#running-on-osx.cn.md">Mac</a>，或者<a href="#running-on-linux.cn.md">Linux</a>)以了解更多)。 如果Android SDK工具在你的环境变量path下，你可以简单的执行:</p>
 <pre class="highlight plaintext"><code>    emulator -avd &lt;我的Avd名称&gt;
@@ -2688,33 +2688,33 @@ public static $browsers = array(
 
 <ul>
 <li>只有apk或者zip，默认activity将会被启动。 (只设置了'app'环境参数)</li>
-<li>apk + activity (‘app’ + ‘appActivity’ 环境参数)</li>
-<li>apk + activity + intent (‘app’ + ‘appActivity’ + ‘appIntent’ 环境参数)</li>
+<li>apk + activity ('app’ + 'appActivity’ 环境参数)</li>
+<li>apk + activity + intent ('app’ + 'appActivity’ + 'appIntent’ 环境参数)</li>
 <li>…</li>
 </ul>
 
 <p>Activities 可以通过以下方式来指定:</p>
 
 <ul>
-<li>名称 (如 appActivity: ‘com.helloworld.SayHello’)。</li>
-<li>相对于 appPackage的路径 (如 appPackage: ‘com.helloworld’, appActivity=‘.SayHello’)</li>
+<li>名称 (如 appActivity: 'com.helloworld.SayHello’)。</li>
+<li>相对于 appPackage的路径 (如 appPackage: 'com.helloworld’, appActivity=’.SayHello’)</li>
 </ul>
 
 <p>如果“appWaitPackage'和'appWaitActivity”被指定，Appium
 将自动等待，直到这些活动的被启动。你可以为实例指定多个等待的activity：</p>
 
 <ul>
-<li>appActivity: ‘com.splash.SplashScreen’</li>
-<li>appPackage: ‘com.splash’ appActivity: ‘.SplashScreen’</li>
-<li>appPackage: ‘com.splash’ appActivity: ‘.SplashScreen,.LandingPage,com.why.GoThere’</li>
+<li>appActivity: 'com.splash.SplashScreen’</li>
+<li>appPackage: 'com.splash’ appActivity: ’.SplashScreen’</li>
+<li>appPackage: 'com.splash’ appActivity: ’.SplashScreen,.LandingPage,com.why.GoThere’</li>
 </ul>
 
 <p>如果你不是很清楚在apk中有哪些activity，你可以通过以下方式来查看：</p>
 
 <ul>
-<li>Mac/Linux: ‘adb shell dumpsys window windows | grep mFocusedApp’</li>
-<li>在 Ruby 控制台运行: ‘adb shell dumpsys window windows`.each_line.grep(/mFocusedApp/).first.strip’</li>
-<li>在 Windows 终端运行 ‘adb shell dumpsys window windows’ 然后去看mFocusedApp这一行的内容。</li>
+<li>Mac/Linux: 'adb shell dumpsys window windows | grep mFocusedApp’</li>
+<li>在 Ruby 控制台运行: 'adb shell dumpsys window windows`.each_line.grep(/mFocusedApp/).first.strip’</li>
+<li>在 Windows 终端运行 'adb shell dumpsys window windows’ 然后去看mFocusedApp这一行的内容。</li>
 </ul>
 
 <p>然后执行你的WebDriver测试脚本，脚本必须包含下列的环境参数：</p>
@@ -2768,7 +2768,7 @@ public static $browsers = array(
 
 <p>在你选择的WebDriver库里，设定remote session使用上述的环境参数然后使用端口4723来连接本地服务器(或者是使用你在Appium启动时所设定的任意端口)。现在你已经设置完成了！</p>
 
-<h2 id="用appium测试你的app-(android-设备-&lt;-4.2,-以及混合app测试)">用Appium测试你的app (Android 设备 &lt; 4.2, 以及混合app测试)</h2>
+<h2 id="用appium测试你的app-android-设备-lt-4-2-以及混合app测试">用Appium测试你的app (Android 设备 &lt; 4.2, 以及混合app测试)</h2>
 
 <p>低于4.2版本的Android设备(API Level 17) 没有安装 Google 的<a href="http://developer.android.com/tools/help/uiautomator/index.html">UiAutomator framework</a>.下面的范例是早期Appium在这些设备上的测试方法。对于早期的设备以及使用混合模式(webview-based)制作的apps, Appium 包含了另一种自动化测试工具<a href="http://selendroid.io/">Selendroid</a>。</p>
 
@@ -3320,9 +3320,9 @@ public static $browsers = array(
 
 <p>这些API可以让你使用多个驱动来建立任意手势。请参阅对应语言的Appium客户端文档，就可以找到使用这些API的例子。</p>
 
-<h3 id="触摸操作/多点触控-api的概述">触摸操作/多点触控 API的概述</h3>
+<h3 id="触摸操作-多点触控-api的概述">触摸操作/多点触控 API的概述</h3>
 
-<h3 id="触摸操作-(touchaction)">触摸操作 (TouchAction)</h3>
+<h3 id="触摸操作-touchaction">触摸操作 (TouchAction)</h3>
 
 <p><em>TouchAction</em> 对象包含一连串的事件。</p>
 
@@ -3358,7 +3358,7 @@ public static $browsers = array(
 
 driver.perform(TouchAction().tap(el))</code></p>
 
-<h3 id="多点触控-(multitouch)">多点触控 (MultiTouch)</h3>
+<h3 id="多点触控-multitouch">多点触控 (MultiTouch)</h3>
 
 <p><em>MultiTouch</em> 对象是触摸操作的集合。</p>
 
@@ -3460,7 +3460,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 <h2 id="多语言支持">
 <span id="unicode.cn.md"></span>多语言支持</h2>
 
-<p>程序处理非拉丁字符时存在一个的问题：对于带音标的字符，存在多种编码形式。例如，对于<code class="prettyprint">é</code>这样的字符，有两种编码方式：一种是单独的字符<code class="prettyprint">é</code>（Unicode中的<code class="prettyprint">LATIN SMALL LETTER E WITH ACUTE</code>(带有音标的小写的拉丁字母'E'))，另一种是音标在字符后边(<code class="prettyprint">COMBINING ACUTE ACCENT</code>(字符和音标的组合))。为了解决这个问题，存在一个<code class="prettyprint">normalization</code> (标准化) 方法，让<a href="http://www.unicode.org/reports/tr15/">“每个字符都有一个唯一的二进制表示”</a>。</p>
+<p>程序处理非拉丁字符时存在一个的问题：对于带音标的字符，存在多种编码形式。例如，对于<code class="prettyprint">é</code>这样的字符，有两种编码方式：一种是单独的字符<code class="prettyprint">é</code>（Unicode中的<code class="prettyprint">LATIN SMALL LETTER E WITH ACUTE</code>(带有音标的小写的拉丁字母'E’))，另一种是音标在字符后边(<code class="prettyprint">COMBINING ACUTE ACCENT</code>(字符和音标的组合))。为了解决这个问题，存在一个<code class="prettyprint">normalization</code> (标准化) 方法，让<a href="http://www.unicode.org/reports/tr15/">“每个字符都有一个唯一的二进制表示”</a>。</p>
 
 <p>幸运的是，对ASCII字符（例如 不需要进行标准化的字符）进行标准化将不会产生任何变化，并且多次进行标准化
 操作也不会发生额外的变化。因此，可以对所有字符使用标准化函数而不用担心产生不良影响。</p>
@@ -3493,7 +3493,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 
 <p>当发生只因编码导致的问题时，输出<em>看上去</em>一样。从标准的角度，它们的编码应该也和它们看上去那样相同。</p>
 
-<h3 id="查找器-(finder)">查找器 (Finder)</h3>
+<h3 id="查找器-finder">查找器 (Finder)</h3>
 
 <p>需要被查找的字符也应该需要标准化。比如，你在一个iOS的app上有一个叫做<code class="prettyprint">Найти</code>的按钮，你也应该在find命令中标准化它。</p>
 <pre class="highlight javascript"><code><span class="c1">// javascript</span>
@@ -3505,7 +3505,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 
 <p>否则这个按钮可能无法被找到。</p>
 
-<h3 id="文本框-(text-field)">文本框 (Text Field)</h3>
+<h3 id="文本框-text-field">文本框 (Text Field)</h3>
 
 <p>默认情况下，iOS和Android的自动化工具都不支持向输入框输入非ASCII字符。</p>
 
@@ -3658,7 +3658,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 
 <p><b>注意：</b> 这个 ios-webkit-debug-proxy 需要 <b>“web inspector”</b> 打开着以便建立连接。在 <b> settings &gt; safari &gt; advanced </b> 里打开它。请注意 web inspector <b>在 iOS6 时候加入的</b> 以前的版本没有。</p>
 
-<h2 id="wd.js-code-example">Wd.js Code example</h2>
+<h2 id="wd-js-code-example">Wd.js Code example</h2>
 <pre class="highlight javascript"><code>  <span class="c1">// 假设我们已经有一个初始化好了的 `driver` 对象。</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementByName</span><span class="p">(</span><span class="s1">'Web, Use of UIWebView'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">el</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 找到按钮，打开 web 视图</span>
     <span class="nx">el</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 引导到 UIWebView</span>
@@ -3687,7 +3687,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
 </li>
 </ul>
 
-<h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
+<h2 id="wd-java-代码例子">Wd.java 代码例子</h2>
 <pre class="highlight java"><code>  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"iPhone Simulator"</span><span class="o">);</span>
@@ -3712,7 +3712,7 @@ scrollIntoView 对任何的 UiSelector 都可以执行滚动操作。</p>
   <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
 </code></pre>
 
-<h2 id="wd.rb-cucumber-的例子">Wd.rb cucumber 的例子</h2>
+<h2 id="wd-rb-cucumber-的例子">Wd.rb cucumber 的例子</h2>
 <pre class="highlight ruby"><code><span class="no">TEST_NAME</span> <span class="o">=</span> <span class="s2">"Example Ruby Test"</span>
 <span class="no">SERVER_URL</span> <span class="o">=</span> <span class="s2">"http://127.0.0.1:4723/wd/hub"</span>
 <span class="no">APP_PATH</span> <span class="o">=</span> <span class="s2">"https://dl.dropboxusercontent.com/s/123456789101112/ts_ios.zip"</span>
@@ -3765,7 +3765,7 @@ https://gist.github.com/feelobot/7309729</p>
 
 <p>注意：我们可以像上面说的，使用同样的策略。然而，Selendroid 使用 <code class="prettyprint">WEBVIEW</code>/<code class="prettyprint">NATIVE_APP</code> 窗口设置策略。 Appium 常规的混合支持也使用这种策略。</p>
 
-<h2 id="wd.js-代码例子">Wd.js 代码例子</h2>
+<h2 id="wd-js-代码例子">Wd.js 代码例子</h2>
 <pre class="highlight javascript"><code><span class="c1">// 假设我们已经初始化了一个 `driver` 实例。</span>
 <span class="nx">driver</span><span class="p">.</span><span class="nb">window</span><span class="p">(</span><span class="s2">"WEBVIEW"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 选择唯一的 WebView</span>
   <span class="nx">driver</span><span class="p">.</span><span class="nx">elementsByCss</span><span class="p">(</span><span class="s1">'.some-class'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">els</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 通过 CSS 取得元素</span>
@@ -3781,7 +3781,7 @@ https://gist.github.com/feelobot/7309729</p>
 <span class="p">});</span>
 </code></pre>
 
-<h2 id="wd.java-代码例子">Wd.java 代码例子</h2>
+<h2 id="wd-java-代码例子">Wd.java 代码例子</h2>
 <pre class="highlight java"><code>  <span class="c1">//配置 webdriver 并启动 webview 应用。</span>
   <span class="n">DesiredCapabilities</span> <span class="n">desiredCapabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DesiredCapabilities</span><span class="o">();</span>
   <span class="n">desiredCapabilities</span><span class="o">.</span><span class="na">setCapability</span><span class="o">(</span><span class="s">"device"</span><span class="o">,</span> <span class="s">"Selendroid"</span><span class="o">);</span>
@@ -3804,7 +3804,7 @@ https://gist.github.com/feelobot/7309729</p>
   <span class="n">remoteWebDriver</span><span class="o">.</span><span class="na">quit</span><span class="o">();</span>
 </code></pre>
 
-<h1 id="把appium-0.18.x上的测试用例集迁移到appium1.x上">把appium 0.18.x上的测试用例集迁移到appium1.x上</h1>
+<h1 id="把appium-0-18-x上的测试用例集迁移到appium1-x上">把appium 0.18.x上的测试用例集迁移到appium1.x上</h1>
 
 <p>Appium 1.0 已经从先前的版本中移除了一部分过时的特性, 这个指导文档会帮助你了解使用Appium 1.0需要做的具体改变.</p>
 
@@ -3879,11 +3879,11 @@ from appium import webdriver
 
 <p>根据你使用的客户端去相应的使用新的定位方式</p>
 
-<h2 id="使用xml,-不再是json了">使用xml, 不再是json了</h2>
+<h2 id="使用xml-不再是json了">使用xml, 不再是json了</h2>
 
 <p>App source方法先前返回JSON, 现在修改成返回XML. 所以如果你有代码是依赖解析app source的, 那么就需要更新</p>
 
-<h2 id="通过context支持混合应用,-不再是window了">通过context支持混合应用, 不再是window了</h2>
+<h2 id="通过context支持混合应用-不再是window了">通过context支持混合应用, 不再是window了</h2>
 
 <p>以前混合app的切换支持是通过"windows"</p>
 
@@ -3902,7 +3902,7 @@ from appium import webdriver
 <pre class="highlight python"><code><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s">"WEBVIEW"</span><span class="p">)</span>
 </code></pre>
 
-<h2 id='没有了execute_script("mobile:-xxx")'>没有了<code class="prettyprint">execute_script("mobile: xxx")</code>
+<h2 id="没有了execute_script-quot-mobile-xxx-quot">没有了<code class="prettyprint">execute_script("mobile: xxx")</code>
 </h2>
 
 <p>所有的<code class="prettyprint">mobile:</code>方法都已经被移除, 并且被替换为appium client libraries的原生方法. 这意味着如果一个方法调用原来的方式是

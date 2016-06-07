@@ -6,11 +6,11 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>Tutorial</title>
 
-    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print">
-    <link href="../../stylesheets/custom_appium.css" rel="stylesheet" type="text/css">
+    <link href="../../stylesheets/screen.css" rel="stylesheet" media="screen">
+    <link href="../../stylesheets/print.css" rel="stylesheet" media="print">
+    <link href="../../stylesheets/custom_appium.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../../javascripts/all.js" type="text/javascript"></script>
+    <script src="../../javascripts/all.js"></script>
 
       <script>
         $(function() {
@@ -205,7 +205,7 @@ gem install --no-rdoc --no-ri flaky
 </li>
 </ul>
 
-<p><code class="prettyprint">ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code></p>
+<p><code class="prettyprint">ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</code></p>
 
 <ul>
 <li>Install <a href="http://nodejs.org/">nodejs</a> using brew.</li>
@@ -335,7 +335,7 @@ rm -rf /usr/local/lib/node_modules/
 rvm osx-ssl-certs status all
 </code></p>
 
-<h2 id="maven-on-os-x-10.9">Maven on OS X 10.9</h2>
+<h2 id="maven-on-os-x-10-9">Maven on OS X 10.9</h2>
 
 <p><code>brew update
 brew install maven
@@ -541,7 +541,7 @@ used by the appium ruby console (arc).</p>
 
 <p><code class="prettyprint">page</code> - list everything
 <code class="prettyprint">page class: 'text'</code> - list elements with the class string containing ‘text’
-<code class="prettyprint">page class: :nav</code> - list elements with the class string containing ‘nav’
+<code class="prettyprint">page class: :nav</code> - list elements with the class string containing 'nav’
 <code class="prettyprint">page window: 1</code> - show all elements in window 1</p>
 
 <p>The next set of information is the network traffic.</p>
@@ -672,7 +672,7 @@ use driver_quit.</p>
 All the selenium bindings offer a quit method. This should be invoked once
 the testing session is over.</p>
 
-<h2 id="appium.app-inspector">Appium.app Inspector</h2>
+<h2 id="appium-app-inspector">Appium.app Inspector</h2>
 
 <p>We’ve covered finding elements using the page command on the terminal.
 Appium also has a GUI tool on OS X called Appium.app.</p>
@@ -747,9 +747,9 @@ following the page object pattern, and running the test automatically.</p>
 
 <h2 id="automating-a-simple-action">Automating a simple action</h2>
 
-<p><aside class="notice">
-Click on <code class="prettyprint">Java</code> and <code class="prettyprint">Ruby</code> to toggle the language examples
-</aside></p>
+<aside class="notice">
+Click on `Java` and `Ruby` to toggle the language examples
+</aside>
 <pre class="highlight ruby"><code><span class="cm">=begin
 Ruby notes:
 
@@ -782,12 +782,12 @@ The project is setup using maven.
 brings you to a dedicated page about that text. Buttons triggers the Buttons
 page, Controls triggers Controls, and so on.</p>
 
-<p><aside class="success">Remember to clone the repo:
-git clone https://github.com/appium/tutorial.git</aside></p>
+<aside class="success">Remember to clone the repo:
+git clone https://github.com/appium/tutorial.git</aside>
 
 <p>We’re going to verify each element brings us to the correct page.</p>
 
-<h3 id="click-&amp;-verify">Click &amp; verify</h3>
+<h3 id="click-amp-verify">Click &amp; verify</h3>
 <pre class="highlight ruby"><code><span class="c1"># ruby</span>
 <span class="n">text</span><span class="p">(</span><span class="s1">'Buttons, Various uses of UIButton'</span><span class="p">).</span><span class="nf">click</span>
 <span class="n">text_exact</span> <span class="s1">'Buttons'</span>
