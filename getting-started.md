@@ -17,13 +17,14 @@ description: Want to rock your mobile app automation? This is how you get starte
 
 [![Build Status](https://team-appium.ci.cloudbees.com/job/Appium/badge/icon)](https://team-appium.ci.cloudbees.com/job/Appium/)
 
-Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, FirefoxOS).
+Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, Windows, FirefoxOS).
 
 
 ### Supported Platforms
 
 * iOS
 * Android
+* Windows
 * FirefoxOS
 
 See the  [platform support doc](/slate/en/master/#platform-support.md) for more detailed information.
@@ -56,7 +57,7 @@ Your environment needs to be setup for the particular mobile platforms that you
 want to run tests on. See below for particular platform requirements.
 
 If you want to run Appium via an `npm install`, hack with or contribute to Appium, you will need
-[node.js and npm](http://nodejs.org) 0.12 or greater (use [n](https://github.com/visionmedia/n) or
+[node.js and npm](http://nodejs.org) 4 or greater (use [n](https://github.com/visionmedia/n) or
 `brew install node` to install Node.js. Make sure you have not installed Node or Appium with `sudo`,
 otherwise you'll run into problems). We recommend the latest stable version.
 
@@ -64,7 +65,7 @@ To verify that all of Appium's dependencies are met you can use
 `appium-doctor`.  Install it with `npm install -g appium-doctor` (or run it
 from [source](https://github.com/appium/appium-doctor)), then run
 `appium-doctor` and supply the `--ios` or `--android` flags to verify that all
-of the dependencies are set up correctly. 
+of the dependencies are set up correctly.
 
 You also need to download the Appium client for your language so you can write tests. The Appium clients are simple extensions to the WebDriver clients. You can see the list of clients and links to download instructions at the  [Appium clients list](/slate/en/master/#appium-clients.md).
 
@@ -83,6 +84,11 @@ You also need to download the Appium client for your language so you can write t
   *  [linux](/slate/en/master/#running-on-linux.md)
   *  [osx](/slate/en/master/#running-on-osx.md)
   *  [windows](/slate/en/master/#running-on-windows.md)
+  
+#### Windows Requirements
+
+* Windows 10
+*  [Documentation](/slate/en/master/#running-on-windows.md)
 
 #### FirefoxOS Requirements
 
@@ -130,6 +136,8 @@ Appium drives Apple's UIAutomation library for iOS support, which is based on
 
 Android support uses the UiAutomator framework for newer platforms and
 [Selendroid](http://github.com/DominikDary/selendroid) for older Android platforms.
+
+Windows support uses Microsoft's [WinAppDriver](https://github.com/Microsoft/WinAppDriver)
 
 FirefoxOS support leverages [Marionette](https://developer.mozilla.org/en-US/docs/Marionette),
 an automation driver that is compatible with WebDriver and is used to automate

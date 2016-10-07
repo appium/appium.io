@@ -140,7 +140,7 @@ Alternatively, download them directly from <a href="https://developer.apple.com/
 <li>Install the latest stable release of Ruby.</li>
 </ul>
 
-<p><code>\curl -sSL https://get.rvm.io | bash -s stable
+<p><code>curl -sSL https://get.rvm.io | bash -s stable
 rvm install ruby
 </code></p>
 
@@ -217,7 +217,7 @@ brew install node
 </code></p>
 
 <ul>
-<li>Node should be <code class="prettyprint">v0.10.26</code> or better.
+<li>Node should be <code class="prettyprint">v4</code> or better.
 Don’t use the big green install button on <a href="http://nodejs.org/">nodejs.org</a> or
 all npm commands will require sudo.</li>
 </ul>
@@ -256,32 +256,33 @@ mvn -version
 <li>Clone appium</li>
 </ul>
 
-<p><code class="prettyprint">git clone git://github.com/appium/appium.git</code></p>
+<p><code>git clone git://github.com/appium/appium.git
+</code></p>
 
 <ul>
-<li>Run reset.sh. When running reset.sh, make sure to be on Xcode 5.0.2 for
-best results. You may have problems if you reset on Xcode 4.6.3 and then
-switch to a newer Xcode.</li>
+<li>Run <code class="prettyprint">npm install</code>. When running <code class="prettyprint">npm install</code>, make sure to be on Xcode 9+</li>
 </ul>
 
-<p><code class="prettyprint">cd appium; ./reset.sh</code></p>
+<p><code>cd appium
+npm install
+</code></p>
 
 <p>If you see config errors, try cleaning git. <code class="prettyprint">git clean -dfx; git reset --hard</code></p>
 
-<p>You can also reset by platform. <code class="prettyprint">./reset.sh --ios</code></p>
-
 <ul>
-<li>Authorize for testing. Must run reset.sh as mentioned above before
-running the grunt task. If you’re only testing Android, this can be skipped.</li>
+<li>Authorize for testing. If you’re only testing Android, this can be skipped.</li>
 </ul>
 
-<p><code>sudo `which grunt`; authorize</code></p>
+<p><code>npm install -g authorize-ios
+authorize-ios
+</code></p>
 
 <ul>
 <li>Start appium.</li>
 </ul>
 
-<p><code class="prettyprint">$ node .</code></p>
+<p><code>node .
+</code></p>
 
 <h2 id="bash-profile">Bash Profile</h2>
 
@@ -307,15 +308,14 @@ export PATH
 <p>When using <code class="prettyprint">Appium.app</code> make sure to set Appium -&gt; Preferences… -&gt; Check
 “Use External Appium Package” and set it to the path of Appium cloned from GitHub.</p>
 
-<p>Fix permission errors. npm shouldn’t require sudo.</p>
+<p>Fix permission errors. <code class="prettyprint">npm</code> should not require sudo.</p>
 
 <p><code>brew uninstall node
 brew install node
 rm -rf ./node_modules
 rm -rf "/Users/`whoami`/.npm"
 rm -rf /usr/local/lib/node_modules/
-./reset.sh --ios
-./reset.sh --android
+npm install
 </code></p>
 
 <ul>
@@ -415,21 +415,26 @@ We’ll also look at a desktop app that makes writing tests a bit easier.</p>
 
 <h2 id="compiling-the-ios-sample-app">Compiling the iOS sample app</h2>
 
-<p><code class="prettyprint">cd</code> into the appium repository root. Running <code class="prettyprint">./reset.sh --ios --dev</code> will
+<p>Running <code class="prettyprint">npm install sample-apps</code> will
  build the sample iOS app UICatalog.</p>
 
-<p>The UICatalog app is <a href="https://developer.apple.com/library/ios/samplecode/UICatalog/UICatalog.zip">provided by Apple</a>.</p>
+<p>The UICatalog app is Appium’s <a href="https://github.com/appium/ios-uicatalog">fork</a>
+of Apple’s sample app.</p>
 
-<p>After seeing <code class="prettyprint">---- reset.sh completed successfully ----</code>, you’ll find <code class="prettyprint">UICatalog.app</code>
+<p>After <code class="prettyprint">npm install sample-apps</code> finishes, you’ll find <code class="prettyprint">UICatalog.app</code>
 at this location:</p>
 
-<p><code class="prettyprint">/appium/sample-code/apps/UICatalog/build/Release-iphonesimulator/UICatalog.app</code></p>
+<p><code class="prettyprint">node_modules/sample-apps/node_modules/ios-uicatalog/build/Release-iphonesimulator/UICatalog-iphonesimulator.app</code></p>
 
 <p>It’s important to note that this app is built for the simulator.
 Builds for physical iOS devices only work on physical iOS devices.</p>
 
 <p>Appium supports physical devices however this tutorial focuses
 on virtual devices.</p>
+
+<h2 id="origin-of-appium-39-s-uicatalog-app">Origin of Appium’s UICatalog App</h2>
+
+<p>The UICatalog app is <a href="https://developer.apple.com/library/ios/samplecode/UICatalog/UICatalog.zip">provided by Apple</a>.</p>
 
 <h2 id="prebuilt-ios-sample-app">Prebuilt iOS Sample App</h2>
 

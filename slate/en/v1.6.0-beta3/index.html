@@ -603,12 +603,17 @@ device can be automated.</li>
 <h3 id="authorizing-ios-on-the-computer">Authorizing iOS on the computer</h3>
 
 <p>You need to authorize use of the iOS Simulator by running the <code class="prettyprint">authorize-ios</code>
-binary made available through <code class="prettyprint">npm</code>. Install the program by running</p>
-<pre class="highlight plaintext"><code>npm install -g authorize-ios
+binary made available through <code class="prettyprint">npm</code>. If you installed globally, by running
+<code class="prettyprint">npm install -g appium</code>, use</p>
+<pre class="highlight plaintext"><code>sudo authorize-ios
 </code></pre>
 
-<p>And the invoke the program using</p>
-<pre class="highlight plaintext"><code>sudo authorize-ios
+<p>If you installed locally, the binary will be installed within the <code class="prettyprint">node_modules/.bin</code>
+directory, so use</p>
+<pre class="highlight plaintext"><code>sudo node_modules/.bin/authorize-ios
+
+# alternatively
+sudo $(npm bin)/authorize-ios
 </code></pre>
 
 <p>If you are running <a href="https://github.com/appium/appium-dot-app">Appium.app</a>, you can
@@ -639,7 +644,7 @@ those on Linux. See the <a href="#android-setup.md">Android setup docs</a>.</p>
 
 <h3 id="running-ios-tests-on-os-x-using-jenkins">Running iOS tests on OS X using Jenkins</h3>
 
-<p>First download the jenkins-cli.jar and verify the Mac successfully connects to Jenkins master. Ensure you’ve run the <code class="prettyprint">authorize-ios</code> command mentioned above.</p>
+<p>First download the jenkins-cli.jar and verify the Mac successfully connects to Jenkins master. Ensure you’ve run the <code class="prettyprint">authorize_ios</code> command mentioned above.</p>
 
 <p><code class="prettyprint">wget https://jenkins.ci.cloudbees.com/jnlpJars/jenkins-cli.jar</code></p>
 <pre class="highlight plaintext"><code>java -jar jenkins-cli.jar \
@@ -727,43 +732,56 @@ are where they are found, should they need to be deleted:</p>
 
 <ol>
 <li>Download latest <a href="https://nodejs.org/download/release/v6.3.0/node-v6.3.0-x64.msi">node and npm tools</a> MSI (version &gt;= 6.0). The <code class="prettyprint">npm</code> and <code class="prettyprint">nodejs</code> paths should be in your PATH environment variable.</li>
-<li>Open admin cmd prompt</li>
-<li>Run the command <code class="prettyprint">npm install -g appium</code> which will install Appium from NPM</li>
-<li>To start Appium, you can now simply run <code class="prettyprint">appium</code> from the prompt.</li>
-<li>Follow the directions below for setup for either Android or Windows app testing.</li>
-<li>Run a test from any Appium client.</li>
+<li>Download latest Java JDK <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">here</a> (accept the license agreement first). Set 'JAVA_HOME’ to be your JDK path. The <code class="prettyprint">bin</code> in that directory should be added to your PATH variable.</li>
+<li>Install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>. Set <code class="prettyprint">ANDROID_HOME</code> to be
+your Android SDK path and add the <code class="prettyprint">tools</code> and <code class="prettyprint">platform-tools</code> folders to your
+PATH variable.</li>
+<li>Install <a href="http://ant.apache.org/bindownload.cgi">Apache Ant</a> or use the one that comes with the Android Windows SDK in the eclipse\plugins folder. Be sure to add the folder containing Ant to your PATH variable.</li>
+<li>Install <a href="http://maven.apache.org/download.cgi">Apache Maven</a> and set the M2HOME and M2 environment variables. Set <code class="prettyprint">M2_HOME</code> to the directory maven is installed in, and set <code class="prettyprint">M2</code> to the <code class="prettyprint">bin</code> in that directory. Add the path you used for <code class="prettyprint">M2</code> to your PATH.</li>
+<li>Open admin cmd</li>
+<li>run command: npm install -g appium</li>
+<li>run command: appium</li>
+<li>Run a test from any Appium client (including Visual Studio)</li>
 </ol>
 
 <h2 id="additional-setup-for-android-app-testing">Additional Setup for Android App Testing</h2>
 
 <ol>
-<li>Download the latest Java JDK <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">here</a> (accept the license agreement first). Set 'JAVA_HOME’ to be your JDK path. The <code class="prettyprint">bin</code> in that directory should be added to your PATH variable.</li>
-<li>Install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>. Set the <code class="prettyprint">ANDROID_HOME</code> environment variable to be your Android SDK path and add the <code class="prettyprint">tools</code> and <code class="prettyprint">platform-tools</code> folders to your PATH variable.</li>
-<li>Install <a href="http://ant.apache.org/bindownload.cgi">Apache Ant</a> or use the one that comes with the Android Windows SDK in the eclipse\plugins folder. Be sure to add the folder containing Ant to your PATH variable.</li>
-<li>Install <a href="http://maven.apache.org/download.cgi">Apache Maven</a> and set the M2HOME and M2 environment variables. Set <code class="prettyprint">M2_HOME</code> to the directory maven is installed in, and set <code class="prettyprint">M2</code> to the <code class="prettyprint">bin</code> in that directory. Add the path you used for <code class="prettyprint">M2</code> to your PATH.</li>
 <li>To run tests on Windows, you will need to have the Android Emulator booted or an Android Device connected that is running an AVD with API Level 17 or greater. Then run Appium on the command line (via the <code class="prettyprint">appium</code> command)</li>
-<li>Your test script should ensure that the <code class="prettyprint">platformVersion</code> capability corresponds to the emulator or device version you are testing, and that the <code class="prettyprint">app</code> capability is an absolute path to the .apk file of the Android app.</li>
+<li>Within test script, change value of 'platformVersion’ to correspond with emulator version (i.e. '4.4.4’)</li>
+<li>Within test script, change value of 'app’ to PATH('path of .apk’) and ensure the entire path (including close parenthesis) is on one line</li>
 </ol>
 
 <h2 id="additional-setup-for-windows-app-testing">Additional Setup for Windows App Testing</h2>
 
 <ol>
-<li>To test a Windows app, simply make sure you have turned <a href="https://msdn.microsoft.com/en-us/windows/uwp/get-started/enable-your-device-for-development">developer mode</a> on.</li>
+<li>To test a Windows app, make sure you have turned <a href="https://msdn.microsoft.com/en-us/windows/uwp/get-started/enable-your-device-for-development">developer mode</a> on.</li>
 </ol>
-
-<p>(see the <a href="#windows-app-testing.md">Windows app testing</a> doc for instructions on how to run Windows app tests)</p>
 
 <h2 id="running-appium">Running Appium</h2>
 
-<p>See the <a href="#server-args.md">server documentation</a> for all the command line arguments.</p>
+<p>See the <a href="#server-args.md">server documentation</a> for all the command line
+arguments.</p>
+
+<h2 id="notes">Notes</h2>
 
 <ul>
-<li>On Windows run Appium.exe as an administrator, or when running from source you need to run cmd as an administrator.</li>
-<li>You must supply the <code class="prettyprint">--no-reset</code> or <code class="prettyprint">--full-reset</code> flags for
-Android to work on Windows.</li>
-<li>There exists a hardware accelerated emulator for Android; it has it’s own
+<li>URL endpoint has to append “/wd/hub”</li>
+<li>
+<p>DesiredCapabilities:</p>
+
+<ul>
+<li>platformName = “Windows”</li>
+<li>deviceName = “WindowsPC”</li>
+</ul>
+</li>
+<li><p>On windows run appium.app as administrator or when running from source you need to run cmd as administrator.</p></li>
+<li><p>You must supply the <code class="prettyprint">--no-reset</code> or <code class="prettyprint">--full-reset</code> flags for
+Android to work on Windows.</p></li>
+<li><p>There exists a hardware accelerated emulator for Android, it has it’s own
 limitations. For more information you can check out this
-<a href="#android-hax-emulator.md">page</a>.</li>
+<a href="#android-hax-emulator.md">page</a>.</p></li>
+<li><p>Make sure that <code class="prettyprint">hw.battery=yes</code> in your AVD’s <code class="prettyprint">config.ini</code>.</p></li>
 </ul>
 
 <h2 id="running-appium-on-linux">
@@ -1094,8 +1112,6 @@ simulators.</li>
 <li>If you getting this error: select_port() failed, when trying to open the
 proxy, see this <a href="https://groups.google.com/forum/#!topic/appium-discuss/tw2GaSN8WX0">discussion</a>
 </li>
-<li>In a Safari session, if the logs indicate that the initial url cannot be entered, make sure that
-you have the software keyboard enabled. See this <a href="https://github.com/appium/appium/issues/6440">discussion</a>.</li>
 </ul>
 
 <h3 id="firefoxos">FirefoxOS</h3>
@@ -2410,75 +2426,6 @@ folder (<code class="prettyprint">/opt/local/bin</code> by default) is added to 
 <td><code class="prettyprint">appName</code></td>
 <td>The display name of the application under test. Used to automate backgrounding the app in iOS 9+.</td>
 <td>e.g., <code class="prettyprint">UICatalog</code>
-</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="ios-only-using-xcuitest">iOS Only, using XCUITest</h3>
-
-<p class="expand_table"></p>
-
-<table>
-<thead>
-<tr>
-<th>Capability</th>
-<th>Description</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code class="prettyprint">processArguments</code></td>
-<td>Process arguments and environment which will be sent to the WebDriverAgent server.</td>
-<td>
-<code class="prettyprint">{ args: ["a", "b", "c"] , env: { "a": "b", "c": "d" } }</code> or <code class="prettyprint">'{"args": ["a", "b", "c"], "env": { "a": "b", "c": "d" }}'</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">wdaLocalPort</code></td>
-<td>This value if specified, will be used to forward traffic from Mac host to real ios devices over USB. Default value is same as port number used by WDA on device.</td>
-<td>e.g., <code class="prettyprint">8100</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">showXcodeLog</code></td>
-<td>Whether to display the output of the Xcode command used to run the tests. If this is <code class="prettyprint">true</code>, there will be <strong>lots</strong> of extra logging at startup. Defaults to <code class="prettyprint">false</code>
-</td>
-<td>e.g., <code class="prettyprint">true</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">realDeviceLogger</code></td>
-<td>Device logger for real devices. It could be path to <code class="prettyprint">deviceconsole</code> (installed with <code class="prettyprint">npm install deviceconsole</code>, a compiled binary named <code class="prettyprint">deviceconsole</code> will be added to <code class="prettyprint">./node_modules/deviceconsole/</code>) or <code class="prettyprint">idevicesyslog</code> (comes with libimobiledevice). Defaults to <code class="prettyprint">idevicesyslog</code>
-</td>
-<td>
-<code class="prettyprint">idevicesyslog</code>, <code class="prettyprint">/abs/path/to/deviceconsole</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">iosInstallPause</code></td>
-<td>Time in milliseconds to pause between installing the application and starting WebDriverAgent on the device. Used particularly for larger applications. Defaults to <code class="prettyprint">0</code>
-</td>
-<td>e.g., <code class="prettyprint">8000</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">xcodeConfigFile</code></td>
-<td>Full path to an optional Xcode configuration file that specifies the code signing identity and team for running the WebDriverAgent on the real device.</td>
-<td>e.g., <code class="prettyprint">/path/to/myconfig.xcconfig</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">keychainPath</code></td>
-<td>Full path to the private development key exported from the system keychain. Used in conjunction with <code class="prettyprint">keychainPassword</code> when testing on real devices.</td>
-<td>e.g., <code class="prettyprint">/path/to/MyPrivateKey.p12</code>
-</td>
-</tr>
-<tr>
-<td><code class="prettyprint">keychainPassword</code></td>
-<td>Password for unlocking keychain specified in <code class="prettyprint">keychainPath</code>.</td>
-<td>e.g., <code class="prettyprint">super awesome password</code>
 </td>
 </tr>
 </tbody>
@@ -4993,19 +4940,10 @@ NotepadSession = new IOSDriver&lt;IOSElement&gt;(new Uri("http://127.0.0.1:4723"
 // Control the AlarmClock app
 NotepadSession.FindElementByClassName("Edit").SendKeys("This is some text");
 </code>
+### Inspecting UI Elements
+Microsoft Visual Studio 2015 by default includes Windows SDK that provides great tool to inspect the application you are testing. This tool allows you to see every UI element/node that you can query using Windows Application Driver. This <strong>inspect.exe</strong> tool can be found under the Windows SDK folder such as <code class="prettyprint">C:\Program Files (x86)\Windows Kits\10\bin\x86</code>
 </li>
 </ol>
-
-<h3 id="starting-a-session">Starting a Session</h3>
-
-<p>Note that you should additionally use these capabilities to ensure you are getting a Windows App automation session:</p>
-
-<p><code class="prettyprint">platformName</code>: <code class="prettyprint">Windows</code>
-<code class="prettyprint">deviceName</code>: <code class="prettyprint">WindowsPC</code></p>
-
-<h3 id="inspecting-ui-elements">Inspecting UI Elements</h3>
-
-<p>Microsoft Visual Studio 2015 by default includes Windows SDK that provides great tool to inspect the application you are testing. This tool allows you to see every UI element/node that you can query using Windows Application Driver. This <strong>inspect.exe</strong> tool can be found under the Windows SDK folder such as <code class="prettyprint">C:\Program Files (x86)\Windows Kits\10\bin\x86</code></p>
 
 <table>
 <thead>
@@ -5566,57 +5504,6 @@ the command line (appium does this under the hood for xcode &lt; 7). See <a href
 <p>eg. <code class="prettyprint">sh ./bin/xcode-iwd.sh /Applications/Xcode.app /Users/xyz/appium-instruments/</code></p>
 
 <p>Note: iwd with xcode7 will only work for iOS &gt;= 9.0, you can switch to older xcode for iOS &lt; 9.0</p>
-
-<h2 id="migrating-your-ios-tests-from-uiautomation-ios-9-2-and-below-to-xcuitest-ios-9-3-and-up">
-<span id="migrating-to-xcuitest.md"></span>Migrating your iOS tests from UIAutomation (iOS 9.2 and below) to XCUITest (iOS 9.3 and up)</h2>
-
-<p>For iOS automation, Appium relies on system frameworks provided by Apple. For iOS 9.2 and below, Apple’s only automation technology was called UIAutomation, and it ran in the context of a process called “Instruments”. As of iOS 10, Apple has completely removed the UIAutomation instrument, thus making it impossible for Appium to allow testing in the way it used to. Fortunately, Apple introduced a new automation technology, called XCUITest, beginning with iOS 9.3. For iOS 10 and up, this will be the only supported automation framework from Apple.</p>
-
-<p>Appium has built in support for XCUITest beginning with Appium 1.6. For the most part, the capabilities of XCUITest match those of UIAutomation, and so the Appium team was able to ensure that test behavior will stay the same. This is one of the great things about using Appium! Even with Apple completely changing the technology your tests are using, your scripts can stay mostly the same! That being said, there are some differences you’ll need to be aware of which might require modification of your test scripts if you want to run them under our XCUITest automation backend. This document will help you with those differences.</p>
-
-<h3 id="element-class-name-schema">Element class name schema</h3>
-
-<p>With XCUITest, Apple has given different class names to the UI elements which make up the view hierarchy. For example, <code class="prettyprint">UIAButton</code> is now <code class="prettyprint">XCUIElementTypeButton</code>. In many cases, there is a direct mapping between these two classes. If you use the <code class="prettyprint">class name</code> locator strategy to find elements, Appium 1.6 will rewrite the selector for you. Likewise, if you use the <code class="prettyprint">xpath</code> locator strategy, Appium 1.6 will find any <code class="prettyprint">UIA*</code> elements in your XPath string and rewrite them appropriately.</p>
-
-<p>This does not however guarantee that your tests will work exactly the same, for two reasons:</p>
-
-<ol>
-<li>The application hierarchy reported to Appium will not necessarily be identical within XCUITest to what it was within UIAutomation. If you have a path-based XPath selector, it may need to be adjusted.</li>
-<li>The list of class names is not entirely identical either. Many elements are returned by XCUITest as belonging to the <code class="prettyprint">XCUIElementTypeOther</code> class, a sort of catch-all container.</li>
-</ol>
-
-<h3 id="page-source">Page source</h3>
-
-<p>As mentioned just above, if you rely on the app source XML from the <code class="prettyprint">page source</code> command, the XML output will now differ significantly from what it was under UIAutomation.</p>
-
-<h3 id="ios-uiautomation-locator-strategy">
-<code class="prettyprint">-ios uiautomation</code> locator strategy</h3>
-
-<p>This locator strategy was specifically built on UIAutomation, so it is not included in the XCUITest automation backend. We will be working on a similar “native”-type locator strategy in coming releases.</p>
-
-<h3 id="system-dependencies">System dependencies</h3>
-
-<p>In addition to the many gotchas that might come with upgrading any XCode installation (unrelated to Appium), Appium’s XCUITest support requires a new system dependency: <a href="https://github.com/Carthage/Carthage">Carthage</a>. Appium Doctor has now been updated to ensure that the <code class="prettyprint">carthage</code> binary is on your path.</p>
-
-<h3 id="api-differences">API differences</h3>
-
-<p>Unfortunately, the XCUITest API and the UIAutomation API are not equivalent. In many cases (like with <code class="prettyprint">tap/click</code>), the behavior is identical. But some features that were available in the UIAutomation backend are not yet available in the new XCUITest backend. These known lacking features include:
-* Geolocation support (e.g., <code class="prettyprint">driver.location</code>)
-* Shaking the device
-* Locking the device
-* Rotating the device (note that this is <em>NOT</em> device <em>orientation</em>, which is supported)</p>
-
-<p>We will endeavor to add these features back in future releases of Appium.</p>
-
-<h3 id="other-known-issues">Other known issues</h3>
-
-<p>Finally, a list of known issues with the initial 1.6 release:</p>
-
-<ul>
-<li><a href="https://github.com/appium/appium/issues/6888">Problems with processArguments</a></li>
-</ul>
-
-<p>As far as possible, we will add the missing features and fix other known issues in the <a href="https://github.com/appium/appium/milestone/27">1.6.1 Milestone</a>, so following that may be of interest to you.</p>
 
 <h1 id="appium-gui">Appium GUI</h1>
 
