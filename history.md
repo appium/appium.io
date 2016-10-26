@@ -61,7 +61,7 @@ load, and Jason nearly had to move on to the next lightning talk.  At the last
 moment, the screen turned on and Dan jumped into his presentation. He explained
 the details of his implementation and how it worked, begged for contributors,
 and in five minutes it was over. The crowd applauded politely, and he left the
-stage. 
+stage.
 
 ## The Phone Rings
 
@@ -70,7 +70,7 @@ working on iOS testing support for a client at Sauce Labs.  Jason remembered
 Dan's lightning talk and thought the project might be useful to Jason's work,
 but Dan's source code was not public. Jason asked Dan to meet up.  Later that
 week, Dan met Jason in a bar in San Francisco and showed him the source code
-for iOS Auto. 
+for iOS Auto.
 
 A long-time open source advocate, Jason encouraged Dan to release his code
 under an open source license.  In August, Dan [released the source
@@ -135,19 +135,45 @@ Appium the first truly cross-platform automation framework. The project also
 continued to attract users and contributors, and by the end of 2013 we'd
 already had well over 1,000 commits.
 
-## The Road to Appium 1.0 and Beyond
+## The Road to Appium 1.0
 
-Since its early days, Appium has grown and matured significantly. In May 2014,
+Appium began to grow and mature significantly. In May 2014,
 we released Appium 1.0, which stood as a milestone in Appium's development.
-Appium has been given
+Appium was given
 [various](http://sauceio.com/index.php/2014/01/appium-selected-as-a-black-duck-open-source-rookie-of-the-year/)
 [awards](http://sauceio.com/index.php/2014/10/appium-wins-a-bossy-award-from-infoworld/)
-and is now the most popular open-source cross-platform mobile automation
-framework. Stability has improved, bugs prioritized and fixed, and features
-added. Sauce Labs has increased the number of developers it donates to working
-on Appium, but the entire community is involved in guiding the project and
-contributing to it, and project governance happens in the open, on public
-mailing lists and GitHub's issue tracker.
+and became the most popular open-source cross-platform mobile automation
+framework. Stability improved, bugs were prioritized and fixed, and features
+added. Sauce Labs increased the number of developers it donated to working
+on Appium, but the entire community stayed involved in guiding the project and
+contributing to it, and project governance continued to happen in the open, on
+public mailing lists and GitHub's issue tracker.
+
+## The Appium Umbrella Broadens
+
+Eventually, it became clear that the Appium codebase was not optimized for
+a large team of distributed, sometime contributors. We took the opportunity as
+a committer team to rewrite Appium from the ground up, using a more modern
+version of the JavaScript language, and redoing Appium's architecture so that
+it was easy for users or third-party developers to build their own Appium
+"drivers". We wanted for it to be easier for new contributors to get ramped up
+on the Appium codebase, and to see support for new platforms added to Appium by
+groups other than the core team. That vision has begun to be fulfilled, with
+groups like Microsoft and Youi.tv adding drivers to Appium for Windows desktop
+app automation and Youi.tv app automation, respectively. Who knows what
+platforms will be added next?
+
+## Appium To The People
+
+In late 2016, Sauce Labs donated Appium as a project to the [JS
+Foundation](https://js.foundation), in order to cement for the world Sauce's
+commitment that Appium remain open source. The JS Foundation is a non-profit
+open source stewardship organization which takes responsibility for holding the
+copyright for open source projects, as well as ensuring they have a long and
+successful tenure in the community. As a result of our move to a non-profit
+foundation, we hope that the door will open even more widely for new
+contributors, either as individuals or representing one of the many companies
+which now have an interest in seeing Appium move forward.
 
 We look forward to many more years of seeing Appium provide incredible value as
 a mobile automation tool and an essential part of every company's mobile CI
