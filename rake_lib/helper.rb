@@ -407,6 +407,7 @@ YAML
       data.gsub!('](CONTRIBUTING.md)', '](/slate/en/master/#CONTRIBUTING.md)')
       data.gsub!('](docs/en/)', '](/slate/en/master/)')
       data.gsub!('](/docs/en/)', '](/slate/en/master/)')
+      data.gsub!('](ROADMAP.md)', '](https://github.com/appium/appium/blob/master/ROADMAP.md)')
       data.gsub! /]\s*\(\/docs\/en\/.*\//, '](/slate/en/master/#'
 
       data.gsub!('](sample-code/examples)', '](https://github.com/appium/appium/tree/master/sample-code/examples)')
