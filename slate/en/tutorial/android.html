@@ -64,7 +64,7 @@ The same WebDriver bindings can be used across web and mobile.</p>
 
 <h2 id="install-overview">Install Overview</h2>
 
-<p>This document is written for OS X 10.9.2 or better.</p>
+<p>This document is written for OS X 10.12 or better.</p>
 
 <table>
 <thead>
@@ -121,17 +121,17 @@ The same WebDriver bindings can be used across web and mobile.</p>
 </tbody>
 </table>
 
-<p>Note that <a href="http://appium.io/">Appium.app</a> provides a ready to run version of
-appium. If you’re using Appium.app then there’s no need to run from source unless
+<p>Note that <a href="https://github.com/appium/appium-desktop/releases">Appium-desktop</a> provides a ready to run version of
+appium. If you’re using Appium-desktop then there’s no need to run from source unless
 you want to use the latest and greatest.</p>
 
-<p>Install <a href="https://developer.apple.com/downloads/index.action">Xcode 5.1 from the App Store</a>.</p>
+<p>Install <a href="https://developer.apple.com/downloads/index.action">Xcode 8 from the App Store</a>.</p>
 
 <p>Install the command line build tools within Xcode. (Xcode -&gt; Preferences -&gt; Downloads).
 Alternatively, download them directly from <a href="https://developer.apple.com/downloads/index.action">Apple</a>.</p>
 
 <ul>
-<li>Install <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 7</a>.</li>
+<li>Install <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 8</a>.</li>
 </ul>
 
 <h2 id="install-ruby">Install Ruby</h2>
@@ -217,29 +217,13 @@ brew install node
 </code></p>
 
 <ul>
-<li>Node should be <code class="prettyprint">v4</code> or better.
+<li>Node should be <code class="prettyprint">v6</code> or better.
 Don’t use the big green install button on <a href="http://nodejs.org/">nodejs.org</a> or
 all npm commands will require sudo.</li>
 </ul>
 
 <p><code>node --version
 npm --version
-</code></p>
-
-<ul>
-<li>Install grunt.</li>
-</ul>
-
-<p><code class="prettyprint">npm install -g grunt grunt-cli</code></p>
-
-<ul>
-<li>Run the version command from the appium folder. If you’re not in that
-folder, the grunt version will not display.</li>
-</ul>
-
-<p><code>grunt --version
-grunt-cli v0.1.13
-grunt v0.4.2
 </code></p>
 
 <ul>
@@ -335,7 +319,7 @@ npm install
 rvm osx-ssl-certs status all
 </code></p>
 
-<h2 id="maven-on-os-x-10-9">Maven on OS X 10.9</h2>
+<h2 id="maven-on-os-x-10-9">Maven on OS X 10.12</h2>
 
 <p><code>brew update
 brew install maven
@@ -747,27 +731,10 @@ use driver_quit.</p>
 All the selenium bindings offer a quit method. This should be invoked once
 the testing session is over.</p>
 
-<h2 id="appium-app-inspector">Appium.app Inspector</h2>
+<h2 id="appium-app-inspector">Appium-desktop Inspector</h2>
 
 <p>We’ve covered finding elements using the page command on the terminal.
-Appium also has a GUI tool on OS X called Appium.app.</p>
-
-<p>Appium.app enables visual exploration of the application to identify elements.
-In addition, gestures are supported and can be exported to working code.</p>
-
-<p>When using Appium.app for the first time, click the checkbox button. This
-will activate appium doctor. If you don’t see all green checkmarks,
-then something is incorrect with your system configuration. Make the
-necessary changes, press the checkbox button again, and then proceed when
-everything is passing.</p>
-
-<p><img src="../../images/appium_doctor.png"></p>
-
-<p>By default Appium.app uses a bundled version of appium. If you’re running the
-newest appium version from source, then click <code class="prettyprint">Appium</code> -&gt; <code class="prettyprint">Preferences</code> and
-set <code class="prettyprint">Use External Appium Package</code>.</p>
-
-<p><img src="../../images/appium_external.png"></p>
+Appium also has a GUI tool on OS X called Appium-desktop.</p>
 
 <p>While most interactions can be done completely within the console, Appium.app is
 great for identifying the proper values for appium’s gesture commands.</p>

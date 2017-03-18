@@ -7,16 +7,6 @@ description: Want to rock your mobile app automation? This is how you get starte
 
 ## Appium
 
-[![NPM version](https://badge.fury.io/js/appium.svg)](https://npmjs.org/package/appium)
-[![Dependency Status](https://david-dm.org/appium/appium.svg)](https://david-dm.org/appium/appium)
-[![devDependency Status](https://david-dm.org/appium/appium/dev-status.svg)](https://david-dm.org/appium/appium#info=devDependencies)
-
-[![Monthly Downloads](https://img.shields.io/npm/dm/appium.svg)](https://npmjs.org/package/appium)
-[![Pull Requests](http://issuestats.com/github/appium/appium/badge/pr?style=flat)](http://issuestats.com/github/appium/appium)
-[![Issues Closed](http://issuestats.com/github/appium/appium/badge/issue?style=flat)](http://issuestats.com/github/appium/appium)
-
-[![Build Status](https://team-appium.ci.cloudbees.com/job/Appium/badge/icon)](https://team-appium.ci.cloudbees.com/job/Appium/)
-
 Appium is an open source, cross-platform test automation tool for native, hybrid and mobile web apps, tested on simulators (iOS, FirefoxOS), emulators (Android), and real devices (iOS, Android, Windows, FirefoxOS).
 
 
@@ -57,7 +47,7 @@ Your environment needs to be setup for the particular mobile platforms that you
 want to run tests on. See below for particular platform requirements.
 
 If you want to run Appium via an `npm install`, hack with or contribute to Appium, you will need
-[node.js and npm](http://nodejs.org) 4 or greater (use [n](https://github.com/visionmedia/n) or
+[node.js and npm](http://nodejs.org) v6 or greater (use [n](https://github.com/visionmedia/n) or
 `brew install node` to install Node.js. Make sure you have not installed Node or Appium with `sudo`,
 otherwise you'll run into problems). We recommend the latest stable version.
 
@@ -71,8 +61,8 @@ You also need to download the Appium client for your language so you can write t
 
 #### iOS Requirements
 
-* Mac OS X 10.10 or higher, 10.11.1 recommended
-* XCode &gt;= 6.0, 7.1.1 recommended
+* Mac OS X 10.12 recommended
+* XCode 8 recommended
 * Apple Developer Tools (iPhone simulator SDK, command line tools)
 *  [Ensure you read our documentation on setting yourself up for iOS testing!](/slate/en/master/#running-on-osx.md)
 

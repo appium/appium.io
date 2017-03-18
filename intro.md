@@ -38,7 +38,7 @@ meet requirement #1 by using vendor-provided automation frameworks under the
 hood. That way, we don't need to compile in any Appium-specific or
 third-party code or frameworks to your app. This means **you're testing the same app you're shipping**. The vendor-provided frameworks we use are:
 
-* iOS: Apple's [UIAutomation](https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/)
+* iOS 9.3+: Apple's [XCTest](https://developer.apple.com/reference/xctest) 
 * Android 4.2+: Google's [UiAutomator](http://developer.android.com/tools/help/uiautomator/index.html)
 * Android 2.3+: Google's [Instrumentation](http://developer.android.com/reference/android/app/Instrumentation.html). (Instrumentation support is provided by bundling a separate project, [Selendroid](http://selendroid.io))
 * Windows: Microsoft's [WinAppDriver](http://github.com/microsoft/winappdriver) 
@@ -109,7 +109,7 @@ which support Appium's extensions to the WebDriver protocol. When using Appium,
 you want to use these client libraries instead of your regular WebDriver
 client. You can view the full list of libraries  [here](/slate/en/master/#appium-clients.md).
 
-**[Appium.app](https://github.com/appium/appium-dot-app), [Appium.exe](https://github.com/appium/appium-dot-exe)**<br/>
+**[Appium-Desktop](https://github.com/appium/appium-desktop)**<br/>
 There exist GUI wrappers around the Appium server that can be downloaded.
 These come bundled with everything required to run the Appium server,
 so you don't need to worry about Node. They also come with an Inspector,

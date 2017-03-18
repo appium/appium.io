@@ -76,7 +76,7 @@ hood. That way, we don’t need to compile in any Appium-specific or
 third-party code or frameworks to your app. This means <strong>you’re testing the same app you’re shipping</strong>. The vendor-provided frameworks we use are:</p>
 
 <ul>
-<li>iOS: Apple’s <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation</a>
+<li>iOS: 9.3+ Apple’s <a href="https://developer.apple.com/reference/xctest">XCTest</a>
 </li>
 <li>Android 4.2+: Google’s <a href="http://developer.android.com/tools/help/uiautomator/index.html">UiAutomator</a>
 </li>
@@ -150,7 +150,7 @@ which support Appium’s extensions to the WebDriver protocol. When using Appium
 you want to use these client libraries instead of your regular WebDriver
 client. You can view the full list of libraries <a href="#appium-clients.md">here</a>.</p>
 
-<p><strong><a href="https://github.com/appium/appium-dot-app">Appium.app</a>, <a href="https://github.com/appium/appium-dot-exe">Appium.exe</a></strong><br>
+<p><strong><a href="https://github.com/appium/appium-desktop/releases/latest">Appium Desktop</a></strong><br>
 There exist GUI wrappers around the Appium server that can be downloaded.
 These come bundled with everything required to run the Appium server,
 so you don’t need to worry about Node. They also come with an Inspector,
@@ -206,7 +206,7 @@ opens up the possibility of true cross-platform native mobile automation. Finall
 want to run tests on. See below for particular platform requirements.</p>
 
 <p>If you want to run Appium via an <code class="prettyprint">npm install</code>, hack with or contribute to Appium, you will need
-<a href="http://nodejs.org">node.js and npm</a> 4 or greater (use <a href="https://github.com/visionmedia/n">n</a> or
+<a href="http://nodejs.org">node.js and npm</a> v6 or greater (use <a href="https://github.com/visionmedia/n">n</a> or
 <code class="prettyprint">brew install node</code> to install Node.js. Make sure you have not installed Node or Appium with <code class="prettyprint">sudo</code>,
 otherwise you’ll run into problems). We recommend the latest stable version.</p>
 
@@ -221,8 +221,8 @@ of the dependencies are set up correctly.</p>
 <h4 id="ios-requirements">iOS Requirements</h4>
 
 <ul>
-<li>Mac OS X 10.10 or higher, 10.11.1 recommended</li>
-<li>XCode &gt;= 6.0, 7.1.1 recommended</li>
+<li>Mac OS X 10.12 recommended</li>
+<li>XCode 8 recommended</li>
 <li>Apple Developer Tools (iPhone simulator SDK, command line tools)</li>
 <li><a href="#running-on-osx.md">Ensure you read our documentation on setting yourself up for iOS testing!</a></li>
 </ul>
@@ -262,14 +262,15 @@ directions for setting up your environment properly for testing on different OSe
 You can run an Appium server using node.js or using the application, see below.</p>
 
 <h4 id="using-node-js">Using Node.js</h4>
-<pre class="highlight plaintext"><code>$ npm install -g appium
+<pre class="highlight plaintext">
+<code>$ npm install -g appium
 $ appium
 </code></pre>
 
 <h4 id="using-the-app">Using the App</h4>
 
 <ul>
-<li><a href="https://bitbucket.org/appium/appium.app/downloads/">Download the Appium app</a></li>
+<li><a href="https://github.com/appium/appium-desktop/releases/">Download the Appium app</a></li>
 <li>Run it!</li>
 </ul>
 
@@ -400,11 +401,11 @@ make explicit the level of support and requirements for each of these.</p>
 instructions.</p>
 
 <ul>
-<li>Versions: 7.1, 8.0, 8.1, 8.2, 8.3, 8.4, 9.0, 9.1 and 9.2</li>
+<li>Versions: 9.3+</li>
 <li>Devices: iPhone Simulator, iPad Simulator, and real iPhones and iPads</li>
 <li>Native app support: Yes, with debug version of .app (simulator),
 or correctly-signed .ipa (real devices). Underlying support is provided by
-Apple’s <a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation</a>
+Apple’s <a href="https://developer.apple.com/reference/xctest">XCTest</a>
 framework.</li>
 <li>Mobile web support: Yes, via automation of mobile Safari. For real devices,
 ios-webkit-remote-debugger is required, and automation of native aspects of
@@ -574,8 +575,8 @@ launching and doing their job correctly.</p>
 <h3 id="system-setup-ios">System setup (iOS)</h3>
 
 <ul>
-<li>Appium requires Mac OS X 10.7 or greater. We recommend OS X 10.10.</li>
-<li>Make sure you have Xcode and the iOS SDK(s) installed. Xcode version 7.1 is
+<li>Appium recommends OS X 10.12.</li>
+<li>Make sure you have Xcode and the iOS SDK(s) installed. Xcode version 8 is
 recommended as earlier versions of Xcode are limited in which versions of iOS
 they can test against. See the next section for more detail.</li>
 <li>You need to authorize use of the iOS Simulator. See <a href="#authorizing-ios-on-the-computer">below</a>.</li>
@@ -610,9 +611,6 @@ binary made available through <code class="prettyprint">npm</code>. Install the 
 <p>And the invoke the program using</p>
 <pre class="highlight plaintext"><code>sudo authorize-ios
 </code></pre>
-
-<p>If you are running <a href="https://github.com/appium/appium-dot-app">Appium.app</a>, you can
-authorize iOS through the GUI.</p>
 
 <p>You need to do this every time you install a new version of Xcode.</p>
 
@@ -726,7 +724,7 @@ are where they are found, should they need to be deleted:</p>
 <p>To get started:</p>
 
 <ol>
-<li>Download latest <a href="https://nodejs.org/download/release/v6.3.0/node-v6.3.0-x64.msi">node and npm tools</a> MSI (version &gt;= 6.0). The <code class="prettyprint">npm</code> and <code class="prettyprint">nodejs</code> paths should be in your PATH environment variable.</li>
+<li>Download latest <a href="https://nodejs.org/dist/v6.10.0/node-v6.10.0-x64.msi">node and npm tools</a> MSI (version &gt;= 6.0). The <code class="prettyprint">npm</code> and <code class="prettyprint">nodejs</code> paths should be in your PATH environment variable.</li>
 <li>Open admin cmd prompt</li>
 <li>Run the command <code class="prettyprint">npm install -g appium</code> which will install Appium from NPM</li>
 <li>To start Appium, you can now simply run <code class="prettyprint">appium</code> from the prompt.</li>
