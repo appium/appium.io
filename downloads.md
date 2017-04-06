@@ -27,9 +27,8 @@ Appium has language bindings for:
 
 # Appium Desktop Apps
 
-Appium's desktop app supports OS X and Windows.
+Appium's desktop app supports OS X, Windows and Linux
 
-- [Appium.app for OS X][bitbucket]
-- [Appium.exe for Windows][bitbucket]
+- [Appium-Desktop for OSX, Windows and Linux][github]
 
-[bitbucket]: https://bitbucket.org/appium/appium.app/downloads/
+[github]: https://github.com/appium/appium-desktop/releases/latest

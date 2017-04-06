@@ -7,11 +7,7 @@
 <script>
     function load() {
         var downloadLink = document.getElementById('downloadLink');
-        if (navigator.appVersion.indexOf("Win") != -1) {
-            downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/AppiumForWindows_1_4_13_1.zip";
-        } else {
-            downloadLink.href = "https://bitbucket.org/appium/appium.app/downloads/appium-1.5.3.dmg";
-        }
+        downloadLink.href = "https://github.com/appium/appium-desktop/releases/latest";       
     }
     var toggleVideo = function () {
         var vid = $("#show-demo-video");
@@ -37,10 +33,8 @@
             use with native, </span> <a
                     href="/slate/en/master/#hybrid.md"><span data-localize="jumbotron-p-pt2">hybrid</span></a><span data-localize="jumbotron-p-pt3"> and mobile web apps.</span> <br /><span data-localize="jumbotron-p-pt4">It drives iOS, Android, and Windows apps using the WebDriver protocol.</span></p>
         <p>
-            <!-- <a href="https://github.com/appium/appium/zipball/master" class="btn btn-primary btn-large">Download .zip</a> -->
-            <!-- <a href="https://github.com/appium/appium/tarball/master" class="btn btn-primary btn-large">Download .tar.gz</a> -->
             <a id="downloadLink" data-localize="downloadLink"
-               href="https://bitbucket.org/appium/appium.app/downloads/"
+               href="https://github.com/appium/appium-desktop/releases/latest"
                class="btn btn-primary btn-lg" role="button">Download Appium</a>
         </p>
     </div>
@@ -64,10 +58,7 @@
                 <li><a href="https://github.com/appium/appium" data-localize="jumbotron-github">View on GitHub</a></li>
                 <li><a href="/downloads.html" data-localize="jumbotron-downloads">Downloads</a></li>
                 <li><a href="https://github.com/appium/sample-code/tree/master/sample-code/examples" data-localize="jumbotron-examples">Examples</a></li>
-                <li><a href="https://github.com/appium/appium/blob/master/CONTRIBUTING.md" data-localize="jumbotron-contributions">Contributing</a></li>
-                <li><a href="https://travis-ci.org/appium/appium"><img
-                        src="https://api.travis-ci.org/appium/appium.png?branch=master"
-                        alt="Build Status"></a></li>
+                <li><a href="https://github.com/appium/appium/blob/master/CONTRIBUTING.md" data-localize="jumbotron-contributions">Contributing</a></li>                
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -84,18 +75,18 @@
             <h2><a href="javascript: toggleVideo()" data-localize="watch-videos">Watch the Videos</a></h2>
 
             <div id="show-demo-video" style="display:none">
-                <iframe width="640" height="360"
-                        src="http://www.youtube.com/embed/1J0aXDbjiUE"
-                        frameborder="0" allowfullscreen></iframe>
-                <iframe width="480" height="360"
-                        src="http://www.youtube.com/embed/oTIEt11cXNk"
+                <iframe width="640" height="360" 
+                        src="https://www.youtube.com/embed/IOSUBda2-g4" 
                         frameborder="0" allowfullscreen></iframe>
                 <iframe width="640" height="360"
-                        src="http://www.youtube.com/embed/ILKi6B54_sw"
+                        src="https://www.youtube.com/embed/D5MF3ZLds0Q"
+                        frameborder="0" allowfullscreen></iframe>                
+                <iframe width="640" height="360"
+                        src="https://www.youtube.com/embed/WIuaT6nV9C4"
                         frameborder="0" allowfullscreen></iframe>
                 <iframe width="640" height="360"
-                        src="http://www.youtube.com/embed/eKhuF_4KzYo"
-                        frameborder="0" allowfullscreen></iframe>
+                        src="https://www.youtube.com/embed/7hU8O9fHgwc"
+                        frameborder="0" allowfullscreen></iframe>                
             </div>
             </div>
         </div>
@@ -142,11 +133,11 @@
 
                 <h2 data-localize="requirements">Requirements</h2>
                 <h4>iOS</h4>
-                <span data-localize="req-ios-os">Mac OSX 10.7+</span><br/>
-		<span data-localize="req-xcode">XCode 4.5+ w/ Command Line Tools</span><br/>
+                <span data-localize="req-ios-os">Mac OSX</span><br/>
+		<span data-localize="req-xcode">XCode w/ Command Line Tools</span><br/>
                 <h4>Android</h4>
-                <span data-localize="req-android-os">Mac OSX 10.7+ or Windows 7+ or Linux</span><br/>
-                <span data-localize="req-android-sdk">Android SDK &ge; 16 (SDK < 16 in Selendroid mode)</span><br/>
+                <span data-localize="req-android-os">Mac OSX or Windows or Linux</span><br/>
+                <span data-localize="req-android-sdk">Android SDK &ge; 16</span><br/>
             </div>
         </div>
 
