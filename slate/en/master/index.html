@@ -4386,8 +4386,19 @@ connection API for iOS.</p>
 
 <h3 id="android">Android</h3>
 
-<p>Choose the setting you would like to use, and then send the correct bitmask from
-the table above.</p>
+<p>There are the following limitations:</p>
+<h4>Real Devices</h4>
+<ul>
+  <li>Changing Airplane Mode state only works for Android 6 and older</li>
+  <li>Chaning data connection state works for Android 4.4 and older. Newer OS releases (5.0+) must be rooted in order to make the feature working (e. g. <em>su</em> binary should available)</li>
+  <li>Changing Wi-Fi connection state should work for all Android versions</li>
+</ul>
+<h4>Emulators</h4>
+<ul>
+  <li>Changing Airplane Mode state only works for Android 6 and older</li>
+  <li>Chaning data connection state should work for all Android versions</li>
+  <li>Changing Wi-Fi connection state should work for all Android versions</li>
+</ul>
 
 <h3 id="windows">Windows</h3>
 
@@ -5275,8 +5286,8 @@ connection we use the <a href="https://github.com/google/ios-webkit-debug-proxy"
 <code class="prettyprint">
 {
   settings: {
-   ignoreUnimportantViews : true  
-  }  
+   ignoreUnimportantViews : true
+  }
 }
 </code></p>
 </blockquote>
@@ -5287,7 +5298,7 @@ connection we use the <a href="https://github.com/google/ios-webkit-debug-proxy"
 <p>Returns a JSON hash of all the currently specified settings.
 <code class="prettyprint">
 {
-  ignoreUnimportantViews : true  
+  ignoreUnimportantViews : true
 }
 </code></p>
 </blockquote>
