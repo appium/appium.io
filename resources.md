@@ -16,6 +16,7 @@ Nishant Verma<br>
 June 2017, <a href="https://www.packtpub.com/">Packt Publishing</a><br>
 Automate your mobile app testing.
 </div>
+<br/>
 
 <div>
 <a href="https://www.packtpub.com/application-development/appium-essentials/?utm_source=POD&utm_medium=referral&utm_campaign=1784392480">
