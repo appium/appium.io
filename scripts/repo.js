@@ -1,6 +1,7 @@
 import Github from 'github';
 import request from 'request-promise';
 import { fs, tempDir, mkdirp } from 'appium-support';
+import { exec } from 'teen_process';
 import nodeFS from 'fs';
 import path from 'path';
 import unzip from 'unzip';
@@ -41,12 +42,26 @@ async function getRepoDocs(owner, repo, branch='master') {
 
     const pathToAppiumFiles = await fs.readdir(pathToUnzipped);
     const pathToDocs = path.resolve(pathToUnzipped, pathToAppiumFiles[0], 'docs');
+
+    // Copy the mkdocs yml to the directory
+    console.log('!!', pathToDocs);
+    await fs.copyFile(path.resolve(__dirname, '..', 'mkdocs.yml'), path.resolve(pathToDocs, 'mkdocs.yml'));
+
     return pathToDocs;
   } catch(e) {
     console.error('Could not download repo archive. ', e.message);
   }
 };
 
+async function buildDocs (pathToDocs) {
+  const pathToBuildDocsTo = path.resolve(__dirname, '..', 'docs');
+  await exec('mkdocs', ['build', '--site-dir', pathToBuildDocsTo], {
+    cwd: pathToDocs,
+  });
+  await fs.copyFile(pathToBuildDocsTo, path.resolve(__dirname, '..', '_site', 'docs'));
+};
+
 (async () => {
   const pathToRepoDocs = await getRepoDocs('appium', 'appium');
+  await buildDocs(pathToRepoDocs);
 })();

@@ -29,6 +29,7 @@
     "github": "^9.2.0",
     "octonode": "^0.8.0",
     "request-promise": "^4.2.1",
+    "teen_process": "^1.10.0",
     "unzip": "^0.1.11"
   }
 }
