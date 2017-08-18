@@ -1,0 +1,22 @@
+{
+  "name": "appium.io",
+  "version": "1.0.0",
+  "description": "Documentation project for Appium.io",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "serve": "bundle exec jekyll serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appium/appium.io.git"
+  },
+  "author": "Dan Graham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appium/appium.io/issues"
+  },
+  "homepage": "https://github.com/appium/appium.io#readme"
+}
