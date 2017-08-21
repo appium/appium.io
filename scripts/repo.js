@@ -46,25 +46,44 @@ async function getRepoDocs(owner, repo, branch='master') {
 
     await unzipStream(readStream, pathToUnzipped);
 
+    // Get a reference to the path to the docs
     const pathToAppiumFiles = await fs.readdir(pathToUnzipped);
     const pathToDocs = path.resolve(pathToUnzipped, pathToAppiumFiles[0], 'docs');
 
+    // Do some treating on the docs to get it working correctly
+    await alterDocs(pathToDocs);
+
     return pathToDocs;
   } catch(e) {
-    console.error('Could not download repo archive. ', e.message);
+    console.error('An error occurred. ', e.message);
   }
 };
+
+/**
+ * Adjust the contents of the docs to fit proper MkDocs format
+ *  - rename README.md to index.md
+ * @param {*} pathToDocs 
+ */
+async function alterDocs (pathToDocs) {
+  for (let file of await fs.readdir(pathToDocs)) {
+    const stat = await fs.stat(path.resolve(pathToDocs, file));
+    if (stat.isDirectory()) {
+      alterDocs(path.resolve(pathToDocs, file));
+    } else {
+      if (file.toLowerCase() === 'readme.md') {
+        await(fs.mv(path.resolve(pathToDocs, file), path.resolve(pathToDocs, 'index.md')));
+      }
+    }
+  }
+}
 
 async function buildDocs (pathToDocs) {
   const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'),  'utf8'));
 
   // Build the MkDocs for each language
   for (let language of LANGUAGES) {
-    //await fs.copyFile(path.resolve(__dirname, '..', 'mkdocs.yml'), path.resolve(pathToDocs, language, 'mkdocs.yml'));
-    console.log('MkDOCS yml', mkdocsTemplate({language}));
     await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language}));
     const pathToBuildDocsTo = path.resolve(__dirname, '..', 'docs', language);
-    console.log("Building documents to", pathToDocs);
     await exec('mkdocs', ['build', '--site-dir', pathToBuildDocsTo], {
       cwd: pathToDocs,
     });
