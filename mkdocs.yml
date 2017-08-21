@@ -1,2 +1,2 @@
 site_name: Appium
-docs_dir: en
+docs_dir: {{language}}
