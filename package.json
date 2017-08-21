@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "serve": "bundle exec jekyll serve",
+    "serve": "bundle exec jekyll serve && npm run build:docs",
     "build:docs": "babel-node scripts/repo.js"
   },
   "repository": {
