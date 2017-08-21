@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "serve": "bundle exec jekyll serve"
+    "serve": "bundle exec jekyll serve",
+    "build:docs": "babel-node scripts/repo.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "bluebird": "^3.5.0",
     "fs-promise": "^2.0.3",
     "github": "^9.2.0",
+    "handlebars": "^4.0.10",
     "octonode": "^0.8.0",
     "request-promise": "^4.2.1",
     "teen_process": "^1.10.0",
