@@ -10,4 +10,4 @@ redcarpet:
     with_toc_data
   ]
 highlighter: pygments
-exclude: [ contributing.md, tutorial/, rake_lib/, docs/, tutorials/ ]
+exclude: [ contributing.md, tutorial/, rake_lib/, tutorials/ ]
