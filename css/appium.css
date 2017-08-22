@@ -4,10 +4,24 @@ body {
   padding-top: 50px;
 }
 
+.with-banner {
+  padding-top: 0;
+}
+
+.jsf-banner {
+  background-color: #ebebeb;
+  padding-bottom: 2px;
+  border-bottom: 3px solid #000;
+}
+
 .masthead {
   padding: 70px 0 80px;
   margin-bottom: 0;
   color: #fff;
+}
+
+.with-banner .jumbotron {
+  margin-top: -20px;
 }
 
 .masthead p {

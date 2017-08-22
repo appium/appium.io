@@ -25,4 +25,24 @@
     $('section [href^=#]').click(function (e) {
         e.preventDefault();
     });
+
+    // Fixed navbar with JSF banner
+    var bannerVisible = true;
+    $(window).on('scroll', function(n) {
+        if (this.scrollY > 25) {
+            if (bannerVisible) {
+                bannerVisible = false;
+                $('nav').first()
+                    .addClass('navbar-fixed-top')
+                    .removeClass('navbar-static-top');
+                $('body').removeClass('with-banner');
+            }
+        } else {
+            bannerVisible = true;
+            $('nav').first()
+                .removeClass('navbar-fixed-top')
+                .addClass('navbar-static-top');
+            $('body').addClass('with-banner');
+        }
+    });
 }(window.jQuery));
