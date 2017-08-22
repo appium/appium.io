@@ -8,7 +8,9 @@
   },
   "scripts": {
     "serve": "bundle exec jekyll serve && npm run build:docs",
-    "build:docs": "babel-node scripts/repo.js"
+    "build:docs": "babel-node scripts/repo.js",
+    "test": "TEST=true mocha --require babel-polyfill --compilers js:babel-core/register test/",
+    "test:watch": "TEST=true mocha --require babel-polyfill --watch --compilers js:babel-core/register test/"
   },
   "repository": {
     "type": "git",
@@ -26,9 +28,13 @@
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
     "bluebird": "^3.5.0",
+    "chai": "^4.1.1",
+    "chai-as-promised": "^7.1.1",
     "fs-promise": "^2.0.3",
     "github": "^9.2.0",
     "handlebars": "^4.0.10",
+    "jquery": "^3.2.1",
+    "jsdom": "^5.0.0",
     "octonode": "^0.8.0",
     "request-promise": "^4.2.1",
     "teen_process": "^1.10.0",
