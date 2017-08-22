@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 {% include head.html %}
-<body onload="load()">
+<body onload="load()" class="with-banner">
 <script>
     function load() {
         var downloadLink = document.getElementById('downloadLink');
@@ -20,6 +20,7 @@
     };
 </script>
 
+{% include jsf-banner.html %}
 {% include navbar.html %}
 
 <div class="jumbotron masthead">
