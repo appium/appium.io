@@ -9,8 +9,8 @@
   "scripts": {
     "serve": "bundle exec jekyll serve && npm run build:docs",
     "build:docs": "babel-node scripts/repo.js",
-    "test": "TEST=true mocha --require babel-polyfill --compilers js:babel-core/register test/",
-    "test:watch": "TEST=true mocha --require babel-polyfill --watch --compilers js:babel-core/register test/"
+    "test": "mocha --require babel-polyfill --compilers js:babel-core/register test/",
+    "test:watch": "mocha --require babel-polyfill --watch --compilers js:babel-core/register test/"
   },
   "repository": {
     "type": "git",

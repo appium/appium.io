@@ -1,8 +1,10 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import { fencedCodeTabify } from '../scripts/repo';
+import { fencedCodeTabify, fencedCodeTabifyDocument } from '../scripts/tabs';
 import jQuery from 'jquery';
 import { jsdom } from 'jsdom';
+import { fs } from 'appium-support';
+import path from 'path';
 
 const $ = jQuery(jsdom().defaultView);
 
@@ -65,11 +67,6 @@ describe('Repo.js', function () {
     });
 
     it('should strip out the language comment', function () {
-      console.log(fencedCodeTabify(`<div>
-      <pre>
-        <code class='javascript'>// Javascript JS code</code>
-      </pre>
-    </div>`));
       fencedCodeTabify(`<div>
         <pre>
           <code class='javascript'>// Javascript 
@@ -77,5 +74,10 @@ describe('Repo.js', function () {
         </pre>
       </div>`).indexOf('// Javascript').should.be.below(0);
     });
+
+    it('should parse an HTML file', async function () {
+      fencedCodeTabifyDocument(await fs.readFile(path.resolve(__dirname, 'fixtures', 'sample.html'), 'utf8')).indexOf('nav-tabs').should.be.above(0);
+    });
+
   });
 });
