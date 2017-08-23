@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "serve": "bundle exec jekyll serve && npm run build:docs",
+    "serve": "bundle exec jekyll serve",
     "build:docs": "babel-node scripts/repo.js",
     "test": "mocha --require babel-polyfill --compilers js:babel-core/register test/",
     "test:watch": "mocha --require babel-polyfill --watch --compilers js:babel-core/register test/"
