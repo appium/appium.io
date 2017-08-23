@@ -54,7 +54,9 @@ export function fencedCodeTabify (html) {
       appendLanguageBlock(tabEl, $(siblingEl), language, `${tagIndex++}_${index}`);
       $(siblingEl).remove();
     });
-    preTag.replaceWith(tabEl);
+    if (tagIndex > 2) {
+      preTag.replaceWith(tabEl);
+    }
   });
 
   return jqHTML.html();
