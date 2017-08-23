@@ -98,10 +98,11 @@ async function applyTabs (pathToHTML) {
 
 async function buildDocs (pathToDocs) {
   const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'),  'utf8'));
+  const themeDir = path.resolve(__dirname, '..', 'cinder');
 
   // Build the MkDocs for each language
   for (let language of LANGUAGES) {
-    await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language}));
+    await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language, themeDir}));
     const pathToBuildDocsTo = path.resolve(__dirname, '..', 'docs', language);
     await exec('mkdocs', ['build', '--site-dir', pathToBuildDocsTo], {
       cwd: pathToDocs,

@@ -1,2 +1,3 @@
 site_name: Appium
 docs_dir: {{language}}
+theme_dir: {{themeDir}}
