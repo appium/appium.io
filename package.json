@@ -7,29 +7,33 @@
     "test": "test"
   },
   "scripts": {
-    "serve": "bundle exec jekyll serve",
-    "build:docs": "babel-node scripts/repo.js",
-    "test": "mocha --require babel-polyfill --compilers js:babel-core/register test/",
-    "test:watch": "mocha --require babel-polyfill --watch --compilers js:babel-core/register test/"
+    "serve": "bundle exec jekyll serve && npm run build:docs",
+    "build:docs": "./node_modules/babel-cli/bin/babel-node.js scripts/repo.js",
+    "lint": "./node_modules/eslint/bin/eslint.js scripts/",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js scripts/ --fix",
+    "test": "npm run lint && mocha --require babel-polyfill --compilers js:babel-core/register test/",
+    "test:watch": "npm run lint && mocha --require babel-polyfill --watch --compilers js:babel-core/register test/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/appium/appium.io.git"
   },
   "author": "Dan Graham",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/appium/appium.io/issues"
   },
   "homepage": "https://github.com/appium/appium.io#readme",
   "dependencies": {
     "appium-support": "^2.8.3",
+    "babel-eslint": "^7.2.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
     "bluebird": "^3.5.0",
     "chai": "^4.1.1",
     "chai-as-promised": "^7.1.1",
+    "eslint": "^4.5.0",
     "fs-promise": "^2.0.3",
     "github": "^9.2.0",
     "handlebars": "^4.0.10",
@@ -41,6 +45,12 @@
     "unzip": "^0.1.11"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "eslint": "^4.5.0",
+    "eslint-config-appium": "^2.0.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-promise": "^3.5.0"
   }
 }

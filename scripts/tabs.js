@@ -2,7 +2,6 @@ import jQuery from 'jquery';
 import { jsdom } from 'jsdom';
 
 const $ = jQuery(jsdom().defaultView);
-const LANGUAGES = ['en', 'cn'];
 
 function stripLanguageComment (html) {
   return html.replace(/(<code [^>]*>)(\/\/ [^\s]*)/, '$1');
@@ -15,7 +14,7 @@ function capitalize (languageName) {
 
   if (languageName === 'php') {
     return 'PHP';
-  } 
+  }
 
   return languageName.charAt(0).toUpperCase() + languageName.slice(1);
 }
