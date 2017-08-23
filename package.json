@@ -39,5 +39,8 @@
     "request-promise": "^4.2.1",
     "teen_process": "^1.10.0",
     "unzip": "^0.1.11"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }
