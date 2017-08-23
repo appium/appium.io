@@ -361,6 +361,13 @@ scrollObject.put(&quot;direction&quot;, &quot;down&quot;);
 scrollObject.put(&quot;element&quot;, ((RemoteWebElement) element).getId());
 js.executeScript(&quot;mobile: swipe&quot;, params);
 </code></pre>
+<pre><code class="javascript">// Java
+JavascriptExecutor js = (JavascriptExecutor) driver;
+Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
+scrollObject.put(&quot;direction&quot;, &quot;down&quot;);
+scrollObject.put(&quot;element&quot;, ((RemoteWebElement) element).getId());
+js.executeScript(&quot;mobile: swipe&quot;, params);
+</code></pre>
 
 <h3 id="mobile-scroll">mobile: scroll</h3>
 <p>Scrolls the element or the whole screen. Different scrolling strategies are supported.

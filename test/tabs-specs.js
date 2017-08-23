@@ -38,8 +38,11 @@ describe('Repo.js', function () {
         </pre>
         <div class='hello'>world</div>
         <pre>
-        <code class='php'>PHP</code>
-      </pre>
+          <code class='php'>PHP</code>
+        </pre>
+        <pre>
+          <code class='c#'>C#</code>
+        </pre>
       </div>`);
       
       $(fencedCode).find('.nav-tabs').length.should.equal(2);
@@ -66,8 +69,20 @@ describe('Repo.js', function () {
       $(fencedCode, '.nav-tabs').children().length.should.equal(2);
     });
 
+    it('should not do tabs if only one code block', function () {
+      fencedCodeTabify(`<div>
+        <pre>
+          <code class='javascript'>JS code</code>
+        </pre>
+      </div>`).indexOf('nav-tabs').should.be.below(0);
+    });
+
     it('should strip out the language comment', function () {
       fencedCodeTabify(`<div>
+        <pre>
+          <code class='javascript'>// Javascript 
+          JS code</code>
+        </pre>
         <pre>
           <code class='javascript'>// Javascript 
           JS code</code>
