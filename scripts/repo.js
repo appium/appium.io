@@ -63,7 +63,7 @@ async function getRepoDocs(owner, repo, branch='master') {
 /**
  * Adjust the contents of the docs to fit proper MkDocs format
  *  - rename README.md to index.md
- * @param {*} pathToDocs 
+ * @param {*} pathToDocs
  */
 async function alterDocs (pathToDocs) {
   for (let file of await fs.readdir(pathToDocs)) {
@@ -113,4 +113,4 @@ async function buildDocs (pathToDocs) {
 (async () => {
   const pathToRepoDocs = await getRepoDocs('appium', 'appium');
   await buildDocs(pathToRepoDocs);
-})();
+})().catch(console.error);
