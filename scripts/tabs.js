@@ -14,6 +14,10 @@ function capitalize (languageName) {
 
   if (languageName === 'php') {
     return 'PHP';
+  } else if (languageName === 'objectivec') {
+    return 'Objective-C';
+  } else if (languageName === 'csharp') {
+    return 'C#';
   }
 
   return languageName.charAt(0).toUpperCase() + languageName.slice(1);
@@ -39,23 +43,26 @@ export function fencedCodeTabify (html) {
     </div>
   </div>`;
 
+  let tabPaneIndex = 0;
+
   jqHTML.find("pre > code").each((index, codeTag) => {
     const preTag = $(codeTag).parent();
     const siblings = preTag.nextAll();
     const tabEl = $(tabTagHTML);
     let language = capitalize($(codeTag).attr('class'));
-    let tagIndex = 1;
-    appendLanguageBlock(tabEl, preTag, language, `${tagIndex++}_${index}`, true);
+    let siblingIndex = 0;
+    appendLanguageBlock(tabEl, preTag, language, `${tabPaneIndex}_${siblingIndex++}`, true);
     siblings.each(function (index, siblingEl) {
       language = $(siblingEl).find('code').attr('class');
       if (!language) {
         return false;
       }
-      appendLanguageBlock(tabEl, $(siblingEl), language, `${tagIndex++}_${index}`);
+      appendLanguageBlock(tabEl, $(siblingEl), language, `${tabPaneIndex}_${siblingIndex++}`);
       $(siblingEl).remove();
     });
-    if (tagIndex > 2) {
+    if (siblingIndex > 1) {
       preTag.replaceWith(tabEl);
+      tabPaneIndex++;
     }
   });
 

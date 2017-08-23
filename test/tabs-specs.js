@@ -76,6 +76,29 @@ describe('Repo.js', function () {
       </div>`).indexOf('nav-tabs').should.be.below(0);
     });
 
+    it('should link correct tabs', function () {
+      const fencedCode = fencedCodeTabify(`<div>
+        <pre>
+          <code class='javascript'>JS code</code>
+        </pre>
+        <pre>
+          <code class='php'>PHP</code>
+        </pre>
+        <div>Hello World</div>
+        <pre>
+          <code class='javascript'>JS code</code>
+        </pre>
+        <pre>
+          <code class='php'>PHP</code>
+        </pre>
+      </div>`);
+
+      fencedCode.indexOf('0_0').should.be.above(0);
+      fencedCode.indexOf('1_1').should.be.above(0);
+      fencedCode.indexOf('1_0').should.be.above(0);
+      fencedCode.indexOf('1_1').should.be.above(0);
+    });
+
     it('should strip out the language comment', function () {
       fencedCodeTabify(`<div>
         <pre>
