@@ -8,9 +8,9 @@
   },
   "scripts": {
     "serve": "bundle exec jekyll serve && npm run build:docs",
-    "build:docs": "./node_modules/babel-cli/bin/babel-node.js scripts/repo.js",
-    "lint": "./node_modules/eslint/bin/eslint.js scripts/",
-    "lint:fix": "./node_modules/eslint/bin/eslint.js scripts/ --fix",
+    "build:docs": "babel-node scripts/repo.js",
+    "lint": "eslint scripts/ test/",
+    "lint:fix": "eslint scripts/ test/ --fix",
     "test": "npm run lint && mocha --require babel-polyfill --compilers js:babel-core/register test/",
     "test:watch": "npm run lint && mocha --require babel-polyfill --watch --compilers js:babel-core/register test/"
   },
