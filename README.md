@@ -34,4 +34,4 @@ bundle exec jekyll serve
 
 Access the site at localhost:4000
 
-6. Running scripts requires babel-cli (npm install -g babel-cli) and MkDocs
+6. Install MkDocs (`brew install mkdocs`)

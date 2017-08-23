@@ -13,52 +13,48 @@ const LANGUAGES = ['en', 'cn'];
 
 async function unzipStream (readstream, pathToUnzipped) {
   return new B((resolve, reject) => {
-      readstream.pipe(unzip.Extract({
-        path: pathToUnzipped,
-      }));
-      readstream.on('end', resolve);
-      readstream.on('close', reject);
+    readstream.pipe(unzip.Extract({
+      path: pathToUnzipped,
+    }));
+    readstream.on('end', resolve);
+    readstream.on('close', reject);
   });
 }
 
-async function getRepoDocs(owner, repo, branch='master') {
-  try {
-    // Pull down a zipball of Appium repository
-    const github = new Github({
-        Promise: require('bluebird')
-    });
-    const githubBranch = await github.repos.getBranch({owner, repo, branch});
-    const ref = githubBranch.data.commit.sha;
-    const archive = await request(`https://api.github.com/repos/${owner}/${repo}/zipball/${ref}`, {
-      headers: {
-        'User-Agent': 'appium',
-      },
-      encoding: null,
-    });
+async function getRepoDocs (owner, repo, branch='master') {
+  // Pull down a zipball of Appium repository
+  const github = new Github({
+    Promise: B,
+  });
+  const githubBranch = await github.repos.getBranch({owner, repo, branch});
+  const ref = githubBranch.data.commit.sha;
+  const archive = await request(`https://api.github.com/repos/${owner}/${repo}/zipball/${ref}`, {
+    headers: {
+      'User-Agent': 'appium',
+    },
+    encoding: null,
+  });
 
-    // Unzip it to a temporary directory
-    const tempdir = await tempDir.openDir();
-    const pathToZip = path.resolve(tempdir, 'appium.zip');
-    await fs.writeFile(pathToZip, archive);
-    const readStream = nodeFS.createReadStream(pathToZip);
+  // Unzip it to a temporary directory
+  const tempdir = await tempDir.openDir();
+  const pathToZip = path.resolve(tempdir, 'appium.zip');
+  await fs.writeFile(pathToZip, archive);
+  const readStream = nodeFS.createReadStream(pathToZip);
 
-    const pathToUnzipped = path.resolve(tempdir, 'appium', branch);
-    await mkdirp(pathToUnzipped);
+  const pathToUnzipped = path.resolve(tempdir, 'appium', branch);
+  await mkdirp(pathToUnzipped);
 
-    await unzipStream(readStream, pathToUnzipped);
+  await unzipStream(readStream, pathToUnzipped);
 
-    // Get a reference to the path to the docs
-    const pathToAppiumFiles = await fs.readdir(pathToUnzipped);
-    const pathToDocs = path.resolve(pathToUnzipped, pathToAppiumFiles[0], 'docs');
+  // Get a reference to the path to the docs
+  const pathToAppiumFiles = await fs.readdir(pathToUnzipped);
+  const pathToDocs = path.resolve(pathToUnzipped, pathToAppiumFiles[0], 'docs');
 
-    // Do some treating on the docs to get it working correctly
-    await alterDocs(pathToDocs);
+  // Do some treating on the docs to get it working correctly
+  await alterDocs(pathToDocs);
 
-    return pathToDocs;
-  } catch(e) {
-    console.error('An error occurred. ', e.message);
-  }
-};
+  return pathToDocs;
+}
 
 /**
  * Adjust the contents of the docs to fit proper MkDocs format
@@ -75,7 +71,7 @@ async function alterDocs (pathToDocs) {
 
       // Rename README.md to index.md
       if (file.toLowerCase() === 'readme.md') {
-        await(fs.mv(filePath, path.resolve(pathToDocs, 'index.md')));
+        await (fs.mv(filePath, path.resolve(pathToDocs, 'index.md')));
       }
     }
   }
@@ -85,7 +81,7 @@ async function applyTabs (pathToHTML) {
   for (let file of await fs.readdir(pathToHTML)) {
     const stat = await fs.stat(path.resolve(pathToHTML, file));
     if (stat.isDirectory()) {
-      applyTabs(path.resolve(pathToHTML, file));
+      await applyTabs(path.resolve(pathToHTML, file));
     } else {
       const filePath = path.resolve(pathToHTML, file);
       if (path.extname(file) === '.html') {
@@ -109,7 +105,7 @@ async function buildDocs (pathToDocs) {
     });
     await applyTabs(pathToBuildDocsTo);
   }
-};
+}
 
 (async () => {
   const pathToRepoDocs = await getRepoDocs('appium', 'appium');
