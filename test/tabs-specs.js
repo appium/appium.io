@@ -9,8 +9,7 @@ import path from 'path';
 const $ = jQuery(jsdom().defaultView);
 
 chai.use(chaiAsPromised);
-
-const should = chai.should();
+chai.should();
 
 describe('Repo.js', function () {
   describe('.fencedCodeTabify', function () {
@@ -22,8 +21,8 @@ describe('Repo.js', function () {
         <pre>
           <code class='php'>PHP code</code>
         </pre>
-      </div>`)
-      
+      </div>`);
+
       $(fencedCode, '.tab-pane').children().length.should.equal(2);
       $(fencedCode, 'li[role=presentation]').children().length.should.equal(2);
     });
@@ -44,7 +43,7 @@ describe('Repo.js', function () {
           <code class='c#'>C#</code>
         </pre>
       </div>`);
-      
+
       $(fencedCode).find('.nav-tabs').length.should.equal(2);
     });
 

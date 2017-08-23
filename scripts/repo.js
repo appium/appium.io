@@ -163,7 +163,7 @@ async function buildDocs (pathToDocs) {
   // Build the MkDocs for each language
   for (let language of LANGUAGES) {
     // generate pages yaml from the sitemap
-    let toc = ''
+    let toc = '';
 
     for (let [category, content] of SITEMAP[language]) {
       if (typeof content === "string") {
