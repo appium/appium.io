@@ -76,7 +76,7 @@ const SITEMAP = {
 };
 
 async function unzipStream (readstream, pathToUnzipped) {
-  return new B((resolve, reject) => {
+  return await new B((resolve, reject) => {
     readstream.pipe(unzip.Extract({
       path: pathToUnzipped,
     }));
@@ -123,7 +123,7 @@ async function getRepoDocs (owner, repo, branch='master') {
 /**
  * Adjust the contents of the docs to fit proper MkDocs format
  *  - rename README.md to index.md
- * @param {*} pathToDocs
+ * @param {String} pathToDocs
  */
 async function alterDocs (pathToDocs) {
   for (let file of await fs.readdir(pathToDocs)) {
@@ -168,7 +168,7 @@ async function buildDocs (pathToDocs) {
     for (let [category, content] of SITEMAP[language]) {
       if (typeof content === "string") {
         toc += `- '${category}': '${content}'\n`;
-      } else {
+      } else if (_.isArray(content) && content.length) {
         toc += `- ${category}:\n`;
         let baseDir = content[0];
         for (let [subCategory, mdFile] of content.slice(1)) {

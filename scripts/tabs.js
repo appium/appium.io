@@ -7,17 +7,19 @@ function stripLanguageComment (html) {
   return html.replace(/(<code [^>]*>)(\/\/ [^\s]*)/, '$1');
 }
 
-function capitalize (languageName) {
-  if (!languageName) {
-    return '';
-  }
+const LANGUAGE_DISPLAY_NAMES = {
+  'php': 'PHP',
+  'objectivec': 'Objective-C',
+  'csharp': 'C#',
+};
 
-  if (languageName === 'php') {
-    return 'PHP';
-  } else if (languageName === 'objectivec') {
-    return 'Objective-C';
-  } else if (languageName === 'csharp') {
-    return 'C#';
+function capitalize (languageName) {
+  languageName = languageName.toLowerCase();
+
+  let capitalizedName = LANGUAGE_DISPLAY_NAMES[languageName];
+
+  if (capitalizedName) {
+    return capitalizedName;
   }
 
   return languageName.charAt(0).toUpperCase() + languageName.slice(1);
