@@ -9,6 +9,7 @@ import B from 'bluebird';
 import Handlebars from 'handlebars';
 import _ from 'lodash';
 import { fencedCodeTabifyDocument } from './tabs';
+import { reassignMarkdownLinkDocument } from './links';
 
 const LANGUAGES = ['en', 'cn'];
 const SITEMAP = {
@@ -139,12 +140,14 @@ async function alterDocs (pathToDocs) {
   }
 }
 
-async function applyTabs (pathToHTML) {
+async function alterHTML (pathToHTML) {
   for (const file of await fs.glob(path.resolve(pathToHTML, '**/*.html'))) {
     const stat = await fs.stat(path.resolve(pathToHTML, file));
     if (!stat.isDirectory()) {
       const filePath = path.resolve(pathToHTML, file);
-      let treatedHTML = fencedCodeTabifyDocument(await fs.readFile(filePath, 'utf8'));
+      let treatedHTML = await fs.readFile(filePath, 'utf8');
+      treatedHTML = fencedCodeTabifyDocument(treatedHTML);
+      treatedHTML = reassignMarkdownLinkDocument(treatedHTML);
       await fs.writeFile(filePath, treatedHTML);
     }
   }
@@ -177,7 +180,7 @@ async function buildDocs (pathToDocs) {
     await exec('mkdocs', ['build', '--site-dir', pathToBuildDocsTo], {
       cwd: pathToDocs,
     });
-    await applyTabs(pathToBuildDocsTo);
+    await alterHTML(pathToBuildDocsTo);
   }
 }
 
