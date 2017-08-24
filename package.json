@@ -8,7 +8,7 @@
   },
   "scripts": {
     "serve": "bundle exec jekyll serve",
-    "build:docs": "babel-node scripts/repo.js",
+    "build:docs": "rimraf docs/ && babel-node scripts/repo.js",
     "lint": "eslint scripts/ test/",
     "lint:fix": "eslint scripts/ test/ --fix",
     "test": "npm run lint && mocha --require babel-polyfill --compilers js:babel-core/register test/",
@@ -51,6 +51,7 @@
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-mocha": "^4.11.0",
-    "eslint-plugin-promise": "^3.5.0"
+    "eslint-plugin-promise": "^3.5.0",
+    "rimraf": "^2.6.1"
   }
 }
