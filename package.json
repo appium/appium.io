@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "serve": "bundle exec jekyll serve && npm run build:docs",
+    "serve": "bundle exec jekyll serve",
     "build:docs": "babel-node scripts/repo.js",
     "lint": "eslint scripts/ test/",
     "lint:fix": "eslint scripts/ test/ --fix",
