@@ -7,6 +7,7 @@ import path from 'path';
 import unzip from 'unzip';
 import B from 'bluebird';
 import Handlebars from 'handlebars';
+import _ from 'lodash';
 import { fencedCodeTabifyDocument } from './tabs';
 
 const LANGUAGES = ['en', 'cn'];
@@ -126,15 +127,12 @@ async function getRepoDocs (owner, repo, branch='master') {
  * @param {String} pathToDocs
  */
 async function alterDocs (pathToDocs) {
-  for (const file of await fs.readdir(pathToDocs)) {
+  for (const file of await fs.glob(path.resolve(pathToDocs, '**.md'))) {
     const stat = await fs.stat(path.resolve(pathToDocs, file));
-    if (stat.isDirectory()) {
-      alterDocs(path.resolve(pathToDocs, file));
-    } else {
-      const filePath = path.resolve(pathToDocs, file);
-
+    if (!stat.isDirectory()) {
       // Rename README.md to index.md
       if (file.toLowerCase() === 'readme.md') {
+        const filePath = path.resolve(pathToDocs, file);
         await (fs.mv(filePath, path.resolve(pathToDocs, 'index.md')));
       }
     }
@@ -142,16 +140,12 @@ async function alterDocs (pathToDocs) {
 }
 
 async function applyTabs (pathToHTML) {
-  for (const file of await fs.readdir(pathToHTML)) {
+  for (const file of await fs.glob(path.resolve(pathToHTML, '**.html'))) {
     const stat = await fs.stat(path.resolve(pathToHTML, file));
-    if (stat.isDirectory()) {
-      await applyTabs(path.resolve(pathToHTML, file));
-    } else {
+    if (!stat.isDirectory()) {
       const filePath = path.resolve(pathToHTML, file);
-      if (path.extname(file) === '.html') {
-        let treatedHTML = fencedCodeTabifyDocument(await fs.readFile(filePath, 'utf8'));
-        await fs.writeFile(filePath, treatedHTML);
-      }
+      let treatedHTML = fencedCodeTabifyDocument(await fs.readFile(filePath, 'utf8'));
+      await fs.writeFile(filePath, treatedHTML);
     }
   }
 }
