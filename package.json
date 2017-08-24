@@ -38,6 +38,7 @@
     "handlebars": "^4.0.10",
     "jquery": "^3.2.1",
     "jsdom": "^5.0.0",
+    "lodash": "^4.17.4",
     "octonode": "^0.8.0",
     "request-promise": "^4.2.1",
     "teen_process": "^1.10.0",
