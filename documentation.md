@@ -8,11 +8,9 @@ description: Appium Documentation
   {% for pair in site.data.slate %}
     {% assign language = pair[0] %}
     {% assign versions = pair[1] %}
-    <ul><b>{{ language }}</b><ul class="btn-group-vertical">
-    {% for version in versions %}
-      <a href="slate/{{ language }}/{{ version }}" type="button" class="btn btn-default">{{ version }}</a>
+    <ul class="btn-group-vertical">
+      <a href="docs/{{language}}/about-appium/intro" type="button" class="btn btn-default">{{language}}</a>
       <li class="button_divider"></li>
-    {% endfor %}
-    </ul></ul>
+    </ul>
 {% endfor %}
 </div>

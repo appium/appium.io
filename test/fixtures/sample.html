@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Ios xctest mobile gestures - Appium</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../about-appium/appium-clients/">Appium</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About appium <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../about-appium/appium-clients/">Appium clients</a>
+</li>
+                            
+<li >
+    <a href="../../about-appium/intro/">Intro</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced concepts <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../advanced-concepts/chromedriver/">Chromedriver</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/cross-domain-iframes/">Cross domain iframes</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/event-timings/">Event timings</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/grid/">Grid</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/hybrid/">Hybrid</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/ios-webkit-debug-proxy/">Ios webkit debug proxy</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/iwd_xcode7/">Iwd xcode7</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/migrating-to-1-0/">Migrating to 1 0</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/migrating-to-xcuitest/">Migrating to xcuitest</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/settings/">Settings</a>
+</li>
+                            
+<li >
+    <a href="../../advanced-concepts/wda-custom-server/">Wda custom server</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Appium setup <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../appium-setup/android-hax-emulator/">Android hax emulator</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/android-setup/">Android setup</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/ios-deploy/">Ios deploy</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/parallel_tests/">Parallel tests</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/platform-support/">Platform support</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/real-devices-android/">Real devices android</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/real-devices-ios/">Real devices ios</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/real-devices/">Real devices</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/running-on-linux/">Running on linux</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/running-on-osx/">Running on osx</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/running-on-windows/">Running on windows</a>
+</li>
+                            
+<li >
+    <a href="../../appium-setup/troubleshooting/">Troubleshooting</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing to appium <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../contributing-to-appium/appium-from-source/">Appium from source</a>
+</li>
+                            
+<li >
+    <a href="../../contributing-to-appium/appium-packages/">Appium packages</a>
+</li>
+                            
+<li >
+    <a href="../../contributing-to-appium/credits/">Credits</a>
+</li>
+                            
+<li >
+    <a href="../../contributing-to-appium/developers-overview/">Developers overview</a>
+</li>
+                            
+<li >
+    <a href="../../contributing-to-appium/gulp/">Gulp</a>
+</li>
+                            
+<li >
+    <a href="../../contributing-to-appium/how-to-write-docs/">How to write docs</a>
+</li>
+                            
+<li >
+    <a href="../../contributing-to-appium/style-guide-2.0/">Style guide 2.0</a>
+</li>
+                            
+<li >
+    <a href="../../contributing-to-appium/style-guide/">Style guide</a>
+</li>
+                            
+<li >
+    <a href="../../contributing-to-appium/version-branch-release/">Version branch release</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Writing running appium <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../android_coverage/">Android coverage</a>
+</li>
+                            
+<li >
+    <a href="../appium-bindings/">Appium bindings</a>
+</li>
+                            
+<li >
+    <a href="../caps/">Caps</a>
+</li>
+                            
+<li >
+    <a href="../default-capabilities-arg/">Default capabilities arg</a>
+</li>
+                            
+<li >
+    <a href="../espresso/">Espresso</a>
+</li>
+                            
+<li >
+    <a href="../finding-elements/">Finding elements</a>
+</li>
+                            
+<li >
+    <a href="../ios-touch-id/">Ios touch id</a>
+</li>
+                            
+<li class="active">
+    <a href="./">Ios xctest mobile gestures</a>
+</li>
+                            
+<li >
+    <a href="../ios-xctest-pasteboard/">Ios xctest pasteboard</a>
+</li>
+                            
+<li >
+    <a href="../ios_predicate/">Ios predicate</a>
+</li>
+                            
+<li >
+    <a href="../mobile-web/">Mobile web</a>
+</li>
+                            
+<li >
+    <a href="../network_connection/">Network connection</a>
+</li>
+                            
+<li >
+    <a href="../reset-strategies/">Reset strategies</a>
+</li>
+                            
+<li >
+    <a href="../running-tests/">Running tests</a>
+</li>
+                            
+<li >
+    <a href="../safari-launcher/">Safari launcher</a>
+</li>
+                            
+<li >
+    <a href="../server-args/">Server args</a>
+</li>
+                            
+<li >
+    <a href="../touch-actions/">Touch actions</a>
+</li>
+                            
+<li >
+    <a href="../uiautomator2/">Uiautomator2</a>
+</li>
+                            
+<li >
+    <a href="../uiautomator_uiselector/">Uiautomator uiselector</a>
+</li>
+                            
+<li >
+    <a href="../unicode/">Unicode</a>
+</li>
+                            
+<li >
+    <a href="../windows-app-testing/">Windows app testing</a>
+</li>
+                        </ul>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../ios-touch-id/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../ios-xctest-pasteboard/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#automating-mobile-gestures-for-ios-with-webdriveragentxctest-backend">Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend</a></li>
+            <li><a href="#mobile-swipe">mobile: swipe</a></li>
+            <li><a href="#mobile-scroll">mobile: scroll</a></li>
+            <li><a href="#mobile-pinch">mobile: pinch</a></li>
+            <li><a href="#mobile-doubletap">mobile: doubleTap</a></li>
+            <li><a href="#mobile-touchandhold">mobile: touchAndHold</a></li>
+            <li><a href="#mobile-twofingertap">mobile: twoFingerTap</a></li>
+            <li><a href="#mobile-tap">mobile: tap</a></li>
+            <li><a href="#mobile-dragfromtoforduration">mobile: dragFromToForDuration</a></li>
+            <li><a href="#mobile-selectpickerwheelvalue">mobile: selectPickerWheelValue</a></li>
+            <li><a href="#mobile-alert">mobile: alert</a></li>
+            <li><a href="#advanced-topics">Advanced Topics</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="automating-mobile-gestures-for-ios-with-webdriveragentxctest-backend">Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend</h2>
+<p>Unfortunately Apple's XCTest framework does not natively support W3C standards for
+TouchAction interface implementation. Although, it provides rich set of gestures,
+inluding these, that are unique for iOS platform. It is possible to directly invoke these
+gestures in Appium starting from version 1.6.4-beta.</p>
+<p>It is important to rememeber that XCTest and WDA are being constantly changed.
+This means all "mobile: *" commands can be also subject of change in Appium
+without any preliminary notice.</p>
+<h3 id="mobile-swipe">mobile: swipe</h3>
+<p>This gesture performs a simple "swipe" gesture on the particular screen element or
+on the application element, which is usually the whole screen. This method does not
+accept coordnates and siply emulates single swipe with one finger. It might be
+useful for such cases like album pagination, switching views, etc. More advanced
+cases may require to call "mobile: dragFromToForDuration", where one can supply
+coordinates and duration.</p>
+<h4 id="supported-arguments">Supported arguments</h4>
+<ul>
+<li><em>direction</em>: Either 'up', 'down', 'left' or 'right'. The parameter is mandatory</li>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to swipe on.
+ Application element will be used instead if this parameter is not provided</li>
+</ul>
+<h4 id="usage-examples">Usage examples</h4>
+<pre><code class="java">// Java
+JavascriptExecutor js = (JavascriptExecutor) driver;
+Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
+scrollObject.put(&quot;direction&quot;, &quot;down&quot;);
+scrollObject.put(&quot;element&quot;, ((RemoteWebElement) element).getId());
+js.executeScript(&quot;mobile: swipe&quot;, params);
+</code></pre>
+<pre><code class="javascript">// Java
+JavascriptExecutor js = (JavascriptExecutor) driver;
+Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
+scrollObject.put(&quot;direction&quot;, &quot;down&quot;);
+scrollObject.put(&quot;element&quot;, ((RemoteWebElement) element).getId());
+js.executeScript(&quot;mobile: swipe&quot;, params);
+</code></pre>
+
+<h3 id="mobile-scroll">mobile: scroll</h3>
+<p>Scrolls the element or the whole screen. Different scrolling strategies are supported.
+Arguments define the choosen strategy: either 'name', 'direction', 'predicateString' or
+'toVisible' in that order. All strategies are exclusive and only one strategy
+can be applied at a single moment of time. Use "mobile: scroll" to emulate precise
+scrolling in tables or collection views, where it is already known to which element
+the scrolling should be performed. Although, there is one known limitation there: in case
+it is necessary to perform too many scroll gestures on parent container to reach the
+necessary child element (tens of them) then the method call may fail.</p>
+<h4 id="supported-arguments_1">Supported arguments</h4>
+<ul>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to scroll on.
+ Application element will be used if this argument is not set</li>
+<li><em>name</em>: the accessibility id of the child element, to which scrolling is performed.
+ The same result can be achieved by setting <em>predicateString</em> argument to
+ 'name == accessibilityId'. Has no effect if <em>element</em> is not a container</li>
+<li><em>direction</em>: Either 'up', 'down', 'left' or 'right'. The main difference from
+ <em>swipe</em> call with the same argument is that <em>scroll</em> will try to move the current viewport
+ exactly to the next/previous page (the term "page" means the content, which fits into
+ a single device screen)</li>
+<li><em>predicateString</em>: the NSPredicate locator of the child element, to which
+ the scrolling should be performed. Has no effect if <em>element</em> is not a container</li>
+<li><em>toVisible</em>: Boolean parameter. If set to <em>true</em> then asks to scroll to
+ the first visible <em>element</em> in the parent container. Has no effect if <em>element</em> is
+ not set</li>
+</ul>
+<h4 id="usage-examples_1">Usage examples</h4>
+<pre><code class="python"># Python
+driver.execute_script('mobile: scroll', {'direction': 'down'});
+</code></pre>
+
+<h3 id="mobile-pinch">mobile: pinch</h3>
+<p>Performs pinch gesture on the given element or on the application element.</p>
+<h4 id="supported-arguments_2">Supported arguments</h4>
+<ul>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to pinch on.
+ Application element will be used instead if this parameter is not provided</li>
+<li><em>scale</em>: Pinch scale of type float. Use a scale between 0 and 1 to "pinch close" or
+ zoom out and a scale greater than 1 to "pinch open" or zoom in. Mandatory parameter</li>
+<li><em>velocity</em>: The velocity of the pinch in scale factor per second (float value). Mandatory parameter</li>
+</ul>
+<h4 id="usage-examples_2">Usage examples</h4>
+<pre><code class="ruby"># Ruby
+execute_script 'mobile: pinch', scale: 0.5, velocity: 1.1, element: element.ref
+</code></pre>
+
+<h3 id="mobile-doubletap">mobile: doubleTap</h3>
+<p>Performs double tap gesture on the given element or on the screen.</p>
+<h4 id="supported-arguments_3">Supported arguments</h4>
+<ul>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to double tap on</li>
+<li><em>x</em>: Screen x tap coordinate of type float. Mandatory parameter only if <em>element</em> is not set</li>
+<li><em>y</em>: Screen y tap coordinate of type float. Mandatory parameter only if <em>element</em> is not set</li>
+</ul>
+<h4 id="usage-examples_3">Usage examples</h4>
+<pre><code class="javascript">// javascript
+driver.execute('mobile: doubleTap', {element: element.value.ELEMENT});
+</code></pre>
+
+<h3 id="mobile-touchandhold">mobile: touchAndHold</h3>
+<p>Performs long press gesture on the given element or on the screen.</p>
+<h4 id="supported-arguments_4">Supported arguments</h4>
+<ul>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to long tap on</li>
+<li><em>duration</em>: The float duration of press action in seconds. Mandatory patameter</li>
+<li><em>x</em>: Screen x long tap coordinate of type float. Mandatory parameter only if <em>element</em> is not set</li>
+<li><em>y</em>: Screen y long tap coordinate of type float. Mandatory parameter only if <em>element</em> is not set</li>
+</ul>
+<h4 id="usage-examples_4">Usage examples</h4>
+<pre><code class="csharp">// c#
+Dictionary&lt;string, object&gt; tfLongTap = new Dictionary&lt;string, object&gt;();
+tfLongTap.Add(&quot;element&quot;, element.Id);
+tfLongTap.Add(&quot;duration&quot;, 2.0);
+((IJavaScriptExecutor)driver).ExecuteScript(&quot;mobile: touchAndHold&quot;, tfLongTap);
+</code></pre>
+
+<h3 id="mobile-twofingertap">mobile: twoFingerTap</h3>
+<p>Performs two finger tap gesture on the given element or on the application element.</p>
+<h4 id="supported-arguments_5">Supported arguments</h4>
+<ul>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to double tap on.
+ Application element will be used instead if this
+ parameter is not provided</li>
+</ul>
+<h4 id="usage-examples_5">Usage examples</h4>
+<pre><code class="csharp">// c#
+Dictionary&lt;string, object&gt; tfTap = new Dictionary&lt;string, object&gt;();
+tfTap.Add(&quot;element&quot;, element.Id);
+((IJavaScriptExecutor)driver).ExecuteScript(&quot;mobile: twoFingerTap&quot;, tfTap);
+</code></pre>
+
+<h3 id="mobile-tap">mobile: tap</h3>
+<p>Performs tap gesture by coordinates on the given element or on the screen.</p>
+<h4 id="supported-arguments_6">Supported arguments</h4>
+<ul>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to long tap on.
+ <em>x</em> and <em>y</em> tap coordinates will be calulated relatively to the current element position on the
+ screen if this argument is provided. Otherwise they should be calculated
+ relatively to screen borders.</li>
+<li><em>x</em>: x tap coordinate of type float. Mandatory parameter</li>
+<li><em>y</em>: y tap coordinate of type float. Mandatory parameter</li>
+</ul>
+<h4 id="usage-examples_6">Usage examples</h4>
+<pre><code class="php">// PHP
+$params = array(array('x' =&gt; 100.0, 'y' =&gt; 50.0, 'element' =&gt; element.GetAttribute(&quot;id&quot;)));
+$driver-&gt;executeScript(&quot;mobile: tap&quot;, $params);
+</code></pre>
+
+<h3 id="mobile-dragfromtoforduration">mobile: dragFromToForDuration</h3>
+<p>Performs drag and drop gesture by coordinates. This can be done either on an element or
+on the screen</p>
+<h4 id="supported-arguments_7">Supported arguments</h4>
+<ul>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to perform drag on.
+ All the coordinates will be calculated relatively this this element position on the screen.
+ Absolute screen coordinates are expected if this argument is not set</li>
+<li><em>duration</em>: Float number of seconds in range [0.5, 60]. How long the tap gesture at
+ starting drag point should be before to start dragging. Mandatory parameter</li>
+<li><em>fromX</em>: The x coordinate of starting drag point (type float). Mandatory parameter</li>
+<li><em>fromY</em>: The y coordinate of starting drag point (type float). Mandatory parameter</li>
+<li><em>toX</em>: The x coordinate of ending drag point (type float). Mandatory parameter</li>
+<li><em>toY</em>: The y coordinate of ending drag point (type float). Mandatory parameter</li>
+</ul>
+<h4 id="usage-examples_7">Usage examples</h4>
+<pre><code class="java">// Java
+JavascriptExecutor js = (JavascriptExecutor) driver;
+Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
+params.put(&quot;duration&quot;, 1.0);
+params.put(&quot;fromX&quot;, 100);
+params.put(&quot;fromY&quot;, 100);
+params.put(&quot;toX&quot;, 200);
+params.put(&quot;toY&quot;, 200);
+params.put(&quot;element&quot;, ((RemoteWebElement) element).getId());
+js.executeScript(&quot;mobile: dragFromToForDuration&quot;, params);
+</code></pre>
+
+<h3 id="mobile-selectpickerwheelvalue">mobile: selectPickerWheelValue</h3>
+<p>Performs selection of the next or previous picker wheel value. This might
+be useful if these values are populated dynamically, so you don't know which
+one to select or value selection does not work because of XCTest bug.</p>
+<h4 id="supported-arguments_8">Supported arguments</h4>
+<ul>
+<li><em>element</em>: PickerWheel's internal element id (as hexadecimal hash string) to perform
+ value selection on. The element must be of type XCUIElementTypePickerWheel. Mandatory parameter</li>
+<li><em>order</em>: Either <em>next</em> to select the value next to the current one
+ from the target picker wheel or <em>previous</em> to select the previous one. Mandatory parameter</li>
+<li><em>offset</em>: The value in range [0.01, 0.5]. It defines how far from picker
+ wheel's center the click should happen. The actual distance is culculated by
+ multiplying this value to the actual picker wheel height. Too small offset value
+ may not change the picker wheel value and too high value may cause the wheel to switch
+ two or more values at once. Usually the optimal value is located in range [0.15, 0.3]. <em>0.2</em> by default</li>
+</ul>
+<h4 id="usage-examples_8">Usage examples</h4>
+<pre><code class="java">// Java
+JavascriptExecutor js = (JavascriptExecutor) driver;
+Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
+params.put(&quot;order&quot;, &quot;next&quot;);
+params.put(&quot;offset&quot;, 0.15);
+params.put(&quot;element&quot;, ((RemoteWebElement) element).getId());
+js.executeScript(&quot;mobile: selectPickerWheelValue&quot;, params);
+</code></pre>
+
+<h3 id="mobile-alert">mobile: alert</h3>
+<p>Performs operations on NSAlert instance.</p>
+<h4 id="supported-arguments_9">Supported arguments</h4>
+<ul>
+<li><em>action</em>: The following actions are supported: <em>accept</em>, <em>dismiss</em> and <em>getButtons</em>.
+ Mandatory parameter</li>
+<li><em>buttonLabel</em>: The label text of an existing alert button to click on. This is an
+ optional parameter and is only valid in combination with <em>accept</em> and <em>dismiss</em>
+ actions.</li>
+</ul>
+<h4 id="usage-examples_9">Usage examples</h4>
+<pre><code class="python"># Python
+driver.execute_script('mobile: alert', {'action': 'accept', 'buttonLabel': 'My Cool Alert Button'});
+</code></pre>
+
+<h3 id="advanced-topics">Advanced Topics</h3>
+<p>Check <a href="https://github.com/facebook/WebDriverAgent/blob/master/WebDriverAgentLib/Commands/FBElementCommands.m">WDA Element Commands API</a>
+to get the information about the gestures implemented in Facebook WebDriverAgent.
+Check Apple XCTest documentation on <a href="https://developer.apple.com/reference/xctest/xcuielement">XCUIElement</a> and
+<a href="https://developer.apple.com/reference/xctest/xcuicoordinate">XCUICoordinate</a> methods list to get the information
+about all gestures available there.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

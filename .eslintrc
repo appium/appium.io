@@ -1,0 +1,6 @@
+{
+  "extends": "appium",
+  "rules": {
+    "no-console": "off"
+  }
+}

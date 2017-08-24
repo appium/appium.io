@@ -3,3 +3,5 @@
 .D*
 docs/
 _site/
+npm-debug.log
+node_modules/
