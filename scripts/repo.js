@@ -127,7 +127,7 @@ async function getRepoDocs (owner, repo, branch='master') {
  * @param {String} pathToDocs
  */
 async function alterDocs (pathToDocs) {
-  for (const file of await fs.glob(path.resolve(pathToDocs, '**.md'))) {
+  for (const file of await fs.glob(path.resolve(pathToDocs, '**/*.md'))) {
     const stat = await fs.stat(path.resolve(pathToDocs, file));
     if (!stat.isDirectory()) {
       // Rename README.md to index.md
@@ -140,7 +140,7 @@ async function alterDocs (pathToDocs) {
 }
 
 async function applyTabs (pathToHTML) {
-  for (const file of await fs.glob(path.resolve(pathToHTML, '**.html'))) {
+  for (const file of await fs.glob(path.resolve(pathToHTML, '**/*.html'))) {
     const stat = await fs.stat(path.resolve(pathToHTML, file));
     if (!stat.isDirectory()) {
       const filePath = path.resolve(pathToHTML, file);

@@ -14,10 +14,11 @@ const LANGUAGE_DISPLAY_NAMES = {
 };
 
 function capitalize (languageName) {
-  languageName = languageName.toLowerCase();
+  if (!languageName) {
+    return '';
+  }
 
-  let capitalizedName = LANGUAGE_DISPLAY_NAMES[languageName];
-
+  const capitalizedName = LANGUAGE_DISPLAY_NAMES[languageName.toLowerCase()];
   if (capitalizedName) {
     return capitalizedName;
   }
