@@ -29,7 +29,7 @@ export function reassignMarkdownLink (html) {
 }
 
 /**
- * Takes a document, parses out the body and then adds fenced code to the body
+ * Takes a document, parses out the body and then remaps anchor tags to point to HTML links
  * @param {*} htmlDocString 
  */
 export function reassignMarkdownLinkDocument (htmlDocString) {
