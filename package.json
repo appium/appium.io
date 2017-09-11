@@ -35,7 +35,6 @@
     "chai-as-promised": "^7.1.1",
     "fs-promise": "^2.0.3",
     "github": "^9.2.0",
-    "handlebars": "^4.0.10",
     "jquery": "^3.2.1",
     "jsdom": "^5.0.0",
     "lodash": "^4.17.4",
@@ -47,12 +46,14 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "ejs": "^2.5.7",
     "eslint": "^4.5.0",
     "eslint-config-appium": "^2.0.1",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-promise": "^3.5.0",
+    "handlebars": "^4.0.10",
     "is-absolute-url": "^2.1.0",
     "rimraf": "^2.6.1"
   }

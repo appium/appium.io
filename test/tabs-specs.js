@@ -112,6 +112,22 @@ describe('Repo.js', function () {
       </div>`).indexOf('// Javascript').should.be.below(0);
     });
 
+    it('should order the language comments by priority', function () {
+
+      const html = fencedCodeTabify(`<div>
+        <pre>
+          <code class='python'>// Python 
+          JS code</code>
+        </pre>
+        <pre>
+          <code class='java'>// Java 
+          JS code</code>
+        </pre>
+      </div>`);
+
+      html.indexOf('java').should.be.below(html.indexOf('python'));
+    });
+
     it('should parse an HTML file', async function () {
       fencedCodeTabifyDocument(await fs.readFile(path.resolve(__dirname, 'fixtures', 'sample.html'), 'utf8')).indexOf('nav-tabs').should.be.above(0);
     });
