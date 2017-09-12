@@ -116,6 +116,10 @@ describe('Repo.js', function () {
 
       const html = fencedCodeTabify(`<div>
         <pre>
+          <code class='prolog'>// Prolog 
+          Prolog code</code>
+        </pre>
+        <pre>
           <code class='python'>// Python 
           JS code</code>
         </pre>
@@ -126,6 +130,7 @@ describe('Repo.js', function () {
       </div>`);
 
       html.indexOf('java').should.be.below(html.indexOf('python'));
+      html.indexOf('python').should.be.below(html.indexOf('prolog'));
     });
 
     it('should parse an HTML file', async function () {
