@@ -14,7 +14,7 @@ const LANGUAGE_DISPLAY_NAMES = {
   'csharp': 'C#',
 };
 
-const LANGUAGE_ORDER = ['java', 'python', 'javascript', 'ruby', 'csharp', 'php'];
+const LANGUAGE_ORDER = ['java', 'python', 'javascript', 'ruby', 'csharp', 'php', 'objectivec'];
 
 function capitalize (languageName) {
   if (!languageName) {
@@ -46,9 +46,10 @@ export function fencedCodeTabify (html) {
 
   let tabPaneIndex = 0;
 
-  languageBlocks = [];
 
   jqHTML.find("pre > code").each((index, codeTag) => {
+    languageBlocks = [];
+
     const preTag = $(codeTag).parent();
     const siblings = preTag.nextAll();
     let language = capitalize($(codeTag).attr('class'));
@@ -69,7 +70,7 @@ export function fencedCodeTabify (html) {
         <ul class="nav nav-tabs" role="tablist">
           <% for (var i=0; i<languages.length; i++) { %>
           <li role="presentation" class="<%= i === 0 ? 'active' : '' %>">
-              <a href="#<%= languages[i].tabPaneIndex + '_' + i %>" data-toggle="tab"><%= languages[i].capitalizedLanguage %></a>
+              <a href="#<%= languages[i].tabPaneIndex + '_' + i %>" data-language=<%= languages[i].language %> data-toggle="tab"><%= languages[i].capitalizedLanguage %></a>
           </li>
           <% } %>
         </ul>
@@ -82,7 +83,7 @@ export function fencedCodeTabify (html) {
         </div>
       </div>`;
       languageBlocks.sort((blockOne, blockTwo) => (
-        (LANGUAGE_ORDER.indexOf(blockTwo.language) < 0 || LANGUAGE_ORDER.indexOf(blockOne.language) > LANGUAGE_ORDER.indexOf(blockTwo.language)) ? 1 : -1
+        (LANGUAGE_ORDER.indexOf(blockOne.language) < 0 || LANGUAGE_ORDER.indexOf(blockOne.language) > LANGUAGE_ORDER.indexOf(blockTwo.language)) ? 1 : -1
       ));
       preTag.replaceWith($(ejs.render(tabTemplate, {languages: languageBlocks})));
       languageBlocks = [];
