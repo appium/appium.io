@@ -1,4 +1,6 @@
 /* eslint-disable */
+"use strict";
+
 (function () {
   function setCookie(key, value) {
     var expires = new Date();
