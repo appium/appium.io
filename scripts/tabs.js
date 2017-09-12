@@ -29,12 +29,24 @@ function capitalize (languageName) {
   return languageName.charAt(0).toUpperCase() + languageName.slice(1);
 }
 
+
+let languageBlocks = [];
+
+function pushLanguageBlock (language, html, tabPaneIndex) {
+  languageBlocks.push({
+    language: language.toLowerCase(),
+    capitalizedLanguage: capitalize(language),
+    html: stripLanguageComment(html),
+    tabPaneIndex,
+  });
+}
+
 export function fencedCodeTabify (html) {
   const jqHTML = $(html);
 
   let tabPaneIndex = 0;
 
-  let languageBlocks = [];
+  languageBlocks = [];
 
   jqHTML.find("pre > code").each((index, codeTag) => {
     const preTag = $(codeTag).parent();
@@ -42,24 +54,14 @@ export function fencedCodeTabify (html) {
     let language = capitalize($(codeTag).attr('class'));
 
     let siblingCount = 1;
-    languageBlocks.push({
-      language: language.toLowerCase(),
-      capitalizedLanguage: capitalize(language),
-      html: stripLanguageComment(preTag[0].outerHTML),
-      tabPaneIndex,
-    });
+    pushLanguageBlock(language, preTag[0].outerHTML, tabPaneIndex);
     siblings.each(function (index, siblingEl) {
       language = $(siblingEl).find('code').attr('class');
       if (!language) {
         return false;
       }
       siblingCount++;
-      languageBlocks.push({
-        language: language.toLowerCase(),
-        capitalizedLanguage: capitalize(language),
-        html: stripLanguageComment($(siblingEl)[0].outerHTML),
-        tabPaneIndex,
-      });
+      pushLanguageBlock(language, $(siblingEl)[0].outerHTML, tabPaneIndex);
       $(siblingEl).remove();
     });
     if (siblingCount > 1) {
@@ -79,13 +81,9 @@ export function fencedCodeTabify (html) {
           <% } %>
         </div>
       </div>`;
-      languageBlocks.sort((blockOne, blockTwo) => {
-        if (LANGUAGE_ORDER.indexOf(blockTwo.language) === undefined || LANGUAGE_ORDER.indexOf(blockOne.language) > LANGUAGE_ORDER.indexOf(blockTwo.language)) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
+      languageBlocks.sort((blockOne, blockTwo) => (
+        (LANGUAGE_ORDER.indexOf(blockTwo.language) < 0 || LANGUAGE_ORDER.indexOf(blockOne.language) > LANGUAGE_ORDER.indexOf(blockTwo.language)) ? 1 : -1
+      ));
       preTag.replaceWith($(ejs.render(tabTemplate, {languages: languageBlocks})));
       languageBlocks = [];
       tabPaneIndex++;
