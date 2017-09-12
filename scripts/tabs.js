@@ -1,5 +1,6 @@
 import jQuery from 'jquery';
 import { jsdom } from 'jsdom';
+import ejs from 'ejs';
 
 const $ = jQuery(jsdom().defaultView);
 
@@ -12,6 +13,8 @@ const LANGUAGE_DISPLAY_NAMES = {
   'objectivec': 'Objective-C',
   'csharp': 'C#',
 };
+
+const LANGUAGE_ORDER = ['java', 'python', 'javascript', 'ruby', 'csharp', 'php'];
 
 function capitalize (languageName) {
   if (!languageName) {
@@ -26,45 +29,63 @@ function capitalize (languageName) {
   return languageName.charAt(0).toUpperCase() + languageName.slice(1);
 }
 
-function appendLanguageBlock (tabEl, preEl, languageName, id, active) {
-  const navTag = tabEl.find('.nav');
-  navTag.append(`<li role="presentation" ${active ? 'class="active"' : ''} role="tab">
-    <a href='#${id}' data-toggle='tab'>${capitalize(languageName)}</a>
-  </li>`);
-  const tabPanel = tabEl.find('.tab-content');
-  let html = preEl[0].outerHTML;
-  html = stripLanguageComment(html);
-  tabPanel.append(`<div role="tabpanel" class="tab-pane ${active ? 'active' : ''}" id="${id}">${html.trim()}</div>`);
+
+let languageBlocks = [];
+
+function pushLanguageBlock (language, html, tabPaneIndex) {
+  languageBlocks.push({
+    language: language.toLowerCase(),
+    capitalizedLanguage: capitalize(language),
+    html: stripLanguageComment(html),
+    tabPaneIndex,
+  });
 }
 
 export function fencedCodeTabify (html) {
   const jqHTML = $(html);
-  let tabTagHTML = `<div>
-    <ul class="nav nav-tabs" role="tablist">
-    </ul>
-    <div class="tab-content">
-    </div>
-  </div>`;
 
   let tabPaneIndex = 0;
+
+  languageBlocks = [];
 
   jqHTML.find("pre > code").each((index, codeTag) => {
     const preTag = $(codeTag).parent();
     const siblings = preTag.nextAll();
-    const tabEl = $(tabTagHTML);
     let language = capitalize($(codeTag).attr('class'));
-    let siblingIndex = 0;
-    appendLanguageBlock(tabEl, preTag, language, `${tabPaneIndex}_${siblingIndex++}`, true);
+
+    let siblingCount = 1;
+    pushLanguageBlock(language, preTag[0].outerHTML, tabPaneIndex);
     siblings.each(function (index, siblingEl) {
       language = $(siblingEl).find('code').attr('class');
       if (!language) {
         return false;
       }
-      appendLanguageBlock(tabEl, $(siblingEl), language, `${tabPaneIndex}_${siblingIndex++}`);
+      siblingCount++;
+      pushLanguageBlock(language, $(siblingEl)[0].outerHTML, tabPaneIndex);
       $(siblingEl).remove();
     });
-    if (siblingIndex > 1) {
-      preTag.replaceWith(tabEl);
+    if (siblingCount > 1) {
+      const tabTemplate = `<div>
+        <ul class="nav nav-tabs" role="tablist">
+          <% for (var i=0; i<languages.length; i++) { %>
+          <li role="presentation" class="<%= i === 0 ? 'active' : '' %>">
+              <a href="#<%= languages[i].tabPaneIndex + '_' + i %>" data-toggle="tab"><%= languages[i].capitalizedLanguage %></a>
+          </li>
+          <% } %>
+        </ul>
+        <div class="tab-content">
+          <% for (var i=0; i<languages.length; i++) { %>
+          <div role="tabpanel" class="tab-pane <%= i === 0 ? 'active' : '' %>" id="<%= languages[i].tabPaneIndex + '_' + i %>">
+            <%- languages[i].html %>
+          </div>
+          <% } %>
+        </div>
+      </div>`;
+      languageBlocks.sort((blockOne, blockTwo) => (
+        (LANGUAGE_ORDER.indexOf(blockTwo.language) < 0 || LANGUAGE_ORDER.indexOf(blockOne.language) > LANGUAGE_ORDER.indexOf(blockTwo.language)) ? 1 : -1
+      ));
+      preTag.replaceWith($(ejs.render(tabTemplate, {languages: languageBlocks})));
+      languageBlocks = [];
       tabPaneIndex++;
     }
   });
