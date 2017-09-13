@@ -395,6 +395,10 @@ bottom: 270px;
     font-weight: bold;
 }
 
+.dropdown-menu {
+  background-color: #101010;
+}
+
 .dropdown-item {
   display: block;
   width: 100%;
@@ -406,4 +410,5 @@ bottom: 270px;
   white-space: nowrap;
   background: 0 0;
   border: 0;
+  color: white;
 }
