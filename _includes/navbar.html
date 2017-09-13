@@ -23,7 +23,13 @@ http://getbootstrap.com/components/#navbar
                 <li><a href="/getting-started.html" class="localizable-link" data-localize="getting-started-nav-link">Get started</a></li>
                 <li><a href="/history.html" class="localizable-link" data-localize="history-nav-link">History</a></li>
                 <li><a href="/get-involved.html" class="localizable-link" data-localize="get-involved-nav-link">Get Involved!</a></li>
-                <li><a href="/documentation.html" class="localizable-link" data-localize="docs-nav-link">Documentation</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle localizable-link" data-localize="docs-nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="docs/en/about-appium/intro" href="#">English</a>
+                        <a class="dropdown-item" href="docs/cn/about-appium/intro">官话</a>
+                    </div>
+                </li>
                 <li><a href="/resources.html" class="localizable-link" data-localize="docs-nav-resources">Books & Resources</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

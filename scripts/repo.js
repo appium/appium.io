@@ -27,7 +27,6 @@ const SITEMAP = {
       ['Android HAX Emulation', 'android-hax-emulator.md'],
       ['Real Device Setup', 'real-devices.md'],
       ['Real iOS Devices', 'real-devices-ios.md'],
-      ['Deploying Apps to Real iOS Devices', 'ios-deploy.md'],
       ['Real Android Devices', 'real-devices-android.md'],
       ['Setup for Parallel Testing', 'parallel_tests.md'],
       ['Troubleshooting', 'troubleshooting.md']]],
@@ -46,7 +45,6 @@ const SITEMAP = {
       ['iOS Pasteboard Guide', 'ios-xctest-pasteboard.md'],
       ['iOS Predicate Guide', 'ios_predicate.md'],
       ['iOS Touch ID Guide', 'ios-touch-id.md'],
-      ['SafariLauncher Guide', 'safari-launcher.md'],
       ['UiSelector Guide', 'uiautomator_uiselector.md'],
       ['Android Code Coverage Guide', 'android_coverage.md'],
       ['Using Unicode with Appium', 'unicode.md'],
@@ -61,7 +59,6 @@ const SITEMAP = {
       ['Chromedriver Troubleshooting', 'chromedriver.md'],
       ['Cross-domain iframes', 'cross-domain-iframes.md'],
       ['Using ios-webkit-debug-proxy', 'ios-webkit-debug-proxy.md'],
-      ['Using instruments-without-delay on Xcode 7', 'iwd_xcode7.md'],
       ['Using a custom WDA server', 'wda-custom-server.md'],
       ['The Event Timings API', 'event-timings.md'],
       ['The Settings API', 'settings.md']]],
@@ -177,9 +174,15 @@ async function buildDocs (pathToDocs) {
 
     await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language, themeDir, toc}));
     const pathToBuildDocsTo = path.resolve(__dirname, '..', 'docs', language);
-    await exec('mkdocs', ['build', '--site-dir', pathToBuildDocsTo], {
-      cwd: pathToDocs,
-    });
+    try {
+      await exec('mkdocs', ['build', '--site-dir', pathToBuildDocsTo], {
+        cwd: pathToDocs,
+      });
+    } catch (e) {
+      console.log('Could not build', e.message);
+      console.log('Reason:', e.stderr);
+      throw e;
+    }
     await alterHTML(pathToBuildDocsTo);
   }
 }
