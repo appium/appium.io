@@ -181,6 +181,7 @@ async function buildDocs (pathToDocs) {
     } catch (e) {
       console.log('Could not build', e.message);
       console.log('Reason:', e.stderr);
+      throw e;
     }
     await alterHTML(pathToBuildDocsTo);
   }
