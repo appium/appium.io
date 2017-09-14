@@ -161,6 +161,21 @@ async function buildFromLocal () {
   await buildDocs(pathToDocs);
 }
 
+function buildDocYML (sitemap, baseDir='', levelCount=0) {
+  let toc = '';
+  let indent = ' '.repeat(levelCount * 2);
+  for (let [category, content] of sitemap) {
+    toc += `${indent}- '${category}':`;
+    if (typeof content === 'string') {
+      toc += ` '${baseDir}${content}'\n`;
+    } else if (_.isArray(content) && content.length) {
+      let nextBaseDir = baseDir + content[0] + '/';
+      toc += '\n' + buildDocYML(content.slice(1), nextBaseDir, levelCount + 1);
+    }
+  }
+  return toc;
+}
+
 async function buildDocs (pathToDocs) {
   const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'),  'utf8'));
   const themeDir = path.resolve(__dirname, '..', 'cinder');
@@ -168,19 +183,7 @@ async function buildDocs (pathToDocs) {
   // Build the MkDocs for each language
   for (let language of LANGUAGES) {
     // generate pages yaml from the sitemap
-    let toc = '';
-
-    for (let [category, content] of SITEMAP[language]) {
-      if (typeof content === "string") {
-        toc += `- '${category}': '${content}'\n`;
-      } else if (_.isArray(content) && content.length) {
-        toc += `- ${category}:\n`;
-        let baseDir = content[0];
-        for (let [subCategory, mdFile] of content.slice(1)) {
-          toc += `    - '${subCategory}': '${baseDir}/${mdFile}'\n`;
-        }
-      }
-    }
+    let toc = buildDocYML(SITEMAP[language]);
     toc = toc.trim();
 
     await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language, themeDir, toc}));
