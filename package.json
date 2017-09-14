@@ -9,6 +9,7 @@
   "scripts": {
     "serve": "bundle exec jekyll serve",
     "build:docs": "rimraf docs/ && babel-node scripts/repo.js",
+    "build:docs:local": "cross-env BUILD_LOCAL_DOCS=true npm run build:docs",
     "lint": "eslint scripts/ test/",
     "lint:fix": "eslint scripts/ test/ --fix",
     "test": "npm run lint && mocha --require babel-polyfill --compilers js:babel-core/register test/",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "cross-env": "^5.0.5",
     "ejs": "^2.5.7",
     "eslint": "^4.5.0",
     "eslint-config-appium": "^2.0.1",

@@ -150,6 +150,17 @@ async function alterHTML (pathToHTML) {
   }
 }
 
+async function buildFromLocal () {
+  const localAppium = process.env.LOCAL_APPIUM;
+  if (!localAppium) {
+    throw new Error('$LOCAL_APPIUM must be defined to build docs locally');
+  } else if (!await fs.exists(localAppium)) {
+    throw new Error(`${localAppium} not a valid path`);
+  }
+  const pathToDocs = path.resolve(localAppium, 'docs');
+  await buildDocs(pathToDocs);
+}
+
 async function buildDocs (pathToDocs) {
   const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'),  'utf8'));
   const themeDir = path.resolve(__dirname, '..', 'cinder');
@@ -188,6 +199,9 @@ async function buildDocs (pathToDocs) {
 }
 
 (async () => {
+  if (process.env.BUILD_LOCAL_DOCS) {
+    return await buildFromLocal();
+  }
   const pathToRepoDocs = await getRepoDocs('appium', 'appium');
   await buildDocs(pathToRepoDocs);
 })().catch(console.error);
