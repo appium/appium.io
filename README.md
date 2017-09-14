@@ -33,6 +33,12 @@ folder)
 npm run build:docs
 ```
 
+Build the docs locally. Must set env variable LOCAL_APPIUM to the path to your local appium repo
+
+```
+npm run build:docs:local
+```
+
 Start a local Jekyll server (this allows you to view appium.io at `localhost:4000`):
 
 ```
