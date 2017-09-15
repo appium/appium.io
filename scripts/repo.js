@@ -118,8 +118,7 @@ function buildDocYML (sitemap, baseDir='', levelCount=0) {
 async function buildDocs (pathToDocs) {
   const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'),  'utf8'));
   const themeDir = path.resolve(__dirname, '..', 'cinder');
-  const sitemapJSON =  await fs.readFile(path.resolve(pathToDocs, 'toc.json'), 'utf8');
-  const sitemap = JSON.parse(sitemapJSON);
+  const sitemap = require(path.resolve(pathToDocs, 'toc.js'));
 
   // Build the MkDocs for each language
   for (let language of LANGUAGES) {
