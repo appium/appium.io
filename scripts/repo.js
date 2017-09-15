@@ -90,7 +90,7 @@ async function alterHTML (pathToHTML) {
 }
 
 async function buildFromLocal () {
-  const localAppium = process.env.LOCAL_APPIUM;
+  const localAppium = process.env.LOCAL_APPIUM || process.cwd();
   if (!localAppium) {
     throw new Error('$LOCAL_APPIUM must be defined to build docs locally');
   } else if (!await fs.exists(localAppium)) {
