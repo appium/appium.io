@@ -12,70 +12,6 @@ import { fencedCodeTabifyDocument } from './tabs';
 import { reassignMarkdownLinkDocument } from './links';
 
 const LANGUAGES = ['en', 'cn'];
-const SITEMAP = {
-  en: [
-    ['Home', 'about-appium/intro.md'],
-    ['About', ['about-appium',
-      ['Introduction', 'intro.md'],
-      ['The Appium Clients', 'appium-clients.md']]],
-    ['Drivers', ['drivers',
-      ['XCUITest (iOS)', 'ios-xcuitest.md'],
-      ['UIAutomation (iOS)', 'ios-uiautomation.md']]],
-    ['Setup', ['appium-setup',
-      ['Supported Platforms', 'platform-support.md'],
-      ['Running on OS X', 'running-on-osx.md'],
-      ['Running on Windows', 'running-on-windows.md'],
-      ['Running on Linux', 'running-on-linux.md'],
-      ['Android Setup', 'android-setup.md'],
-      ['Android HAX Emulation', 'android-hax-emulator.md'],
-      ['Real Device Setup', 'real-devices.md'],
-      ['Real iOS Devices', 'real-devices-ios.md'],
-      ['Real Android Devices', 'real-devices-android.md'],
-      ['Setup for Parallel Testing', 'parallel_tests.md'],
-      ['Troubleshooting', 'troubleshooting.md']]],
-    ['Writing & Running Tests', ['writing-running-appium',
-      ['Running Tests', 'running-tests.md'],
-      ['CLI Arguments', 'server-args.md'],
-      ['The --default-capabilities flag', 'default-capabilities-arg.md'],
-      ['Desired Capabilities', 'caps.md'],
-      ['Appium Command List', 'appium-bindings.md'],
-      ['Finding Elements', 'finding-elements.md'],
-      ['Mobile Web Testing', 'mobile-web.md'],
-      ['Reset Strategies', 'reset-strategies.md'],
-      ['Network Connection Guide', 'network_connection.md'],
-      ['Touch Actions', 'touch-actions.md'],
-      ['XCUITest Mobile Gestures', 'ios-xctest-mobile-gestures.md'],
-      ['iOS Pasteboard Guide', 'ios-xctest-pasteboard.md'],
-      ['iOS Predicate Guide', 'ios_predicate.md'],
-      ['iOS Touch ID Guide', 'ios-touch-id.md'],
-      ['UiSelector Guide', 'uiautomator_uiselector.md'],
-      ['Android Code Coverage Guide', 'android_coverage.md'],
-      ['Using Unicode with Appium', 'unicode.md'],
-      ['The UiAutomator2 Driver', 'uiautomator2.md'],
-      ['The Espresso Driver', 'espresso.md'],
-      ['Windows App Testing', 'windows-app-testing.md']]],
-    ['Advanced', ['advanced-concepts',
-      ['Migrating to Appium 1.0', 'migrating-to-1-0.md'],
-      ['Migrating to XCUITest', 'migrating-to-xcuitest.md'],
-      ['Automating Hybrid Apps', 'hybrid.md'],
-      ['Using Selenium Grid with Appium', 'grid.md'],
-      ['Chromedriver Troubleshooting', 'chromedriver.md'],
-      ['Cross-domain iframes', 'cross-domain-iframes.md'],
-      ['Using ios-webkit-debug-proxy', 'ios-webkit-debug-proxy.md'],
-      ['Using a custom WDA server', 'wda-custom-server.md'],
-      ['The Event Timings API', 'event-timings.md'],
-      ['The Settings API', 'settings.md']]],
-    ['Contributing', ['contributing-to-appium',
-      ['Running Appium from Source', 'appium-from-source.md'],
-      ['Developer Overview', 'developers-overview.md'],
-      ['Standard Gulp Commands', 'gulp.md'],
-      ['Appium Style Guide', 'style-guide-2.0.md'],
-      ['How to Write Docs', 'how-to-write-docs.md'],
-      ['Appium Package Structure', 'appium-packages.md'],
-      ['Credits', 'credits.md']]]
-  ], cn: [
-  ]
-};
 
 async function unzipStream (readstream, pathToUnzipped) {
   return await new B((resolve, reject) => {
@@ -182,11 +118,12 @@ function buildDocYML (sitemap, baseDir='', levelCount=0) {
 async function buildDocs (pathToDocs) {
   const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'),  'utf8'));
   const themeDir = path.resolve(__dirname, '..', 'cinder');
+  const sitemap = require(path.resolve(pathToDocs, 'toc.js'));
 
   // Build the MkDocs for each language
   for (let language of LANGUAGES) {
     // generate pages yaml from the sitemap
-    let toc = buildDocYML(SITEMAP[language]);
+    let toc = buildDocYML(sitemap[language]);
     toc = toc.trim();
 
     await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language, themeDir, toc}));

@@ -5,7 +5,8 @@ import ejs from 'ejs';
 const $ = jQuery(jsdom().defaultView);
 
 function stripLanguageComment (html) {
-  return html.replace(/(<code [^>]*>)(\/\/ [^\s]*)/, '$1');
+  return html.replace(/(<code [^>]*>)(\/\/ [^\s]*\n)/, '$1')
+    .replace(/(<code [^>]*>)(# [^\s]*\n)/, '$1');
 }
 
 const LANGUAGE_DISPLAY_NAMES = {
