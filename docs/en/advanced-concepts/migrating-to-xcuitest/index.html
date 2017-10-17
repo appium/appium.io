@@ -1131,39 +1131,48 @@
                         <ul class="dropdown-menu">
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Basics</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../../writing-running-appium/running-tests/">Running Tests</a>
+    <a href="../../writing-running-appium/basics/running-tests/">Running Tests</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../writing-running-appium/server-args/">CLI Arguments</a>
+    <a href="../../writing-running-appium/basics/caps/">Desired Capabilities</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../writing-running-appium/default-capabilities-arg/">The --default-capabilities flag</a>
+    <a href="../../writing-running-appium/basics/default-capabilities-arg/">The --default-capabilities flag</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../writing-running-appium/caps/">Desired Capabilities</a>
+    <a href="../../writing-running-appium/basics/finding-elements/">Finding Elements</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../writing-running-appium/appium-bindings/">Appium Command List</a>
+    <a href="../../writing-running-appium/basics/touch-actions/">Touch Actions</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../writing-running-appium/finding-elements/">Finding Elements</a>
+    <a href="../../writing-running-appium/basics/server-args/">CLI Arguments</a>
 </li>
+
+        
+    </ul>
+  </li>
 
                         
                             
@@ -1200,69 +1209,90 @@
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../../writing-running-appium/reset-strategies/">Reset Strategies</a>
+    <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios_predicate/">iOS Predicate Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-touch-id/">iOS Touch ID Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../../writing-running-appium/network_connection/">Network Connection Guide</a>
+    <a href="../../writing-running-appium/android/uiautomator_uiselector/">UiSelector Guide</a>
 </li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/android_coverage/">Android Code Coverage Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../../writing-running-appium/touch-actions/">Touch Actions</a>
+    <a href="../../writing-running-appium/other/reset-strategies/">Reset Strategies</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../writing-running-appium/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+    <a href="../../writing-running-appium/other/network_connection/">Network Connection Guide</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../writing-running-appium/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+    <a href="../../writing-running-appium/other/unicode/">Using Unicode with Appium</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../writing-running-appium/ios_predicate/">iOS Predicate Guide</a>
+    <a href="../../writing-running-appium/other/troubleshooting/">Troubleshooting</a>
 </li>
 
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/ios-touch-id/">iOS Touch ID Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/uiautomator_uiselector/">UiSelector Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/android_coverage/">Android Code Coverage Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/unicode/">Using Unicode with Appium</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/troubleshooting/">Troubleshooting</a>
-</li>
+        
+    </ul>
+  </li>
 
                         
                         </ul>
@@ -1387,7 +1417,7 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../../writing-running-appium/troubleshooting/">
+                        <a rel="next" href="../../writing-running-appium/other/troubleshooting/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -1507,12 +1537,12 @@
 <h3 id="other-known-issues">Other known issues</h3>
 <p>Finally, a list of known issues with the initial 1.6 release (we'll strike through issues which have been resolved):</p>
 <ul>
-<li>~~Unable to interact with elements on devices in Landscape mode (https://github.com/appium/appium/issues/6994)~~</li>
-<li><code>shake</code> is not implemented due to lack of support from Apple</li>
-<li><code>lock</code> is not implemented due to lack of support from Apple</li>
-<li>Setting geo-location not supported due to lack of support from Apple</li>
+<li><del>Unable to interact with elements on devices in Landscape mode (https://github.com/appium/appium/issues/6994).</del></li>
+<li><code>shake</code> is not implemented due to lack of support from Apple.</li>
+<li><code>lock</code> is not implemented due to lack of support from Apple.</li>
+<li>Setting geo-location not supported due to lack of support from Apple.</li>
 <li>Through the TouchAction/MultiAction API, <code>zoom</code> gestures work but <code>pinch</code> gestures do not, due to an Apple issue.</li>
-<li>~~Through the TouchAction/MultiAction API, <code>swipe</code> gestures are currently not supported, though they should be soon (https://github.com/appium/appium/issues/7573)~~</li>
+<li><del>Through the TouchAction/MultiAction API, <code>swipe</code> gestures are currently not supported, though they should be soon (https://github.com/appium/appium/issues/7573).</del></li>
 <li>The capabilities <code>autoAcceptAlerts</code> and <code>autoDismissAlerts</code> do not currently work, and there is continued debate about whether we will be able to implement them in the future.</li>
 <li>There is an issue with the iOS SDK such that PickerWheels built using certain API methods are not automatable by XCUITest. See https://github.com/appium/appium/issues/6962 for the workaround, to ensure your PickerWheels are built properly.</li>
 </ul>
