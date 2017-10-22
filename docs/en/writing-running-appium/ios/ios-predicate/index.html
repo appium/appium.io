@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-    <title>CLI Arguments - Appium</title>
+    <title>iOS Predicate Guide - Appium</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../../css/appium.css" rel="stylesheet">
@@ -181,7 +181,7 @@
         
             
 <li>
-    <a href="../../../commands/session/delete/">Delete</a>
+    <a href="../../../commands/session/delete/">End</a>
 </li>
 
         
@@ -1131,48 +1131,39 @@
                         <ul class="dropdown-menu">
                         
                             
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">Basics</a>
-    <ul class="dropdown-menu">
-        
-            
 <li>
-    <a href="../running-tests/">Running Tests</a>
+    <a href="../../running-tests/">Running Tests</a>
 </li>
 
-        
-            
+                        
+                            
 <li>
-    <a href="../caps/">Desired Capabilities</a>
+    <a href="../../caps/">Desired Capabilities</a>
 </li>
 
-        
-            
+                        
+                            
 <li>
-    <a href="../default-capabilities-arg/">The --default-capabilities flag</a>
+    <a href="../../default-capabilities-arg/">The --default-capabilities flag</a>
 </li>
 
-        
-            
+                        
+                            
 <li>
-    <a href="../finding-elements/">Finding Elements</a>
+    <a href="../../finding-elements/">Finding Elements</a>
 </li>
 
-        
-            
+                        
+                            
 <li>
-    <a href="../touch-actions/">Touch Actions</a>
+    <a href="../../touch-actions/">Touch Actions</a>
 </li>
 
-        
-            
-<li class="active">
-    <a href="./">CLI Arguments</a>
+                        
+                            
+<li>
+    <a href="../../server-args/">CLI Arguments</a>
 </li>
-
-        
-    </ul>
-  </li>
 
                         
                             
@@ -1215,25 +1206,25 @@
         
             
 <li>
-    <a href="../../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+    <a href="../ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
         
             
 <li>
-    <a href="../../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+    <a href="../ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">iOS Predicate Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../../ios/ios_predicate/">iOS Predicate Guide</a>
-</li>
-
-        
-            
-<li>
-    <a href="../../ios/ios-touch-id/">iOS Touch ID Guide</a>
+    <a href="../ios-touch-id/">iOS Touch ID Guide</a>
 </li>
 
         
@@ -1248,13 +1239,13 @@
         
             
 <li>
-    <a href="../../android/uiautomator_uiselector/">UiSelector Guide</a>
+    <a href="../../android/uiautomator-uiselector/">UiSelector Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../../android/android_coverage/">Android Code Coverage Guide</a>
+    <a href="../../android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
         
@@ -1275,7 +1266,7 @@
         
             
 <li>
-    <a href="../../other/network_connection/">Network Connection Guide</a>
+    <a href="../../other/network-connection/">Network Connection Guide</a>
 </li>
 
         
@@ -1338,7 +1329,7 @@
                         
                             
 <li>
-    <a href="../../../advanced-concepts/parallel_tests/">Setup for Parallel Testing</a>
+    <a href="../../../advanced-concepts/parallel-tests/">Setup for Parallel Testing</a>
 </li>
 
                         
@@ -1417,12 +1408,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../touch-actions/">
+                        <a rel="next" href="../ios-xctest-pasteboard/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../../web/mobile-web/">
+                        <a rel="prev" href="../ios-touch-id/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1438,9 +1429,33 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#appium-server-arguments">Appium server arguments</a></li>
+        <li class="first-level active"><a href="#ios-predicate">iOS Predicate</a></li>
         
-            <li class="second-level"><a href="#server-flags">Server flags</a></li>
+            <li class="second-level"><a href="#basic-comparisons">Basic Comparisons</a></li>
+            
+        
+            <li class="second-level"><a href="#boolean-value-predicates">Boolean Value Predicates</a></li>
+            
+        
+            <li class="second-level"><a href="#basic-compound-predicates">Basic Compound Predicates</a></li>
+            
+        
+            <li class="second-level"><a href="#string-comparisons">String Comparisons</a></li>
+            
+        
+            <li class="second-level"><a href="#aggregate-operations">Aggregate Operations</a></li>
+            
+        
+            <li class="second-level"><a href="#identifiers">Identifiers</a></li>
+            
+        
+            <li class="second-level"><a href="#literals">Literals</a></li>
+            
+        
+            <li class="second-level"><a href="#reserved-words">Reserved Words</a></li>
+            
+        
+            <li class="second-level"><a href="#appium-predicate-helpers">Appium predicate helpers</a></li>
             
         
     
@@ -1448,498 +1463,180 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="appium-server-arguments">Appium server arguments</h1>
-<p>Many Appium 1.5 server arguments have been deprecated in favor of the <a href="/docs/en/writing-running-appium/default-capabilities-arg/index.html">--default-capabilities flag</a>.</p>
-<p>Usage: <code>node . [flags]</code></p>
-<h2 id="server-flags">Server flags</h2>
-<p>All flags are optional, but some are required in conjunction with certain others.</p>
-<p><expand_table></expand_table></p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Default</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--shell</code></td>
-<td>null</td>
-<td>Enter REPL mode</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--ipa</code></td>
-<td>null</td>
-<td>(IOS-only) abs path to compiled .ipa file</td>
-<td><code>--ipa /abs/path/to/my.ipa</code></td>
-</tr>
-<tr>
-<td><code>-a</code>, <code>--address</code></td>
-<td>0.0.0.0</td>
-<td>IP Address to listen on</td>
-<td><code>--address 0.0.0.0</code></td>
-</tr>
-<tr>
-<td><code>-p</code>, <code>--port</code></td>
-<td>4723</td>
-<td>port to listen on</td>
-<td><code>--port 4723</code></td>
-</tr>
-<tr>
-<td><code>-ca</code>, <code>--callback-address</code></td>
-<td>null</td>
-<td>callback IP Address (default: same as --address)</td>
-<td><code>--callback-address 127.0.0.1</code></td>
-</tr>
-<tr>
-<td><code>-cp</code>, <code>--callback-port</code></td>
-<td>null</td>
-<td>callback port (default: same as port)</td>
-<td><code>--callback-port 4723</code></td>
-</tr>
-<tr>
-<td><code>-bp</code>, <code>--bootstrap-port</code></td>
-<td>4724</td>
-<td>(Android-only) port to use on device to talk to Appium</td>
-<td><code>--bootstrap-port 4724</code></td>
-</tr>
-<tr>
-<td><code>-r</code>, <code>--backend-retries</code></td>
-<td>3</td>
-<td>(iOS-only) How many times to retry launching Instruments before saying it crashed or timed out</td>
-<td><code>--backend-retries 3</code></td>
-</tr>
-<tr>
-<td><code>--session-override</code></td>
-<td>false</td>
-<td>Enables session override (clobbering)</td>
-<td></td>
-</tr>
-<tr>
-<td><code>-l</code>, <code>--pre-launch</code></td>
-<td>false</td>
-<td>Pre-launch the application before allowing the first session (Requires --app and, for Android, --app-pkg and --app-activity)</td>
-<td></td>
-</tr>
-<tr>
-<td><code>-g</code>, <code>--log</code></td>
-<td>null</td>
-<td>Also send log output to this file</td>
-<td><code>--log /path/to/appium.log</code></td>
-</tr>
-<tr>
-<td><code>--log-level</code></td>
-<td>debug</td>
-<td>log level; default (console[:file]): debug[:debug]</td>
-<td><code>--log-level debug</code></td>
-</tr>
-<tr>
-<td><code>--log-timestamp</code></td>
-<td>false</td>
-<td>Show timestamps in console output</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--local-timezone</code></td>
-<td>false</td>
-<td>Use local timezone for timestamps</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--log-no-colors</code></td>
-<td>false</td>
-<td>Do not use colors in console output</td>
-<td></td>
-</tr>
-<tr>
-<td><code>-G</code>, <code>--webhook</code></td>
-<td>null</td>
-<td>Also send log output to this HTTP listener</td>
-<td><code>--webhook localhost:9876</code></td>
-</tr>
-<tr>
-<td><code>--safari</code></td>
-<td>false</td>
-<td>(IOS-Only) Use the safari app</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--default-device</code>, <code>-dd</code></td>
-<td>false</td>
-<td>(IOS-Simulator-only) use the default simulator that instruments launches on its own</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--force-iphone</code></td>
-<td>false</td>
-<td>(IOS-only) Use the iPhone Simulator no matter what the app wants</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--force-ipad</code></td>
-<td>false</td>
-<td>(IOS-only) Use the iPad Simulator no matter what the app wants</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--tracetemplate</code></td>
-<td>null</td>
-<td>(IOS-only) .tracetemplate file to use with Instruments</td>
-<td><code>--tracetemplate /Users/me/Automation.tracetemplate</code></td>
-</tr>
-<tr>
-<td><code>--instruments</code></td>
-<td>null</td>
-<td>(IOS-only) path to instruments binary</td>
-<td><code>--instruments /path/to/instruments</code></td>
-</tr>
-<tr>
-<td><code>--nodeconfig</code></td>
-<td>null</td>
-<td>Configuration JSON file to register appium with selenium grid</td>
-<td><code>--nodeconfig /abs/path/to/nodeconfig.json</code></td>
-</tr>
-<tr>
-<td><code>-ra</code>, <code>--robot-address</code></td>
-<td>0.0.0.0</td>
-<td>IP Address of robot</td>
-<td><code>--robot-address 0.0.0.0</code></td>
-</tr>
-<tr>
-<td><code>-rp</code>, <code>--robot-port</code></td>
-<td>-1</td>
-<td>port for robot</td>
-<td><code>--robot-port 4242</code></td>
-</tr>
-<tr>
-<td><code>--selendroid-port</code></td>
-<td>8080</td>
-<td>Local port used for communication with Selendroid</td>
-<td><code>--selendroid-port 8080</code></td>
-</tr>
-<tr>
-<td><code>--chromedriver-port</code></td>
-<td>9515</td>
-<td>Port upon which ChromeDriver will run</td>
-<td><code>--chromedriver-port 9515</code></td>
-</tr>
-<tr>
-<td><code>--chromedriver-executable</code></td>
-<td>null</td>
-<td>ChromeDriver executable full path</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--show-config</code></td>
-<td>false</td>
-<td>Show info about the appium server configuration and exit</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--no-perms-check</code></td>
-<td>false</td>
-<td>Bypass Appium's checks to ensure we can read/write necessary files</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--strict-caps</code></td>
-<td>false</td>
-<td>Cause sessions to fail if desired caps are sent in that Appium does not recognize as valid for the selected device</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--isolate-sim-device</code></td>
-<td>false</td>
-<td>Xcode 6 has a bug on some platforms where a certain simulator can only be launched without error if all other simulator devices are first deleted. This option causes Appium to delete all devices other than the one being used by Appium. Note that this is a permanent deletion, and you are responsible for using simctl or xcode to manage the categories of devices used with Appium.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--tmp</code></td>
-<td>null</td>
-<td>Absolute path to directory Appium can use to manage temporary files, like built-in iOS apps it needs to move around. On *nix/Mac defaults to /tmp, on Windows defaults to C:\Windows\Temp</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--trace-dir</code></td>
-<td>null</td>
-<td>Absolute path to directory Appium use to save ios instruments traces, defaults to <tmp dir="">/appium-instruments</tmp></td>
-<td></td>
-</tr>
-<tr>
-<td><code>--debug-log-spacing</code></td>
-<td>false</td>
-<td>Add exaggerated spacing in logs to help with visual inspection</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--suppress-adb-kill-server</code></td>
-<td>false</td>
-<td>(Android-only) If set, prevents Appium from killing the adb server instance</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--async-trace</code></td>
-<td>false</td>
-<td>Add long stack traces to log entries. Recommended for debugging only.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--webkit-debug-proxy-port</code></td>
-<td>27753</td>
-<td>(IOS-only) Local port used for communication with ios-webkit-debug-proxy</td>
-<td><code>--webkit-debug-proxy-port 27753</code></td>
-</tr>
-<tr>
-<td><code>-dc</code>, <code>--default-capabilities</code></td>
-<td>{}</td>
-<td>Set the default desired capabilities, which will be set on each session unless overridden by received capabilities.</td>
-<td><code>--default-capabilities [ '{"app": "myapp.app", "deviceName": "iPhone Simulator"}' | /path/to/caps.json ]</code></td>
-</tr>
-<tr>
-<td><code>--reboot</code></td>
-<td>false</td>
-<td>- (Android-only) reboot emulator after each session and kill it at the end</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--command-timeout</code></td>
-<td>60</td>
-<td>[DEPRECATED] No effect. This used to be the default command timeout for the server to use for all sessions (in seconds and should be less than 2147483). Use newCommandTimeout cap instead</td>
-<td></td>
-</tr>
-<tr>
-<td><code>-k</code>, <code>--keep-artifacts</code></td>
-<td>false</td>
-<td>[DEPRECATED] - no effect, trace is now in tmp dir by default and is cleared before each run. Please also refer to the --trace-dir flag.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--platform-name</code></td>
-<td>null</td>
-<td>[DEPRECATED] - Name of the mobile platform: iOS, Android, or FirefoxOS</td>
-<td><code>--platform-name iOS</code></td>
-</tr>
-<tr>
-<td><code>--platform-version</code></td>
-<td>null</td>
-<td>[DEPRECATED] - Version of the mobile platform</td>
-<td><code>--platform-version 7.1</code></td>
-</tr>
-<tr>
-<td><code>--automation-name</code></td>
-<td>null</td>
-<td>[DEPRECATED] - Name of the automation tool: Appium or Selendroid</td>
-<td><code>--automation-name Appium</code></td>
-</tr>
-<tr>
-<td><code>--device-name</code></td>
-<td>null</td>
-<td>[DEPRECATED] - Name of the mobile device to use</td>
-<td><code>--device-name iPhone Retina (4-inch), Android Emulator</code></td>
-</tr>
-<tr>
-<td><code>--browser-name</code></td>
-<td>null</td>
-<td>[DEPRECATED] - Name of the mobile browser: Safari or Chrome</td>
-<td><code>--browser-name Safari</code></td>
-</tr>
-<tr>
-<td><code>--app</code></td>
-<td>null</td>
-<td>[DEPRECATED] - IOS: abs path to simulator-compiled .app file or the bundle_id of the desired target on device; Android: abs path to .apk file</td>
-<td><code>--app /abs/path/to/my.app</code></td>
-</tr>
-<tr>
-<td><code>-lt</code>, <code>--launch-timeout</code></td>
-<td>90000</td>
-<td>[DEPRECATED] - (iOS-only) how long in ms to wait for Instruments to launch</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--language</code></td>
-<td>null</td>
-<td>[DEPRECATED] - Language for the iOS simulator / Android Emulator</td>
-<td><code>--language en</code></td>
-</tr>
-<tr>
-<td><code>--locale</code></td>
-<td>null</td>
-<td>[DEPRECATED] - Locale for the iOS simulator / Android Emulator</td>
-<td><code>--locale en_US</code></td>
-</tr>
-<tr>
-<td><code>-U</code>, <code>--udid</code></td>
-<td>null</td>
-<td>[DEPRECATED] - Unique device identifier of the connected physical device</td>
-<td><code>--udid 1adsf-sdfas-asdf-123sdf</code></td>
-</tr>
-<tr>
-<td><code>--orientation</code></td>
-<td>null</td>
-<td>[DEPRECATED] - (IOS-only) use LANDSCAPE or PORTRAIT to initialize all requests to this orientation</td>
-<td><code>--orientation LANDSCAPE</code></td>
-</tr>
-<tr>
-<td><code>--no-reset</code></td>
-<td>false</td>
-<td>[DEPRECATED] - Do not reset app state between sessions (IOS: do not delete app plist files; Android: do not uninstall app before new session)</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--full-reset</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (iOS) Delete the entire simulator folder. (Android) Reset app state by uninstalling app instead of clearing app data. On Android, this will also remove the app after the session is complete.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--app-pkg</code></td>
-<td>null</td>
-<td>[DEPRECATED] - (Android-only) Java package of the Android app you want to run (e.g., com.example.android.myApp)</td>
-<td><code>--app-pkg com.example.android.myApp</code></td>
-</tr>
-<tr>
-<td><code>--app-activity</code></td>
-<td>null</td>
-<td>[DEPRECATED] - (Android-only) Activity name for the Android activity you want to launch from your package (e.g., MainActivity)</td>
-<td><code>--app-activity MainActivity</code></td>
-</tr>
-<tr>
-<td><code>--app-wait-package</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (Android-only) Package name for the Android activity you want to wait for (e.g., com.example.android.myApp)</td>
-<td><code>--app-wait-package com.example.android.myApp</code></td>
-</tr>
-<tr>
-<td><code>--app-wait-activity</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (Android-only) Activity name for the Android activity you want to wait for (e.g., SplashActivity)</td>
-<td><code>--app-wait-activity SplashActivity</code></td>
-</tr>
-<tr>
-<td><code>--device-ready-timeout</code></td>
-<td>5</td>
-<td>[DEPRECATED] - (Android-only) Timeout in seconds while waiting for device to become ready</td>
-<td><code>--device-ready-timeout 5</code></td>
-</tr>
-<tr>
-<td><code>--android-coverage</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (Android-only) Fully qualified instrumentation class. Passed to -w in adb shell am instrument -e coverage true -w</td>
-<td><code>--android-coverage com.my.Pkg/com.my.Pkg.instrumentation.MyInstrumentation</code></td>
-</tr>
-<tr>
-<td><code>--avd</code></td>
-<td>null</td>
-<td>[DEPRECATED] - (Android-only) Name of the avd to launch</td>
-<td><code>--avd @default</code></td>
-</tr>
-<tr>
-<td><code>--avd-args</code></td>
-<td>null</td>
-<td>[DEPRECATED] - (Android-only) Additional emulator arguments to launch the avd</td>
-<td><code>--avd-args -no-snapshot-load</code></td>
-</tr>
-<tr>
-<td><code>--use-keystore</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (Android-only) When set the keystore will be used to sign apks.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--keystore-path</code></td>
-<td>&lt;user&gt;/.android/debug.keystore</td>
-<td>[DEPRECATED] - (Android-only) Path to keystore</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--keystore-password</code></td>
-<td>android</td>
-<td>[DEPRECATED] - (Android-only) Password to keystore</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--key-alias</code></td>
-<td>androiddebugkey</td>
-<td>[DEPRECATED] - (Android-only) Key alias</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--key-password</code></td>
-<td>android</td>
-<td>[DEPRECATED] - (Android-only) Key password</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--intent-action</code></td>
-<td>android.intent.action.MAIN</td>
-<td>[DEPRECATED] - (Android-only) Intent action which will be used to start activity</td>
-<td><code>--intent-action android.intent.action.MAIN</code></td>
-</tr>
-<tr>
-<td><code>--intent-category</code></td>
-<td>android.intent.category.LAUNCHER</td>
-<td>[DEPRECATED] - (Android-only) Intent category which will be used to start activity</td>
-<td><code>--intent-category android.intent.category.APP_CONTACTS</code></td>
-</tr>
-<tr>
-<td><code>--intent-flags</code></td>
-<td>0x10200000</td>
-<td>[DEPRECATED] - (Android-only) Flags that will be used to start activity</td>
-<td><code>--intent-flags 0x10200000</code></td>
-</tr>
-<tr>
-<td><code>--intent-args</code></td>
-<td>null</td>
-<td>[DEPRECATED] - (Android-only) Additional intent arguments that will be used to start activity</td>
-<td><code>--intent-args 0x10200000</code></td>
-</tr>
-<tr>
-<td><code>--dont-stop-app-on-reset</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (Android-only) When included, refrains from stopping the app before restart</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--calendar-format</code></td>
-<td>null</td>
-<td>[DEPRECATED] - (IOS-only) calendar format for the iOS simulator</td>
-<td><code>--calendar-format gregorian</code></td>
-</tr>
-<tr>
-<td><code>--native-instruments-lib</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (IOS-only) IOS has a weird built-in unavoidable delay. We patch this in appium. If you do not want it patched, pass in this flag.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--keep-keychains</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (iOS-only) Whether to keep keychains (Library/Keychains) when reset app between sessions</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--localizable-strings-dir</code></td>
-<td>en.lproj</td>
-<td>[DEPRECATED] - (IOS-only) the relative path of the dir where Localizable.strings file resides</td>
-<td><code>--localizable-strings-dir en.lproj</code></td>
-</tr>
-<tr>
-<td><code>--show-ios-log</code></td>
-<td>false</td>
-<td>[DEPRECATED] - (IOS-only) if set, the iOS system log will be written to the console</td>
-<td></td>
-</tr>
-<tr>
-<td><code>--enable-heapdump</code></td>
-<td>false</td>
-<td>Enables NodeJS memory dumps collection feature. This feature is extremely useful for finding memory leaks. Use the 'kill -SIGUSR2 &lt;PID&gt;' command to create a dump of memory heap for <em>node</em> process with the particular PID (this works for <em>nix systems only). The dump file will be created in the same folder, where main Appium script was executed and will have </em>.heapsnapshot extension. These snapshot can be then loaded to Chrome Inspector for further investigation. Read the <a href="https://blog.risingstack.com/finding-a-memory-leak-in-node-js/">Rising Stack article</a> for more details.</td>
-<td></td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="ios-predicate">iOS Predicate</h2>
+<p><em>NOTE</em>: iOS predicates are usable in iOS 9.3 and below using the <code>-ios uiautomation</code> locator strategy and they are usable in iOS 10 and above using the <code>-ios predicate string</code> locator strategy</p>
+<p>It is worth looking at <em>'-ios uiautomation'</em> search strategy with <strong>Predicates</strong>.
+<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
+<pre><code class="center">(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
+(UIAElementArray) UIAElementArray.withPredicate(PredicateString predicateString)
+</code></pre>
+
+<p>Native JS search strategy (powered by Apple) provides much more flexibility and is like Xpath.
+<strong><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html">Predicates</a></strong> can be used to restrict an elements set to select only those ones for which some condition is true.</p>
+<p>'-ios uiautomation' example:</p>
+<pre><code class="java">// java
+appiumDriver.findElementsByIosUIAutomation("collectionViews()[0].cells().withPredicate(\"ANY staticTexts.isVisible == TRUE\")");
+</code></pre>
+
+<p>'-ios predicate string' example:</p>
+<pre><code class="java">// java
+appiumDriver.findElementsByIosNsPredicate("isWDVisible == 1");
+</code></pre>
+
+<p>-  will select only those  <code>UIACollectionCell</code> elements that have visible <code>UIAStaticText</code> child elements, and themselves are childs of 1st <code>UIACollectionView</code> element that should be located under the main app window.  Here <code>staticTexts()</code> and <code>isVisible()</code> are methods available in <code>UIAElementArray</code> and <code>UIAElement</code> classes respectively. <strong>Note that <code>UIAElementArray</code> numbering begins with <code>0</code> unlike Xpath where indexes counting starts from <code>1</code></strong></p>
+<p>Here's a list of available Predicates (mostly taken from <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html">Predicates Programming Guide</a>)</p>
+<h3 id="basic-comparisons">Basic Comparisons</h3>
+<p>= , ==
+- The left-hand expression is equal to the right-hand expression:</p>
+<pre><code class="center">tableViews()[1].cells().firstWithPredicate("label == 'Olivia' ")
+
+same in Xpath: /UIATableView[2]/UIATableCell[@label = 'Olivia'][1]
+</code></pre>
+
+<p>&gt;= , =&gt;
+- The left-hand expression is greater than or equal to the right-hand expression.</p>
+<p>&lt;= , =&lt;
+- The left-hand expression is less than or equal to the right-hand expression.</p>
+<p>&gt;
+- The left-hand expression is greater than the right-hand expression.</p>
+<p>&lt;
+- The left-hand expression is less than the right-hand expression.</p>
+<p>!= , &lt;&gt;
+- The left-hand expression is not equal to the right-hand expression.</p>
+<p>BETWEEN
+- The left-hand expression is between, or equal to either of, the values specified in the right-hand side. The right-hand side is a two value array (an array is required to specify order) giving upper and lower bounds. For example, <code>1 BETWEEN { 0 , 33 }</code>, or <code>$INPUT BETWEEN { $LOWER, $UPPER }</code>.
+In Objective-C, you could create a BETWEEN predicate as shown in the following example:</p>
+<pre><code class="center">NSPredicate *betweenPredicate =
+    [NSPredicate predicateWithFormat: @"attributeName BETWEEN %@", @[@1, @10]];
+</code></pre>
+
+<p>This creates a predicate that matches <code>( ( 1 &lt;= attributeValue ) &amp;&amp; ( attributeValue &lt;= 10 ) )</code></p>
+<h3 id="boolean-value-predicates">Boolean Value Predicates</h3>
+<p>TRUEPREDICATE
+- A predicate that always evaluates to <code>TRUE</code> .</p>
+<p>FALSEPREDICATE
+- A predicate that always evaluates to <code>FALSE</code>.</p>
+<h3 id="basic-compound-predicates">Basic Compound Predicates</h3>
+<p>AND , &amp;&amp;
+- Logical AND.</p>
+<p>OR , ||
+- Logical OR.</p>
+<p>NOT , !
+- Logical NOT.</p>
+<h3 id="string-comparisons">String Comparisons</h3>
+<p>String comparisons are by default case and diacritic sensitive. You can modify an operator using the key characters <code>c</code> and <code>d</code> within square braces to specify case and diacritic insensitivity respectively, for example <code>firstName BEGINSWITH[cd] $FIRST_NAME</code></p>
+<p>BEGINSWITH
+- The left-hand expression begins with the right-hand expression.</p>
+<pre><code class="center">scrollViews()[3].buttons().firstWithPredicate("name BEGINSWITH 'results toggle' ")
+
+same in Xpath: /UIAScrollView[4]/UIAButton[starts-with(@name, 'results toggle')][1]
+</code></pre>
+
+<p>CONTAINS
+- The left-hand expression contains the right-hand expression.</p>
+<pre><code class="center">tableViews()[1].cells().withPredicate("ANY collectionViews[0].buttons.name CONTAINS 'opera'")
+
+same in Xpath: /UIATableView[2]/UIATableCell[UIACollectionView[1]/UIAButton[contains(@name, 'opera')]]
+</code></pre>
+
+<p>ENDSWITH
+- The left-hand expression ends with the right-hand expression.</p>
+<p>LIKE
+- The left hand expression equals the right-hand expression: ? and * are allowed as wildcard characters, where ? matches 1 character and * matches 0 or more characters. In Mac OS X v10.4, wildcard characters do not match newline characters.</p>
+<pre><code class="center">tableViews()[0].cells().firstWithPredicate("name LIKE '*Total: $*' ")
+
+same in Xpath: /UIATableView[1]/UIATableCell[matches(@name, '.*Total: \$.*')][1]
+</code></pre>
+
+<p>MATCHES
+- The left hand expression equals the right hand expression using a regex -style comparison according to ICU v3 (for more details see the ICU User Guide for <a href="http://userguide.icu-project.org/strings/regexp">Regular Expressions</a>).</p>
+<pre><code class="center">tableViews().firstWithPredicate("value MATCHES '.*of 7' ")
+
+same in Xpath: /UIATableView[matches(@value, '.*of 7')][1]
+</code></pre>
+
+<h3 id="aggregate-operations">Aggregate Operations</h3>
+<p>ANY , SOME
+- Specifies any of the elements in the following expression. For example <code>ANY children.age &lt; 18</code> .</p>
+<pre><code class="center">tableViews()[0].cells().firstWithPredicate("SOME staticTexts.name = 'red'").staticTexts().withName('red')
+
+same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIAStaticText[@name = 'red']
+</code></pre>
+
+<p>ALL
+- Specifies all of the elements in the following expression. For example <code>ALL children.age &lt; 18</code> .</p>
+<p>NONE
+- Specifies none of the elements in the following expression. For example, <code>NONE children.age &lt; 18</code> . This is logically equivalent to <code>NOT (ANY ...)</code> .</p>
+<p>IN
+- Equivalent to an SQL IN operation, the left-hand side must appear in the collection specified by the right-hand side. For example, <code>name IN { 'Ben', 'Melissa', 'Matthew' }</code> . The collection may be an array, a set, or a dictionary—in the case of a dictionary, its values are used.</p>
+<p>array[index]
+- Specifies the element at the specified index in the array.</p>
+<p>array[FIRST]
+- Specifies the first element in the array.</p>
+<p>array[LAST]
+- Specifies the last element in the array.</p>
+<p>array[SIZE]
+- Specifies the size of the array</p>
+<pre><code class="center">elements()[0].tableViews()[0].cells().withPredicate("staticTexts[SIZE] &gt; 2")
+same in Xpath: /*[1]/UIATableView[1]/UIATableCell[count(UIAStaticText) &gt; 2]
+</code></pre>
+
+<h3 id="identifiers">Identifiers</h3>
+<p><strong>C style identifier</strong>
+- Any C style identifier that is not a reserved word.</p>
+<p><strong>#symbol</strong>
+- Used to escape a reserved word into a user identifier.</p>
+<p><strong>[\]{octaldigit}{3}</strong>
+- Used to escape an octal number ( <code>\</code> followed by 3 octal digits).</p>
+<p><strong>[\][xX]{hexdigit}{2}</strong>
+- Used to escape a hex number ( <code>\x</code> or <code>\X</code> followed by 2 hex digits).</p>
+<p><strong>[\][uU]{hexdigit}{4}</strong>
+- Used to escape a Unicode number ( <code>\u</code> or <code>\U</code> followed by 4 hex digits).</p>
+<h3 id="literals">Literals</h3>
+<p>Single and double quotes produce the same result, but they do not terminate each other. For example, <code>"abc"</code> and <code>'abc'</code> are identical, whereas <code>"a'b'c"</code> is equivalent to a space-separated concatenation of <code>a, 'b', c</code>.</p>
+<p>FALSE , NO
+- Logical false.</p>
+<p>TRUE , YES
+- Logical true.</p>
+<p>NULL , NIL
+- A null value.</p>
+<p>SELF
+- Represents the object being evaluated.</p>
+<p>"text"
+- A character string.</p>
+<p>'text'
+- A character string.</p>
+<p><strong>Comma-separated literal array</strong>
+- For example, <code>{ 'comma', 'separated', 'literal', 'array' }</code> .</p>
+<p><strong>Standard integer and fixed-point notations</strong>
+- For example, <code>1 , 27 , 2.71828 , 19.75</code> .</p>
+<p><strong>Floating-point notation with exponentiation</strong>
+- For example, <code>9.2e-5</code> .</p>
+<p>0x
+- Prefix used to denote a hexadecimal digit sequence.</p>
+<p>0o
+- Prefix used to denote an octal digit sequence.</p>
+<p>0b
+- Prefix used to denote a binary digit sequence.</p>
+<h3 id="reserved-words">Reserved Words</h3>
+<p>The following words are reserved:</p>
+<p><code>AND, OR, IN, NOT, ALL, ANY, SOME, NONE, LIKE, CASEINSENSITIVE, CI, MATCHES, CONTAINS, BEGINSWITH, ENDSWITH, BETWEEN, NULL, NIL, SELF, TRUE, YES, FALSE, NO, FIRST, LAST, SIZE, ANYKEY, SUBQUERY, CAST, TRUEPREDICATE, FALSEPREDICATE</code></p>
+<h3 id="appium-predicate-helpers">Appium predicate helpers</h3>
+<p>Appium has <a href="https://github.com/appium/appium-uiauto/blob/3052dace828db2ab3d722281fb7853cbcbc3252f/uiauto/appium/app.js#L68">helpers for predicate search</a> in app.js:</p>
+<ul>
+<li><code>getFirstWithPredicate</code></li>
+<li><code>getFirstWithPredicateWeighted</code></li>
+<li><code>getAllWithPredicate</code></li>
+<li><code>getNameContains</code></li>
+</ul>
+<p>Here's a Ruby example:</p>
+<pre><code class="ruby"># Ruby example
+text = 'Various uses'
+predicate = "name contains[c] '#{text}' || label contains[c] '#{text}' || value contains[c] '#{text}'"
+element = execute_script(%Q(au.mainApp().getFirstWithPredicate("#{predicate}");))
+
+puts element.name # Buttons, Various uses of UIButton
+</code></pre></div>
         
     </div>
 
