@@ -140,7 +140,7 @@ for instructions on how to build, test and run Appium from source.
 
 ### Roadmap
 
-Interested in where Appium is heading in the future? Check out the [Roadmap](ROADMAP.md)
+Interested in where Appium is heading in the future? Check out the [Roadmap](https://github.com/appium/appium/blob/master/ROADMAP.md)
 
 ### Project Credits & Inspiration
 
