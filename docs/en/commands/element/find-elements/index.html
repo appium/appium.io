@@ -199,7 +199,7 @@
         
             
 <li>
-    <a href="../../session/delete/">Delete</a>
+    <a href="../../session/delete/">End</a>
 </li>
 
         
@@ -1341,6 +1341,12 @@
                         
                             
 <li>
+    <a href="../../../advanced-concepts/multiple-xcode-versions/">Running with multiple versions of Xcode</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../../advanced-concepts/event-timings/">The Event Timings API</a>
 </li>
 
@@ -1593,11 +1599,23 @@ let elementsTwo = await driver.elements("id", "SomeID");
 </tr>
 <tr>
 <td>ID</td>
-<td>Native element identifier. For Android</td>
+<td>Native element identifier. For Android it is</td>
 </tr>
 <tr>
-<td>@key</td>
-<td></td>
+<td>Name</td>
+<td>Name of element</td>
+</tr>
+<tr>
+<td>XPath</td>
+<td>Search the app XML source using xpath (not recommended, has performance issues)</td>
+</tr>
+<tr>
+<td>Android UiAutomator</td>
+<td>Use the UI Automator API, in particular the UiSelector class to locate elements. In Appium you send the Java code, as a string, to the server, which executes it in the application’s environment, returning the element or elements.</td>
+</tr>
+<tr>
+<td>IOS UIAutomation</td>
+<td>When automating an iOS application, Apple’s UI Automation framework can be used to find elements</td>
 </tr>
 </tbody>
 </table>

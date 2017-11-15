@@ -199,7 +199,7 @@
         
             
 <li>
-    <a href="../../commands/session/delete/">Delete</a>
+    <a href="../../commands/session/delete/">End</a>
 </li>
 
         
@@ -1341,6 +1341,12 @@
                         
                             
 <li>
+    <a href="../multiple-xcode-versions/">Running with multiple versions of Xcode</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../event-timings/">The Event Timings API</a>
 </li>
 
@@ -1491,7 +1497,27 @@
 
 <p>Note that the actual commands you would use in your test script differ based on the language; see the specific Appium client documention for more information.</p>
 <h3 id="supported-settings">Supported Settings</h3>
-<p><strong>"ignoreUnimportantViews"</strong> - Boolean which sets whether Android devices should use <code>setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ignoreUnimportantViews</code></td>
+<td>Boolean which sets whether Android devices should use <code>setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster. <code>false</code> by default.</td>
+<td><code>false</code> or <code>true</code></td>
+</tr>
+<tr>
+<td><code>allowInvisibleElements</code></td>
+<td>For UiAutomator2 Driver. Boolean which set whether Android device should show all elements, visible and invisible. <code>false</code> by default.</td>
+<td><code>false</code> or <code>true</code></td>
+</tr>
+</tbody>
+</table>
 <h4 id="android-uiautomator-configurator">Android UiAutomator Configurator</h4>
 <p>sets <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> timeouts and delays in Android devices. only works in Android API 18 and above.</p>
 <p><strong>"actionAcknowledgmentTimeout"</strong> - Int which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setActionAcknowledgmentTimeout(long)">setActionAcknowledgmentTimeout</a>. If a negative value is given, it would set to default(3 * 1000 milliseconds)</p>
