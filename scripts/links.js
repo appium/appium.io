@@ -8,8 +8,8 @@ const $ = jQuery(jsdom().defaultView);
 
 /**
  * Markdown doesn't render absolute links to markdown files (see https://github.com/mkdocs/mkdocs/issues/1172)
- * 
- * @param {String} html 
+ *
+ * @param {String} html
  */
 export function reassignMarkdownLink (html) {
   const jqHTML = $(html);
@@ -19,9 +19,9 @@ export function reassignMarkdownLink (html) {
     const href = anchorTag.attr('href');
 
     if (href && !isAbsoluteUrl(href)) {
-      const ext = path.extname(href);
+      const [ext, anchor] = path.extname(href).split('#');
       if (ext === '.md') {
-        anchorTag.attr('href', `${replaceExtension(href, '')}/index.html`);
+        anchorTag.attr('href', `${replaceExtension(href, '')}/index.html${anchor ? `#${anchor}` : ''}`);
       }
     }
   });
@@ -30,7 +30,7 @@ export function reassignMarkdownLink (html) {
 
 /**
  * Takes a document, parses out the body and then remaps anchor tags to point to HTML links
- * @param {*} htmlDocString 
+ * @param {*} htmlDocString
  */
 export function reassignMarkdownLinkDocument (htmlDocString) {
   const body = '<div id="body-mock">' + htmlDocString.replace(/^[\s\S]*<body.*?>|<\/body>[\s\S]*$/ig, '') + '</div>';

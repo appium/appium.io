@@ -20,7 +20,7 @@ Importantly, Appium is "cross-platform": it allows you to write tests against
 multiple platforms (iOS, Android, Windows), using the same API. This enables code reuse between iOS, Android, and Windows testsuites.
 
 For specific information about what it means for Appium to "support" its
-platforms, and automation modalities, please see the  [platform support doc](/slate/en/master/#platform-support.md).
+platforms, and automation modalities, please see the  [platform support doc](/docs/en/about-appium/platform-support/).
 
 ### Appium Philosophy
 
@@ -38,10 +38,10 @@ meet requirement #1 by using vendor-provided automation frameworks under the
 hood. That way, we don't need to compile in any Appium-specific or
 third-party code or frameworks to your app. This means **you're testing the same app you're shipping**. The vendor-provided frameworks we use are:
 
-* iOS 9.3+: Apple's [XCTest](https://developer.apple.com/reference/xctest) 
+* iOS 9.3+: Apple's [XCTest](https://developer.apple.com/reference/xctest)
 * Android 4.2+: Google's [UiAutomator](http://developer.android.com/tools/help/uiautomator/index.html)
 * Android 2.3+: Google's [Instrumentation](http://developer.android.com/reference/android/app/Instrumentation.html). (Instrumentation support is provided by bundling a separate project, [Selendroid](http://selendroid.io))
-* Windows: Microsoft's [WinAppDriver](http://github.com/microsoft/winappdriver) 
+* Windows: Microsoft's [WinAppDriver](http://github.com/microsoft/winappdriver)
 
 We meet requirement #2 by wrapping the vendor-provided frameworks in one API,
 the [WebDriver](http://docs.seleniumhq.org/projects/webdriver/) API.
@@ -49,7 +49,7 @@ WebDriver (aka "Selenium WebDriver") specifies a client-server protocol
 (known as the [JSON Wire Protocol](https://w3c.github.io/webdriver/webdriver-spec.html)).
 Given this client-server architecture, a client written in any language can
 be used to send the appropriate HTTP requests to the server. There are
-already [clients written in every popular programming language](http://appium.io/downloads). This also
+already [clients written in every popular programming language](/docs/en/about-appium/appium-clients/). This also
 means that you're free to use whatever test runner and test framework you
 want; the client libraries are simply HTTP clients and can be mixed into your
 code any way you please. In other words, Appium & WebDriver clients are not
@@ -58,7 +58,7 @@ manage your test environment any way you like!
 
 We meet requirement #3 in the same way: WebDriver has become the de facto
 standard for automating web browsers, and is a [W3C Working Draft](https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html).
-Why do something totally different for mobile? Instead we have  [extended the protocol](/slate/en/master/#spec-draft.md)
+Why do something totally different for mobile? Instead we have [extended the protocol](/slate/en/master/#spec-draft.md)
 with extra API methods useful for mobile automation.
 
 It should be obvious that requirement #4 is a given -- you're reading this
@@ -73,7 +73,7 @@ mobile device, and responds with an HTTP response representing the result of
 the command execution. The fact that we have a client/server architecture
 opens up a lot of possibilities: we can write our test code in any language
 that has a http client API, but it is easier to use one of the [Appium client
-libraries](http://appium.io/downloads). We can put the server on a different machine than our
+libraries](/docs/en/about-appium/appium-clients/). We can put the server on a different machine than our
 tests are running on. We can write test code and rely on a cloud service
 like [Sauce Labs](https://saucelabs.com/mobile) to receive and interpret the commands.
 
@@ -94,10 +94,10 @@ For example, we might set the `platformName` capability to `iOS` to tell
 Appium that we want an iOS session, rather than an Android or Windows one. Or we might
 set the `safariAllowPopups` capability to `true` in order to ensure that,
 during a Safari automation session, we're allowed to use JavaScript to open
-up new windows. See the  [capabilities doc](/slate/en/master/#caps.md) for the complete list of capabilities available for Appium.
+up new windows. See the [capabilities doc](/docs/en/writing-running-appium/caps/) for the complete list of capabilities available for Appium.
 
 **Appium Server**<br/>
-Appium is a server written in Node.js. It can be built and installed  [from source](/slate/en/master/#appium-from-source.md) or installed directly from NPM:
+Appium is a server written in Node.js. It can be built and installed [from source](/docs/en/contributing-to-appium/appium-from-source/) or installed directly from NPM:
 ```
 $ npm install -g appium
 $ appium
@@ -107,7 +107,7 @@ $ appium
 There are client libraries (in Java, Ruby, Python, PHP, JavaScript, and C#)
 which support Appium's extensions to the WebDriver protocol. When using Appium,
 you want to use these client libraries instead of your regular WebDriver
-client. You can view the full list of libraries  [here](/slate/en/master/#appium-clients.md).
+client. You can view the full list of libraries [here](/docs/en/about-appium/appium-clients/).
 
 **[Appium-Desktop](https://github.com/appium/appium-desktop)**<br/>
 There exist GUI wrappers around the Appium server that can be downloaded.
@@ -117,4 +117,6 @@ which enables you to check out the hierarchy of your app. This can come in handy
 
 ### Getting Started
 
-Congratulations! You are now armed with enough knowledge to begin using Appium. Why not head to the  [getting started doc](/slate/en/master/#README.md) for more detailed requirements and instructions?
+Congratulations! You are now armed with enough knowledge to begin using Appium.
+Why not head to the [getting started doc](/docs/en/about-appium/getting-started/)
+for more detailed requirements and instructions?
