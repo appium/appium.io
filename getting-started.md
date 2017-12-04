@@ -64,7 +64,7 @@ You also need to download the Appium client for your language so you can write t
 * Mac OS X 10.12 recommended
 * XCode 8 recommended
 * Apple Developer Tools (iPhone simulator SDK, command line tools)
-*  [Ensure you read our documentation on setting yourself up for iOS testing!](http://127.0.0.1:4000/docs/en/drivers/ios-xcuitest/)
+*  [Ensure you read our documentation on setting yourself up for iOS testing!](/docs/en/drivers/ios-xcuitest/)
 
 #### Android Requirements
 
