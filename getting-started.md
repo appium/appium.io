@@ -17,7 +17,7 @@ Appium is an open source, cross-platform test automation tool for native, hybrid
 * Windows
 * FirefoxOS
 
-See the  [platform support doc](/slate/en/master/#platform-support.md) for more detailed information.
+See the  [platform support doc](/docs/en/about-appium/platform-support/) for more detailed information.
 
 ### Why Appium?
 
@@ -39,7 +39,7 @@ opens up the possibility of true cross-platform native mobile automation. Finall
 
 ### I don't get it yet...
 
-If you're new to Appium, or want a fuller description of what this is all about, please read our  [Introduction to Appium Concepts](/slate/en/master/#intro.md).
+If you're new to Appium, or want a fuller description of what this is all about, please read our  [Introduction to Appium Concepts](/docs/en/about-appium/intro/).
 
 ### Requirements
 
@@ -57,14 +57,14 @@ from [source](https://github.com/appium/appium-doctor)), then run
 `appium-doctor` and supply the `--ios` or `--android` flags to verify that all
 of the dependencies are set up correctly.
 
-You also need to download the Appium client for your language so you can write tests. The Appium clients are simple extensions to the WebDriver clients. You can see the list of clients and links to download instructions at the  [Appium clients list](/slate/en/master/#appium-clients.md).
+You also need to download the Appium client for your language so you can write tests. The Appium clients are simple extensions to the WebDriver clients. You can see the list of clients and links to download instructions at the  [Appium clients list](/docs/en/about-appium/appium-clients/).
 
 #### iOS Requirements
 
 * Mac OS X 10.12 recommended
 * XCode 8 recommended
 * Apple Developer Tools (iPhone simulator SDK, command line tools)
-*  [Ensure you read our documentation on setting yourself up for iOS testing!](/slate/en/master/#running-on-osx.md)
+*  [Ensure you read our documentation on setting yourself up for iOS testing!](/docs/en/drivers/ios-xcuitest/)
 
 #### Android Requirements
 
@@ -74,15 +74,11 @@ You also need to download the Appium client for your language so you can write t
   *  [linux](/slate/en/master/#running-on-linux.md)
   *  [osx](/slate/en/master/#running-on-osx.md)
   *  [windows](/slate/en/master/#running-on-windows.md)
-  
+
 #### Windows Requirements
 
 * Windows 10
 *  [Documentation](/slate/en/master/#running-on-windows.md)
-
-#### FirefoxOS Requirements
-
-* [Firefox OS Simulator](https://developer.mozilla.org/en/docs/Tools/Firefox_OS_Simulator)
 
 ### Quick Start
 
@@ -98,7 +94,7 @@ $ appium
 
 #### Using the App
 
-* [Download the Appium app](https://bitbucket.org/appium/appium.app/downloads/)
+* [Download the Appium Desktop app](https://github.com/appium/appium-desktop/releases)
 * Run it!
 
 ### Writing Tests for Appium
