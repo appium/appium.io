@@ -2,7 +2,7 @@
 permalink: /contributing.html
 layout: default
 title: Contributing
-description: Contribute to appium on GitHub
+description: Contribute to Appium on GitHub
 ---
 
 # Contributing to Appium
