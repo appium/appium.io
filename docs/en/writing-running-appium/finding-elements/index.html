@@ -88,7 +88,19 @@
                         
                             
 <li>
+    <a href="../../about-appium/getting-started/">Getting Started</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../about-appium/platform-support/">Supported Platforms</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/api/">API Documentation</a>
 </li>
 
                         
@@ -111,7 +123,19 @@
                         
                             
 <li>
+    <a href="../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../drivers/ios-uiautomation/">UIAutomation (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-uiautomation-safari-launcher/">UIAutomation Safari Launcher (iOS)</a>
 </li>
 
                         
@@ -181,7 +205,7 @@
         
             
 <li>
-    <a href="../../commands/session/delete/">Delete</a>
+    <a href="../../commands/session/delete/">End</a>
 </li>
 
         
@@ -1138,7 +1162,7 @@
                         
                             
 <li>
-    <a href="../server-args/">CLI Arguments</a>
+    <a href="../caps/">Desired Capabilities</a>
 </li>
 
                         
@@ -1149,20 +1173,20 @@
 
                         
                             
-<li>
-    <a href="../caps/">Desired Capabilities</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../appium-bindings/">Appium Command List</a>
-</li>
-
-                        
-                            
 <li class="active">
     <a href="./">Finding Elements</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../touch-actions/">Touch Actions</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../server-args/">CLI Arguments</a>
 </li>
 
                         
@@ -1200,69 +1224,90 @@
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../reset-strategies/">Reset Strategies</a>
+    <a href="../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-predicate/">iOS Predicate Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-touch-id/">iOS Touch ID Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../network_connection/">Network Connection Guide</a>
+    <a href="../android/uiautomator-uiselector/">UiSelector Guide</a>
 </li>
+
+        
+            
+<li>
+    <a href="../android/android-coverage/">Android Code Coverage Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../touch-actions/">Touch Actions</a>
+    <a href="../other/reset-strategies/">Reset Strategies</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+    <a href="../other/network-connection/">Network Connection Guide</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+    <a href="../other/unicode/">Using Unicode with Appium</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../ios_predicate/">iOS Predicate Guide</a>
+    <a href="../other/troubleshooting/">Troubleshooting</a>
 </li>
 
-                        
-                            
-<li>
-    <a href="../ios-touch-id/">iOS Touch ID Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../uiautomator_uiselector/">UiSelector Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../android_coverage/">Android Code Coverage Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../unicode/">Using Unicode with Appium</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../troubleshooting/">Troubleshooting</a>
-</li>
+        
+    </ul>
+  </li>
 
                         
                         </ul>
@@ -1302,13 +1347,19 @@
                         
                             
 <li>
+    <a href="../../advanced-concepts/multiple-xcode-versions/">Running with multiple versions of Xcode</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../advanced-concepts/event-timings/">The Event Timings API</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../advanced-concepts/parallel_tests/">Setup for Parallel Testing</a>
+    <a href="../../advanced-concepts/parallel-tests/">Setup for Parallel Testing</a>
 </li>
 
                         
@@ -1387,12 +1438,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../appium-bindings/">
+                        <a rel="next" href="../default-capabilities-arg/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../web/mobile-web/">
+                        <a rel="prev" href="../touch-actions/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1437,9 +1488,9 @@ with certain constraints)</li>
 <p>Appium additionally supports some of the <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON Wire Protocol</a> locator strategies</p>
 <ul>
 <li><code>-ios uiautomation</code>: a string corresponding to a recursive element search
-using the <a href="../ios_predicate/">UIAutomation library</a> (iOS 9.3 and below only)</li>
+using the <a href="/docs/en/writing-running-appium/ios/ios-predicate/index.html">UIAutomation library</a> (iOS 9.3 and below only)</li>
 <li><code>-android uiautomator</code>: a string corresponding to a recursive element
-search using the <a href="../uiautomator_uiselector/">UiAutomator Api</a> (Android-only)</li>
+search using the <a href="/docs/en/writing-running-appium/android/uiautomator-uiselector/index.html">UiAutomator Api</a> (Android-only)</li>
 <li><code>accessibility id</code>: a string corresponding to a recursive element search
 using the Id/Name that the native Accessibility options utilize.</li>
 </ul>
@@ -1448,8 +1499,8 @@ using the Id/Name that the native Accessibility options utilize.</li>
 there's time to interact with them. We're working on a fix</p>
 <h3 id="using-appium-desktop-to-locate-elements">Using Appium Desktop To Locate Elements</h3>
 <p>Appium provides you with a neat tool that allows you to find the the elements
-you're looking for. With <a href="https://github.com/appium/appium-desktop">Appium Desktop</a> you 
-can find any element and its locators by either clicking the element on the screenshot 
+you're looking for. With <a href="https://github.com/appium/appium-desktop">Appium Desktop</a> you
+can find any element and its locators by either clicking the element on the screenshot
 image, or locating it in the source tree.</p>
 <h3 id="overview">Overview</h3>
 <p>Appium Desktop has a simple layout, complete with a source tree,
