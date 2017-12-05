@@ -88,7 +88,19 @@
                         
                             
 <li>
+    <a href="../../about-appium/getting-started/">Getting Started</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../about-appium/platform-support/">Supported Platforms</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/api/">API Documentation</a>
 </li>
 
                         
@@ -111,7 +123,19 @@
                         
                             
 <li>
+    <a href="../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../drivers/ios-uiautomation/">UIAutomation (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-uiautomation-safari-launcher/">UIAutomation Safari Launcher (iOS)</a>
 </li>
 
                         
@@ -181,7 +205,7 @@
         
             
 <li>
-    <a href="../../commands/session/delete/">Delete</a>
+    <a href="../../commands/session/delete/">End</a>
 </li>
 
         
@@ -1138,7 +1162,7 @@
                         
                             
 <li>
-    <a href="../server-args/">CLI Arguments</a>
+    <a href="../caps/">Desired Capabilities</a>
 </li>
 
                         
@@ -1150,19 +1174,19 @@
                         
                             
 <li>
-    <a href="../caps/">Desired Capabilities</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../appium-bindings/">Appium Command List</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../finding-elements/">Finding Elements</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Touch Actions</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../server-args/">CLI Arguments</a>
 </li>
 
                         
@@ -1200,69 +1224,90 @@
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../reset-strategies/">Reset Strategies</a>
+    <a href="../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-predicate/">iOS Predicate Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-touch-id/">iOS Touch ID Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../network_connection/">Network Connection Guide</a>
+    <a href="../android/uiautomator-uiselector/">UiSelector Guide</a>
 </li>
+
+        
+            
+<li>
+    <a href="../android/android-coverage/">Android Code Coverage Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                             
-<li class="active">
-    <a href="./">Touch Actions</a>
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../other/reset-strategies/">Reset Strategies</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+    <a href="../other/network-connection/">Network Connection Guide</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+    <a href="../other/unicode/">Using Unicode with Appium</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../ios_predicate/">iOS Predicate Guide</a>
+    <a href="../other/troubleshooting/">Troubleshooting</a>
 </li>
 
-                        
-                            
-<li>
-    <a href="../ios-touch-id/">iOS Touch ID Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../uiautomator_uiselector/">UiSelector Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../android_coverage/">Android Code Coverage Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../unicode/">Using Unicode with Appium</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../troubleshooting/">Troubleshooting</a>
-</li>
+        
+    </ul>
+  </li>
 
                         
                         </ul>
@@ -1302,13 +1347,19 @@
                         
                             
 <li>
+    <a href="../../advanced-concepts/multiple-xcode-versions/">Running with multiple versions of Xcode</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../advanced-concepts/event-timings/">The Event Timings API</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../advanced-concepts/parallel_tests/">Setup for Parallel Testing</a>
+    <a href="../../advanced-concepts/parallel-tests/">Setup for Parallel Testing</a>
 </li>
 
                         
@@ -1387,12 +1438,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../network_connection/">
+                        <a rel="next" href="../finding-elements/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../ios-xctest-mobile-gestures/">
+                        <a rel="prev" href="../server-args/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1504,16 +1555,16 @@ UIAutomation (which Appium uses under the hood for iOS). To work around this,
 we have provided access to a different function, <code>scroll</code>, which in many cases
 allows you to do what you wanted to do with one of these views, namely, scroll
 it!</p>
-<p><strong>Scrolling<a name="scrolling"></a></strong></p><a name="scrolling">
+<p><strong>Scrolling</strong></p>
 <p>To allow access to this special feature, we override the <code>execute</code> or
 <code>executeScript</code> methods in the driver, and prefix the command with <code>mobile:</code>.
 See examples below:</p>
 <p>To scroll, pass direction in which you intend to scroll as parameter.</p>
-</a><div><a name="scrolling">
-        </a><ul class="nav nav-tabs" role="tablist"><a name="scrolling">
+<div>
+        <ul class="nav nav-tabs" role="tablist">
           
-          </a><li role="presentation" class="active"><a name="scrolling">
-              </a><a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+          <li role="presentation" class="active">
+              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
           </li>
           
           <li role="presentation" class="">
@@ -1553,7 +1604,7 @@ js.executeScript("mobile: scroll", scrollObject);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">driver.execute('mobile: scroll', {direction: 'down'})
+            <pre><code class="javascript">driver.execute('mobile: scroll', {direction: 'down'});
 </code></pre>
           </div>
           
@@ -1673,7 +1724,7 @@ $driver-&gt;executeScript("mobile: scroll", $params);
 <p><strong>Swiping</strong></p>
 <p>This is an XCUITest driver specific method that is similar to scrolling (for reference, see 
 https://developer.apple.com/reference/xctest/xcuielement). </p>
-<p><a name="scrolling">This method has the same API as </a><a href="#scrolling">Scrolling</a>, just replace "mobile: scroll"
+<p>This method has the same API as <a href="#scrolling">Scrolling</a>, just replace "mobile: scroll"
 with "mobile: swipe"</p>
 <p><strong>Automating Sliders</strong></p>
 <p><strong>iOS</strong></p>

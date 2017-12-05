@@ -88,7 +88,19 @@
                         
                             
 <li>
+    <a href="../../../about-appium/getting-started/">Getting Started</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../../about-appium/platform-support/">Supported Platforms</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../about-appium/api/">API Documentation</a>
 </li>
 
                         
@@ -111,7 +123,19 @@
                         
                             
 <li>
+    <a href="../../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../../drivers/ios-uiautomation/">UIAutomation (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../drivers/ios-uiautomation-safari-launcher/">UIAutomation Safari Launcher (iOS)</a>
 </li>
 
                         
@@ -181,7 +205,7 @@
         
             
 <li>
-    <a href="../../../commands/session/delete/">Delete</a>
+    <a href="../../../commands/session/delete/">End</a>
 </li>
 
         
@@ -1138,7 +1162,7 @@
                         
                             
 <li>
-    <a href="../../server-args/">CLI Arguments</a>
+    <a href="../../caps/">Desired Capabilities</a>
 </li>
 
                         
@@ -1150,19 +1174,19 @@
                         
                             
 <li>
-    <a href="../../caps/">Desired Capabilities</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-bindings/">Appium Command List</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../finding-elements/">Finding Elements</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../touch-actions/">Touch Actions</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../server-args/">CLI Arguments</a>
 </li>
 
                         
@@ -1200,69 +1224,90 @@
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../../reset-strategies/">Reset Strategies</a>
+    <a href="../../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
+
+        
+            
+<li>
+    <a href="../../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../ios/ios-predicate/">iOS Predicate Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../ios/ios-touch-id/">iOS Touch ID Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../../network_connection/">Network Connection Guide</a>
+    <a href="../../android/uiautomator-uiselector/">UiSelector Guide</a>
 </li>
+
+        
+            
+<li>
+    <a href="../../android/android-coverage/">Android Code Coverage Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                             
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
 <li>
-    <a href="../../touch-actions/">Touch Actions</a>
+    <a href="../../other/reset-strategies/">Reset Strategies</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+    <a href="../../other/network-connection/">Network Connection Guide</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+    <a href="../../other/unicode/">Using Unicode with Appium</a>
 </li>
 
-                        
-                            
+        
+            
 <li>
-    <a href="../../ios_predicate/">iOS Predicate Guide</a>
+    <a href="../../other/troubleshooting/">Troubleshooting</a>
 </li>
 
-                        
-                            
-<li>
-    <a href="../../ios-touch-id/">iOS Touch ID Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../uiautomator_uiselector/">UiSelector Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../android_coverage/">Android Code Coverage Guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../unicode/">Using Unicode with Appium</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../troubleshooting/">Troubleshooting</a>
-</li>
+        
+    </ul>
+  </li>
 
                         
                         </ul>
@@ -1302,13 +1347,19 @@
                         
                             
 <li>
+    <a href="../../../advanced-concepts/multiple-xcode-versions/">Running with multiple versions of Xcode</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../../advanced-concepts/event-timings/">The Event Timings API</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../../advanced-concepts/parallel_tests/">Setup for Parallel Testing</a>
+    <a href="../../../advanced-concepts/parallel-tests/">Setup for Parallel Testing</a>
 </li>
 
                         
@@ -1387,7 +1438,7 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../../finding-elements/">
+                        <a rel="next" href="../../server-args/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -1441,7 +1492,7 @@ test, and use Appium as the Selenium server with a special set of desired
 capabilities.</p>
 <h3 id="ios-mobile-web-automation">iOS mobile web automation</h3>
 <p>Appium can automate the Safari browser on real and simulated iOS devices. It is
-accessed by setting the <code>browserName</code> <a href="../(/docs/en/writing-running-appium/caps.md)">desired capabilty</a>
+accessed by setting the <code>browserName</code> <a href="/docs/en/writing-running-appium/caps/index.html">desired capabilty</a>
 to <code>"Safari"</code> while leaving the <code>app</code> capability empty.</p>
 <p>You <strong>must</strong> run Safari on the device before attempting to use Appium, in order
 for the correct preferences to have been set.</p>
@@ -1550,7 +1601,7 @@ documentation.</p>
 <p>Before you can run your tests against Safari on a real device you will need to:</p>
 <ul>
 <li>Have the <code>ios-webkit-debug-proxy</code> installed, running and listening on port
-  27753 (see the <a href="/docs/en/writing-running-appium/web/hybrid.md#execution-against-an-ios-real-device">hybrid docs</a>
+  27753 (see the <a href="/docs/en/writing-running-appium/web/hybrid/index.html#execution-against-an-ios-real-device">hybrid docs</a>
   for instructions)</li>
 <li>Turn on <strong>web inspector</strong> on iOS device (<strong>settings &gt; safari &gt; advanced</strong>)</li>
 <li>Make sure that <code>SafariLauncher</code> will work (see the <a href="/docs/en/drivers/ios-uiautomation-safari-launcher/index.html">SafariLauncher docs</a>
@@ -1659,7 +1710,7 @@ devices.</p>
   device. See <a href="/docs/en/writing-running-appium/web/chromedriver/index.html">here</a> for more
   information and details about compatibility.</li>
 </ul>
-<p>Then, use <a href="../(/docs/en/writing-running-appium/caps.md)">desired capabilties</a> like
+<p>Then, use <a href="/docs/en/writing-running-appium/caps/index.html">desired capabilties</a> like
 these to run your test in Chrome:</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">
