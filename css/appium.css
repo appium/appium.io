@@ -411,9 +411,16 @@ bottom: 270px;
   background: 0 0;
   border: 0;
   color: white;
+<<<<<<< HEAD
 
 }
 @media (max-width: 1000px) {
+=======
+}
+
+/* Solution found on StackOverflow */
+@media (max-width: 1300px) {
+>>>>>>> main/js-refactor-gh
   .navbar-header {
       float: none;
   }

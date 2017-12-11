@@ -16,19 +16,12 @@ export function reassignMarkdownLink (html) {
   const anchorTags = jqHTML.find('a');
   anchorTags.each((index, tag) => {
     const anchorTag = $(tag);
-    let href = anchorTag.attr('href');
-    if (!href) {
-      return;
-    }
-    const hashRegex = /#[\w\W]*/;
-    const hashMatches = href.match(hashRegex);
-    const hrefHash = hashMatches ? hashMatches[0] : '';
-    href = href.replace(hashRegex, '');
+    const href = anchorTag.attr('href');
 
     if (href && !isAbsoluteUrl(href)) {
       const ext = path.extname(href);
       if (ext === '.md') {
-        anchorTag.attr('href', `${replaceExtension(href, '')}/index.html${hrefHash}`);
+        anchorTag.attr('href', `${replaceExtension(href, '')}/index.html`);
       }
     }
   });

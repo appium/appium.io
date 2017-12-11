@@ -133,10 +133,6 @@ div.source-links {
     border-radius: 0 6px 6px 6px;
 }
 
-.dropdown-submenu:hover>.dropdown-menu {
-    display: block;
-}
-
 .dropdown-submenu>a:after {
     display: block;
     content: " ";
@@ -161,7 +157,7 @@ div.source-links {
 
 .dropdown-submenu.pull-left>.dropdown-menu {
     left: -100%;
-    margin-left: 00px;
+    margin-left: 10px;
     -webkit-border-radius: 6px 0 6px 6px;
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;

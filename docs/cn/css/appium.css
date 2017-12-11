@@ -7,6 +7,7 @@
     margin-right: 1em;
 }
 
+<<<<<<< HEAD
 @media (max-width: 1200px) {
     .navbar-header {
         float: none;
@@ -43,3 +44,14 @@
         display:block !important;
     }
 }
+=======
+.api-index {
+   -webkit-column-count: 2;
+      -moz-column-count: 2;
+           column-count: 2;
+
+   -webkit-column-gap: 20px;
+      -moz-column-gap: 20px;
+           column-gap: 20px;
+}
+>>>>>>> main/js-refactor-gh
