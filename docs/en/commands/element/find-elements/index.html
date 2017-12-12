@@ -98,12 +98,6 @@
 </li>
 
                         
-                            
-<li>
-    <a href="../../../about-appium/api/">API Documentation</a>
-</li>
-
-                        
                         </ul>
                     </li>
                 
@@ -1556,7 +1550,7 @@ let elementsTwo = await driver.elements("id", "SomeID");
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.find_elements(:accessibility_id, "~SomeAccessibilityID")
+            <pre><code class="ruby">@driver.find_elements("~SomeAccessibilityID")
 
 </code></pre>
           </div>
@@ -1568,7 +1562,7 @@ let elementsTwo = await driver.elements("id", "SomeID");
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_5">
-            <pre><code class="php">$els = $this-&gt;elements($this-&gt;using('accessibility id')-&gt;value('SomeAccessibilityID'));
+            <pre><code class="php">// TODO PHP sample
 
 </code></pre>
           </div>
@@ -1605,7 +1599,7 @@ let elementsTwo = await driver.elements("id", "SomeID");
 </tr>
 <tr>
 <td>ID</td>
-<td>Native element identifier. <code>resource-id</code> for android; <code>name</code> for iOS.</td>
+<td>Native element identifier. For Android it is</td>
 </tr>
 <tr>
 <td>Name</td>
@@ -1617,16 +1611,16 @@ let elementsTwo = await driver.elements("id", "SomeID");
 </tr>
 <tr>
 <td>Android UiAutomator</td>
-<td>Use the UI Automator API, in particular the <a href="https://developer.android.com/reference/android/support/test/uiautomator/UiSelector.html">UiSelector</a> class to locate elements. In Appium you send the Java code, as a string, to the server, which executes it in the application’s environment, returning the element or elements.</td>
+<td>Use the UI Automator API, in particular the UiSelector class to locate elements. In Appium you send the Java code, as a string, to the server, which executes it in the application’s environment, returning the element or elements.</td>
 </tr>
 <tr>
 <td>IOS UIAutomation</td>
-<td>When automating an iOS application, Apple’s <a href="/docs/en/drivers/ios-uiautomation/index.html">Instruments</a> framework can be used to find elements</td>
+<td>When automating an iOS application, Apple’s UI Automation framework can be used to find elements</td>
 </tr>
 </tbody>
 </table>
 <h2 id="description">Description</h2>
-<p>Get a list of elements that match the <a href="/docs/en/writing-running-appium/finding-elements/index.html">locator selector</a>.</p>
+<p>Get a list of elements that match the <a href="/docs/en/about-appium/getting-started/index.html">locator selector</a>.</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>

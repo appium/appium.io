@@ -98,12 +98,6 @@
 </li>
 
                         
-                            
-<li>
-    <a href="../../../../about-appium/api/">API Documentation</a>
-</li>
-
-                        
                         </ul>
                     </li>
                 
@@ -1536,19 +1530,18 @@
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-let settings = driver.settings();
+let settings = driver.settings(settings);
 
 
 
 // wd example
-await driver.settings();
+await driver.settings(settings);
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.get_settings
-
+            <pre><code class="ruby"># Not supported
 </code></pre>
           </div>
           
@@ -1660,12 +1653,12 @@ await driver.settings();
 <tr>
 <td><a href="https://github.com/admc/wd/releases/latest">Javascript (WD)</a></td>
 <td>All</td>
-<td><a href="https://github.com/admc/wd/blob/master/lib/commands.js#L3018">github.com</a></td>
+<td><a href="https://github.com/admc/wd/blob/master/lib/commands.js#L3032">github.com</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/ruby_lib/releases/latest">Ruby</a></td>
 <td>None</td>
-<td><a href="http://www.rubydoc.info/github/appium/ruby_lib_core/Appium/Core/Device#get_settings-instance_method">www.rubydoc.info</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/php-client/releases/latest">PHP</a></td>

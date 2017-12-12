@@ -98,12 +98,6 @@
 </li>
 
                         
-                            
-<li>
-    <a href="../../../../about-appium/api/">API Documentation</a>
-</li>
-
-                        
                         </ul>
                     </li>
                 
@@ -1551,7 +1545,7 @@ await driver.startActivity({
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.start_activity app_package: "com.example", app_activity: "ActivityName"
+            <pre><code class="ruby">@driver.start_activity("com.example", "ActivityName");
 
 </code></pre>
           </div>
@@ -1563,8 +1557,7 @@ await driver.startActivity({
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_5">
-            <pre><code class="php">$driver-&gt;startActivity(array('appPackage' =&gt; 'com.example',
-                             'appActivity' =&gt; 'ActivityName'));
+            <pre><code class="php">// TODO PHP sample
 
 </code></pre>
           </div>
@@ -1672,7 +1665,7 @@ await driver.startActivity({
 <tr>
 <td><a href="https://github.com/appium/ruby_lib/releases/latest">Ruby</a></td>
 <td>All</td>
-<td><a href="http://www.rubydoc.info/github/appium/ruby_lib_core/Appium/Android/Device#start_activity-instance_method">www.rubydoc.info</a></td>
+<td><a href="http://www.rubydoc.info/github/appium/ruby_lib/Appium/Android/Device:start_activity">www.rubydoc.info</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/php-client/releases/latest">PHP</a></td>
