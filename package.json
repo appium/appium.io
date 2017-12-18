@@ -8,7 +8,7 @@
   },
   "scripts": {
     "serve": "bundle exec jekyll serve",
-    "build:docs": "rimraf docs/ && babel-node scripts/repo.js",
+    "build:docs": "rimraf docs/ && babel-node scripts/repo.js && bundle exec jekyll build",
     "build:docs:local": "cross-env BUILD_LOCAL_DOCS=true npm run build:docs",
     "lint": "eslint scripts/ test/",
     "lint:fix": "eslint scripts/ test/ --fix",
