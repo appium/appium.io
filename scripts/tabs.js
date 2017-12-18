@@ -97,7 +97,7 @@ export function fencedCodeTabify (html) {
 
 /**
  * Takes a document, parses out the body and then adds fenced code to the body
- * @param {*} htmlDocString 
+ * @param {*} htmlDocString
  */
 export function fencedCodeTabifyDocument (htmlDocString) {
   const body = '<div id="body-mock">' + htmlDocString.replace(/^[\s\S]*<body.*?>|<\/body>[\s\S]*$/ig, '') + '</div>';

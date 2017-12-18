@@ -11,6 +11,7 @@ rvm:
 before_script:   
   - sudo pip install LinkChecker
 script:
+  - npm test
   # checking what's deployed 
   - bundle exec jekyll serve &
   - sleep 10

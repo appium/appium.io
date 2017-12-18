@@ -24,5 +24,9 @@ describe('links.js', function () {
       reassignMarkdownLink(`<div><div><a href="/docs/en/path/to/hello-world.md"><a href="foo-bar.md"></a></div></div>`)
         .should.equal(`<div><a href="/docs/en/path/to/hello-world/index.html"></a><a href="foo-bar/index.html"></a></div>`);
     });
+    it('should change extensions of paths from .md to html but keep hash', function () {
+      reassignMarkdownLink(`<div><div><a href="/docs/en/path/to/hello-world.md#hello"></a></div></div>`)
+        .should.equal(`<div><a href="/docs/en/path/to/hello-world/index.html#hello"></a></div>`);
+    });
   });
 });

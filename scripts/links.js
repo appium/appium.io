@@ -19,9 +19,9 @@ export function reassignMarkdownLink (html) {
     const href = anchorTag.attr('href');
 
     if (href && !isAbsoluteUrl(href)) {
-      const [ext, anchor] = path.extname(href).split('#');
+      const ext = path.extname(href);
       if (ext === '.md') {
-        anchorTag.attr('href', `${replaceExtension(href, '')}/index.html${anchor ? `#${anchor}` : ''}`);
+        anchorTag.attr('href', `${replaceExtension(href, '')}/index.html`);
       }
     }
   });
