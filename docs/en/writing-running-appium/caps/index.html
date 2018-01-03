@@ -1236,6 +1236,12 @@
         
             
 <li>
+    <a href="../ios/ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
+</li>
+
+        
+            
+<li>
     <a href="../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
 </li>
 
@@ -1597,6 +1603,11 @@ Capabilities available in general and for specific drivers.</p>
 <td>(Web and webview only) Enable Chromedriver's (on Android) or Safari's (on iOS) performance logging (default <code>false</code>)</td>
 <td><code>true</code>, <code>false</code></td>
 </tr>
+<tr>
+<td><code>printPageSourceOnFindFailure</code></td>
+<td>When a find operation fails, print the current page source. Defaults to <code>false</code>.</td>
+<td>e.g., <code>true</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="android-only">Android Only</h3>
@@ -1673,8 +1684,8 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>systemPort</code></td>
-<td><code>systemPort</code> used to connect to <a href="https://github.com/appium/appium-uiautomator2-driver">appium-uiautomator2-driver</a>, default <code>4724</code>. When you run tests in parallel, you must adjust the port to avoid conflicts. Read <a href="https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/parallel-tests.md#parallel-android-tests">Parallel Testing Setup Guide</a> for more details.</td>
-<td>e.g., <code>4724</code></td>
+<td><code>systemPort</code> used to connect to <a href="https://github.com/appium/appium-uiautomator2-server">appium-uiautomator2-server</a>, default is <code>8200</code> in general and selects one port from <code>8200</code> to <code>8299</code>. When you run tests in parallel, you must adjust the port to avoid conflicts. Read <a href="https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/parallel-tests.md#parallel-android-tests">Parallel Testing Setup Guide</a> for more details.</td>
+<td>e.g., <code>8201</code></td>
 </tr>
 <tr>
 <td><code>remoteAdbHost</code></td>

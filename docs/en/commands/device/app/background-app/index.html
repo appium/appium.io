@@ -1236,6 +1236,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/ios/ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
 </li>
 
@@ -1464,6 +1470,9 @@
             <li class="second-level"><a href="#example-usage">Example Usage</a></li>
             
         
+            <li class="second-level"><a href="#description">Description</a></li>
+            
+        
             <li class="second-level"><a href="#support">Support</a></li>
             
                 <li class="third-level"><a href="#appium-server">Appium Server</a></li>
@@ -1578,6 +1587,22 @@ await driver.backgroundApp(10);
 
 
 
+<h2 id="description">Description</h2>
+<p>Send the currently active app to the background, and either return after a certain amount of time, or leave the app deactivated.
+There are 3 types of parameters which may be passed to this method:</p>
+<ol>
+<li>
+<p>An object that looks like <code>{"timeout": secs}</code>, where <code>secs</code> is an
+   integer designating how long, in seconds, to background the app for. -1
+   means to deactivate the app entirely.</p>
+</li>
+<li>
+<p><code>null</code>, which means to deactivate the app entirely.</p>
+</li>
+<li><em>Deprecated</em> An integer: how long, in seconds, to background the app for. -1 means to
+   deactivate the app entirely.</li>
+</ol>
+<p>iOS tests with XCUITest can also use the <code>mobile: terminateApp</code> method to terminate the current app (see detailed <a href="/docs/en/writing-running-appium/ios/ios-xctest-mobile-apps-management/index.html#mobile-terminateapp">documentation</a>), and the <code>mobile: activateApp</code> to activate an existing application on the device under test and moves it to the foreground (see detailed <a href="/docs/en/writing-running-appium/ios/ios-xctest-mobile-apps-management/index.html#mobile-activateapp">documentation</a>).</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>
