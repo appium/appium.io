@@ -22,6 +22,12 @@ $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
   event.preventDefault();
   // Avoid having the menu to close when clicking
   event.stopPropagation();
-  // toggle the closest dropdown
-  $(this).closest(".dropdown-submenu").toggleClass("open");
+
+  // Close the currently opened menu if the menu-to-open is not a descendant of the currently opened one
+  var menuToOpen = $(this).closest('.dropdown-submenu');
+  var isAlreadyOpen = menuToOpen.hasClass("open");
+  menuToOpen.parent().find('.open').removeClass("open");
+  if (!isAlreadyOpen) {
+    menuToOpen.addClass("open");
+  }
 });
