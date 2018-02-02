@@ -177,6 +177,13 @@ a:hover {
   line-height: 1;
 }
 
+.conference {
+  margin: 0;
+  max-width: 100%;
+  height: auto;
+  padding: 0;
+}
+
 .marketing h1 {
   margin: 60px 0 10px;
   font-size: 60px;
