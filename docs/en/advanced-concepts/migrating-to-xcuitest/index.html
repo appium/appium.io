@@ -1511,7 +1511,7 @@
 <p>This locator strategy was specifically built on UIAutomation, so it is not included in the XCUITest automation backend. We will be working on a similar "native"-type locator strategy in coming releases.</p>
 <h3 id="xpath-locator-strategy"><code>xpath</code> locator strategy</h3>
 <ol>
-<li>Try not to use XPath locators unless there is absolutely no other alternatives. In general, xpath locators might be times slower, than other types of locators like accessibility id, class name and predicate (up to 100 times slower in some special cases). They are so slow, because xpath location is not natively supported by Apple's XCTest framework.</li>
+<li>Try not to use XPath locators unless there is absolutely no other alternative. In general, xpath locators might be many times slower than other types of locators like accessibility id, class name and predicate (up to 100 times slower in some special cases). They are so slow, because xpath location is not natively supported by Apple's XCTest framework.</li>
 <li>Use</li>
 </ol>
 <pre><code>driver.findElement(x)

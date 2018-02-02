@@ -1576,7 +1576,7 @@ Most Appium packages have this as the default behavior when running <code>gulp</
 style conventions as well as coding patterns and which libraries we use to
 solve various problems. You should get familiar with our new <a href="/docs/en/contributing-to-appium/style-guide-2.0/index.html">ES2015 Style
 Guide</a>. When transpiling,
-Appium packages will automatically run JSHint or other lint tools and provide
+Appium packages will automatically run ESLint or other lint tools and provide
 warning or error feedback if the code doesn't conform to our style. These tools
 are not necessarily exhaustive of the kinds of style issues we care about, so
 we may also mention style issues in our reviews. This isn't to be nit-picky but
@@ -1605,10 +1605,10 @@ and before you push code to be reviewed. We do have CI set up for every Appium
 repository as a safety net for reviewers to know whether the code they are
 reviewing has passed muster. Running tests in any Appium package is easy!
 Unless the README says otherwise, here are the things you can do:</p>
-<pre><code>gulp                    # watch directory to re-transpile on code change, and run unit tests
-gulp once               # same as above but don't watch
-gulp unit-test          # transpile and run unit tests
-gulp e2e-test           # transpile and run end-to-end/functional tests
+<pre><code>npm run lint            # run eslint on the code
+npm run watch           # watch directory to re-transpile on code change, lint, and run unit tests
+npm run test            # same as above but don't watch
+npm run e2e-test        # transpile and run end-to-end/functional tests
 _FORCE_LOGS=1 &lt;command&gt; # show module log output during test run
 </code></pre>
 
@@ -1623,7 +1623,7 @@ and are not):</p>
 <ol>
 <li><code>rm -rf node_modules &amp;&amp; npm install</code> and run tests to make sure a clean install works.</li>
 <li>Determine whether we have a patch (bugfix), minor (feature), or major (breaking) release according to the principles of <a href="http://semver.org/">SemVer</a> (see also this explanation of <a href="https://docs.npmjs.com/getting-started/semantic-versioning">how SemVer works with NPM</a>).</li>
-<li>Update the CHANGELOG and/or README with any appropriate changes and commit. Most subpackages don't have a CHANGELOG.</li>
+<li>Update the <code>CHANGELOG</code> and/or <code>README</code> with any appropriate changes and commit. Most subpackages don't have a <code>CHANGELOG</code>.</li>
 <li>Run <code>npm version &lt;version-type&gt;</code> with the appropriate version type.</li>
 <li>Push the appropriate branch to GitHub, and don't forget to include the <code>--tags</code> flag to include the tag just created by <code>npm version</code>.</li>
 <li>Run <code>npm publish</code> (with <code>--tag beta</code> if this isn't an official release).</li>
@@ -1644,19 +1644,22 @@ in order to lock dependencies on release. Without it, any development on depende
 packages will be reflected when Appium is installed, which may lead to issues. Since
 the configuration file, <code>npm-shrinkwrap.json</code>, only exists on release branches,
 it is necessary to manually manage it during the release process. It needs to be
-checked in to GitHub along with changes to <code>package.json</code>.</p>
+checked in to GitHub along with changes to <code>package.json</code>. With npm 5+ there is
+also a <code>package-lock.json</code> file produced. During the shrinkwrap process this is
+converted into the <code>npm-shrinkwrap.json</code> file.</p>
 <ol>
-<li>Remove the NPM shrinkwrap JSON file if it exists.</li>
+<li>Remove the NPM shrinkwrap and package-lock JSON files if they exists.</li>
 <li><code>rm -rf node_modules &amp;&amp; npm install</code> and run tests to make sure a clean install works.</li>
-<li><code>rm -rf node_modules &amp;&amp; npm install --production</code> to get just the production deps.</li>
-<li><code>npm shrinkwrap</code> to write the new NPM shrinkwrap JSON file.</li>
-<li>Determine whether we have a patch (bugfix), minor (feature), or major (breaking) release according to the principles of SemVer.</li>
+<li>Determine whether we have a <code>patch</code> (bugfix), <code>minor</code> (feature), or <code>major</code> (breaking) release according to the principles of SemVer.</li>
 <li>Update <code>package.json</code> with the appropriate new version.</li>
 <li>Update the CHANGELOG/README with appropriate changes and submit for review as a PR, along with shrinkwrap and <code>package.json</code> changes. Wait for it to be merged, then pull it into the release branch.</li>
+<li><code>rm -rf node_modules &amp;&amp; npm install --production</code> to get just the production dependencies.</li>
+<li><code>npm shrinkwrap</code> to write the new NPM shrinkwrap JSON file, and commit this file.</li>
 <li>Create a tag of the form <code>v&lt;version&gt;</code> on the release branch (usually a minor branch like <code>1.5</code> or <code>1.4</code>), with: <code>git tag -a v&lt;version&gt;</code>, e.g., <code>git tag -a v1.5.0</code>. This is not necessary for beta versions.</li>
 <li>Push the tag to upstream: <code>git push --tags &lt;remote&gt; &lt;branch&gt;</code></li>
-<li>Install dev dependencies (or at least <code>gulp</code> and <code>appium-gulp-plugins</code>).</li>
+<li>Install dev dependencies (or at least <code>gulp</code> and <code>appium-gulp-plugins</code>), and undo the changes to the NPM shrinkwrap JSON file (e.g., <code>git checkout -- npm-shrinkwrap.json</code>).</li>
 <li>Run <code>npm publish</code> (with <code>--tag beta</code> if this isn't an official release).</li>
+<li>Remove the NPM shrinkwrap JSON file from Git and push the changes</li>
 <li>Update the docs at appium.io. Check out the appium.io repo from github, check out the <code>gh-pages</code> branch and pull latest. Run <code>rake publish</code>.</li>
 <li>Create a new release on GitHub: go to <code>https://github.com/appium/appium/releases/tag/v&lt;VERSION&gt;</code> and hit "Edit Tag". Make the release name <code>&lt;VERSION&gt;</code> (e.g., <code>2.0.5</code>), then paste in the changelog (but not the changelog header for this version). If it's a beta release, mark as pre-release.</li>
 <li>Create a new post on discuss.appium.io announcing the release. Post it in the "News" category. Paste in the changelog and any choice comments. Pin it and unpin the previous release post.</li>
