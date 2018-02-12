@@ -1400,13 +1400,13 @@
                         
                             
 <li>
-    <a href="../gulp/">Standard Gulp Commands</a>
+    <a href="../dev-tools/">Standard Dev Commands</a>
 </li>
 
                         
                             
 <li>
-    <a href="../style-guide-2.0/">Appium Style Guide</a>
+    <a href="../style-guide/">Appium Style Guide</a>
 </li>
 
                         
@@ -1449,7 +1449,7 @@
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../gulp/">
+                        <a rel="prev" href="../dev-tools/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1574,7 +1574,7 @@ Most Appium packages have this as the default behavior when running <code>gulp</
 <h3 id="linting-and-style">Linting and Style</h3>
 <p>It's important for all of Appium's JS to look and feel the same. This includes
 style conventions as well as coding patterns and which libraries we use to
-solve various problems. You should get familiar with our new <a href="/docs/en/contributing-to-appium/style-guide-2.0/index.html">ES2015 Style
+solve various problems. You should get familiar with our new <a href="/docs/en/contributing-to-appium/style-guide/index.html">ES2015 Style
 Guide</a>. When transpiling,
 Appium packages will automatically run ESLint or other lint tools and provide
 warning or error feedback if the code doesn't conform to our style. These tools
@@ -1621,7 +1621,7 @@ package if you want to publish it. Ownership is managed by the Appium
 committers; talk to @jlipps or @imurchie if you believe you should be an owner
 and are not):</p>
 <ol>
-<li><code>rm -rf node_modules &amp;&amp; npm install</code> and run tests to make sure a clean install works.</li>
+<li><code>rm -rf node_modules &amp;&amp; rm -rf package-lock.json &amp;&amp; npm install</code> and run tests to make sure a clean install works.</li>
 <li>Determine whether we have a patch (bugfix), minor (feature), or major (breaking) release according to the principles of <a href="http://semver.org/">SemVer</a> (see also this explanation of <a href="https://docs.npmjs.com/getting-started/semantic-versioning">how SemVer works with NPM</a>).</li>
 <li>Update the <code>CHANGELOG</code> and/or <code>README</code> with any appropriate changes and commit. Most subpackages don't have a <code>CHANGELOG</code>.</li>
 <li>Run <code>npm version &lt;version-type&gt;</code> with the appropriate version type.</li>

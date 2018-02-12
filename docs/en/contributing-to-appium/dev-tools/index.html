@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Appium Style Guide - Appium</title>
+    <title>Standard Dev Commands - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../css/appium.css" rel="stylesheet">
@@ -1399,14 +1399,14 @@
 
                         
                             
-<li>
-    <a href="../gulp/">Standard Gulp Commands</a>
+<li class="active">
+    <a href="./">Standard Dev Commands</a>
 </li>
 
                         
                             
-<li class="active">
-    <a href="./">Appium Style Guide</a>
+<li>
+    <a href="../style-guide/">Appium Style Guide</a>
 </li>
 
                         
@@ -1444,12 +1444,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../gulp/">
+                        <a rel="next" href="../developers-overview/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../how-to-write-docs/">
+                        <a rel="prev" href="../style-guide/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1465,237 +1465,52 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#style-guide-for-contributors">Style guide for contributors</a></li>
-        
-            <li class="second-level"><a href="#rebasing">Rebasing</a></li>
-            
-        
-            <li class="second-level"><a href="#linting">Linting</a></li>
-            
-        
-            <li class="second-level"><a href="#style-notes">Style notes</a></li>
-            
-        
-            <li class="second-level"><a href="#test-style">Test Style:</a></li>
-            
+        <li class="first-level active"><a href="#appium-development-commands">Appium development commands</a></li>
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h2 id="style-guide-for-contributors">Style guide for contributors</h2>
-<p>Thanks for your contribution to Appium! Here are the principles we use when
-writing javascript. Please conform to these so we can merge your pull request
- without going back and forth about style. The main principle is: <em>make your
- code look like the surrounding code</em>.</p>
-<h3 id="rebasing">Rebasing</h3>
-<p>Commits in a pull request should consist of <a href="https://github.com/appium/appium/pull/920#issuecomment-21588553">logical changes</a>.
-If there are multiple authors, make sure each author has their own commit.
-It's not a good idea to modify author information. Merge commits should be
-rebased out of pull requests.</p>
-<h3 id="linting">Linting</h3>
-<p>All code (except for code in <code>bootstrap.js</code> which uses proprietary Apple
-methods) must pass JSLint. To check your code, you can simply run <code>grunt
-lint</code> from the Appium repo dir. If you've created a new .js file,
-please make sure it is covered by the wildcards in <code>grunt.js</code> or that it is
-added specifically.</p>
-<p>It's easy to have your code linted as you type, which makes the whole process
-much smoother. We like <a href="http://www.jshint.com">jshint</a>,
-which has integrations with a lot of source code editors. The file <code>.jshintrc</code> is checked into the repo, so by adding jshint to your editor, you'll
-take advantage of the linting.</p>
-<p>Since jshint does not enforce code style anymore, we also use
-<a href="https://github.com/mdevils/node-jscs">jscs</a>, for which it also exists some
-source editor integrations.</p>
-<p>These configuration files define the warnings you will see in your favorite
-editor. See <a href="http://www.jshint.com/platforms/">this page for jshint</a> and
-<a href="https://github.com/mdevils/node-jscs#friendly-packages">this page for jscs</a> to
-get the list of editors and platforms supported and how setup your editor for
-automatic linting.</p>
-<h3 id="style-notes">Style notes</h3>
-<p>We use a future version of JavaScript and take advantage of the Babel
-transpiler to render it down to what is supported by current versions of
-Node.js. We use ES2015 (link needed) (formerly called ES6) with some
-not-yet-standard features, namely <code>async/await</code> (link needed). This style guide
-must be followed diligently in all Appium contributions!</p>
-<ul>
-<li>Use two spaces for indentation, <em>no tabs</em></li>
-<li>
-<p>Use single spaces around operators</p>
-<p><code>javascript
-var x = 1;</code>
-not
-<code>javascript
-var x=1;</code></p>
-</li>
-<li>
-<p>Spaces after commas and colons in lists, objects, function calls, etc...</p>
-<p><code>javascript
-var x = myFunc("lol", {foo: bar, baz: boo});</code>
-not
-<code>javascript
-var x = myFunc("lol",{foo:bar,baz:boo});</code></p>
-</li>
-<li>
-<p>Always end statements with semicolons</p>
-</li>
-<li>
-<p>Comma-first</p>
-<p><code>javascript
-var x = {
-  foo: 'bar'
-, baz: 'boo'
-, wuz: 'foz'
-};</code></p>
-</li>
-<li>
-<p>Brackets for <code>function</code>, <code>if</code>, etc... go on same line, <code>else</code> gets sandwiched</p>
-<p><code>javascript
-if (foo === bar) {
-  // do something
-} else {
-  // do something else
-}</code></p>
-</li>
-<li>
-<p>Space after <code>if</code>, <code>for</code>, and <code>function</code>:</p>
-<p><code>javascript
-if (foo === bar) {</code>
-<code>javascript
-for (var i = 0; i &lt; 10; i ++) {</code>
-<code>javascript
-var lol = function (foo) {</code>
-not
-<code>javascript
-if(foo === bar) {</code>
-<code>javascript
-for(var i = 0; i &lt; 10; i ++) {</code>
-<code>javascript
-var lol = function(foo) {</code></p>
-</li>
-<li>
-<p>Avoid bracketless <code>if</code> for one-liners:</p>
-<p><code>javascript
-if (foo === bar) {
-  foo++;
-}</code>
-not
-<code>javascript
-if (foo === bar)
-  foo++;</code>
-except in the case of short-circuiting to a callback in the event of an error
-<code>javascript
-if (err) return cb(err);</code></p>
-</li>
-<li>
-<p>Use <code>===</code>, not <code>==</code>, and <code>!==</code>, not <code>!=</code> for no surprises</p>
-</li>
-<li>Line length shouldn't be longer than 79 characters</li>
-<li>
-<p>Break up long strings like this:</p>
-<p><code>javascript
-myFunc("This is a really long string that's longer " +
-        "than 79 characters so I broke it up, woo");</code></p>
-</li>
-<li>
-<p>Comments should line up with code</p>
-<p><code>javascript
-if (foo === 5) {
-  myFunc(foo);
-  // foo++;
-}</code>
-not
-<code>javascript
-if (foo === 5) {
-  myFunc(foo);
-//foo++;
-}</code></p>
-</li>
-<li>
-<p>Subclassing by extending prototypes</p>
-<p>```javascript
-var _ = require('underscore');</p>
-<p>var SuperClass = function () {
-  this.init();
-};</p>
-<p>SuperClass.prototype.init = function () {
-  // initialize
-};</p>
-<p>// Create a subclass</p>
-<p>var SubClass = function () {
-    this.init();
-};</p>
-<p>_.extend(SubClass.prototype, SuperClass.prototype);
-```</p>
-</li>
-<li>
-<p>Callbacks are always last in function definitions</p>
-<p><code>javascript
-var foo = function (arg1, arg2, cb) {
-  ...
-};</code></p>
-</li>
-<li>
-<p>Define functions as variables</p>
-<p><code>javascript
-var myFunc = function (a, b, c) {};</code>
-not
-<code>javascript
-function myFunc (a, b, c) {}</code></p>
-</li>
-<li>
-<p>Variable names should be camelCased:</p>
-<p><code>javascript
-var myVariable = 42;</code>
-not
-<code>javascript
-var my_variable = 42;</code></p>
-</li>
-<li>
-<p>Check for undefined</p>
-<p><code>javascript
-typeof myVariable === "undefined"</code>
-not
-<code>javascript
-myVariable === undefined</code></p>
-</li>
-<li>
-<p>Define a variable with a default value</p>
-<p><code>javascript
-var x = y || z;</code>
-not
-<code>javascript
-var x = y ? y : z;</code></p>
-</li>
-</ul>
-<h3 id="test-style">Test Style:</h3>
-<p>Keep on the same line if it makes sense semantically and length is not an issue:</p>
-<p>Examples:</p>
-<pre><code class="javascript">  driver.elementByTagName('el1').should.become("123")
-    .nodeify(done);
-
-  driver
-    .elementsByTagName('el1').should.eventually.have.length(0)
-    .nodeify(done);
-</code></pre>
-
-<p>Alternatively use extra indents to improve readability:</p>
-<pre><code class="javascript">h.driver
-  .elementById('comments')
-    .clear()
-    .click()
-    .keys("hello world")
-    .getValue()
-    .should.become("hello world")
-  .elementById('comments')
-    .getValue().should.become("hello world")
-  .nodeify(done);
-
-h.driver
-  .execute("'nan'--")
-    .should.be.rejectedWith("status: 13")
-  .nodeify(done);
-</code></pre></div>
+<h2 id="appium-development-commands">Appium development commands</h2>
+<p>Each Appium package has a number of NPM scripts that are used to automate
+development tasks:</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>npm run build</td>
+<td>Transpile code into the <code>build</code> directory</td>
+</tr>
+<tr>
+<td>npm run lint</td>
+<td>Runs ESLint</td>
+</tr>
+<tr>
+<td>npm run test</td>
+<td>Cleans, lints, transpiles, and runs unit tests</td>
+</tr>
+<tr>
+<td>npm run e2e-test</td>
+<td>Tranpiles and runs functional tests</td>
+</tr>
+<tr>
+<td>npm run watch</td>
+<td>Automatically runs <code>test</code> command when code is changed</td>
+</tr>
+<tr>
+<td>npm run mocha</td>
+<td>Gives access to <code>mocha</code> test runner</td>
+</tr>
+</tbody>
+</table>
+<p>In addition, the main Appium package has a task <code>npm generate-docs</code> which generates
+the command documentation.</p></div>
         
     </div>
 

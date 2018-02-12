@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title>Standard Gulp Commands - Appium</title>
+    <title>Appium Style Guide - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../css/appium.css" rel="stylesheet">
@@ -1399,14 +1399,14 @@
 
                         
                             
-<li class="active">
-    <a href="./">Standard Gulp Commands</a>
+<li>
+    <a href="../dev-tools/">Standard Dev Commands</a>
 </li>
 
                         
                             
-<li>
-    <a href="../style-guide-2.0/">Appium Style Guide</a>
+<li class="active">
+    <a href="./">Appium Style Guide</a>
 </li>
 
                         
@@ -1444,12 +1444,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../developers-overview/">
+                        <a rel="next" href="../dev-tools/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../style-guide-2.0/">
+                        <a rel="prev" href="../how-to-write-docs/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1465,58 +1465,201 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#appium-gulp-commands">Appium gulp commands</a></li>
+        <li class="first-level active"><a href="#style-guide-for-contributors">Style guide for contributors</a></li>
+        
+            <li class="second-level"><a href="#javascript">JavaScript</a></li>
+            
+        
+            <li class="second-level"><a href="#rebasing">Rebasing</a></li>
+            
+        
+            <li class="second-level"><a href="#linting">Linting</a></li>
+            
+        
+            <li class="second-level"><a href="#style-notes">Style notes</a></li>
+            
+        
+            <li class="second-level"><a href="#test-style">Test Style:</a></li>
+            
         
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h2 id="appium-gulp-commands">Appium gulp commands</h2>
-<p><a href="http://gulpjs.com">Gulp</a> is like <code>make</code> for Node.js! We use it to automate all
-kinds of appium dev tasks. Here's what you can do:</p>
-<table>
-<thead>
-<tr>
-<th>Task</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gulp once</td>
-<td>Cleans, lints, transpiles and runs unit tests</td>
-</tr>
-<tr>
-<td>gulp watch</td>
-<td>Automatically runs <code>gulp once</code> when code changes</td>
-</tr>
-<tr>
-<td>gulp lint</td>
-<td>Runs JSLint</td>
-</tr>
-<tr>
-<td>gulp jshint</td>
-<td>Runs JSHint</td>
-</tr>
-<tr>
-<td>gulp transpile</td>
-<td>Transpiles our ES7/ES2015 code to ES5, generates <code>/build</code> directory + contents</td>
-</tr>
-<tr>
-<td>gulp unit-test</td>
-<td>Runs unit tests</td>
-</tr>
-<tr>
-<td>gulp e2e-test</td>
-<td>Runs e2e tests</td>
-</tr>
-<tr>
-<td>gulp docs</td>
-<td>Generates docs/en/writing-running-appium/server-args.md doc</td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="style-guide-for-contributors">Style guide for contributors</h2>
+<p>Thanks for your contribution to Appium! Here are the principles we use when
+writing javascript. Please conform to these so we can merge your pull request
+without going back and forth about style. The main principle is: <em>make your
+code look like the surrounding code</em>.</p>
+<h3 id="javascript">JavaScript</h3>
+<p>With the exception of the code that runs on the devices themselves 
+(<a href="https://github.com/appium/appium-uiautomator2-server">appium-uiautomator2-server</a> for 
+Android, <a href="https://github.com/appium/WebDriverAgent">WebDriverAgent</a> for iOS), Appium is written in <a href="https://nodejs.org/">Node.js</a>. If you are
+not familiar with JavaScript, please familiarize yourself before attempting
+to modify the code. There are plenty of good, free resources (see, for example,
+<a href="https://github.com/getify/You-Dont-Know-JS">You Don't Know JavaScript</a>).</p>
+<h3 id="rebasing">Rebasing</h3>
+<p>Commits in a pull request should consist of <a href="https://github.com/appium/appium/pull/920#issuecomment-21588553">logical changes</a>.
+If there are multiple authors, make sure each author has their own commit.
+It's not a good idea to modify author information. Merge commits should be
+rebased out of pull requests.</p>
+<h3 id="linting">Linting</h3>
+<p>All code must pass <a href="https://eslint.org/">ESLint</a>. To check your code, you can simply run <code>npm run lint</code>
+from the Appium repo dir. The configuration is specified in the 
+<a href="https://github.com/appium/eslint-config-appium">eslint-config-appium</a> package.</p>
+<p>Most modern editors have integration with ESLint. See <a href="https://eslint.org/docs/user-guide/integrations">here</a> for details.</p>
+<h3 id="style-notes">Style notes</h3>
+<p>We use a future version of JavaScript and take advantage of the <a href="https://babeljs.io/">Babel</a>
+transpiler to render it down to what is supported by current versions of
+<a href="https://nodejs.org/">Node.js</a>. We use <a href="https://babeljs.io/learn-es2015/">ES2015</a> (formerly called ES6) with some
+not-yet-standard features, namely <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async/await</a>. This style guide
+must be followed diligently in all Appium contributions! Luckily, linting
+will enforce most of these rules!</p>
+<ul>
+<li>Use two spaces for indentation, <em>no tabs</em></li>
+<li>
+<p>Use single spaces around operators</p>
+<p><code>js
+let x = 1;</code>
+not
+<code>js
+let x=1;</code></p>
+</li>
+<li>
+<p>Spaces after commas and colons in lists, objects, function calls, etc...</p>
+<p><code>js
+let x = myFunc('lol', {foo: bar, baz: boo});</code>
+not
+<code>js
+let x = myFunc('lol',{foo:bar,baz:boo});</code></p>
+</li>
+<li>
+<p>Always end statements with semicolons (see, for example, <a href="https://blog.kentcdodds.com/semicolons-in-javascript-a-preference-dd8fc8b80895">Kent Dodds</a>)</p>
+</li>
+<li>
+<p>Brackets for <code>function</code>, <code>if</code>, etc... go on same line, <code>else</code> gets sandwiched</p>
+<p><code>js
+if (foo === bar) {
+  // do something
+} else {
+  // do something else
+}</code>
+not
+<code>js
+if (foo === bar) 
+{
+  // do something
+} 
+else 
+{
+  // do something else
+}</code></p>
+</li>
+<li>
+<p>Space after <code>if</code>, <code>for</code>, and <code>function</code>:</p>
+<p><code>js
+if (foo === bar) {</code>
+<code>js
+for (let i = 0; i &lt; 10; i ++) {</code>
+<code>js
+let lol = function (foo) {</code>
+not
+<code>js
+if(foo === bar) {</code>
+<code>js
+for(let i = 0; i &lt; 10; i ++) {</code>
+<code>js
+let lol = function(foo) {</code></p>
+</li>
+<li>
+<p>Avoid bracketless <code>if</code> for one-liners:</p>
+<p><code>js
+if (foo === bar) {
+  foo++;
+}</code>
+not
+<code>js
+if (foo === bar)
+  foo++;</code>
+except in the case of short-circuiting to return/error
+<code>js
+if (err) return;</code>
+<code>js
+if (err) throw new Error(err);</code></p>
+</li>
+<li>
+<p>Use <code>===</code>, not <code>==</code>, and <code>!==</code>, not <code>!=</code> for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">no surprises</a></p>
+</li>
+<li>Line length shouldn't be longer than 79 characters</li>
+<li>
+<p>Break up long strings like this:</p>
+<p><code>javascript
+myFunc('This is a really long string that's longer ' +
+       'than 79 characters so I broke it up, woo');</code></p>
+</li>
+<li>
+<p>Comments should line up with code</p>
+<p><code>js
+if (foo === 5) {
+  myFunc(foo);
+  // foo++;
+}</code>
+not
+<code>js
+if (foo === 5) {
+  myFunc(foo);
+//foo++;
+}</code></p>
+</li>
+<li>
+<p>Variable names should be camelCased:</p>
+<p><code>js
+let myVariable = 42;</code>
+not
+<code>js
+let my_variable = 42;</code></p>
+</li>
+<li>
+<p>Check for <code>undefined</code> using Appium's <a href="https://github.com/appium/appium-support">appium-support</a> package</p>
+<p><code>js
+util.hasValue(myVariable)</code></p>
+</li>
+<li>
+<p>Define a variable with a default value</p>
+<p><code>js
+let x = y || z;</code>
+not
+<code>js
+let x = y ? y : z;</code></p>
+</li>
+</ul>
+<h3 id="test-style">Test Style:</h3>
+<p>Tests are written using <a href="https://mochajs.org/">mocha</a> and <a href="http://chaijs.com/">chai</a>. The WebDriver 
+library used is <a href="https://github.com/admc/wd">wd</a>.</p>
+<p>Keep on the same line if it makes sense semantically and length is not an issue:</p>
+<p>Examples:</p>
+<pre><code class="js">driver.elementByTagName('el1').should.become('123');
+
+driver
+  .elementsByTagName('el1').should.eventually.have.length(0);
+</code></pre>
+
+<p>Alternatively use extra indents to improve readability:</p>
+<pre><code class="js">driver
+  .elementById('comments')
+    .clear()
+    .click()
+    .keys('hello world')
+    .getValue()
+    .should.become('hello world')
+  .elementById('comments')
+    .getValue().should.become('hello world');
+
+driver
+  .execute("'NaN'--")
+    .should.be.rejectedWith('status: 13');
+</code></pre></div>
         
     </div>
 

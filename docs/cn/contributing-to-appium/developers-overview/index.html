@@ -565,7 +565,7 @@ node.js的原生支持，Appium代码是_被移植_到ES5（JS更为广泛支持
 把上述过程当做默认行为。</p>
 <h3 id="_6">排查和代码风格</h3>
 <p>对于所有Appium的JS而言，代码外观和使用感觉同样重要。这包括样式常规，编码模式以及我们解决各种问题时使用的
-库。你应该熟悉我们新的<a href="/docs/cn/contributing-to-appium/style-guide-2.0/index.html">ES2015 风格指南</a>。
+库。你应该熟悉我们新的<a href="/docs/cn/contributing-to-appium/style-guide/index.html">ES2015 风格指南</a>。
 当转化时，Appium包将自动运行JSHint或其他lint工具，并在代码不符合我们规范的时候提供警告或错误反馈。
 这些工具不一定能顾全我们关心的种种风格问题，所以我们在review代码的时候也应该注意代码规范问题。这不是
 吹毛求疵，而是为了有一个整洁，一致并且可读的代码库。</p>
@@ -596,7 +596,7 @@ _FORCE_LOGS=1 &lt;command&gt; # 显示测试运行期间的模块日志输出
 <p>任何非Appium主包的发布流程都是非常简洁明了的（请注意：如果你想要发布它，你需要成为一个NPM的所有者。
 所有权由Appium提交者管理； 如果你对所有者有任何疑问，请联系@jlipps 或者 @imurchie）。</p>
 <ol>
-<li><code>rm -rf node_modules &amp;&amp; npm install</code> 并运行测试以确保全新安装正常工作</li>
+<li><code>rm -rf node_modules &amp;&amp; rm -rf package-lock.json &amp;&amp; npm install</code> 并运行测试以确保全新安装正常工作</li>
 <li>根据<a href="http://semver.org/">SemVer</a> 规则决定我们是否需要发布一个补丁（漏洞修复），微调（功能）或者是主要（迭代）(请参考 <a href="https://docs.npmjs.com/getting-started/semantic-versioning">how SemVer works with NPM</a>.</li>
 <li>通过任何适当的更改和提交来更新CHANGELOG以README文件。大多数子包没有CHANGELOG。</li>
 <li>通过适当的版本类型运行 <code>npm version &lt;version-type&gt;</code></li>
@@ -614,8 +614,8 @@ _FORCE_LOGS=1 &lt;command&gt; # 显示测试运行期间的模块日志输出
 因此有必要在发布过程中手动管理它。 它需要与对<code>package.json</code>的更改一起提交到GitHub。</p>
 <ol>
 <li>如果 NPM shrinkwrap JSON 文件存在，请移除.</li>
-<li><code>rm -rf node_modules &amp;&amp; npm install</code> 并运行测试以确保全新安装正常工作</li>
-<li><code>rm -rf node_modules &amp;&amp; npm install --production</code> 以获取仅production部分.</li>
+<li><code>rm -rf node_modules &amp;&amp; rm -rf package-lock.json &amp;&amp; npm install</code> 并运行测试以确保全新安装正常工作</li>
+<li><code>rm -rf node_modules &amp;&amp; rm -rf package-lock.json &amp;&amp; npm install --production</code> 以获取仅production部分.</li>
 <li><code>npm shrinkwrap</code> 来编写新的 NPM shrinkwrap JSON 文件.</li>
 <li>根据SemVer来决定我们是否需要发布一个补丁（漏洞修复），微调（功能）或者是主要（迭代）</li>
 <li>用合适的新版本信息来更新<code>package.json</code></li>
