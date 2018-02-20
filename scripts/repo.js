@@ -1,6 +1,6 @@
 import Github from 'github';
 import request from 'request-promise';
-import { fs, tempDir, mkdirp } from 'appium-support';
+import { fs, tempDir, mkdirp, logger } from 'appium-support';
 import { exec } from 'teen_process';
 import nodeFS from 'fs';
 import path from 'path';
@@ -12,6 +12,7 @@ import { fencedCodeTabifyDocument } from './tabs';
 import { reassignMarkdownLinkDocument } from './links';
 
 const LANGUAGES = ['en', 'cn'];
+const log = logger.getLogger('APPIUM.IO');
 
 async function unzipStream (readstream, pathToUnzipped) {
   return await new B((resolve, reject) => {
@@ -29,8 +30,11 @@ async function getRepoDocs (owner, repo, branch='master') {
     Promise: B,
   });
   const githubBranch = await github.repos.getBranch({owner, repo, branch});
+
   const ref = githubBranch.data.commit.sha;
-  const archive = await request(`https://api.github.com/repos/${owner}/${repo}/zipball/${ref}`, {
+  const downloadUrl = `https://api.github.com/repos/${owner}/${repo}/zipball/${ref}`;
+  log.debug(`Downloading repo from: ${downloadUrl}`);
+  const archive = await request(downloadUrl, {
     headers: {
       'User-Agent': 'appium',
     },
@@ -119,6 +123,7 @@ async function buildDocs (pathToDocs) {
   const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'),  'utf8'));
   const themeDir = path.resolve(__dirname, '..', 'cinder');
   const sitemap = require(path.resolve(pathToDocs, 'toc.js'));
+  log.debug(`Building HTML docs from Markdown ${pathToDocs}`);
 
   // Build the MkDocs for each language
   for (let language of LANGUAGES) {
@@ -139,6 +144,7 @@ async function buildDocs (pathToDocs) {
     }
     await alterHTML(pathToBuildDocsTo);
   }
+  log.debug(`Built docs to ${path.resolve(__dirname, '..', 'docs')}`);
 }
 
 (async () => {
