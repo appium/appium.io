@@ -228,6 +228,12 @@
 
         
             
+<li>
+    <a href="../../commands/session/source/">Source</a>
+</li>
+
+        
+            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Timeouts</a>
     <ul class="dropdown-menu">
@@ -1748,6 +1754,16 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>/abs/path/to/webdriver</code></td>
 </tr>
 <tr>
+<td><code>chromedriverExecutableDir</code></td>
+<td>The absolute path to a directory to look for Chromedriver executables in, for automatic discovery of compatible Chromedrivers</td>
+<td><code>/abs/path/to/chromedriver/directory</code></td>
+</tr>
+<tr>
+<td><code>chromedriverChromeMappingFile</code></td>
+<td>The absolute path to a file which maps Chromedriver versions to the minimum Chrome that it supports</td>
+<td><code>/abs/path/to/mapping.json</code></td>
+</tr>
+<tr>
 <td><code>autoWebviewTimeout</code></td>
 <td>Amount of time to wait for Webview context to become active, in ms. Defaults to <code>2000</code></td>
 <td>e.g. <code>4</code></td>
@@ -1841,6 +1857,21 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>isHeadless</code></td>
 <td>Set this capability to <code>true</code> to run the Emulator headless when device display is not needed to be visible. <code>false</code> is the default value. <em>isHeadless</em> is also support for iOS, check XCUITest-specific capabilities.</td>
 <td>e.g., <code>true</code></td>
+</tr>
+<tr>
+<td><code>uiautomator2ServerLaunchTimeout</code></td>
+<td>Timeout in milliseconds used to wait for an uiAutomator2 server to launch. Defaults to <code>20000</code></td>
+<td>e.g., <code>20000</code></td>
+</tr>
+<tr>
+<td><code>uiautomator2ServerInstallTimeout</code></td>
+<td>Timeout in milliseconds used to wait for an uiAutomator2 server to be installed. Defaults to <code>20000</code></td>
+<td>e.g., <code>20000</code></td>
+</tr>
+<tr>
+<td><code>otherApps</code></td>
+<td>App or list of apps (as a JSON array) to install prior to running tests</td>
+<td>e.g., <code>"/path/to/app.apk"</code>, <code>https://www.example.com/url/to/app.apk</code>, <code>["/path/to/app-a.apk", "/path/to/app-b.apk"]</code></td>
 </tr>
 </tbody>
 </table>

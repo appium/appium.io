@@ -228,6 +228,12 @@
 
         
             
+<li>
+    <a href="../../../commands/session/source/">Source</a>
+</li>
+
+        
+            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Timeouts</a>
     <ul class="dropdown-menu">
@@ -1470,6 +1476,9 @@
             <li class="second-level"><a href="#chromedriverchrome-compatibility">Chromedriver/Chrome compatibility</a></li>
             
         
+            <li class="second-level"><a href="#automatic-discovery-of-compatible-chromedriver">Automatic discovery of compatible Chromedriver</a></li>
+            
+        
             <li class="second-level"><a href="#installing-an-network-issues">Installing an network issues</a></li>
             
         
@@ -1522,6 +1531,16 @@ Chrome version that is automatable:</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>2.37</td>
+<td>64.0.3282.0</td>
+<td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.37/">v2.37 (link)</a></td>
+</tr>
+<tr>
+<td>2.36</td>
+<td>63.0.3239.0</td>
+<td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.36/">v2.36 (link)</a></td>
+</tr>
 <tr>
 <td>2.35</td>
 <td>62.0.3202.0</td>
@@ -1669,12 +1688,12 @@ Chrome version that is automatable:</p>
 </tr>
 <tr>
 <td>2.6</td>
-<td></td>
+<td>29.0.1545.0</td>
 <td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.6/">v2.6 (link)</a></td>
 </tr>
 <tr>
 <td>2.5</td>
-<td></td>
+<td>29.0.1545.0</td>
 <td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.5/">v2.5 (link)</a></td>
 </tr>
 <tr>
@@ -1710,6 +1729,26 @@ the minimum supported version for any particular version, get the <a href="https
 check out the release commit, and check the variable <code>kMinimumSupportedChromeVersion</code>
 in the file <code>src/chrome/test/chromedriver/chrome/version.cc</code>. (To find the
 release commits, you can use <code>git log --pretty=format:'%h | %s%d' | grep -i "Release Chromedriver version"</code>.)</p>
+<h3 id="automatic-discovery-of-compatible-chromedriver">Automatic discovery of compatible Chromedriver</h3>
+<p>Beginning with Appium 1.8.0, Appium is able to pick the correct Chromedriver for the
+version of Chrome under test. While Appium only comes bundled with the Chromedriver
+most recently released at the time of the Appium version's release, more Chromedriver
+versions can be downloaded and either placed inside the Appium installation (<em>not
+  recommended</em> since upgrading Appium will remove them) or in a custom location,
+which can be indicated to Appium with the <code>chromedriverExecutableDir</code> desired
+capability. This capability is the absolute path to the directory in which you have
+placed one or more Chromedriver executables.</p>
+<p>As well, since new versions of Chromedriver may be available that were not when
+an Appium version was released, a custom mapping of Chromedrivers to the minimum
+Chrome version they support can be given to Appium through the <code>chromedriverChromeMappingFile</code>
+desired capability. This should be the absolute path to a file with the mapping
+in it. The contents of the file need to be parsable as a JSON object, like:</p>
+<pre><code class="JSON">{
+  "2.42": "63.0.3239",
+  "2.41": "62.0.3202"
+}
+</code></pre>
+
 <h3 id="installing-an-network-issues">Installing an network issues</h3>
 <p>When Appium is installed it needs to download Chromedriver, so there is the possibility
 that there could be network problems that make the install fail.</p>
