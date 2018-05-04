@@ -177,14 +177,6 @@ a:hover {
   line-height: 1;
 }
 
-.conference {
-  margin: 0;
-  max-width: 100%;
-  height: auto;
-  padding: 0;
-  background: linear-gradient(to right, #f3be48 0%, #f3be48 50%, #ee3c6b 50%, #ee3c6b 100%);
-}
-
 .marketing h1 {
   margin: 60px 0 10px;
   font-size: 60px;
