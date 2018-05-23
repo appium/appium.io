@@ -1550,7 +1550,9 @@ action.perform();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">actions = TouchActions(driver)
+            <pre><code class="python">from appium.webdriver.common.touch_action import TouchAction
+# ...
+actions = TouchAction(driver)
 actions.double_tap(element)
 actions.perform()
 
@@ -1568,8 +1570,7 @@ await driver.tapElement(elementOne);
 // Using touch actions
 let action = new wd.TouchAction();
 action.tap({el: element});
-action.perform();
-await driver.performTouchAction(action);
+await action.perform();
 
 </code></pre>
           </div>

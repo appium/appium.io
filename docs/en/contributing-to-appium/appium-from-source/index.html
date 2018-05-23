@@ -1500,6 +1500,9 @@
             <li class="second-level"><a href="#running-tests">Running Tests</a></li>
             
         
+            <li class="second-level"><a href="#debugging-node">Debugging Node</a></li>
+            
+        
             <li class="second-level"><a href="#committing-code">Committing code</a></li>
             
         
@@ -1638,6 +1641,20 @@ Appium is running in another window with <code>node .</code>) with:</p>
 <pre><code>npm run e2e-test
 </code></pre>
 
+<h3 id="debugging-node">Debugging Node</h3>
+<p>This project has multiple launch configurations for running NodeJS code from within <a href="https://code.visualstudio.com/">VSCode</a></p>
+<ul>
+<li><em>Debug</em>: Runs Appium server in debug mode so you can set breakpoints inside VSCode source files</li>
+<li><em>Attach Debug</em>: Attach to a currently running Appium server</li>
+<li>Example Usage<ul>
+<li>From root, run <code>node --inspect-brk . --port 5555</code></li>
+<li>Run <code>attach debug</code></li>
+<li>Setup breakpoints in VSCode</li>
+</ul>
+</li>
+<li><em>Test All</em>: Runs all mocha tests in <code>test/</code>. Can setup breakpoints in test code and source code</li>
+<li><em>Test Current File</em>: Runs the currently focused-on mocha file. Fails if it's not valid mocha test</li>
+</ul>
 <h3 id="committing-code">Committing code</h3>
 <p>Each Appium package installs a pre-commit hook which will run the <a href="https://eslint.org/">linter</a> and
 the unit tests before the commit is made. Any error in either of these will stop

@@ -1636,22 +1636,22 @@ Capabilities available in general and for specific drivers.</p>
 <tbody>
 <tr>
 <td><code>appActivity</code></td>
-<td>Activity name for the Android activity you want to launch from your package. This often needs to be preceded by a <code>.</code> (e.g., <code>.MainActivity</code> instead of <code>MainActivity</code>)</td>
+<td>Activity name for the Android activity you want to launch from your package. This often needs to be preceded by a <code>.</code> (e.g., <code>.MainActivity</code> instead of <code>MainActivity</code>). By default this capability is received from the package manifest (action: android.intent.action.MAIN , category: android.intent.category.LAUNCHER)</td>
 <td><code>MainActivity</code>, <code>.Settings</code></td>
 </tr>
 <tr>
 <td><code>appPackage</code></td>
-<td>Java package of the Android app you want to run</td>
+<td>Java package of the Android app you want to run. By default this capability is received from the package manifest (@package attribute value)</td>
 <td><code>com.example.android.myApp</code>, <code>com.android.settings</code></td>
 </tr>
 <tr>
 <td><code>appWaitActivity</code></td>
-<td>Activity name/names, comma separated, for the Android activity you want to wait for</td>
+<td>Activity name/names, comma separated, for the Android activity you want to wait for. By default the value of this capability is the same as for <code>appActivity</code>. You must set it to the very first focused application activity name in case it is different from the one which is set as <code>appActivity</code> if your capability has <code>appActivity</code> and <code>appPackage</code>.</td>
 <td><code>SplashActivity</code>, <code>SplashActivity,OtherActivity</code>, <code>*</code>, <code>*.SplashActivity</code></td>
 </tr>
 <tr>
 <td><code>appWaitPackage</code></td>
-<td>Java package of the Android app you want to wait for</td>
+<td>Java package of the Android app you want to wait for. By default the value of this capability is the same as for <code>appActivity</code></td>
 <td><code>com.example.android.myApp</code>, <code>com.android.settings</code></td>
 </tr>
 <tr>
