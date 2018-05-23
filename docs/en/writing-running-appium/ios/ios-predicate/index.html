@@ -1270,6 +1270,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../ios-xctest-install-certificate/">iOS Install Certificate</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1514,13 +1520,13 @@
 <h2 id="ios-predicate">iOS Predicate</h2>
 <p><em>NOTE</em>: iOS predicates are usable in iOS 9.3 and below using the <code>-ios uiautomation</code> locator strategy and they are usable in iOS 10 and above using the <code>-ios predicate string</code> locator strategy</p>
 <p>It is worth looking at <em>'-ios uiautomation'</em> search strategy with <strong>Predicates</strong>.
-<a href="https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
+<a href="https://web.archive.org/web/20160904214108/https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a> has following methods which can are very useful.</p>
 <pre><code class="center">(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
 (UIAElementArray) UIAElementArray.withPredicate(PredicateString predicateString)
 </code></pre>
 
 <p>Native JS search strategy (powered by Apple) provides much more flexibility and is like Xpath.
-<strong><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html">Predicates</a></strong> can be used to restrict an elements set to select only those ones for which some condition is true.</p>
+<strong><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html">Predicates</a></strong> can be used to restrict an elements set to select only those ones for which some condition is true.</p>
 <p>'-ios uiautomation' example:</p>
 <pre><code class="java">// java
 appiumDriver.findElementsByIosUIAutomation("collectionViews()[0].cells().withPredicate(\"ANY staticTexts.isVisible == TRUE\")");
@@ -1532,7 +1538,7 @@ appiumDriver.findElementsByIosNsPredicate("isWDVisible == 1");
 </code></pre>
 
 <p>-  will select only those  <code>UIACollectionCell</code> elements that have visible <code>UIAStaticText</code> child elements, and themselves are childs of 1st <code>UIACollectionView</code> element that should be located under the main app window.  Here <code>staticTexts()</code> and <code>isVisible()</code> are methods available in <code>UIAElementArray</code> and <code>UIAElement</code> classes respectively. <strong>Note that <code>UIAElementArray</code> numbering begins with <code>0</code> unlike Xpath where indexes counting starts from <code>1</code></strong></p>
-<p>Here's a list of available Predicates (mostly taken from <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html">Predicates Programming Guide</a>)</p>
+<p>Here's a list of available Predicates (mostly taken from <a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html">Predicates Programming Guide</a>)</p>
 <h3 id="basic-comparisons">Basic Comparisons</h3>
 <p>= , ==
 - The left-hand expression is equal to the right-hand expression:</p>
