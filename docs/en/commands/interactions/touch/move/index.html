@@ -1477,9 +1477,12 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#tap">Tap</a></li>
+        <li class="first-level active"><a href="#move">Move</a></li>
         
             <li class="second-level"><a href="#example-usage">Example Usage</a></li>
+            
+        
+            <li class="second-level"><a href="#description">Description</a></li>
             
         
             <li class="second-level"><a href="#support">Support</a></li>
@@ -1508,7 +1511,7 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="tap">Tap</h1>
+<h1 id="move">Move</h1>
 <p>Finger move on the screen</p>
 <h2 id="example-usage">Example Usage</h2>
 <div>
@@ -1551,7 +1554,9 @@ action.perform();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">actions = TouchActions(driver)
+            <pre><code class="python">from appium.webdriver.common.touch_action import TouchAction
+# ...
+actions = TouchAction(driver)
 actions.tap_and_hold(element)
 actions.move(50, 50)
 actions.perform()
@@ -1570,15 +1575,11 @@ driver.touchMultiPerform([
 
 
 // wd example
-// Using tapElement method
-await driver.tapElement(elementOne);
-
-// Using touch actions
 let action = new wd.TouchAction();
-action.press({x: 10, y: 10});
-action.moveTo({x: 50, y: 50});
-action.perform();
-await driver.performTouchAction(action);
+action.press({x: 10, y: 10})
+      .moveTo({x: 50, y: 50})
+      .release();
+await action.perform();
 
 </code></pre>
           </div>
@@ -1614,6 +1615,8 @@ await driver.performTouchAction(action);
 
 
 
+<h2 id="description">Description</h2>
+<p>As of Appium 1.8.0 all move actions take coordinates that are absolute.</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>
