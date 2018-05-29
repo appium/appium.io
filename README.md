@@ -53,6 +53,12 @@ npm run lint
 npm run test
 ```
 
+Crawl for broken links:
+
+```
+npm run crawl
+```
+
 ## Publishing
 
 Newly built docs must be committed and pushed to the `gh-pages` branch on GitHub.

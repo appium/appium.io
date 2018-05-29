@@ -88,7 +88,7 @@ library in any language.
 ## The Mobile Testing Summit
 
 Jason decided that the project should be presented at the [Mobile Testing
-Summit](http://www.mobiletestsummit.com/) in November, but suggested that the
+Summit](https://twitter.com/mobtestsummit) in November, but suggested that the
 project get a new name first. Many ideas were thrown out and they settled on
 AppleCart. A day later, while he was perusing some of Apple's guideance on
 copyright and trademarks, Jason noticed that under the section of examples for

@@ -496,7 +496,7 @@
         <div class="col-md-9" role="main">
 
 <h1 id="selenium-grid">Selenium Grid</h1>
-<p>通过 <code>--nodeconfig</code> 这个服务端参数，可以将 appium server 注册到本地的 <a href="https://code.google.com/p/selenium/wiki/Grid2">Selenium grid</a> (<a href="http://docs.seleniumhq.org/docs/07_selenium_grid.jsp">Grid 的配置文档</a>) </p>
+<p>通过 <code>--nodeconfig</code> 这个服务端参数，可以将 appium server 注册到本地的 <a href="https://code.google.com/p/selenium/wiki/Grid2">Selenium grid</a> (<a href="http://docs.seleniumhq.org/docs/07_selenium_grid.jsp">Grid 的配置文档</a>)</p>
 <pre><code class="center">&gt;  appium --nodeconfig /path/to/nodeconfig.json
 # 或者使用源文件执行
 &gt; node . --nodeconfig /path/to/nodeconfig.json
@@ -535,7 +535,7 @@
 }
 </code></pre>
 
-<p>可以在 <a href="http://selenium.googlecode.com/git/docs/api/java/org/openqa/selenium/Platform.html">这里</a>查看有效的 platform 参数。</p>
+<p>可以在 <a href="http://www.seleniumhq.org/about/platforms.jsp">这里</a>查看有效的 platform 参数。</p>
 <p>如果没有给出 <code>url</code>、<code>host</code> 和 <code>port</code>，配置会自动指向 <code>localhost:whatever-port-Appium-started-on</code>。</p>
 <p>如果你的 Appium Server 和 Selenium Grid 没有运行在同一台机器上，为确保 Selenium Grid 连接正常，请在你的 <code>host</code> &amp; <code>url</code> 上使用外部域名或 IP 地址，而不是 localhost 和 127.0.0.1</p>
 <p>本文由 <a href="https://github.com/tobecrazy">tobecrazy</a> 翻译，由 <a href="https://github.com/lihuazhang">lihuazhang</a> 校验。</p></div>

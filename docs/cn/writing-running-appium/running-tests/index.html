@@ -614,9 +614,9 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
 <p>用你选择的 WebDriver （客户端）库，使用这些 capabilities 和本地的4723端口建立远程会话（或任何启动 Appium 时候指定的主机和端口）。现在你应该都设置好了！</p>
 <h3 id="appium-android">使用 Appium 测试你的应用 (Android)</h3>
 <p>首先,确保你有一个且只有一个 Android 模拟器或设备连接。例如，如果你运行 <code>adb devices</code>,
-你应该只看到一个设备连接。这个设备就是 Appium 用来测试的。当然, 要连接上一个设备，你需要配置一个 Android AVD (更多信息参考<a href="https://github.com/appium/appium/blob/master/docs/en/appium-setup/running-on-windows.md">Windows</a>,
-<a href="https://github.com/appium/appium/blob/master/docs/en/appium-setup/running-on-osx.md">Mac</a>,
-或者 <a href="https://github.com/appium/appium/blob/master/docs/en/appium-setup/running-on-linux.md">Linux</a>))。如果你的系统变量 PATH 里有 Android SDK 的工具路径,你可以简单运行如下命令：</p>
+你应该只看到一个设备连接。这个设备就是 Appium 用来测试的。当然, 要连接上一个设备，你需要配置一个 Android AVD (更多信息参考<a href="/docs/cn/appium-setup/running-on-windows/index.html">Windows</a>,
+<a href="/docs/cn/appium-setup/running-on-osx/index.html">Mac</a>,
+或者 <a href="/docs/cn/appium-setup/running-on-linux/index.html">Linux</a>))。如果你的系统变量 PATH 里有 Android SDK 的工具路径,你可以简单运行如下命令：</p>
 <pre><code>emulator -avd &lt;MyAvdName&gt;
 </code></pre>
 <p>等待 android 模拟器完成启动（可以去喝个咖啡）。有时，各种原因，<code>adb</code> 会卡住。如果不显示任何连接设备或否则失败，你可以通过运行以下命令重启它:</p>
@@ -727,7 +727,7 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
 <p>在这组 capabilities 里，<code>myApp</code> 必须是以下任意一个：</p>
 <ul>
 <li>apk 或者 zip 文件的绝对路径</li>
-<li>apk 的 zip 文件的 url 链接 </li>
+<li>apk 的 zip 文件的 url 链接</li>
 <li>基于 appium 安装根目录的示例应用的相对路径</li>
 </ul>
 <p>用你选择的 WebDriver （客户端）库，使用这些 capabilities 和本地的4723端口建立远程会话（或任何启动 Appium 时候指定的主机和端口）。现在你应该都设置好了！</p>
@@ -824,9 +824,9 @@ capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY: ".MainActivity");
 
 <p>现在 Appium 将启动一个 Selendroid 测试会话而不是默认的测试会话。
 使用 Selendroid 的缺点之一是,它的一些 API 和Appium 有着显著的差别。
-因此,我们建议你在为旧设备或混合应用程序编写脚本时，彻读(Selendroid文档)(http://selendroid.io/native.html) </p>
+因此,我们建议你在为旧设备或混合应用程序编写脚本时，彻读(Selendroid文档)(http://selendroid.io/native.html)</p>
 <h3 id="appiumwindows">运行你的测试程序与Appium(Windows)</h3>
-<p>只需确保 Appium 在监听，然后运行你的测试。 </p>
+<p>只需确保 Appium 在监听，然后运行你的测试。</p>
 <p>有关详细信息,请参阅我们的<a href="https://github.com/Microsoft/WinAppDriver/tree/master/Samples">samples</a>。</p>
 <p>本文由 <a href="https://github.com/testly">testly</a> 翻译，由 <a href="https://github.com/lihuazhang">lihuazhang</a> 校验。</p></div>
         

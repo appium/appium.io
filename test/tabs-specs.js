@@ -102,11 +102,11 @@ describe('Repo.js', function () {
     it('should strip out the language comment', function () {
       fencedCodeTabify(`<div>
         <pre>
-          <code class='javascript'>// Javascript 
+          <code class='javascript'>// Javascript
           JS code</code>
         </pre>
         <pre>
-          <code class='javascript'>// Javascript 
+          <code class='javascript'>// Javascript
           JS code</code>
         </pre>
       </div>`).indexOf('// Javascript').should.be.below(0);
@@ -116,15 +116,15 @@ describe('Repo.js', function () {
 
       const html = fencedCodeTabify(`<div>
         <pre>
-          <code class='prolog'>// Prolog 
+          <code class='prolog'>// Prolog
           Prolog code</code>
         </pre>
         <pre>
-          <code class='python'>// Python 
+          <code class='python'>// Python
           JS code</code>
         </pre>
         <pre>
-          <code class='java'>// Java 
+          <code class='java'>// Java
           JS code</code>
         </pre>
       </div>`);
