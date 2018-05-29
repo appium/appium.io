@@ -7,6 +7,7 @@ python:
 env:
   global:
     - URL=http://localhost:4000
+    - secure: AKqlhoyFyPGo4qN2JWP08J73lUqmv8bl068iuRZSrcy/UXA2K+Wl5DZm0kEuvIYTFdfRqJZJKgHD9SrLNaUGflk6typupsOistXm5lcTccHYND+TwCKzjfCDkKg2sf4BFdH+sCHPHcZGHEGvCrHTKbsNyUjxS/LblTSgiJfkVLQ=
 before_install:
   - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
   - nvm install 8
