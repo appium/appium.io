@@ -4,6 +4,9 @@
 language: python
 python:
   - "3.6"
+branches:
+  except:
+    - master
 env:
   global:
     - URL=http://localhost:4000
