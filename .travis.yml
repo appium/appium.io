@@ -1,8 +1,9 @@
-branches:
-  only:
-  - gh-pages
-  - /^greenkeeper/.*$/
-language: ruby
+# make it a python project since we need python to install mkdocs,
+# and it is the easiest way to get a working version. Installing
+# node is easy as a build step
+language: python
+python:
+  - "3.6"
 env:
   global:
     - URL=http://localhost:4000
