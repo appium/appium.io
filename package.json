@@ -71,7 +71,7 @@
       "eslint-plugin-babel",
       "eslint-plugin-import",
       "eslint-plugin-mocha",
-      "eslint-plugin-promise",
+      "eslint-plugin-promise"
     ]
   }
 }
