@@ -2,11 +2,11 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { fencedCodeTabify, fencedCodeTabifyDocument } from '../scripts/tabs';
 import jQuery from 'jquery';
-import { jsdom } from 'jsdom';
+import { JSDOM } from 'jsdom';
 import { fs } from 'appium-support';
 import path from 'path';
 
-const $ = jQuery(jsdom().defaultView);
+const $ = jQuery(new JSDOM().window);
 
 chai.use(chaiAsPromised);
 chai.should();

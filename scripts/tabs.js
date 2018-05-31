@@ -1,8 +1,8 @@
 import jQuery from 'jquery';
-import { jsdom } from 'jsdom';
+import { JSDOM } from 'jsdom';
 import ejs from 'ejs';
 
-const $ = jQuery(jsdom().defaultView);
+const $ = jQuery(new JSDOM().window);
 
 function stripLanguageComment (html) {
   return html.replace(/(<code [^>]*>)(\/\/ [^\s]*\n)/, '$1')

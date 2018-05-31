@@ -1,4 +1,4 @@
-import Github from 'github';
+import Github from '@octokit/rest';
 import request from 'request-promise';
 import { fs, tempDir, mkdirp, logger } from 'appium-support';
 import { exec } from 'teen_process';
@@ -26,9 +26,7 @@ async function unzipStream (readstream, pathToUnzipped) {
 
 async function getRepoDocs (owner, repo, branch='master') {
   // Pull down a zipball of Appium repository
-  const github = new Github({
-    Promise: B,
-  });
+  const github = new Github();
   const githubBranch = await github.repos.getBranch({owner, repo, branch});
 
   const ref = githubBranch.data.commit.sha;

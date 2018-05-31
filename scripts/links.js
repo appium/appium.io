@@ -1,10 +1,10 @@
 import jQuery from 'jquery';
-import { jsdom } from 'jsdom';
+import { JSDOM } from 'jsdom';
 import path from 'path';
 import replaceExtension from 'replace-ext';
 import isAbsoluteUrl from 'is-absolute-url';
 
-const $ = jQuery(jsdom().defaultView);
+const $ = jQuery(new JSDOM().window);
 
 /**
  * Markdown doesn't render absolute links to markdown files (see https://github.com/mkdocs/mkdocs/issues/1172)
