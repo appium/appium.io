@@ -1566,7 +1566,7 @@ you want to automate, so your system is set up correctly:</p>
 </ul>
 <h3 id="verifying-the-installation">Verifying the Installation</h3>
 <p>To verify that all of Appium's dependencies are met you can use
-<code>appium-doctor</code>.  Install it with <code>npm install -g appium-doctor</code>, then run the
+<code>appium-doctor</code>. Install it with <code>npm install -g appium-doctor</code>, then run the
 <code>appium-doctor</code> command, supplying the <code>--ios</code> or <code>--android</code> flags to verify
 that all of the dependencies are set up correctly.</p>
 <h3 id="appium-clients">Appium Clients</h3>
@@ -1612,14 +1612,14 @@ also be using JavaScript as the language so that we don't have to deal with
 additional dependencies.</p>
 <p>(Chances are, you'll eventually want to automate something other than Android
 using something other than JavaScript. In that case, check out our
-<a href="https://github.com/appium/sample-code">sample-code</a> repository, which has code
+<a href="https://github.com/appium/appium/sample-code">sample-code</a>, which has code
 samples for many languages and platforms.)</p>
 <h4 id="prerequisites">Prerequisites</h4>
 <ul>
 <li>We'll assume you have an Android 8.0 emulator configured and running (the
   example will work on lower versions, just fix the version numbers
   accordingly)</li>
-<li>We'll assume you have <a href="https://github.com/appium/sample-code/blob/master/sample-code/apps/ApiDemos/bin/ApiDemos-debug.apk">this test
+<li>We'll assume you have <a href="https://github.com/appium/appium/raw/master/sample-code/apps/ApiDemos-debug.apk">this test
   APK</a>
   downloaded and available on your local filesystem</li>
 </ul>
@@ -1633,7 +1633,7 @@ client. Create a directory for this example, then run:</p>
 <p>Now we can create our test file (name it whatever you like) and initialize the
 client object:</p>
 <pre><code class="js">// javascript
-const wdio = require('webdriverio');
+const wdio = require("webdriverio");
 </code></pre>
 
 <p>The next thing we need to do is to start an Appium session. We do this by
@@ -1699,7 +1699,7 @@ ending the session.</p>
 <p>Putting it all together, the file should look like:</p>
 <pre><code class="js">// javascript
 
-const wdio = require('webdriverio');
+const wdio = require("webdriverio");
 
 const opts = {
   port: 4723,
@@ -1731,9 +1731,13 @@ behaving as if an invisible user were tapping on it!</p>
 <p>We've only scratched the surface of what you can do with Appium. Check out
 these resources to help you on your journey:</p>
 <ul>
-<li>The Appium <a href="http://appium.io/docs/en/commands/status/">command reference</a> - learn about what commands are available, how to use them with specific client libraries, etc...</li>
-<li>The <a href="https://github.com/appium/sample-code">sample-code</a> repository, where lots more code samples are available</li>
-<li><a href="https://discuss.appium.io">discuss.appium.io</a> - this is the Appium community forum, which is a great first place to go for help getting started, or if you think you may have run into a bug</li>
+<li>The Appium <a href="https://appium.io/docs/en/commands/status/">command reference</a> - learn about what commands are available, how to use them with specific client libraries, etc...</li>
+<li>
+<p>The <a href="https://github.com/appium/appium/sample-code">sample-code</a> repository, where lots more code samples are available</p>
+</li>
+<li>
+<p><a href="https://discuss.appium.io">discuss.appium.io</a> - this is the Appium community forum, which is a great first place to go for help getting started, or if you think you may have run into a bug</p>
+</li>
 <li>The Appium <a href="https://github.com/appium/appium/issues">issue tracker</a> - let the Appium maintainers know here if you think you've found a bug</li>
 </ul></div>
         

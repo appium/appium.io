@@ -1615,6 +1615,7 @@ await driver.execute('document.title');
 <p>The executed script is assumed to be synchronous and the result of evaluating the script is returned to the client.</p>
 <p>The script argument defines the script to execute in the form of a function body. The value returned by that function will be returned to the client. The function will be invoked with the provided args array and the values may be accessed via the arguments object in the order specified.</p>
 <p>Arguments may be any JSON-primitive, array, or JSON object. JSON objects that define a WebElement reference will be converted to the corresponding DOM element. Likewise, any WebElements in the script result will be returned to the client as WebElement JSON objects.</p>
+<p>For <code>execute</code> in the native context, see <a href="/docs/en/commands/mobile-command/index.html">Mobile Commands</a>.</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>

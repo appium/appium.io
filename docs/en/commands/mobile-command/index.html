@@ -1615,7 +1615,9 @@ await driver.execute('mobile: scroll', {direction: 'down'});
 
 <h2 id="description">Description</h2>
 <p>Execute a variety of native, mobile commands that aren't associated with a specific endpoint</p>
-<p>Syntax is <code>execute("mobile: &lt;commandName&gt;", &lt;JSON serializable argument&gt;)</code></p>
+<p>Syntax is <code>execute("mobile: &lt;commandName&gt;", &lt;JSON serializable argument&gt;)</code>
+(see <a href="/docs/en/commands/web/execute/index.html">Execute Script</a> for more details
+on syntax).</p>
 <p>List of available commands:</p>
 <h3 id="ios">IOS</h3>
 <table>
@@ -1788,6 +1790,12 @@ await driver.execute('mobile: scroll', {direction: 'down'});
 <tr>
 <td>mobile:installCertificate</td>
 <td>refer to <a href="/docs/en/writing-running-appium/ios/ios-xctest-install-certificate/index.html">IOS Pasteboard Guide</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mobile:getContexts</td>
+<td>Retrieve available contexts, along with the url and title associated with each webview (see <a href="/docs/en/commands/context/get-contexts/index.html">get contexts</a>)</td>
 <td></td>
 <td></td>
 </tr>
