@@ -128,11 +128,15 @@ async function buildDocs (pathToDocs) {
     // generate pages yaml from the sitemap
     let toc = buildDocYML(sitemap[language]);
     toc = toc.trim();
+    const baseUrl = `/docs/${language}`;
+    log.debug(`Setting base url to ${baseUrl}`);
 
-    await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language, themeDir, toc}));
+    await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language, themeDir, toc, baseUrl}));
     const pathToBuildDocsTo = path.resolve(__dirname, '..', 'docs', language);
     try {
-      await exec('mkdocs', ['build', '--site-dir', pathToBuildDocsTo], {
+      const args = ['build', '--site-dir', pathToBuildDocsTo];
+      log.debug(`Executing 'mkdocs' with args ${JSON.stringify(args)} at directory '${pathToDocs}'`);
+      await exec('mkdocs', args, {
         cwd: pathToDocs,
       });
     } catch (e) {
