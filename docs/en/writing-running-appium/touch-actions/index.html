@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title></title>
+    <title>Touch Actions - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../css/appium.css" rel="stylesheet">
@@ -45,6 +45,14 @@
         <!-- Collapsed navigation -->
         <div class="navbar-header">
             
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
 
             <!-- Main title -->
             <a class="navbar-brand" href="/">
@@ -55,6 +63,1396 @@
         <!-- Expanded navigation -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../about-appium/intro/">Introduction</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/appium-clients/">The Appium Clients</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/getting-started/">Getting Started</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/platform-support/">Supported Platforms</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/api/">API Documentation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drivers <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../drivers/ios-xcuitest/">XCUITest (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-uiautomation/">UIAutomation (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-uiautomation-safari-launcher/">UIAutomation Safari Launcher (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-uiautomator/">UIAutomator (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-uiautomator2/">UIAutomator2 (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-espresso/">Espresso (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/windows/">Windows</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/mac/">Mac</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Commands <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../commands/status/">Status</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../commands/mobile-command/">Execute Mobile Command</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Session</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/create/">Create</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/delete/">End</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/get/">Get Session Capabilities</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/back/">Go Back</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/screenshot/">Screenshot</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/source/">Source</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Timeouts</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/timeouts/">Timeouts</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/implicit-wait/">Implicit Wait</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/async-script/">Async Script</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Orientation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/orientation/get-orientation/">Get Orientation</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/orientation/set-orientation/">Set Orientation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Geolocation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/geolocation/get-geolocation/">Get Geolocation</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/geolocation/set-geolocation/">Set Geolocation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Logs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/logs/get-log-types/">Get Log Types</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/logs/get-log/">Get Logs</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/settings/update-settings/">Update Settings</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/settings/get-settings/">Get Device Settings</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Device</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Activity</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/activity/start-activity/">Start Activity</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/activity/current-activity/">Current Activity</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/activity/current-package/">Current Package</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">App</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/app/install-app/">Install App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/is-app-installed/">Is App Installed</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/launch-app/">Launch App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/background-app/">Background App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/close-app/">Close App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/reset-app/">Reset App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/remove-app/">Remove App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/end-test-coverage/">End Test Coverage</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Files</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/files/push-file/">Push File</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/files/pull-file/">Pull File</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/files/pull-folder/">Pull Folder</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Interactions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/interactions/shake/">Shake</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/lock/">Lock</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/unlock/">Unlock</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/is-locked/">Is Locked</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/rotate/">Rotate</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Keys</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/keys/press-keycode/">Press keycode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/long-press-keycode/">Long press keycode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/hide-keyboard/">Hide Keyboard</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/is-keyboard-shown/">Is Keyboard Shown</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-airplane-mode/">Toggle Airplane Mode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-data/">Toggle Data</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-wifi/">Toggle WiFi</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-location-services/">Toggle Location Services</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/send-sms/">Send SMS</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-call/">GSM Call</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-signal/">GSM Signal</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-voice/">GSM Voice</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Performance Data</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/performance-data/get-performance-data/">Get Performance Data</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/performance-data/performance-data-types/">Performance Data Types</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Simulator</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/simulator/touch-id/">Perform Touch ID</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/simulator/toggle-touch-id-enrollment/">Toggle Touch ID Enrollment</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">System</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/system/open-notifications/">Open Notifications</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/system-bars/">System Bars</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Element</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/find-element/">Find Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/find-elements/">Find Elements</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Actions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/actions/click/">Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/actions/send-keys/">Send Keys</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/actions/clear/">Clear</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Attributes</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/attributes/text/">Text</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/name/">Name</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/attribute/">Attribute</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/selected/">Selected</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/enabled/">Enabled</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/enabled/">Displayed</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/location/">Location</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/size/">Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/rect/">Rect</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/css-property/">CSS Property</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/location-in-view/">Location in View</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/other/submit/">Submit</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/other/active/">Active Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/other/equals-element/">Equals Element</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Context</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/context/get-context/">Get Context</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/context/get-contexts/">Get All Contexts</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/context/set-context/">Set Context</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Interactions</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Mouse</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/moveto/">Move To</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/click/">Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/doubleclick/">Double Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/button-down/">Button Down</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/button-up/">Button Up</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Touch</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/tap/">Single Tap</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/double-tap/">Double Tap</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/move/">Move</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-down/">Touch Down</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-up/">Touch Up</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/long-press/">Long Press</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/scroll/">Scroll</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/flick/">Flick</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/multi-touch-perform/">Multi Touch Perform</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-perform/">Touch Perform</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Window</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window/">Set Window</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/close-window/">Close Window</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-handle/">Get Handle</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-handles/">Get Handles</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/title/">Get Title</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-window-size/">Get Window Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window-size/">Set Window Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-window-position/">Get Window Position</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window-position/">Set Window Position</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/maximize-window/">Maximize Window</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Navigation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/navigation/go-to-url/">Go to URL</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/url/">Get URL</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/back/">Back</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/forward/">Forward</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/refresh/">Refresh</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Storage</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/storage/get-all-cookies/">Get All Cookies</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/set-cookie/">Set Cookie</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/delete-cookie/">Delete Cookie</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/delete-all-cookies/">Delete All Cookies</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Frame</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/frame/switch/">Switch to Frame</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/frame/parent/">Switch to Parent Frame</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+<li>
+    <a href="../../commands/web/execute-async/">Execute Async</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/execute/">Execute</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Writing &amp; Running Tests <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../running-tests/">Running Tests</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../caps/">Desired Capabilities</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../default-capabilities-arg/">The --default-capabilities flag</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../finding-elements/">Finding Elements</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Touch Actions</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../server-args/">CLI Arguments</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../web/mobile-web/">Mobile Web Testing</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/hybrid/">Automating Hybrid Apps</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/ios-webkit-debug-proxy/">Using ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/chromedriver/">Using Chromedriver</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-predicate/">iOS Predicate Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-touch-id/">iOS Touch ID Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-install-certificate/">iOS Install Certificate</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../android/uiautomator-uiselector/">UiSelector Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../android/android-coverage/">Android Code Coverage Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../other/reset-strategies/">Reset Strategies</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/network-connection/">Network Connection Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/unicode/">Using Unicode with Appium</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/troubleshooting/">Troubleshooting</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/migrating-to-xcuitest/">Migrating to XCUITest</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/grid/">Using Selenium Grid with Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/cross-domain-iframes/">Cross-domain iframes</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/wda-custom-server/">Using a custom WDA server</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/multiple-xcode-versions/">Running with multiple versions of Xcode</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/event-timings/">The Event Timings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/parallel-tests/">Setup for Parallel Testing</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-from-source/">Running Appium from Source</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/developers-overview/">Developer Overview</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/dev-tools/">Standard Dev Commands</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/style-guide/">Appium Style Guide</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/how-to-write-docs/">How to Write Docs</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-packages/">Appium Package Structure</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/credits/">Credits</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                </ul>
+            
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -62,6 +1460,17 @@
                         <i class="fa fa-search"></i> Search
                     </a>
                 </li>
+                
+                    <li>
+                        <a rel="next" href="../finding-elements/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li>
+                        <a rel="prev" href="../server-args/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
                 
                 
             </ul>
@@ -74,9 +1483,287 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="first-level active"><a href="#automating-mobile-gestures">Automating mobile gestures</a></li>
+        
+            <li class="second-level"><a href="#an-overview-of-the-touchaction-multiaction-api">An Overview of the TouchAction / MultiAction API</a></li>
+            
+        
+            <li class="second-level"><a href="#touchaction">TouchAction</a></li>
+            
+        
+            <li class="second-level"><a href="#multitouch">MultiTouch</a></li>
+            
+        
+            <li class="second-level"><a href="#bugs-and-workarounds">Bugs and Workarounds</a></li>
+            
+        
+    
     </ul>
 </div></div>
-        <div class="col-md-9" role="main"></div>
+        <div class="col-md-9" role="main">
+
+<h2 id="automating-mobile-gestures">Automating mobile gestures</h2>
+<p>While the Selenium WebDriver spec has support for certain kinds of mobile
+interaction, its parameters are not always easily mappable to the functionality
+that the underlying device automation (like UIAutomation in the case of iOS)
+provides. To that end, Appium implements the new TouchAction / MultiAction API
+defined in the newest version of the spec
+(<a href="https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html#multiactions-1">https://dvcs.w3.org/hg/webdriver/raw-file/tip/webdriver-spec.html#multiactions-1</a>).
+Note that this is different from the earlier version of the TouchAction API in
+the original JSON Wire Protocol.</p>
+<p>These APIs allow you to build up arbitrary gestures with multiple actuators.
+Please see the Appium client docs for your language in order to find examples
+of using this API.</p>
+<h3 id="an-overview-of-the-touchaction-multiaction-api">An Overview of the TouchAction / MultiAction API</h3>
+<h3 id="touchaction">TouchAction</h3>
+<p><em>TouchAction</em> objects contain a chain of events.</p>
+<p>In all the appium client libraries, touch objects are created and are given a
+chain of events.</p>
+<p>The available events from the spec are:
+ * press
+ * release
+ * moveTo
+ * tap
+ * wait
+ * longPress
+ * cancel
+ * perform</p>
+<p>Here's an example of creating an action in pseudocode:</p>
+<pre><code class="center">TouchAction().press(el0).moveTo(el1).release()
+</code></pre>
+
+<p>The above simulates a user pressing down on an element, sliding their finger
+to another position, and removing their finger from the screen.</p>
+<p>Appium performs the events in sequence. You can add a <code>wait</code> event to control
+the timing of the gesture.</p>
+<p><code>moveTo</code> coordinates are <em>relative</em> to the current position. For example, dragging from
+100,100 to 200,200 can be achieved by:</p>
+<pre><code>.press(100,100) // Start at 100,100
+.moveTo(100,100) // Increase X &amp; Y by 100 each, ending up at 200,200
+
+</code></pre>
+
+<p>The appium client libraries have different ways of implementing this, for example:
+you can pass in coordinates or an element to a <code>moveTo</code> event. Passing both
+coordinates <em>and</em> an element will treat the coordinates as relative to the
+element's position, rather than relative to the current position.</p>
+<p>Calling the <code>perform</code> event sends the entire sequence of events to appium,
+and the touch gesture is run on your device.</p>
+<p>Appium clients also allow one to directly execute a TouchAction through the
+driver object, rather than calling the <code>perform</code> event on the TouchAction
+object.</p>
+<p>In pseudocode, both of the following are equivalent:</p>
+<pre><code class="center">TouchAction().tap(el).perform()
+
+driver.perform(TouchAction().tap(el))
+</code></pre>
+
+<h3 id="multitouch">MultiTouch</h3>
+<p><em>MultiTouch</em> objects are collections of TouchActions.</p>
+<p>MultiTouch gestures only have two methods, <code>add</code>, and <code>perform</code>.</p>
+<p><code>add</code> is used to add another TouchAction to this MultiTouch.</p>
+<p>When <code>perform</code> is called, all the TouchActions which were added to the
+MultiTouch are sent to appium and performed as if they happened at the
+same time. Appium first performs the first event of all TouchActions together,
+then the second, etc.</p>
+<p>Pseudocode example of tapping with two fingers:</p>
+<pre><code class="center">action0 = TouchAction().tap(el)
+action1 = TouchAction().tap(el)
+MultiAction().add(action0).add(action1).perform()
+</code></pre>
+
+<h3 id="bugs-and-workarounds">Bugs and Workarounds</h3>
+<p>An unfortunate bug exists in the iOS 7.0 - 8.x Simulators where ScrollViews,
+CollectionViews, and TableViews don't recognize gestures initiated by
+UIAutomation (which Appium uses under the hood for iOS). To work around this,
+we have provided access to a different function, <code>scroll</code>, which in many cases
+allows you to do what you wanted to do with one of these views, namely, scroll
+it!</p>
+<p><strong>Scrolling</strong></p>
+<p>To allow access to this special feature, we override the <code>execute</code> or
+<code>executeScript</code> methods in the driver, and prefix the command with <code>mobile:</code>.
+See examples below:</p>
+<p>To scroll, pass direction in which you intend to scroll as parameter.</p>
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_4" data-language="csharp" data-toggle="tab">C#</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_5" data-language="php" data-toggle="tab">PHP</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="0_0">
+            <pre><code class="java">JavascriptExecutor js = (JavascriptExecutor) driver;
+HashMap&lt;String, String&gt; scrollObject = new HashMap&lt;String, String&gt;();
+scrollObject.put("direction", "down");
+js.executeScript("mobile: scroll", scrollObject);
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="python">driver.execute_script("mobile: scroll", {"direction": "down"})
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_2">
+            <pre><code class="javascript">driver.execute('mobile: scroll', {direction: 'down'});
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_3">
+            <pre><code class="ruby">execute_script 'mobile: scroll', direction: 'down'
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_4">
+            <pre><code class="csharp">Dictionary&lt;string, string&gt; scrollObject = new Dictionary&lt;string, string&gt;();
+scrollObject.Add("direction", "down");
+((IJavaScriptExecutor)driver).ExecuteScript("mobile: scroll", scrollObject));
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_5">
+            <pre><code class="php">$params = array(array('direction' =&gt; 'down'));
+$driver-&gt;executeScript("mobile: scroll", $params);
+</code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+<p>Sample to scroll using direction and element.</p>
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_2" data-language="javascript" data-toggle="tab">Javascript</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_3" data-language="ruby" data-toggle="tab">Ruby</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_4" data-language="csharp" data-toggle="tab">C#</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_5" data-language="php" data-toggle="tab">PHP</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="1_0">
+            <pre><code class="java">JavascriptExecutor js = (JavascriptExecutor) driver;
+HashMap&lt;String, String&gt; scrollObject = new HashMap&lt;String, String&gt;();
+scrollObject.put("direction", "down");
+scrollObject.put("element", ((RemoteWebElement) element).getId());
+js.executeScript("mobile: scroll", scrollObject);
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_1">
+            <pre><code class="python">driver.execute_script("mobile: scroll", {"direction": "down", element: element.getAttribute("id")})
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_2">
+            <pre><code class="javascript">driver.execute('mobile: scroll', {direction: 'down', element: element.value.ELEMENT});
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_3">
+            <pre><code class="ruby">execute_script 'mobile: scroll', direction: 'down', element: element.ref
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_4">
+            <pre><code class="csharp">Dictionary&lt;string, string&gt; scrollObject = new Dictionary&lt;string, string&gt;();
+scrollObject.Add("direction", "down");
+scrollObject.Add("element", &lt;element_id&gt;);
+((IJavaScriptExecutor)driver).ExecuteScript("mobile: scroll", scrollObject));
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_5">
+            <pre><code class="php">$params = array(array('direction' =&gt; 'down', 'element' =&gt; element.GetAttribute("id")));
+$driver-&gt;executeScript("mobile: scroll", $params);
+</code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+<p><strong>Swiping</strong></p>
+<p>This is an XCUITest driver specific method that is similar to scrolling (for reference, see 
+https://developer.apple.com/reference/xctest/xcuielement). </p>
+<p>This method has the same API as <a href="#scrolling">Scrolling</a>, just replace "mobile: scroll"
+with "mobile: swipe"</p>
+<p><strong>Automating Sliders</strong></p>
+<p><strong>iOS</strong></p>
+<ul>
+<li><strong>Java</strong></li>
+</ul>
+<pre><code class="java">// java
+// slider values can be string representations of numbers between 0 and 1
+// e.g., "0.1" is 10%, "1.0" is 100%
+WebElement slider =  driver.findElement(By.xpath("//window[1]/slider[1]"));
+slider.sendKeys("0.1");
+</code></pre>
+
+<p><strong>Android</strong></p>
+<p>The best way to interact with the slider on Android is with TouchActions.</p></div>
         
     </div>
 
@@ -96,8 +1783,6 @@
     <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
     <script src="../../js/base.js"></script>
     <script src="../../js/extra.js"></script>
-    <script src="../../search/require.js"></script>
-    <script src="../../search/search.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">

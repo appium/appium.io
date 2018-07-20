@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
-    <title></title>
+    <title>Running Tests - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../css/appium.css" rel="stylesheet">
@@ -45,6 +45,14 @@
         <!-- Collapsed navigation -->
         <div class="navbar-header">
             
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
 
             <!-- Main title -->
             <a class="navbar-brand" href="/">
@@ -55,6 +63,1396 @@
         <!-- Expanded navigation -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../about-appium/intro/">Introduction</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/appium-clients/">The Appium Clients</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/getting-started/">Getting Started</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/platform-support/">Supported Platforms</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/api/">API Documentation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drivers <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../drivers/ios-xcuitest/">XCUITest (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-uiautomation/">UIAutomation (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-uiautomation-safari-launcher/">UIAutomation Safari Launcher (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-uiautomator/">UIAutomator (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-uiautomator2/">UIAutomator2 (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-espresso/">Espresso (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/windows/">Windows</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/mac/">Mac</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Commands <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../commands/status/">Status</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../commands/mobile-command/">Execute Mobile Command</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Session</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/create/">Create</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/delete/">End</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/get/">Get Session Capabilities</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/back/">Go Back</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/screenshot/">Screenshot</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/source/">Source</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Timeouts</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/timeouts/">Timeouts</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/implicit-wait/">Implicit Wait</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/async-script/">Async Script</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Orientation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/orientation/get-orientation/">Get Orientation</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/orientation/set-orientation/">Set Orientation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Geolocation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/geolocation/get-geolocation/">Get Geolocation</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/geolocation/set-geolocation/">Set Geolocation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Logs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/logs/get-log-types/">Get Log Types</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/logs/get-log/">Get Logs</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/settings/update-settings/">Update Settings</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/settings/get-settings/">Get Device Settings</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Device</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Activity</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/activity/start-activity/">Start Activity</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/activity/current-activity/">Current Activity</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/activity/current-package/">Current Package</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">App</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/app/install-app/">Install App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/is-app-installed/">Is App Installed</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/launch-app/">Launch App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/background-app/">Background App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/close-app/">Close App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/reset-app/">Reset App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/remove-app/">Remove App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/end-test-coverage/">End Test Coverage</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Files</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/files/push-file/">Push File</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/files/pull-file/">Pull File</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/files/pull-folder/">Pull Folder</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Interactions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/interactions/shake/">Shake</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/lock/">Lock</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/unlock/">Unlock</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/is-locked/">Is Locked</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/rotate/">Rotate</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Keys</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/keys/press-keycode/">Press keycode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/long-press-keycode/">Long press keycode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/hide-keyboard/">Hide Keyboard</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/is-keyboard-shown/">Is Keyboard Shown</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-airplane-mode/">Toggle Airplane Mode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-data/">Toggle Data</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-wifi/">Toggle WiFi</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-location-services/">Toggle Location Services</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/send-sms/">Send SMS</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-call/">GSM Call</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-signal/">GSM Signal</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-voice/">GSM Voice</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Performance Data</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/performance-data/get-performance-data/">Get Performance Data</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/performance-data/performance-data-types/">Performance Data Types</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Simulator</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/simulator/touch-id/">Perform Touch ID</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/simulator/toggle-touch-id-enrollment/">Toggle Touch ID Enrollment</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">System</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/system/open-notifications/">Open Notifications</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/system-bars/">System Bars</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Element</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/find-element/">Find Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/find-elements/">Find Elements</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Actions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/actions/click/">Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/actions/send-keys/">Send Keys</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/actions/clear/">Clear</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Attributes</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/attributes/text/">Text</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/name/">Name</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/attribute/">Attribute</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/selected/">Selected</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/enabled/">Enabled</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/enabled/">Displayed</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/location/">Location</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/size/">Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/rect/">Rect</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/css-property/">CSS Property</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/location-in-view/">Location in View</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/other/submit/">Submit</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/other/active/">Active Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/other/equals-element/">Equals Element</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Context</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/context/get-context/">Get Context</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/context/get-contexts/">Get All Contexts</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/context/set-context/">Set Context</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Interactions</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Mouse</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/moveto/">Move To</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/click/">Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/doubleclick/">Double Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/button-down/">Button Down</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/button-up/">Button Up</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Touch</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/tap/">Single Tap</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/double-tap/">Double Tap</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/move/">Move</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-down/">Touch Down</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-up/">Touch Up</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/long-press/">Long Press</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/scroll/">Scroll</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/flick/">Flick</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/multi-touch-perform/">Multi Touch Perform</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-perform/">Touch Perform</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Window</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window/">Set Window</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/close-window/">Close Window</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-handle/">Get Handle</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-handles/">Get Handles</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/title/">Get Title</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-window-size/">Get Window Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window-size/">Set Window Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-window-position/">Get Window Position</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window-position/">Set Window Position</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/maximize-window/">Maximize Window</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Navigation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/navigation/go-to-url/">Go to URL</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/url/">Get URL</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/back/">Back</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/forward/">Forward</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/refresh/">Refresh</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Storage</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/storage/get-all-cookies/">Get All Cookies</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/set-cookie/">Set Cookie</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/delete-cookie/">Delete Cookie</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/delete-all-cookies/">Delete All Cookies</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Frame</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/frame/switch/">Switch to Frame</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/frame/parent/">Switch to Parent Frame</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+<li>
+    <a href="../../commands/web/execute-async/">Execute Async</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/execute/">Execute</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Writing &amp; Running Tests <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Running Tests</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../caps/">Desired Capabilities</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../default-capabilities-arg/">The --default-capabilities flag</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../finding-elements/">Finding Elements</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../touch-actions/">Touch Actions</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../server-args/">CLI Arguments</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../web/mobile-web/">Mobile Web Testing</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/hybrid/">Automating Hybrid Apps</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/ios-webkit-debug-proxy/">Using ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/chromedriver/">Using Chromedriver</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-predicate/">iOS Predicate Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-touch-id/">iOS Touch ID Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-install-certificate/">iOS Install Certificate</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../android/uiautomator-uiselector/">UiSelector Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../android/android-coverage/">Android Code Coverage Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../other/reset-strategies/">Reset Strategies</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/network-connection/">Network Connection Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/unicode/">Using Unicode with Appium</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/troubleshooting/">Troubleshooting</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/migrating-to-xcuitest/">Migrating to XCUITest</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/grid/">Using Selenium Grid with Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/cross-domain-iframes/">Cross-domain iframes</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/wda-custom-server/">Using a custom WDA server</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/multiple-xcode-versions/">Running with multiple versions of Xcode</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/event-timings/">The Event Timings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/parallel-tests/">Setup for Parallel Testing</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-from-source/">Running Appium from Source</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/developers-overview/">Developer Overview</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/dev-tools/">Standard Dev Commands</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/style-guide/">Appium Style Guide</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/how-to-write-docs/">How to Write Docs</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-packages/">Appium Package Structure</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/credits/">Credits</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                </ul>
+            
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -62,6 +1460,17 @@
                         <i class="fa fa-search"></i> Search
                     </a>
                 </li>
+                
+                    <li>
+                        <a rel="next" href="../../commands/web/execute/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li>
+                        <a rel="prev" href="../caps/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
                 
                 
             </ul>
@@ -74,9 +1483,376 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
+        <li class="first-level active"><a href="#running-tests">Running Tests</a></li>
+        
+            <li class="second-level"><a href="#preparing-your-app-for-test-ios">Preparing your app for test (iOS)</a></li>
+            
+        
+            <li class="second-level"><a href="#preparing-your-app-for-test-android">Preparing your app for test (Android)</a></li>
+            
+        
+            <li class="second-level"><a href="#preparing-your-app-for-test-windows">Preparing your app for test (Windows)</a></li>
+            
+        
+            <li class="second-level"><a href="#running-your-test-app-with-appium-ios">Running your test app with Appium (iOS)</a></li>
+            
+        
+            <li class="second-level"><a href="#running-your-test-app-with-appium-android">Running your test app with Appium (Android)</a></li>
+            
+        
+            <li class="second-level"><a href="#running-your-test-app-with-appium-android-devices-42-and-hybrid-tests">Running your test app with Appium (Android devices &lt; 4.2, and hybrid tests)</a></li>
+            
+        
+            <li class="second-level"><a href="#running-your-test-app-with-appium-windows">Running your test app with Appium (Windows)</a></li>
+            
+        
+    
     </ul>
 </div></div>
-        <div class="col-md-9" role="main"></div>
+        <div class="col-md-9" role="main">
+
+<h2 id="running-tests">Running Tests</h2>
+<h3 id="preparing-your-app-for-test-ios">Preparing your app for test (iOS)</h3>
+<p>Test apps run on the simulator have to be compiled specifically for the
+simulator, for example by executing the following command in the Xcode project (you can use <code>xcodebuild -showsdks</code> to see the list of available SDKs):</p>
+<pre><code>&gt; xcodebuild -sdk iphonesimulator6.0
+</code></pre>
+<p>This creates a <code>build/Release-iphonesimulator</code> directory in your Xcode project
+that contains the <code>.app</code> package that you'll need to communicate with the
+Appium server.</p>
+<p>If you want, you can zip up the .app directory into a .zip file! Appium will
+unpack it for you. Nice if you're not using Appium locally.</p>
+<h3 id="preparing-your-app-for-test-android">Preparing your app for test (Android)</h3>
+<p>Nothing in particular needs to be done to run your .apk using Appium. If you
+want to zip it up, you can.</p>
+<h3 id="preparing-your-app-for-test-windows">Preparing your app for test (Windows)</h3>
+<p>Nothing in particular needs to be done to run your test.</p>
+<h3 id="running-your-test-app-with-appium-ios">Running your test app with Appium (iOS)</h3>
+<p>The best way to see what to do currently is to look at the example tests:</p>
+<p><a href="https://github.com/appium/appium/tree/master/sample-code/javascript-webdriverio">Node.js</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/python">Python</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/php">PHP</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/ruby">Ruby</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/java">Java</a></p>
+<p>Basically, first make sure Appium is running:</p>
+<pre><code>node .
+</code></pre>
+<p>Then script your WebDriver test, sending in the following desired capabilities:</p>
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_3" data-language="php" data-toggle="tab">PHP</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="0_0">
+            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "7.1");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simulator");
+capabilities.setCapability(MobileCapabilityType.APP, myApp);
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="python">{
+    'platformName': 'iOS',
+    'platformVersion': '7.1',
+    'deviceName': 'iPhone Simulator',
+    'app': myApp
+}
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_2">
+            <pre><code class="javascript">{
+    platformName: 'iOS',
+    platformVersion: '7.1',
+    deviceName: 'iPhone Simulator',
+    app: myApp
+}
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_3">
+            <pre><code class="php">public static $browsers = array(
+    array(
+        'desiredCapabilities' =&gt; array(
+            'platformName' =&gt; 'iOS',
+            'platformVersion' =&gt; '7.1',
+            'deviceName' =&gt; 'iPhone Simulator',
+            'app' =&gt; $myApp
+        )
+    )
+);
+</code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+
+
+
+<p>In this set of capabilities, <code>myApp</code> must be either:</p>
+<ul>
+<li>A local absolute path to your simulator-compiled .app directory or .zip</li>
+<li>A url of a zip file containing your .app package</li>
+<li>A path to one of the sample app relative to the appium install root</li>
+</ul>
+<p>Using your WebDriver library of choice, set the remote session to use these
+capabilities and connect to the server running at port 4723 of localhost (or
+whatever host and port you specified when you started Appium). You should be
+all set now!</p>
+<h3 id="running-your-test-app-with-appium-android">Running your test app with Appium (Android)</h3>
+<p>First, make sure you have one and only one Android emulator or device
+connected. If you run <code>adb devices</code>, for example, you should see one device
+connected. This is the device Appium will use for tests. Of course, to have
+a device connected, you'll need to have made an Android AVD. If the Android SDK
+tools are on your path, you can simply run:</p>
+<pre><code>emulator -avd &lt;MyAvdName&gt;
+</code></pre>
+<p>And wait for the android emulator to finish launching. Sometimes, for various
+reasons, <code>adb</code> gets stuck. If it's not showing any connected devices or
+otherwise failing, you can restart it by running:</p>
+<pre><code>adb kill-server &amp;&amp; adb devices
+</code></pre>
+<p>Now, make sure Appium is running:</p>
+<pre><code>node .
+</code></pre>
+<p>There are several ways to start an Appium application (it works exactly
+the same as when the application is started via adb):</p>
+<ul>
+<li>apk or zip only, the default activity will be launched ('app' capability)</li>
+<li>apk + activity ('app' + 'appActivity' capabilities)</li>
+<li>apk + activity + intent ('app' + 'appActivity' + 'appIntent' capabilities)</li>
+<li>...</li>
+</ul>
+<p>Activities may be specified in the following way:</p>
+<ul>
+<li>absolute (e.g. appActivity: 'com.helloworld.SayHello').</li>
+<li>relative to appPackage (e.g. appPackage: 'com.helloworld', appActivity='.SayHello')</li>
+</ul>
+<p>If the 'appWaitPackage' and 'appWaitActivity' caps are specified, Appium
+automatically spins until those activities are launched. You may specify
+multiple wait activities for instance:</p>
+<ul>
+<li>appActivity: 'com.splash.SplashScreen'</li>
+<li>appPackage: 'com.splash' appActivity: '.SplashScreen'</li>
+<li>appPackage: 'com.splash' appActivity: '.SplashScreen,.LandingPage,com.why.GoThere'</li>
+</ul>
+<p>If you are not sure what activity are configured in your apk, you can
+proceed in one of the following ways:</p>
+<ul>
+<li>Mac/Linux: 'adb shell dumpsys window windows | grep mFocusedApp'</li>
+<li>In the Ruby console: 'adb shell dumpsys window windows`.each_line.grep(/mFocusedApp/).first.strip'</li>
+<li>In Windows terminal run 'adb shell dumpsys window windows' and manually look for the mFocusedApp line.</li>
+</ul>
+<p>Then script your WebDriver test, sending in the following desired capabilities:</p>
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_2" data-language="javascript" data-toggle="tab">Javascript</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_3" data-language="php" data-toggle="tab">PHP</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="1_0">
+            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+capabilities.setCapability(MobileCapabilityType.APP, myApp);
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_1">
+            <pre><code class="python">{
+    'platformName': 'Android',
+    'platformVersion': '4.4',
+    'deviceName': 'Android Emulator',
+    'app': myApp
+}
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_2">
+            <pre><code class="javascript">{
+    platformName: 'Android',
+    platformVersion: '4.4',
+    deviceName: 'Android Emulator',
+    app: myApp
+}
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_3">
+            <pre><code class="php">public static $browsers = array(
+    array(
+        'desiredCapabilities' =&gt; array(
+            'platformName' =&gt; 'Android',
+            'platformVersion' =&gt; '4.4',
+            'deviceName' =&gt; 'Android Emulator',
+            'app' =&gt; $myApp
+        )
+    )
+);
+</code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+
+
+
+<p>In this set of capabilities, <code>myApp</code> must be either:</p>
+<ul>
+<li>A local absolute path to your .apk or a .zip of it</li>
+<li>A url of a zip file containing your .apk</li>
+<li>A path to one of the sample app relative to the appium install root</li>
+</ul>
+<p>Using your WebDriver library of choice, set the remote session to use these
+capabilities and connect to the server running at port 4723 of localhost (or
+whatever host and port you specified when you started Appium). You should be
+all set now!</p>
+<h3 id="running-your-test-app-with-appium-android-devices-42-and-hybrid-tests">Running your test app with Appium (Android devices &lt; 4.2, and hybrid tests)</h3>
+<p>Android devices before version 4.2 (API Level 17) do not have Google's
+<a href="http://developer.android.com/tools/testing-support-library/index.html#UIAutomator">UiAutomator framework</a>
+installed. This is what Appium uses to perform the automation behaviors on
+the device. For earlier devices or tests of hybrid (webview-based) apps,
+Appium comes bundled with another automation backend called [Selendroid]
+(http://selendroid.io/).</p>
+<p>To use Selendroid, all that is required is to slightly change the set of
+desired capabilities mentioned above, by adding the <code>automationName</code> capability
+and specifying the Selendroid automation backend. It is usually the case that you
+also need to use a <code>.</code> before your activity name (e.g., <code>.MainActivity</code> instead
+of <code>MainActivity</code> for your <code>appActivity</code> capability).</p>
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#2_0" data-language="java" data-toggle="tab">Java</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#2_1" data-language="python" data-toggle="tab">Python</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#2_2" data-language="javascript" data-toggle="tab">Javascript</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#2_3" data-language="php" data-toggle="tab">PHP</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="2_0">
+            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Selendroid");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "2.3");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+capabilities.setCapability(MobileCapabilityType.APP, myApp);
+capabilities.setCapability(MobileCapabilityType.APP_PACKAGE: "com.mycompany.package");
+capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY: ".MainActivity");
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="2_1">
+            <pre><code class="python">{
+    'automationName': 'Selendroid',
+    'platformName': 'Android',
+    'platformVersion': '2.3',
+    'deviceName': 'Android Emulator',
+    'app': myApp,
+    'appPackage': 'com.mycompany.package',
+    'appActivity': '.MainActivity'
+}
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="2_2">
+            <pre><code class="javascript">{
+    automationName: 'Selendroid',
+    platformName: 'Android',
+    platformVersion: '2.3',
+    deviceName: 'Android Emulator',
+    app: myApp,
+    appPackage: 'com.mycompany.package',
+    appActivity: '.MainActivity'
+}
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="2_3">
+            <pre><code class="php">public static $browsers = array(
+    array(
+        'desiredCapabilities' =&gt; array(
+            'automationName' =&gt; 'Selendroid',
+            'platformName' =&gt; 'Android',
+            'platformVersion' =&gt; '2.3',
+            'deviceName' =&gt; 'Android Emulator',
+            'app' =&gt; $myApp,
+            'appPackage' =&gt; 'com.mycompany.package',
+            'appActivity'=&gt; '.MainActivity'
+        )
+    )
+);
+</code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+
+
+
+<p>Now Appium will start up a Selendroid test session instead of the default test
+session. One of the downsides to using Selendroid is that its API differs
+sometimes significantly with Appium's. Therefore we recommend you thoroughly
+read <a href="http://selendroid.io/native.html">Selendroid's documentation</a> before
+writing your scripts for older devices or hybrid apps.</p>
+<h3 id="running-your-test-app-with-appium-windows">Running your test app with Appium (Windows)</h3>
+<p>Simply ensure that Appium is listening, and run your test with your test runner of choice.</p>
+<p>See our <a href="https://github.com/Microsoft/WinAppDriver/tree/master/Samples">samples</a> for details.</p></div>
         
     </div>
 
@@ -96,8 +1872,6 @@
     <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
     <script src="../../js/base.js"></script>
     <script src="../../js/extra.js"></script>
-    <script src="../../search/require.js"></script>
-    <script src="../../search/search.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
