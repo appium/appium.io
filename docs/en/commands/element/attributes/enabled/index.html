@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <link rel="shortcut icon" href="../../../../img/favicon.ico">
 
-    <title>Displayed - Appium</title>
+    <title>Enabled - Appium</title>
 
     <link href="../../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="../../../../css/appium.css" rel="stylesheet">
@@ -628,6 +628,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Screen Recording</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../device/recording-screen/start-recording-screen/">Start Screen Recording</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../device/recording-screen/stop-recording-screen/">Stop Screen Recording</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Simulator</a>
     <ul class="dropdown-menu">
         
@@ -752,14 +773,14 @@
 
         
             
-<li>
+<li class="active">
     <a href="./">Enabled</a>
 </li>
 
         
             
-<li class="active">
-    <a href="./">Displayed</a>
+<li>
+    <a href="../displayed/">Displayed</a>
 </li>
 
         
@@ -1462,12 +1483,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="./">
+                        <a rel="next" href="../selected/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../location/">
+                        <a rel="prev" href="../displayed/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1512,9 +1533,7 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9" role="main">
-
-<h1 id="is-element-enabled">Is Element Enabled</h1>
+        <div class="col-md-9" role="main"><h1 id="is-element-enabled">Is Element Enabled</h1>
 <p>Determine if an element is currently enabled</p>
 <h2 id="example-usage">Example Usage</h2>
 <div>
@@ -1684,7 +1703,7 @@ let isEnabled = await element.isEnabled();
 <tr>
 <td><a href="http://webdriver.io/index.html">Javascript (WebdriverIO)</a></td>
 <td>All</td>
-<td><a href="http://webdriver.io/api/state/isEnabled.html">webdriver.io</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="https://github.com/admc/wd/releases/latest">Javascript (WD)</a></td>

@@ -628,6 +628,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Screen Recording</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/recording-screen/start-recording-screen/">Start Screen Recording</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/recording-screen/stop-recording-screen/">Stop Screen Recording</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Simulator</a>
     <ul class="dropdown-menu">
         
@@ -759,7 +780,7 @@
         
             
 <li>
-    <a href="../../commands/element/attributes/enabled/">Displayed</a>
+    <a href="../../commands/element/attributes/displayed/">Displayed</a>
 </li>
 
         
@@ -1511,9 +1532,7 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9" role="main">
-
-<h2 id="migrating-your-ios-tests-from-uiautomation-ios-93-and-below-to-xcuitest-ios-93-and-up">Migrating your iOS tests from UIAutomation (iOS 9.3 and below) to XCUITest (iOS 9.3 and up)</h2>
+        <div class="col-md-9" role="main"><h2 id="migrating-your-ios-tests-from-uiautomation-ios-93-and-below-to-xcuitest-ios-93-and-up">Migrating your iOS tests from UIAutomation (iOS 9.3 and below) to XCUITest (iOS 9.3 and up)</h2>
 <p>For iOS automation, Appium relies on system frameworks provided by Apple. For iOS 9.2 and below, Apple's only automation technology was called UIAutomation, and it ran in the context of a process called "Instruments". As of iOS 10, Apple has completely removed the UIAutomation instrument, thus making it impossible for Appium to allow testing in the way it used to. Fortunately, Apple introduced a new automation technology, called XCUITest, beginning with iOS 9.3. For iOS 10 and up, this will be the only supported automation framework from Apple.</p>
 <p>Appium has built in support for XCUITest beginning with Appium 1.6. For the most part, the capabilities of XCUITest match those of UIAutomation, and so the Appium team was able to ensure that test behavior will stay the same. This is one of the great things about using Appium! Even with Apple completely changing the technology your tests are using, your scripts can stay mostly the same! That being said, there are some differences you'll need to be aware of which might require modification of your test scripts if you want to run them under our XCUITest automation backend. This document will help you with those differences.</p>
 <h3 id="element-class-name-schema">Element class name schema</h3>

@@ -628,6 +628,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Screen Recording</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/recording-screen/start-recording-screen/">Start Screen Recording</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/recording-screen/stop-recording-screen/">Stop Screen Recording</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Simulator</a>
     <ul class="dropdown-menu">
         
@@ -759,7 +780,7 @@
         
             
 <li>
-    <a href="../../commands/element/attributes/enabled/">Displayed</a>
+    <a href="../../commands/element/attributes/displayed/">Displayed</a>
 </li>
 
         
@@ -1488,9 +1509,7 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9" role="main">
-
-<h2 id="list-of-client-libraries-with-appium-server-support">List of client libraries with Appium server support</h2>
+        <div class="col-md-9" role="main"><h2 id="list-of-client-libraries-with-appium-server-support">List of client libraries with Appium server support</h2>
 <p>These libraries wrap standard Selenium client libraries to provide all the regular selenium commands dictated by the <a href="https://w3c.github.io/webdriver/webdriver-spec.html">JSON Wire protocol</a>, and add extra commands related to controlling mobile devices, such as <strong>multi-touch gestures</strong> and <strong>screen orientation</strong>.</p>
 <p>Appium client libraries implement the <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON Wire Protocol</a> (an official draft extension to the standard protocol), and elements of the <a href="https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html">W3C Webdriver spec</a> (a transport-agnostic automation spec; this is where the MultiAction API is defined).</p>
 <p>The Appium server itself defines custom extensions to the official protocols, giving Appium users helpful access to various device behaviors (such as installing/uninstalling apps during the course of a test session). This is why we need Appium-specific clients, not just the 'vanilla' Selenium clients. Of course, Appium client libraries only <strong>add</strong> functionality (in fact, they simply extend the standard Selenium clients), so they can still be used to run regular Selenium sessions.</p>
