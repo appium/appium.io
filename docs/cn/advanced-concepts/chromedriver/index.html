@@ -4,19 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
     <title>Chromedriver - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="../../css/appium.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
     <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href="../../css/base.css" rel="stylesheet">
     <link href="../../css/cinder.css" rel="stylesheet">
+    <link href="../../css/appium.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/highlight.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -493,7 +493,7 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9" role="main"><h2 id="chromedriver">Chromedriver</h2>
+        <div class="col-md-9 documentation" role="main"><h2 id="chromedriver">Chromedriver</h2>
 <p>Appium 支持对基于 Chrome 内核的 H5 应用（混合应用）或者网页（Chrome 中的网页或者内建的浏览器中的网页）进行自动化。Appium 管理维护着一个 <a href="https://sites.google.com/a/chromium.org/chromedriver/">Chromedriver</a> 实例，当需要的时候，使用代理模式，将命令传递给这个实例。这和<a href="https://chromedriver.storage.googleapis.com/LATEST_RELEASE">最新版本的 Chromedriver</a>是绑定的。我们可以通过 npm 包来安装<a href="https://www.npmjs.com/package/appium-chromedriver">appium-chromedriver</a>。(Github: <a href="https://github.com/appium/appium-chromedriver">appium-chromedriver</a>)</p>
 <p>不幸的是，每次 Chromedriver 升级，支持的 Chrome 的最小版本都会升级，这就导致了老设备上经常无法在绑定的版本上自动化。在 Appium 的服务端就会有这样的错误日志：</p>
 <pre><code>An unknown server-side error occurred while processing the command.

@@ -4,19 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
     <title>Using Chromedriver - Appium</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="../../../css/appium.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
     <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href="../../../css/base.css" rel="stylesheet">
     <link href="../../../css/cinder.css" rel="stylesheet">
+    <link href="../../../css/appium.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/highlight.css">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -1515,10 +1515,13 @@
             <li class="second-level"><a href="#installing-an-network-issues">Installing an network issues</a></li>
             
         
+            <li class="second-level"><a href="#w3c-support">W3C support</a></li>
+            
+        
     
     </ul>
 </div></div>
-        <div class="col-md-9" role="main"><h2 id="chromedriver">Chromedriver</h2>
+        <div class="col-md-9 documentation" role="main"><h2 id="chromedriver">Chromedriver</h2>
 <p>Appium supports automating Android web pages (in Chrome and the built-in Browser) and
 hybrid apps that are Chrome-backed, by managing a <a href="https://sites.google.com/a/chromium.org/chromedriver/">Chromedriver</a>
 instance and proxying commands to it when necessary. It comes bundled with the
@@ -1562,6 +1565,26 @@ Chrome version that is automatable:</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>2.41</td>
+<td>67.0.3360.0</td>
+<td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.41/">v2.41 (link)</a></td>
+</tr>
+<tr>
+<td>2.40</td>
+<td>66.0.3359.0</td>
+<td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.40/">v2.40 (link)</a></td>
+</tr>
+<tr>
+<td>2.39</td>
+<td>66.0.3359.0</td>
+<td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.39/">v2.39 (link)</a></td>
+</tr>
+<tr>
+<td>2.38</td>
+<td>65.0.3325.0</td>
+<td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.38/">v2.38 (link)</a></td>
+</tr>
 <tr>
 <td>2.37</td>
 <td>64.0.3282.0</td>
@@ -1797,7 +1820,11 @@ To use a mirror of the ChromeDriver binaries use npm config property <code>chrom
 </code></pre>
 
 <p>It may also be necessary to adjust network proxy and firewall settings to allow
-the download to occur.</p></div>
+the download to occur.</p>
+<h3 id="w3c-support">W3C support</h3>
+<p>Chromedriver hasn't followed the W3C standard yet. If you encounter proxy command error like <a href="https://github.com/appium/python-client/issues/234">this issue</a>, please update your Chromedriver version.
+Old Android devices can't use newer chrome drivers. You can avoid the error if you run tests with the Mobile JSON Wire Protocol.
+You can read the history of W3C support in Chromedriver from <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">downloads</a>.</p></div>
         
     </div>
 
