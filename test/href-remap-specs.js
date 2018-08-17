@@ -12,7 +12,7 @@ const $ = jQuery(new JSDOM().window);
 chai.use(chaiAsPromised);
 chai.should();
 
-describe.only('href-remap.js', function () {
+describe('href-remap.js', function () {
   describe('.remap404Hrefs', function () {
     it('should should append hrefs with new base', function () {
       const html = remap404Hrefs(`<div><a href="/css/path"></a></div>`, '/docs/en');

@@ -8,8 +8,8 @@ export function remap404Hrefs (html, baseUrl) {
 
   // Remap href attribute
   for (let tag of win.document.querySelectorAll('*[href]')) {
-    constagsWithHrefe = tag.attributes.href.value;
-  tagsWithHrefValue && !isAbsoluteUrl(currValue) && !currValue.startsWith('//')) {
+    const currValue = tag.attributes.href.value;
+    if (currValue && !isAbsoluteUrl(currValue) && !currValue.startsWith('//')) {
       tag.attributes.href.value = `${baseUrl}${currValue}`;
     }
   }
