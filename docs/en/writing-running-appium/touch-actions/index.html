@@ -1555,10 +1555,10 @@ chain of events.</p>
 to another position, and removing their finger from the screen.</p>
 <p>Appium performs the events in sequence. You can add a <code>wait</code> event to control
 the timing of the gesture.</p>
-<p><code>moveTo</code> coordinates are <em>relative</em> to the current position. For example, dragging from
+<p><code>moveTo</code> coordinates are now <em>absolute</em> to the current position. For example, dragging from
 100,100 to 200,200 can be achieved by:</p>
 <pre><code>.press(100,100) // Start at 100,100
-.moveTo(100,100) // Increase X &amp; Y by 100 each, ending up at 200,200
+.moveTo(200,200) // Passing absolute values of 200,200 ending up at 200,200
 
 </code></pre>
 
