@@ -6,19 +6,12 @@ export function remap404Hrefs (html, baseUrl) {
   const jsdom = new JSDOM(html);
   const win = jsdom.window;
 
-  // Remap href attribute
-  for (let tag of win.document.querySelectorAll('*[href]')) {
-    const currValue = tag.attributes.href.value;
-    if (currValue && !isAbsoluteUrl(currValue) && !currValue.startsWith('//')) {
-      tag.attributes.href.value = `${baseUrl}${currValue}`;
-    }
-  }
-
-  // Remap src attribute
-  for (let tag of win.document.querySelectorAll('*[src]')) {
-    const currValue = tag.attributes.src.value;
-    if (currValue && !isAbsoluteUrl(currValue) && !currValue.startsWith('//')) {
-      tag.attributes.src.value = `${baseUrl}${currValue}`;
+  for (let attrName of ['src', 'href']) {
+    for (let tag of win.document.querySelectorAll(`*[${attrName}]`)) {
+      const currValue = tag.attributes[attrName].value;
+      if (currValue && !isAbsoluteUrl(currValue) && !currValue.startsWith('//')) {
+        tag.attributes[attrName].value = `${baseUrl}${currValue}`;
+      }
     }
   }
 
