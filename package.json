@@ -13,7 +13,7 @@
     "build:docs:local": "cross-env BUILD_LOCAL_DOCS=true npm run build:docs",
     "lint": "eslint scripts/ test/",
     "lint:fix": "eslint scripts/ test/ --fix",
-    "test": "npm run lint && mocha --require babel-polyfill --require babel-core/register test/",
+    "test": "npm run lint && mocha --require babel-polyfill --require babel-core/register --timeout 5000 test/",
     "test:watch": "npm run lint && mocha --require babel-polyfill --watch --require babel-core/register test/"
   },
   "bin": {
@@ -61,6 +61,7 @@
     "handlebars": "^4.0.10",
     "is-absolute-url": "^2.1.0",
     "mocha": "^5.2.0",
+    "relative": "^3.0.2",
     "rimraf": "^2.6.1",
     "wait-on": "^2.1.0"
   },

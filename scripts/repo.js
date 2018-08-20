@@ -10,7 +10,7 @@ import Handlebars from 'handlebars';
 import _ from 'lodash';
 import { fencedCodeTabifyDocument } from './tabs';
 import { reassignMarkdownLinkDocument } from './links';
-import { remap404Hrefs } from './href-remap';
+import { injectGithubLink } from './inject-github-link';
 
 const LANGUAGES = ['en', 'cn'];
 const log = logger.getLogger('APPIUM.IO');
@@ -97,7 +97,9 @@ async function alterHTML (pathToHTML, baseUrl) {
       // Fix links to documents
       treatedHTML = reassignMarkdownLinkDocument(treatedHTML);
 
-      // TODO: Add link to GitHub page here
+      // Add link to GitHub page here
+      treatedHTML = injectGithubLink(treatedHTML, filePath);
+
       await fs.writeFile(filePath, treatedHTML);
     }
   }
