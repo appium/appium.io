@@ -1786,13 +1786,18 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>chromedriverExecutableDir</code></td>
-<td>The absolute path to a directory to look for Chromedriver executables in, for automatic discovery of compatible Chromedrivers</td>
+<td>The absolute path to a directory to look for Chromedriver executables in, for automatic discovery of compatible Chromedrivers. Ignored if <code>chromedriverUseSystemExecutable</code> is <code>true</code></td>
 <td><code>/abs/path/to/chromedriver/directory</code></td>
 </tr>
 <tr>
 <td><code>chromedriverChromeMappingFile</code></td>
-<td>The absolute path to a file which maps Chromedriver versions to the minimum Chrome that it supports</td>
+<td>The absolute path to a file which maps Chromedriver versions to the minimum Chrome that it supports. Ignored if <code>chromedriverUseSystemExecutable</code> is <code>true</code></td>
 <td><code>/abs/path/to/mapping.json</code></td>
+</tr>
+<tr>
+<td><code>chromedriverUseSystemExecutable</code></td>
+<td>If <code>true</code>, bypasses automatic Chromedriver configuration and uses the version that comes downloaded with Appium. Ignored if <code>chromedriverExecutable</code> is set. Defaults to <code>false</code></td>
+<td>e.g., <code>true</code></td>
 </tr>
 <tr>
 <td><code>autoWebviewTimeout</code></td>
@@ -2048,6 +2053,11 @@ Driver</a>.</p>
 <td><code>webkitResponseTimeout</code></td>
 <td>(Real device only) Set the time, in ms, to wait for a response from WebKit in a Safari session. Defaults to <code>5000</code></td>
 <td>e.g., <code>10000</code></td>
+</tr>
+<tr>
+<td><code>remoteDebugProxy</code></td>
+<td>(Sim only, &lt;= 11.2) If set, Appium sends and receives remote debugging messages through a proxy on either the local port (Sim only, &lt;= 11.2) or a proxy on this unix socket (Sim only &gt;= 11.3) instead of communicating with the iOS remote debugger directly.</td>
+<td>e.g. <code>12000</code> or <code>"/tmp/my.proxy.socket"</code></td>
 </tr>
 </tbody>
 </table>

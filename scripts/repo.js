@@ -10,6 +10,7 @@ import Handlebars from 'handlebars';
 import _ from 'lodash';
 import { fencedCodeTabifyDocument } from './tabs';
 import { reassignMarkdownLinkDocument } from './links';
+import { remap404Hrefs } from './href-remap';
 
 const LANGUAGES = ['en', 'cn'];
 const log = logger.getLogger('APPIUM.IO');
@@ -78,14 +79,25 @@ async function alterDocs (pathToDocs) {
   }
 }
 
-async function alterHTML (pathToHTML) {
+async function alterHTML (pathToHTML, baseUrl) {
   for (const file of await fs.glob(path.resolve(pathToHTML, '**/*.html'))) {
     const stat = await fs.stat(path.resolve(pathToHTML, file));
     if (!stat.isDirectory()) {
       const filePath = path.resolve(pathToHTML, file);
       let treatedHTML = await fs.readFile(filePath, 'utf8');
+
+      // HACK FIX. 404.html doesn't have right base URL, fix the hrefs
+      if (filePath.endsWith('/404.html')) {
+        treatedHTML = remap404Hrefs(treatedHTML, baseUrl);
+      }
+
+      // Add 'fenced code tab' UI
       treatedHTML = fencedCodeTabifyDocument(treatedHTML);
+
+      // Fix links to documents
       treatedHTML = reassignMarkdownLinkDocument(treatedHTML);
+
+      // TODO: Add link to GitHub page here
       await fs.writeFile(filePath, treatedHTML);
     }
   }
@@ -131,6 +143,7 @@ async function buildDocs (pathToDocs) {
     const baseUrl = `/docs/${language}`;
     log.debug(`Setting base url to ${baseUrl}`);
 
+    // Construct the mkdocs.yml file
     await fs.writeFile(path.resolve(pathToDocs, 'mkdocs.yml'), mkdocsTemplate({language, themeDir, toc, baseUrl}));
     const pathToBuildDocsTo = path.resolve(__dirname, '..', 'docs', language);
     try {
@@ -144,7 +157,7 @@ async function buildDocs (pathToDocs) {
       console.log('Reason:', e.stderr);
       throw e;
     }
-    await alterHTML(pathToBuildDocsTo);
+    await alterHTML(pathToBuildDocsTo, baseUrl);
   }
   log.debug(`Built docs to ${path.resolve(__dirname, '..', 'docs')}`);
 }
