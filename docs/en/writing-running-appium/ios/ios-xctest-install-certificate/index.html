@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
@@ -12,8 +9,8 @@
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
     <link href="../../../css/base.css" rel="stylesheet">
     <link href="../../../css/cinder.css" rel="stylesheet">
     <link href="../../../css/appium.css" rel="stylesheet">
@@ -989,6 +986,12 @@
   </li>
 
         
+            
+<li>
+    <a href="../../../commands/interactions/actions/">W3C Actions</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1516,7 +1519,10 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="automating-installation-of-self-signed-certificate-on-ios">Automating Installation of Self-Signed Certificate on iOS</h2>
+        <div class="col-md-9 documentation" role="main"><h2 id="automating-installation-of-self-signed-certificate-on-ios"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/writing-running-appium/ios/ios-xctest-install-certificate.md">
+    <i class="glyphicon glyphicon-pencil"></i>
+    &nbsp;&nbsp;Edit this Doc
+  </a>Automating Installation of Self-Signed Certificate on iOS</h2>
 <p>Unfortunately, Apple does not provide any command line options which can help to install self-signed certificate on a real device or Simulator. However, there is <a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/iPhoneOTAConfiguration/Introduction/Introduction.html">over-the-air</a> enrollment technology, which allows the deployment of several entity types, including such certificates, by simply downloading specially prepared configuration files with the built-in web browser. After the configuration is downloaded it can be installed and trusted by going through several simple wizard steps.</p>
 <h3 id="mobile-installcertificate">mobile: installCertificate</h3>
 <p>This command receives the content of an existing certificate in PEM format, transforms the content to a special config format and deploys it on Appium's built-in HTTP server, so the config can be downloaded and accepted on the device under test. Thus the main requirement is that the hostname and port, where Appium server is running, are reachable on the device under test. After the certificate is installed the script is going to open System Preferences again and enable it inside Certificate Trust Settings if it is disabled.</p>
@@ -1578,6 +1584,7 @@ driver.executeScript("mobile: installCertificate", args);
         </div>
     </div>
 
-    </body>
+    
 
-</html>
+
+</body></html>

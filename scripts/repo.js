@@ -11,6 +11,7 @@ import _ from 'lodash';
 import { fencedCodeTabifyDocument } from './tabs';
 import { reassignMarkdownLinkDocument } from './links';
 import { injectGithubLink } from './inject-github-link';
+import { remap404Hrefs } from './href-remap';
 
 const LANGUAGES = ['en', 'cn'];
 const log = logger.getLogger('APPIUM.IO');
