@@ -2,6 +2,7 @@ import { JSDOM } from 'jsdom';
 import jQuery from 'jquery';
 import relative from 'relative';
 
+
 export function injectGithubLink (html, filePath) {
   const relativeLink = relative(process.cwd() + '/docs', filePath);
   const paths = relativeLink.split('\/');

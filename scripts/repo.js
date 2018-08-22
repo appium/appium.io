@@ -13,6 +13,7 @@ import { reassignMarkdownLinkDocument } from './links';
 import { injectGithubLink } from './inject-github-link';
 import { remap404Hrefs } from './href-remap';
 
+
 const LANGUAGES = ['en', 'cn'];
 const log = logger.getLogger('APPIUM.IO');
 
@@ -120,7 +121,7 @@ async function buildFromLocal () {
 function buildDocYML (sitemap, baseDir='', levelCount=0) {
   let toc = '';
   let indent = ' '.repeat(levelCount * 2);
-  for (let [category, content] of sitemap) {
+  for (const [category, content] of sitemap) {
     toc += `${indent}- '${category}':`;
     if (typeof content === 'string') {
       toc += ` '${baseDir}${content}'\n`;
@@ -139,10 +140,9 @@ async function buildDocs (pathToDocs) {
   log.debug(`Building HTML docs from Markdown ${pathToDocs}`);
 
   // Build the MkDocs for each language
-  for (let language of LANGUAGES) {
+  for (const language of LANGUAGES) {
     // generate pages yaml from the sitemap
-    let toc = buildDocYML(sitemap[language]);
-    toc = toc.trim();
+    const toc = buildDocYML(sitemap[language]).trim();
     const baseUrl = `/docs/${language}`;
     log.debug(`Setting base url to ${baseUrl}`);
 
@@ -156,8 +156,8 @@ async function buildDocs (pathToDocs) {
         cwd: pathToDocs,
       });
     } catch (e) {
-      console.log('Could not build', e.message);
-      console.log('Reason:', e.stderr);
+      log.error('Could not build', e.message);
+      log.error('Reason:', e.stderr);
       throw e;
     }
     await alterHTML(pathToBuildDocsTo, baseUrl);
@@ -171,4 +171,4 @@ async function buildDocs (pathToDocs) {
   }
   const pathToRepoDocs = await getRepoDocs('appium', 'appium');
   await buildDocs(pathToRepoDocs);
-})().catch(console.error);
+})().catch(log.error.bind(log));

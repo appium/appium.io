@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "clean": "rm -rf node_modules && rm -f package-lock.json && npm install",
     "serve": "bundle exec jekyll serve",
     "crawl": "wait-on http://localhost:4000 && blc --input http://localhost:4000 --recursive --exclude apple.com --exclude search.maven.org",
     "build:docs": "rimraf docs/ && babel-node scripts/repo.js && bundle exec jekyll build",
