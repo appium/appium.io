@@ -1321,6 +1321,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../writing-running-appium/android/activity-startup/">Activities Startup Troubleshooting Guide</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1665,8 +1671,12 @@ let elementsTwo = await driver.elements("id", "SomeID");
 <td>Search the app XML source using xpath (not recommended, has performance issues)</td>
 </tr>
 <tr>
-<td>Android UiAutomator</td>
+<td>Android UiAutomator (UiAutomator2 only)</td>
 <td>Use the UI Automator API, in particular the <a href="https://developer.android.com/reference/android/support/test/uiautomator/UiSelector.html">UiSelector</a> class to locate elements. In Appium you send the Java code, as a string, to the server, which executes it in the application’s environment, returning the element or elements.</td>
+</tr>
+<tr>
+<td>Android View Tag (Espresso only)</td>
+<td>Locate an element by its <a href="https://developer.android.com/reference/android/support/test/espresso/matcher/ViewMatchers.html#withTagValue(org.hamcrest.Matcher%3Cjava.lang.Object%3E)">view tag</a></td>
 </tr>
 <tr>
 <td>IOS UIAutomation</td>
@@ -1705,6 +1715,13 @@ let elementsTwo = await driver.elements("id", "SomeID");
 </tr>
 <tr>
 <td>Android</td>
+<td><a href="/docs/en/drivers/android-espresso/index.html">Espresso</a></td>
+<td>?+</td>
+<td>1.9.0+</td>
+<td>All</td>
+</tr>
+<tr>
+<td></td>
 <td><a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2</a></td>
 <td>?+</td>
 <td>1.6.0+</td>
