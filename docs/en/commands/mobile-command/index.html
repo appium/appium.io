@@ -1590,7 +1590,7 @@
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">driver.executeScript("mobile: scroll", ImmutableMap.of("direction", "down"));;
+            <pre><code class="java">driver.executeScript("mobile: scroll", ImmutableMap.of("direction", "down"));
 
 </code></pre>
           </div>
@@ -1909,6 +1909,12 @@ on syntax).</p>
 <td>Opens a deep-link URL for testing <a href="https://support.google.com/googleplay/answer/7240211?hl=en">Instant Apps</a></td>
 <td><code>{url, package}</code></td>
 <td><code>{url: "https://www.site.com/", package: "com.site.SomeAndroidPackage"}</code></td>
+</tr>
+<tr>
+<td>mobile:mobileGetDeviceInfo</td>
+<td>Gets device information like manufacturer and model. Read <a href="https://github.com/appium/appium-uiautomator2-server/blob/master/app/src/main/java/io/appium/uiautomator2/handler/GetDeviceInfo.java">GetDeviceInfo</a> for more details.</td>
+<td><none></none></td>
+<td><none></none></td>
 </tr>
 </tbody>
 </table>

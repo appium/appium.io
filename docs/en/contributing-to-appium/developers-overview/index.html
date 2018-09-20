@@ -1709,7 +1709,7 @@ converted into the <code>npm-shrinkwrap.json</code> file.</p>
 <li>Install dev dependencies (or at least <code>gulp</code> and <code>appium-gulp-plugins</code>), and undo the changes to the NPM shrinkwrap JSON file (e.g., <code>git checkout -- npm-shrinkwrap.json</code>).</li>
 <li>Run <code>npm publish</code> (with <code>--tag beta</code> if this isn't an official release).</li>
 <li>Remove the NPM shrinkwrap JSON file from Git and push the changes</li>
-<li>Update the site docs or put in an <a href="https://github.com/appium/appium/issues">issue</a> to have the site docs updated</li>
+<li>Update the site docs or put in an <a href="https://github.com/appium/appium/issues">issue</a> to have the site docs updated<ul>
 <li>From Appium repo, run <code>npm run generate-docs</code> and make a pull request if there are any newly generated docs.</li>
 <li>When the above PR is merged, clone the <a href="https://github.com/appium/appium.io">appium.io</a> repo (if you haven't done so already)</li>
 <li>Check out and pull the latest <code>gh-pages</code> branch</li>
@@ -1718,6 +1718,8 @@ converted into the <code>npm-shrinkwrap.json</code> file.</p>
 <li>Test by running <code>npm run serve</code> and navigating to https://localhost:4000/</li>
 <li>Make a new branch</li>
 <li>Commit and push changes and make a pull request to have changes merged into <code>gh-pages</code></li>
+</ul>
+</li>
 <li>Create a new release on GitHub: go to <code>https://github.com/appium/appium/releases/tag/v&lt;VERSION&gt;</code> and hit "Edit Tag". Make the release name <code>&lt;VERSION&gt;</code> (e.g., <code>2.0.5</code>), then paste in the changelog (but not the changelog header for this version). If it's a beta release, mark as pre-release.</li>
 <li>Create a new post on discuss.appium.io announcing the release. Post it in the "News" category. Paste in the changelog and any choice comments. Pin it and unpin the previous release post.</li>
 <li>Begin process of releasing <code>appium-desktop</code>.</li>
