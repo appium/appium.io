@@ -692,6 +692,21 @@
   </li>
 
         
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Authentication</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/authentication/finger-print/">Finger Print</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
     </ul>
   </li>
 
@@ -1327,6 +1342,18 @@
 </li>
 
         
+            
+<li>
+    <a href="../android/android-shell/">How To Execute Shell Commands On The Remote Device</a>
+</li>
+
+        
+            
+<li>
+    <a href="../android/android-ime/">How To Emulate IME Actions Generation</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1527,6 +1554,9 @@
             <li class="second-level"><a href="#example">Example</a></li>
             
         
+            <li class="second-level"><a href="#repl">REPL</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -1534,16 +1564,20 @@
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
   </a>Finding and interacting with elements</h2>
-<p>Appium supports a subset of the WebDriver locator strategies:</p>
+<p>Appium supports a subset of the WebDriver locator strategies such as:</p>
 <ul>
 <li>find by "class" (i.e., ui component type)</li>
 <li>find by "xpath" (i.e., an abstract representation of a path to an element,
 with certain constraints)</li>
 </ul>
+<p>You can see a list of them in <a href="/docs/en/commands/element/find-elements/index.html#selector-strategies">Selector Strategies</a></p>
 <p>Appium additionally supports some of the <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON Wire Protocol</a> locator strategies</p>
 <ul>
-<li><code>-ios uiautomation</code>: a string corresponding to a recursive element search
-using the <a href="/docs/en/writing-running-appium/ios/ios-predicate/index.html">UIAutomation library</a> (iOS 9.3 and below only)</li>
+<li><code>-ios predicate string</code> : a string corresponding to a recursive element search
+using the <a href="/docs/en/writing-running-appium/ios/ios-predicate/index.html">iOS Predicate</a> (iOS 10.0 and above)<ul>
+<li><code>-ios uiautomation</code> for iOS 9.3 and below</li>
+</ul>
+</li>
 <li><code>-android uiautomator</code>: a string corresponding to a recursive element
 search using the <a href="/docs/en/writing-running-appium/android/uiautomator-uiselector/index.html">UiAutomator Api</a> (Android-only)</li>
 <li><code>accessibility id</code>: a string corresponding to a recursive element search
@@ -1567,7 +1601,14 @@ source. In this test, I'm looking for the accessibility id of the "Compute Sum" 
 <p>To find the accessibility id of this button, I click the "Compute Sum" button in the
 screenshot. The element is then highlighted in the source tree. In the panel on the right,
 I can see the accessibility id.</p>
-<p><img alt="" src="https://github.com/appium/appium-desktop/raw/master/docs/images/screen-inspector.png"></p></div>
+<p><img alt="" src="https://github.com/appium/appium-desktop/raw/master/docs/images/screen-inspector.png"></p>
+<h3 id="repl">REPL</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Read–eval–print_loop">REPL</a> is a simple interactive language shell.
+You can invoke various command interactively. It will help you to make sure your scenarios interactively with Appium server.</p>
+<ul>
+<li><a href="https://github.com/appium/ruby_console">Appium Ruby Console</a></li>
+<li><a href="http://webdriver.io/api/utility/debug.html">WebDriverIO with debug mode</a></li>
+</ul></div>
         
     </div>
 

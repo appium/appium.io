@@ -692,6 +692,21 @@
   </li>
 
         
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Authentication</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/authentication/finger-print/">Finger Print</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
     </ul>
   </li>
 
@@ -1327,6 +1342,18 @@
 </li>
 
         
+            
+<li>
+    <a href="../../writing-running-appium/android/android-shell/">How To Execute Shell Commands On The Remote Device</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1628,11 +1655,15 @@ list of capabilities available for Appium.</p>
 <p><strong>Appium Server</strong><br>
 Appium is a server written in Node.js. It can be built and installed <a href="/docs/en/contributing-to-appium/appium-from-source/index.html">from
 source</a>
-or installed directly from NPM:</p>
+or installed directly from <a href="https://www.npmjs.com/package/appium">NPM</a>:</p>
 <pre><code>$ npm install -g appium
 $ appium
 </code></pre>
 
+<p>The <code>beta</code> of Appium is available via NPM with <code>npm install -g appium@beta</code>.
+It is the development version so it might have breaking changes.
+Please uninstall <code>appium@beta</code> (<code>npm uninstall -g appium@beta</code>) before installing
+new versions in order to have a clean set of dependencies.</p>
 <p><strong>Appium Clients</strong><br>
 There are client libraries (in Java, Ruby, Python, PHP, JavaScript, and C#)
 which support Appium's extensions to the WebDriver protocol. When using Appium,
