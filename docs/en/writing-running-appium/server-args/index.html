@@ -1,0 +1,2102 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>CLI Arguments - Appium</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link href="../../css/appium.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="/">
+                <img src="../../img/appium_white_360.png">
+            </a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../about-appium/intro/">Introduction</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/appium-clients/">The Appium Clients</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/getting-started/">Getting Started</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/platform-support/">Supported Platforms</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/api/">API Documentation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Drivers <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../drivers/ios-xcuitest/">XCUITest (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-uiautomation/">UIAutomation (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-uiautomation-safari-launcher/">UIAutomation Safari Launcher (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-uiautomator/">UIAutomator (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-uiautomator2/">UIAutomator2 (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-espresso/">Espresso (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/windows/">Windows</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/mac/">Mac</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Commands <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../commands/status/">Status</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../commands/mobile-command/">Execute Mobile Command</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Session</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/create/">Create</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/delete/">End</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/get/">Get Session Capabilities</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/back/">Go Back</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/screenshot/">Screenshot</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/source/">Source</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Timeouts</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/timeouts/">Timeouts</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/implicit-wait/">Implicit Wait</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/timeouts/async-script/">Async Script</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Orientation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/orientation/get-orientation/">Get Orientation</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/orientation/set-orientation/">Set Orientation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Geolocation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/geolocation/get-geolocation/">Get Geolocation</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/geolocation/set-geolocation/">Set Geolocation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Logs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/logs/get-log-types/">Get Log Types</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/logs/get-log/">Get Logs</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/settings/update-settings/">Update Settings</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/settings/get-settings/">Get Device Settings</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Device</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Activity</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/activity/start-activity/">Start Activity</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/activity/current-activity/">Current Activity</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/activity/current-package/">Current Package</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">App</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/app/install-app/">Install App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/is-app-installed/">Is App Installed</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/launch-app/">Launch App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/background-app/">Background App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/close-app/">Close App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/reset-app/">Reset App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/remove-app/">Remove App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/end-test-coverage/">End Test Coverage</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Files</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/files/push-file/">Push File</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/files/pull-file/">Pull File</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/files/pull-folder/">Pull Folder</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Interactions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/interactions/shake/">Shake</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/lock/">Lock</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/unlock/">Unlock</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/is-locked/">Is Locked</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/interactions/rotate/">Rotate</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Keys</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/keys/press-keycode/">Press keycode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/long-press-keycode/">Long press keycode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/hide-keyboard/">Hide Keyboard</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/keys/is-keyboard-shown/">Is Keyboard Shown</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Network</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-airplane-mode/">Toggle Airplane Mode</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-data/">Toggle Data</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-wifi/">Toggle WiFi</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/toggle-location-services/">Toggle Location Services</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/send-sms/">Send SMS</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-call/">GSM Call</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-signal/">GSM Signal</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/network/gsm-voice/">GSM Voice</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Performance Data</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/performance-data/get-performance-data/">Get Performance Data</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/performance-data/performance-data-types/">Performance Data Types</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Screen Recording</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/recording-screen/start-recording-screen/">Start Screen Recording</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/recording-screen/stop-recording-screen/">Stop Screen Recording</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Simulator</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/simulator/touch-id/">Perform Touch ID</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/simulator/toggle-touch-id-enrollment/">Toggle Touch ID Enrollment</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">System</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/system/open-notifications/">Open Notifications</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/system-bars/">System Bars</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Authentication</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/authentication/finger-print/">Finger Print</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Element</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/find-element/">Find Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/find-elements/">Find Elements</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Actions</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/actions/click/">Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/actions/send-keys/">Send Keys</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/actions/clear/">Clear</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Attributes</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/attributes/text/">Text</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/name/">Name</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/attribute/">Attribute</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/selected/">Selected</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/enabled/">Enabled</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/displayed/">Displayed</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/location/">Location</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/size/">Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/rect/">Rect</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/css-property/">CSS Property</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/attributes/location-in-view/">Location in View</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/element/other/submit/">Submit</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/other/active/">Active Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/element/other/equals-element/">Equals Element</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Context</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/context/get-context/">Get Context</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/context/get-contexts/">Get All Contexts</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/context/set-context/">Set Context</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Interactions</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Mouse</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/moveto/">Move To</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/click/">Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/doubleclick/">Double Click</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/button-down/">Button Down</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/mouse/button-up/">Button Up</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Touch</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/tap/">Single Tap</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/double-tap/">Double Tap</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/move/">Move</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-down/">Touch Down</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-up/">Touch Up</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/long-press/">Long Press</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/scroll/">Scroll</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/flick/">Flick</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/multi-touch-perform/">Multi Touch Perform</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/touch/touch-perform/">Touch Perform</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+<li>
+    <a href="../../commands/interactions/actions/">W3C Actions</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Window</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window/">Set Window</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/close-window/">Close Window</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-handle/">Get Handle</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-handles/">Get Handles</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/title/">Get Title</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-window-size/">Get Window Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window-size/">Set Window Size</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/get-window-position/">Get Window Position</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/set-window-position/">Set Window Position</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/window/maximize-window/">Maximize Window</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Navigation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/navigation/go-to-url/">Go to URL</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/url/">Get URL</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/back/">Back</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/forward/">Forward</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/navigation/refresh/">Refresh</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Storage</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/storage/get-all-cookies/">Get All Cookies</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/set-cookie/">Set Cookie</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/delete-cookie/">Delete Cookie</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/storage/delete-all-cookies/">Delete All Cookies</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Frame</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/web/frame/switch/">Switch to Frame</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/frame/parent/">Switch to Parent Frame</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+<li>
+    <a href="../../commands/web/execute-async/">Execute Async</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/web/execute/">Execute</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Writing &amp; Running Tests <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../running-tests/">Running Tests</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../caps/">Desired Capabilities</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../default-capabilities-arg/">The --default-capabilities flag</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../finding-elements/">Finding Elements</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../touch-actions/">Touch Actions</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">CLI Arguments</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../web/mobile-web/">Mobile Web Testing</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/hybrid/">Automating Hybrid Apps</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/ios-webkit-debug-proxy/">Using ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/chromedriver/">Using Chromedriver</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-predicate/">iOS Predicate Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-touch-id/">iOS Touch ID Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-install-certificate/">iOS Install Certificate</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../android/uiautomator-uiselector/">UiSelector Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../android/android-coverage/">Android Code Coverage Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../android/activity-startup/">Activities Startup Troubleshooting Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../android/android-shell/">How To Execute Shell Commands On The Remote Device</a>
+</li>
+
+        
+            
+<li>
+    <a href="../android/android-ime/">How To Emulate IME Actions Generation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Other</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../other/reset-strategies/">Reset Strategies</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/network-connection/">Network Connection Guide</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/unicode/">Using Unicode with Appium</a>
+</li>
+
+        
+            
+<li>
+    <a href="../other/troubleshooting/">Troubleshooting</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/migrating-to-xcuitest/">Migrating to XCUITest</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/grid/">Using Selenium Grid with Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/cross-domain-iframes/">Cross-domain iframes</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/wda-custom-server/">Using a custom WDA server</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/multiple-xcode-versions/">Running with multiple versions of Xcode</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/event-timings/">The Event Timings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/parallel-tests/">Setup for Parallel Testing</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-from-source/">Running Appium from Source</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/developers-overview/">Developer Overview</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/dev-tools/">Standard Dev Commands</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/style-guide/">Appium Style Guide</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/how-to-write-docs/">How to Write Docs</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-packages/">Appium Package Structure</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/credits/">Credits</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a rel="next" href="../touch-actions/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li>
+                        <a rel="prev" href="../web/mobile-web/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#appium-server-arguments">Appium server arguments</a></li>
+        
+            <li class="second-level"><a href="#server-flags">Server flags</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 documentation" role="main"><h1 id="appium-server-arguments"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/writing-running-appium/server-args.md">
+    <i class="glyphicon glyphicon-pencil"></i>
+    &nbsp;&nbsp;Edit this Doc
+  </a>Appium server arguments</h1>
+<p>Many Appium 1.5 server arguments have been deprecated in favor of the <a href="/docs/en/writing-running-appium/default-capabilities-arg/index.html">--default-capabilities flag</a>.</p>
+<p>Usage: <code>node . [flags]</code></p>
+<h2 id="server-flags">Server flags</h2>
+<p>All flags are optional, but some are required in conjunction with certain others.</p>
+<p><expand_table></expand_table></p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Default</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--shell</code></td>
+<td>null</td>
+<td>Enter REPL mode</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--ipa</code></td>
+<td>null</td>
+<td>(IOS-only) abs path to compiled .ipa file</td>
+<td><code>--ipa /abs/path/to/my.ipa</code></td>
+</tr>
+<tr>
+<td><code>-a</code>, <code>--address</code></td>
+<td>0.0.0.0</td>
+<td>IP Address to listen on</td>
+<td><code>--address 0.0.0.0</code></td>
+</tr>
+<tr>
+<td><code>-p</code>, <code>--port</code></td>
+<td>4723</td>
+<td>port to listen on</td>
+<td><code>--port 4723</code></td>
+</tr>
+<tr>
+<td><code>-ca</code>, <code>--callback-address</code></td>
+<td>null</td>
+<td>callback IP Address (default: same as --address)</td>
+<td><code>--callback-address 127.0.0.1</code></td>
+</tr>
+<tr>
+<td><code>-cp</code>, <code>--callback-port</code></td>
+<td>null</td>
+<td>callback port (default: same as port)</td>
+<td><code>--callback-port 4723</code></td>
+</tr>
+<tr>
+<td><code>-bp</code>, <code>--bootstrap-port</code></td>
+<td>4724</td>
+<td>(Android-only) port to use on device to talk to Appium</td>
+<td><code>--bootstrap-port 4724</code></td>
+</tr>
+<tr>
+<td><code>-r</code>, <code>--backend-retries</code></td>
+<td>3</td>
+<td>(iOS-only) How many times to retry launching Instruments before saying it crashed or timed out</td>
+<td><code>--backend-retries 3</code></td>
+</tr>
+<tr>
+<td><code>--session-override</code></td>
+<td>false</td>
+<td>Enables session override (clobbering)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-l</code>, <code>--pre-launch</code></td>
+<td>false</td>
+<td>Pre-launch the application before allowing the first session (Requires --app and, for Android, --app-pkg and --app-activity)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-g</code>, <code>--log</code></td>
+<td>null</td>
+<td>Also send log output to this file</td>
+<td><code>--log /path/to/appium.log</code></td>
+</tr>
+<tr>
+<td><code>--log-level</code></td>
+<td>debug</td>
+<td>Set the server log level for console and logfile (specified as <code>console-level:logfile-level</code>, with both being the same if only one value is supplied). Possible values are <code>debug</code>, <code>info</code>, <code>warn</code>, <code>error</code>, which are progressively less verbose.</td>
+<td><code>--log-level error:debug</code></td>
+</tr>
+<tr>
+<td><code>--log-timestamp</code></td>
+<td>false</td>
+<td>Show timestamps in console output</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--local-timezone</code></td>
+<td>false</td>
+<td>Use local timezone for timestamps</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--log-no-colors</code></td>
+<td>false</td>
+<td>Do not use colors in console output</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-G</code>, <code>--webhook</code></td>
+<td>null</td>
+<td>Also send log output to this HTTP listener</td>
+<td><code>--webhook localhost:9876</code></td>
+</tr>
+<tr>
+<td><code>--safari</code></td>
+<td>false</td>
+<td>(IOS-Only) Use the safari app</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--default-device</code>, <code>-dd</code></td>
+<td>false</td>
+<td>(IOS-Simulator-only) use the default simulator that instruments launches on its own</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--force-iphone</code></td>
+<td>false</td>
+<td>(IOS-only) Use the iPhone Simulator no matter what the app wants</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--force-ipad</code></td>
+<td>false</td>
+<td>(IOS-only) Use the iPad Simulator no matter what the app wants</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--tracetemplate</code></td>
+<td>null</td>
+<td>(IOS-only) .tracetemplate file to use with Instruments</td>
+<td><code>--tracetemplate /Users/me/Automation.tracetemplate</code></td>
+</tr>
+<tr>
+<td><code>--instruments</code></td>
+<td>null</td>
+<td>(IOS-only) path to instruments binary</td>
+<td><code>--instruments /path/to/instruments</code></td>
+</tr>
+<tr>
+<td><code>--nodeconfig</code></td>
+<td>null</td>
+<td>Configuration JSON file to register appium with selenium grid</td>
+<td><code>--nodeconfig /abs/path/to/nodeconfig.json</code></td>
+</tr>
+<tr>
+<td><code>-ra</code>, <code>--robot-address</code></td>
+<td>0.0.0.0</td>
+<td>IP Address of robot</td>
+<td><code>--robot-address 0.0.0.0</code></td>
+</tr>
+<tr>
+<td><code>-rp</code>, <code>--robot-port</code></td>
+<td>-1</td>
+<td>port for robot</td>
+<td><code>--robot-port 4242</code></td>
+</tr>
+<tr>
+<td><code>--selendroid-port</code></td>
+<td>8080</td>
+<td>Local port used for communication with Selendroid</td>
+<td><code>--selendroid-port 8080</code></td>
+</tr>
+<tr>
+<td><code>--chromedriver-port</code></td>
+<td>9515</td>
+<td>Port upon which ChromeDriver will run</td>
+<td><code>--chromedriver-port 9515</code></td>
+</tr>
+<tr>
+<td><code>--chromedriver-executable</code></td>
+<td>null</td>
+<td>ChromeDriver executable full path</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--show-config</code></td>
+<td>false</td>
+<td>Show info about the appium server configuration and exit</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--no-perms-check</code></td>
+<td>false</td>
+<td>Bypass Appium's checks to ensure we can read/write necessary files</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--strict-caps</code></td>
+<td>false</td>
+<td>Cause sessions to fail if desired caps are sent in that Appium does not recognize as valid for the selected device</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--isolate-sim-device</code></td>
+<td>false</td>
+<td>Xcode 6 has a bug on some platforms where a certain simulator can only be launched without error if all other simulator devices are first deleted. This option causes Appium to delete all devices other than the one being used by Appium. Note that this is a permanent deletion, and you are responsible for using simctl or xcode to manage the categories of devices used with Appium.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--tmp</code></td>
+<td>null</td>
+<td>Absolute path to directory Appium can use to manage temporary files, like built-in iOS apps it needs to move around. On *nix/Mac defaults to /tmp, on Windows defaults to C:\Windows\Temp</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--trace-dir</code></td>
+<td>null</td>
+<td>Absolute path to directory Appium use to save ios instruments traces, defaults to <tmp dir="">/appium-instruments</tmp></td>
+<td></td>
+</tr>
+<tr>
+<td><code>--debug-log-spacing</code></td>
+<td>false</td>
+<td>Add exaggerated spacing in logs to help with visual inspection</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--suppress-adb-kill-server</code></td>
+<td>false</td>
+<td>(Android-only) If set, prevents Appium from killing the adb server instance</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--async-trace</code></td>
+<td>false</td>
+<td>Add long stack traces to log entries. Recommended for debugging only.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--webkit-debug-proxy-port</code></td>
+<td>27753</td>
+<td>(IOS-only) Local port used for communication with ios-webkit-debug-proxy</td>
+<td><code>--webkit-debug-proxy-port 27753</code></td>
+</tr>
+<tr>
+<td><code>-dc</code>, <code>--default-capabilities</code></td>
+<td>{}</td>
+<td>Set the default desired capabilities, which will be set on each session unless overridden by received capabilities.</td>
+<td><code>--default-capabilities [ '{"app": "myapp.app", "deviceName": "iPhone Simulator"}' | /path/to/caps.json ]</code></td>
+</tr>
+<tr>
+<td><code>--reboot</code></td>
+<td>false</td>
+<td>- (Android-only) reboot emulator after each session and kill it at the end</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--command-timeout</code></td>
+<td>60</td>
+<td>[DEPRECATED] No effect. This used to be the default command timeout for the server to use for all sessions (in seconds and should be less than 2147483). Use newCommandTimeout cap instead</td>
+<td></td>
+</tr>
+<tr>
+<td><code>-k</code>, <code>--keep-artifacts</code></td>
+<td>false</td>
+<td>[DEPRECATED] - no effect, trace is now in tmp dir by default and is cleared before each run. Please also refer to the --trace-dir flag.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--platform-name</code></td>
+<td>null</td>
+<td>[DEPRECATED] - Name of the mobile platform: iOS, Android, or FirefoxOS</td>
+<td><code>--platform-name iOS</code></td>
+</tr>
+<tr>
+<td><code>--platform-version</code></td>
+<td>null</td>
+<td>[DEPRECATED] - Version of the mobile platform</td>
+<td><code>--platform-version 7.1</code></td>
+</tr>
+<tr>
+<td><code>--automation-name</code></td>
+<td>null</td>
+<td>[DEPRECATED] - Name of the automation tool: Appium or Selendroid</td>
+<td><code>--automation-name Appium</code></td>
+</tr>
+<tr>
+<td><code>--device-name</code></td>
+<td>null</td>
+<td>[DEPRECATED] - Name of the mobile device to use</td>
+<td><code>--device-name iPhone Retina (4-inch), Android Emulator</code></td>
+</tr>
+<tr>
+<td><code>--browser-name</code></td>
+<td>null</td>
+<td>[DEPRECATED] - Name of the mobile browser: Safari or Chrome</td>
+<td><code>--browser-name Safari</code></td>
+</tr>
+<tr>
+<td><code>--app</code></td>
+<td>null</td>
+<td>[DEPRECATED] - IOS: abs path to simulator-compiled .app file or the bundle_id of the desired target on device; Android: abs path to .apk file</td>
+<td><code>--app /abs/path/to/my.app</code></td>
+</tr>
+<tr>
+<td><code>-lt</code>, <code>--launch-timeout</code></td>
+<td>90000</td>
+<td>[DEPRECATED] - (iOS-only) how long in ms to wait for Instruments to launch</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--language</code></td>
+<td>null</td>
+<td>[DEPRECATED] - Language for the iOS simulator / Android Emulator</td>
+<td><code>--language en</code></td>
+</tr>
+<tr>
+<td><code>--locale</code></td>
+<td>null</td>
+<td>[DEPRECATED] - Locale for the iOS simulator / Android Emulator</td>
+<td><code>--locale en_US</code></td>
+</tr>
+<tr>
+<td><code>-U</code>, <code>--udid</code></td>
+<td>null</td>
+<td>[DEPRECATED] - Unique device identifier of the connected physical device</td>
+<td><code>--udid 1adsf-sdfas-asdf-123sdf</code></td>
+</tr>
+<tr>
+<td><code>--orientation</code></td>
+<td>null</td>
+<td>[DEPRECATED] - (IOS-only) use LANDSCAPE or PORTRAIT to initialize all requests to this orientation</td>
+<td><code>--orientation LANDSCAPE</code></td>
+</tr>
+<tr>
+<td><code>--no-reset</code></td>
+<td>false</td>
+<td>[DEPRECATED] - Do not reset app state between sessions (IOS: do not delete app plist files; Android: do not uninstall app before new session)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--full-reset</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (iOS) Delete the entire simulator folder. (Android) Reset app state by uninstalling app instead of clearing app data. On Android, this will also remove the app after the session is complete.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--app-pkg</code></td>
+<td>null</td>
+<td>[DEPRECATED] - (Android-only) Java package of the Android app you want to run (e.g., com.example.android.myApp)</td>
+<td><code>--app-pkg com.example.android.myApp</code></td>
+</tr>
+<tr>
+<td><code>--app-activity</code></td>
+<td>null</td>
+<td>[DEPRECATED] - (Android-only) Activity name for the Android activity you want to launch from your package (e.g., MainActivity)</td>
+<td><code>--app-activity MainActivity</code></td>
+</tr>
+<tr>
+<td><code>--app-wait-package</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (Android-only) Package name for the Android activity you want to wait for (e.g., com.example.android.myApp)</td>
+<td><code>--app-wait-package com.example.android.myApp</code></td>
+</tr>
+<tr>
+<td><code>--app-wait-activity</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (Android-only) Activity name for the Android activity you want to wait for (e.g., SplashActivity)</td>
+<td><code>--app-wait-activity SplashActivity</code></td>
+</tr>
+<tr>
+<td><code>--device-ready-timeout</code></td>
+<td>5</td>
+<td>[DEPRECATED] - (Android-only) Timeout in seconds while waiting for device to become ready</td>
+<td><code>--device-ready-timeout 5</code></td>
+</tr>
+<tr>
+<td><code>--android-coverage</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (Android-only) Fully qualified instrumentation class. Passed to -w in adb shell am instrument -e coverage true -w</td>
+<td><code>--android-coverage com.my.Pkg/com.my.Pkg.instrumentation.MyInstrumentation</code></td>
+</tr>
+<tr>
+<td><code>--avd</code></td>
+<td>null</td>
+<td>[DEPRECATED] - (Android-only) Name of the avd to launch</td>
+<td><code>--avd @default</code></td>
+</tr>
+<tr>
+<td><code>--avd-args</code></td>
+<td>null</td>
+<td>[DEPRECATED] - (Android-only) Additional emulator arguments to launch the avd</td>
+<td><code>--avd-args -no-snapshot-load</code></td>
+</tr>
+<tr>
+<td><code>--use-keystore</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (Android-only) When set the keystore will be used to sign apks.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--keystore-path</code></td>
+<td>&lt;user&gt;/.android/debug.keystore</td>
+<td>[DEPRECATED] - (Android-only) Path to keystore</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--keystore-password</code></td>
+<td>android</td>
+<td>[DEPRECATED] - (Android-only) Password to keystore</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--key-alias</code></td>
+<td>androiddebugkey</td>
+<td>[DEPRECATED] - (Android-only) Key alias</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--key-password</code></td>
+<td>android</td>
+<td>[DEPRECATED] - (Android-only) Key password</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--intent-action</code></td>
+<td>android.intent.action.MAIN</td>
+<td>[DEPRECATED] - (Android-only) Intent action which will be used to start activity</td>
+<td><code>--intent-action android.intent.action.MAIN</code></td>
+</tr>
+<tr>
+<td><code>--intent-category</code></td>
+<td>android.intent.category.LAUNCHER</td>
+<td>[DEPRECATED] - (Android-only) Intent category which will be used to start activity</td>
+<td><code>--intent-category android.intent.category.APP_CONTACTS</code></td>
+</tr>
+<tr>
+<td><code>--intent-flags</code></td>
+<td>0x10200000</td>
+<td>[DEPRECATED] - (Android-only) Flags that will be used to start activity</td>
+<td><code>--intent-flags 0x10200000</code></td>
+</tr>
+<tr>
+<td><code>--intent-args</code></td>
+<td>null</td>
+<td>[DEPRECATED] - (Android-only) Additional intent arguments that will be used to start activity</td>
+<td><code>--intent-args 0x10200000</code></td>
+</tr>
+<tr>
+<td><code>--dont-stop-app-on-reset</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (Android-only) When included, refrains from stopping the app before restart</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--calendar-format</code></td>
+<td>null</td>
+<td>[DEPRECATED] - (IOS-only) calendar format for the iOS simulator</td>
+<td><code>--calendar-format gregorian</code></td>
+</tr>
+<tr>
+<td><code>--native-instruments-lib</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (IOS-only) IOS has a weird built-in unavoidable delay. We patch this in appium. If you do not want it patched, pass in this flag.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--keep-keychains</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (iOS-only) Whether to keep keychains (Library/Keychains) when reset app between sessions</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--localizable-strings-dir</code></td>
+<td>en.lproj</td>
+<td>[DEPRECATED] - (IOS-only) the relative path of the dir where Localizable.strings file resides</td>
+<td><code>--localizable-strings-dir en.lproj</code></td>
+</tr>
+<tr>
+<td><code>--show-ios-log</code></td>
+<td>false</td>
+<td>[DEPRECATED] - (IOS-only) if set, the iOS system log will be written to the console</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--enable-heapdump</code></td>
+<td>false</td>
+<td>Enables NodeJS memory dumps collection feature. This feature is extremely useful for finding memory leaks. Use the 'kill -SIGUSR2 &lt;PID&gt;' command to create a dump of memory heap for <em>node</em> process with the particular PID (this works for <em>nix systems only). The dump file will be created in the same folder, where main Appium script was executed and will have </em>.heapsnapshot extension. These snapshot can be then loaded to Chrome Inspector for further investigation. Read the <a href="https://blog.risingstack.com/finding-a-memory-leak-in-node-js/">Rising Stack article</a> for more details.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>--relaxed-security</code></td>
+<td>false</td>
+<td>Disable additional security checks, so it is possible to use some advanced features, provided by drivers supporting this option. Only enable it if all the clients are in the trusted network and it is not the case if a client could potentially break out of the session sandbox.</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small></p>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/extra.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</body></html>
