@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1632,7 +1638,12 @@ await element.clear();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.find_element(:accessibility_id, "SomeAccessibilityID").clear
+            <pre><code class="ruby"># ruby_lib example
+find_element(:accessibility_id, "SomeAccessibilityID").clear
+
+
+# ruby_lib_core example
+@driver.find_element(:accessibility_id, "SomeAccessibilityID").clear
 
 </code></pre>
           </div>

@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1542,9 +1548,17 @@
     
         <li class="first-level active"><a href="#settings">Settings</a></li>
         
-            <li class="second-level"><a href="#supported-settings">Supported Settings</a></li>
+    
+        <li class="first-level "><a href="#general-supported-settings">General Supported Settings</a></li>
+        
+            <li class="second-level"><a href="#android-only">Android Only</a></li>
             
-                <li class="third-level"><a href="#android-uiautomator-configurator">Android UiAutomator Configurator</a></li>
+                <li class="third-level"><a href="#uiautomator2">UiAutomator2</a></li>
+            
+        
+            <li class="second-level"><a href="#ios-only">iOS Only</a></li>
+            
+                <li class="third-level"><a href="#xcuitest">XCUITest</a></li>
             
         
     
@@ -1584,7 +1598,29 @@
 </code></pre>
 
 <p>Note that the actual commands you would use in your test script differ based on the language; see the specific Appium client documention for more information.</p>
-<h3 id="supported-settings">Supported Settings</h3>
+<h2 id="general-supported-settings">General Supported Settings</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shouldUseCompactResponses</code></td>
+<td>Returns compact (standards-compliant) &amp; faster responses in find element/s. Defaults to <code>true</code></td>
+<td><code>false</code> or <code>true</code></td>
+</tr>
+<tr>
+<td><code>elementResponseAttributes</code></td>
+<td>The comma-separated list of fields to return with each element. It works only <code>shouldUseCompactResponses</code> is <code>false</code>. Defaults to "type,label" in iOS, "" in Android.</td>
+<td>e.g., <code>"name,text,rect,attribute/name,attribute/value"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="android-only">Android Only</h3>
 <table>
 <thead>
 <tr>
@@ -1599,25 +1635,78 @@
 <td>Boolean which sets whether Android devices should use <code>setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster. <code>false</code> by default.</td>
 <td><code>false</code> or <code>true</code></td>
 </tr>
+</tbody>
+</table>
+<h4 id="uiautomator2">UiAutomator2</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td><code>allowInvisibleElements</code></td>
-<td>For UiAutomator2 Driver. Boolean which set whether Android device should show all elements, visible and invisible. <code>false</code> by default.</td>
+<td>Boolean which set whether Android device should show all elements, visible and invisible. <code>false</code> by default.</td>
 <td><code>false</code> or <code>true</code></td>
 </tr>
 <tr>
 <td><code>enableNotificationListener</code></td>
-<td>For UiAutomator2 Driver. Boolean which sets whether the Android device should enable or disable the <code>NotificationListener</code>. <code>true</code> by default.</td>
+<td>Boolean which sets whether the Android device should enable or disable the <code>NotificationListener</code>. <code>true</code> by default.</td>
 <td><code>false</code> or <code>true</code></td>
+</tr>
+<tr>
+<td><code>actionAcknowledgmentTimeout</code></td>
+<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setActionAcknowledgmentTimeout(long)">setActionAcknowledgmentTimeout</a>. If a negative value is given, it would set to default(3 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g., <code>5000</code></td>
+</tr>
+<tr>
+<td><code>keyInjectionDelay</code></td>
+<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setKeyInjectionDelay(long)">setKeyInjectionDelay</a>. If a negative value is given, it would set to default(0 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g., <code>5000</code></td>
+</tr>
+<tr>
+<td><code>scrollAcknowledgmentTimeout</code></td>
+<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setScrollAcknowledgmentTimeout(long)">setScrollAcknowledgmentTimeout</a>. If a negative value is given, it would set to default(200 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g., <code>300</code></td>
+</tr>
+<tr>
+<td><code>waitForIdleTimeout</code></td>
+<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForIdleTimeout(long)">setWaitForIdleTimeout</a>. If a negative value is given, it would set to default(10 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g., <code>10000</code></td>
+</tr>
+<tr>
+<td><code>waitForSelectorTimeout</code></td>
+<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForSelectorTimeout(long)">setWaitForSelectorTimeout</a>. If a negative value is given, it would set to default(10 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g., <code>10000</code></td>
 </tr>
 </tbody>
 </table>
-<h4 id="android-uiautomator-configurator">Android UiAutomator Configurator</h4>
-<p>sets <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> timeouts and delays in Android devices. only works in Android API 18 and above.</p>
-<p><strong>"actionAcknowledgmentTimeout"</strong> - Int which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setActionAcknowledgmentTimeout(long)">setActionAcknowledgmentTimeout</a>. If a negative value is given, it would set to default(3 * 1000 milliseconds)</p>
-<p><strong>"keyInjectionDelay"</strong> - Int which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setKeyInjectionDelay(long)">setKeyInjectionDelay</a>. If a negative value is given, it would set to default(0 milliseconds)</p>
-<p><strong>"scrollAcknowledgmentTimeout"</strong> - Int which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setScrollAcknowledgmentTimeout(long)">setScrollAcknowledgmentTimeout</a>. If a negative value is given, it would set to default(200 milliseconds)</p>
-<p><strong>"waitForIdleTimeout"</strong> - Int which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForIdleTimeout(long)">setWaitForIdleTimeout</a>. If a negative value is given, it would set to default(10 * 1000 milliseconds)</p>
-<p><strong>"waitForSelectorTimeout"</strong> - Int which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForSelectorTimeout(long)">setWaitForSelectorTimeout</a>. If a negative value is given, it would set to default(10 * 1000 milliseconds)</p></div>
+<h3 id="ios-only">iOS Only</h3>
+<h4 id="xcuitest">XCUITest</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mjpegServerScreenshotQuality</code></td>
+<td>The quality of the screenshots generated by the screenshots broadcaster, expressed as a value from <code>0</code> to <code>100</code>. The value <code>0</code> represents the maximum compression (or lowest quality) while the value <code>100</code> represents the least compression (or best quality). The default value is <code>25</code>.</td>
+<td>e.g., <code>10</code></td>
+</tr>
+<tr>
+<td><code>mjpegServerFramerate</code></td>
+<td>The framerate at which the background screenshots broadcaster should broadcast screenshots in range <code>1..60</code>. The default value is <code>10</code> (Frames Per Second). Setting zero value will cause the framerate to be at its maximum possible value.</td>
+<td>e.g., <code>60</code></td>
+</tr>
+</tbody>
+</table></div>
         
     </div>
 

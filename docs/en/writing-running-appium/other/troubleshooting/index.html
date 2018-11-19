@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1588,6 +1594,7 @@ to github or write to the <a href="https://discuss.appium.io">appium-discuss dis
   Android SDK is installed and <code>ANDROID_HOME</code> is set.</li>
 <li>Make sure the paths to your applications are correct</li>
 <li>On windows run appium.app as administrator or when running from source you need to run cmd as administrator.</li>
+<li>When installing on Mac, make sure the user has write permissions for <code>/usr/local/lib</code> or install Appium with the command <code>npm install -g appium --unsafe-perm=true --allow-root</code></li>
 </ul>
 <h3 id="if-youre-running-appiumapp">If you're running Appium.app</h3>
 <ul>
@@ -1615,8 +1622,10 @@ own items in the SDK manager. Make sure you install the build-tools and platform
 <li>Make sure the Android emulator is up and running.</li>
 <li>It's sometimes useful to run <code>adb kill-server &amp;&amp; adb devices</code>. This can
   reset the connection to the Android device.</li>
-<li>If you're running the Android emulator using Fastboot, try doing a cold boot (Android Studio &gt; Tools &gt; AVD Manager &gt; Actions &gt; Cold Boot Now)</li>
+<li>If you're running the Android emulator using Fastboot and the emulator isn't being detected by adb, try doing a cold boot:  <code>Android Studio &gt; Tools &gt; AVD Manager &gt; Actions &gt; Cold Boot Now</code></li>
 <li>Make sure you set ANDROID_HOME pointing to the Android SDK directory</li>
+<li>After setting power state to <code>off</code> (e.g.: <code>driver.setPowerAC(PowerACState.OFF);</code>) you must create a new session.</li>
+<li>When using <code>-wipe-data</code> in <code>avdArgs</code> the <code>noReset</code> capability will be ignored if set to true.</li>
 </ul>
 <h3 id="windows">Windows</h3>
 <ul>

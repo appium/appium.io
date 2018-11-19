@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1555,6 +1561,8 @@
             
                 <li class="third-level"><a href="#android-uiautomator2-only">Android (UiAutomator2 only)</a></li>
             
+                <li class="third-level"><a href="#android-espresso-only">Android (Espresso only)</a></li>
+            
         
             <li class="second-level"><a href="#support">Support</a></li>
             
@@ -1641,7 +1649,12 @@ await driver.execute('mobile: scroll', {direction: 'down'});
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.execute_script("mobile: scroll", { "direction" =&gt; "down"})
+            <pre><code class="ruby"># ruby_lib example
+execute_script("mobile: scroll", { "direction" =&gt; "down"})
+
+
+# ruby_lib_core example
+@driver.execute_script("mobile: scroll", { "direction" =&gt; "down"})
 
 </code></pre>
           </div>
@@ -1857,6 +1870,42 @@ on syntax).</p>
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td>mobile:batteryInfo</td>
+<td>Reads the battery information from the device under test</td>
+<td><none></none></td>
+<td><none></none></td>
+</tr>
+<tr>
+<td>mobile:pressButton</td>
+<td>Press a physical button. The supported button name is is <em>home</em>. <em>volumeup</em> and <em>volumedown</em> are available for real devices</td>
+<td><code>{name}</code></td>
+<td><code>{name: "home"}</code></td>
+</tr>
+<tr>
+<td>mobile:enrollBiometric</td>
+<td>Enroll (or unenroll) an iOS Simulator to use <a href="https://developer.apple.com/design/human-interface-guidelines/ios/user-interaction/authentication/#face-id-and-touch-id">biometrics</a></td>
+<td><code>{isEnabled}</code></td>
+<td><code>{isEnabled: true}</code></td>
+</tr>
+<tr>
+<td>mobile:sendBiometricMatch</td>
+<td>Send a matching or non-matching biometric input to an iOS Simulator. 'type' must be <code>touchId</code> or <code>faceId</code>. Match is a boolean indicating if it's a matching or non-matching input</td>
+<td><code>{type, match}</code></td>
+<td><code>{type: "touchId", match: true}</code></td>
+</tr>
+<tr>
+<td>mobile:isBiometricEnrolled</td>
+<td>Check if an iOS Simulator is enrolled or not. Returns <code>true</code> if enrolled, <code>false</code> if not enrolled.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mobile:clearKeychains</td>
+<td>Clear the keychains for an iOS Simulator</td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id="android">Android</h3>
@@ -1906,6 +1955,12 @@ on syntax).</p>
 <td>Optional button label to click on</td>
 <td><none></none></td>
 </tr>
+<tr>
+<td>mobile:performEditorAction</td>
+<td>Performs the given editor action on the focused input field. The following action names are supported: <code>normal, unspecified, none, go, search, send, next, done, previous</code>.</td>
+<td>{action}</td>
+<td>{action: "previous"}</td>
+</tr>
 </tbody>
 </table>
 <h3 id="android-uiautomator2-only">Android (UiAutomator2 only)</h3>
@@ -1938,10 +1993,29 @@ on syntax).</p>
 <td><code>{url: "https://www.site.com/", package: "com.site.SomeAndroidPackage"}</code></td>
 </tr>
 <tr>
-<td>mobile:mobileGetDeviceInfo</td>
+<td>mobile:getDeviceInfo</td>
 <td>Gets device information like manufacturer and model. Read <a href="https://github.com/appium/appium-uiautomator2-server/blob/master/app/src/main/java/io/appium/uiautomator2/handler/GetDeviceInfo.java">GetDeviceInfo</a> for more details.</td>
 <td><none></none></td>
 <td><none></none></td>
+</tr>
+</tbody>
+</table>
+<h3 id="android-espresso-only">Android (Espresso only)</h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+<th>Argument</th>
+<th>Argument Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mobile:swipe</td>
+<td>Perform the <a href="https://developer.android.com/reference/android/support/test/espresso/action/ViewActions.html#swipeDown()">"swipe" view action</a></td>
+<td><code>{elementId, direction}</code></td>
+<td><code>{elementId: 2, direction: "down|up|left|right"}</code></td>
 </tr>
 </tbody>
 </table>

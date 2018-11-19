@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1633,7 +1639,13 @@ let handleTwoSize = await driver.getWindowSize("handleName");
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.window_size()
+            <pre><code class="ruby"># ruby_lib example
+window_size
+window_size("handleName")
+
+
+# ruby_lib_core example
+@driver.window_size
 @driver.window_size("handleName")
 
 </code></pre>

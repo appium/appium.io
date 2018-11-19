@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1626,7 +1632,12 @@ await driver.gsmCall('555-123-4567', 'Phone');
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.gsm_call(phone_number: '5551234567', action: :call)
+            <pre><code class="ruby"># ruby_lib example
+gsm_call(phone_number: '5551234567', action: :call)
+
+
+# ruby_lib_core example
+@driver.gsm_call(phone_number: '5551234567', action: :call)
 
 </code></pre>
           </div>

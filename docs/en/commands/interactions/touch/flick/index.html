@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1636,7 +1642,12 @@ await element.flick(1, 10, 10);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.touch_action.flick(element, 1, 10, 10).perform
+            <pre><code class="ruby"># ruby_lib example
+touch_action.flick(element, 1, 10, 10).perform
+
+
+# ruby_lib_core example
+@driver.touch_action.flick(element, 1, 10, 10).perform
 
 </code></pre>
           </div>

@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1611,7 +1617,7 @@
           <div role="tabpanel" class="tab-pane active" id="0_0">
             <pre><code class="java">Actions action = new Actions(driver);
 action.moveTo(element, 10, 10);
-action.perform()
+action.perform();
 
 </code></pre>
           </div>
@@ -1637,7 +1643,13 @@ await driver.moveTo(element, 10, 10);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.mouse.move_to(element)
+            <pre><code class="ruby"># ruby_lib example
+mouse.move_to(element)
+mouse.move_to(element, 5, 5)
+
+
+# ruby_lib_core example
+@driver.mouse.move_to(element)
 @driver.mouse.move_to(element, 5, 5)
 
 </code></pre>

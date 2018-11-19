@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1630,7 +1636,13 @@ await driver.lock();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.lock
+            <pre><code class="ruby"># ruby_lib example
+lock
+lock(5) # lock 5 seconds
+
+
+# ruby_lib_core example
+@driver.lock
 @driver.lock(5) # lock 5 seconds
 
 </code></pre>

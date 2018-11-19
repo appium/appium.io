@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1638,7 +1644,7 @@ self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-let options = { desiredCapabilities: { 
+let options = { desiredCapabilities: {
   platformName: 'Android',
   platformVersion: '7.0',
   automationName: 'UiAutomator2',
@@ -1665,7 +1671,8 @@ await driver.init(desiredCaps);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">APP_PATH = '../../path/to/app.app'
+            <pre><code class="ruby"># ruby_lib example
+APP_PATH = '../../path/to/app.app'
 
 desired_caps = {
   caps: {
@@ -1679,11 +1686,22 @@ desired_caps = {
 
 Appium::Driver.new(desired_caps).start_driver
 
+
+# ruby_lib_core example
+::Appium::Core.for(desired_caps).start_driver
+
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO C# sample
+            <pre><code class="csharp">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.SetCapability(MobileCapabilityType.PlatformName, "Android");
+capabilities.SetCapability(MobileCapabilityType.PlatformVersion, "7.1.1");
+capabilities.SetCapability(MobileCapabilityType.DeviceName, "Android Device");
+capabilities.SetCapability("appPackage", "com.instagram.android");
+capabilities.SetCapability("appActivity", "com.instagram.android.activity.MainTabActivity");
+
+AndroidDriver&lt;AndroidElement&gt; driver = new AndroidDriver&lt;AndroidElement&gt;(new Uri("http://127.0.0.1:4723/wd/hub/"), capabilities);
 
 </code></pre>
           </div>
@@ -1708,7 +1726,7 @@ Appium::Driver.new(desired_caps).start_driver
 
 
 <h2 id="description">Description</h2>
-<p>The server should attempt to create a session that most closely matches the desired and required capabilities. </p>
+<p>The server should attempt to create a session that most closely matches the desired and required capabilities.</p>
 <ul>
 <li><a href="https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#session-1">JSONWP Spec</a> Required capabilities have higher priority than desired capabilities and must be set for the session to be created</li>
 <li><a href="https://www.w3.org/TR/webdriver/#dfn-new-session">W3C Spec</a> capabilities.alwaysMatch must be set for session to be created; capabilities.firstMatch must match at least one (the first one to match will be used)</li>

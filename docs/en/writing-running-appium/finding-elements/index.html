@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1582,6 +1588,10 @@ using the <a href="/docs/en/writing-running-appium/ios/ios-predicate/index.html"
 search using the <a href="/docs/en/writing-running-appium/android/uiautomator-uiselector/index.html">UiAutomator Api</a> (Android-only)</li>
 <li><code>accessibility id</code>: a string corresponding to a recursive element search
 using the Id/Name that the native Accessibility options utilize.</li>
+</ul>
+<p>Finally, Appium supports an additional experimental locator strategy:</p>
+<ul>
+<li><code>-custom</code>: a string which will be sent to an element finding plugin registered via the <code>customFindModules</code> capability. For more information on this strategy, check out the <a href="/docs/en/advanced-concepts/element-finding-plugins/index.html">Element Finding Plugin</a> docs.</li>
 </ul>
 <h3 id="issues">Issues</h3>
 <p>There's a known issue with table cell elements becoming invalidated before

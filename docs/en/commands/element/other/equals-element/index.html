@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1635,7 +1641,14 @@ let isEqual = await elementOne.equalsElement(elementTwo);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">element1 = @driver.find_element :class_name, "someClass"
+            <pre><code class="ruby"># ruby_lib example
+element1 = find_element :class_name, "someClass"
+element2 = find_element :class_name, "someOtherClass"
+element1 == element2
+
+
+# ruby_lib_core example
+element1 = @driver.find_element :class_name, "someClass"
 element2 = @driver.find_element :class_name, "someOtherClass"
 element1 == element2
 

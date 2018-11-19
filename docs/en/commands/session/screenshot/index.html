@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1633,7 +1639,12 @@ let screenshot = await driver.takeScreenshot();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.screenshot_as(:base64)
+            <pre><code class="ruby"># ruby_lib example
+driver.screenshot_as(:base64) # via core_lib
+
+
+# ruby_lib_core example
+@driver.screenshot_as(:base64)
 
 </code></pre>
           </div>
@@ -1665,7 +1676,7 @@ let screenshot = await driver.takeScreenshot();
 
 <h2 id="description">Description</h2>
 <p>Takes a screenshot of the viewport in a native context (iOS, Android) and takes a screenshot of the window in web context</p>
-<p>Note that some platforms may have settings that prevent screenshots from being taken, for security reason. One such feature is 
+<p>Note that some platforms may have settings that prevent screenshots from being taken, for security reason. One such feature is
 the <a href="https://developer.android.com/reference/android/view/WindowManager.LayoutParams.html#FLAG_SECURE">Android FLAG_SECURE layout parameter</a></p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
@@ -1764,7 +1775,7 @@ the <a href="https://developer.android.com/reference/android/view/WindowManager.
 <tr>
 <td><a href="https://github.com/appium/ruby_lib/releases/latest">Ruby</a></td>
 <td>All</td>
-<td><a href="https://www.rubydoc.info/gems/selenium-webdriver/Selenium/WebDriver/DriverExtensions/TakesScreenshot">www.rubydoc.info</a></td>
+<td><a href="https://www.rubydoc.info/github/appium/ruby_lib_core/Appium/Core/Base/TakeScreenshot#screenshot_as-instance_method">www.rubydoc.info</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/php-client/releases/latest">PHP</a></td>

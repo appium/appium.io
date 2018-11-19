@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1629,7 +1635,13 @@ await driver.stopRecordingScreen();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.stop_recording_screen
+            <pre><code class="ruby"># ruby_lib example
+stop_recording_screen
+stop_recording_screen remote_path: 'https://example.com', user: 'example', pass: 'pass', method: 'POST'
+
+
+# ruby_lib_core example
+@driver.stop_recording_screen
 @driver.stop_recording_screen remote_path: 'https://example.com', user: 'example', pass: 'pass', method: 'POST'
 
 </code></pre>
@@ -1784,7 +1796,7 @@ await driver.stopRecordingScreen();
 </thead>
 <tbody>
 <tr>
-<td>remote_path</td>
+<td>remotePath</td>
 <td>The path to the remote location, where the resulting video should be uploaded. The following protocols are supported http/https, ftp. Null or empty string value (the default setting) means the content of resulting file should be encoded as Base64 and passed as the endpoint response value. An exception will be thrown if the generated media file is too big to fit into the available process memory.</td>
 </tr>
 <tr>

@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1612,7 +1618,8 @@
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python"># Not supported
+            <pre><code class="python">self.driver.update_settings({"sample": "value"}))
+
 </code></pre>
           </div>
           
@@ -1629,7 +1636,12 @@ await driver.updateSettings({nativeWebTap: true});
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.update_settings(sample: 'value')
+            <pre><code class="ruby"># ruby_lib example
+update_settings(sample: 'value')
+
+
+# ruby_lib_core example
+@driver.update_settings(sample: 'value')
 
 </code></pre>
           </div>
@@ -1739,7 +1751,7 @@ await driver.updateSettings({nativeWebTap: true});
 <tr>
 <td><a href="https://github.com/appium/python-client/releases/latest">Python</a></td>
 <td>None</td>
-<td></td>
+<td><a href="https://github.com/appium/python-client/blob/af1988e55e9856cff3a918e901f92d065195b904/appium/webdriver/webdriver.py#L1138">github.com</a></td>
 </tr>
 <tr>
 <td><a href="http://webdriver.io/index.html">Javascript (WebdriverIO)</a></td>

@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1649,7 +1655,12 @@ await driver.buttonUp();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.action.click_and_hold(el).move_to(el, 10, 10).release.perform
+            <pre><code class="ruby"># ruby_lib example
+action.click_and_hold(el).move_to(el, 10, 10).release.perform
+
+
+# ruby_lib_core example
+@driver.action.click_and_hold(el).move_to(el, 10, 10).release.perform
 
 </code></pre>
           </div>

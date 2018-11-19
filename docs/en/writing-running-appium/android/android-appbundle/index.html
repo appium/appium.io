@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>XCUITest Mobile Gestures - Appium</title>
+    <title>How To Test Android App Bundle - Appium</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -1280,38 +1280,38 @@
     <ul class="dropdown-menu">
         
             
-<li class="active">
-    <a href="./">XCUITest Mobile Gestures</a>
+<li>
+    <a href="../../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
         
             
 <li>
-    <a href="../ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
+    <a href="../../ios/ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
 </li>
 
         
             
 <li>
-    <a href="../ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+    <a href="../../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../ios-predicate/">iOS Predicate Guide</a>
+    <a href="../../ios/ios-predicate/">iOS Predicate Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../ios-touch-id/">iOS Touch ID Guide</a>
+    <a href="../../ios/ios-touch-id/">iOS Touch ID Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../ios-xctest-install-certificate/">iOS Install Certificate</a>
+    <a href="../../ios/ios-xctest-install-certificate/">iOS Install Certificate</a>
 </li>
 
         
@@ -1326,37 +1326,37 @@
         
             
 <li>
-    <a href="../../android/uiautomator-uiselector/">UiSelector Guide</a>
+    <a href="../uiautomator-uiselector/">UiSelector Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../../android/android-coverage/">Android Code Coverage Guide</a>
+    <a href="../android-coverage/">Android Code Coverage Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../../android/activity-startup/">Activities Startup Troubleshooting Guide</a>
+    <a href="../activity-startup/">Activities Startup Troubleshooting Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../../android/android-shell/">How To Execute Shell Commands On The Remote Device</a>
+    <a href="../android-shell/">How To Execute Shell Commands On The Remote Device</a>
 </li>
 
         
             
 <li>
-    <a href="../../android/android-ime/">How To Emulate IME Actions Generation</a>
+    <a href="../android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
         
             
-<li>
-    <a href="../../android/android-appbundle/">How To Test Android App Bundle</a>
+<li class="active">
+    <a href="./">How To Test Android App Bundle</a>
 </li>
 
         
@@ -1525,12 +1525,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../../web/chromedriver/">
+                        <a rel="next" href="../android-ime/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../ios-xctest-mobile-apps-management/">
+                        <a rel="prev" href="../../other/reset-strategies/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1546,300 +1546,76 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#automating-mobile-gestures-for-ios-with-webdriveragentxctest-backend">Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend</a></li>
+        <li class="first-level active"><a href="#how-to-test-android-app-bundle">How To Test Android App Bundle</a></li>
         
-            <li class="second-level"><a href="#mobile-swipe">mobile: swipe</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples">Usage examples</a></li>
-            
+    
+        <li class="first-level "><a href="#how-to-run-tests">How to run tests</a></li>
         
-            <li class="second-level"><a href="#mobile-scroll">mobile: scroll</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_1">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_1">Usage examples</a></li>
+    
+        <li class="first-level "><a href="#tips">Tips</a></li>
+        
+            <li class="second-level"><a href="#test-with-different-languages">Test with different languages</a></li>
             
         
-            <li class="second-level"><a href="#mobile-pinch">mobile: pinch</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_2">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_2">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-doubletap">mobile: doubleTap</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_3">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_3">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-touchandhold">mobile: touchAndHold</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_4">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_4">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-twofingertap">mobile: twoFingerTap</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_5">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_5">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-tap">mobile: tap</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_6">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_6">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-dragfromtoforduration">mobile: dragFromToForDuration</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_7">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_7">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-selectpickerwheelvalue">mobile: selectPickerWheelValue</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_8">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_8">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-alert">mobile: alert</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_9">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_9">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#advanced-topics">Advanced Topics</a></li>
-            
+    
+        <li class="first-level "><a href="#an-example-project">An example project</a></li>
         
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="automating-mobile-gestures-for-ios-with-webdriveragentxctest-backend"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/writing-running-appium/ios/ios-xctest-mobile-gestures.md">
+        <div class="col-md-9 documentation" role="main"><h2 id="how-to-test-android-app-bundle"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/writing-running-appium/android/android-appbundle.md">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend</h2>
-<p>Unfortunately Apple's XCTest framework does not natively support W3C standards for
-TouchAction interface implementation. Although, it provides rich set of gestures,
-inluding these, that are unique for iOS platform. It is possible to directly invoke these
-gestures in Appium starting from version 1.6.4-beta.</p>
-<p>It is important to rememeber that XCTest and WDA are being constantly changed.
-This means all "mobile: *" commands can be also subject of change in Appium
-without any preliminary notice.</p>
-<h3 id="mobile-swipe">mobile: swipe</h3>
-<p>This gesture performs a simple "swipe" gesture on the particular screen element or
-on the application element, which is usually the whole screen. This method does not
-accept coordnates and siply emulates single swipe with one finger. It might be
-useful for such cases like album pagination, switching views, etc. More advanced
-cases may require to call "mobile: dragFromToForDuration", where one can supply
-coordinates and duration.</p>
-<h4 id="supported-arguments">Supported arguments</h4>
-<ul>
-<li><em>direction</em>: Either 'up', 'down', 'left' or 'right'. The parameter is mandatory</li>
-<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to swipe on.
- Application element will be used instead if this parameter is not provided</li>
+  </a>How To Test Android App Bundle</h2>
+<p>Google has released the <a href="https://developer.android.com/platform/technology/app-bundle/">Android App Bundle</a> feature.
+An <code>.aab</code> file is generated by the feature, which we are supposed to upload to the Google Play Store. We can manage the <code>.aab</code> file via CLI using the official <a href="https://developer.android.com/studio/command-line/bundletool">bundletool</a> which is available from <a href="https://github.com/google/bundletool">bundletool</a>. <a href="https://developer.android.com/guide/app-bundle/">The guide</a> also help us to understand the feature.</p>
+<p>We can get distributed apk files from the <code>.aab</code> file via the CLI. Using the generated files, we can test against the release module. Since Appium 1.9.2, you can Appium tests against an <code>.apks</code> file using UiAutomator2 driver. <a href="https://github.com/appium/appium-adb/pull/367">1</a> and <a href="https://github.com/appium/appium-base-driver/pull/271">2</a> are PRs for the feature.</p>
+<h2 id="how-to-run-tests">How to run tests</h2>
+<ol>
+<li>Export <code>bundletool.jar</code> in your path<ul>
+<li>Appium looks for <code>bundletool.jar</code> in your local environemnt. Make sure you can find the path with <code>which 'bundletool.jar'</code>. If you can't find it, please set the path correctly.</li>
 </ul>
-<h4 id="usage-examples">Usage examples</h4>
-<pre><code class="java">// Java
-JavascriptExecutor js = (JavascriptExecutor) driver;
-Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
-params.put("direction", "down");
-params.put("element", ((RemoteWebElement) element).getId());
-js.executeScript("mobile: swipe", params);
-</code></pre>
-
-<h3 id="mobile-scroll">mobile: scroll</h3>
-<p>Scrolls the element or the whole screen. Different scrolling strategies are supported.
-Arguments define the choosen strategy: either 'name', 'direction', 'predicateString' or
-'toVisible' in that order. All strategies are exclusive and only one strategy
-can be applied at a single moment of time. Use "mobile: scroll" to emulate precise
-scrolling in tables or collection views, where it is already known to which element
-the scrolling should be performed. Although, there is one known limitation there: in case
-it is necessary to perform too many scroll gestures on parent container to reach the
-necessary child element (tens of them) then the method call may fail.</p>
-<h4 id="supported-arguments_1">Supported arguments</h4>
-<ul>
-<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to scroll on.
- Application element will be used if this argument is not set</li>
-<li><em>name</em>: the accessibility id of the child element, to which scrolling is performed.
- The same result can be achieved by setting <em>predicateString</em> argument to
- 'name == accessibilityId'. Has no effect if <em>element</em> is not a container</li>
-<li><em>direction</em>: Either 'up', 'down', 'left' or 'right'. The main difference from
- <em>swipe</em> call with the same argument is that <em>scroll</em> will try to move the current viewport
- exactly to the next/previous page (the term "page" means the content, which fits into
- a single device screen)</li>
-<li><em>predicateString</em>: the NSPredicate locator of the child element, to which
- the scrolling should be performed. Has no effect if <em>element</em> is not a container</li>
-<li><em>toVisible</em>: Boolean parameter. If set to <em>true</em> then asks to scroll to
- the first visible <em>element</em> in the parent container. Has no effect if <em>element</em> is
- not set</li>
+</li>
+<li>Generate the <code>.apks</code> file from the <code>.aab</code> file<ul>
+<li>The <code>.aab</code> is available over Android Studio 3.2</li>
+<li>You must sign correctly when you generate <code>.apks</code> from <code>.aab</code>. This step requires data signing.
+    <code>bash
+    $ java -jar apks/bundletool-all-0.6.0.jar build-apks \
+      --bundle apks/release/release/app.aab \ # A generated aab file
+      --output apks/AppBundleSample.apks \    # An apks file you'd like to out put to
+      --ks apks/sign \                        # Signing keystore
+      --ks-key-alias key0 \                   # Alias of the keytstore
+      --ks-pass pass:kazucocoa \              # Password of the keystore
+      --overwrite                             # Overwrite any existing apks files</code></li>
 </ul>
-<h4 id="usage-examples_1">Usage examples</h4>
-<pre><code class="python"># Python
-driver.execute_script('mobile: scroll', {'direction': 'down'});
-</code></pre>
-
-<h3 id="mobile-pinch">mobile: pinch</h3>
-<p>Performs pinch gesture on the given element or on the application element.</p>
-<h4 id="supported-arguments_2">Supported arguments</h4>
+</li>
+<li>
+<p>Use the path to the <code>.apks</code> file as your <code>app</code> capability.
+    ```ruby
+    desired_capability = caps: {
+        platformName: :android,
+        automationName: 'uiautomator2',
+        platformVersion: '8.1',
+        deviceName: 'Android Emulator',
+        app: "path/to/your.apks",   # This line is important
+        fullReset: true,
+        ...
+    }</p>
+<p>core = ::Appium::Core.for(desired_capability)
+driver = core.start_driver
+```</p>
+</li>
+</ol>
+<p>You can find another way to get test APKs in https://developer.android.com/guide/app-bundle/</p>
+<h2 id="tips">Tips</h2>
+<h3 id="test-with-different-languages">Test with different languages</h3>
+<p>Set <code>fullReset: true</code> if you would like to test against the app using different languages' resources.</p>
+<p>Appium only installs the minimum set of resources, following the behavior of the appbundle feature. For example, if a device's language is set of English, Appium will only install the <code>en</code> resource. The installed apk will have no Japanese resources.</p>
+<p>In orfer to force re-install with a different set of language resources, specify <code>fullreset: true</code></p>
+<h2 id="an-example-project">An example project</h2>
 <ul>
-<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to pinch on.
- Application element will be used instead if this parameter is not provided</li>
-<li><em>scale</em>: Pinch scale of type float. Use a scale between 0 and 1 to "pinch close" or
- zoom out and a scale greater than 1 to "pinch open" or zoom in. Mandatory parameter</li>
-<li><em>velocity</em>: The velocity of the pinch in scale factor per second (float value). Mandatory parameter</li>
-</ul>
-<h4 id="usage-examples_2">Usage examples</h4>
-<pre><code class="ruby"># Ruby
-execute_script 'mobile: pinch', scale: 0.5, velocity: 1.1, element: element.ref
-</code></pre>
-
-<h3 id="mobile-doubletap">mobile: doubleTap</h3>
-<p>Performs double tap gesture on the given element or on the screen.</p>
-<h4 id="supported-arguments_3">Supported arguments</h4>
-<ul>
-<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to double tap on</li>
-<li><em>x</em>: Screen x tap coordinate of type float. Mandatory parameter only if <em>element</em> is not set</li>
-<li><em>y</em>: Screen y tap coordinate of type float. Mandatory parameter only if <em>element</em> is not set</li>
-</ul>
-<h4 id="usage-examples_3">Usage examples</h4>
-<pre><code class="javascript">// javascript
-driver.execute('mobile: doubleTap', {element: element.value.ELEMENT});
-</code></pre>
-
-<h3 id="mobile-touchandhold">mobile: touchAndHold</h3>
-<p>Performs long press gesture on the given element or on the screen.</p>
-<h4 id="supported-arguments_4">Supported arguments</h4>
-<ul>
-<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to long tap on</li>
-<li><em>duration</em>: The float duration of press action in seconds. Mandatory patameter</li>
-<li><em>x</em>: Screen x long tap coordinate of type float. Mandatory parameter only if <em>element</em> is not set</li>
-<li><em>y</em>: Screen y long tap coordinate of type float. Mandatory parameter only if <em>element</em> is not set</li>
-</ul>
-<h4 id="usage-examples_4">Usage examples</h4>
-<pre><code class="csharp">// c#
-Dictionary&lt;string, object&gt; tfLongTap = new Dictionary&lt;string, object&gt;();
-tfLongTap.Add("element", element.Id);
-tfLongTap.Add("duration", 2.0);
-((IJavaScriptExecutor)driver).ExecuteScript("mobile: touchAndHold", tfLongTap);
-</code></pre>
-
-<h3 id="mobile-twofingertap">mobile: twoFingerTap</h3>
-<p>Performs two finger tap gesture on the given element or on the application element.</p>
-<h4 id="supported-arguments_5">Supported arguments</h4>
-<ul>
-<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to double tap on.
- Application element will be used instead if this
- parameter is not provided</li>
-</ul>
-<h4 id="usage-examples_5">Usage examples</h4>
-<pre><code class="csharp">// c#
-Dictionary&lt;string, object&gt; tfTap = new Dictionary&lt;string, object&gt;();
-tfTap.Add("element", element.Id);
-((IJavaScriptExecutor)driver).ExecuteScript("mobile: twoFingerTap", tfTap);
-</code></pre>
-
-<h3 id="mobile-tap">mobile: tap</h3>
-<p>Performs tap gesture by coordinates on the given element or on the screen.</p>
-<h4 id="supported-arguments_6">Supported arguments</h4>
-<ul>
-<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to long tap on.
- <em>x</em> and <em>y</em> tap coordinates will be calulated relatively to the current element position on the
- screen if this argument is provided. Otherwise they should be calculated
- relatively to screen borders.</li>
-<li><em>x</em>: x tap coordinate of type float. Mandatory parameter</li>
-<li><em>y</em>: y tap coordinate of type float. Mandatory parameter</li>
-</ul>
-<h4 id="usage-examples_6">Usage examples</h4>
-<pre><code class="php">// PHP
-$params = array(array('x' =&gt; 100.0, 'y' =&gt; 50.0, 'element' =&gt; element.GetAttribute("id")));
-$driver-&gt;executeScript("mobile: tap", $params);
-</code></pre>
-
-<h3 id="mobile-dragfromtoforduration">mobile: dragFromToForDuration</h3>
-<p>Performs drag and drop gesture by coordinates. This can be done either on an element or
-on the screen</p>
-<h4 id="supported-arguments_7">Supported arguments</h4>
-<ul>
-<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to perform drag on.
- All the coordinates will be calculated relatively this this element position on the screen.
- Absolute screen coordinates are expected if this argument is not set</li>
-<li><em>duration</em>: Float number of seconds in range [0.5, 60]. How long the tap gesture at
- starting drag point should be before to start dragging. Mandatory parameter</li>
-<li><em>fromX</em>: The x coordinate of starting drag point (type float). Mandatory parameter</li>
-<li><em>fromY</em>: The y coordinate of starting drag point (type float). Mandatory parameter</li>
-<li><em>toX</em>: The x coordinate of ending drag point (type float). Mandatory parameter</li>
-<li><em>toY</em>: The y coordinate of ending drag point (type float). Mandatory parameter</li>
-</ul>
-<h4 id="usage-examples_7">Usage examples</h4>
-<pre><code class="java">// Java
-JavascriptExecutor js = (JavascriptExecutor) driver;
-Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
-params.put("duration", 1.0);
-params.put("fromX", 100);
-params.put("fromY", 100);
-params.put("toX", 200);
-params.put("toY", 200);
-params.put("element", ((RemoteWebElement) element).getId());
-js.executeScript("mobile: dragFromToForDuration", params);
-</code></pre>
-
-<h3 id="mobile-selectpickerwheelvalue">mobile: selectPickerWheelValue</h3>
-<p>Performs selection of the next or previous picker wheel value. This might
-be useful if these values are populated dynamically, so you don't know which
-one to select or value selection does not work because of XCTest bug.</p>
-<h4 id="supported-arguments_8">Supported arguments</h4>
-<ul>
-<li><em>element</em>: PickerWheel's internal element id (as hexadecimal hash string) to perform
- value selection on. The element must be of type XCUIElementTypePickerWheel. Mandatory parameter</li>
-<li><em>order</em>: Either <em>next</em> to select the value next to the current one
- from the target picker wheel or <em>previous</em> to select the previous one. Mandatory parameter</li>
-<li><em>offset</em>: The value in range [0.01, 0.5]. It defines how far from picker
- wheel's center the click should happen. The actual distance is calculated by
- multiplying this value to the actual picker wheel height. Too small offset value
- may not change the picker wheel value and too high value may cause the wheel to switch
- two or more values at once. Usually the optimal value is located in range [0.15, 0.3]. <em>0.2</em> by default</li>
-</ul>
-<h4 id="usage-examples_8">Usage examples</h4>
-<pre><code class="java">// Java
-JavascriptExecutor js = (JavascriptExecutor) driver;
-Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
-params.put("order", "next");
-params.put("offset", 0.15);
-params.put("element", ((RemoteWebElement) element).getId());
-js.executeScript("mobile: selectPickerWheelValue", params);
-</code></pre>
-
-<h3 id="mobile-alert">mobile: alert</h3>
-<p>Performs operations on NSAlert instance.</p>
-<h4 id="supported-arguments_9">Supported arguments</h4>
-<ul>
-<li><em>action</em>: The following actions are supported: <em>accept</em>, <em>dismiss</em> and <em>getButtons</em>.
- Mandatory parameter</li>
-<li><em>buttonLabel</em>: The label text of an existing alert button to click on. This is an
- optional parameter and is only valid in combination with <em>accept</em> and <em>dismiss</em>
- actions.</li>
-</ul>
-<h4 id="usage-examples_9">Usage examples</h4>
-<pre><code class="python"># Python
-driver.execute_script('mobile: alert', {'action': 'accept', 'buttonLabel': 'My Cool Alert Button'});
-</code></pre>
-
-<h3 id="advanced-topics">Advanced Topics</h3>
-<p>Check <a href="https://github.com/facebook/WebDriverAgent/blob/master/WebDriverAgentLib/Commands/FBElementCommands.m">WDA Element Commands API</a>
-to get the information about the gestures implemented in Facebook WebDriverAgent.
-Check Apple XCTest documentation on <a href="https://developer.apple.com/reference/xctest/xcuielement">XCUIElement</a> and
-<a href="https://developer.apple.com/reference/xctest/xcuicoordinate">XCUICoordinate</a> methods list to get the information
-about all gestures available there.</p></div>
+<li>https://github.com/KazuCocoa/AppBundleSample</li>
+</ul></div>
         
     </div>
 

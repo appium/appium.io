@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1632,7 +1638,12 @@ let tagName = await element.getAttribute("content-desc");
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.find_element(:accessibility_id, 'SomeAccessibilityID').attribute("content-desc")
+            <pre><code class="ruby"># ruby_lib example
+find_element(:accessibility_id, 'SomeAccessibilityID').attribute("content-desc")
+
+
+# ruby_lib_core example
+@driver.find_element(:accessibility_id, 'SomeAccessibilityID').attribute("content-desc")
 
 </code></pre>
           </div>

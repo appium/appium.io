@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1645,7 +1651,15 @@ await driver.context('NATIVE_APP');
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">webview = @driver.available_contexts[1]
+            <pre><code class="ruby"># ruby_lib example
+webview = available_contexts[1]
+set_context(webview)
+# ...
+set_context('NATIVE_APP')
+
+
+# ruby_lib_core example
+webview = @driver.available_contexts[1]
 @driver.set_context(webview)
 # ...
 @driver.set_context('NATIVE_APP')

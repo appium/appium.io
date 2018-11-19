@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1635,7 +1641,12 @@ let cssProperty = await element.getComputedCss();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">@driver.find_element(:id, 'SomeId').css_value
+            <pre><code class="ruby"># ruby_lib example
+find_element(:id, 'SomeId').css_value
+
+
+# ruby_lib_core example
+@driver.find_element(:id, 'SomeId').css_value
 
 </code></pre>
           </div>

@@ -1354,6 +1354,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../android/android-appbundle/">How To Test Android App Bundle</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1621,7 +1627,7 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>app</code></td>
-<td>The absolute local path <em>or</em> remote http URL to a <code>.ipa</code> file (IOS), <code>.app</code> folder (IOS Simulator) or <code>.apk</code> file (Android), or a <code>.zip</code> file containing one of these (for .app, the .app folder must be the root of the zip file). Appium will attempt to install this app binary on the appropriate device first. Note that this capability is not required for Android if you specify <code>appPackage</code> and <code>appActivity</code> capabilities (see below). Incompatible with <code>browserName</code>.</td>
+<td>The absolute local path <em>or</em> remote http URL to a <code>.ipa</code> file (IOS), <code>.app</code> folder (IOS Simulator), <code>.apk</code> file (Android) or <code>.apks</code> file (Android App Bundle), or a <code>.zip</code> file containing one of these (for .app, the .app folder must be the root of the zip file). Appium will attempt to install this app binary on the appropriate device first. Note that this capability is not required for Android if you specify <code>appPackage</code> and <code>appActivity</code> capabilities (see below). Incompatible with <code>browserName</code>. See <a href="/docs/en/writing-running-appium/android/android-appbundle/index.html">here</a> about <code>.apks</code> file.</td>
 <td><code>/abs/path/to/my.apk</code> or <code>http://myapp.com/app.ipa</code></td>
 </tr>
 <tr>
@@ -1636,13 +1642,13 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>language</code></td>
-<td>(Sim/Emu-only) Language to set for the simulator / emulator. On Android, available only on API levels 22 and below</td>
+<td>Language to set for iOS and Android. It is only available for simulator on iOS</td>
 <td>e.g. <code>fr</code></td>
 </tr>
 <tr>
 <td><code>locale</code></td>
-<td>(Sim/Emu-only) Locale to set for the simulator / emulator.</td>
-<td>e.g. <code>fr_CA</code></td>
+<td>Locale to set for iOS and Android. It is only available for simulator on iOS. <code>fr_CA</code> format for iOS. <code>CA</code> format (country name abbreviation) for Android</td>
+<td>e.g. <code>fr_CA</code>, <code>CA</code></td>
 </tr>
 <tr>
 <td><code>udid</code></td>
@@ -1947,6 +1953,16 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>otherApps</code></td>
 <td>App or list of apps (as a JSON array) to install prior to running tests</td>
 <td>e.g., <code>"/path/to/app.apk"</code>, <code>https://www.example.com/url/to/app.apk</code>, <code>["/path/to/app-a.apk", "/path/to/app-b.apk"]</code></td>
+</tr>
+<tr>
+<td><code>adbExecTimeout</code></td>
+<td>Timeout in milliseconds used to wait for adb command execution. Defaults to <code>20000</code></td>
+<td>e.g., <code>50000</code></td>
+</tr>
+<tr>
+<td><code>localeScript</code></td>
+<td>Sets the locale <a href="https://developer.android.com/reference/java/util/Locale">script</a></td>
+<td>e.g., <code>"Cyrl"</code> (Cyrillic)</td>
 </tr>
 </tbody>
 </table>
