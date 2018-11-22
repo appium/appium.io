@@ -1,11 +1,6 @@
-import Github from '@octokit/rest';
-import request from 'request-promise';
-import { fs, tempDir, mkdirp, logger } from 'appium-support';
+import { fs, logger } from 'appium-support';
 import { exec } from 'teen_process';
-import nodeFS from 'fs';
-import path from 'path';
-import unzip from 'unzip';
-import B from 'bluebird';
+import path from 'path';;
 import Handlebars from 'handlebars';
 import _ from 'lodash';
 import { fencedCodeTabifyDocument } from './tabs';
@@ -17,45 +12,10 @@ import { remap404Hrefs } from './href-remap';
 const LANGUAGES = ['en', 'cn'];
 const log = logger.getLogger('APPIUM.IO');
 
-async function unzipStream (readstream, pathToUnzipped) {
-  return await new B((resolve, reject) => {
-    readstream.pipe(unzip.Extract({
-      path: pathToUnzipped,
-    }));
-    readstream.on('end', resolve);
-    readstream.on('close', reject);
-  });
-}
-
-async function getRepoDocs (owner, repo, branch='master') {
-  // Pull down a zipball of Appium repository
-  const github = new Github();
-  const githubBranch = await github.repos.getBranch({owner, repo, branch});
-
-  const ref = githubBranch.data.commit.sha;
-  const downloadUrl = `https://api.github.com/repos/${owner}/${repo}/zipball/${ref}`;
-  log.debug(`Downloading repo from: ${downloadUrl}`);
-  const archive = await request(downloadUrl, {
-    headers: {
-      'User-Agent': 'appium',
-    },
-    encoding: null,
-  });
-
-  // Unzip it to a temporary directory
-  const tempdir = await tempDir.openDir();
-  const pathToZip = path.resolve(tempdir, 'appium.zip');
-  await fs.writeFile(pathToZip, archive);
-  const readStream = nodeFS.createReadStream(pathToZip);
-
-  const pathToUnzipped = path.resolve(tempdir, 'appium', branch);
-  await mkdirp(pathToUnzipped);
-
-  await unzipStream(readStream, pathToUnzipped);
-
-  // Get a reference to the path to the docs
-  const pathToAppiumFiles = await fs.readdir(pathToUnzipped);
-  const pathToDocs = path.resolve(pathToUnzipped, pathToAppiumFiles[0], 'docs');
+async function getAppiumDocs () {
+  log.info(`Cloning Appium from GitHub`);
+  await exec('git', ['clone', 'https://github.com/appium/appium.git', 'appium']);
+  const pathToDocs = path.resolve('appium', 'docs');
 
   // Do some treating on the docs to get it working correctly
   await alterDocs(pathToDocs);
@@ -169,6 +129,7 @@ async function buildDocs (pathToDocs) {
   if (process.env.BUILD_LOCAL_DOCS) {
     return await buildFromLocal();
   }
-  const pathToRepoDocs = await getRepoDocs('appium', 'appium');
+  const pathToRepoDocs = await getAppiumDocs();
   await buildDocs(pathToRepoDocs);
+  await fs.rimraf('appium');
 })().catch(log.error.bind(log));

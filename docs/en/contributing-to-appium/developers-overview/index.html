@@ -1735,8 +1735,7 @@ converted into the <code>npm-shrinkwrap.json</code> file.</p>
 <li>Determine whether we have a <code>patch</code> (bugfix), <code>minor</code> (feature), or <code>major</code> (breaking) release according to the principles of SemVer.</li>
 <li>Update <code>package.json</code> with the appropriate new version.</li>
 <li>Update the CHANGELOG/README with appropriate changes and submit for review as a PR, along with shrinkwrap and <code>package.json</code> changes. Wait for it to be merged, then pull it into the release branch.</li>
-<li><code>rm -rf node_modules &amp;&amp; npm install --production</code> to get just the production dependencies.</li>
-<li><code>npm shrinkwrap</code> to write the new NPM shrinkwrap JSON file, and commit this file.</li>
+<li>Run <code>npm run prod-shrinkwrap</code> to install just the production dependencies and create a shrinkwrap that only locks production dependencies.</li>
 <li>Create a tag of the form <code>v&lt;version&gt;</code> on the release branch (usually a minor branch like <code>1.5</code> or <code>1.4</code>), with: <code>git tag -a v&lt;version&gt;</code>, e.g., <code>git tag -a v1.5.0</code>. This is not necessary for beta versions.</li>
 <li>Push the tag to upstream: <code>git push --tags &lt;remote&gt; &lt;branch&gt;</code></li>
 <li>Install dev dependencies (or at least <code>gulp</code> and <code>appium-gulp-plugins</code>), and undo the changes to the NPM shrinkwrap JSON file (e.g., <code>git checkout -- npm-shrinkwrap.json</code>).</li>

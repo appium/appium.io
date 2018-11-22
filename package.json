@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/appium/appium.io#readme",
   "dependencies": {
-    "@octokit/rest": "^15.8.1",
     "appium-support": "^2.8.3",
     "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.7.0",
@@ -42,7 +41,6 @@
     "jquery": "^3.2.1",
     "jsdom": "^11.11.0",
     "lodash": "^4.17.4",
-    "octonode": "^0.9.2",
     "replace-ext": "^1.0.0",
     "request-promise": "^4.2.1",
     "teen_process": "^1.10.0",
