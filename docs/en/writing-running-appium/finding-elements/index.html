@@ -1410,6 +1410,18 @@
                         
                             
 <li>
+    <a href="../../advanced-concepts/image-elements/">Finding Image Elements</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/element-finding-plugins/">Using Element Finding Plugins</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../advanced-concepts/migrating-to-xcuitest/">Migrating to XCUITest</a>
 </li>
 
@@ -1589,8 +1601,9 @@ search using the <a href="/docs/en/writing-running-appium/android/uiautomator-ui
 <li><code>accessibility id</code>: a string corresponding to a recursive element search
 using the Id/Name that the native Accessibility options utilize.</li>
 </ul>
-<p>Finally, Appium supports an additional experimental locator strategy:</p>
+<p>Finally, Appium supports several additional experimental locator strategies:</p>
 <ul>
+<li><code>-image</code>: a string corresponding to a base64-encoded version of an image which should be used by Appium as a template to find a matching screen region, which can then be tapped as if it were an element. For more information on this locator strategy, see the <a href="/docs/en/advanced-concepts/image-elements/index.html">Finding Image Elements</a> doc.</li>
 <li><code>-custom</code>: a string which will be sent to an element finding plugin registered via the <code>customFindModules</code> capability. For more information on this strategy, check out the <a href="/docs/en/advanced-concepts/element-finding-plugins/index.html">Element Finding Plugin</a> docs.</li>
 </ul>
 <h3 id="issues">Issues</h3>
