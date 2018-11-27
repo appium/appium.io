@@ -1410,6 +1410,18 @@
                         
                             
 <li>
+    <a href="../../../advanced-concepts/image-elements/">Finding Image Elements</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../advanced-concepts/element-finding-plugins/">Using Element Finding Plugins</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../../advanced-concepts/migrating-to-xcuitest/">Migrating to XCUITest</a>
 </li>
 
@@ -1530,7 +1542,7 @@
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../../../advanced-concepts/migrating-to-xcuitest/">
+                        <a rel="prev" href="../../../advanced-concepts/image-elements/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1558,6 +1570,9 @@
             
         
             <li class="second-level"><a href="#android">Android</a></li>
+            
+        
+            <li class="second-level"><a href="#android-espresso">Android Espresso</a></li>
             
         
             <li class="second-level"><a href="#windows">Windows</a></li>
@@ -1626,6 +1641,10 @@ own items in the SDK manager. Make sure you install the build-tools and platform
 <li>Make sure you set ANDROID_HOME pointing to the Android SDK directory</li>
 <li>After setting power state to <code>off</code> (e.g.: <code>driver.setPowerAC(PowerACState.OFF);</code>) you must create a new session.</li>
 <li>When using <code>-wipe-data</code> in <code>avdArgs</code> the <code>noReset</code> capability will be ignored if set to true.</li>
+</ul>
+<h3 id="android-espresso">Android Espresso</h3>
+<ul>
+<li>Appium is supposed to disable animations by default, but if it doesn't work try following the <a href="https://developer.android.com/training/testing/espresso/setup">Espresso setup instructions</a> which advises that "To avoid flakiness, we highly recommend that you turn off system animations on the virtual or physical devices used for testing. On your device, under Settings &gt; Developer options, disable the following 3 settings: Window animation scale, Transition animation scale, Animator Duration scale"</li>
 </ul>
 <h3 id="windows">Windows</h3>
 <ul>
