@@ -1410,6 +1410,18 @@
                         
                             
 <li>
+    <a href="../../advanced-concepts/image-elements/">Finding Image Elements</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/element-finding-plugins/">Using Element Finding Plugins</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../advanced-concepts/migrating-to-xcuitest/">Migrating to XCUITest</a>
 </li>
 
@@ -1906,6 +1918,12 @@ on syntax).</p>
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td>mobile:siriCommand</td>
+<td>Sends a command to Siri</td>
+<td><code>{text}</code></td>
+<td><code>{text: "What time is it?"}</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="android">Android</h3>
@@ -1938,24 +1956,6 @@ on syntax).</p>
 <td><none></none></td>
 </tr>
 <tr>
-<td>mobile:batteryInfo</td>
-<td>Reads the battery information from the device under test</td>
-<td><none></none></td>
-<td><none></none></td>
-</tr>
-<tr>
-<td>mobile:acceptAlert</td>
-<td>Accepts an on-screen alert</td>
-<td>Optional button label to click on</td>
-<td><none></none></td>
-</tr>
-<tr>
-<td>mobile:dismissAlert</td>
-<td>Dismisses an on-screen alert</td>
-<td>Optional button label to click on</td>
-<td><none></none></td>
-</tr>
-<tr>
 <td>mobile:performEditorAction</td>
 <td>Performs the given editor action on the focused input field. The following action names are supported: <code>normal, unspecified, none, go, search, send, next, done, previous</code>.</td>
 <td>{action}</td>
@@ -1974,6 +1974,24 @@ on syntax).</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>mobile:batteryInfo</td>
+<td>Reads the battery information from the device under test</td>
+<td><none></none></td>
+<td><none></none></td>
+</tr>
+<tr>
+<td>mobile:acceptAlert</td>
+<td>Accepts an on-screen alert</td>
+<td>Optional button label to click on</td>
+<td><none></none></td>
+</tr>
+<tr>
+<td>mobile:dismissAlert</td>
+<td>Dismisses an on-screen alert</td>
+<td>Optional button label to click on</td>
+<td><none></none></td>
+</tr>
 <tr>
 <td>mobile:scrollBackTo</td>
 <td>Scroll from one element to another</td>
@@ -2016,6 +2034,12 @@ on syntax).</p>
 <td>Perform the <a href="https://developer.android.com/reference/android/support/test/espresso/action/ViewActions.html#swipeDown()">"swipe" view action</a></td>
 <td><code>{elementId, direction}</code></td>
 <td><code>{elementId: 2, direction: "down|up|left|right"}</code></td>
+</tr>
+<tr>
+<td>mobile:isToastVisible</td>
+<td>Check whether a toast message is visible. <code>text</code> is the mandatory argument. <code>isRegexp</code> is optional. <code>text</code> will be parsed as a regular expression pattern if <code>isRegexp</code> is <code>true</code>. <code>isRegexp</code> is <code>false</code> by default. It returns <code>true</code> if the <code>text</code> exists, or <code>false</code> otherwise.</td>
+<td><code>{text, isRegexp}</code></td>
+<td><code>{ text: 'A toast' }</code>, <code>{ text: '^regex$', isRegexp: true }</code></td>
 </tr>
 </tbody>
 </table>
