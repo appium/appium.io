@@ -1668,7 +1668,9 @@ mouse.move_to(element, 5, 5)
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO C# sample
+            <pre><code class="csharp">Actions action = new Actions(driver);
+action.MoveToElement(element, 10, 10);
+action.Perform();
 
 </code></pre>
           </div>
