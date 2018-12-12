@@ -2041,6 +2041,48 @@ on syntax).</p>
 <td><code>{text, isRegexp}</code></td>
 <td><code>{ text: 'A toast' }</code>, <code>{ text: '^regex$', isRegexp: true }</code></td>
 </tr>
+<tr>
+<td>mobile:openDrawer</td>
+<td>Open drawer by <a href="https://developer.android.com/reference/android/support/test/espresso/contrib/DrawerActions">DrawerAction</a> with <a href="https://developer.android.com/reference/android/view/Gravity">gravity</a>. <code>gravity</code> is option. The default is <a href="https://developer.android.com/reference/android/support/v4/view/GravityCompat.html#START">GravityCompat.START</a>. This method blocks until the drawer is fully open. No operation if the drawer is already open.</td>
+<td><code>{element, gravity}</code></td>
+<td><code>{ element: element_id }</code>, <code>{ element: element_id, gravity: 3 }</code></td>
+</tr>
+<tr>
+<td>mobile:closeDrawer</td>
+<td>Close drawer by <a href="https://developer.android.com/reference/android/support/test/espresso/contrib/DrawerActions">DrawerAction</a> with <a href="https://developer.android.com/reference/android/view/Gravity">gravity</a>. <code>gravity</code> is option. The default is <a href="https://developer.android.com/reference/android/support/v4/view/GravityCompat.html#START">GravityCompat.START</a>. This method blocks until the drawer is fully closed. No operation if the drawer is already closed.</td>
+<td><code>{element, gravity}</code></td>
+<td><code>{ element: element_id }</code>, <code>{ element: elementId, gravity: 3 }</code></td>
+</tr>
+<tr>
+<td>mobile:setDate</td>
+<td>Set date by <a href="https://developer.android.com/reference/android/support/test/espresso/contrib/PickerActions.html#setDate(int,%20int,%20int)">PickerActions#setDate</a> for <a href="https://developer.android.com/reference/android/widget/DatePicker">DataPicker</a>.</td>
+<td><code>{element, year, monthOfYear, dayOfMonth}</code></td>
+<td><code>{element: elementId, year: 2018, monthOfYear: 12, dayOfMonth: 1}</code></td>
+</tr>
+<tr>
+<td>mobile:setTime</td>
+<td>Set time by <a href="https://developer.android.com/reference/android/support/test/espresso/contrib/PickerActions.html#setTime(int,%20int)">PickerActions#setTime</a> for <a href="https://developer.android.com/reference/android/widget/TimePicker">TimePicker</a>.</td>
+<td><code>{element, hours, minutes}</code></td>
+<td><code>{element: elementId, hours: 12, minutes: 10}</code></td>
+</tr>
+<tr>
+<td>mobile:navigateTo</td>
+<td>Action to <a href="https://developer.android.com/reference/android/support/design/widget/NavigationView">NavigationView</a> by <a href="https://developer.android.com/reference/android/support/test/espresso/contrib/NavigationViewActions.html#navigateTo(int)">NavigationViewActions#navigateTo</a>. The view must be a child of a DrawerLayout, of type NavigationView, visible on screen and displayed on screen.</td>
+<td><code>{element, menuItemId}</code></td>
+<td><code>{element: elementId, menuItemId: 1}</code></td>
+</tr>
+<tr>
+<td>mobile:scrollToPage</td>
+<td>Action to <a href="https://developer.android.com/reference/android/support/v4/view/ViewPager">ViewPager</a> by <a href="https://developer.android.com/reference/android/support/test/espresso/contrib/ViewPagerActions">ViewPagerActions</a>. <code>scrollTo</code> must be one of <code>first</code>, <code>last</code>, <code>left</code>, <code>right</code>. <code>scrollTo</code> is used by default if <code>scrollTo</code> and <code>scrollToPage</code> are provided.</td>
+<td><code>{scrollTo, scrollToPage, smoothScroll}</code></td>
+<td><code>{element: elementId, scrollTo: 'left', smoothScroll: true}</code>, <code>{element: elementId, scrollToPage: 2}</code></td>
+</tr>
+<tr>
+<td>mobile:backdoor</td>
+<td>Invoke arbitrary methods defined in Android app. The methods must be <code>public</code>. <code>target</code> is <code>activity</code> or <code>application</code>. <code>methods</code> are methods you would like to invoke. Read docstring of <em>mobileBackdoor</em> method <a href="https://github.com/appium/appium-espresso-driver/blob/master/lib/commands/general.js">here</a> for more details</td>
+<td><code>{target, methods}</code></td>
+<td><code>{target: 'activity', methods: [{name: 'method1'}, {name: 'method2', args: [{value: 'hello appium', type: 'java.lang.String'}] }] }</code></td>
+</tr>
 </tbody>
 </table>
 <h2 id="support">Support</h2>

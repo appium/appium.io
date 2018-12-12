@@ -1625,15 +1625,6 @@ coordinates <em>and</em> an element will treat the coordinates as relative to th
 element's position, rather than absolute.</p>
 <p>Calling the <code>perform</code> event sends the entire sequence of events to appium,
 and the touch gesture is run on your device.</p>
-<p>Appium clients also allow one to directly execute a TouchAction through the
-driver object, rather than calling the <code>perform</code> event on the TouchAction
-object.</p>
-<p>In pseudocode, both of the following are equivalent:</p>
-<pre><code class="center">TouchAction().tap(el).perform()
-
-driver.perform(TouchAction().tap(el))
-</code></pre>
-
 <h3 id="multitouch">MultiTouch</h3>
 <p><em>MultiTouch</em> objects are collections of TouchActions.</p>
 <p>MultiTouch gestures only have two methods, <code>add</code>, and <code>perform</code>.</p>
