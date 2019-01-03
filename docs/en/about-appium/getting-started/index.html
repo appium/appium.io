@@ -448,6 +448,48 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Clipboard</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/clipboard/get-clipboard/">Get Clipboard</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/clipboard/set-Clipboard/">Set Clipboard</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Emulator</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/emulator/power_ac/">Power AC</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/emulator/power_capacity/">Power Capacity</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Files</a>
     <ul class="dropdown-menu">
         
@@ -1733,7 +1775,7 @@ doc</a>.</p>
 <pre><code class="js">// javascript
 const opts = {
   port: 4723,
-  desiredCapabilities: {
+  capabilities: {
     platformName: "Android",
     platformVersion: "8.0",
     deviceName: "Android Emulator",
@@ -1755,13 +1797,12 @@ session, perform some test commands, and end the session. In our case, we will
 simply tap into a few menus and then back out the way we came before ending the
 session:</p>
 <pre><code class="js">// javascript
-client
-  .init()
-  .click("~App")
-  .click("~Alert Dialogs")
-  .back()
-  .back()
-  .end();
+const elementId = await client.findElement("accessibility id","TextField1");
+client.elementSendKeys(elementId.ELEMENT, "Hello World!"); 
+const elementValue = await client.findElement("accessibility id","TextField1");
+await client.getElementAttribute(elementValue.ELEMENT,"value").then((attr) =&gt; {
+assert.equal(attr,"Hello World!");
+});
 </code></pre>
 
 <p>What's going on here is that after creating a session and launching our app,
@@ -1779,7 +1820,7 @@ const wdio = require("webdriverio");
 
 const opts = {
   port: 4723,
-  desiredCapabilities: {
+  capabilities: {
     platformName: "Android",
     platformVersion: "8.0",
     deviceName: "Android Emulator",
@@ -1790,13 +1831,11 @@ const opts = {
 
 const client = wdio.remote(opts);
 
-client
-  .init()
-  .click("~App")
-  .click("~Alert Dialogs")
-  .back()
-  .back()
-  .end();
+const elementId = await client.findElement("accessibility id","TextField1");    client.elementSendKeys(elementId.ELEMENT, "Hello World!");
+const elementValue = await client.findElement("accessibility id","TextField1");
+await client.getElementAttribute(elementValue.ELEMENT,"value").then((attr) =&gt; {
+assert.equal(attr,"Hello World!");
+});
 </code></pre>
 
 <p>You can try and run this test on your own. Simply save it and execute it using

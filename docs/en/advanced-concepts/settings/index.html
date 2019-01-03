@@ -448,6 +448,48 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Clipboard</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/clipboard/get-clipboard/">Get Clipboard</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/clipboard/set-Clipboard/">Set Clipboard</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Emulator</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/device/emulator/power_ac/">Power AC</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/emulator/power_capacity/">Power Capacity</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Files</a>
     <ul class="dropdown-menu">
         
@@ -1693,6 +1735,11 @@
 <td><code>waitForSelectorTimeout</code></td>
 <td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForSelectorTimeout(long)">setWaitForSelectorTimeout</a>. If a negative value is given, it would set to default(10 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
 <td>e.g., <code>10000</code></td>
+</tr>
+<tr>
+<td><code>normalizeTagNames</code></td>
+<td>Translate all class names used as XML tags to the limited set of ASCII characters supported by Apache Harmony library. Used by default in Android to avoid possible XML parsing exceptions caused by XPath lookup. The translation is based on <a href="https://github.com/gcardone/junidecode">junidecode</a>. This prevents <a href="https://github.com/appium/appium/issues/11854">this error case</a>. Default to <code>false</code>.</td>
+<td><code>false</code> or <code>true</code></td>
 </tr>
 </tbody>
 </table>
