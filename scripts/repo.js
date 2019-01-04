@@ -78,7 +78,7 @@ async function buildFromLocal () {
   await buildDocs(pathToDocs);
 }
 
-function buildDocYML (sitemap, baseDir='', levelCount=0) {
+function buildDocYML (sitemap, baseDir = '', levelCount = 0) {
   let toc = '';
   let indent = ' '.repeat(levelCount * 2);
   for (const [category, content] of sitemap) {
@@ -94,7 +94,7 @@ function buildDocYML (sitemap, baseDir='', levelCount=0) {
 }
 
 async function buildDocs (pathToDocs) {
-  const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'),  'utf8'));
+  const mkdocsTemplate = Handlebars.compile(await fs.readFile(path.resolve(__dirname, '..', 'mkdocs.yml'), 'utf8'));
   const themeDir = path.resolve(__dirname, '..', 'cinder');
   const sitemap = require(path.resolve(pathToDocs, 'toc.js'));
   log.debug(`Building HTML docs from Markdown ${pathToDocs}`);
