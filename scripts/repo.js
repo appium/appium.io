@@ -1,6 +1,6 @@
 import { fs, logger } from 'appium-support';
 import { exec } from 'teen_process';
-import path from 'path';;
+import path from 'path';
 import Handlebars from 'handlebars';
 import _ from 'lodash';
 import { fencedCodeTabifyDocument } from './tabs';

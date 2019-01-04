@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Background App - Appium</title>
+    <title>Set Clipboard - Appium</title>
 
     <link href="../../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -390,55 +390,55 @@
         
             
 <li>
-    <a href="../install-app/">Install App</a>
+    <a href="../../app/install-app/">Install App</a>
 </li>
 
         
             
 <li>
-    <a href="../is-app-installed/">Is App Installed</a>
+    <a href="../../app/is-app-installed/">Is App Installed</a>
 </li>
 
         
             
 <li>
-    <a href="../launch-app/">Launch App</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">Background App</a>
+    <a href="../../app/launch-app/">Launch App</a>
 </li>
 
         
             
 <li>
-    <a href="../close-app/">Close App</a>
+    <a href="../../app/background-app/">Background App</a>
 </li>
 
         
             
 <li>
-    <a href="../reset-app/">Reset App</a>
+    <a href="../../app/close-app/">Close App</a>
 </li>
 
         
             
 <li>
-    <a href="../remove-app/">Remove App</a>
+    <a href="../../app/reset-app/">Reset App</a>
 </li>
 
         
             
 <li>
-    <a href="../get-app-strings/">Get App Strings</a>
+    <a href="../../app/remove-app/">Remove App</a>
 </li>
 
         
             
 <li>
-    <a href="../end-test-coverage/">End Test Coverage</a>
+    <a href="../../app/get-app-strings/">Get App Strings</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../app/end-test-coverage/">End Test Coverage</a>
 </li>
 
         
@@ -453,13 +453,13 @@
         
             
 <li>
-    <a href="../../clipboard/get-clipboard/">Get Clipboard</a>
+    <a href="../get-clipboard/">Get Clipboard</a>
 </li>
 
         
             
-<li>
-    <a href="../../clipboard/set-clipboard/">Set Clipboard</a>
+<li class="active">
+    <a href="./">Set Clipboard</a>
 </li>
 
         
@@ -1579,12 +1579,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../launch-app/">
+                        <a rel="next" href="../get-clipboard/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../close-app/">
+                        <a rel="prev" href="../../emulator/power_ac/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1600,7 +1600,7 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#background-app">Background App</a></li>
+        <li class="first-level active"><a href="#set-clipboard">Set Clipboard</a></li>
         
             <li class="second-level"><a href="#example-usage">Example Usage</a></li>
             
@@ -1632,11 +1632,11 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h1 id="background-app"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/commands-yml/commands/device/app/background-app.yml">
+        <div class="col-md-9 documentation" role="main"><h1 id="set-clipboard"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/commands-yml/commands/device/clipboard/set-clipboard.yml">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>Background App</h1>
-<p>Send the currently running app for this session to the background</p>
+  </a>Set Clipboard</h1>
+<p>Set the content of the system clipboard</p>
 <h2 id="example-usage">Example Usage</h2>
 <div>
         <ul class="nav nav-tabs" role="tablist">
@@ -1669,45 +1669,48 @@
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">driver.runAppInBackground(Duration.ofSeconds(10));
+            <pre><code class="java">// base64Content is Base64-encoded content
+driver.setClipboard("label", ClipboardContentType.PLAINTEXT, base64Content);
+driver.setClipboardText("happy testing");
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">self.driver.background_app(10)
+            <pre><code class="python">self.driver.set_clipboard('happy testing')
+self.driver.set_clipboard_text('happy testing')
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-driver.background(10);
+await driver.setClipboard('happy testing', 'plaintext')
 
 // wd example
-await driver.backgroundApp(10);
+await driver.setClipboard('happy testing', 'plaintext')
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
             <pre><code class="ruby"># ruby_lib example
-background_app(10)
+set_clipboard content: 'happy testing'
 
 # ruby_lib_core example
-@driver.background_app(10)
+@driver.set_clipboard content: 'happy testing'
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO C# sample
+            <pre><code class="csharp">// CSharp Code here
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_5">
-            <pre><code class="php">$driver-&gt;backgroundApp(10);
+            <pre><code class="php">// PHP Code here
 
 </code></pre>
           </div>
@@ -1726,21 +1729,7 @@ background_app(10)
 
 
 <h2 id="description">Description</h2>
-<p>Send the currently active app to the background, and either return after a certain amount of time, or leave the app deactivated.
-There are 3 types of parameters which may be passed to this method:</p>
-<ol>
-<li>
-<p>An object that looks like <code>{"timeout": secs}</code>, where <code>secs</code> is an
-   integer designating how long, in seconds, to background the app for. -1
-   means to deactivate the app entirely.</p>
-</li>
-<li>
-<p><code>null</code>, which means to deactivate the app entirely.</p>
-</li>
-<li><em>Deprecated</em> An integer: how long, in seconds, to background the app for. -1 means to
-   deactivate the app entirely.</li>
-</ol>
-<p>iOS tests with XCUITest can also use the <code>mobile: terminateApp</code> method to terminate the current app (see detailed <a href="/docs/en/writing-running-appium/ios/ios-xctest-mobile-apps-management/index.html#mobile-terminateapp">documentation</a>), and the <code>mobile: activateApp</code> to activate an existing application on the device under test and moves it to the foreground (see detailed <a href="/docs/en/writing-running-appium/ios/ios-xctest-mobile-apps-management/index.html#mobile-activateapp">documentation</a>).</p>
+<p>Set the content of the system clipboard</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>
@@ -1764,9 +1753,9 @@ There are 3 types of parameters which may be passed to this method:</p>
 <tr>
 <td></td>
 <td><a href="/docs/en/drivers/ios-uiautomation/index.html">UIAutomation</a></td>
-<td>8.0 to 9.3</td>
-<td>All</td>
-<td>All</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
 </tr>
 <tr>
 <td>Android</td>
@@ -1785,9 +1774,9 @@ There are 3 types of parameters which may be passed to this method:</p>
 <tr>
 <td></td>
 <td><a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator</a></td>
-<td>4.2+</td>
-<td>All</td>
-<td>All</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
 </tr>
 <tr>
 <td>Mac</td>
@@ -1818,12 +1807,12 @@ There are 3 types of parameters which may be passed to this method:</p>
 <tr>
 <td><a href="https://github.com/appium/java-client/releases/latest">Java</a></td>
 <td>All</td>
-<td><a href="https://appium.github.io/java-client/io/appium/java_client/InteractsWithApps.html#runAppInBackground-java.time.Duration-">appium.github.io</a></td>
+<td><a href="https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/WebElement.html#click--">seleniumhq.github.io</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/python-client/releases/latest">Python</a></td>
 <td>All</td>
-<td><a href="https://github.com/appium/python-client/blob/master/appium/webdriver/webdriver.py#L529">github.com</a></td>
+<td><a href="https://github.com/appium/python-client">github.com</a></td>
 </tr>
 <tr>
 <td><a href="http://webdriver.io/index.html">Javascript (WebdriverIO)</a></td>
@@ -1833,28 +1822,28 @@ There are 3 types of parameters which may be passed to this method:</p>
 <tr>
 <td><a href="https://github.com/admc/wd/releases/latest">Javascript (WD)</a></td>
 <td>All</td>
-<td><a href="https://github.com/admc/wd/blob/master/lib/commands.js#L2841">github.com</a></td>
+<td><a href="https://github.com/admc/wd/releases">github.com</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/ruby_lib/releases/latest">Ruby</a></td>
 <td>All</td>
-<td><a href="https://www.rubydoc.info/github/appium/ruby_lib_core/Appium/Core/Device#background_app-instance_method">www.rubydoc.info</a></td>
+<td><a href="https://www.rubydoc.info/github/appium/ruby_lib_core/Appium/Core/Ios/Device#set_clipboard-instance_method">iOS</a> <a href="https://www.rubydoc.info/github/appium/ruby_lib_core/Appium/Core/Android/Device#set_clipboard-instance_method">Android</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/php-client/releases/latest">PHP</a></td>
-<td>All</td>
-<td><a href="https://github.com/appium/php-client/">github.com</a></td>
+<td>None</td>
+<td><a href="https://github.com/appium/php-client/releases/latest">github.com</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/appium-dotnet-driver/releases/latest">C#</a></td>
-<td>All</td>
-<td><a href="https://github.com/appium/appium-dotnet-driver/">github.com</a></td>
+<td>None</td>
+<td><a href="https://github.com/appium/appium">github.com</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="http-api-specifications">HTTP API Specifications</h2>
 <h3 id="endpoint">Endpoint</h3>
-<p><code>POST /session/:session_id/appium/app/background</code></p>
+<p><code>POST /wd/hub/session/:session_id/appium/device/set_clipboard</code></p>
 <h3 id="url-parameters">URL Parameters</h3>
 <table>
 <thead>
@@ -1881,18 +1870,25 @@ There are 3 types of parameters which may be passed to this method:</p>
 </thead>
 <tbody>
 <tr>
-<td>seconds</td>
-<td><code>number</code></td>
-<td>How long to run app in background.</td>
+<td>content</td>
+<td><code>String</code></td>
+<td>The actual base64 encoded clipboard content.</td>
+</tr>
+<tr>
+<td>contentType</td>
+<td><code>string</code></td>
+<td>The type of the content to get. Plaintext, Image, URL. Android supports only plaintext.</td>
+</tr>
+<tr>
+<td>label</td>
+<td><code>string</code></td>
+<td>Clipboard data label for Android.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="response">Response</h3>
-<p>null</p>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L538">JSONWP Specification</a></li>
-</ul></div>
+<p>Response from Appium server (<code>string</code>)</p>
+<h2 id="see-also">See Also</h2></div>
         
     </div>
 

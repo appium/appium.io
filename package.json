@@ -9,7 +9,8 @@
   "scripts": {
     "clean": "rm -rf node_modules && rm -f package-lock.json && npm install",
     "serve": "bundle exec jekyll serve",
-    "crawl": "wait-on http://localhost:4000 && blc --input http://localhost:4000 --recursive --exclude apple.com --exclude search.maven.org",
+    "crawl": "wait-on http://localhost:4000 && node ./scripts/crawl.js",
+    "crawl:prod": "node ./scripts/crawl.js http://appium.io",
     "build:docs": "rimraf docs/ && babel-node scripts/repo.js && bundle exec jekyll build",
     "build:docs:local": "cross-env BUILD_LOCAL_DOCS=true npm run build:docs",
     "lint": "eslint scripts/ test/",
@@ -49,6 +50,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "broken-link-checker": "^0.7.8",
+    "chalk": "^2.4.1",
     "cross-env": "^5.0.5",
     "ejs": "^2.5.7",
     "eslint": "^3.10.2",
@@ -57,7 +59,9 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-mocha": "^4.7.0",
     "eslint-plugin-promise": "^3.5.0",
+    "fancy-log": "^1.3.3",
     "handlebars": "^4.0.10",
+    "humanize-duration": "^3.16.0",
     "is-absolute-url": "^2.1.0",
     "mocha": "^5.2.0",
     "relative": "^3.0.2",

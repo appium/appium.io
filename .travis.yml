@@ -2,28 +2,28 @@
 # and it is the easiest way to get a working version. Installing
 # node is easy as a build step
 language: python
-python:
-  - "3.6"
+python: "3.6"
 env:
   global:
     - URL=http://localhost:4000
     - secure: AKqlhoyFyPGo4qN2JWP08J73lUqmv8bl068iuRZSrcy/UXA2K+Wl5DZm0kEuvIYTFdfRqJZJKgHD9SrLNaUGflk6typupsOistXm5lcTccHYND+TwCKzjfCDkKg2sf4BFdH+sCHPHcZGHEGvCrHTKbsNyUjxS/LblTSgiJfkVLQ=
+jobs:
+  include:
+    - stage: Build
+      name: Unit tests
+      script: npm run test
+      after_script: npm run coverage
+    - stage:
+      name: Crawl site
+      script: npm run serve & npm run crawl
+      after_script: kill -9 $!
 before_install:
   - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
   - nvm install 8
   - sudo apt-get install ruby-full
 install:
   - npm install
-before_script:
   - pip install mkdocs==0.16.3
   # allow more listeners
   - echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
   - bundle install
-script:
-  - npm test
-  - npm run build:docs
-  - npm run serve &
-  - npm run crawl
-after_script:
-  # get rid of the server process
-  - kill -9 $!
