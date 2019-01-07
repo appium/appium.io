@@ -34,7 +34,7 @@ function logMetrics (brokenLinks, excludedLinks, totalLinks, duration) {
 
   if (duration) {
     output += chalk.gray(`\nElapsed time: `);
-    output += chalk.gray(humanizeDuration(duration, {round:true, largest:2}));
+    output += chalk.gray(humanizeDuration(duration, {round: true, largest: 2}));
   }
 
   log(output);
