@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../commands/device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -2020,6 +2038,26 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>skipDeviceInitialization</code></td>
 <td>Skip device initialization which includes i.a.: installation and running of Settings app or setting of permissions. Can be used to improve startup performance when the device was already used for automation and it's prepared for the next automation. Defaults to <code>false</code></td>
 <td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>chromedriverDisableBuildCheck</code></td>
+<td>Sets the chromedriver flag <code>--disable-build-check</code> for Chrome webview tests</td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>skipUnlock</code></td>
+<td>Skips unlock during session creation. Defaults to <code>false</code></td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>unlockType</code></td>
+<td>Unlock the target device with particular lock pattern instead of just waking up the device with a helper app. It works with <code>unlockKey</code> capability. Defaults to undefined. <code>fingerprint</code> is available only for Android 6.0+ and emulators. Read <a href="https://github.com/appium/appium-android-driver/blob/master/docs/UNLOCK.md">unlock doc</a> in android driver.</td>
+<td><code>['pin', 'password', 'pattern', 'fingerprint']</code></td>
+</tr>
+<tr>
+<td><code>unlockKey</code></td>
+<td>A key pattern to unlock used by <code>unlockType</code>.</td>
+<td>e.g., '1111'</td>
 </tr>
 </tbody>
 </table>

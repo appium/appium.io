@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../commands/device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1696,8 +1714,7 @@ have to modify your <code>/etc/authorization</code> file in one of two ways:</p>
 <li>
 <p>Run the following command which automatically modifies your
    <code>/etc/authorization</code> file for you:</p>
-<p><code>npm install -g authorize-ios
-sudo authorize-ios</code></p>
+<p><code>sudo npm run authorize-ios</code></p>
 </li>
 </ol>
 <p>At this point, run:</p>
@@ -1706,8 +1723,8 @@ sudo authorize-ios</code></p>
 
 <p>Now your Appium instance is ready to go. Run <code>node .</code> to kick up the Appium server.</p>
 <h4 id="hacking-with-appium-for-android">Hacking with Appium for Android</h4>
-<p>To work on Android, make sure you have <code>ant</code>, <code>maven</code>, and <code>adb</code> installed 
-and added to system <code>PATH</code> environment variable. Also you would need the 
+<p>To work on Android, make sure you have <code>ant</code>, <code>maven</code>, and <code>adb</code> installed
+and added to system <code>PATH</code> environment variable. Also you would need the
 android-16 sdk (for <code>Selendroid</code>) and android-19+ sdk installed.
 From your local repo's command prompt, install/run the following:</p>
 <p>Set up Appium by running:</p>
@@ -1737,7 +1754,7 @@ a bug or adding a new feature, requires working on multiple packages simultaneou
 <p>Unfortunately the dependencies installed when running <code>npm install</code> are those that
 have already been published, so some work is needed to link together local development
 versions of the packages that are being worked on.</p>
-<p>In the case where one package, <code>A</code>, depends on another package, <code>B</code>, the following steps 
+<p>In the case where one package, <code>A</code>, depends on another package, <code>B</code>, the following steps
 are necessary to link the two:
 1. In one terminal, enter into package <code>B</code>
     <code>cd B</code>
@@ -1749,7 +1766,7 @@ are necessary to link the two:
     <code>npm link B</code></p>
 <p>Now the version of <code>B</code> that <code>A</code> uses will be your local version. Remember, however, that
 changes made to the JavaScript will only be available when they have been transpiled, so
-when you are going to test from package <code>A</code>, run <code>npm run build</code> in the directory for 
+when you are going to test from package <code>A</code>, run <code>npm run build</code> in the directory for
 package <code>B</code>.</p>
 <h3 id="running-tests">Running Tests</h3>
 <p>First, check out our documentation on <a href="/docs/en/writing-running-appium/running-tests/index.html">running tests in
@@ -1783,8 +1800,8 @@ Appium is running in another window with <code>node .</code>) with:</p>
 <p>Each Appium package installs a pre-commit hook which will run the <a href="https://eslint.org/">linter</a> and
 the unit tests before the commit is made. Any error in either of these will stop
 the commit from occurring.</p>
-<p>Once code is committed and a <a href="https://help.github.com/articles/about-pull-requests/">pull request</a> 
-is made to the correct Appium respository on <a href="https://github.com/">GitHub</a>, Appium build system 
+<p>Once code is committed and a <a href="https://help.github.com/articles/about-pull-requests/">pull request</a>
+is made to the correct Appium respository on <a href="https://github.com/">GitHub</a>, Appium build system
 will run all of the functional tests.</p></div>
         
     </div>

@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../commands/device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1804,7 +1822,7 @@ converted into the <code>npm-shrinkwrap.json</code> file.</p>
 <li>Determine whether we have a <code>patch</code> (bugfix), <code>minor</code> (feature), or <code>major</code> (breaking) release according to the principles of SemVer.</li>
 <li>Update <code>package.json</code> with the appropriate new version.</li>
 <li>Update the CHANGELOG/README with appropriate changes and submit for review as a PR, along with shrinkwrap and <code>package.json</code> changes. Wait for it to be merged, then pull it into the release branch.</li>
-<li>Run <code>npm run shrinkwrap-prod</code>. This script prunes dev dependencies (leaving only production dependencies), creates a production-only <code>npm-shrinkwrap.json</code> and then re-installs the dev dependencies by doing <code>npm install --no-shrinkwrap</code>.</li>
+<li>Run <code>npm run shrinkwrap:prod</code>. This script removes <code>node_modules</code>, installs node production dependencies, creates <code>npm-shrinkwrap.json</code> (which only shrinkwrap prod dependencies) and then re-installs the dev dependencies by doing <code>npm install --no-shrinkwrap</code>.</li>
 <li>Create a tag of the form <code>v&lt;version&gt;</code> on the release branch (usually a minor branch like <code>1.5</code> or <code>1.4</code>), with: <code>git tag -a v&lt;version&gt;</code>, e.g., <code>git tag -a v1.5.0</code>. This is not necessary for beta versions.</li>
 <li>Push the tag to upstream: <code>git push --tags &lt;remote&gt; &lt;branch&gt;</code></li>
 <li>Run <code>npm publish</code> (with <code>--tag beta</code> if this isn't an official release).</li>

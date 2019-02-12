@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1711,7 +1729,7 @@ execute_script("mobile: scroll", { "direction" =&gt; "down"})
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO C# sample
+            <pre><code class="csharp">driver.ExecuteScript("mobile:scroll", new Dictionary&lt;string, string&gt; { { "direction", "down" } });
 
 </code></pre>
           </div>
@@ -1785,7 +1803,7 @@ on syntax).</p>
 </tr>
 <tr>
 <td>mobile:startLogsBroadcast</td>
-<td>Starts iOS system logs broadcast websocket on the same host and port where Appium server is running at <code>/ws/session/:sessionId:/appium/syslog</code> endpoint.</td>
+<td>Starts iOS system logs broadcast websocket on the same host and port where Appium server is running at <code>/ws/session/:sessionId:/appium/device/syslog</code> endpoint.</td>
 <td><none></none></td>
 <td></td>
 </tr>
@@ -1984,7 +2002,7 @@ on syntax).</p>
 </tr>
 <tr>
 <td>mobile:startLogsBroadcast</td>
-<td>Starts Android logcat broadcast websocket on the same host and port where Appium is running at <code>/ws/session/:sessionId:/appium/logcat</code> endpoint</td>
+<td>Starts Android logcat broadcast websocket on the same host and port where Appium is running at <code>/ws/session/:sessionId:/appium/device/logcat</code> endpoint</td>
 <td><none></none></td>
 <td><none></none></td>
 </tr>
@@ -2127,6 +2145,12 @@ on syntax).</p>
 <td>Flashes an element on the screen to visually confirm you are operating on the correct element. Can optionally set <code>durationMillis</code> (in ms) and <code>repeatCount</code> of animation</td>
 <td><code>{elementId, durationMillis, repeatCount}</code></td>
 <td><code>{elementId: "1234-abcd-5678", durationMillis: 1000, repeatCount: 10}</code></td>
+</tr>
+<tr>
+<td>mobile:uiautomator</td>
+<td>Drive areas which are not part of App Under Test, using uiautomator2 APIs. <code>strategy</code> can be one of: "clazz", "res", "text", "textContains", "textEndsWith", "textStartsWith","desc", "descContains", "descEndsWith", "descStartsWith" and "pkg", taken from uiautomator <a href="https://developer.android.com/reference/androidx/test/uiautomator/By">By class</a>. <code>action</code> can be one of: "click", "longClick", "getText", "getContentDescription", "getClassName","getResourceName", "getVisibleBounds", "getVisibleCenter", "getApplicationPackage","getChildCount", "clear", "isCheckable", "isChecked", "isClickable", "isEnabled","isFocusable", "isFocused", "isLongClickable", "isScrollable" and "isSelected", taken from uiautomator <a href="https://developer.android.com/reference/androidx/test/uiautomator/UiObject2">UiObject2</a>. <code>index</code> is optional, if not given, will return all matching results</td>
+<td><code>{strategy, locator, index, action}</code></td>
+<td><code>{strategy: 'clazz', locator: 'android.widget.TextView', index: 2, action: "getText"}</code></td>
 </tr>
 </tbody>
 </table>

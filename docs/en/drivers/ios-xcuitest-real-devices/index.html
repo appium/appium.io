@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../commands/device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1631,7 +1649,7 @@
 <p>Appium iOS real device support depends on a central third-party software suite,
 <a href="http://www.libimobiledevice.org/">libimobiledevice</a>, which is easily installable
 with <a href="http://brew.sh/">Homebrew</a>:</p>
-<pre><code>brew install libimobiledevice
+<pre><code>brew install libimobiledevice --HEAD
 </code></pre>
 
 <p>In addition to the dependency on <code>libimobiledevice</code>, Appium support for real
@@ -1651,6 +1669,7 @@ application called <code>WebDriverAgent-Runner</code> onto the device, through w
 application under test is automated. While this is simple in theory, the hoops
 of code signing and provisioning applications for development and testing can
 make this a bit of a headache.</p>
+<p>The documentation on <a href="https://github.com/appium/appium-xcuitest-driver">appium-xcuitest-driver</a> is also helpful to resolve dependencies.</p>
 <h3 id="basic-automatic-configuration">Basic (automatic) configuration</h3>
 <p>The easiest way to get up-and-running with Appium's XCUITest support on iOS
 real devices is to use the automatic configuration strategy. There are two ways

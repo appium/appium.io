@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../../device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1700,10 +1718,10 @@ await driver.scroll(10, 100);
           
           <div role="tabpanel" class="tab-pane " id="0_3">
             <pre><code class="ruby"># ruby_lib example
-touch_action.scroll(element, 10, 100).perform
+touch_actions.scroll(element, 10, 100).perform
 
 # ruby_lib_core example
-@driver.touch_action.scroll(element, 10, 100).perform
+@driver.touch_actions.scroll(element, 10, 100).perform
 
 </code></pre>
           </div>
