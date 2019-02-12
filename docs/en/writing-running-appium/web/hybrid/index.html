@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../../commands/device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../commands/device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../commands/device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../commands/device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1695,7 +1713,7 @@ driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities)
 
 Set&lt;String&gt; contextNames = driver.getContextHandles();
 for (String contextName : contextNames) {
-    System.out.println(contextNames); //prints out something like NATIVE_APP \n WEBVIEW_1
+    System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
 }
 driver.context(contextNames.toArray()[1]); // set context to WEBVIEW_1
 
