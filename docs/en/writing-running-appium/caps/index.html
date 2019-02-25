@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../commands/device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1607,6 +1625,8 @@
         
             <li class="second-level"><a href="#android-only">Android Only</a></li>
             
+                <li class="third-level"><a href="#uiautomator-1-2">UIAutomator (1 &amp; 2)</a></li>
+            
                 <li class="third-level"><a href="#uiautomator2-only">UIAutomator2 Only</a></li>
             
                 <li class="third-level"><a href="#espresso-only">Espresso Only</a></li>
@@ -1699,12 +1719,12 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>language</code></td>
-<td>Language to set for iOS and Android. It is only available for simulator on iOS</td>
+<td>Language to set for iOS (XCUITest driver only) and Android.</td>
 <td>e.g. <code>fr</code></td>
 </tr>
 <tr>
 <td><code>locale</code></td>
-<td>Locale to set for iOS and Android. It is only available for simulator on iOS. <code>fr_CA</code> format for iOS. <code>CA</code> format (country name abbreviation) for Android</td>
+<td>Locale to set for iOS (XCUITest driver only) and Android. <code>fr_CA</code> format for iOS. <code>CA</code> format (country name abbreviation) for Android</td>
 <td>e.g. <code>fr_CA</code>, <code>CA</code></td>
 </tr>
 <tr>
@@ -2002,11 +2022,6 @@ Capabilities available in general and for specific drivers.</p>
 <td>e.g., <code>true</code></td>
 </tr>
 <tr>
-<td><code>otherApps</code></td>
-<td>App or list of apps (as a JSON array) to install prior to running tests</td>
-<td>e.g., <code>"/path/to/app.apk"</code>, <code>https://www.example.com/url/to/app.apk</code>, <code>["/path/to/app-a.apk", "/path/to/app-b.apk"]</code></td>
-</tr>
-<tr>
 <td><code>adbExecTimeout</code></td>
 <td>Timeout in milliseconds used to wait for adb command execution. Defaults to <code>20000</code></td>
 <td>e.g., <code>50000</code></td>
@@ -2020,6 +2035,54 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>skipDeviceInitialization</code></td>
 <td>Skip device initialization which includes i.a.: installation and running of Settings app or setting of permissions. Can be used to improve startup performance when the device was already used for automation and it's prepared for the next automation. Defaults to <code>false</code></td>
 <td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>chromedriverDisableBuildCheck</code></td>
+<td>Sets the chromedriver flag <code>--disable-build-check</code> for Chrome webview tests</td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>skipUnlock</code></td>
+<td>Skips unlock during session creation. Defaults to <code>false</code></td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>unlockType</code></td>
+<td>Unlock the target device with particular lock pattern instead of just waking up the device with a helper app. It works with <code>unlockKey</code> capability. Defaults to undefined. <code>fingerprint</code> is available only for Android 6.0+ and emulators. Read <a href="https://github.com/appium/appium-android-driver/blob/master/docs/UNLOCK.md">unlock doc</a> in android driver.</td>
+<td><code>['pin', 'password', 'pattern', 'fingerprint']</code></td>
+</tr>
+<tr>
+<td><code>unlockKey</code></td>
+<td>A key pattern to unlock used by <code>unlockType</code>.</td>
+<td>e.g., '1111'</td>
+</tr>
+<tr>
+<td><code>autoLaunch</code></td>
+<td>Initializing the app under test automatically. Appium does not install/launch the app under test if this is <code>false</code>. Defaults to <code>true</code></td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="uiautomator-1-2">UIAutomator (1 &amp; 2)</h4>
+<p>These Capabilities are available on UIA 1 and 2</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>otherApps</code></td>
+<td>App or list of apps (as a JSON array) to install prior to running tests</td>
+<td>e.g., <code>"/path/to/app.apk"</code>, <code>https://www.example.com/url/to/app.apk</code>, <code>["/path/to/app-a.apk", "/path/to/app-b.apk"]</code></td>
+</tr>
+<tr>
+<td><code>uninstallOtherPackages</code></td>
+<td>A package, list of packages or <code>*</code> to uninstall package/s before installing apks for test. <code>'*'</code> uninstall all of thrid-party packages except for packages which is necessary for Appium to test.</td>
+<td>e.g. <code>"io.appium.example"</code>, <code>["io.appium.example1", "io.appium.example2"]</code>, <code>'*'</code></td>
 </tr>
 </tbody>
 </table>

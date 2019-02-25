@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1669,8 +1687,21 @@
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">WebElement source = (MobileElement) driver.findElementsByAccessibilityId("SomeAccessibilityID"); WebElement target = (MobileElement) driver.findElementsByAccessibilityId("SomeOtherAccessibilityID");
-Point source = dragMe.getCenter(); Point target = driver.findElementByAccessibilityId("dropzone").getCenter(); PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger"); Sequence dragNDrop = new Sequence(finger, 1); dragNDrop.addAction(finger.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), source.x, source.y)); dragNDrop.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg())); dragNDrop.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(),target.x, target.y)); dragNDrop.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg())); driver.perform(Arrays.asList(dragNDrop));
+            <pre><code class="java">WebElement source = (MobileElement) driver.findElementsByAccessibilityId("SomeAccessibilityID");
+WebElement target = (MobileElement) driver.findElementsByAccessibilityId("SomeOtherAccessibilityID");
+
+Point source = dragMe.getCenter();
+Point target = driver.findElementByAccessibilityId("dropzone").getCenter();
+PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+Sequence dragNDrop = new Sequence(finger, 1);
+dragNDrop.addAction(finger.createPointerMove(Duration.ofMillis(0),
+                    PointerInput.Origin.viewport(), source.x, source.y));
+dragNDrop.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+dragNDrop.addAction(finger.createPointerMove(Duration.ofMillis(700),
+                    PointerInput.Origin.viewport(),target.x, target.y));
+dragNDrop.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+driver.perform(Arrays.asList(dragNDrop));
+
 </code></pre>
           </div>
           
