@@ -21,7 +21,7 @@ on websites and realized automation was the answer.
 
 Dan surveyed the existing landscape of tools, only to find that all of them
 hand major drawbacks. The tool supplied by Apple, UIAutomation, required tests
-to be written in JavaScript, and did not allow for real time debugging or
+to be written in JavaScript, and did not allow for real-time debugging or
 interpretation. It also had to be executed inside the Xcode profiling tool,
 Instruments. Other 3rd-party tools used private APIs and required SDKs and HTTP
 Servers to be embedded into the application. This seemed highly undesirable.
@@ -47,8 +47,8 @@ iOSAuto is born.
 ## Selenium Conference 2012
 
 Dan was selected to speak at Selenium Conference 2012 in London about an
-entirely different topic. As part of his presentation he showed off iOS
-Automation using Selenium syntax to demontrate writing platform-agnostic tests
+entirely different topic. As part of his presentation, he showed off iOS
+Automation using Selenium syntax to demonstrate writing platform-agnostic tests
 that use separate platform-specific page objects with a common interface. To
 his surprise, the cool test architecture would take a backseat to the spectacle
 of iOS tests running like WebDriver tests. Several people suggested that he
@@ -76,7 +76,7 @@ A long-time open source advocate, Jason encouraged Dan to release his code
 under an open source license.  In August, Dan [released the source
 code](https://github.com/penguinho/appium-old/commit/3ab56d3a5601897b2790b5256351f9b5af3f9e90)
 on GitHub in C#. Jason encouraged Dan to change the language to make the
-project more appealing to potential contributors.  Dan [uploaded a new version
+project more appealing to potential contributors. Dan [uploaded a new version
 in
 Python](https://github.com/penguinho/appium-old/commit/9b891207be0957bf209a77242750da17d3eb8eda).
 In September, Jason added a web server and [began to implement the WebDriver
@@ -90,7 +90,7 @@ library in any language.
 Jason decided that the project should be presented at the [Mobile Testing
 Summit](https://twitter.com/mobtestsummit) in November, but suggested that the
 project get a new name first. Many ideas were thrown out and they settled on
-AppleCart. A day later, while he was perusing some of Apple's guideance on
+AppleCart. A day later, while he was perusing some of Apple's guidance on
 copyright and trademarks, Jason noticed that under the section of examples for
 names Apple would defend its trademarks against, the first example was
 "AppleCart". He called Dan and informed him of the situation, and they
@@ -132,7 +132,7 @@ montage](https://www.youtube.com/watch?v=xkzrEn0v0II) for Selenium Conference.
 But during all these presentations and conferences, the project continued to
 develop. Early in 2013 we released Android and Selendroid support, making
 Appium the first truly cross-platform automation framework. The project also
-continued to attract users and contributors, and by the end of 2013 we'd
+continued to attract users and contributors, and by the end of 2013, we'd
 already had well over 1,000 commits.
 
 ## The Road to Appium 1.0
@@ -167,7 +167,7 @@ platforms will be added next?
 
 In late 2016, Sauce Labs donated Appium as a project to the [JS
 Foundation](https://js.foundation), in order to cement for the world Sauce's
-commitment that Appium remain open source. The JS Foundation is a non-profit
+commitment that Appium remains open source. The JS Foundation is a non-profit
 open source stewardship organization which takes responsibility for holding the
 copyright for open source projects, as well as ensuring they have a long and
 successful tenure in the community. As a result of our move to a non-profit
