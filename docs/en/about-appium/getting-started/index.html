@@ -432,6 +432,24 @@
         
             
 <li>
+    <a href="../../commands/device/app/activate-app/">Activate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/terminate-app/">Terminate App</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/app/app-state/">Get App State</a>
+</li>
+
+        
+            
+<li>
     <a href="../../commands/device/app/get-app-strings/">Get App Strings</a>
 </li>
 
@@ -1831,7 +1849,8 @@ const opts = {
 
 const client = wdio.remote(opts);
 
-const elementId = await client.findElement("accessibility id","TextField1");    client.elementSendKeys(elementId.ELEMENT, "Hello World!");
+const elementId = await client.findElement("accessibility id","TextField1");
+await client.elementSendKeys(elementId.ELEMENT, "Hello World!");
 const elementValue = await client.findElement("accessibility id","TextField1");
 await client.getElementAttribute(elementValue.ELEMENT,"value").then((attr) =&gt; {
 assert.equal(attr,"Hello World!");
