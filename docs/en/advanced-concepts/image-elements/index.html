@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1682,6 +1688,18 @@
 <td>OpenCV will not allow the matching of a reference image / template if that image is larger than the base image to match against. It can happen that the reference image you send in has dimensions which are larger than the screenshot Appium retrieves. In this case the match will automatically fail. If you set this setting to <code>true</code>, Appium will resize the template to ensure it is at least smaller than the size of the screenshot.</td>
 <td><code>true</code> or <code>false</code></td>
 <td><code>false</code></td>
+</tr>
+<tr>
+<td>fixImageTemplateScale</td>
+<td>Appium resizes a base image to fit its window size before matching them with OpenCV. If you set this setting to <code>true</code>, Appium scales a reference image you send in as the same scale Appium scales the base image to fit the window size. e.g. iOS screenshot is <code>750 × 1334</code> pixels base image. The window size is <code>375 x 667</code>. Appium rescale the base image to window size scaling it with <code>0.5</code>. A reference image is based on the screenshot size, never the image matches with the window size scale. This settings allow Appium to scale the reference image with <code>0.5</code>. <a href="https://github.com/appium/appium-base-driver/pull/306">appium-base-driver#306</a></td>
+<td><code>true</code> or <code>false</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td>defaultImageTemplateScale</td>
+<td>Appium does not resize template images by default (the value of 1.0). Although, storing scaled template images might help to save size of the storage. E.g. One has could represent 1080 × 126 pixels area by 270 × 32 pixels template image (the value of defaultImageTemplateScale is expected to be set to 4.0). Check <a href="https://github.com/appium/appium-base-driver/pull/307">appium-base-driver#307</a> for more details.</td>
+<td>e.g., <code>0.5</code>, <code>10.0</code>, <code>100</code></td>
+<td><code>1.0</code></td>
 </tr>
 <tr>
 <td>checkForImageElementStaleness</td>

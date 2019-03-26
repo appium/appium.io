@@ -1391,6 +1391,12 @@
 
         
             
+<li>
+    <a href="../espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
 <li class="active">
     <a href="./">Android Code Coverage Guide</a>
 </li>
@@ -1597,7 +1603,7 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../uiautomator-uiselector/">
+                        <a rel="next" href="../espresso-datamatcher-selector/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -1887,8 +1893,8 @@ dependencies {
 <p>The coverage.ec will be generated at /data/data/com.example.pkg/files. Pull it out.</p>
 <h3 id="4-about-generating-html-reports">[4] About generating HTML reports</h3>
 <p>To get the HTML report of coverage.ec, you need following steps:
-<em> [1] pull it into file system by <code>adb pull</code> 
-</em> [2] create the following task in your gradle file:</p>
+* [1] pull it into file system by <code>adb pull</code> 
+* [2] create the following task in your gradle file:</p>
 <pre><code class="groovy">def coverageSourceDirs = [
         './src/main/java'
 ]

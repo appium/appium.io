@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../../writing-running-appium/android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../writing-running-appium/android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1737,7 +1743,15 @@ webview = @driver.available_contexts[1]
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO C# sample
+            <pre><code class="csharp">// Switch to specific webview
+  List&lt;string&gt; AllContexts = new List&lt;string&gt;();
+    foreach (var context in (driver.Contexts))
+    {
+        AllContexts.Add(context);
+    }
+  driver.Context = (AllContexts[1]);
+ // Switch to NATIVE_APP
+ driver.Context = ("NATIVE_APP");
 
 </code></pre>
           </div>

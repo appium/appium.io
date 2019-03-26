@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1756,7 +1762,12 @@
 </tr>
 <tr>
 <td><code>normalizeTagNames</code></td>
-<td>Translate all class names used as XML tags to the limited set of ASCII characters supported by Apache Harmony library. Used by default in Android to avoid possible XML parsing exceptions caused by XPath lookup. The translation is based on <a href="https://github.com/gcardone/junidecode">junidecode</a>. This prevents <a href="https://github.com/appium/appium/issues/11854">this error case</a>. Default to <code>false</code>.</td>
+<td>Translate all class names used as XML tags to the limited set of ASCII characters supported by Apache Harmony library. Used by default in Android to avoid possible XML parsing exceptions caused by XPath lookup. The translation is based on <a href="https://github.com/gcardone/junidecode">junidecode</a>. This prevents <a href="https://github.com/appium/appium/issues/11854">this error case</a>. Defaults to <code>false</code>.</td>
+<td><code>false</code> or <code>true</code></td>
+</tr>
+<tr>
+<td><code>shutdownOnPowerDisconnect</code></td>
+<td>Shutdown the server through the broadcast receiver on <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_POWER_DISCONNECTED">ACTION_POWER_DISCONNECTED</a>. Defaults to <code>true</code></td>
 <td><code>false</code> or <code>true</code></td>
 </tr>
 </tbody>
@@ -1786,6 +1797,11 @@
 <td><code>screenshotQuality</code></td>
 <td>Changes the quality of phone display screenshots following <a href="https://developer.apple.com/documentation/xctest/xctimagequality?language=objc">xctest/xctimagequality</a>. Default value is <code>1</code>. Read <code>screenshotQuality</code> in <a href="https://github.com/appium/appium-xcuitest-driver#desired-capabilities">appium-xcuitest-driver</a></td>
 <td>e.g. <code>0</code>, <code>1</code>, <code>2</code></td>
+</tr>
+<tr>
+<td><code>mjpegScalingFactor</code></td>
+<td>Changes the scale of screenshots. Defaults to <code>100</code>, no scaling. Integer between <code>1</code> and <code>100</code> are available.</td>
+<td>e.g. <code>1</code>, <code>50</code>, <code>100</code></td>
 </tr>
 </tbody>
 </table></div>
