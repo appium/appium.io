@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1912,6 +1918,11 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>/abs/path/to/webdriver</code></td>
 </tr>
 <tr>
+<td><code>chromedriverArgs</code></td>
+<td>An array of arguments to be passed to the chromedriver binary when it's run by Appium. By default no CLI args are added beyond what Appium uses internally (such as <code>--url-base</code>, <code>--port</code>, <code>--adb-port</code>, and <code>--log-path</code>.</td>
+<td>e.g., <code>["--disable-gpu", "--disable-web-security"]</code></td>
+</tr>
+<tr>
 <td><code>chromedriverExecutableDir</code></td>
 <td>The absolute path to a directory to look for Chromedriver executables in, for automatic discovery of compatible Chromedrivers. Ignored if <code>chromedriverUseSystemExecutable</code> is <code>true</code></td>
 <td><code>/abs/path/to/chromedriver/directory</code></td>
@@ -2061,6 +2072,16 @@ Capabilities available in general and for specific drivers.</p>
 <td>Initializing the app under test automatically. Appium does not install/launch the app under test if this is <code>false</code>. Defaults to <code>true</code></td>
 <td><code>true</code> or <code>false</code></td>
 </tr>
+<tr>
+<td><code>skipLogcatCapture</code></td>
+<td>Skips to start capturing logcat. It might improve performance such as network. Log related commands will not work. Defaults to <code>false</code>.</td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>uninstallOtherPackages</code></td>
+<td>A package, list of packages or <code>*</code> to uninstall package/s before installing apks for test. <code>'*'</code> uninstall all of thrid-party packages except for packages which is necessary for Appium to test such as <code>io.appium.settings</code> or <code>io.appium.uiautomator2.server</code> since Appium already contains the logic to manage them.</td>
+<td>e.g. <code>"io.appium.example"</code>, <code>["io.appium.example1", "io.appium.example2"]</code>, <code>'*'</code></td>
+</tr>
 </tbody>
 </table>
 <h4 id="uiautomator-1-2">UIAutomator (1 &amp; 2)</h4>
@@ -2078,11 +2099,6 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>otherApps</code></td>
 <td>App or list of apps (as a JSON array) to install prior to running tests</td>
 <td>e.g., <code>"/path/to/app.apk"</code>, <code>https://www.example.com/url/to/app.apk</code>, <code>["/path/to/app-a.apk", "/path/to/app-b.apk"]</code></td>
-</tr>
-<tr>
-<td><code>uninstallOtherPackages</code></td>
-<td>A package, list of packages or <code>*</code> to uninstall package/s before installing apks for test. <code>'*'</code> uninstall all of thrid-party packages except for packages which is necessary for Appium to test.</td>
-<td>e.g. <code>"io.appium.example"</code>, <code>["io.appium.example1", "io.appium.example2"]</code>, <code>'*'</code></td>
 </tr>
 </tbody>
 </table>
@@ -2279,6 +2295,21 @@ Driver</a>.</p>
 <td><code>remoteDebugProxy</code></td>
 <td>(Sim only, &lt;= 11.2) If set, Appium sends and receives remote debugging messages through a proxy on either the local port (Sim only, &lt;= 11.2) or a proxy on this unix socket (Sim only &gt;= 11.3) instead of communicating with the iOS remote debugger directly.</td>
 <td>e.g. <code>12000</code> or <code>"/tmp/my.proxy.socket"</code></td>
+</tr>
+<tr>
+<td><code>enableAsyncExecuteFromHttps</code></td>
+<td>capability to allow simulators to execute asynchronous JavaScript on pages using HTTPS. Defaults to <code>false</code></td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>skipLogCapture</code></td>
+<td>Skips to start capturing logs such as crash, system, safari console and safari network. It might improve performance such as network. Log related commands will not work. Defaults to <code>false</code>.</td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
+<td><code>webkitDebugProxyPort</code></td>
+<td>(Real device only) Port to which <code>ios-webkit-debug-proxy</code> is connected, during real device tests. Default is <code>27753</code>.</td>
+<td><code>12021</code></td>
 </tr>
 </tbody>
 </table>

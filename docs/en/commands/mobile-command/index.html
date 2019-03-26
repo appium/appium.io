@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -2015,8 +2021,20 @@ on syntax).</p>
 <tr>
 <td>mobile:performEditorAction</td>
 <td>Performs the given editor action on the focused input field. The following action names are supported: <code>normal, unspecified, none, go, search, send, next, done, previous</code>.</td>
-<td>{action}</td>
-<td>{action: "previous"}</td>
+<td><code>{action}</code></td>
+<td><code>{action: "previous"}</code></td>
+</tr>
+<tr>
+<td>mobile:getPermissions</td>
+<td>Gets a list of permissions which are <code>denied</code>, <code>granted</code> or <code>requested</code>.</td>
+<td><code>{type, appPackage}</code></td>
+<td><code>{type: "granted", appPackage: "io.appium.android.apis"}</code></td>
+</tr>
+<tr>
+<td>mobile:changePermissions</td>
+<td>Grants or revokes permissions.</td>
+<td><code>{action, appPackage, permissions}</code></td>
+<td><code>{action: "grant", appPackage: "io.appium.android.apis", permissions: "android.permission.READ_CONTACTS"}</code>, <code>{action: "revoke", appPackage: "io.appium.android.apis", permissions: ["android.permission.READ_CONTACTS", "android.permission.CAMERA"]}</code></td>
 </tr>
 </tbody>
 </table>
@@ -2068,7 +2086,7 @@ on syntax).</p>
 <td><code>{url: "https://www.site.com/", package: "com.site.SomeAndroidPackage"}</code></td>
 </tr>
 <tr>
-<td>mobile:getDeviceInfo</td>
+<td>mobile:deviceInfo</td>
 <td>Gets device information like manufacturer and model. Read <a href="https://github.com/appium/appium-uiautomator2-server/blob/master/app/src/main/java/io/appium/uiautomator2/handler/GetDeviceInfo.java">GetDeviceInfo</a> for more details.</td>
 <td><none></none></td>
 <td><none></none></td>

@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1629,6 +1635,9 @@
                 <li class="third-level"><a href="#parallel-safari-real-device">Parallel Safari Real device</a></li>
             
         
+            <li class="second-level"><a href="#troubleshooting">Troubleshooting</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -1665,7 +1674,10 @@
 <li><code>udid</code> the device id</li>
 <li><code>wdaLocalPort</code> unique wdaPort, as WDA defaults to 8100</li>
 <li><code>webkitDebugProxyPort</code> unique webKitProxy, as IWDP defaults to 27753</li>
-</ul></div>
+</ul>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<p>When running on Jenkins, watch out for the <a href="https://wiki.jenkins.io/display/JENKINS/ProcessTreeKiller">ProcessTreeKiller</a> when running multiple parallel test jobs on the same machine. If you are spawning simulators in one test job, Jenkins might kill all your simulators when the first test ends - causing errors in the remaining test jobs!</p>
+<p>Use <code>BUILD_ID=dontKillMe</code> to prevent this from happening.</p></div>
         
     </div>
 

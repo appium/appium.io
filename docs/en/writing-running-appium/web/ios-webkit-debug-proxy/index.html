@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1628,6 +1634,8 @@
             
                 <li class="third-level"><a href="#running-ios-webkit-debug-proxy">Running ios-webkit-debug-proxy</a></li>
             
+                <li class="third-level"><a href="#specifying-non-default-port">Specifying non-default port</a></li>
+            
         
     
     </ul>
@@ -1669,14 +1677,14 @@ $ sudo make install
 
 <h4 id="running-ios-webkit-debug-proxy">Running ios-webkit-debug-proxy</h4>
 <p>Once installed you can start the proxy with the following command:</p>
-<pre><code class="center"># Change the udid to be the udid of the attached device and make sure to set the port to 27753
+<pre><code># Change the udid to be the udid of the attached device and make sure to set the port to 27753
 # as that is the port the remote-debugger uses. You can learn how to retrieve the UDID from
 # Apple's developer resources.
 &gt; ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
 </code></pre>
 
 <p>You can also set the desired capability called <code>startIWDP</code> to <code>true</code> (see the <a href="/docs/en/writing-running-appium/caps/index.html">desired capabilities docs</a>). This will run the above command as a subprocess from within Appium and will set the udid, so you don't have to run <code>ios_webkit_debug_proxy</code> yourself anymore. It monitors the proxy for crashes and relaunches when needed.</p>
-<pre><code class="center">// example desired capabilities
+<pre><code>// example desired capabilities
 {
   "browserName": "Safari",
   "platformName": "iOS",
@@ -1690,14 +1698,18 @@ $ sudo make install
 <p>You may also use <code>ios-webkit-debug-proxy-launcher</code>, a small script included with the Appium codebase, to launch the
 proxy. It monitors the proxy log for errors, and relaunch the proxy
 where needed. This is also optional and may help with recent devices:</p>
-<pre><code class="center"># change the udid
+<pre><code># change the udid
 # note, this is run from an Appium repository
 &gt; ./bin/ios-webkit-debug-proxy-launcher.js -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
 </code></pre>
 
 <p><strong>NOTE:</strong> the proxy requires the <strong>"web inspector"</strong> to be turned on to
 allow a connection to be established. Turn it on by going to <strong>settings &gt;
-safari &gt; advanced</strong>.</p></div>
+safari &gt; advanced</strong>.</p>
+<h4 id="specifying-non-default-port">Specifying non-default port</h4>
+<p>Appium expects <code>ios-webkit-debug-proxy</code> to be running on port <code>27753</code>. If, for whatever reason,
+this needs to be changed, the <code>webkitDebugProxyPort</code> desired capability can be
+set with the port on which it the proxy is running.</p></div>
         
     </div>
 

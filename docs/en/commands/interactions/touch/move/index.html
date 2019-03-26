@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1618,7 +1624,7 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#move">Move</a></li>
+        <li class="first-level active"><a href="#move-to">Move To</a></li>
         
             <li class="second-level"><a href="#example-usage">Example Usage</a></li>
             
@@ -1650,10 +1656,10 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h1 id="move"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/commands-yml/commands/interactions/touch/move.yml">
+        <div class="col-md-9 documentation" role="main"><h1 id="move-to"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/commands-yml/commands/interactions/touch/move.yml">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>Move</h1>
+  </a>Move To</h1>
 <p>Finger move on the screen</p>
 <h2 id="example-usage">Example Usage</h2>
 <div>
@@ -1689,7 +1695,7 @@
           <div role="tabpanel" class="tab-pane active" id="0_0">
             <pre><code class="java">TouchActions action = new TouchActions(driver);
 action.down(10, 10);
-action.move(50, 50);
+action.moveTo(50, 50);
 action.perform();
 
 </code></pre>
@@ -1700,7 +1706,7 @@ action.perform();
 # ...
 actions = TouchAction(driver)
 actions.tap_and_hold(element)
-actions.move(50, 50)
+actions.move_to(element, 50, 50)
 actions.perform()
 
 </code></pre>
@@ -1715,7 +1721,7 @@ driver.touchMultiPerform([
 ]);
 
 // wd example
-let action = new wd.TouchAction();
+let action = new wd.TouchAction(driver);
 action.press({x: 10, y: 10})
       .moveTo({x: 50, y: 50})
       .release();
@@ -1726,10 +1732,10 @@ await action.perform();
           
           <div role="tabpanel" class="tab-pane " id="0_3">
             <pre><code class="ruby"># ruby_lib example
-touch_action.down(element).move().perform
+touch_action.down(element).move_to().perform
 
 # ruby_lib_core example
-@driver.touch_action.down(element).move().perform
+@driver.touch_action.down(element).move_to().perform
 
 </code></pre>
           </div>

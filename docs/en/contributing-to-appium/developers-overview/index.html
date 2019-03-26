@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1644,9 +1650,6 @@
             <li class="second-level"><a href="#testing">Testing</a></li>
             
         
-            <li class="second-level"><a href="#updating-appium-site-docs">Updating Appium site docs</a></li>
-            
-        
             <li class="second-level"><a href="#releasing">Releasing</a></li>
             
         
@@ -1696,8 +1699,8 @@ a list of things we can try differently or do better next time around.</p>
 <p>Ultimately, the goal is to time an Appium release at the end of each sprint, so
 every two weeks. We're not quite there, but hopefully we will be soon.</p>
 <p>Current meeting times:
-<em> Sprint Planning: every other Monday from 10:00 AM - 10:45 AM (Pacific Time)
-</em> Sprint Retrospective: every other <em>other</em> Friday from 1:00 PM - 1:30 PM (Pacific Time)</p>
+* Sprint Planning: every other Monday from 10:00 AM - 10:45 AM (Pacific Time)
+* Sprint Retrospective: every other <em>other</em> Friday from 1:00 PM - 1:30 PM (Pacific Time)</p>
 <p>We hold meetings using <a href="https://zoom.us">Zoom</a> video chat.</p>
 <p>For project management, we use the <a href="http://zenhub.com">ZenHub</a> browser plugin,
 which adds various features like Kanban boards and Epics to the GitHub
@@ -1771,18 +1774,6 @@ _FORCE_LOGS=1 &lt;command&gt; # show module log output during test run
 
 <p>Note that we have a convention for unit test files to end in <code>-specs.js</code> and
 for e2e test files to end in <code>-e2e-specs.js</code>.</p>
-<h3 id="updating-appium-site-docs">Updating Appium site docs</h3>
-<p>The <a href="https://appium.io">Appium site</a> is built using a site generator that translates the markdown in https://github.com/appium/appium to static HTML</p>
-<p>To update the site docs, follow these steps:</p>
-<ol>
-<li>From Appium repo, run <code>npm run generate-docs</code> and make a pull request if there are any newly generated docs.</li>
-<li>When the above PR is merged, clone the <a href="https://github.com/appium/appium.io">appium.io</a> repo (if you haven't done so already)</li>
-<li>Check out and pull the latest <code>gh-pages</code> branch</li>
-<li>Follow the setup guide in the README.md</li>
-<li>Generate the docs by running <code>npm run build:docs</code></li>
-<li>Make a new branch</li>
-<li>Commit and push changes and make a pull request to have changes merged into <code>gh-pages</code></li>
-</ol>
 <h3 id="releasing">Releasing</h3>
 <p>The release process for any Appium module other than the main Appium package is
 pretty straightforward (note that you will need to be an NPM owner for the
@@ -1825,9 +1816,9 @@ converted into the <code>npm-shrinkwrap.json</code> file.</p>
 <li>Run <code>npm shrinkwrap</code> to generate the <code>npm-shrinkwrap.json</code></li>
 <li>Create a tag of the form <code>v&lt;version&gt;</code> on the release branch (usually a minor branch like <code>1.5</code> or <code>1.4</code>), with: <code>git tag -a v&lt;version&gt;</code>, e.g., <code>git tag -a v1.5.0</code>. This is not necessary for beta versions.</li>
 <li>Push the tag to upstream: <code>git push --tags &lt;remote&gt; &lt;branch&gt;</code></li>
-<li>Run <code>npm publish</code> (with <code>--tag beta</code> if this isn't an official release).</li>
+<li>Run <code>npm publish</code> (with <code>--tag rc</code> if this isn't an official release).</li>
 <li>Remove the NPM shrinkwrap JSON file from Git and push the changes</li>
-<li>Update the site docs (see "Updating Appium site docs" above) or put in an <a href="https://github.com/appium/appium/issues">issue</a> to have the site docs updated</li>
+<li>Update the site docs by going to https://github.com/appium/appium.io/pulls and merging the latest pull request that was opened by the Triager bot. Close any other pull requests opened by Triager bot.</li>
 <li>Create a new release on GitHub: go to <code>https://github.com/appium/appium/releases/tag/v&lt;VERSION&gt;</code> and hit "Edit Tag". Make the release name <code>&lt;VERSION&gt;</code> (e.g., <code>2.0.5</code>), then paste in the changelog (but not the changelog header for this version). If it's a beta release, mark as pre-release.</li>
 <li>Create a new post on discuss.appium.io announcing the release. Post it in the "News" category. Paste in the changelog and any choice comments. Pin it and unpin the previous release post.</li>
 <li>Begin process of releasing <code>appium-desktop</code>.</li>

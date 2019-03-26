@@ -1392,6 +1392,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
@@ -1618,7 +1624,7 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#launch-an-app">Launch an App</a></li>
+        <li class="first-level active"><a href="#launch-app">Launch App</a></li>
         
             <li class="second-level"><a href="#example-usage">Example Usage</a></li>
             
@@ -1650,11 +1656,11 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h1 id="launch-an-app"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/commands-yml/commands/device/app/launch-app.yml">
+        <div class="col-md-9 documentation" role="main"><h1 id="launch-app"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/commands-yml/commands/device/app/launch-app.yml">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>Launch an App</h1>
-<p>Launch an app on device</p>
+  </a>Launch App</h1>
+<p>Launch the app-under-test on the device</p>
 <h2 id="example-usage">Example Usage</h2>
 <div>
         <ul class="nav nav-tabs" role="tablist">
@@ -1744,7 +1750,8 @@ launch_app
 
 
 <h2 id="description">Description</h2>
-<p>iOS tests with XCUITest can also use the <code>mobile: launchApp</code> method. See detailed <a href="/docs/en/writing-running-appium/ios/ios-xctest-mobile-apps-management/index.html#mobile-launchapp">documentation</a>.</p>
+<p>If the app-under-test (AUT) is closed, or backgrounded, it will launch it. If the AUT is already open, it will background it and re-launch it. 
+iOS tests with XCUITest can also use the <code>mobile: launchApp</code> method. See detailed <a href="/docs/en/writing-running-appium/ios/ios-xctest-mobile-apps-management/index.html#mobile-launchapp">documentation</a>.</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>
@@ -1880,7 +1887,7 @@ launch_app
 <p>null</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L530">JSONWP Specification</a></li>
+<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L539">JSONWP Specification</a></li>
 </ul></div>
         
     </div>
