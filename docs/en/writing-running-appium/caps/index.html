@@ -2082,6 +2082,11 @@ Capabilities available in general and for specific drivers.</p>
 <td>A package, list of packages or <code>*</code> to uninstall package/s before installing apks for test. <code>'*'</code> uninstall all of thrid-party packages except for packages which is necessary for Appium to test such as <code>io.appium.settings</code> or <code>io.appium.uiautomator2.server</code> since Appium already contains the logic to manage them.</td>
 <td>e.g. <code>"io.appium.example"</code>, <code>["io.appium.example1", "io.appium.example2"]</code>, <code>'*'</code></td>
 </tr>
+<tr>
+<td><code>disableWindowAnimation</code></td>
+<td>Set device animation scale zero if the value is <code>true</code>. After session is complete, Appium restores the animation scale to it's original value. Defaults to <code>false</code></td>
+<td><code>true</code>, <code>false</code></td>
+</tr>
 </tbody>
 </table>
 <h4 id="uiautomator-1-2">UIAutomator (1 &amp; 2)</h4>
