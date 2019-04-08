@@ -1375,6 +1375,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1531,6 +1537,12 @@
                             
 <li>
     <a href="../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/memory-collection/">Memory Collection</a>
 </li>
 
                         
@@ -1943,6 +1955,16 @@ Capabilities available in general and for specific drivers.</p>
 <td>e.g. <code>4</code></td>
 </tr>
 <tr>
+<td><code>chromedriverPort</code></td>
+<td>Numeric port to start Chromedriver on. Note that use of this capability is discouraged as it will cause undefined behavior in case there are multiple webviews present. By default Appium will find a free port.</td>
+<td>e.g. <code>8000</code></td>
+</tr>
+<tr>
+<td><code>chromedriverPorts</code></td>
+<td>A list of valid ports for Appium to use for communication with Chromedrivers. This capability supports multiple webview scenarios. The form of this capability is an array of numeric ports, where array items can themselves be arrays of length 2, where the first element is the start of an inclusive range and the second is the end. By default, Appium will use any free port.</td>
+<td>e.g. <code>[8000, [9000, 9005]]</code></td>
+</tr>
+<tr>
 <td><code>intentAction</code></td>
 <td>Intent action which will be used to start activity (default <code>android.intent.action.MAIN</code>)</td>
 <td>e.g.<code>android.intent.action.MAIN</code>, <code>android.intent.action.VIEW</code></td>
@@ -2081,6 +2103,11 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>uninstallOtherPackages</code></td>
 <td>A package, list of packages or <code>*</code> to uninstall package/s before installing apks for test. <code>'*'</code> uninstall all of thrid-party packages except for packages which is necessary for Appium to test such as <code>io.appium.settings</code> or <code>io.appium.uiautomator2.server</code> since Appium already contains the logic to manage them.</td>
 <td>e.g. <code>"io.appium.example"</code>, <code>["io.appium.example1", "io.appium.example2"]</code>, <code>'*'</code></td>
+</tr>
+<tr>
+<td><code>disableWindowAnimation</code></td>
+<td>Set device animation scale zero if the value is <code>true</code>. After session is complete, Appium restores the animation scale to it's original value. Defaults to <code>false</code></td>
+<td><code>true</code>, <code>false</code></td>
 </tr>
 </tbody>
 </table>
