@@ -576,19 +576,19 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="python" data-toggle="tab">Python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="c#" data-toggle="tab">C#</a>
+              <a href="#0_1" data-language="javascript" data-toggle="tab">Javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_2" data-language="c#" data-toggle="tab">C#</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_3" data-language="java" data-toggle="tab">Java</a>
           </li>
           
           <li role="presentation" class="">
@@ -603,25 +603,25 @@
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">Set&lt;String&gt; contextNames = driver.getContextHandles();
-String context = driver.getContext();
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="c#">driver.GetContexts ()
-driver.GetContext ()
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="python">driver.contexts
 current = driver.context
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_3">
+          <div role="tabpanel" class="tab-pane " id="0_1">
             <pre><code class="javascript">driver.contexts().then(function (contexts) { /*...*/ })
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_2">
+            <pre><code class="c#">driver.GetContexts ()
+driver.GetContext ()
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_3">
+            <pre><code class="java">Set&lt;String&gt; contextNames = driver.getContextHandles();
+String context = driver.getContext();
 </code></pre>
           </div>
           
@@ -655,19 +655,19 @@ $context = $this-&gt;context();
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#1_0" data-language="python" data-toggle="tab">Python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="c#" data-toggle="tab">C#</a>
+              <a href="#1_1" data-language="javascript" data-toggle="tab">Javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_2" data-language="python" data-toggle="tab">Python</a>
+              <a href="#1_2" data-language="c#" data-toggle="tab">C#</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_3" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#1_3" data-language="java" data-toggle="tab">Java</a>
           </li>
           
           <li role="presentation" class="">
@@ -682,23 +682,23 @@ $context = $this-&gt;context();
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="java">java
-driver.context(contextName);
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="c#">driver.SetContext ("WEBVIEW");
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="1_2">
             <pre><code class="python">driver.switch_to.context("WEBVIEW")
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="1_3">
+          <div role="tabpanel" class="tab-pane " id="1_1">
             <pre><code class="javascript">driver.currentContext().then(function (context) { /*...*/ })
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_2">
+            <pre><code class="c#">driver.SetContext ("WEBVIEW");
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_3">
+            <pre><code class="java">java
+driver.context(contextName);
 </code></pre>
           </div>
           
