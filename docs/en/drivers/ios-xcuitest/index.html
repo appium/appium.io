@@ -1375,6 +1375,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1531,6 +1537,12 @@
                             
 <li>
     <a href="../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/memory-collection/">Memory Collection</a>
 </li>
 
                         
@@ -1699,6 +1711,27 @@ guide</a>.</p>
 the value <code>XCUITest</code>. Of course, you must also include appropriate
 <code>platformName</code>, <code>platformVersion</code>, <code>deviceName</code>, and <code>app</code> capabilities, at
 a minimum.</p>
+<p>The <code>platformName</code> should be <code>iOS</code> for iPhone or iPad. tvOS devices are available if the <code>platformName</code> is <code>tvOS</code>.</p>
+<ul>
+<li>iOS
+   <code>json
+   {
+      "automationName": "XCUITest",
+      "platformName": "iOS",
+      "platformVersion": "12.2",
+      "deviceName": "iPhone 8",
+      ...
+   }</code></li>
+<li>tvOS
+   <code>json
+   {
+      "automationName": "XCUITest",
+      "platformName": "tvOS",
+      "platformVersion": "12.2",
+      "deviceName": "Apple TV",
+      ...
+   }</code></li>
+</ul>
 <h3 id="capabilities">Capabilities</h3>
 <p>The XCUITest driver supports a number of standard <a href="/docs/en/writing-running-appium/caps/index.html">Appium
 capabilities</a>, but has an additional
@@ -1744,7 +1777,7 @@ following desired capabilities:</p>
 </ul>
 <h3 id="optional-setup">Optional Setup</h3>
 <ul>
-<li>Install FBSimulatorControl for better handling of various iOS Simulator operations, 
+<li>Install FBSimulatorControl for better handling of various iOS Simulator operations,
 such as: biometrics, geolocation setting and window focussing.</li>
 </ul>
 <pre><code># Get the Facebook Tap.

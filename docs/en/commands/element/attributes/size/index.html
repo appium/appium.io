@@ -1375,6 +1375,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1531,6 +1537,12 @@
                             
 <li>
     <a href="../../../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/memory-collection/">Memory Collection</a>
 </li>
 
                         
@@ -1707,7 +1719,7 @@ Dimension elementSize = element.getSize();
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-let size = driver.getElementSize("~SomeAccessibilityId");
+let size = $("~SomeAccessibilityId").getSize();
 
 // wd example
 let element = await driver.elementByAccessibilityId("SomeAccessibilityID");

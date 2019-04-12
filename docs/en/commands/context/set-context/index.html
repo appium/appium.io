@@ -1375,6 +1375,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1531,6 +1537,12 @@
                             
 <li>
     <a href="../../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../advanced-concepts/memory-collection/">Memory Collection</a>
 </li>
 
                         
@@ -1712,10 +1724,10 @@ driver.switch_to.context('NATIVE_APP')
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-let contexts = driver.contexts();
-driver.context(contexts[1]);
+let contexts = driver.getContexts();
+driver.setContext(contexts[1]);
 // ...
-driver.context('NATIVE_APP');
+driver.setContext('NATIVE_APP');
 
 // wd example
 let contexts = await driver.contexts();
