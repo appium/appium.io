@@ -1660,7 +1660,12 @@
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
   </a>tvOS support</h2>
-<p>Appium 1.13.0+ has tvOS support via XCUITest driver.</p>
+<ul>
+<li>Appium 1.13.0+ has tvOS support via XCUITest driver<ul>
+<li>It does not work on Apple TV 4K since <a href="https://github.com/ios-control/ios-deploy">ios-deploy</a> does not work on wireless devices</li>
+</ul>
+</li>
+</ul>
 <h2 id="setup">Setup</h2>
 <p>You can run tests for tvOS by changing the <code>platformName</code> capability like it is done below.</p>
 <pre><code class="json">{
