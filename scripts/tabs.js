@@ -51,10 +51,12 @@ export function fencedCodeTabify (html) {
   jqHTML.find("pre > code").each((index, codeTag) => {
     languageBlocks = [];
 
+    // Get the language 'code' tags
     const preTag = $(codeTag).parent();
     const siblings = preTag.nextAll();
     let language = capitalize($(codeTag).attr('class'));
 
+    // Push code tags to an array
     let siblingCount = 1;
     pushLanguageBlock(language, preTag[0].outerHTML, tabPaneIndex);
     siblings.each(function (index, siblingEl) {
@@ -83,6 +85,8 @@ export function fencedCodeTabify (html) {
           <% } %>
         </div>
       </div>`;
+
+      // Sort the language by priority
       languageBlocks.sort((blockOne, blockTwo) => (
         (LANGUAGE_ORDER.indexOf(blockOne.language) < 0 || LANGUAGE_ORDER.indexOf(blockOne.language) > LANGUAGE_ORDER.indexOf(blockTwo.language)) ? 1 : -1
       ));
