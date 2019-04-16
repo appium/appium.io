@@ -1375,6 +1375,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1531,6 +1537,12 @@
                             
 <li>
     <a href="../../../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/memory-collection/">Memory Collection</a>
 </li>
 
                         
@@ -1709,7 +1721,7 @@ actions.perform()
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-driver.touchFlick('&lt;ELEMENT_ID&gt;', 1, 10, 10);
+driver.touchFlick(10, 10, element, 1);
 
 // wd example
 await element.flick(1, 10, 10);

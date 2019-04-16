@@ -1375,6 +1375,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1531,6 +1537,12 @@
                             
 <li>
     <a href="../../../../advanced-concepts/settings/">The Settings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/memory-collection/">Memory Collection</a>
 </li>
 
                         
@@ -1704,8 +1716,7 @@ handle_two_size = self.driver.get_window_size("handleName")
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-let handleOneSize = driver.windowHandleSize();
-let handleTwoSize = driver.windowHandleSize("handleName");
+let handleTwoSize = driver.getWindowSize("handleName");
 
 // wd example
 let handleOneSize = await driver.getWindowSize();

@@ -1375,6 +1375,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1534,6 +1540,12 @@
 </li>
 
                         
+                            
+<li>
+    <a href="../../advanced-concepts/memory-collection/">Memory Collection</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -1667,7 +1679,7 @@
     &nbsp;&nbsp;Edit this Doc
   </a>Getting Started</h2>
 <p>This doc will get you up and running with a simple Appium test and introduce
-you to some basic Appium ideas. For a fuller introduction to Appium concepts,
+you to some basic Appium ideas. For a more comprehensive introduction to Appium concepts,
 please check out the <a href="/docs/en/about-appium/intro/index.html">conceptual introduction</a>.</p>
 <h3 id="installing-appium">Installing Appium</h3>
 <p>Appium can be installed in one of two ways: via <a href="https://npmjs.com">NPM</a> or by
@@ -1700,7 +1712,7 @@ the Android SDK configured on your system.</p>
 <p>At some point, make sure you review the driver documentation for the platform
 you want to automate, so your system is set up correctly:</p>
 <ul>
-<li>The <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest Driver</a> (for iOS apps)</li>
+<li>The <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest Driver</a> (for iOS and tvOS apps)</li>
 <li>The <a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2 Driver</a> (for Android apps)</li>
 <li>The <a href="/docs/en/drivers/windows/index.html">Windows Driver</a> (for Windows Desktop apps)</li>
 <li>The <a href="/docs/en/drivers/mac/index.html">Mac Driver</a> (for Mac Desktop apps)</li>
@@ -1821,11 +1833,10 @@ session, perform some test commands, and end the session. In our case, we will
 simply tap into a few menus and then back out the way we came before ending the
 session:</p>
 <pre><code class="js">// javascript
-const elementId = await client.findElement("accessibility id","TextField1");
-client.elementSendKeys(elementId.ELEMENT, "Hello World!"); 
-const elementValue = await client.findElement("accessibility id","TextField1");
-await client.getElementAttribute(elementValue.ELEMENT,"value").then((attr) =&gt; {
-assert.equal(attr,"Hello World!");
+const field = await client.$("~TextField1");
+await field.setValue("Hello World!");
+const value = await field.getValue();
+assert.equal(value,"Hello World!");
 });
 </code></pre>
 
@@ -1855,12 +1866,10 @@ const opts = {
 
 const client = wdio.remote(opts);
 
-const elementId = await client.findElement("accessibility id","TextField1");
-await client.elementSendKeys(elementId.ELEMENT, "Hello World!");
-const elementValue = await client.findElement("accessibility id","TextField1");
-await client.getElementAttribute(elementValue.ELEMENT,"value").then((attr) =&gt; {
-assert.equal(attr,"Hello World!");
-});
+const field = await client.$("~TextField1");
+await field.setValue("Hello World!");
+const value = await field.getValue();
+assert.equal(value,"Hello World!");
 </code></pre>
 
 <p>You can try and run this test on your own. Simply save it and execute it using
