@@ -751,8 +751,8 @@ dependencies {
 <p>测试完成后，就会在/data/data/com.example.pkg/files中生成coverage.ec文件，将其pull出。</p>
 <h3 id="4-html">[4] 关于拉出HTML报告</h3>
 <p>当你跑完测试后，程序会在你手机的app里产生coverage.ec这样的文件。
-<em> [1] 首先，利用adb pull把coverage.ec拉出手机
-</em> [2] 关于如何把ec转化成HTML，你可以在gradle里加入下列task：</p>
+* [1] 首先，利用adb pull把coverage.ec拉出手机
+* [2] 关于如何把ec转化成HTML，你可以在gradle里加入下列task：</p>
 <pre><code class="groovy">def coverageSourceDirs = [
         './src/main/java'
 ]
