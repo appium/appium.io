@@ -2109,6 +2109,16 @@ Capabilities available in general and for specific drivers.</p>
 <td>Set device animation scale zero if the value is <code>true</code>. After session is complete, Appium restores the animation scale to it's original value. Defaults to <code>false</code></td>
 <td><code>true</code>, <code>false</code></td>
 </tr>
+<tr>
+<td><code>remoteAppsCacheLimit</code></td>
+<td>Set the maximum number of remote cached apks (default is 10) which are pushed to the device-under-test's local storage. Caching apks remotely speeds up the execution of sequential test cases, when using the same set of apks, by avoiding the need to be push an apk to the remote file system every time a reinstall is needed. Set this capability to <code>0</code> to disable caching.</td>
+<td>e.g. <code>0</code>, <code>5</code>, <code>20</code></td>
+</tr>
+<tr>
+<td><code>buildToolsVersion</code></td>
+<td>Specify the Android <code>build-tools</code> version to be something different than the default, which is to use the most recent version. It is helpful to use a non-default version if your environment uses alpha/beta build tools.</td>
+<td>e.g. <code>'28.0.3'</code></td>
+</tr>
 </tbody>
 </table>
 <h4 id="uiautomator-1-2">UIAutomator (1 &amp; 2)</h4>
