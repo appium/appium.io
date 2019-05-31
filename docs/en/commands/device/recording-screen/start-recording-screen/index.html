@@ -658,6 +658,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +751,12 @@
             
 <li>
     <a href="../../system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../system/display-density/">Display density</a>
 </li>
 
         
@@ -1739,7 +1751,11 @@ start_recording_screen video_type: 'h264', time_limit: '260' # iOS
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO C# sample
+            <pre><code class="csharp">driver.StartRecordingScreen(
+    AndroidStartScreenRecordingOptions.GetAndroidStartScreenRecordingOptions()
+        .WithTimeLimit(TimeSpan.FromSeconds(10))
+        .WithBitRate(500000)
+        .WithVideoSize("720x1280"));
 
 </code></pre>
           </div>
@@ -1845,7 +1861,7 @@ start_recording_screen video_type: 'h264', time_limit: '260' # iOS
 <tr>
 <td><a href="https://github.com/appium/python-client/releases/latest">Python</a></td>
 <td>All</td>
-<td></td>
+<td><a href="https://github.com/appium/python-client">github.com</a></td>
 </tr>
 <tr>
 <td><a href="http://webdriver.io/index.html">Javascript (WebdriverIO)</a></td>

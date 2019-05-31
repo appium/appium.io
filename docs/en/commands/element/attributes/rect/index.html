@@ -658,6 +658,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +751,12 @@
             
 <li>
     <a href="../../../device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1709,7 +1721,9 @@ Rectangle rect = element.getRect();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python"># Not supported
+            <pre><code class="python">element = self.driver.find_element_by_accessibility_id('SomeAccessibilityID')
+element.rect
+
 </code></pre>
           </div>
           
@@ -1922,7 +1936,7 @@ element.rect
 <td>Height of the bounding rectangle</td>
 </tr>
 <tr>
-<td>weight</td>
+<td>width</td>
 <td><code>number</code></td>
 <td>Width of the bounding rectangle</td>
 </tr>
