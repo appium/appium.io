@@ -658,6 +658,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +751,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1314,12 @@
 
                         
                             
+<li>
+    <a href="../security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1350,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1402,12 @@
             
 <li>
     <a href="../ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1620,7 +1650,7 @@
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../web/mobile-web/">
+                        <a rel="prev" href="../security/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1648,7 +1678,7 @@
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
   </a>Appium server arguments</h1>
-<p>Many Appium 1.5 server arguments have been deprecated in favor of the <a href="/docs/en/writing-running-appium/default-capabilities-arg/index.html">--default-capabilities flag</a>.</p>
+<p>Since Appium 1.5, many server arguments have been deprecated in favor of the <a href="/docs/en/writing-running-appium/default-capabilities-arg/index.html">--default-capabilities flag</a>.</p>
 <p>Usage: <code>node . [flags]</code></p>
 <h2 id="server-flags">Server flags</h2>
 <p>All flags are optional, but some are required in conjunction with certain others.</p>
@@ -2138,16 +2168,22 @@
 <td></td>
 </tr>
 <tr>
-<td><code>--enable-heapdump</code></td>
+<td><code>--relaxed-security</code></td>
 <td>false</td>
-<td>Enables NodeJS memory dumps collection feature. This feature is extremely useful for finding memory leaks. See <a href="../../advanced-concepts/memory-collection/">memory collection docs</a> for more information.</td>
+<td>Disable additional security checks, so it is possible to use some advanced features, provided by drivers supporting this option. Only enable it if all the clients are in the trusted network and it is not the case if a client could potentially break out of the session sandbox. Can override enabling of specific features with --deny-insecure. See also the <a href="/docs/en/writing-running-appium/security/index.html">security doc</a></td>
 <td></td>
 </tr>
 <tr>
-<td><code>--relaxed-security</code></td>
-<td>false</td>
-<td>Disable additional security checks, so it is possible to use some advanced features, provided by drivers supporting this option. Only enable it if all the clients are in the trusted network and it is not the case if a client could potentially break out of the session sandbox.</td>
-<td></td>
+<td><code>--allow-insecure</code></td>
+<td>[]</td>
+<td>Allow a list of features which are considered insecure and must be turned on explicitly by system administrators. Feature names are documented by the relevant server/driver. Should be a comma-separated list, or a path to a filename containing one feature name per line. Features listed in --deny-insecure will override anything listed here. Does not make sense to use in conjunction with --relaxed-security. See also the <a href="/docs/en/writing-running-appium/security/index.html">security doc</a></td>
+<td><code>--allow-insecure=foo,bar</code></td>
+</tr>
+<tr>
+<td><code>--deny-insecure</code></td>
+<td>[]</td>
+<td>Specify a list of features which will never be allowed to run, even if --relaxed-security is turned on, and even if feature names are listed with --allow-insecure. Should be a comma-separated list, or a path to a filename containing one feature name per line. See also the <a href="/docs/en/writing-running-appium/security/index.html">security doc</a></td>
+<td><code>--deny-insecure=foo,bar</code></td>
 </tr>
 </tbody>
 </table></div>

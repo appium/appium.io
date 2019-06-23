@@ -658,6 +658,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +751,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1314,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1350,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1402,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1647,6 +1677,9 @@
             <li class="second-level"><a href="#related-settings">Related Settings</a></li>
             
         
+            <li class="second-level"><a href="#debug">Debug</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -1667,6 +1700,7 @@
 <li><code>getLocation</code></li>
 <li><code>getLocationInView</code></li>
 <li><code>getElementRect</code></li>
+<li><code>getAttribute</code> (only <code>visual</code> attribute)</li>
 </ul>
 <p>These actions are supported on "Image Elements" because they are the actions which involve only use of screen position for their functioning. Other actions (like <code>sendKeys</code>, for example) are not supported, because all Appium can know based on your template image is whether or not there is a screen region which visually matches it--Appium has no way of turning that information into a driver-specific UI element object, which would be necessary for the use of other actions.</p>
 <p>It's important to keep this important point in mind: there is nothing "magic" about Image Elements---they merely reference screen coordinates, and thus "tapping" an Image Element is internally nothing more than Appium constructing a tap at a point in the center of the Image Element's screen bounds (and in fact you can tell Appium which API to use to perform that tap---see below).</p>
@@ -1728,12 +1762,55 @@
 <tr>
 <td>imageElementTapStrategy</td>
 <td>In order to tap on a found image element, Appium has to use one of its touch action strategies. The available strategies are the W3C Actions API, or the older MJSONWP TouchActions API. Stick to the default unless the driver you are using does not support the W3C Actions API for some reason.</td>
-<td><code>w3cActions</code> or <code>touchActions</code></td>
-<td><code>w3cActions</code></td>
+<td><code>"w3cActions"</code> or <code>"touchActions"</code></td>
+<td><code>"w3cActions"</code></td>
+</tr>
+<tr>
+<td>getMatchedImageResult</td>
+<td>Appium does not store the matched image result. Although, storing the result in memory might help for debugging whether which area is matched by find by image. Appium returns the image against <a href="http://appium.io/docs/en/commands/element/attributes/attribute/">attribute</a> API as <code>visual</code>.</td>
+<td><code>true</code> or <code>false</code></td>
+<td><code>false</code></td>
 </tr>
 </tbody>
 </table>
-<p>Note that each language-specific Appium client may make these settings available via special constants which could differ slightly from the exact setting names mentioned above.</p></div>
+<p>Note that each language-specific Appium client may make these settings available via special constants which could differ slightly from the exact setting names mentioned above.</p>
+<h3 id="debug">Debug</h3>
+<p><code>getMatchedImageResult</code> might help for debugging if Appium found the provided image expectedly. <code>visual</code> attribute returns base64 data if <code>getMatchedImageResult</code> is <code>true</code>.</p>
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#0_0" data-language="python" data-toggle="tab">Python</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_1" data-language="ruby" data-toggle="tab">Ruby</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="0_0">
+            <pre><code class="python">self.driver.update_settings({"getMatchedImageResult": True}))
+el = self.driver.find_element_by_image('path/to/img.ong')
+el.get_attribute('visual') # returns base64 encoded string
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="ruby"># Ruby core
+@driver.update_settings({ getMatchedImageResult: false })
+el = @driver.find_element_by_image 'path/to/img.ong'
+img_el.visual # returns base64 encoded string
+</code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+<p>reference: https://github.com/appium/appium-base-driver/pull/327</p></div>
         
     </div>
 
