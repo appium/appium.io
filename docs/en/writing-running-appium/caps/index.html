@@ -658,6 +658,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +751,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1314,12 @@
 
                         
                             
+<li>
+    <a href="../security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1350,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1402,12 @@
             
 <li>
     <a href="../ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1671,6 +1701,8 @@ tell the Appium drivers all kinds of important things about how you want your
 test to work. Each Appium client builds capabilities in a way specific to the
 client's language, but at the end of the day, they are sent over to Appium as
 JSON objects.</p>
+<p>Desired Capabilities can be scripted in the WebDriver test or set within the
+Appium Server GUI (via an Inspector Session)</p>
 <p>Some important capabilities are demonstrated in the following example:</p>
 <pre><code class="json">{
     "platformName": "iOS",
@@ -1784,6 +1816,25 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>printPageSourceOnFindFailure</code></td>
 <td>When a find operation fails, print the current page source. Defaults to <code>false</code>.</td>
 <td>e.g., <code>true</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Update settings</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>settings[settingsKey]</code></td>
+<td>Update <a href="https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md">Appium Settings</a> on session creation.</td>
+<td>e.g., <code>'settings[mjpegScalingFactor]': 10</code>, <code>'settings[shouldUseCompactResponses]': true</code></td>
 </tr>
 </tbody>
 </table>
@@ -1965,26 +2016,6 @@ Capabilities available in general and for specific drivers.</p>
 <td>e.g. <code>[8000, [9000, 9005]]</code></td>
 </tr>
 <tr>
-<td><code>intentAction</code></td>
-<td>Intent action which will be used to start activity (default <code>android.intent.action.MAIN</code>)</td>
-<td>e.g.<code>android.intent.action.MAIN</code>, <code>android.intent.action.VIEW</code></td>
-</tr>
-<tr>
-<td><code>intentCategory</code></td>
-<td>Intent category which will be used to start activity (default <code>android.intent.category.LAUNCHER</code>)</td>
-<td>e.g. <code>android.intent.category.LAUNCHER</code>, <code>android.intent.category.APP_CONTACTS</code></td>
-</tr>
-<tr>
-<td><code>intentFlags</code></td>
-<td>Flags that will be used to start activity (default <code>0x10200000</code>)</td>
-<td>e.g. <code>0x10200000</code></td>
-</tr>
-<tr>
-<td><code>optionalIntentArguments</code></td>
-<td>Additional intent arguments that will be used to start activity. See <a href="http://developer.android.com/reference/android/content/Intent.html">Intent arguments</a></td>
-<td>e.g. <code>--esn &lt;EXTRA_KEY&gt;</code>, <code>--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code>, etc.</td>
-</tr>
-<tr>
 <td><code>dontStopAppOnReset</code></td>
 <td>Doesn't stop the process of the app under test, before starting the app using adb. If the app under test is created by another anchor app, setting this false, allows the process of the anchor app to be still alive, during the start of the test app using adb. In other words, with <code>dontStopAppOnReset</code> set to <code>true</code>, we will not include the <code>-S</code> flag in the <code>adb shell am start</code> call. With this capability omitted or set to <code>false</code>, we include the <code>-S</code> flag. Default <code>false</code></td>
 <td><code>true</code> or <code>false</code></td>
@@ -2109,6 +2140,16 @@ Capabilities available in general and for specific drivers.</p>
 <td>Set device animation scale zero if the value is <code>true</code>. After session is complete, Appium restores the animation scale to it's original value. Defaults to <code>false</code></td>
 <td><code>true</code>, <code>false</code></td>
 </tr>
+<tr>
+<td><code>remoteAppsCacheLimit</code></td>
+<td>Set the maximum number of remote cached apks (default is 10) which are pushed to the device-under-test's local storage. Caching apks remotely speeds up the execution of sequential test cases, when using the same set of apks, by avoiding the need to be push an apk to the remote file system every time a reinstall is needed. Set this capability to <code>0</code> to disable caching.</td>
+<td>e.g. <code>0</code>, <code>5</code>, <code>20</code></td>
+</tr>
+<tr>
+<td><code>buildToolsVersion</code></td>
+<td>Specify the Android <code>build-tools</code> version to be something different than the default, which is to use the most recent version. It is helpful to use a non-default version if your environment uses alpha/beta build tools.</td>
+<td>e.g. <code>'28.0.3'</code></td>
+</tr>
 </tbody>
 </table>
 <h4 id="uiautomator-1-2">UIAutomator (1 &amp; 2)</h4>
@@ -2126,6 +2167,26 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>otherApps</code></td>
 <td>App or list of apps (as a JSON array) to install prior to running tests</td>
 <td>e.g., <code>"/path/to/app.apk"</code>, <code>https://www.example.com/url/to/app.apk</code>, <code>["/path/to/app-a.apk", "/path/to/app-b.apk"]</code></td>
+</tr>
+<tr>
+<td><code>intentAction</code></td>
+<td>Intent action which will be used to start activity (default <code>android.intent.action.MAIN</code>)</td>
+<td>e.g.<code>android.intent.action.MAIN</code>, <code>android.intent.action.VIEW</code></td>
+</tr>
+<tr>
+<td><code>intentCategory</code></td>
+<td>Intent category which will be used to start activity (default <code>android.intent.category.LAUNCHER</code>)</td>
+<td>e.g. <code>android.intent.category.LAUNCHER</code>, <code>android.intent.category.APP_CONTACTS</code></td>
+</tr>
+<tr>
+<td><code>intentFlags</code></td>
+<td>Flags that will be used to start activity (default <code>0x10200000</code>)</td>
+<td>e.g. <code>0x10200000</code></td>
+</tr>
+<tr>
+<td><code>optionalIntentArguments</code></td>
+<td>Additional intent arguments that will be used to start activity. See <a href="http://developer.android.com/reference/android/content/Intent.html">Intent arguments</a></td>
+<td>e.g. <code>--esn &lt;EXTRA_KEY&gt;</code>, <code>--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code>, etc.</td>
 </tr>
 </tbody>
 </table>
@@ -2235,7 +2296,7 @@ Driver</a>.</p>
 </tr>
 <tr>
 <td><code>nativeWebTap</code></td>
-<td>(Sim-only) Enable "real", non-javascript-based web taps in Safari. Default: <code>false</code>. Warning: depending on viewport size/ratio this might not accurately tap an element</td>
+<td>Enable "real", non-javascript-based web taps in Safari. Default: <code>false</code>. Warning: depending on viewport size/ratio; this might not accurately tap an element</td>
 <td><code>true</code> or <code>false</code></td>
 </tr>
 <tr>
