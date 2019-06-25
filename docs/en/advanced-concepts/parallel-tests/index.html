@@ -658,6 +658,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +751,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1314,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1350,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1402,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1678,6 +1708,7 @@
 <li><code>deviceName</code> Simulator Name</li>
 <li><code>platformVersion</code> Simulator OS version</li>
 <li><code>wdaLocalPort</code> unique wdaPort, as WDA defaults to 8100</li>
+<li><code>derivedDataPath</code> set the unique derived data path root for each driver instance. This will help to avoid possible conflicts and to speed up the parallel execution.</li>
 </ul>
 <p>Parallel Safari/Webview sessions are not working due to an Apple bug</p>
 <p>Refer: https://github.com/appium/appium/issues/9209</p>
@@ -1686,6 +1717,7 @@
 <li><code>udid</code> the device id</li>
 <li><code>wdaLocalPort</code> unique wdaPort, as WDA defaults to 8100</li>
 <li><code>webkitDebugProxyPort</code> unique webKitProxy, as IWDP defaults to 27753</li>
+<li><code>derivedDataPath</code> set the unique derived data path root for each driver instance. This will help to avoid possible conflicts and to speed up the parallel execution.</li>
 </ul>
 <h3 id="troubleshooting">Troubleshooting</h3>
 <p>When running on Jenkins, watch out for the <a href="https://wiki.jenkins.io/display/JENKINS/ProcessTreeKiller">ProcessTreeKiller</a> when running multiple parallel test jobs on the same machine. If you are spawning simulators in one test job, Jenkins might kill all your simulators when the first test ends - causing errors in the remaining test jobs!</p>

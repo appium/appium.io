@@ -658,6 +658,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +751,12 @@
             
 <li>
     <a href="../../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1314,12 @@
 
                         
                             
+<li>
+    <a href="../../security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1350,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1402,12 @@
             
 <li>
     <a href="../../ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1905,8 +1935,8 @@ dependencies {
 <p>The coverage.ec will be generated at /data/data/com.example.pkg/files. Pull it out.</p>
 <h3 id="4-about-generating-html-reports">[4] About generating HTML reports</h3>
 <p>To get the HTML report of coverage.ec, you need following steps:
-<em> [1] pull it into file system by <code>adb pull</code> 
-</em> [2] create the following task in your gradle file:</p>
+* [1] pull it into file system by <code>adb pull</code> 
+* [2] create the following task in your gradle file:</p>
 <pre><code class="groovy">def coverageSourceDirs = [
         './src/main/java'
 ]
