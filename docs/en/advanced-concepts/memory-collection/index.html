@@ -658,6 +658,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +751,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1314,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1350,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1402,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1638,16 +1668,10 @@
     
         <li class="first-level active"><a href="#memory-collection">Memory Collection</a></li>
         
-            <li class="second-level"><a href="#enabling">Enabling</a></li>
-            
-        
             <li class="second-level"><a href="#creating-a-dump-file">Creating a dump file</a></li>
             
         
             <li class="second-level"><a href="#dump-file-analysis">Dump file analysis</a></li>
-            
-        
-            <li class="second-level"><a href="#installation">Installation</a></li>
             
         
     
@@ -1657,44 +1681,21 @@
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
   </a>Memory Collection</h2>
-<p>It is possible to collect the dumps of Appium's memory usage to be analyzed for
-problems. This is <em>extrememly</em> useful for finding memory leaks.</p>
-<h3 id="enabling">Enabling</h3>
-<p>The feature is enabled by starting Appium with the <code>--enable-heapdump</code>
-<a href="../../writing-running-appium/server-args/">server argument</a></p>
-<pre><code>appium --enable-heapdump
-</code></pre>
-
+<p>Since Node v. 12 it is possible to collect the dumps of Appium's memory usage to be analyzed for problems.
+This is <em>extremely</em> useful for finding memory leaks.</p>
 <h3 id="creating-a-dump-file">Creating a dump file</h3>
-<p>To create a dump file at any given time, execute the command</p>
-<pre><code>kill -SIGUSR2 &amp;lt;PID&amp;gt;
+<p>To create a dump file at any given time, add the following command line parameter to <code>node</code> process, which executes the appium.js script:</p>
+<pre><code>--heapsnapshot-signal=&amp;lt;signal&amp;gt;
 </code></pre>
 
-<p>Dump files are created in the same folder as the main Appium script was executed.
-They will have the <code>.heapsnapshot</code> extension, and can be loaded into the Chrome
-Inspector for further investigation.</p>
+<p>where <code>signal</code> can be one of available custom signals, for example <code>SIGUSR2</code>. Then you will be able to</p>
+<pre><code>kill -SIGUSR2 &amp;lt;nodePID&amp;gt;
+</code></pre>
+
+<p>Dump files are created in the same folder where the main Appium script has been executed.
+They have the <code>.heapsnapshot</code> extension, and can be loaded into the Chrome Inspector for further investigation.</p>
 <h3 id="dump-file-analysis">Dump file analysis</h3>
-<p>Read the <a href="https://blog.risingstack.com/finding-a-memory-leak-in-node-js/">Rising Stack article</a> for more details.</p>
-<h3 id="installation">Installation</h3>
-<p>For this feature to work, the <a href="https://www.npmjs.com/package/heapdump">heapdump</a>
-package must be installed and available to the Appium. This can be done either by
-installing <code>heapdump</code> in the Appium directory</p>
-<pre><code>cd &lt;location of appium installation&gt;
-npm install heapdump
-</code></pre>
-
-<p>Alternatively, since <code>heapdump</code> is built on install, it may be helpful to install
-it once and then link it to the Appium installation</p>
-<pre><code>npm install -g heapdump
-cd &lt;location of appium installation&gt;
-npm link heapdump
-</code></pre>
-
-<p><strong>Note:</strong> The installation of <code>heapdump</code> requires Python 2. If you do not have
-Python installed, make sure you install Python 2, not 3. If you have Python 3
-installed, install Python 2 (see <a href="https://stackoverflow.com/a/2547577">stack overflow</a>
-for information on having multiple Python versions installed on the same
-machine).</p></div>
+<p>Read the <a href="https://blog.risingstack.com/finding-a-memory-leak-in-node-js/">Rising Stack article</a> for more details.</p></div>
         
     </div>
 
