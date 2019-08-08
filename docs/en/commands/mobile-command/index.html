@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -2014,7 +2038,7 @@ on syntax).</p>
 <tbody>
 <tr>
 <td>mobile:shell</td>
-<td>Execute <a href="https://developer.android.com/studio/command-line/adb#shellcommands">ADB shell</a> commands (requires <a href="/docs/en/writing-running-appium/server-args/index.html#server-flags">server flag</a> <code>--relaxed-security</code> to be set)</td>
+<td>Execute <a href="https://developer.android.com/studio/command-line/adb#shellcommands">ADB shell</a> commands (requires <a href="/docs/en/writing-running-appium/security/index.html">insecure feature</a> <code>adb_shell</code> to be enabled)</td>
 <td>ADB shell string</td>
 <td><code>am start -n com.example.demo/com.example.test.MainActivity</code></td>
 </tr>
@@ -2178,7 +2202,7 @@ on syntax).</p>
 </tr>
 <tr>
 <td>mobile:backdoor</td>
-<td>Invoke arbitrary methods defined in Android app. The methods must be <code>public</code>. <code>target</code> is <code>activity</code>, <code>application</code> or <code>element</code>. <code>methods</code> are methods you would like to invoke. <code>elementId</code> is mandatory if <code>target</code> is <code>element</code>. Read docstring of <em>mobileBackdoor</em> method <a href="https://github.com/appium/appium-espresso-driver/blob/master/lib/commands/general.js">here</a> for more details</td>
+<td>Invoke arbitrary methods defined in Android app. The methods must be <code>public</code> in Java and must be <code>open</code> in Kotlin. <code>target</code> is <code>activity</code>, <code>application</code> or <code>element</code>. <code>methods</code> are methods you would like to invoke. <code>elementId</code> is mandatory if <code>target</code> is <code>element</code>. Read docstring of <em>mobileBackdoor</em> method <a href="https://github.com/appium/appium-espresso-driver/blob/master/lib/commands/general.js">here</a> for more details</td>
 <td><code>{target, methods, elementId}</code></td>
 <td><code>{target: 'activity', methods: [{name: 'method1'}, {name: 'method2', args: [{value: 'hello appium', type: 'java.lang.String'}] }] }</code>, <code>{target: 'element', elementId: elementId, [{name: 'getTypeface'}, {name: 'isItalic'}]}</code></td>
 </tr>
@@ -2193,6 +2217,18 @@ on syntax).</p>
 <td>Drive areas which are not part of App Under Test, using uiautomator2 APIs. <code>strategy</code> can be one of: "clazz", "res", "text", "textContains", "textEndsWith", "textStartsWith","desc", "descContains", "descEndsWith", "descStartsWith" and "pkg", taken from uiautomator <a href="https://developer.android.com/reference/androidx/test/uiautomator/By">By class</a>. <code>action</code> can be one of: "click", "longClick", "getText", "getContentDescription", "getClassName","getResourceName", "getVisibleBounds", "getVisibleCenter", "getApplicationPackage","getChildCount", "clear", "isCheckable", "isChecked", "isClickable", "isEnabled","isFocusable", "isFocused", "isLongClickable", "isScrollable" and "isSelected", taken from uiautomator <a href="https://developer.android.com/reference/androidx/test/uiautomator/UiObject2">UiObject2</a>. <code>index</code> is optional, if not given, will return all matching results</td>
 <td><code>{strategy, locator, index, action}</code></td>
 <td><code>{strategy: 'clazz', locator: 'android.widget.TextView', index: 2, action: "getText"}</code></td>
+</tr>
+<tr>
+<td>mobile:webAtoms</td>
+<td>Runs a chain of <a href="https://developer.android.com/training/testing/espresso/web">webatoms</a>. <code>withElement</code> and <code>perform</code> are basic chain items. Please refer <a href="https://github.com/appium/appium-espresso-driver/pull/380">issue</a> and <a href="https://github.com/appium/ruby_lib_core/blob/c9062c4b744263d790c7de17263cbd4645cdefc6/test/functional/android/android/mobile_commands_test.rb#L196-L239">Sample test code</a> as references.</td>
+<td><code>{webviewElement, forceJavascriptEnabled, methodChain}</code></td>
+<td>(webdriverio) <code>{ webviewElement: webviewEl.value, forceJavascriptEnabled: true, methodChain: [...]}</code></td>
+</tr>
+<tr>
+<td>mobile:dismissAutofill</td>
+<td>Disable autofill dialog in Android O+</td>
+<td><code>{element}</code></td>
+<td><code>{element: elementId}</code></td>
 </tr>
 </tbody>
 </table>
