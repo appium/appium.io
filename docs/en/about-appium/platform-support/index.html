@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1689,17 +1713,15 @@ make explicit the level of support and requirements for each of these.</p>
 <ul>
 <li>The <a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2 Driver</a></li>
 <li>The (deprecated) <a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator Driver</a></li>
-<li>The (deprecated) <a href="/docs/en/drivers/android-selendroid/index.html">Selendroid Driver</a></li>
 </ul>
 <p>Please refer to these driver docs for setup instructions.</p>
 <ul>
-<li>Versions: 2.3 and up</li>
-<li>Versions 2.3 through 4.2 are supported via Appium's <a href="/docs/en/drivers/android-selendroid/index.html">Selendroid Driver</a></li>
+<li>Versions: 4.2 and up</li>
 <li>Versions 4.2 and up are supported via Appium's <a href="http://developer.android.com/tools/testing-support-library/index.html#UIAutomator">UiAutomator and UiAutomator2</a>
       libraries. UiAutomator is the default driver.</li>
 <li>Devices: Android emulators and real Android devices</li>
 <li>Native app support: Yes</li>
-<li>Mobile web support: Yes (but not when using Selendroid backend). Automation
+<li>Mobile web support: Yes. Automation
   is effected using a bundled <a href="https://code.google.com/p/selenium/wiki/ChromeDriver">Chromedriver</a>
   server as a proxy. With 4.2 and 4.3, automation works on official Chrome
   browser or Chromium only. With 4.4+, automation also works on the built-in
@@ -1707,16 +1729,13 @@ make explicit the level of support and requirements for each of these.</p>
   device under test. See the <a href="/docs/en/writing-running-appium/web/mobile-web/index.html">mobile web doc</a> for instructions.</li>
 <li>Hybrid support: Yes. See the <a href="/docs/en/writing-running-appium/web/hybrid/index.html">hybrid doc</a> for instructions.</li>
 <li>With default Appium automation backend: versions 4.4 and up</li>
-<li>With Selendroid automation backend: versions 2.3 and up</li>
-<li>Support for automating multiple apps in one session: Yes (but not when
-  using the Selendroid backend)</li>
+<li>Support for automating multiple apps in one session: Yes</li>
 <li>Support for automating multiple devices simultaneously: Yes,
   though Appium must be started using different ports for the server
-   parameters <code>--port</code>, <code>--bootstrap-port</code> (or <code>--selendroid-port</code>) and/or
+   parameters <code>--port</code>, <code>--bootstrap-port</code> and/or
   <code>--chromedriver-port</code>. See the <a href="/docs/en/writing-running-appium/server-args/index.html">server args doc</a> for more
   information on these parameters.</li>
-<li>Support for automating vendor-provided or third-party apps: Yes (but not
-  when using the Selendroid backend)</li>
+<li>Support for automating vendor-provided or third-party apps: Yes</li>
 <li>Support for automating custom, non-standard UI controls: No</li>
 </ul>
 <h3 id="windows-desktop-support">Windows Desktop Support</h3>

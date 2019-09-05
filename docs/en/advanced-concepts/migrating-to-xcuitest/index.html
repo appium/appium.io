@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1726,10 +1750,10 @@
 <p>In addition to the many gotchas that might come with upgrading any XCode installation (unrelated to Appium), Appium's XCUITest support requires a new system dependency: <a href="https://github.com/Carthage/Carthage">Carthage</a>. Appium Doctor has now been updated to ensure that the <code>carthage</code> binary is on your path.</p>
 <h3 id="api-differences">API differences</h3>
 <p>Unfortunately, the XCUITest API and the UIAutomation API are not equivalent. In many cases (like with <code>tap/click</code>), the behavior is identical. But some features that were available in the UIAutomation backend are not yet available in the new XCUITest backend. These known lacking features include:
-<em> Geolocation support (e.g., <code>driver.location</code>)
-</em> Shaking the device
-<em> Locking the device
-</em> Rotating the device (note that this is <em>NOT</em> device <em>orientation</em>, which is supported)</p>
+* Geolocation support (e.g., <code>driver.location</code>)
+* Shaking the device
+* Locking the device
+* Rotating the device (note that this is <em>NOT</em> device <em>orientation</em>, which is supported)</p>
 <p>We will endeavor to add these features back in future releases of Appium.</p>
 <h4 id="scrolling-and-clicking">Scrolling and clicking</h4>
 <p>In the previous UIAutomation-based driver, if you tried to click on an element that wasn't in view, UIAutomation would scroll to the element automatically and then tap it. With XCUITest, this is no longer the case. You are now responsible for ensuring your element is in view before interacting with it (the same way a user would be responsible for the same).</p>
@@ -1742,7 +1766,7 @@
 <li>Setting geo-location not supported due to lack of support from Apple.</li>
 <li>Through the TouchAction/MultiAction API, <code>zoom</code> gestures work but <code>pinch</code> gestures do not, due to an Apple issue.</li>
 <li><del>Through the TouchAction/MultiAction API, <code>swipe</code> gestures are currently not supported, though they should be soon (https://github.com/appium/appium/issues/7573).</del></li>
-<li>The capabilities <code>autoAcceptAlerts</code> and <code>autoDismissAlerts</code> do not currently work, and there is continued debate about whether we will be able to implement them in the future.</li>
+<li><del>The capabilities <code>autoAcceptAlerts</code> and <code>autoDismissAlerts</code> do not currently work, and there is continued debate about whether we will be able to implement them in the future.</del></li>
 <li>There is an issue with the iOS SDK such that PickerWheels built using certain API methods are not automatable by XCUITest. See https://github.com/appium/appium/issues/6962 for the workaround, to ensure your PickerWheels are built properly.</li>
 </ul>
 <p>As far as possible, we will add the missing features and fix other known issues in future versions of Appium.</p></div>

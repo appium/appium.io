@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1657,8 +1681,8 @@
 <tbody>
 <tr>
 <td>iOS (including XCUITest)</td>
-<td>Shut down sim after test. Do not destroy sim. Do not uninstall app from real device.</td>
-<td>Uninstall app after real device test, destroy Simulator after sim test</td>
+<td>Shut down sim after test. Do not destroy sim. If it is a simulator and <code>app</code> capability is provided, uninstalls the app-under-test* but does not destroy simulator. If it is a real device or a simulator with only <code>bundleId</code> capability, does not uninstall app-under-test.</td>
+<td>Uninstall app before and after real device test, destroy Simulator before and after sim test. They happen only <em>before</em> if <code>resetOnSessionStartOnly: true</code> is provided</td>
 <td>Do not destroy or shut down sim after test. Start tests running on whichever sim is running, or device is plugged in</td>
 </tr>
 <tr>
@@ -1668,7 +1692,8 @@
 <td>Do not stop app, do not clear app data, and do not uninstall apk.</td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<p>*: Make sure the local data has been deleted from the simulator environment rather than they remian unexpectedly.</p></div>
         
     </div>
 

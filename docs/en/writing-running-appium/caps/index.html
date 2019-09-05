@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1671,6 +1695,8 @@ tell the Appium drivers all kinds of important things about how you want your
 test to work. Each Appium client builds capabilities in a way specific to the
 client's language, but at the end of the day, they are sent over to Appium as
 JSON objects.</p>
+<p>Desired Capabilities can be scripted in the WebDriver test or set within the
+Appium Server GUI (via an Inspector Session)</p>
 <p>Some important capabilities are demonstrated in the following example:</p>
 <pre><code class="json">{
     "platformName": "iOS",
@@ -1703,7 +1729,7 @@ Capabilities available in general and for specific drivers.</p>
 <tr>
 <td><code>automationName</code></td>
 <td>Which automation engine to use</td>
-<td><code>Appium</code> (default) or <code>Selendroid</code> or <code>UiAutomator2</code> or <code>Espresso</code> for Android or <code>XCUITest</code> for iOS or <code>YouiEngine</code> for application built with You.i Engine</td>
+<td><code>Appium</code> (default) or <code>UiAutomator2</code> or <code>Espresso</code> for Android or <code>XCUITest</code> for iOS or <code>YouiEngine</code> for application built with You.i Engine</td>
 </tr>
 <tr>
 <td><code>platformName</code></td>
@@ -1785,6 +1811,30 @@ Capabilities available in general and for specific drivers.</p>
 <td>When a find operation fails, print the current page source. Defaults to <code>false</code>.</td>
 <td>e.g., <code>true</code></td>
 </tr>
+<tr>
+<td><code>clearSystemFiles</code></td>
+<td>Delete any generated files at the end of a session. Default to <code>false</code>.</td>
+<td><code>true</code>, <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Update settings</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>settings[settingsKey]</code></td>
+<td>Update <a href="https://github.com/appium/appium/blob/master/docs/en/advanced-concepts/settings.md">Appium Settings</a> on session creation.</td>
+<td>e.g., <code>'settings[mjpegScalingFactor]': 10</code>, <code>'settings[shouldUseCompactResponses]': true</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="android-only">Android Only</h3>
@@ -1811,7 +1861,7 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>appWaitActivity</code></td>
-<td>Activity name/names, comma separated, for the Android activity you want to wait for. By default the value of this capability is the same as for <code>appActivity</code>. You must set it to the very first focused application activity name in case it is different from the one which is set as <code>appActivity</code> if your capability has <code>appActivity</code> and <code>appPackage</code>.</td>
+<td>Activity name/names, comma separated, for the Android activity you want to wait for. By default the value of this capability is the same as for <code>appActivity</code>. You must set it to the very first focused application activity name in case it is different from the one which is set as <code>appActivity</code> if your capability has <code>appActivity</code> and <code>appPackage</code>. You can also use wildcards (<code>*</code>).</td>
 <td><code>SplashActivity</code>, <code>SplashActivity,OtherActivity</code>, <code>*</code>, <code>*.SplashActivity</code></td>
 </tr>
 <tr>
@@ -1965,24 +2015,14 @@ Capabilities available in general and for specific drivers.</p>
 <td>e.g. <code>[8000, [9000, 9005]]</code></td>
 </tr>
 <tr>
-<td><code>intentAction</code></td>
-<td>Intent action which will be used to start activity (default <code>android.intent.action.MAIN</code>)</td>
-<td>e.g.<code>android.intent.action.MAIN</code>, <code>android.intent.action.VIEW</code></td>
+<td><code>ensureWebviewsHavePages</code></td>
+<td>Whether or not Appium should augment its webview detection with page detection, guaranteeing that any webview contexts which show up in the context list have active pages. This can prevent an error if a context is selected where Chromedriver cannot find any pages. Defaults to <code>false</code></td>
+<td>e.g. <code>true</code></td>
 </tr>
 <tr>
-<td><code>intentCategory</code></td>
-<td>Intent category which will be used to start activity (default <code>android.intent.category.LAUNCHER</code>)</td>
-<td>e.g. <code>android.intent.category.LAUNCHER</code>, <code>android.intent.category.APP_CONTACTS</code></td>
-</tr>
-<tr>
-<td><code>intentFlags</code></td>
-<td>Flags that will be used to start activity (default <code>0x10200000</code>)</td>
-<td>e.g. <code>0x10200000</code></td>
-</tr>
-<tr>
-<td><code>optionalIntentArguments</code></td>
-<td>Additional intent arguments that will be used to start activity. See <a href="http://developer.android.com/reference/android/content/Intent.html">Intent arguments</a></td>
-<td>e.g. <code>--esn &lt;EXTRA_KEY&gt;</code>, <code>--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code>, etc.</td>
+<td><code>webviewDevtoolsPort</code></td>
+<td>To support the <code>ensureWebviewsHavePages</code> feature, it is necessary to open a TCP port for communication with the webview on the device under test. This capability allows overriding of the default port of <code>9222</code>, in case multiple sessions are running simultaneously (to avoid port clash), or in case the default port is not appropriate for your system.</td>
+<td>e.g. <code>9543</code></td>
 </tr>
 <tr>
 <td><code>dontStopAppOnReset</code></td>
@@ -2001,7 +2041,7 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>noSign</code></td>
-<td>Skip checking and signing of app with debug keys, will work only with UiAutomator and not with selendroid, default <code>false</code></td>
+<td>Skip checking and signing of app with debug keys, will work only with UiAutomator, default <code>false</code></td>
 <td><code>true</code> or <code>false</code></td>
 </tr>
 <tr>
@@ -2011,7 +2051,7 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>disableAndroidWatchers</code></td>
-<td>Disables android watchers that watch for application not responding and application crash, this will reduce cpu usage on android device/emulator. This capability will work only with UiAutomator and not with selendroid, default <code>false</code></td>
+<td>Disables android watchers that watch for application not responding and application crash, this will reduce cpu usage on android device/emulator. This capability will work only with UiAutomator, default <code>false</code></td>
 <td><code>true</code> or <code>false</code></td>
 </tr>
 <tr>
@@ -2109,6 +2149,21 @@ Capabilities available in general and for specific drivers.</p>
 <td>Set device animation scale zero if the value is <code>true</code>. After session is complete, Appium restores the animation scale to it's original value. Defaults to <code>false</code></td>
 <td><code>true</code>, <code>false</code></td>
 </tr>
+<tr>
+<td><code>remoteAppsCacheLimit</code></td>
+<td>Set the maximum number of remote cached apks (default is 10) which are pushed to the device-under-test's local storage. Caching apks remotely speeds up the execution of sequential test cases, when using the same set of apks, by avoiding the need to be push an apk to the remote file system every time a reinstall is needed. Set this capability to <code>0</code> to disable caching.</td>
+<td>e.g. <code>0</code>, <code>5</code>, <code>20</code></td>
+</tr>
+<tr>
+<td><code>buildToolsVersion</code></td>
+<td>Specify the Android <code>build-tools</code> version to be something different than the default, which is to use the most recent version. It is helpful to use a non-default version if your environment uses alpha/beta build tools.</td>
+<td>e.g. <code>'28.0.3'</code></td>
+</tr>
+<tr>
+<td><code>androidNaturalOrientation</code></td>
+<td>Allow for correct handling of orientation on landscape-oriented devices. Set to <code>true</code> to basically flip the meaning of <code>PORTRAIT</code> and <code>LANDSCAPE</code>. Defaults to <code>false</code></td>
+<td><code>true</code>, <code>false</code></td>
+</tr>
 </tbody>
 </table>
 <h4 id="uiautomator-1-2">UIAutomator (1 &amp; 2)</h4>
@@ -2126,6 +2181,26 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>otherApps</code></td>
 <td>App or list of apps (as a JSON array) to install prior to running tests</td>
 <td>e.g., <code>"/path/to/app.apk"</code>, <code>https://www.example.com/url/to/app.apk</code>, <code>["/path/to/app-a.apk", "/path/to/app-b.apk"]</code></td>
+</tr>
+<tr>
+<td><code>intentAction</code></td>
+<td>Intent action which will be used to start activity (default <code>android.intent.action.MAIN</code>)</td>
+<td>e.g.<code>android.intent.action.MAIN</code>, <code>android.intent.action.VIEW</code></td>
+</tr>
+<tr>
+<td><code>intentCategory</code></td>
+<td>Intent category which will be used to start activity (default <code>android.intent.category.LAUNCHER</code>)</td>
+<td>e.g. <code>android.intent.category.LAUNCHER</code>, <code>android.intent.category.APP_CONTACTS</code></td>
+</tr>
+<tr>
+<td><code>intentFlags</code></td>
+<td>Flags that will be used to start activity (default <code>0x10200000</code>)</td>
+<td>e.g. <code>0x10200000</code></td>
+</tr>
+<tr>
+<td><code>optionalIntentArguments</code></td>
+<td>Additional intent arguments that will be used to start activity. See <a href="http://developer.android.com/reference/android/content/Intent.html">Intent arguments</a></td>
+<td>e.g. <code>--esn &lt;EXTRA_KEY&gt;</code>, <code>--ez &lt;EXTRA_KEY&gt; &lt;EXTRA_BOOLEAN_VALUE&gt;</code>, etc.</td>
 </tr>
 </tbody>
 </table>
@@ -2220,12 +2295,12 @@ Driver</a>.</p>
 </tr>
 <tr>
 <td><code>autoAcceptAlerts</code></td>
-<td>Accept all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false. Does not work on <code>XCUITest</code>-based tests.</td>
+<td>Accept all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false.</td>
 <td><code>true</code> or <code>false</code></td>
 </tr>
 <tr>
 <td><code>autoDismissAlerts</code></td>
-<td>Dismiss all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false. Does not work on <code>XCUITest</code>-based tests.</td>
+<td>Dismiss all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false.</td>
 <td><code>true</code> or <code>false</code></td>
 </tr>
 <tr>
@@ -2235,7 +2310,7 @@ Driver</a>.</p>
 </tr>
 <tr>
 <td><code>nativeWebTap</code></td>
-<td>(Sim-only) Enable "real", non-javascript-based web taps in Safari. Default: <code>false</code>. Warning: depending on viewport size/ratio this might not accurately tap an element</td>
+<td>Enable "real", non-javascript-based web taps in Safari. Default: <code>false</code>. Warning: depending on viewport size/ratio; this might not accurately tap an element</td>
 <td><code>true</code> or <code>false</code></td>
 </tr>
 <tr>
