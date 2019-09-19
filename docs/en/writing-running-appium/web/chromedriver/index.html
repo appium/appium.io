@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1620,7 +1644,7 @@
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../../ios/ios-xctest-mobile-gestures/">
+                        <a rel="prev" href="../../image-comparison/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1644,7 +1668,7 @@
             <li class="second-level"><a href="#automatic-discovery-of-compatible-chromedriver">Automatic discovery of compatible Chromedriver</a></li>
             
         
-            <li class="second-level"><a href="#installing-an-network-issues">Installing an network issues</a></li>
+            <li class="second-level"><a href="#troubleshooting-network-issues">Troubleshooting network issues</a></li>
             
         
             <li class="second-level"><a href="#w3c-support">W3C support</a></li>
@@ -1700,6 +1724,16 @@ Chrome version that is automatable:</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>2.46</td>
+<td>71</td>
+<td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.46/">v2.46 (link)</a></td>
+</tr>
+<tr>
+<td>2.45</td>
+<td>70</td>
+<td><a href="https://chromedriver.storage.googleapis.com/index.html?path=2.45/">v2.45 (link)</a></td>
+</tr>
 <tr>
 <td>2.44</td>
 <td>69.0.3497.0</td>
@@ -1927,12 +1961,12 @@ Chrome version that is automatable:</p>
 </tr>
 </tbody>
 </table>
-<p>The complete list of available Chromedriver releases is <a href="https://chromedriver.storage.googleapis.com/index.html">here</a>. To find
-the minimum supported version for any particular version, get the <a href="https://www.chromium.org/Home">Chromium</a>
-<a href="https://chromium.googlesource.com/chromium/src/+/master/docs/get_the_code.md">source code</a>,
-check out the release commit, and check the variable <code>kMinimumSupportedChromeVersion</code>
+<p>Since version <em>2.46</em> Google has changed the rules for Chromedriver versioning, so now the major Chromedriver version corresponds to the major web view/browser version, that it can automate. Follow the <a href="https://chromedriver.chromium.org/downloads/version-selection">Version Selection</a> document in order to manually find the Chromedriver, that supports your current browser/web view if its major version is equal or above <em>73</em>.</p>
+<p>To find the minimum supported browsers for older Chromedriver versions (below <em>73</em>), get the <a href="https://www.chromium.org/Home">Chromium</a>
+<a href="https://chromium.googlesource.com/chromium/src/+/master/docs/get_the_code.md">source code</a>, check out the release commit, and check the variable <code>kMinimumSupportedChromeVersion</code>
 in the file <code>src/chrome/test/chromedriver/chrome/version.cc</code>. (To find the
 release commits, you can use <code>git log --pretty=format:'%h | %s%d' | grep -i "Release Chromedriver version"</code>.)</p>
+<p>The complete list of available Chromedriver releases and release notes is <a href="https://chromedriver.storage.googleapis.com/index.html">here</a>.</p>
 <h3 id="automatic-discovery-of-compatible-chromedriver">Automatic discovery of compatible Chromedriver</h3>
 <p>Beginning with Appium 1.8.0, Appium is able to pick the correct Chromedriver for the
 version of Chrome under test. While Appium only comes bundled with the Chromedriver
@@ -1953,7 +1987,9 @@ in it. The contents of the file need to be parsable as a JSON object, like:</p>
 }
 </code></pre>
 
-<h3 id="installing-an-network-issues">Installing an network issues</h3>
+<p>Since Appium 1.15.0 there is a possibility to automatically download the necessary chromedriver(s) into <code>chromedriverExecutableDir</code> from the official Google storage. The script will automatically search for the newest chromedriver version that supports the given browser/web view, download it (the hash sum is verified as well for the downloaded archive) and add to the <code>chromedriverChromeMappingFile</code> mapping. Everything, which is needed to be done from your side is to execute the server with <code>chromedriver_autodownload</code> feature enabled (like <code>appium --allow-insecure chromedriver_autodownload</code>).
+You can also check the <a href="https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/security.md">Security</a> document for more details on how to control potentially insecure server features.</p>
+<h3 id="troubleshooting-network-issues">Troubleshooting network issues</h3>
 <p>When Appium is installed it needs to download Chromedriver, so there is the possibility
 that there could be network problems that make the install fail.</p>
 <p>By default Chromedriver is retrieved from <code>https://chromedriver.storage.googleapis.com/</code>.
@@ -1972,8 +2008,9 @@ To use a mirror of the ChromeDriver binaries use npm config property <code>chrom
 <p>It may also be necessary to adjust network proxy and firewall settings to allow
 the download to occur.</p>
 <h3 id="w3c-support">W3C support</h3>
-<p>Chromedriver hasn't followed the W3C standard yet. If you encounter proxy command error like <a href="https://github.com/appium/python-client/issues/234">this issue</a>, please update your Chromedriver version.
+<p>Chromedriver didn't follow the W3C standard until version 75. If you encounter proxy command error like <a href="https://github.com/appium/python-client/issues/234">this issue</a>, please update your Chromedriver version.
 Old Android devices can't use newer chrome drivers. You can avoid the error if you run tests with the Mobile JSON Wire Protocol.
+Since major version <em>75</em> W3C mode is the default one for Chromedriver, although it could be still switched to JSONWP one depending on the passed session capabilities.
 You can read the history of W3C support in Chromedriver from <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">downloads</a>.</p></div>
         
     </div>
