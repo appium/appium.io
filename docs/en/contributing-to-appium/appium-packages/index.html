@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1692,12 +1716,6 @@
             <li class="second-level"><a href="#appium-uiautomator">appium-uiautomator</a></li>
             
         
-            <li class="second-level"><a href="#appium-selendroid-driver">appium-selendroid-driver</a></li>
-            
-        
-            <li class="second-level"><a href="#appium-selendroid-installer">appium-selendroid-installer</a></li>
-            
-        
             <li class="second-level"><a href="#appium-android-ime">appium-android-ime</a></li>
             
         
@@ -1739,7 +1757,7 @@
 <li>put logging together</li>
 <li>mixture out of npmlog, winston and a custom logger</li>
 <li>initiates AppiumDriver (extends Basedriver)</li>
-<li>assigns iOS/Android/Selendroid/Fake driver to session</li>
+<li>assigns iOS/Android/Fake driver to session</li>
 <li>creates/deletes Appium session</li>
 <li>starts baseServer (appium-express)</li>
 <li>passes routes given by driver</li>
@@ -1889,7 +1907,7 @@
 <li>allows to send json wire protocol commands to a server that understands it (browser drivers)</li>
 <li>parses response into json</li>
 <li>allows to proxy requests to a proxied server</li>
-<li>used for communication in appium-chromedriver and appium-selendroid-driver</li>
+<li>used for communication in appium-chromedriver</li>
 </ul>
 <h2 id="appium-android-driver">appium-android-driver</h2>
 <ul>
@@ -1932,29 +1950,11 @@
 <li>command flow is like</li>
 <li>appium-android-bootstrap:start -&gt; appium-uiautomator:start -&gt; appium-adb:install bootstrap</li>
 </ul>
-<h2 id="appium-selendroid-driver">appium-selendroid-driver</h2>
-<ul>
-<li>similar to appium-android-driver it can run as standalone server</li>
-<li>downloads and installs Selendroid using appium-selendroid-installer</li>
-<li>contains several Selendroid specific logic to ensure a seamless integration</li>
-<li>contains a more specific set of capability constraints</li>
-<li>uses jsonwp-proxy to talk to the server</li>
-<li>used appium-adb to enable commands not implemented in Selendroid</li>
-</ul>
-<h2 id="appium-selendroid-installer">appium-selendroid-installer</h2>
-<ul>
-<li>contains and exports a setup logic to</li>
-<li>download Selendroid</li>
-<li>determine AndroidManifest location</li>
-<li>determine Server APK location</li>
-<li>extracting both files</li>
-<li>copying and cleaning files</li>
-</ul>
 <h2 id="appium-android-ime">appium-android-ime</h2>
 <ul>
 <li>allows to send and receive unicode characters from/to the Android device</li>
 <li>encodes text into UTF-7 sends it to the device and recodes it as Unicode</li>
-<li>used by appium-android-driver and appium-selendroid-driver</li>
+<li>used by appium-android-driver</li>
 </ul>
 <h2 id="appium-doctor">appium-doctor</h2>
 <ul>

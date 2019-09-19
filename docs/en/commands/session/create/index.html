@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1711,7 +1735,7 @@ desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simu
 desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
 desiredCapabilities.setCapability(MobileCapabilityType.APP, "/path/to/ios/app.zip");
 
-URL url = new URL("http://127.0.0.1:4723/wd/hub");
+URL url = new URL("http://127.0.0.1:4723");
 
 IOSDriver driver = new IOSDriver(url, desiredCapabilities);
 String sessionId = driver.getSessionId().toString();
@@ -1727,7 +1751,7 @@ String sessionId = driver.getSessionId().toString();
   'automationName': 'UiAutomator2',
   'app': PATH('/path/to/app')
 }
-self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+self.driver = webdriver.Remote('http://127.0.0.1:4723', desired_caps)
 
 </code></pre>
           </div>
@@ -1788,7 +1812,7 @@ capabilities.SetCapability(MobileCapabilityType.DeviceName, "Android Device");
 capabilities.SetCapability("appPackage", "com.instagram.android");
 capabilities.SetCapability("appActivity", "com.instagram.android.activity.MainTabActivity");
 
-AndroidDriver&lt;AndroidElement&gt; driver = new AndroidDriver&lt;AndroidElement&gt;(new Uri("http://127.0.0.1:4723/wd/hub/"), capabilities);
+AndroidDriver&lt;AndroidElement&gt; driver = new AndroidDriver&lt;AndroidElement&gt;(new Uri("http://127.0.0.1:4723/"), capabilities);
 
 </code></pre>
           </div>
