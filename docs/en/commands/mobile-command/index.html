@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1999,6 +2023,18 @@ on syntax).</p>
 <td><code>{text}</code></td>
 <td><code>{text: "What time is it?"}</code></td>
 </tr>
+<tr>
+<td>mobile:activeAppInfo</td>
+<td>Gets current active application's information such as bundleId and process arguments</td>
+<td><none></none></td>
+<td><none></none></td>
+</tr>
+<tr>
+<td>mobile:deviceInfo</td>
+<td>Gets device information like locale and timezone. The timezone is TZ database format like <code>America/New_York</code> by default, fallback to Apple name like <code>US/New_York</code></td>
+<td><none></none></td>
+<td><none></none></td>
+</tr>
 </tbody>
 </table>
 <h3 id="android">Android</h3>
@@ -2014,7 +2050,7 @@ on syntax).</p>
 <tbody>
 <tr>
 <td>mobile:shell</td>
-<td>Execute <a href="https://developer.android.com/studio/command-line/adb#shellcommands">ADB shell</a> commands (requires <a href="/docs/en/writing-running-appium/server-args/index.html#server-flags">server flag</a> <code>--relaxed-security</code> to be set)</td>
+<td>Execute <a href="https://developer.android.com/studio/command-line/adb#shellcommands">ADB shell</a> commands (requires <a href="/docs/en/writing-running-appium/security/index.html">insecure feature</a> <code>adb_shell</code> to be enabled)</td>
 <td>ADB shell string</td>
 <td><code>am start -n com.example.demo/com.example.test.MainActivity</code></td>
 </tr>
@@ -2099,7 +2135,7 @@ on syntax).</p>
 </tr>
 <tr>
 <td>mobile:deviceInfo</td>
-<td>Gets device information like manufacturer and model. Read <a href="https://github.com/appium/appium-uiautomator2-server/blob/master/app/src/main/java/io/appium/uiautomator2/handler/GetDeviceInfo.java">GetDeviceInfo</a> for more details.</td>
+<td>Gets device information like manufacturer, model, timezone and locale. Read <a href="https://github.com/appium/appium-uiautomator2-server/blob/master/app/src/main/java/io/appium/uiautomator2/handler/GetDeviceInfo.java">GetDeviceInfo</a> for more details.</td>
 <td><none></none></td>
 <td><none></none></td>
 </tr>
@@ -2119,20 +2155,20 @@ on syntax).</p>
 <tr>
 <td>mobile:swipe</td>
 <td>Perform the <a href="https://developer.android.com/reference/android/support/test/espresso/action/ViewActions.html#swipeDown()">"swipe" view action</a></td>
-<td><code>{elementId, direction}</code></td>
-<td><code>{elementId: 2, direction: "down|up|left|right"}</code></td>
+<td><code>{element, direction}</code></td>
+<td><code>{element: 2, direction: "down|up|left|right"}</code></td>
 </tr>
 <tr>
 <td>mobile:swipe</td>
 <td>Perform <a href="https://developer.android.com/reference/androidx/test/espresso/action/GeneralSwipeAction">"GeneralSwipeAction"</a></td>
-<td><code>{elementId, swiper, startCoordinates, endCoordinates, precisionDescriber}</code></td>
-<td><code>{elementId: 3, swiper: "FAST|SLOW", startCoordinates: 'BOTTOM_RIGHT', endCoordinates: 'TOP_RIGHT', precisionDescriber: 'FINGER'}</code></td>
+<td><code>{element, swiper, startCoordinates, endCoordinates, precisionDescriber}</code></td>
+<td><code>{element: 3, swiper: "FAST|SLOW", startCoordinates: 'BOTTOM_RIGHT', endCoordinates: 'TOP_RIGHT', precisionDescriber: 'FINGER'}</code></td>
 </tr>
 <tr>
 <td>mobile:clickAction</td>
 <td>Perform <a href="https://developer.android.com/reference/androidx/test/espresso/action/GeneralClickAction">"ClickAction"</a></td>
-<td><code>{elementId, tapper, coordinatesProvider, precisionDescriber, inputDevice, buttonState}</code></td>
-<td><code>{elementId: 2, tapper: 'Long', coordinatesProvider: 'BOTTOM_RIGHT', precisionDescriber: 'Thumb', inputDevice: 0, buttonState: 0}</code></td>
+<td><code>{element, tapper, coordinatesProvider, precisionDescriber, inputDevice, buttonState}</code></td>
+<td><code>{element: 2, tapper: 'Long', coordinatesProvider: 'BOTTOM_RIGHT', precisionDescriber: 'Thumb', inputDevice: 0, buttonState: 0}</code></td>
 </tr>
 <tr>
 <td>mobile:isToastVisible</td>
@@ -2178,21 +2214,39 @@ on syntax).</p>
 </tr>
 <tr>
 <td>mobile:backdoor</td>
-<td>Invoke arbitrary methods defined in Android app. The methods must be <code>public</code>. <code>target</code> is <code>activity</code>, <code>application</code> or <code>element</code>. <code>methods</code> are methods you would like to invoke. <code>elementId</code> is mandatory if <code>target</code> is <code>element</code>. Read docstring of <em>mobileBackdoor</em> method <a href="https://github.com/appium/appium-espresso-driver/blob/master/lib/commands/general.js">here</a> for more details</td>
-<td><code>{target, methods, elementId}</code></td>
-<td><code>{target: 'activity', methods: [{name: 'method1'}, {name: 'method2', args: [{value: 'hello appium', type: 'java.lang.String'}] }] }</code>, <code>{target: 'element', elementId: elementId, [{name: 'getTypeface'}, {name: 'isItalic'}]}</code></td>
+<td>Invoke arbitrary methods defined in Android app. The methods must be <code>public</code> in Java and must be <code>open</code> in Kotlin. <code>target</code> is <code>activity</code>, <code>application</code> or <code>element</code>. <code>methods</code> are methods you would like to invoke. <code>element</code> is mandatory if <code>target</code> is <code>element</code>. Read docstring of <em>mobileBackdoor</em> method <a href="https://github.com/appium/appium-espresso-driver/blob/master/lib/commands/general.js">here</a> for more details</td>
+<td><code>{target, methods, element}</code></td>
+<td><code>{target: 'activity', methods: [{name: 'method1'}, {name: 'method2', args: [{value: 'hello appium', type: 'java.lang.String'}] }] }</code>, <code>{target: 'element', element: elementId, [{name: 'getTypeface'}, {name: 'isItalic'}]}</code></td>
 </tr>
 <tr>
 <td>mobile:flashElement</td>
 <td>Flashes an element on the screen to visually confirm you are operating on the correct element. Can optionally set <code>durationMillis</code> (in ms) and <code>repeatCount</code> of animation</td>
-<td><code>{elementId, durationMillis, repeatCount}</code></td>
-<td><code>{elementId: "1234-abcd-5678", durationMillis: 1000, repeatCount: 10}</code></td>
+<td><code>{element, durationMillis, repeatCount}</code></td>
+<td><code>{element: "1234-abcd-5678", durationMillis: 1000, repeatCount: 10}</code></td>
 </tr>
 <tr>
 <td>mobile:uiautomator</td>
 <td>Drive areas which are not part of App Under Test, using uiautomator2 APIs. <code>strategy</code> can be one of: "clazz", "res", "text", "textContains", "textEndsWith", "textStartsWith","desc", "descContains", "descEndsWith", "descStartsWith" and "pkg", taken from uiautomator <a href="https://developer.android.com/reference/androidx/test/uiautomator/By">By class</a>. <code>action</code> can be one of: "click", "longClick", "getText", "getContentDescription", "getClassName","getResourceName", "getVisibleBounds", "getVisibleCenter", "getApplicationPackage","getChildCount", "clear", "isCheckable", "isChecked", "isClickable", "isEnabled","isFocusable", "isFocused", "isLongClickable", "isScrollable" and "isSelected", taken from uiautomator <a href="https://developer.android.com/reference/androidx/test/uiautomator/UiObject2">UiObject2</a>. <code>index</code> is optional, if not given, will return all matching results</td>
 <td><code>{strategy, locator, index, action}</code></td>
 <td><code>{strategy: 'clazz', locator: 'android.widget.TextView', index: 2, action: "getText"}</code></td>
+</tr>
+<tr>
+<td>mobile:webAtoms</td>
+<td>Runs a chain of <a href="https://developer.android.com/training/testing/espresso/web">webatoms</a>. <code>withElement</code> and <code>perform</code> are basic chain items. Please refer <a href="https://github.com/appium/appium-espresso-driver/pull/380">issue</a> and <a href="https://github.com/appium/ruby_lib_core/blob/c9062c4b744263d790c7de17263cbd4645cdefc6/test/functional/android/android/mobile_commands_test.rb#L196-L239">Sample test code</a> as references.</td>
+<td><code>{webviewElement, forceJavascriptEnabled, methodChain}</code></td>
+<td>(webdriverio) <code>{ webviewElement: webviewEl.value, forceJavascriptEnabled: true, methodChain: [...]}</code></td>
+</tr>
+<tr>
+<td>mobile:dismissAutofill</td>
+<td>Disable autofill dialog in Android O+</td>
+<td><code>{element}</code></td>
+<td><code>{element: elementId}</code></td>
+</tr>
+<tr>
+<td>mobile:deviceInfo</td>
+<td>Gets device information like manufacturer, model, timezone and locale. Read <a href="https://github.com/appium/appium-espresso-driver/blob/master/espresso-server/app/src/androidTest/java/io/appium/espressoserver/lib/handlers/GetDeviceInfo.kt">GetDeviceInfo</a> for more details.</td>
+<td><none></none></td>
+<td><none></none></td>
 </tr>
 </tbody>
 </table>
@@ -2309,7 +2363,7 @@ on syntax).</p>
 </table>
 <h2 id="http-api-specifications">HTTP API Specifications</h2>
 <h3 id="endpoint">Endpoint</h3>
-<p><code>GET /wd/hub/session/:session_id/execute</code></p>
+<p><code>GET /session/:session_id/execute</code></p>
 <h3 id="url-parameters">URL Parameters</h3>
 <table>
 <thead>
