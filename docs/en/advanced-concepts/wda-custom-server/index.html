@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1654,43 +1678,40 @@
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
   </a>How To Set Up And Customize WebDriverAgent Server</h2>
-<p>Appium for iOS uses <a href="https://github.com/facebook/WebDriverAgent">Facebook's WebDriverAgent</a>
+<p>Appium for iOS uses <a href="https://github.com/appium/WebDriverAgent">WebDriverAgent</a>
 as the automation backend. This backend is based on Apple's XCTest framework and shares all the
 known problem that are present in XCTest. For some of them we have workarounds, but there
-are some that are hardly possible to workaround, for example https://github.com/facebook/WebDriverAgent/issues/507.
+are some that are hardly possible to workaround, for example https://github.com/facebookarchive/WebDriverAgent/issues/507.
 The approach described in this article enables you to have full control over how WDA is built, managed,
 and run on the device. This way you may fine-tune your automated tests in CI environment and make them more stable in
 long-running perspective.</p>
 <p>Important points:
- * The steps below are not necessary if default Appium capabilites are used.
+ * The steps below are not necessary if default Appium capabilities are used.
  The server will do everything for you, however you won't have so much control over WDA.
  * It is mandatory to have SSH or physical access to the machine to which the device under test
  is connected.</p>
 <h3 id="wda-setup">WDA Setup</h3>
-<p>WebDriverAgent source is automically downloaded with Appium. The usual folder location
+<p>WebDriverAgent source is automatically downloaded with Appium. The usual folder location
 in case Appium is installed via npm tool (<code>npm install -g appium</code>) is
-/usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
+<code>/usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent</code>
 If this was a fresh install then it is also necessary to download third-party dependencies
 (<em>carthage</em> tool is mandatory for this purpose: <code>brew install carthage</code>):</p>
-<pre><code class="bash">cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
+<pre><code class="bash">cd /usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent
 ./Scripts/bootstrap.sh -d
 </code></pre>
 
 <p>Also, it might be necessary to create an empty folder for WDA resources:</p>
-<pre><code class="bash">mkdir -p /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/Resources/WebDriverAgent.bundle
+<pre><code class="bash">mkdir -p /usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent/Resources/WebDriverAgent.bundle
 </code></pre>
 
-<p>No futher confuguration steps are needed if you're going to execute your automated tests on
+<p>No further configuration steps are needed if you're going to execute your automated tests on
 iOS Simulator.</p>
 <p>Real device, however, requires some more work to be done. Follow
 <a href="https://github.com/appium/appium-xcuitest-driver/blob/master/docs/real-device-config.md">real device configuration documentation</a>
-to setup code signing. Also, you'll need to have iproxy tool installed:</p>
-<pre><code class="bash">npm install -g iproxy
-</code></pre>
-
+to setup code signing.</p>
 <p>In order to make sure that WDA source is configured properly:</p>
 <ul>
-<li>Open /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj
+<li>Open <code>/usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent/WebDriverAgent.xcodeproj</code>
 in Xcode</li>
 <li>Select <em>WebDriverAgentRunner</em> project</li>
 <li>Select your real phone/Simulator you'd like to run automated tests on as build target</li>
@@ -1701,10 +1722,16 @@ so you'll see the icon of WebDriverAgentRunner application on the springboard.</
 <h3 id="wda-startup">WDA Startup</h3>
 <p>WebDriverAgent application acts as a REST server, which proxies external API requests to native XCTest calls
 for your application under test. The server address will be <em>localhost</em> if you run your tests on Simulator
-or the actual phone IP address in case of real device. We use <em>iproxy</em> to route network
-requests to a real device from <em>localhost</em> via USB, which means one can use this tool to unify
-WDA network address for Simulator and for real device.</p>
-<p>This helper class written in Java illustrates the main implementation details:</p>
+or the actual phone IP address in case of real device.
+We use <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a> to route network requests
+to a real device from <em>localhost</em> via USB, which means one can use this tool to unify WDA network
+address for Simulator and for real device.</p>
+<p>You can use <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a> to connect to
+a remote device requiring the module from your JavaScript code as same as Appium.
+Alternatively, you can also use <em>iproxy</em> to handle WebDriverAgent outside Appium.
+It is available via <code>node install -g iproxy</code>.</p>
+<p>This helper class written in Java illustrates the main implementation details
+wit <em>iproxy</em>:</p>
 <pre><code class="java">public class WDAServer {
     private static final Logger log = ZLogger.getLog(WDAServer.class.getSimpleName());
 
@@ -1721,8 +1748,8 @@ WDA network address for Simulator and for real device.</p>
     private static final File IPROXY_EXECUTABLE = new File("/usr/local/bin/iproxy");
     private static final File XCODEBUILD_EXECUTABLE = new File("/usr/bin/xcodebuild");
     private static final File WDA_PROJECT =
-            new File("/usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/" +
-                    "WebDriverAgent/WebDriverAgent.xcodeproj");
+            new File("/usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent" +
+                    "/WebDriverAgent.xcodeproj");
     private static final String WDA_SCHEME = "WebDriverAgentRunner";
     private static final String WDA_CONFIGURATION = "Debug";
     private static final File XCODEBUILD_LOG = new File("/usr/local/var/log/appium/build.log");
