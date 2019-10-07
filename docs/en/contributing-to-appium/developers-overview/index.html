@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1711,8 +1735,8 @@ a list of things we can try differently or do better next time around.</p>
 <p>Ultimately, the goal is to time an Appium release at the end of each sprint, so
 every two weeks. We're not quite there, but hopefully we will be soon.</p>
 <p>Current meeting times:
-<em> Sprint Planning: every other Monday from 10:00 AM - 10:45 AM (Pacific Time)
-</em> Sprint Retrospective: every other <em>other</em> Friday from 1:00 PM - 1:30 PM (Pacific Time)</p>
+* Sprint Planning: every other Monday from 10:00 AM - 10:45 AM (Pacific Time)
+* Sprint Retrospective: every other <em>other</em> Friday from 1:00 PM - 1:30 PM (Pacific Time)</p>
 <p>We hold meetings using <a href="https://zoom.us">Zoom</a> video chat.</p>
 <p>For project management, we use the <a href="http://zenhub.com">ZenHub</a> browser plugin,
 which adds various features like Kanban boards and Epics to the GitHub
@@ -1811,6 +1835,12 @@ branch. As we feel the need to make patch releases, we first pull the patch
 into master, then cherry-pick individual patches to the release branch (perhaps
 even multiple release branches). Then we again publish from those branches with
 the updated patch version (<code>1.5.1</code> or <code>2.0.1</code> for example).</p>
+<p>Every release should have at least one release candidate prior to the GA release.
+For example, if we're releasing 1.20.0 then we should checkout branch <code>1.12</code> and
+then first release <code>1.12.0-rc.0</code>. We keep releasing new release candidates until
+we're happy with it and then "upgrade" to GA. The GA release should have identical
+code and shrinkwrap as the most recent release candidate. The only difference should
+be the version, which is reflected in package.json and npm-shrinkwrap.json</p>
 <p><strong>A note about <code>npm shrinkwrap</code>:</strong> We use <a href="https://docs.npmjs.com/cli/shrinkwrap">npm shrinkwrap</a>
 in order to lock dependencies on release. Without it, any development on dependent
 packages will be reflected when Appium is installed, which may lead to issues. Since
@@ -1826,9 +1856,9 @@ converted into the <code>npm-shrinkwrap.json</code> file.</p>
 <li>Update <code>package.json</code> with the appropriate new version.</li>
 <li>Update the CHANGELOG/README with appropriate changes and submit for review as a PR, along with shrinkwrap and <code>package.json</code> changes. Wait for it to be merged, then pull it into the release branch.</li>
 <li>Run <code>npm shrinkwrap</code> to generate the <code>npm-shrinkwrap.json</code></li>
-<li>Create a tag of the form <code>v&lt;version&gt;</code> on the release branch (usually a minor branch like <code>1.5</code> or <code>1.4</code>), with: <code>git tag -a v&lt;version&gt;</code>, e.g., <code>git tag -a v1.5.0</code>. This is not necessary for beta versions.</li>
+<li>Create a tag of the form <code>v&lt;version&gt;</code> on the release branch (usually a minor branch like <code>1.5</code> or <code>1.4</code>), with: <code>git tag -a v&lt;version&gt;</code>, e.g., <code>git tag -a v1.5.0</code>, <code>git tag -a v1.5.0-rc.1</code>. This is not necessary for beta versions.</li>
 <li>Push the tag to upstream: <code>git push --tags &lt;remote&gt; &lt;branch&gt;</code></li>
-<li>Run <code>npm publish</code> (with <code>--tag rc</code> if this isn't an official release).</li>
+<li>Run <code>npm publish</code> (with <code>--tag rc</code> if this isn't a GA release).</li>
 <li>Remove the NPM shrinkwrap JSON file from Git and push the changes</li>
 <li>Update the site docs by going to https://github.com/appium/appium.io/pulls and merging the latest pull request that was opened by the Triager bot. Close any other pull requests opened by Triager bot.</li>
 <li>Create a new release on GitHub: go to <code>https://github.com/appium/appium/releases/tag/v&lt;VERSION&gt;</code> and hit "Edit Tag". Make the release name <code>&lt;VERSION&gt;</code> (e.g., <code>2.0.5</code>), then paste in the changelog (but not the changelog header for this version). If it's a beta release, mark as pre-release.</li>
