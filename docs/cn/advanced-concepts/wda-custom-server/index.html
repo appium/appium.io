@@ -1,16 +1,19 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Wda custom server - Appium</title>
+    <title>使用自定义 WDA 服务器 - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
     <link href="../../css/base.css" rel="stylesheet">
     <link href="../../css/cinder.css" rel="stylesheet">
     <link href="../../css/appium.css" rel="stylesheet">
@@ -53,7 +56,7 @@
 
             <!-- Main title -->
             <a class="navbar-brand" href="/">
-                <img src="../../img/appium_white_360.png">
+                <img src='../../img/appium_white_360.png' />
             </a>
         </div>
 
@@ -65,8 +68,23 @@
                 
                 
                 
-                    <li>
-                        <a href="../../README/">README</a>
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../about-appium/intro/">简介</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../about-appium/appium-clients/">Appium 客户端</a>
+</li>
+
+                        
+                        </ul>
                     </li>
                 
                 
@@ -74,19 +92,139 @@
                 
                 
                     <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About appium <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">编写 & 运行测试 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li>
-    <a href="../../about-appium/appium-clients/">Appium clients</a>
+<li >
+    <a href="../../writing-running-appium/running-tests/">运行测试</a>
 </li>
 
                         
                             
-<li>
-    <a href="../../about-appium/intro/">Intro</a>
+<li >
+    <a href="../../writing-running-appium/caps/">预期功能</a>
 </li>
+
+                        
+                            
+<li >
+    <a href="../../writing-running-appium/default-capabilities-arg/">--default-capabilities 标识</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../writing-running-appium/finding-elements/">寻找元素</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../writing-running-appium/touch-actions/">触控操作</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../writing-running-appium/server-args/">命令行参数</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web / Web 视图</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../writing-running-appium/web/mobile-web/">自动化 Web 测试</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../writing-running-appium/web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest 移动手势</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../writing-running-appium/ios/ios-predicate/">iOS 谓词（Predicate）指南</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../writing-running-appium/ios/ios-touch-id/">iOS Touch ID 指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../writing-running-appium/android/uiautomator-uiselector/">UiSelector 指南</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../writing-running-appium/android/android-coverage/">Android 代码覆盖指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">其他</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../writing-running-appium/other/reset-strategies/">重置策略</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../writing-running-appium/other/network-connection/">网络连接指南</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../writing-running-appium/other/unicode/">在 Appium 中使用 Unicode</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                         </ul>
@@ -97,72 +235,42 @@
                 
                 
                     <li class="menu-item dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced concepts <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li>
-    <a href="../chromedriver/">Chromedriver</a>
+<li >
+    <a href="../migrating-to-xcuitest/">迁移到 XCUITest</a>
 </li>
 
                         
                             
-<li>
-    <a href="../cross-domain-iframes/">Cross domain iframes</a>
+<li >
+    <a href="../grid/">在 Appium 中使用 Selenium Grid</a>
 </li>
 
                         
                             
-<li>
-    <a href="../event-timings/">Event timings</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../grid/">Grid</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../hybrid/">Hybrid</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../ios-webkit-debug-proxy/">Ios webkit debug proxy</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../iwd_xcode7/">Iwd xcode7</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../migrating-to-1-0/">Migrating to 1 0</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../migrating-to-xcuitest/">Migrating to xcuitest</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../settings/">Settings</a>
+<li >
+    <a href="../cross-domain-iframes/">跨域 iframes</a>
 </li>
 
                         
                             
 <li class="active">
-    <a href="./">Wda custom server</a>
+    <a href="./">使用自定义 WDA 服务器</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../event-timings/">Event Timings API</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../settings/">Settings API</a>
 </li>
 
                         
@@ -174,274 +282,48 @@
                 
                 
                     <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Appium setup <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">捐赠 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li>
-    <a href="../../appium-setup/android-hax-emulator/">Android hax emulator</a>
+<li >
+    <a href="../../contributing-to-appium/appium-from-source/">从源代码运行 Appium</a>
 </li>
 
                         
                             
-<li>
-    <a href="../../appium-setup/android-setup/">Android setup</a>
+<li >
+    <a href="../../contributing-to-appium/developers-overview/">开发者概述</a>
 </li>
 
                         
                             
-<li>
-    <a href="../../appium-setup/ios-deploy/">Ios deploy</a>
+<li >
+    <a href="../../contributing-to-appium/dev-tools/">标准开发命令</a>
 </li>
 
                         
                             
-<li>
-    <a href="../../appium-setup/parallel_tests/">Parallel tests</a>
+<li >
+    <a href="../../contributing-to-appium/style-guide/">Appium 风格指南</a>
 </li>
 
                         
                             
-<li>
-    <a href="../../appium-setup/platform-support/">Platform support</a>
+<li >
+    <a href="../../contributing-to-appium/how-to-write-docs/">如何编写文档</a>
 </li>
 
                         
                             
-<li>
-    <a href="../../appium-setup/real-devices-android/">Real devices android</a>
+<li >
+    <a href="../../contributing-to-appium/appium-packages/">Appium 包结构</a>
 </li>
 
                         
                             
-<li>
-    <a href="../../appium-setup/real-devices-ios/">Real devices ios</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/real-devices/">Real devices</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/running-on-linux/">Running on linux</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/running-on-osx/">Running on osx</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/running-on-windows/">Running on windows</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/troubleshooting/">Troubleshooting</a>
-</li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                
-                
-                    <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing to appium <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/appium-from-source/">Appium from source</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/appium-packages/">Appium packages</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/credits/">Credits</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/developers-overview/">Developers overview</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/gulp/">Gulp</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/how-to-write-docs/">How to write docs</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/style-guide-2.0/">Style guide 2.0</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/style-guide/">Style guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/version-branch-release/">Version branch release</a>
-</li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                
-                
-                    <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Writing running appium <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/android_coverage/">Android coverage</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/appium-bindings/">Appium bindings</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/caps/">Caps</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/default-capabilities-arg/">Default capabilities arg</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/espresso/">Espresso</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/finding-elements/">Finding elements</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/ios-touch-id/">Ios touch id</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/ios-xctest-mobile-gestures/">Ios xctest mobile gestures</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/ios_predicate/">Ios predicate</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/mobile-web/">Mobile web</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/network_connection/">Network connection</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/reset-strategies/">Reset strategies</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/running-tests/">Running tests</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/safari-launcher/">Safari launcher</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/server-args/">Server args</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/touch-actions/">Touch actions</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/uiautomator2/">Uiautomator2</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/uiautomator_uiselector/">Uiautomator uiselector</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/unicode/">Unicode</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/windows-app-testing/">Windows app testing</a>
+<li >
+    <a href="../../contributing-to-appium/credits/">鸣谢</a>
 </li>
 
                         
@@ -460,13 +342,13 @@
                     </a>
                 </li>
                 
-                    <li>
-                        <a rel="next" href="../settings/">
+                    <li >
+                        <a rel="next" href="../cross-domain-iframes/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li>
-                        <a rel="prev" href="../../appium-setup/android-hax-emulator/">
+                    <li >
+                        <a rel="prev" href="../event-timings/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -496,10 +378,7 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="webdriveragent-server"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/cn/advanced-concepts/wda-custom-server.md">
-    <i class="glyphicon glyphicon-pencil"></i>
-    &nbsp;&nbsp;Edit this Doc
-  </a>如何搭建并定制 WebDriverAgent Server</h2>
+        <div class="col-md-9 documentation" role="main"><h2 id="webdriveragent-server">如何搭建并定制 WebDriverAgent Server</h2>
 <p>Appium 的 iOS 版本的后端用的是<a href="https://github.com/facebook/WebDriverAgent">Facebook's WebDriverAgent</a>。该后端是基于苹果公司的 XCTest 框架，所以也有所有XCTest 框架已知的问题。其中有些问题我们正在设法解决，有一些在现阶段可能无法解决。本文中描述的方法已经能够使您完全掌握在设备上如何构建、管理和运行WDA。通过这种方式，您可以在CI环境中对您的自动化测试进行微调，并使其在长期运行的情况下更加稳定。</p>
 <p>重点：
  * 如果使用了Appium的默认设置，则不需要如下的步骤。服务器将为您搞定一切，当然你也不能对WDA做太多控制。
@@ -536,28 +415,28 @@
 
     // These settings are needed to properly sign WDA for real device tests
     // See https://github.com/appium/appium-xcuitest-driver for more details
-    private static final File KEYCHAIN = new File(String.format("%s/%s",
-            System.getProperty("user.home"), "/Library/Keychains/MyKeychain.keychain"));
-    private static final String KEYCHAIN_PASSWORD = "******";
+    private static final File KEYCHAIN = new File(String.format(&quot;%s/%s&quot;,
+            System.getProperty(&quot;user.home&quot;), &quot;/Library/Keychains/MyKeychain.keychain&quot;));
+    private static final String KEYCHAIN_PASSWORD = &quot;******&quot;;
 
-    private static final File IPROXY_EXECUTABLE = new File("/usr/local/bin/iproxy");
-    private static final File XCODEBUILD_EXECUTABLE = new File("/usr/bin/xcodebuild");
+    private static final File IPROXY_EXECUTABLE = new File(&quot;/usr/local/bin/iproxy&quot;);
+    private static final File XCODEBUILD_EXECUTABLE = new File(&quot;/usr/bin/xcodebuild&quot;);
     private static final File WDA_PROJECT =
-            new File("/usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/" +
-                    "WebDriverAgent/WebDriverAgent.xcodeproj");
-    private static final String WDA_SCHEME = "WebDriverAgentRunner";
-    private static final String WDA_CONFIGURATION = "Debug";
-    private static final File XCODEBUILD_LOG = new File("/usr/local/var/log/appium/build.log");
-    private static final File IPROXY_LOG = new File("/usr/local/var/log/appium/iproxy.log");
+            new File(&quot;/usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/&quot; +
+                    &quot;WebDriverAgent/WebDriverAgent.xcodeproj&quot;);
+    private static final String WDA_SCHEME = &quot;WebDriverAgentRunner&quot;;
+    private static final String WDA_CONFIGURATION = &quot;Debug&quot;;
+    private static final File XCODEBUILD_LOG = new File(&quot;/usr/local/var/log/appium/build.log&quot;);
+    private static final File IPROXY_LOG = new File(&quot;/usr/local/var/log/appium/iproxy.log&quot;);
 
     private static final int PORT = 8100;
-    public static final String SERVER_URL = String.format("http://127.0.0.1:%d", PORT);
+    public static final String SERVER_URL = String.format(&quot;http://127.0.0.1:%d&quot;, PORT);
 
     private static final String[] IPROXY_CMDLINE = new String[]{
             IPROXY_EXECUTABLE.getAbsolutePath(),
             Integer.toString(PORT),
             Integer.toString(PORT),
-            String.format("&gt; %s 2&gt;&amp;1 &amp;", IPROXY_LOG.getAbsolutePath())
+            String.format(&quot;&gt; %s 2&gt;&amp;1 &amp;&quot;, IPROXY_LOG.getAbsolutePath())
     };
 
     private static WDAServer instance = null;
@@ -592,10 +471,10 @@
     }
 
     private boolean waitUntilIsRunning(Timedelta timeout) throws Exception {
-        final URL status = new URL(SERVER_URL + "/status");
+        final URL status = new URL(SERVER_URL + &quot;/status&quot;);
         try {
             if (timeout.asSeconds() &gt; 5) {
-                log.debug(String.format("Waiting max %s until WDA server starts responding...", timeout));
+                log.debug(String.format(&quot;Waiting max %s until WDA server starts responding...&quot;, timeout));
             }
             new UrlChecker().waitUntilAvailable(timeout.asMillis(), TimeUnit.MILLISECONDS, status);
             return true;
@@ -608,8 +487,8 @@
         if (!XCODEBUILD_LOG.getParentFile().exists()) {
             if (!XCODEBUILD_LOG.getParentFile().mkdirs()) {
                 throw new IllegalStateException(String.format(
-                        "The script has failed to create '%s' folder for Appium logs. " +
-                                "Please make sure your account has correct access permissions on the parent folder(s)",
+                        &quot;The script has failed to create '%s' folder for Appium logs. &quot; +
+                                &quot;Please make sure your account has correct access permissions on the parent folder(s)&quot;,
                         XCODEBUILD_LOG.getParentFile().getAbsolutePath()));
             }
         }
@@ -617,15 +496,15 @@
 
     private void ensureToolsExistence() {
         if (isRealDevice &amp;&amp; !IPROXY_EXECUTABLE.exists()) {
-            throw new IllegalStateException(String.format("%s tool is expected to be installed (`npm install -g iproxy`)",
+            throw new IllegalStateException(String.format(&quot;%s tool is expected to be installed (`npm install -g iproxy`)&quot;,
                     IPROXY_EXECUTABLE.getAbsolutePath()));
         }
         if (!XCODEBUILD_EXECUTABLE.exists()) {
-            throw new IllegalStateException(String.format("xcodebuild tool is not detected on the current system at %s",
+            throw new IllegalStateException(String.format(&quot;xcodebuild tool is not detected on the current system at %s&quot;,
                     XCODEBUILD_EXECUTABLE.getAbsolutePath()));
         }
         if (!WDA_PROJECT.exists()) {
-            throw new IllegalStateException(String.format("WDA project is expected to exist at %s",
+            throw new IllegalStateException(String.format(&quot;WDA project is expected to exist at %s&quot;,
                     WDA_PROJECT.getAbsolutePath()));
         }
     }
@@ -633,76 +512,76 @@
     private List&lt;String&gt; generateXcodebuildCmdline() {
         final List&lt;String&gt; result = new ArrayList&lt;&gt;();
         result.add(XCODEBUILD_EXECUTABLE.getAbsolutePath());
-        result.add("clean build test");
-        result.add(String.format("-project %s", WDA_PROJECT.getAbsolutePath()));
-        result.add(String.format("-scheme %s", WDA_SCHEME));
-        result.add(String.format("-destination id=%s", deviceId));
-        result.add(String.format("-configuration %s", WDA_CONFIGURATION));
-        result.add(String.format("IPHONEOS_DEPLOYMENT_TARGET=%s", platformVersion));
-        result.add(String.format("&gt; %s 2&gt;&amp;1 &amp;", XCODEBUILD_LOG.getAbsolutePath()));
+        result.add(&quot;clean build test&quot;);
+        result.add(String.format(&quot;-project %s&quot;, WDA_PROJECT.getAbsolutePath()));
+        result.add(String.format(&quot;-scheme %s&quot;, WDA_SCHEME));
+        result.add(String.format(&quot;-destination id=%s&quot;, deviceId));
+        result.add(String.format(&quot;-configuration %s&quot;, WDA_CONFIGURATION));
+        result.add(String.format(&quot;IPHONEOS_DEPLOYMENT_TARGET=%s&quot;, platformVersion));
+        result.add(String.format(&quot;&gt; %s 2&gt;&amp;1 &amp;&quot;, XCODEBUILD_LOG.getAbsolutePath()));
         return result;
     }
 
     private static List&lt;String&gt; generateKeychainUnlockCmdlines() throws Exception {
         final List&lt;String&gt; result = new ArrayList&lt;&gt;();
-        result.add(String.format("/usr/bin/security -v list-keychains -s %s", KEYCHAIN.getAbsolutePath()));
-        result.add(String.format("/usr/bin/security -v unlock-keychain -p %s %s",
+        result.add(String.format(&quot;/usr/bin/security -v list-keychains -s %s&quot;, KEYCHAIN.getAbsolutePath()));
+        result.add(String.format(&quot;/usr/bin/security -v unlock-keychain -p %s %s&quot;,
                 KEYCHAIN_PASSWORD, KEYCHAIN.getAbsolutePath()));
-        result.add(String.format("/usr/bin/security set-keychain-settings -t 3600 %s", KEYCHAIN.getAbsolutePath()));
+        result.add(String.format(&quot;/usr/bin/security set-keychain-settings -t 3600 %s&quot;, KEYCHAIN.getAbsolutePath()));
         return result;
     }
 
     public synchronized void restart() throws Exception {
         if (isRealDevice &amp;&amp; failedRestartRetriesCount &gt;= MAX_REAL_DEVICE_RESTART_RETRIES) {
             throw new IllegalStateException(String.format(
-                    "WDA server cannot start on the connected device with udid %s after %s retries. " +
-                            "Reboot the device manually and try again", deviceId, MAX_REAL_DEVICE_RESTART_RETRIES));
+                    &quot;WDA server cannot start on the connected device with udid %s after %s retries. &quot; +
+                            &quot;Reboot the device manually and try again&quot;, deviceId, MAX_REAL_DEVICE_RESTART_RETRIES));
         }
 
         final String hostname = InetAddress.getLocalHost().getHostName();
-        log.info(String.format("Trying to (re)start WDA server on %s:%s...", hostname, PORT));
+        log.info(String.format(&quot;Trying to (re)start WDA server on %s:%s...&quot;, hostname, PORT));
         UnixProcessHelpers.killProcessesGracefully(IPROXY_EXECUTABLE.getName(), XCODEBUILD_EXECUTABLE.getName());
 
-        final File scriptFile = File.createTempFile("script", ".sh");
+        final File scriptFile = File.createTempFile(&quot;script&quot;, &quot;.sh&quot;);
         try {
             final List&lt;String&gt; scriptContent = new ArrayList&lt;&gt;();
-            scriptContent.add("#!/bin/bash");
+            scriptContent.add(&quot;#!/bin/bash&quot;);
             if (isRealDevice &amp;&amp; isRunningInJenkinsNetwork()) {
-                scriptContent.add(String.join("\n", generateKeychainUnlockCmdlines()));
+                scriptContent.add(String.join(&quot;\n&quot;, generateKeychainUnlockCmdlines()));
             }
             if (isRealDevice) {
-                scriptContent.add(String.join(" ", IPROXY_CMDLINE));
+                scriptContent.add(String.join(&quot; &quot;, IPROXY_CMDLINE));
             }
-            final String wdaBuildCmdline = String.join(" ", generateXcodebuildCmdline());
-            log.debug(String.format("Building WDA with command line:\n%s\n", wdaBuildCmdline));
+            final String wdaBuildCmdline = String.join(&quot; &quot;, generateXcodebuildCmdline());
+            log.debug(String.format(&quot;Building WDA with command line:\n%s\n&quot;, wdaBuildCmdline));
             scriptContent.add(wdaBuildCmdline);
             try (Writer output = new BufferedWriter(new FileWriter(scriptFile))) {
-                output.write(String.join("\n", scriptContent));
+                output.write(String.join(&quot;\n&quot;, scriptContent));
             }
-            new ProcessBuilder("/bin/chmod", "u+x", scriptFile.getCanonicalPath())
+            new ProcessBuilder(&quot;/bin/chmod&quot;, &quot;u+x&quot;, scriptFile.getCanonicalPath())
                     .redirectErrorStream(true).start().waitFor(5, TimeUnit.SECONDS);
-            final ProcessBuilder pb = new ProcessBuilder("/bin/bash", scriptFile.getCanonicalPath());
+            final ProcessBuilder pb = new ProcessBuilder(&quot;/bin/bash&quot;, scriptFile.getCanonicalPath());
             final Map&lt;String, String&gt; env = pb.environment();
             // This is needed for Jenkins
-            env.put("BUILD_ID", "dontKillMe");
-            log.info(String.format("Waiting max %s for WDA to be (re)started on %s:%s...", RESTART_TIMEOUT.toString(),
+            env.put(&quot;BUILD_ID&quot;, &quot;dontKillMe&quot;);
+            log.info(String.format(&quot;Waiting max %s for WDA to be (re)started on %s:%s...&quot;, RESTART_TIMEOUT.toString(),
                     hostname, PORT));
             final Timedelta started = Timedelta.now();
             pb.redirectErrorStream(true).start().waitFor(RESTART_TIMEOUT.asMillis(), TimeUnit.MILLISECONDS);
             if (!waitUntilIsRunning(RESTART_TIMEOUT)) {
                 ++failedRestartRetriesCount;
                 throw new IllegalStateException(
-                        String.format("WDA server has failed to start after %s timeout on server '%s'.\n"
-                                        + "Please make sure that iDevice is properly connected and you can build "
-                                        + "WDA manually from XCode.\n"
-                                        + "Xcodebuild logs:\n\n%s\n\n\niproxy logs:\n\n%s\n\n\n",
+                        String.format(&quot;WDA server has failed to start after %s timeout on server '%s'.\n&quot;
+                                        + &quot;Please make sure that iDevice is properly connected and you can build &quot;
+                                        + &quot;WDA manually from XCode.\n&quot;
+                                        + &quot;Xcodebuild logs:\n\n%s\n\n\niproxy logs:\n\n%s\n\n\n&quot;,
                                 RESTART_TIMEOUT, hostname,
-                                getLog(XCODEBUILD_LOG).orElse("EMPTY"), getLog(IPROXY_LOG).orElse("EMPTY"))
+                                getLog(XCODEBUILD_LOG).orElse(&quot;EMPTY&quot;), getLog(IPROXY_LOG).orElse(&quot;EMPTY&quot;))
                 );
             }
 
-            log.info(String.format("WDA server has been successfully (re)started after %s " +
-                    "and now is listening on %s:%s", Timedelta.now().diff(started).toString(), hostname, PORT));
+            log.info(String.format(&quot;WDA server has been successfully (re)started after %s &quot; +
+                    &quot;and now is listening on %s:%s&quot;, Timedelta.now().diff(started).toString(), hostname, PORT));
         } finally {
             scriptFile.delete();
         }
@@ -719,7 +598,7 @@
     public Optional&lt;String&gt; getLog(File logFile) {
         if (logFile.exists()) {
             try {
-                return Optional.of(new String(Files.readAllBytes(logFile.toPath()), Charset.forName("UTF-8")));
+                return Optional.of(new String(Files.readAllBytes(logFile.toPath()), Charset.forName(&quot;UTF-8&quot;)));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -732,7 +611,7 @@
             if (logFile.exists()) {
                 try {
                     final PrintWriter writer = new PrintWriter(logFile);
-                    writer.print("");
+                    writer.print(&quot;&quot;);
                     writer.close();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -750,7 +629,7 @@
 </code></pre>
 
 <p>为 Appium 驱动程序设置 webDriverAgentUrl 非常重要，让它知道我们的 WDA 驱动程序可以使用：</p>
-<pre><code class="java">    capabilities.setCapability("webDriverAgentUrl", WDAServer.SERVER_URL);
+<pre><code class="java">    capabilities.setCapability(&quot;webDriverAgentUrl&quot;, WDAServer.SERVER_URL);
 </code></pre>
 
 <h3 id="_1">重要注释</h3>
@@ -772,7 +651,7 @@
     <footer class="col-md-12 text-center">
         <hr>
         <p>
-        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small></p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
     </footer>
 
     <script src="../../js/jquery-1.10.2.min.js"></script>
@@ -791,7 +670,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">&times;</span>
                         <span class="sr-only">Close</span>
                     </button>
                     <h4 class="modal-title" id="exampleModalLabel">Search</h4>
@@ -813,7 +692,6 @@
         </div>
     </div>
 
-    
+    </body>
 
-
-</body></html>
+</html>
