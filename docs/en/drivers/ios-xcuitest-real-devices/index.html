@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../../writing-running-appium/security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../../writing-running-appium/ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1664,29 +1688,12 @@
     &nbsp;&nbsp;Edit this Doc
   </a>Appium XCUITest Driver Real Device Setup</h2>
 <h3 id="installing-dependencies">Installing dependencies</h3>
-<p>Appium iOS real device support depends on a central third-party software suite,
-<a href="http://www.libimobiledevice.org/">libimobiledevice</a>, which is easily installable
-with <a href="http://brew.sh/">Homebrew</a>:</p>
-<pre><code>brew install libimobiledevice --HEAD
-</code></pre>
-
-<p>In addition to the dependency on <code>libimobiledevice</code>, Appium support for real
-devices running iOS 9.3 and above using Xcode 8+ also depends on <code>ios-deploy</code>,
-which is easily available through <a href="https://www.npmjs.com/package/ios-deploy">npm</a> or <a href="http://brew.sh/">Homebrew</a>:</p>
-<pre><code>npm install -g ios-deploy
-</code></pre>
-
-<pre><code>brew install ios-deploy
-</code></pre>
-
-<p>(For hybrid or web tests, you will also need to follow the
-<a href="/docs/en/writing-running-appium/web/ios-webkit-debug-proxy/index.html">ios-webkit-debug-proxy</a>
-setup instructions)</p>
-<p>The way that the XCUITest driver works is via the installation of a helper
-application called <code>WebDriverAgent-Runner</code> onto the device, through which the
-application under test is automated. While this is simple in theory, the hoops
-of code signing and provisioning applications for development and testing can
-make this a bit of a headache.</p>
+<p>From Appium 1.15.0, Appium communicates with a real device via <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a>.
+You no longer install extra dependencies.</p>
+<p>XCUITest driver installs a helper application called <code>WebDriverAgent-Runner</code> onto the device,
+and handles the application under test via it.
+While this is simple in theory, the hoops of code signing and provisioning applications for
+development and testing can make this a bit of a headache.</p>
 <p>The documentation on <a href="https://github.com/appium/appium-xcuitest-driver">appium-xcuitest-driver</a> is also helpful to resolve dependencies.</p>
 <h3 id="basic-automatic-configuration">Basic (automatic) configuration</h3>
 <p>The easiest way to get up-and-running with Appium's XCUITest support on iOS
@@ -1870,7 +1877,7 @@ the same: to have a build of your app (an <code>.ipa</code> file) signed with
 a development provisioning profile. A good overview of the process can be found
 <a href="https://medium.com/ios-os-x-development/ios-code-signing-provisioning-in-a-nutshell-d5b247760bef#.5hirl92tn">here</a>
 and
-<a href="https://engineering.nodesagency.com/articles/iOS/Understanding-code-signing-for-iOS-apps/">here</a>.</p>
+<a href="https://engineering.nodesagency.com/categories/ios/2016/10/28/Understanding-code-signing-for-iOS-apps">here</a>.</p>
 <p>In a little more detail, to get started on a real device, you will need the following:</p>
 <ul>
 <li>An <a href="https://developer.apple.com/programs/ios/">Apple Developer ID</a> and a valid
