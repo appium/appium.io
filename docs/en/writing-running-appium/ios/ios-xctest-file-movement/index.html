@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Espresso Datamatcher Guide - Appium</title>
+    <title>Pushing/Pulling files - Appium</title>
 
     <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -1359,49 +1359,49 @@
         
             
 <li>
-    <a href="../../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
+    <a href="../ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
         
             
 <li>
-    <a href="../../ios/ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
+    <a href="../ios-xctest-mobile-apps-management/">XCUITest Mobile App Management</a>
 </li>
 
         
             
 <li>
-    <a href="../../ios/ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
+    <a href="../ios-xctest-pasteboard/">iOS Pasteboard Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../../ios/ios-predicate/">iOS Predicate Guide</a>
+    <a href="../ios-predicate/">iOS Predicate Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../../ios/ios-touch-id/">iOS Touch ID Guide</a>
+    <a href="../ios-touch-id/">iOS Touch ID Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../../ios/ios-xctest-install-certificate/">iOS Install Certificate</a>
+    <a href="../ios-xctest-install-certificate/">iOS Install Certificate</a>
 </li>
 
         
             
 <li>
-    <a href="../../ios/ios-tvos/">tvOS support</a>
+    <a href="../ios-tvos/">tvOS support</a>
 </li>
 
         
             
-<li>
-    <a href="../../ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
+<li class="active">
+    <a href="./">Pushing/Pulling files</a>
 </li>
 
         
@@ -1416,43 +1416,43 @@
         
             
 <li>
-    <a href="../uiautomator-uiselector/">UiSelector Guide</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">Espresso Datamatcher Guide</a>
+    <a href="../../android/uiautomator-uiselector/">UiSelector Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../android-coverage/">Android Code Coverage Guide</a>
+    <a href="../../android/espresso-datamatcher-selector/">Espresso Datamatcher Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../activity-startup/">Activities Startup Troubleshooting Guide</a>
+    <a href="../../android/android-coverage/">Android Code Coverage Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../android-shell/">How To Execute Shell Commands On The Remote Device</a>
+    <a href="../../android/activity-startup/">Activities Startup Troubleshooting Guide</a>
 </li>
 
         
             
 <li>
-    <a href="../android-ime/">How To Emulate IME Actions Generation</a>
+    <a href="../../android/android-shell/">How To Execute Shell Commands On The Remote Device</a>
 </li>
 
         
             
 <li>
-    <a href="../android-appbundle/">How To Test Android App Bundle</a>
+    <a href="../../android/android-ime/">How To Emulate IME Actions Generation</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../android/android-appbundle/">How To Test Android App Bundle</a>
 </li>
 
         
@@ -1639,12 +1639,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../uiautomator-uiselector/">
+                        <a rel="next" href="../ios-tvos/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../android-coverage/">
+                        <a rel="prev" href="../../android/uiautomator-uiselector/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1660,128 +1660,95 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#espresso-datamatcher-selector">Espresso DataMatcher Selector</a></li>
+        <li class="first-level active"><a href="#pushingpulling-files">Pushing/Pulling files</a></li>
         
-            <li class="second-level"><a href="#adapterviews">AdapterViews</a></li>
-            
-        
-            <li class="second-level"><a href="#example">Example</a></li>
+            <li class="second-level"><a href="#format">Format</a></li>
             
         
-            <li class="second-level"><a href="#writing-the-selector">Writing the Selector</a></li>
+            <li class="second-level"><a href="#real-device">Real device</a></li>
+            
+                <li class="third-level"><a href="#format_1">Format</a></li>
+            
+                <li class="third-level"><a href="#example">Example</a></li>
             
         
-            <li class="second-level"><a href="#json-matcher-samples">JSON matcher samples</a></li>
+            <li class="second-level"><a href="#simulator">Simulator</a></li>
             
-                <li class="third-level"><a href="#startswith">StartsWith</a></li>
+                <li class="third-level"><a href="#format_2">Format</a></li>
             
-                <li class="third-level"><a href="#multiple-matchers">Multiple Matchers</a></li>
-            
-                <li class="third-level"><a href="#cursor-matchers">Cursor Matchers</a></li>
+                <li class="third-level"><a href="#example_1">Example</a></li>
             
         
-            <li class="second-level"><a href="#resources">Resources</a></li>
+            <li class="second-level"><a href="#references">references</a></li>
             
         
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="espresso-datamatcher-selector"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/writing-running-appium/android/espresso-datamatcher-selector.md">
+        <div class="col-md-9 documentation" role="main"><h2 id="pushingpulling-files"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/writing-running-appium/ios/ios-xctest-file-movement.md">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>Espresso DataMatcher Selector</h2>
-<p>By delegating to Espresso's <a href="https://developer.android.com/reference/android/support/test/espresso/DataInteraction">Data Matcher</a>, we can target views that are not visible in the viewport without the need to manually scroll the Views on screen.</p>
-<h3 id="adapterviews">AdapterViews</h3>
-<p>Android apps have special types of Views called <a href="https://developer.android.com/reference/android/widget/AdapterView">AdapterViews</a> (e.g.: <code>ScrollView</code>, <code>ListView</code>, <code>GridView</code>) which have child views, but only render that child views that are on-screen. The AdapterView has "adapter" object which stores all the data for that view's children, including the views that aren't being rendered.</p>
-<p>When using Espresso's Data Matcher, you can target views that are off-screen by writing a <a href="http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html">Hamcrest matcher</a> that selects an item from an adapter. If the item is not in the view hierarchy, Espresso automatically scrolls it into view.</p>
-<h3 id="example">Example</h3>
-<p>This is a ListView taken from the source XML of an Android App:</p>
-<pre><code class="xml">&lt;android.widget.ListView index="0" package="io.appium.android.apis" class="android.widget.ListView" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="true" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,210][1080,1794]" resource-id="android:id/list" adapter-type="HashMap" adapters="{contentDescription=Animation, title=Animation, intent=Intent { cmp=io.appium.android.apis/.ApiDemos (has extras) }},{contentDescription=Auto Complete, title=Auto Complete, intent=Intent { cmp=io.appium.android.apis/.ApiDemos (has extras) }}, ...}"&gt;
-    &lt;android.widget.TextView index="0" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Drag and Drop" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,148][1080,274]" text="Drag and Drop" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="1" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Expandable Lists" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,277][1080,403]" text="Expandable Lists" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="2" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Focus" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,406][1080,532]" text="Focus" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="3" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Gallery" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,535][1080,661]" text="Gallery" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="4" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Game Controller Input" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,664][1080,790]" text="Game Controller Input" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="5" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Grid" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,793][1080,919]" text="Grid" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="6" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Hover Events" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,922][1080,1048]" text="Hover Events" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="7" package="io.appium.android.apis" class="android.widget.TextView" content-desc="ImageButton" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,1051][1080,1177]" text="ImageButton" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="8" package="io.appium.android.apis" class="android.widget.TextView" content-desc="ImageSwitcher" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,1180][1080,1306]" text="ImageSwitcher" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="9" package="io.appium.android.apis" class="android.widget.TextView" content-desc="ImageView" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,1309][1080,1435]" text="ImageView" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="10" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Layout Animation" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,1438][1080,1564]" text="Layout Animation" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="11" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Layouts" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,1567][1080,1693]" text="Layouts" hint="false" resource-id="android:id/text1" /&gt;
-    &lt;android.widget.TextView index="12" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Lists" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,1696][1080,1822]" text="Lists" hint="false" resource-id="android:id/text1" /&gt;
-&lt;/android.widget.ListView&gt;
-</code></pre>
-
-<p>This ListView displays menu items [<code>Drag and Drop</code>, <code>Expandable Lists</code>, ... to <code>Lists</code>]. This menu has several more items that aren't on-screen and can't be located with standard locators. For example, There's a menu item called <code>TextClock</code> that is not currently visible in the View hierarchy.</p>
-<p>The <code>ListView</code> node in the above XML has an attribute called <code>adapters</code> that contains the data that "backs up" the ListView:</p>
-<pre><code class="js">{
-    contentDescription = Animation, title = Animation, intent = Intent {
-        cmp = io.appium.android.apis / .ApiDemos(has extras)
-    }
-}, {
-    contentDescription = Auto Complete,
-    title = Auto Complete,
-    intent = Intent {
-        cmp = io.appium.android.apis / .ApiDemos(has extras)
-    }
-}, {
-    contentDescription = Buttons,
-    title = Buttons,
-    intent = Intent {
-        cmp = io.appium.android.apis / .view.Buttons1
-    }
-},
-...
-</code></pre>
-
-<p>These items can be targeted using a datamatcher selector. Here's a code snippet that shows how to locate and click <code>TextClock</code>:</p>
+  </a>Pushing/Pulling files</h2>
+<p>Appium provides <a href="http://appium.io/docs/en/commands/device/files/pull-folder/">Pull Folder</a>, <a href="http://appium.io/docs/en/commands/device/files/pull-file/">Pull File</a> and <a href="http://appium.io/docs/en/commands/device/files/push-file/">Push File</a> to move files.
+This documentation aims to help to understand how they work for iOS.</p>
+<h3 id="format">Format</h3>
+<p>Below is the basic format.</p>
+<ol>
+<li><code>@&lt;app_bundle_id&gt;:&lt;optional_container_type&gt;/&lt;path_to_the_file_or_folder_inside_container&gt;</code></li>
+<li><code>@&lt;app_bundle_id&gt;/&lt;path_to_the_file_or_folder_inside_container&gt;</code></li>
+<li><code>&lt;path_to_the_file_or_folder_inside_container&gt;</code></li>
+</ol>
+<h3 id="real-device">Real device</h3>
+<h4 id="format_1">Format</h4>
+<p>The format of method argument should be the following:</p>
+<ul>
+<li><code>@&lt;app_bundle_id&gt;</code> is the application bundle identifier</li>
+<li><code>optional_container_type</code> is the container type<ul>
+<li><code>documents</code> is the only available option<ul>
+<li>You may specify <code>documents</code> container type only for bundle ids returned by <code>ifuse -u &lt;udid&gt; --list-apps</code></li>
+<li>
+<p>e.g. Below <em>On My iPhone</em> image has <em>Slack</em> folder, but <code>com.tinyspeck.chatlyio</code> does not exist in the output of <code>--list-apps</code>. Thus, we cannot mount it as <code>com.tinyspeck.chatlyio@documents/</code></p>
+<p><img src="./ios-xctest-file-movement/on_my_iphone.png" width="100">
+    - The others work as <em>format 2</em>
+        - Only apps having the flag <code>UIFileSharingEnabled</code> in their <code>info.plist</code> can be mounted
+- <code>path_to_the_file_or_folder_inside_container</code> is the target to push/pull to/from them.
+    - If the <code>optional_container_type</code> is <code>documents</code>, this path will be mapped to
+      <code>On My iPhone/&lt;app name&gt;</code> in Files app</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em>format 3</em> is not allowed for real devices.</p>
+<h4 id="example">Example</h4>
+<p>If you would like to pull <em>Presentation.key</em> form Keynote app, you can get it as below.</p>
+<ul>
+<li>Pull file</li>
+</ul>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#0_0" data-language="javascript" data-toggle="tab">Javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#0_2" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_1" data-language="ruby" data-toggle="tab">Ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="js">// Javascript example
-driver.findElementById("list")
-  .findElement("-android datamatcher", JSON.stringify({
-    "name": "hasEntry",
-    "args": ["title", "TextClock"]
-  }))
-  .click();
+            <pre><code class="javascript">let data = driver.pullFile('@io.appium.example:documents/Presentation.key');
+await fs.writeFile('presentation.key', Buffer.from(data, 'base64'), 'binary');
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">driver.find_element_by_id('list')
-    .find_element_by_android_data_matcher({
-        name='hasEntry',
-        args=['title', 'TextClock']
-    })
-    .click()
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="ruby">@driver.find_element(:id, 'list')
-  .find_element(:data_matcher, {
-    name: 'hasEntry',
-    args: ['title', 'TextClock']
-  }.to_json)
-  .click
+            <pre><code class="ruby">file = @driver.pull_file '@com.apple.Keynote:documents/Presentation.key'
+File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
 </code></pre>
           </div>
           
@@ -1790,57 +1757,47 @@ driver.findElementById("list")
 
 
 
-
-
-<p>This Appium selector is equivalent to writing this matcher in Espresso:</p>
-<pre><code class="java">// Espresso code (not Appium code)
-onData(hasEntry("title", "textClock")
-  .inAdapterView(withId("android:id/list))
-  .perform(click());
-</code></pre>
-
-<p>In this example, we select the parent <code>AdapterView</code> using an id selector and then find a child of that view by applying a Hamcrest Matcher that matches an object with <code>title="TextClock"</code>.</p>
-<p>Locating the parent <code>AdapterView</code> is not necessary if the Activity only has one adapter view. In that case, it can be omitted.</p>
+<p>The file is in <em>On My iPhone/Keynote</em> of <em>Files</em> app.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Top</th>
+<th align="center">On  My iPhone</th>
+<th align="center">Keynote</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img alt="" src="../ios-xctest-file-movement/top_files.png"></td>
+<td align="center"><img alt="" src="../ios-xctest-file-movement/on_my_iphone.png"></td>
+<td align="center"><img alt="" src="../ios-xctest-file-movement/keynote.png"></td>
+</tr>
+</tbody>
+</table>
+<p>If the file is in deeper place like <em>On My iPhone/Keynote/Dir1/Dir2</em>, then the Ruby command should be:</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#1_0" data-language="javascript" data-toggle="tab">Javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#1_2" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#1_1" data-language="ruby" data-toggle="tab">Ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="js">driver.findElement("-android datamatcher", JSON.stringify({
-    "name": "hasEntry",
-    "args": ["title", "TextClock"]
-  }))
-  .click();
+            <pre><code class="javascript">let data = driver.pullFile('@io.appium.example:documents/Dir1/Dir2/Presentation.key');
+await fs.writeFile('presentation.key', Buffer.from(data, 'base64'), 'binary');
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="python">driver.find_element_by_android_data_matcher({
-    name='hasEntry',
-    args=['title', 'TextClock']
-}).click()
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="1_2">
-            <pre><code class="ruby">@driver.find_element(:data_matcher, {
-  name: 'hasEntry',
-  args: ['title', 'TextClock']
-}.to_json).click
+            <pre><code class="ruby">file = @driver.pull_file '@com.apple.Keynote:documents/Dir1/Dir2/Presentation.key'
+File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
 </code></pre>
           </div>
           
@@ -1849,46 +1806,33 @@ onData(hasEntry("title", "textClock")
 
 
 
-
-
-<h3 id="writing-the-selector">Writing the Selector</h3>
-<p>The data matcher selector uses Java reflection to invoke a <a href="http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html">Hamcrest matcher</a> that's used to locate the adapter object. The matcher is in JSON format and has this format</p>
-<pre><code class="js">{
-  "name": "&lt;METHOD_NAME&gt;",
-  "args": [...],
-</code></pre>
-
-<p>The name is a Hamcrest matcher method name. This defaults to the <code>org.hamcrest.Matchers</code> namespace, but fully qualifed matcher method names can be used too (e.g.: <code>android.support.test.espresso.matcher.CursorMatchers.withRowBlob</code>).</p>
-<p>The args are a list of args that the method takes (can be undefined if it takes no args). These can be strings, numbers, booleans or other hamcrest matcher JSON definitions.</p>
-<h3 id="json-matcher-samples">JSON matcher samples</h3>
-<p>Examples of JSON matchers with the equivalent Espresso <code>onData</code> matcher</p>
-<h4 id="startswith">StartsWith</h4>
+<ul>
+<li>Pull folder</li>
+</ul>
+<p>You can pull documents root of <em>On My iPhone/Keynote</em> as <code>@driver.pull_folder '@com.apple.Keynote:documents/'</code>.</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#2_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#2_0" data-language="javascript" data-toggle="tab">Javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_1" data-language="java" data-toggle="tab">Java</a>
+              <a href="#2_1" data-language="ruby" data-toggle="tab">Ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="2_0">
-            <pre><code class="js">// 'startsWith' JSON
-{
-  "name": "startsWith",
-  "args": "substr" // if it's a single arg, we don't need args to be an array
-}
+            <pre><code class="javascript">let data = driver.pullFolder('@io.appium.example:documents/');
+await fs.writeFile('documents.zip', Buffer.from(data, 'base64'), 'binary');
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_1">
-            <pre><code class="java">// Espresso 'startsWith' example
-onData(startsWith("substr"));
+            <pre><code class="ruby">file = @driver.pull_folder '@com.apple.Keynote:documents/'
+File.open('documents.zip', 'wb') { |f| f&lt;&lt; file }
 </code></pre>
           </div>
           
@@ -1897,39 +1841,31 @@ onData(startsWith("substr"));
 
 
 
-<h4 id="multiple-matchers">Multiple Matchers</h4>
+<ul>
+<li>Push file</li>
+</ul>
+<p>Same as pull:</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#3_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#3_0" data-language="javascript" data-toggle="tab">Javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#3_1" data-language="java" data-toggle="tab">Java</a>
+              <a href="#3_1" data-language="ruby" data-toggle="tab">Ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="3_0">
-            <pre><code class="js">// 'multiple matchers' JSON
-{
-  "name": "allOf",
-  "args": [
-    {"name": "instanceOf", "args": "Map.class"},
-    {"name": "hasEntry", "args": {
-      "name": "equalTo", "args": "STR"
-    }},
-    {"name": "is", "args": "item: 50"}
-  ]
-}
+            <pre><code class="javascript">driver.pushFile('@com.apple.Keynote:documents/text.txt', new Buffer("Hello World").toString('base64'));
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="3_1">
-            <pre><code class="java">// Espresso 'multiple matchers' example
-onData(allOf(is(instanceOf(Map.class)), hasEntry(equalTo("STR"), is("item: 50"))));
+            <pre><code class="ruby">@driver.push_file '@com.apple.Keynote:documents/text.txt', (File.read 'path/to/file')
 </code></pre>
           </div>
           
@@ -1938,52 +1874,32 @@ onData(allOf(is(instanceOf(Map.class)), hasEntry(equalTo("STR"), is("item: 50"))
 
 
 
-<h4 id="cursor-matchers">Cursor Matchers</h4>
-<div>
-        <ul class="nav nav-tabs" role="tablist">
-          
-          <li role="presentation" class="active">
-              <a href="#4_0" data-language="js" data-toggle="tab">Js</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#4_1" data-language="java" data-toggle="tab">Java</a>
-          </li>
-          
-        </ul>
-        <div class="tab-content">
-          
-          <div role="tabpanel" class="tab-pane active" id="4_0">
-            <pre><code class="js">// 'cursor matchers' JSON
-{
-  "name": "is", "args": {
-    "name": "instanceOf", "args": "Cursor.class"
-  },
-  "name": "CursorMatchers.withRowString", "args": [
-    "job_title", {"name": "is", "args": "Barista"}
-  ]
-}
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="4_1">
-            <pre><code class="java">// Espresso 'cursor matchers' example
-onData(
-    is(instanceOf(Cursor.class)),
-    CursorMatchers.withRowString("job_title", is("Barista"))
-);
-</code></pre>
-          </div>
-          
-        </div>
-      </div>
-
-
-
-<h3 id="resources">Resources</h3>
+<h3 id="simulator">Simulator</h3>
+<h4 id="format_2">Format</h4>
+<p>The format of method argument should be the following:</p>
 <ul>
-<li><a href="https://medium.com/androiddevelopers/adapterviews-and-espresso-f4172aa853cf">Explanation of Views vs. Data in Espresso</a></li>
-<li><a href="https://developer.android.com/training/testing/espresso/lists">Espresso lists</a></li>
+<li><code>@&lt;app_bundle_id&gt;</code> is the application bundle identifier</li>
+<li><code>optional_container_type</code> is the container type<ul>
+<li><code>app</code>, <code>data</code>, <code>groups</code> or <code>&lt;A specific App Group container&gt;</code></li>
+<li><em>format 2</em> case is handled as <code>app</code> container</li>
+</ul>
+</li>
+<li><code>path_to_the_file_or_folder_inside_container</code> is the target to push/pull to/from them</li>
+</ul>
+<p><em>format 3</em> format handles as <code>app</code> container</p>
+<h4 id="example_1">Example</h4>
+<pre><code class="java">// Java
+// Get AddressBook.sqlitedb in test app package ('app' container)
+byte[] fileContent = driver.pullFile("Library/AddressBook/AddressBook.sqlitedb");
+Path dstPath = Paths.get(new File("/local/path/AddressBook.sqlitedb"));
+Files.write(dstPath, fileContent);
+</code></pre>
+
+<h3 id="references">references</h3>
+<ul>
+<li>https://stackoverflow.com/questions/1108076/where-does-the-iphone-simulator-store-its-data</li>
+<li>https://stackoverflow.com/questions/48884248/how-can-i-add-files-to-the-ios-simulator</li>
+<li>https://apple.stackexchange.com/questions/299413/how-to-allow-the-files-app-to-save-to-on-my-iphone-or-to-on-my-ipad-in-ios/299565#299565</li>
 </ul></div>
         
     </div>
