@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Event timings - Appium</title>
+    <title>Event Timings API - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -65,8 +65,23 @@
                 
                 
                 
-                    <li>
-                        <a href="../../README/">README</a>
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../about-appium/intro/">简介</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/appium-clients/">Appium 客户端</a>
+</li>
+
+                        
+                        </ul>
                     </li>
                 
                 
@@ -74,19 +89,139 @@
                 
                 
                     <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About appium <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">编写 &amp; 运行测试 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li>
-    <a href="../../about-appium/appium-clients/">Appium clients</a>
+    <a href="../../writing-running-appium/running-tests/">运行测试</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../about-appium/intro/">Intro</a>
+    <a href="../../writing-running-appium/caps/">预期功能</a>
 </li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/default-capabilities-arg/">--default-capabilities 标识</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/finding-elements/">寻找元素</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/touch-actions/">触控操作</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/server-args/">命令行参数</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web / Web 视图</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/mobile-web/">自动化 Web 测试</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest 移动手势</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-predicate/">iOS 谓词（Predicate）指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-touch-id/">iOS Touch ID 指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/uiautomator-uiselector/">UiSelector 指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/android-coverage/">Android 代码覆盖指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">其他</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/reset-strategies/">重置策略</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/network-connection/">网络连接指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/unicode/">在 Appium 中使用 Unicode</a>
+</li>
+
+        
+    </ul>
+  </li>
 
                         
                         </ul>
@@ -97,72 +232,42 @@
                 
                 
                     <li class="menu-item dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced concepts <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li>
-    <a href="../chromedriver/">Chromedriver</a>
+    <a href="../migrating-to-xcuitest/">迁移到 XCUITest</a>
 </li>
 
                         
                             
 <li>
-    <a href="../cross-domain-iframes/">Cross domain iframes</a>
+    <a href="../grid/">在 Appium 中使用 Selenium Grid</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../cross-domain-iframes/">跨域 iframes</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../wda-custom-server/">使用自定义 WDA 服务器</a>
 </li>
 
                         
                             
 <li class="active">
-    <a href="./">Event timings</a>
+    <a href="./">Event Timings API</a>
 </li>
 
                         
                             
 <li>
-    <a href="../grid/">Grid</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../hybrid/">Hybrid</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../ios-webkit-debug-proxy/">Ios webkit debug proxy</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../iwd_xcode7/">Iwd xcode7</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../migrating-to-1-0/">Migrating to 1 0</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../migrating-to-xcuitest/">Migrating to xcuitest</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../settings/">Settings</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../wda-custom-server/">Wda custom server</a>
+    <a href="../settings/">Settings API</a>
 </li>
 
                         
@@ -174,274 +279,42 @@
                 
                 
                     <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Appium setup <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">捐赠 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li>
-    <a href="../../appium-setup/android-hax-emulator/">Android hax emulator</a>
+    <a href="../../contributing-to-appium/appium-from-source/">从源代码运行 Appium</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../appium-setup/android-setup/">Android setup</a>
+    <a href="../../contributing-to-appium/developers-overview/">开发者概述</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../appium-setup/ios-deploy/">Ios deploy</a>
+    <a href="../../contributing-to-appium/style-guide/">Appium 风格指南</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../appium-setup/parallel_tests/">Parallel tests</a>
+    <a href="../../contributing-to-appium/how-to-write-docs/">如何编写文档</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../appium-setup/platform-support/">Platform support</a>
+    <a href="../../contributing-to-appium/appium-packages/">Appium 包结构</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../appium-setup/real-devices-android/">Real devices android</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/real-devices-ios/">Real devices ios</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/real-devices/">Real devices</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/running-on-linux/">Running on linux</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/running-on-osx/">Running on osx</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/running-on-windows/">Running on windows</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../appium-setup/troubleshooting/">Troubleshooting</a>
-</li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                
-                
-                    <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contributing to appium <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/appium-from-source/">Appium from source</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/appium-packages/">Appium packages</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/credits/">Credits</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/developers-overview/">Developers overview</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/gulp/">Gulp</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/how-to-write-docs/">How to write docs</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/style-guide-2.0/">Style guide 2.0</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/style-guide/">Style guide</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../contributing-to-appium/version-branch-release/">Version branch release</a>
-</li>
-
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                
-                
-                    <li class="menu-item dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Writing running appium <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/android_coverage/">Android coverage</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/appium-bindings/">Appium bindings</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/caps/">Caps</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/default-capabilities-arg/">Default capabilities arg</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/espresso/">Espresso</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/finding-elements/">Finding elements</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/ios-touch-id/">Ios touch id</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/ios-xctest-mobile-gestures/">Ios xctest mobile gestures</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/ios_predicate/">Ios predicate</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/mobile-web/">Mobile web</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/network_connection/">Network connection</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/reset-strategies/">Reset strategies</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/running-tests/">Running tests</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/safari-launcher/">Safari launcher</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/server-args/">Server args</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/touch-actions/">Touch actions</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/uiautomator2/">Uiautomator2</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/uiautomator_uiselector/">Uiautomator uiselector</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/unicode/">Unicode</a>
-</li>
-
-                        
-                            
-<li>
-    <a href="../../writing-running-appium/windows-app-testing/">Windows app testing</a>
+    <a href="../../contributing-to-appium/credits/">鸣谢</a>
 </li>
 
                         
@@ -461,12 +334,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../cross-domain-iframes/">
+                        <a rel="next" href="../wda-custom-server/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../grid/">
+                        <a rel="prev" href="../settings/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>

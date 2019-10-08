@@ -156,12 +156,6 @@
                         
                             
 <li>
-    <a href="../../drivers/android-selendroid/">Selendroid (Android)</a>
-</li>
-
-                        
-                            
-<li>
     <a href="../../drivers/windows/">Windows</a>
 </li>
 
@@ -658,6 +652,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../commands/device/network/network-speed/">Network Speed</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -745,6 +745,12 @@
             
 <li>
     <a href="../../commands/device/system/system-time/">System Time</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/device/system/display-density/">Display density</a>
 </li>
 
         
@@ -1302,6 +1308,12 @@
 
                         
                             
+<li>
+    <a href="../security/">Server Security</a>
+</li>
+
+                        
+                            
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Web/Web Views</a>
     <ul class="dropdown-menu">
@@ -1332,6 +1344,12 @@
         
     </ul>
   </li>
+
+                        
+                            
+<li>
+    <a href="../image-comparison/">Image Comparison</a>
+</li>
 
                         
                             
@@ -1378,6 +1396,12 @@
             
 <li>
     <a href="../ios/ios-tvos/">tvOS support</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios/ios-xctest-file-movement/">Pushing/Pulling files</a>
 </li>
 
         
@@ -1653,9 +1677,6 @@
             <li class="second-level"><a href="#running-your-test-app-with-appium-android">Running your test app with Appium (Android)</a></li>
             
         
-            <li class="second-level"><a href="#running-your-test-app-with-appium-android-devices-42-and-hybrid-tests">Running your test app with Appium (Android devices &lt; 4.2, and hybrid tests)</a></li>
-            
-        
             <li class="second-level"><a href="#running-your-test-app-with-appium-windows">Running your test app with Appium (Windows)</a></li>
             
         
@@ -1901,109 +1922,6 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
 capabilities and connect to the server running at port 4723 of localhost (or
 whatever host and port you specified when you started Appium). You should be
 all set now!</p>
-<h3 id="running-your-test-app-with-appium-android-devices-42-and-hybrid-tests">Running your test app with Appium (Android devices &lt; 4.2, and hybrid tests)</h3>
-<p>Android devices before version 4.2 (API Level 17) do not have Google's
-<a href="http://developer.android.com/tools/testing-support-library/index.html#UIAutomator">UiAutomator framework</a>
-installed. This is what Appium uses to perform the automation behaviors on
-the device. For earlier devices or tests of hybrid (webview-based) apps,
-Appium comes bundled with another automation backend called [Selendroid]
-(http://selendroid.io/).</p>
-<p>To use Selendroid, all that is required is to slightly change the set of
-desired capabilities mentioned above, by adding the <code>automationName</code> capability
-and specifying the Selendroid automation backend. It is usually the case that you
-also need to use a <code>.</code> before your activity name (e.g., <code>.MainActivity</code> instead
-of <code>MainActivity</code> for your <code>appActivity</code> capability).</p>
-<div>
-        <ul class="nav nav-tabs" role="tablist">
-          
-          <li role="presentation" class="active">
-              <a href="#2_0" data-language="java" data-toggle="tab">Java</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#2_1" data-language="python" data-toggle="tab">Python</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#2_2" data-language="javascript" data-toggle="tab">Javascript</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#2_3" data-language="php" data-toggle="tab">PHP</a>
-          </li>
-          
-        </ul>
-        <div class="tab-content">
-          
-          <div role="tabpanel" class="tab-pane active" id="2_0">
-            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Selendroid");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "2.3");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-capabilities.setCapability(MobileCapabilityType.APP, myApp);
-capabilities.setCapability(MobileCapabilityType.APP_PACKAGE: "com.mycompany.package");
-capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY: ".MainActivity");
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="2_1">
-            <pre><code class="python">{
-    'automationName': 'Selendroid',
-    'platformName': 'Android',
-    'platformVersion': '2.3',
-    'deviceName': 'Android Emulator',
-    'app': myApp,
-    'appPackage': 'com.mycompany.package',
-    'appActivity': '.MainActivity'
-}
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="2_2">
-            <pre><code class="javascript">{
-    automationName: 'Selendroid',
-    platformName: 'Android',
-    platformVersion: '2.3',
-    deviceName: 'Android Emulator',
-    app: myApp,
-    appPackage: 'com.mycompany.package',
-    appActivity: '.MainActivity'
-}
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="2_3">
-            <pre><code class="php">public static $browsers = array(
-    array(
-        'desiredCapabilities' =&gt; array(
-            'automationName' =&gt; 'Selendroid',
-            'platformName' =&gt; 'Android',
-            'platformVersion' =&gt; '2.3',
-            'deviceName' =&gt; 'Android Emulator',
-            'app' =&gt; $myApp,
-            'appPackage' =&gt; 'com.mycompany.package',
-            'appActivity'=&gt; '.MainActivity'
-        )
-    )
-);
-</code></pre>
-          </div>
-          
-        </div>
-      </div>
-
-
-
-
-
-
-
-<p>Now Appium will start up a Selendroid test session instead of the default test
-session. One of the downsides to using Selendroid is that its API differs
-sometimes significantly with Appium's. Therefore we recommend you thoroughly
-read <a href="http://selendroid.io/native.html">Selendroid's documentation</a> before
-writing your scripts for older devices or hybrid apps.</p>
 <h3 id="running-your-test-app-with-appium-windows">Running your test app with Appium (Windows)</h3>
 <p>Simply ensure that Appium is listening, and run your test with your test runner of choice.</p>
 <p>See our <a href="https://github.com/Microsoft/WinAppDriver/tree/master/Samples">samples</a> for details.</p></div>
