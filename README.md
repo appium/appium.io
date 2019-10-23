@@ -28,16 +28,6 @@ npm install
 
 ## Development
 
-Build the docs using Docker (requires Docker to be installed)
-
-```
-bash ./scripts/build-docs-with-docker.sh
-```
-
-Build the docs (this clones the Appium repo with its docs folder into a temp
-directory, and runs MkDocs on that to generate HTML inside the local `docs/`
-folder)
-
 ```
 npm run build:docs
 ```
