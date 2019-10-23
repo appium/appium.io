@@ -1,1 +1,0 @@
-npx babel-node scripts/repo.js
