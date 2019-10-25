@@ -11,14 +11,16 @@
     "serve": "bundle exec jekyll serve",
     "crawl": "wait-on http://localhost:4000 && node ./scripts/crawl.js",
     "crawl:prod": "node ./scripts/crawl.js http://appium.io",
-    "build:docs": "rimraf docs/ && babel-node scripts/repo.js && bundle exec jekyll build",
+    "build:docs": "bash ./scripts/docker-build.sh && bash ./scripts/docker-run.sh",
     "build:docs:local": "cross-env BUILD_LOCAL_DOCS=true npm run build:docs",
+    "build:docs:docker": "babel-node scripts/repo.js",
     "lint": "eslint scripts/ test/",
     "lint:fix": "eslint scripts/ test/ --fix",
     "test": "npm run lint && mocha --require @babel/register --timeout 5000 test/",
     "test:watch": "npm run lint && mocha --watch --require @babel/register test/",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "precommit-test": "npm run test"
+    "precommit-test": "npm run test",
+    "container:rebuild": "Docker build . --tag appiumio/appium-docs"
   },
   "pre-commit": [
     "precommit-msg",
