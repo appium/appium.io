@@ -58,7 +58,7 @@
     "broken-link-checker": "^0.7.8",
     "chalk": "^2.4.1",
     "cross-env": "^5.0.5",
-    "ejs": "^2.5.7",
+    "ejs": "^3.0.1",
     "eslint": "^5.2.0",
     "eslint-config-appium": "3.x",
     "eslint-plugin-import": "^2.2.0",
