@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1744,7 +1771,8 @@ driver.query_app_state('io.appium.android.apis')
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-// Supports only `mobile: queryAppState` for iOS, XCUITest
+driver.queryAppState(null, 'com.apple.Preferences')
+driver.queryAppState('io.appium.android.apis')
 
 // wd example
 // Supports only `mobile: queryAppState` for iOS, XCUITest
@@ -1835,7 +1863,7 @@ query_app_state('io.appium.android.apis') # `query_` prefix is also available
 <tr>
 <td></td>
 <td><a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator</a></td>
-<td>4.2+</td>
+<td>4.3+</td>
 <td>All</td>
 <td>All</td>
 </tr>
@@ -1941,7 +1969,7 @@ query_app_state('io.appium.android.apis') # `query_` prefix is also available
 <p>Current the target app status. (Clients wrap the response properly) <code>0</code> is not installed. <code>1</code> is not running. <code>2</code> is running in background or suspended. <code>3</code> is running in background. <code>4</code> is running in foreground. (<code>number</code>)</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L472">JSONWP Specification</a></li>
+<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L480">JSONWP Specification</a></li>
 </ul></div>
         
     </div>

@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1746,11 +1773,7 @@ actions.perform()
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-driver.touchScroll({
-  el: element,
-  xOffset: 10,
-  yOffset: 100
-});
+driver.touchScroll(10, 100, element);
 
 // wd example
 await driver.scroll(10, 100);
@@ -1837,7 +1860,7 @@ touch_actions.scroll(element, 10, 100).perform
 <tr>
 <td></td>
 <td><a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator</a></td>
-<td>4.2+</td>
+<td>4.3+</td>
 <td>All</td>
 <td>All</td>
 </tr>

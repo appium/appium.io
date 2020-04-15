@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1749,10 +1776,10 @@ await driver.refresh();
           
           <div role="tabpanel" class="tab-pane " id="0_3">
             <pre><code class="ruby"># ruby_lib example
-refresh
+navigate.refresh
 
 # ruby_lib_core example
-@driver.refresh
+@driver.navigate.refresh
 
 </code></pre>
           </div>

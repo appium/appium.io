@@ -81,6 +81,12 @@
 </li>
 
                         
+                            
+<li>
+    <a href="../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -142,6 +148,18 @@
             
 <li>
     <a href="../../writing-running-appium/web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/chromedriver/">使用 Chromedriver</a>
 </li>
 
         
@@ -267,6 +285,12 @@
                         
                             
 <li>
+    <a href="../parallel-tests/">并行测试的设置</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../settings/">Settings API</a>
 </li>
 
@@ -367,7 +391,7 @@
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
   </a>Selenium Grid</h2>
-<p>通过服务器参数 <code>--nodeconfig</code>，可以将 appium 服务器注册到本地的 <a href="https://github.com/SeleniumHQ/selenium/wiki/Grid2">Selenium grid</a> (<a href="http://docs.seleniumhq.org/docs/07_selenium_grid.jsp">Grid 的配置文档</a>)</p>
+<p>通过服务器参数 <code>--nodeconfig</code>，可以将 appium 服务器注册到本地的 <a href="https://github.com/SeleniumHQ/selenium/wiki/Grid2">Selenium grid</a></p>
 <pre><code class="center">&gt; appium --nodeconfig /path/to/nodeconfig.json
 # 或者使用源文件执行
 &gt; node . --nodeconfig /path/to/nodeconfig.json
@@ -405,7 +429,6 @@
 }
 </code></pre>
 
-<p><a href="http://www.seleniumhq.org/about/platforms.jsp">这里</a> 列出了可用的平台。</p>
 <p>如果没有给出 <code>url</code>、<code>host</code> 和 <code>port</code>，配置会自动指向 <code>localhost:whatever-port-Appium-started-on</code>。</p>
 <p>如果你的 Appium Server 和 Selenium Grid 没有运行在同一台机器上，为确保 Selenium Grid 连接正常，请在你的 <code>host</code> &amp; <code>url</code> 上使用外部域名或 IP 地址，而不是 <code>localhost</code> 和 <code>127.0.0.1</code>。</p>
 <hr>

@@ -81,6 +81,12 @@
 </li>
 
                         
+                            
+<li>
+    <a href="../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -142,6 +148,18 @@
             
 <li>
     <a href="../web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/chromedriver/">使用 Chromedriver</a>
 </li>
 
         
@@ -267,6 +285,12 @@
                         
                             
 <li>
+    <a href="../../advanced-concepts/parallel-tests/">并行测试的设置</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../advanced-concepts/settings/">Settings API</a>
 </li>
 
@@ -364,6 +388,9 @@
             
         
             <li class="second-level"><a href="#xcuitestios">使用 XCUITest(iOS 独有)</a></li>
+            
+        
+            <li class="second-level"><a href="#macdriver">MacDriver 独有</a></li>
             
         
             <li class="second-level"><a href="#youi">You.i 引擎独有</a></li>
@@ -880,53 +907,13 @@
 </tr>
 </tbody>
 </table>
+<h3 id="macdriver">MacDriver 独有</h3>
+<p><a href="https://github.com/appium/appium-mac-driver#desired-capabilities">Appium Mac Driver repo</a></p>
 <h3 id="youi">You.i 引擎独有</h3>
 <p><expand_table></expand_table></p>
-<table>
-<thead>
-<tr>
-<th>键</th>
-<th>描述</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>youiEngineAppAddress</code></td>
-<td>正在运行的应用的设备的 IP 地址。使用 <code>localhost</code> 作为模拟地址。使用 <code>localhost</code> 作为模拟器地址。使用设备的 IP 地址作为真机的 IP。</td>
-<td>例如  <code>localhost</code> 或 <code>192.168.1.203</code></td>
-</tr>
-</tbody>
-</table>
+<p><a href="https://github.com/YOU-i-Labs/appium-youiengine-driver#desired-capabilities">You.i Engine driver</a> itself.)</p>
 <h3 id="winappdriver">WinAppDriver 独有</h3>
-<p><expand_table></expand_table></p>
-<table>
-<thead>
-<tr>
-<th>键</th>
-<th>描述</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>platformName</code></td>
-<td>运行测试时所在的平台</td>
-<td>例如  <code>Windows</code></td>
-</tr>
-<tr>
-<td><code>deviceName</code></td>
-<td>运行测试时所使用设备的名字</td>
-<td>例如  <code>WindowsPC</code></td>
-</tr>
-<tr>
-<td><code>app</code></td>
-<td>被测 windows 应用的 appID 或被测的 .exe 文件的路径。 查阅<a href="/docs/cn/writing-running-appium/windows-app-testing/index.html">该文档</a>可了解更多查找 appID 的详细方法。</td>
-<td>例如  <code>c24c8163-548e-4b84-a466-530178fc0580_scyf5npe3hv32!App</code></td>
-</tr>
-</tbody>
-</table>
-<p>本文由 <a href="https://testerhome.com/thanksdanny">thanksdanny</a> 翻译。由 <a href="https://github.com/lihuazhang">lihuazhang</a> 校验。</p></div>
+<p><a href="https://github.com/appium/appium-windows-driver#windowsdriver-specific-capabilities">Appium Windows Driver repo</a></p></div>
         
     </div>
 
