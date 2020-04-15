@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1684,7 +1711,7 @@
 will re-direct your test to the right device. You will also need to
 configure your <strong>host</strong> details and the <strong>selenium grid</strong> details. For
 a full list of all parameters and descriptions look
-<a href="https://github.com/SeleniumHQ/selenium/blob/master/java/server/src/org/openqa/grid/common/defaults/DefaultNodeWebDriver.json">here</a></p>
+<a href="https://github.com/SeleniumHQ/selenium/wiki/Grid2">here</a></p>
 <p>Once you start the appium server and it registers with the grid,
 you will see your device on the grid console page:</p>
 <p>"http://<strong>\&lt;grid-ip-adress&gt;</strong>:<strong>\&lt;grid-port&gt;</strong>/grid/console"</p>
@@ -1705,7 +1732,7 @@ you will see your device on the grid console page:</p>
     "timeout":30000,
     "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
     "url":"http://&lt;host_name_appium_server_or_ip-address_appium_server&gt;:&lt;appium_port&gt;/wd/hub",
-    "host": &lt;host_name_appium_server_or_ip-address_appium_server&gt;,
+    "host": "&lt;host_name_appium_server_or_ip-address_appium_server&gt;",
     "port": &lt;appium_port&gt;,
     "maxSession": 1,
     "register": true,
@@ -1717,7 +1744,7 @@ you will see your device on the grid console page:</p>
 }
 </code></pre>
 
-<p>Valid platforms are listed <a href="http://www.seleniumhq.org/about/platforms.jsp">here</a></p>
+<p>Valid platforms are listed <a href="https://www.selenium.dev/downloads/">here</a></p>
 <p>If <code>url</code>, <code>host</code>, and <code>port</code> are not given, the config will be auto updated
 to point to localhost:whatever-port-Appium-started-on.</p>
 <p>If your Appium server is running on a different machine to your Selenium Grid server, make sure you use an external name/IP address in your <code>host</code> &amp; <code>url</code> docs; <code>localhost</code> and <code>127.0.0.1</code> will prevent Selenium Grid from connecting correctly.</p></div>

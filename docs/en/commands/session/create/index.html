@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1735,7 +1762,7 @@ desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simu
 desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
 desiredCapabilities.setCapability(MobileCapabilityType.APP, "/path/to/ios/app.zip");
 
-URL url = new URL("http://127.0.0.1:4723");
+URL url = new URL("http://127.0.0.1:4723/wd/hub");
 
 IOSDriver driver = new IOSDriver(url, desiredCapabilities);
 String sessionId = driver.getSessionId().toString();
@@ -1744,14 +1771,14 @@ String sessionId = driver.getSessionId().toString();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">desired_caps = desired_caps = {
+            <pre><code class="python">desired_caps = {
   'platformName': 'Android',
   'platformVersion': '7.0',
   'deviceName': 'Android Emulator',
   'automationName': 'UiAutomator2',
   'app': PATH('/path/to/app')
 }
-self.driver = webdriver.Remote('http://127.0.0.1:4723', desired_caps)
+self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
 
 </code></pre>
           </div>
@@ -1805,14 +1832,14 @@ Appium::Driver.new(desired_caps).start_driver
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.SetCapability(MobileCapabilityType.PlatformName, "Android");
-capabilities.SetCapability(MobileCapabilityType.PlatformVersion, "7.1.1");
-capabilities.SetCapability(MobileCapabilityType.DeviceName, "Android Device");
-capabilities.SetCapability("appPackage", "com.instagram.android");
-capabilities.SetCapability("appActivity", "com.instagram.android.activity.MainTabActivity");
+            <pre><code class="csharp">AppiumOptions capabilities = new AppiumOptions();
+appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformName, "Android");
+appiumOptions.AddAdditionalCapability(MobileCapabilityType.PlatformVersion, "7.1.1");
+appiumOptions.AddAdditionalCapability(MobileCapabilityType.DeviceName, "Android Device");
+appiumOptions.AddAdditionalCapability("appPackage", "com.instagram.android");
+appiumOptions.AddAdditionalCapability("appActivity", "com.instagram.android.activity.MainTabActivity");
 
-AndroidDriver&lt;AndroidElement&gt; driver = new AndroidDriver&lt;AndroidElement&gt;(new Uri("http://127.0.0.1:4723/"), capabilities);
+AndroidDriver&lt;AndroidElement&gt; driver = new AndroidDriver&lt;AndroidElement&gt;(new Uri("http://127.0.0.1:4723/wd/hub"), appiumOptions);
 
 </code></pre>
           </div>
@@ -1886,7 +1913,7 @@ AndroidDriver&lt;AndroidElement&gt; driver = new AndroidDriver&lt;AndroidElement
 <tr>
 <td></td>
 <td><a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator</a></td>
-<td>4.2+</td>
+<td>4.3+</td>
 <td>All</td>
 <td>All</td>
 </tr>
