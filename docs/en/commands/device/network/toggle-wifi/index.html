@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1665,6 +1692,9 @@
             <li class="second-level"><a href="#example-usage">Example Usage</a></li>
             
         
+            <li class="second-level"><a href="#description">Description</a></li>
+            
+        
             <li class="second-level"><a href="#support">Support</a></li>
             
                 <li class="third-level"><a href="#appium-server">Appium Server</a></li>
@@ -1693,7 +1723,7 @@
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
   </a>Toggle WiFi</h1>
-<p>Switch the state of the wifi service</p>
+<p>Switch the state of the WiFi service</p>
 <h2 id="example-usage">Example Usage</h2>
 <div>
         <ul class="nav nav-tabs" role="tablist">
@@ -1782,6 +1812,9 @@ toggle_wifi
 
 
 
+<h2 id="description">Description</h2>
+<p>Switch the state of the WiFi service.
+Since Android Q, a method to change the WiFi service state has been restricted. <a href="https://github.com/appium/appium/issues/12327">#12327</a> Please toggle the state via UI instead of this method. The UI flow depends on devices. Please make sure to encode the correct UI flow on your target device under test.</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>
@@ -1826,7 +1859,7 @@ toggle_wifi
 <tr>
 <td></td>
 <td><a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator</a></td>
-<td>4.2+</td>
+<td>4.3+</td>
 <td>All</td>
 <td>All</td>
 </tr>
@@ -1917,7 +1950,7 @@ toggle_wifi
 <p>null</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L508">JSONWP Specification</a></li>
+<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L516">JSONWP Specification</a></li>
 </ul></div>
         
     </div>
