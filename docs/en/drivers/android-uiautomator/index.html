@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1706,7 +1733,9 @@ forward.</p>
 <code>platformName</code> <a href="#TODO">capability</a> in your <a href="#TODO">new session request</a>, with
 the value <code>Android</code>. Of course, you must also include appropriate
 <code>platformVersion</code>, <code>deviceName</code>, and <code>app</code> capabilities, at a minimum. In the
-case of this driver, no <code>automationName</code> capability should be used.</p>
+case of this driver, for Appium versions below <code>1.14.0</code> no <code>automationName</code>
+capability should be used, while for version <code>1.14.0</code> and above the <code>automationName</code>
+should be set to <code>UiAutomator1</code>.</p>
 <p>It is highly recommended to also set the <code>appPackage</code> and <code>appActivity</code>
 capabilities in order to let Appium know exactly which package and activity
 should be launched for your application. Otherwise, Appium will try to

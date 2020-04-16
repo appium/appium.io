@@ -1,8 +1,6 @@
 appium.io
 =========
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/appium/appium.io.svg)](https://greenkeeper.io/)
-
 The public front-end for Appium, visible at [appium.io](http://appium.io).
 There are two components to this:
 
