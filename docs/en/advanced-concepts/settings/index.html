@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1662,6 +1689,12 @@
     
         <li class="first-level active"><a href="#settings">Settings</a></li>
         
+            <li class="second-level"><a href="#update-device-settings">Update Device Settings</a></li>
+            
+        
+            <li class="second-level"><a href="#retrieve-device-settings">Retrieve Device Settings</a></li>
+            
+        
     
         <li class="first-level "><a href="#general-supported-settings">General Supported Settings</a></li>
         
@@ -1691,6 +1724,7 @@
 <p>An example of a setting would be <code>ignoreUnimportantViews</code> for Android. Android can be set to ignore elements in the View Hierarchy which it deems irrelevant. Setting this can cause tests to run faster. A user who <em>wants</em> to access the ignored elements however, would want to disable <code>ignoreUnimportantViews</code>, and reenable it afterwards.</p>
 <p>Another example of a use-case for settings would be telling appium to ignore elements which are not visible.</p>
 <p>Settings are implemented via the following API endpoints:</p>
+<h3 id="update-device-settings"><a href="/docs/en/commands/session/settings/update-settings/index.html">Update Device Settings</a></h3>
 <p><strong>POST</strong> /session/:sessionId/appium/settings</p>
 <blockquote>
 <p>Expects a JSON hash of settings, where keys correspond to setting names, and values to the value of the setting.</p>
@@ -1702,6 +1736,7 @@
 }
 </code></pre>
 
+<h3 id="retrieve-device-settings"><a href="/docs/en/commands/session/settings/get-settings/index.html">Retrieve Device Settings</a></h3>
 <p><strong>GET</strong> /session/:sessionId/appium/settings</p>
 <blockquote>
 <p>Returns a JSON hash of all the currently specified settings.</p>
@@ -1711,7 +1746,6 @@
 }
 </code></pre>
 
-<p>Note that the actual commands you would use in your test script differ based on the language; see the specific Appium client documention for more information.</p>
 <h2 id="general-supported-settings">General Supported Settings</h2>
 <table>
 <thead>
@@ -1817,6 +1851,11 @@
 <td>Allows to change the timeout of the acquired wake lock. The lock is acquired on server startup and is held until the UIAutomator2 server is killed or the timeout expires. Setting this value to zero or a negative number will release the lock immediately if it is held. Defaults to '24 * 60 * 60 * 1000' milliseconds.</td>
 <td>e.g. <code>0</code>, <code>60000</code> (1 min)</td>
 </tr>
+<tr>
+<td><code>enableMultiWindows</code></td>
+<td>If enabled then the page source and xpath lookup will include all windows available to the accessibility rather than the active one only. It might help to resolve finding elements on windows like <code>android.widget.PopupWindow</code>. Defaults to <code>false</code> and returns an active root window. Read <a href="https://github.com/appium/appium-uiautomator2-server/pull/301">appium-uiautomator2-server#301</a> for mroe details.</td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="ios-only">iOS Only</h3>
@@ -1880,6 +1919,12 @@
 <td>1.15.0+</td>
 </tr>
 <tr>
+<td><code>snapshotMaxDepth</code></td>
+<td>Changes the value of maximum depth for traversing elements source tree. It may help to prevent out of memory or timeout errors while getting the elements source tree, but it might restrict the depth of source tree. Please consider restricting this value if you observed an error like <em>Timed out snapshotting com.apple.testmanagerd...</em> message or <em>Cannot get 'xml' source of the current application</em> in your Appium log since they are possibly timeout related. A part of elements source tree might be lost if the value was too small. Defaults to <code>50</code></td>
+<td>e.g. <code>100</code></td>
+<td>1.17.0+</td>
+</tr>
+<tr>
 <td><code>useFirstMatch</code></td>
 <td>Enabling this setting makes single element lookups faster, but there is the known <a href="https://github.com/appium/appium/issues/10101">problem</a> related to nested elements lookup. Defaults to <code>false</code>.</td>
 <td><code>true</code>, <code>false</code></td>
@@ -1905,9 +1950,27 @@
 </tr>
 <tr>
 <td><code>includeNonModalElements</code></td>
-<td>Whether returns all of elements including no modal dialogs on iOS 13+. It fixes <a href="https://github.com/appium/appium/issues/13227">cannot find elements on nested modal presentations</a>, but it might make visibility attributes unreliable. Then, you can also enable <code>shouldUseTestManagerForVisibilityDetection</code> settings (defaults to <code>false</code>) or <code>simpleIsVisibleCheck</code> capability to improve the visibility detection. Defaults to <code>false</code>.</td>
+<td>Whether returns all of elements including no modal dialogs on iOS 13+. It fixes <a href="https://github.com/appium/appium/issues/13227">cannot find elements on nested modal presentations</a>, but it might make visibility attributes unreliable. You could also enable <code>shouldUseTestManagerForVisibilityDetection</code> setting (defaults to <code>false</code>) or <code>simpleIsVisibleCheck</code> capability to improve the visibility detection. This issue may happen between iOS 13.0 to 13.2 (and Xcode 11.0 to 11.2). The query issued in <code>includeNonModalElements</code> returns <code>nil</code> with newer iOS/Xcode versions and Appium/WDA return proper elements three without this setting being used. Defaults to <code>false</code>.</td>
 <td><code>true</code>, <code>false</code></td>
 <td>1.15.0+</td>
+</tr>
+<tr>
+<td><code>acceptAlertButtonSelector</code></td>
+<td>Allows to customize accept alert button selector. It helps you to handle an arbitrary element as accept button in <code>accept alert</code> command. The selector should be a valid <a href="https://github.com/facebookarchive/WebDriverAgent/wiki/Class-Chain-Queries-Construction-Rules">class chain</a> expression, where the search root is the alert element itself. The default button location algorithm is used if the provided selector is wrong or does not match any element.</td>
+<td>e.g., <code>**/XCUIElementTypeButton[`label CONTAINS[c] 'accept'`]</code></td>
+<td>1.16.0+</td>
+</tr>
+<tr>
+<td><code>dismissAlertButtonSelector</code></td>
+<td>Allows to customize dismiss alert button selector. It helps you to handle an arbitrary element as dismiss button in <code>dismiss alert</code> command. The selector should be a valid <a href="https://github.com/facebookarchive/WebDriverAgent/wiki/Class-Chain-Queries-Construction-Rules">class chain</a> expression, where the search root is the alert element itself. The default button location algorithm is used if the provided selector is wrong or does not match any element.</td>
+<td>e.g., <code>**/XCUIElementTypeButton[`label CONTAINS[c] 'dismiss'`]</code></td>
+<td>1.16.0+</td>
+</tr>
+<tr>
+<td><code>screenshotOrientation</code></td>
+<td>Adjust screenshot orientation for iOS. Appium tries to return a screenshot and adjust its orientation properly using internal heuristics, but sometimes it does not work, especially in landscape mode. The actual screenshot orientation depends on various factors such as OS versions, model versions and whether this is a real or simulator device. This option allows you to enforce the given image orientation. Defaults to <code>auto</code>.</td>
+<td><code>auto</code>, <code>portrait</code>, <code>portraitUpsideDown</code>, <code>landscapeRight</code>, <code>landscapeLeft</code></td>
+<td>1.17.0+</td>
 </tr>
 </tbody>
 </table></div>

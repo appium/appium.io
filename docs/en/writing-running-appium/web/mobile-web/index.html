@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1670,6 +1697,10 @@
         
             <li class="second-level"><a href="#mobile-safari-on-a-real-ios-device">Mobile Safari on a Real iOS Device</a></li>
             
+                <li class="third-level"><a href="#for-xcuitest">For XCUITest</a></li>
+            
+                <li class="third-level"><a href="#for-instruments">For Instruments</a></li>
+            
                 <li class="third-level"><a href="#setup-for-an-ios-real-device">Setup for an iOS real device</a></li>
             
         
@@ -1728,18 +1759,20 @@ for the correct preferences to have been set.</p>
           <div role="tabpanel" class="tab-pane active" id="0_0">
             <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
 capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11.0");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13.2");
+capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
 capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 8");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
             <pre><code class="python">{
   'platformName': 'iOS',
-  'platformVersion': '11.0',
+  'platformVersion': '13.2',
+  'automationName': 'XCUITest',
   'browserName': 'Safari',
-  'deviceName': 'iPhone 8'
+  'deviceName': 'iPhone 11'
 }
 </code></pre>
           </div>
@@ -1747,9 +1780,10 @@ capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 8");
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">{
   platformName: 'iOS'
-  , platformVersion: '11.10'
+  , platformVersion: '13.2'
+  , automationName: 'XCUITest'
   , browserName: 'Safari'
-  , deviceName: 'iPhone 8'
+  , deviceName: 'iPhone 11'
 }
 </code></pre>
           </div>
@@ -1757,8 +1791,9 @@ capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 8");
           <div role="tabpanel" class="tab-pane " id="0_3">
             <pre><code class="ruby">{
   platformName: 'iOS',
-  platformVersion: '11.0',
-  deviceName: 'iPhone 8',
+  platformVersion: '13.2',
+  automationName: 'XCUITest',
+  deviceName: 'iPhone 11',
   browserName: 'Safari'
 }
 </code></pre>
@@ -1769,9 +1804,10 @@ capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 8");
     array(
         'desiredCapabilities' =&gt; array(
             'platformName' =&gt; 'iOS',
-            'platformVersion' =&gt; '11.0',
+            'platformVersion' =&gt; '13.2',
+            'automationName' =&gt; 'XCUITest',
             'browserName' =&gt; 'Safari',
-            'deviceName' =&gt; 'iPhone 8'
+            'deviceName' =&gt; 'iPhone 11'
         )
     )
 );
@@ -1793,6 +1829,10 @@ capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 8");
 <p>First of all, make sure developer mode is turned on in your Safari
 preferences so that the remote debugger port is open.</p>
 <h3 id="mobile-safari-on-a-real-ios-device">Mobile Safari on a Real iOS Device</h3>
+<h4 id="for-xcuitest">For <code>XCUITest</code></h4>
+<p>We use <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a> to handle Safari since Appium 1.15.
+You no longer need to install additional dependencies.</p>
+<h4 id="for-instruments">For <code>Instruments</code></h4>
 <p>For <a href="/docs/en/drivers/ios-uiautomation/index.html">iOS 9.3 and below</a> (pre-XCUITest), we
 use the <a href="https://github.com/snevesbarros/SafariLauncher">SafariLauncher App</a> app
 to launch Safari and run tests against mobile Safari. This is because Safari is
@@ -1807,12 +1847,18 @@ documentation.</p>
 <h4 id="setup-for-an-ios-real-device">Setup for an iOS real device</h4>
 <p>Before you can run your tests against Safari on a real device you will need to:</p>
 <ul>
+<li><code>XCUITest</code> and <code>Instruments</code><ul>
+<li>Turn on <strong>web inspector</strong> on iOS device (<strong>settings &gt; safari &gt; advanced</strong>)</li>
+</ul>
+</li>
+<li>Only for <code>Instruments</code><ul>
 <li>Have the <code>ios-webkit-debug-proxy</code> installed, running and listening on port
   27753 (see the <a href="/docs/en/writing-running-appium/web/hybrid/index.html#execution-against-an-ios-real-device">hybrid docs</a>
   for instructions)</li>
-<li>Turn on <strong>web inspector</strong> on iOS device (<strong>settings &gt; safari &gt; advanced</strong>)</li>
 <li>Make sure that <code>SafariLauncher</code> will work (see the <a href="/docs/en/drivers/ios-uiautomation-safari-launcher/index.html">SafariLauncher docs</a>
   for instructions)</li>
+</ul>
+</li>
 </ul>
 <h3 id="running-your-test">Running your test</h3>
 <p>To configure you test to run against safari simply set the <code>"browserName"</code> to be
@@ -1839,6 +1885,7 @@ documentation.</p>
             <pre><code class="java">//setup the web driver and launch the webview app.
 DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
+desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
 URL url = new URL("http://127.0.0.1:4723/wd/hub");
 AppiumDriver driver = new AppiumDriver(url, desiredCapabilities);
 
@@ -1855,7 +1902,7 @@ driver.quit();
           
           <div role="tabpanel" class="tab-pane " id="1_1">
             <pre><code class="python"># setup the web driver and launch the webview app.
-capabilities = { 'browserName': 'Safari' }
+capabilities = { 'browserName': 'Safari', 'automationName': 'XCUITest' }
 driver = webdriver.Remote('http://localhost:4723/wd/hub', capabilities)
 
 # Navigate to the page and interact with the elements on the guinea-pig page using id.
@@ -1880,8 +1927,9 @@ driver.quit()
             'desiredCapabilities' =&gt; array(
                 'platformName' =&gt; 'iOS',
                 'platformVersion' =&gt; '7.1',
+                'automationName' =&gt; 'XCUITest',
                 'browserName' =&gt; 'Safari',
-                'deviceName' =&gt; 'iPhone Simulator'
+                'deviceName' =&gt; 'iPhone 11'
             )
         )
     );
@@ -1948,8 +1996,9 @@ these to run your test in Chrome:</p>
           <div role="tabpanel" class="tab-pane active" id="2_0">
             <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
 capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.0");
 capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
 capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 </code></pre>
           </div>
@@ -1957,8 +2006,9 @@ capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
           <div role="tabpanel" class="tab-pane " id="2_1">
             <pre><code class="python">{
   'platformName': 'Android',
-  'platformVersion': '4.4',
+  'platformVersion': '9.0',
   'deviceName': 'Android Emulator',
+  'automationName': 'UIAutomator2',
   'browserName': 'Chrome'
 }
 </code></pre>
@@ -1967,8 +2017,9 @@ capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
           <div role="tabpanel" class="tab-pane " id="2_2">
             <pre><code class="javascript">{
   platformName: 'Android'
-  , platformVersion: '4.4'
+  , platformVersion: '9.0'
   , deviceName: 'Android Emulator'
+  , automationName: 'UIAutomator2'
   , browserName: 'Chrome'
 };
 </code></pre>
@@ -1977,8 +2028,9 @@ capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
           <div role="tabpanel" class="tab-pane " id="2_3">
             <pre><code class="ruby">{
   platformName: 'Android',
-  platformVersion: '4.4',
+  platformVersion: '9.0',
   deviceName: 'Android Emulator',
+  automationName: 'UIAutomator2',
   browserName: 'Chrome'
 }
 </code></pre>
@@ -1989,8 +2041,9 @@ capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
     array(
         'desiredCapabilities' =&gt; array(
             'platformName' =&gt; 'Android',
-            'platformVersion' =&gt; '4.4',
+            'platformVersion' =&gt; '9.0',
             'browserName' =&gt; 'Chrome',
+            'automationName' =&gt; 'UIAutomator2',
             'deviceName' =&gt; 'Android Emulator'
         )
     )
@@ -2013,6 +2066,12 @@ capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 automate the built-in browser. On all devices you can use the 'Chromium'
 <code>browserName</code> cap to automate a build of Chromium which you have installed.</p>
 <h4 id="troubleshooting-chromedriver">Troubleshooting Chromedriver</h4>
+<p>If your test target requires newer Chromedriver version,
+<a href="/docs/en/writing-running-appium/web/chromedriver/index.html#automatic-discovery-of-compatible-chromedriver">chromedriver_autodownload</a> feature will help.
+It has been available since Appium 1.15.0 with the security option.
+Read the linked documentation to learn how to use it.
+<code>chromedriverExecutableDir</code> capability also helps when you need
+a specific Chromedriver version.</p>
 <p>As of Chrome version 33, a rooted device is no longer required. If running tests
 on older versions of Chrome, devices needed to be rooted as Chromedriver
 required write access to the <code>/data/local</code> directory to set Chrome's command

@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1668,8 +1695,6 @@
             
                 <li class="third-level"><a href="#simulator">Simulator</a></li>
             
-                <li class="third-level"><a href="#parallel-safari-real-device">Parallel Safari Real device</a></li>
-            
         
             <li class="second-level"><a href="#troubleshooting">Troubleshooting</a></li>
             
@@ -1682,36 +1707,27 @@
     &nbsp;&nbsp;Edit this Doc
   </a>Parallel Android Tests</h2>
 <p>Appium provides a way for users to automate multiple Android sessions on a single machine on single server instance. All it involves is starting Appium server on any available port.</p>
+<p>Note, that it is not possible to have more than one session running on the <em>same</em> device.</p>
 <p>The important capabilities:</p>
 <ul>
 <li><code>udid</code> the device id</li>
-<li><code>chromeDriverPort</code> the chromedriver port (if using webviews or chrome)</li>
-<li><code>systemPort</code> If you are using <a href="https://github.com/appium/appium-uiautomator2-driver">appium-uiautomator2-driver</a>, set a different system port for each android session, set with <code>systemPort</code> capability since sometimes there can be a port conflict if different ports aren't used, such as in <a href="https://github.com/appium/appium/issues/7745">this issue</a>.</li>
+<li><code>chromedriverPort</code> the chromedriver port (if using webviews or chrome)</li>
+<li><code>systemPort</code> If you are using <a href="https://github.com/appium/appium-uiautomator2-driver">appium-uiautomator2-driver</a>, set a unique system port for each parallel session. Otherwise you might get a port conflict such as in <a href="https://github.com/appium/appium/issues/7745">this issue</a>.</li>
 </ul>
 <h3 id="parallel-ios-tests">Parallel iOS Tests</h3>
-<p>From Xcode9, Appium supports parallel RealDevice and Simulator testing. Start your Appium Server on any available port.</p>
+<p>Since Xcode9, Appium supports parallel RealDevice and Simulator testing. Start your Appium Server on any available port.</p>
 <p>The important capabilities:</p>
 <h4 id="realdevice">RealDevice</h4>
 <ul>
-<li><code>udid</code> the device id</li>
-<li><code>wdaLocalPort</code> unique wdaPort, as WDA defaults to 8100</li>
+<li><code>udid</code> must be a unique device UDID for each parallel session</li>
+<li><code>wdaLocalPort</code> must be a unique port number for each parallel session. The default value is 8100</li>
+<li><code>derivedDataPath</code> set the unique derived data path root for each driver instance. This will help to avoid possible conflicts and to speed up the parallel execution.</li>
 </ul>
 <h4 id="simulator">Simulator</h4>
 <ul>
-<li><code>udid</code> simulator UDID,this can be retrieved from xcrun simctl list.</li>
-<li><code>deviceName</code> Simulator Name</li>
-<li><code>platformVersion</code> Simulator OS version</li>
-<li><code>wdaLocalPort</code> unique wdaPort, as WDA defaults to 8100</li>
+<li>Either <code>udid</code>, which is the unique simulator UDID for each parallel session(this can be retrieved from xcrun simctl list) or a unique combination of <code>deviceName</code> and <code>platformVersion</code> to identify the appropriate simulator with the given name and version number for each parallel session</li>
+<li><code>wdaLocalPort</code> must be a unique port number for each parallel session. The default value is 8100</li>
 <li><code>derivedDataPath</code> set the unique derived data path root for each driver instance. This will help to avoid possible conflicts and to speed up the parallel execution.</li>
-</ul>
-<p>Parallel Safari/Webview sessions are not working due to an Apple bug</p>
-<p>Refer: https://github.com/appium/appium/issues/9209</p>
-<h4 id="parallel-safari-real-device">Parallel Safari Real device</h4>
-<ul>
-<li><code>udid</code> the device id</li>
-<li><code>wdaLocalPort</code> unique wdaPort, as WDA defaults to 8100</li>
-<li><code>derivedDataPath</code> set the unique derived data path root for each driver instance. This will help to avoid possible conflicts and to speed up the parallel execution.</li>
-<li><code>webkitDebugProxyPort</code> unique webKitProxy, as IWDP defaults to 27753 (Does not need for XCUITest driver)</li>
 </ul>
 <h3 id="troubleshooting">Troubleshooting</h3>
 <p>When running on Jenkins, watch out for the <a href="https://wiki.jenkins.io/display/JENKINS/ProcessTreeKiller">ProcessTreeKiller</a> when running multiple parallel test jobs on the same machine. If you are spawning simulators in one test job, Jenkins might kill all your simulators when the first test ends - causing errors in the remaining test jobs!</p>

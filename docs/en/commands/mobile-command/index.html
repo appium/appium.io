@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1977,9 +2004,9 @@ on syntax).</p>
 </tr>
 <tr>
 <td>mobile:getContexts</td>
-<td>Retrieve available contexts, along with the url and title associated with each webview (see <a href="/docs/en/commands/context/get-contexts/index.html">get contexts</a>)</td>
-<td></td>
-<td></td>
+<td>Retrieve available contexts, along with the url and title associated with each webview (see <a href="/docs/en/commands/context/get-contexts/index.html">get contexts</a>). If <code>waitForWebviewMs</code> is provided, Appium will wait for available WebViews up to the number since Appium 1.17.0.</td>
+<td><code>{waitForWebviewMs}</code></td>
+<td><code>{waitForWebviewMs: 5000}</code></td>
 </tr>
 <tr>
 <td>mobile:batteryInfo</td>
@@ -2035,6 +2062,54 @@ on syntax).</p>
 <td><none></none></td>
 <td><none></none></td>
 </tr>
+<tr>
+<td>mobile:rotateElement</td>
+<td>Sends a rotation gesture with two touches to the given element. See <a href="https://developer.apple.com/documentation/xctest/xcuielement/1618665-rotate">rotate:withVelocity:</a> for more details.</td>
+<td><code>{element, rotation, velocity}</code></td>
+<td><code>{element: 2, rotation: π/2, velocity: 1.5}</code></td>
+</tr>
+<tr>
+<td>mobile:deleteFile</td>
+<td>Delete a file on the device under test. The remote path value should comply to <a href="/docs/en/writing-running-appium/ios/ios-xctest-file-movement/index.html">Pushing/Pulling Files</a> tutorial.</td>
+<td><code>{remotePath}</code></td>
+<td><code>{remotePath: 'path/to/file'}</code></td>
+</tr>
+<tr>
+<td>mobile:deleteFolder</td>
+<td>Delete a folder on the device under test. The remote path value should comply to <a href="/docs/en/writing-running-appium/ios/ios-xctest-file-movement/index.html">Pushing/Pulling Files</a> tutorial.</td>
+<td><code>{remotePath}</code></td>
+<td><code>{remotePath: '@io.appium.example:documents/path/to/folder'}</code></td>
+</tr>
+<tr>
+<td>mobile:getPermission</td>
+<td>Gets application permission state on a simulator. It requires https://github.com/wix/AppleSimulatorUtils</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mobile:setPermission</td>
+<td>Set a permission for the given bundleId via <code>xcrun simctl privacy</code> which is available since Xcode 11.4. <code>key</code> is 'service' in the list of <code>xcrun simctl privacy</code>. <code>value</code> is <code>yes</code>(grant), <code>no</code>(revoke) or <code>unset</code>(reset). It works on simulator.</td>
+<td><code>{bundleId, {key: value}}</code></td>
+<td><code>{bundleId: 'io.appium.example', {'location-always': 'yes', calendar: 'no'}</code></td>
+</tr>
+<tr>
+<td>mobile:getAppearance</td>
+<td>Get the device's UI appearance style via <code>xcrun simctl ui</code>. It returns <code>light</code>, <code>dark</code>, <code>unknown</code> or <code>unsupported</code> (below iOS 12).</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mobile:setAppearance</td>
+<td>Set the device's UI appearance style via <code>xcrun simctl ui</code> or Siri command.</td>
+<td><code>{style}</code></td>
+<td><code>{style: 'dark'}</code></td>
+</tr>
+<tr>
+<td>mobile:getDeviceTime</td>
+<td>Get time of the device under test. https://momentjs.com/docs/ is the full list of supported datetime format specifiers. Defaults to <code>YYYY-MM-DDTHH:mm:ssZ</code> which is  ISO-8601.</td>
+<td><code>{format}</code></td>
+<td><code>{format: 'YYYY-MM'}</code></td>
+</tr>
 </tbody>
 </table>
 <h3 id="android">Android</h3>
@@ -2051,8 +2126,8 @@ on syntax).</p>
 <tr>
 <td>mobile:shell</td>
 <td>Execute <a href="https://developer.android.com/studio/command-line/adb#shellcommands">ADB shell</a> commands (requires <a href="/docs/en/writing-running-appium/security/index.html">insecure feature</a> <code>adb_shell</code> to be enabled)</td>
-<td>ADB shell string</td>
-<td><code>am start -n com.example.demo/com.example.test.MainActivity</code></td>
+<td>Read <a href="/docs/en/writing-running-appium/android/android-shell/index.html">this page</a></td>
+<td><code>{'command': 'echo', 'args': ['arg1', 'arg2']}</code></td>
 </tr>
 <tr>
 <td>mobile:startLogsBroadcast</td>
@@ -2083,6 +2158,30 @@ on syntax).</p>
 <td>Grants or revokes permissions.</td>
 <td><code>{action, appPackage, permissions}</code></td>
 <td><code>{action: "grant", appPackage: "io.appium.android.apis", permissions: "android.permission.READ_CONTACTS"}</code>, <code>{action: "revoke", appPackage: "io.appium.android.apis", permissions: ["android.permission.READ_CONTACTS", "android.permission.CAMERA"]}</code></td>
+</tr>
+<tr>
+<td>mobile:getNotifications</td>
+<td>Get the list of items as JSON format in the status bar notifications. Please turn 'Notification access' on via <em>Settings &gt; App &amp; notifications &gt; Special app access</em> (the actual path depends on the device model). Please read <a href="https://appiumpro.com/editions/106">Appium Pro</a> for more details.</td>
+<td><none></none></td>
+<td><none></none></td>
+</tr>
+<tr>
+<td>mobile: listSms</td>
+<td>Get the list of SMS messages as <a href="https://github.com/appium/io.appium.settings#sms">JSON format</a>.</td>
+<td><none></none></td>
+<td><none></none></td>
+</tr>
+<tr>
+<td>mobile:type</td>
+<td>Send Unicode text to a focused element.</td>
+<td><code>{text}</code></td>
+<td><code>{text: "happy testing"}</code></td>
+</tr>
+<tr>
+<td>mobile:getDeviceTime</td>
+<td>Get time of the device under test. https://momentjs.com/docs/ is the full list of supported datetime format. Defaults to <code>YYYY-MM-DDTHH:mm:ssZ</code> which is  ISO-8601.</td>
+<td><code>{format}</code></td>
+<td><code>{format: 'YYYY-MM'}</code></td>
 </tr>
 </tbody>
 </table>
@@ -2138,6 +2237,12 @@ on syntax).</p>
 <td>Gets device information like manufacturer, model, timezone and locale. Read <a href="https://github.com/appium/appium-uiautomator2-server/blob/master/app/src/main/java/io/appium/uiautomator2/handler/GetDeviceInfo.java">GetDeviceInfo</a> for more details.</td>
 <td><none></none></td>
 <td><none></none></td>
+</tr>
+<tr>
+<td>mobile:type</td>
+<td>Types the given Unicode string into focused field. The combination of <code>unicodeKeyboard</code> capability and the <a href="https://appium.io/docs/en/commands/element/actions/send-keys/">send keys</a> works as <em>replacing</em> the text field content. The send key in W3C action works only for ASCII. This command helps such cases to append unicode text content against the focused field.</td>
+<td><code>{text}</code></td>
+<td><code>{text: 'happy testing'}</code></td>
 </tr>
 </tbody>
 </table>
@@ -2294,7 +2399,7 @@ on syntax).</p>
 <tr>
 <td></td>
 <td><a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator</a></td>
-<td>4.2+</td>
+<td>4.3+</td>
 <td>All</td>
 <td>All</td>
 </tr>
@@ -2363,7 +2468,7 @@ on syntax).</p>
 </table>
 <h2 id="http-api-specifications">HTTP API Specifications</h2>
 <h3 id="endpoint">Endpoint</h3>
-<p><code>GET /session/:session_id/execute</code></p>
+<p><code>POST /session/:session_id/execute</code></p>
 <h3 id="url-parameters">URL Parameters</h3>
 <table>
 <thead>
