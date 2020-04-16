@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1663,6 +1690,9 @@
         <li class="first-level active"><a href="#appium-event-timing">Appium Event Timing</a></li>
         
     
+        <li class="first-level "><a href="#add-a-custom-event">Add a custom event</a></li>
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9 documentation" role="main"><h2 id="appium-event-timing"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/advanced-concepts/event-timings.md">
@@ -1716,7 +1746,10 @@ call to <code>/session/:id</code>, so the best time to get data about an entire 
 right before quitting it.</p>
 <p>The Appium team maintains an event timings parser tool that can be used to
 generate various kinds of reports from event timings output:
-<a href="https://github.com/appium/appium-event-parser">appium/appium-event-parser</a>.</p></div>
+<a href="https://github.com/appium/appium-event-parser">appium/appium-event-parser</a>.</p>
+<h2 id="add-a-custom-event">Add a custom event</h2>
+<p>Since Appium 1.16.0, you can add a custom event.
+You can send a custom event name to the Appium server using the <a href="../../commands/session/events/log-event">Log Event API</a>, and the server will store the timestamp. The <a href="../../commands/session/events/get-events">Get events</a> command can be used to retrieve named events' timestamps later on.</p></div>
         
     </div>
 

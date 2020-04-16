@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1754,10 +1781,7 @@ Studio 2015.</p>
 <h4 id="create-test-project">Create Test Project</h4>
 <ol>
 <li>Open <strong>Microsoft Visual Studio 2015</strong></li>
-<li>Create the test project and solution. I.e. select **New Project &gt; Templates<blockquote>
-<p>Visual C# &gt; Test &gt; Unit Test Project**</p>
-</blockquote>
-</li>
+<li>Create the test project and solution. I.e. select <strong>New Project &gt; Templates &gt; Visual C# &gt; Test &gt; Unit Test Project</strong></li>
 <li>Once created, select <strong>Project &gt; Manage NuGet Packages... &gt; Browse</strong> and
    search for <strong>Appium.WebDriver</strong></li>
 <li>Install the <strong>Appium.WebDriver</strong> NuGet packages for the test project</li>
@@ -1777,7 +1801,7 @@ AlarmClockSession.FindElementByAccessibilityId("AddAlarmButton").Click();
 AlarmClockSession.FindElementByAccessibilityId("AlarmNameTextBox").Clear();
 </code></pre>
 
-<p>When testing the application you authored yourself, you can find the <strong>Application Id</strong> in the generetated <code>AppX\vs.appxrecipe</code> file under <code>RegisteredUserNmodeAppID</code> node. E.g. <code>c24c8163-548e-4b84-a466-530178fc0580_scyf5npe3hv32!App</code></p>
+<p>When testing the application you authored yourself, you can find the <strong>Application Id</strong> in the generated <code>AppX\vs.appxrecipe</code> file under <code>RegisteredUserNmodeAppID</code> node. E.g. <code>c24c8163-548e-4b84-a466-530178fc0580_scyf5npe3hv32!App</code></p>
 <h4 id="classic-windows-app-testing">Classic Windows App Testing</h4>
 <p>To test a classic Windows app, you can also use any Selenium supported language
 and specify the <strong>full executable path</strong> for the app under test in the <strong>app</strong>
@@ -1803,7 +1827,7 @@ great tool to inspect the application you are testing. This tool allows you to
 see every UI element/node that you can query using Windows Application Driver.
 This <strong>inspect.exe</strong> tool can be found under the Windows SDK folder such as
 <code>C:\Program Files (x86)\Windows Kits\10\bin\x86</code>. The tool will show various
-element attributes. The table below shows you witch Appium locator strategy you
+element attributes. The table below shows you which Appium locator strategy you
 should use to find elements with the corresponding attributes.</p>
 <table>
 <thead>

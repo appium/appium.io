@@ -81,6 +81,12 @@
 </li>
 
                         
+                            
+<li>
+    <a href="../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -142,6 +148,18 @@
             
 <li>
     <a href="../web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/chromedriver/">使用 Chromedriver</a>
 </li>
 
         
@@ -267,6 +285,12 @@
                         
                             
 <li>
+    <a href="../../advanced-concepts/parallel-tests/">并行测试的设置</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../advanced-concepts/settings/">Settings API</a>
 </li>
 
@@ -384,7 +408,7 @@
 <li>通过 "class" 查找 (例如， UI 组件的类型)</li>
 <li>通过 "xpath" 查找 (例如， 一个元素的路径以抽象的方式去表达，具有一定的约束)</li>
 </ul>
-<p>你可以查看关于以上的列表，<a href="/docs/cn/commands/element/find-elements/index.html#selector-strategies">选择器策略</a> 。</p>
+<p>你可以查看关于以上的列表，<a href="/docs/en/commands/element/find-elements/index.html#selector-strategies">选择器策略</a> (English)。</p>
 <p>Appium 还额外支持部分 <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON Wire Protocol</a> 的定位策略。</p>
 <ul>
 <li><code>-ios predicate string</code>：相当于使用 <a href="/docs/cn/writing-running-appium/ios/ios-predicate/index.html">iOS Predicate</a> 去递归地搜索元素（iOS 10.0 及以上版本）<ul>
@@ -392,13 +416,13 @@
 </ul>
 </li>
 <li><code>-android uiautomator</code>：相当于使用 <a href="/docs/cn/writing-running-appium/android/uiautomator-uiselector/index.html">UiAutomator Api</a> 去递归地搜索元素（Android 专属）</li>
-<li><code>-android datamatcher</code>：相当于一个 <a href="/docs/cn/writing-running-appium/android/espresso-datamatcher-uiselector/index.html">Espresso DataMatcher json</a> (Android 专属)</li>
+<li><code>-android datamatcher</code>：相当于一个 <a href="/docs/en/writing-running-appium/android/espresso-datamatcher-selector/index.html">Espresso DataMatcher json</a> (Android 专属)</li>
 <li><code>accessibility id</code>：该字符串相当于利用原生的可访问性（Accessibility）选项，使用 Id / Name 去递归地搜索元素。</li>
 </ul>
 <p>最后，Appium 支持几个额外的实验性定位策略：</p>
 <ul>
-<li><code>-image</code>: 字符串对应图像的 base64 编码版本，Appium 将使用该字符串作为模板来查找匹配的屏幕区域，然后将其视为元素点击。关于该定位器策略的更多信息，请参见文档 <a href="/docs/cn/advanced-concepts/image-elements/index.html">定位图像中的元素</a> 。</li>
-<li><code>-custom</code>: 该字符串将被发送到一个通过 <code>customFindModules</code> 功能注册的元素定位插件。关于该定位器策略的更多信息，请参见文档 <a href="/docs/cn/advanced-concepts/element-finding-plugins/index.html">用于定位元素的插件</a> 。</li>
+<li><code>-image</code>: 字符串对应图像的 base64 编码版本，Appium 将使用该字符串作为模板来查找匹配的屏幕区域，然后将其视为元素点击。关于该定位器策略的更多信息，请参见文档 <a href="/docs/en/advanced-concepts/image-elements/index.html">定位图像中的元素</a> (English)。</li>
+<li><code>-custom</code>: 该字符串将被发送到一个通过 <code>customFindModules</code> 功能注册的元素定位插件。关于该定位器策略的更多信息，请参见文档 <a href="/docs/en/advanced-concepts/element-finding-plugins/index.html">用于定位元素的插件</a> (English)。</li>
 </ul>
 <h3 id="_2">已知问题</h3>
 <p>在我们要与表格 cell 元素进行交互之前，元素便已失效，这是已知的问题。我们正在修复它。</p>
