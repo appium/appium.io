@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1703,9 +1730,12 @@ repo.</p>
 <h3 id="requirements-and-support">Requirements and Support</h3>
 <p>In addition to Appium's general requirements:</p>
 <ul>
-<li>Java 7 installed and configured correctly for your platform</li>
+<li>Java 8 installed and configured correctly for your platform</li>
 <li>Mac, Windows, or Linux OS with the ability to run the Android SDK</li>
 </ul>
+<p>Further, the UiAutomator2 driver does not support Android versions below 5.0
+(Lollipop, API level 21). If you are automating such versions, consider using
+the <a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator driver</a>;</p>
 <h3 id="usage">Usage</h3>
 <p>The way to start a session using the UiAutomator2 driver is to include the
 <code>automationName</code> <a href="#TODO">capability</a> in your <a href="#TODO">new session request</a>, with
@@ -1753,7 +1783,10 @@ Reference</a>.</p>
 </li>
 </ol>
 <p>On Windows, this will be done by setting the environment variable in the
-   control panel, using the same strategy as for setting PATH above.</p>
+   control panel, using the same strategy as for setting PATH above.
+   <a href="https://developer.android.com/studio/index.html">Android Studio</a> also has JDK
+   in the path like <code>/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home</code> (Mac).
+   You can specify the path, too.</p>
 <ol>
 <li>
 <p>Install the <a href="http://developer.android.com/sdk/index.html">Android SDK</a>. The

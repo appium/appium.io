@@ -13,6 +13,7 @@ if (!lastArg.endsWith(__filename)) {
 const excludedUrls = [
   'apple.com',
   'search.maven.org',
+  'wiki.jenkins.io', // This domain is slow response
   // 'https://github.com/',
 ];
 

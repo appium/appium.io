@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1670,21 +1697,21 @@
         
             <li class="second-level"><a href="#feature-based-comparison">Feature-based Comparison</a></li>
             
-                <li class="third-level"><a href="#example">Example</a></li>
+                <li class="third-level"><a href="#examples">Examples</a></li>
             
                 <li class="third-level"><a href="#visualization-example">Visualization Example</a></li>
             
         
             <li class="second-level"><a href="#occurrences-lookup">Occurrences Lookup</a></li>
             
-                <li class="third-level"><a href="#example_1">Example</a></li>
+                <li class="third-level"><a href="#examples_1">Examples</a></li>
             
                 <li class="third-level"><a href="#visualization-example_1">Visualization Example</a></li>
             
         
             <li class="second-level"><a href="#similarity-calculation">Similarity Calculation</a></li>
             
-                <li class="third-level"><a href="#example_2">Example</a></li>
+                <li class="third-level"><a href="#examples_2">Examples</a></li>
             
                 <li class="third-level"><a href="#visualization-example_2">Visualization Example</a></li>
             
@@ -1710,7 +1737,7 @@
 - It is necessary to verify whether the current on-screen object state is similar to the expected state</p>
 <h2 id="feature-based-comparison">Feature-based Comparison</h2>
 <p>Performs images matching by template to find possible occurrence of the partial image in the full image. Read https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_matcher/py_matcher.html for more details on this topic. Such comparison is useful in case the resulting image is rotated/scaled in comparison to the original one.</p>
-<h3 id="example">Example</h3>
+<h3 id="examples">Examples</h3>
 <pre><code class="java">// java
 
 byte[] screenshot = Base64.encodeBase64(driver.getScreenshotAs(OutputType.BYTES));
@@ -1747,7 +1774,8 @@ assert File.size? 'match_result_visual.png'
 <p><img alt="Feature-Based Comparison Example" src="https://user-images.githubusercontent.com/7767781/38800997-f7408fb8-4168-11e8-93b9-cfe3d51ecf1c.png"></p>
 <h2 id="occurrences-lookup">Occurrences Lookup</h2>
 <p>Performs images matching by template to find possible occurrence of the partial image in the full image. Read https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/template_matching/template_matching.html for more details on this topic. Such comparison is useful in case the full image is a superset of the partial image.</p>
-<h3 id="example_1">Example</h3>
+<p>There is a subtle difference between occurrence comparison and feature comparison. The former is to be used when the image to be found is a subset of the target/screenshot. The latter is to be used when the image to be found is basically the same as the target but rotated and/or scaled.</p>
+<h3 id="examples_1">Examples</h3>
 <pre><code class="java">// java
 
 byte[] screenshot = Base64.encodeBase64(driver.getScreenshotAs(OutputType.BYTES));
@@ -1759,8 +1787,89 @@ assertNotNull(result.getRect());
 </code></pre>
 
 <p>All the <code>OccurrenceMatchingOptions</code> builder methods above contain detailed descriptions in their docstrings.</p>
-<pre><code class="ruby"># Ruby
-image1 = File.read 'first/image/path.png'
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#0_0" data-language="javascript" data-toggle="tab">Javascript</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_1" data-language="ruby" data-toggle="tab">Ruby</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="0_0">
+            <pre><code class="javascript">// Typescript / Javascript
+  /*
+     Typescsript code for occurrence comparison using the template matching algorithm.
+     It detects if an image is contained in another image (called the template).
+     The image must have the same scale and look the same. However, you can add a scaling transformation beforehand.
+
+     official doc:
+     https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/image-comparison.md
+     OpenCV algorithm doc:
+     https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/template_matching/template_matching.html
+     official sample code:
+     https://github.com/justadudewhohacks/opencv4nodejs/blob/master/examples/templateMatching.js
+
+     You must install opencv4nodejs using the -g option.
+
+     The Javascript client driver webdriverio does not support (in January 2020) the "-image" strategy implemented in the Appium server. You will have more power and understanding while using openCV directly. Since the appium server is in Javascript, you can do all it does with opencv in your test suite.
+
+     The testing framework mocha can be run with typescript to have async/await.
+     You need to run mocha with those options in the right order and with the associated packages installed:
+     NODE_PATH=/path/to/nodejs/lig/node_modules TS_NODE_PROJECT=config/tsconfig_test.json --require ts-node/register --require tsconfig-paths/register
+     You will also need to make a basic config/tsconfig_test.json
+     Note that paths in tsconfig.json does not support absolute paths. Hence, you cannot move the NODE_PATH there.
+  */
+  import * as path from 'path';
+  const cv = require(path.join(process.env.NODE_PATH, 'opencv4nodejs'));
+  const isImagePresent = async () =&gt; {
+    /// Take screenshot and read the image
+    const screenImagePath = './appium_screenshot1.png';
+    await driver.saveScreenshot(screenImagePath)
+    const likedImagePath = './occurrence1.png';
+
+    // Load images
+    const originalMatPromise = cv.imreadAsync(screenImagePath);
+    const waldoMatPromise = cv.imreadAsync(likedImagePath);
+    const [originalMat, waldoMat] = await Promise.all([originalMatPromise, waldoMatPromise]);
+
+    // Match template (the brightest locations indicate the highest match)
+    // In the OpenCV doc, the option 5 refers to the algorithm called CV_TM_CCOEFF_NORMED
+    const matched = originalMat.matchTemplate(waldoMat, 5);
+
+    // Use minMaxLoc to locate the highest value (or lower, depending of the type of matching method)
+    const minMax = matched.minMaxLoc();
+    const { maxLoc: { x, y } } = minMax;
+
+    // Draw bounding rectangle
+    originalMat.drawRectangle(
+      new cv.Rect(x, y, waldoMat.cols, waldoMat.rows),
+      new cv.Vec(0, 255, 0),
+      2,
+      cv.LINE_8
+    );
+
+    // Open result in new window
+    // If the image is too big for your screen, you need to write to a file instead.
+    // Check the source of opencv4nodejs for writing an image to a file.
+    cv.imshow('We\'ve found Waldo!', originalMat);
+    await cv.waitKey();
+
+    // then you know if the image was found by comparing the rectangle with a reference rectangle.
+    // the structure minMax contains the property maxVal that gives the quality of the match
+    // 1 is prefect match, but you may get .999. If you extract an image from the screenshot manually,
+    // you will get an image that matches.
+  };
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="ruby">image1 = File.read 'first/image/path.png'
 image2 = File.read 'partial/image/path.png'
 
 find_result = @driver.find_image_occurrence full_image: image1, partial_image: image2
@@ -1771,13 +1880,19 @@ assert_equal %w(rect visualization), find_result_visual.keys
 File.open('find_result_visual.png', 'wb') { |f| f&lt;&lt; Base64.decode64(find_result_visual['visualization']) }
 assert File.size? 'find_result_visual.png'
 </code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
 
 <h3 id="visualization-example_1">Visualization Example</h3>
 <p><img alt="Occurrences Lookup" src="https://user-images.githubusercontent.com/7767781/40233298-b7decfe4-5aa2-11e8-8c9b-f85f384d2092.png"></p>
 <p>The highlighted picture at the left bottom corner is the resulting match of <img alt="Waldo" src="https://github.com/appium/appium-support/blob/master/test/images/waldo.jpg?raw=true"> lookup.</p>
 <h2 id="similarity-calculation">Similarity Calculation</h2>
 <p>Performs images matching to calculate the similarity score between them. The flow there is similar to the one used in <code>findImageOccurrence</code>, but it is mandatory that both images are of equal size. Such comparison is useful in case the original image is a copy of the original one, but with changed content.</p>
-<h3 id="example_2">Example</h3>
+<h3 id="examples_2">Examples</h3>
 <pre><code class="java">// java
 
 byte[] screenshot1 = Base64.encodeBase64(driver.getScreenshotAs(OutputType.BYTES));
