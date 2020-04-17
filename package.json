@@ -60,7 +60,7 @@
     "cross-env": "^5.0.5",
     "ejs": "^3.0.2",
     "eslint": "^6.8.0",
-    "eslint-config-appium": "3.x",
+    "eslint-config-appium": "4.x",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-mocha": "^6.3.0",
     "eslint-plugin-promise": "^4.0.0",
@@ -72,7 +72,7 @@
     "pre-commit": "^1.2.2",
     "relative": "^3.0.2",
     "rimraf": "^3.0.2",
-    "wait-on": "^3.2.0"
+    "wait-on": "^4.0.2"
   },
   "greenkeeper": {
     "ignore": []
