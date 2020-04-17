@@ -48,7 +48,7 @@ export function fencedCodeTabify (html) {
   let tabPaneIndex = 0;
 
 
-  jqHTML.find("pre > code").each((index, codeTag) => {
+  jqHTML.find('pre > code').each((index, codeTag) => {
     languageBlocks = [];
 
     // Get the language 'code' tags
