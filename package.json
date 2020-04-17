@@ -60,7 +60,7 @@
     "cross-env": "^5.0.5",
     "ejs": "^3.0.2",
     "eslint": "^5.2.0",
-    "eslint-config-appium": "3.x",
+    "eslint-config-appium": "4.x",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-mocha": "^6.3.0",
     "eslint-plugin-promise": "^4.0.0",
