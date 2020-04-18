@@ -57,7 +57,7 @@
     "@babel/node": "^7.2.2",
     "broken-link-checker": "^0.7.8",
     "chalk": "^2.4.1",
-    "cross-env": "^5.0.5",
+    "cross-env": "^7.0.2",
     "ejs": "^3.0.2",
     "eslint": "^6.8.0",
     "eslint-config-appium": "4.x",
