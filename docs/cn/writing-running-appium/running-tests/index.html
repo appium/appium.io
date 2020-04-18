@@ -81,6 +81,12 @@
 </li>
 
                         
+                            
+<li>
+    <a href="../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -142,6 +148,18 @@
             
 <li>
     <a href="../web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../web/chromedriver/">使用 Chromedriver</a>
 </li>
 
         
@@ -267,6 +285,12 @@
                         
                             
 <li>
+    <a href="../../advanced-concepts/parallel-tests/">并行测试的设置</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../advanced-concepts/settings/">Settings API</a>
 </li>
 
@@ -334,7 +358,7 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../../about-appium/appium-clients/">
+                        <a rel="next" href="../../about-appium/platform-support/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -372,7 +396,7 @@
             <li class="second-level"><a href="#appium-android">使用 Appium 测试你的应用（Android）</a></li>
             
         
-            <li class="second-level"><a href="#appium-android-42">使用 Appium 运行你的测试程序（Android 设备 &lt; 4.2，和混合测试）</a></li>
+            <li class="second-level"><a href="#appium-android-43">使用 Appium 运行你的测试程序（Android 设备 &lt; 4.3，和混合测试）</a></li>
             
         
             <li class="second-level"><a href="#appium-windows">使用 Appium 运行你的测试程序（Windows）</a></li>
@@ -599,8 +623,8 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
 <li>示例应用相对于 appium 安装根目录的路径</li>
 </ul>
 <p>用你选择的 WebDriver 库，将远程会话（session）设置为使用以上功能，并连接到服务器所监听的 localhost 4723 （或任何在启动 Appium 时指定的主机和端口）。现在你应该全都设置好了！</p>
-<h3 id="appium-android-42">使用 Appium 运行你的测试程序（Android 设备 &lt; 4.2，和混合测试）</h3>
-<p>Android 设备在 4.2 版本（API 级别 17）之前没有安装谷歌的 <a href="http://developer.android.com/tools/testing-support-library/index.html#UIAutomator">UiAutomator 框架</a>。UiAutomator 是 Appium 用于在设备上执行自动化的部分。对于早期的设备或混合（基于 webview）应用程序，Appium 与另一个名为 <a href="http://selendroid.io/">Selendroid</a> 自动化后端进行绑定。</p>
+<h3 id="appium-android-43">使用 Appium 运行你的测试程序（Android 设备 &lt; 4.3，和混合测试）</h3>
+<p>Android 设备在 4.3  版本（API 级别 17）之前没有安装谷歌的 <a href="http://developer.android.com/tools/testing-support-library/index.html#UIAutomator">UiAutomator 框架</a>。UiAutomator 是 Appium 用于在设备上执行自动化的部分。对于早期的设备或混合（基于 webview）应用程序，Appium 与另一个名为 <a href="http://selendroid.io/">Selendroid</a> 自动化后端进行绑定。</p>
 <p>要使用 Selendroid，只需稍微改动上述提到的预期功能（Desired capabilities），添加 <code>automationName</code> 并指定 Selendroid 为自动化后端。通常，你还需要在 activity 名前加一个 <code>.</code>（例如，对于 <code>appActivity</code> 这个功能需要使用 <code>.MainActivity</code> 替代 <code>MainActivity</code>)。</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">

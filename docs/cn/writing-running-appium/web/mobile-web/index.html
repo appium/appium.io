@@ -81,6 +81,12 @@
 </li>
 
                         
+                            
+<li>
+    <a href="../../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
                         </ul>
                     </li>
                 
@@ -142,6 +148,18 @@
             
 <li>
     <a href="../hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../chromedriver/">使用 Chromedriver</a>
 </li>
 
         
@@ -262,6 +280,12 @@
                             
 <li>
     <a href="../../../advanced-concepts/event-timings/">Event Timings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../advanced-concepts/parallel-tests/">并行测试的设置</a>
 </li>
 
                         
@@ -471,13 +495,12 @@ capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simulator")
 <p>在iOS 9.3及以下(pre-XCUITest)版本系统，我们借助 SafariLauncher 应用在移动端Safari运行测试。
 这是因为Safari是苹果公司的应用，Instruments 不能在真机上拉起 Safari。SafariLuncher 可以帮助打开 Safari 浏览器，浏览器一旦打开，Remote Debugger 会通过 <a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debug-proxy</a> 自动连接。在 <code>ios-webkit-debug-proxy</code> 运行时，
 必须在你的iOS设备测试前，信任这台设备</p>
-<p>指导如何安装和运行 ios-webkit-debugger-proxy ，可以查阅 <a href="/docs/cn/advanced-concepts/ios-webkit-debug-proxy/index.html">iOS WebKit debug proxy</a></p>
+<p>指导如何安装和运行 ios-webkit-debugger-proxy ，可以查阅 <a href="/docs/cn/writing-running-appium/web/ios-webkit-debug-proxy/index.html">iOS WebKit debug proxy</a></p>
 <h3 id="_2">安装</h3>
 <p>在真实上运行测试前，你需要：</p>
 <ul>
-<li>安装好 <strong>ios-webkit-debug-proxy</strong>，运行并在 27753 接口开启监听。（查阅 <a href="/docs/cn/advanced-concepts/hybrid/index.html#execution-against-a-real-ios-device">hybrid 文档</a> 作为指导）</li>
+<li>安装好 <strong>ios-webkit-debug-proxy</strong>，运行并在 27753 接口开启监听。（查阅 <a href="/docs/cn/writing-running-appium/web/hybrid/index.html#execution-against-a-real-ios-device">hybrid 文档</a> 作为指导）</li>
 <li>在 iOS 设备上开启 <strong>web inspector</strong>（设置&gt;safari&gt;高级）</li>
-<li>确保 <code>SafariLauncher</code> 正常工作 (参考 <a href="safari-launcher/index.html">SafariLauncher docs</a>)</li>
 </ul>
 <h3 id="_3">运行你的测试</h3>
 <p>在 safari 运行你的测试，只需简单地设置 <strong>"browserName"</strong> 为 <strong>"Safari"</strong></p>
@@ -569,7 +592,7 @@ driver.quit()
 <p>前提设置:</p>
 <ul>
 <li>确保 Chrome (应用包名 <code>com.android.chrome</code>) 在设备或者模拟器上安装好了。不编译 Chromium，在 x86 版本的模拟器上安装 Chrome 已经不可能了。所以你需要运行一个 ARM 版本的模拟器，然后从真机上复制一个 Chrome APK 到模拟器上。</li>
-<li>在特定版本的 Chrome 上进行自动化，需要安装和配置不同版本的 Chromedriver，更多信息参考<a href="/docs/cn/advanced-concepts/chromedriver/index.html">文档</a> </li>
+<li>在特定版本的 Chrome 上进行自动化，需要安装和配置不同版本的 Chromedriver，更多信息参考<a href="../chromedriver/">文档</a></li>
 </ul>
 <p>然后，使用如下设置，在你的Chrome下运行你的测试：</p>
 <div>

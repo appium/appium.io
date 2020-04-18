@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1894,9 +1921,10 @@ elements.</p>
 <p>Once you've set your <a href="/docs/en/writing-running-appium/caps/index.html">desired capabilities</a>
 and started an Appium session, follow the generalized instructions above.</p>
 <h4 id="execution-against-an-ios-real-device">Execution against an iOS real device</h4>
-<p>When executing against an iOS real device Appium is unable to access the web view
+<p>When executing against an iOS real device, Appium is unable to access the web view
 directly. Therefore the connection has to be established through the USB cable.
-To establish this connection we use the <a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debugger-proxy</a>.</p>
+Appium can establish the connection natively since version 1.15 via <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a>.
+<a href="https://github.com/google/ios-webkit-debug-proxy">ios-webkit-debugger-proxy</a> is only necessary for Appium below version 1.15.</p>
 <p>For instruction on how to install and run <code>ios-webkit-debugger-proxy</code> see the
 <a href="../ios-webkit-debug-proxy/">iOS webkit debug proxy</a>
 documentation.</p>

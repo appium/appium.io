@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1744,7 +1771,8 @@ driver.activate_app('io.appium.android.apis')
           
           <div role="tabpanel" class="tab-pane " id="0_2">
             <pre><code class="javascript">// webdriver.io example
-// Supports only `mobile: queryAppState` for iOS, XCUITest
+driver.activateApp(null, 'com.apple.Preferences')
+driver.activateApp('io.appium.android.apis')
 
 // wd example
 // Supports only `mobile: queryAppState` for iOS, XCUITest
@@ -1765,7 +1793,8 @@ activate_app('io.appium.android.apis')
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// Supports only `mobile: queryAppState` for iOS, XCUITest
+            <pre><code class="csharp">driver.activateApp('com.apple.Preferences');
+driver.activateApp('io.appium.android.apis');
 
 </code></pre>
           </div>
@@ -1835,7 +1864,7 @@ activate_app('io.appium.android.apis')
 <tr>
 <td></td>
 <td><a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator</a></td>
-<td>4.2+</td>
+<td>4.3+</td>
 <td>All</td>
 <td>All</td>
 </tr>
@@ -1941,7 +1970,7 @@ activate_app('io.appium.android.apis')
 <p>null</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L437">JSONWP Specification</a></li>
+<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L445">JSONWP Specification</a></li>
 </ul></div>
         
     </div>
