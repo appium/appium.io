@@ -4,4 +4,4 @@ theme_dir: {{themeDir}}
 extra:
   base_url: {{baseUrl}}
 pages:
-{{{toc}}}
+  {{{toc}}}
