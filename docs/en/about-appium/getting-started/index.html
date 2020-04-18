@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1737,10 +1764,10 @@ the Android SDK configured on your system.</p>
 you want to automate, so your system is set up correctly:</p>
 <ul>
 <li>The <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest Driver</a> (for iOS and tvOS apps)</li>
+<li>The <a href="/docs/en/drivers/android-espresso/index.html">Espresso Driver</a> (for Android apps)</li>
 <li>The <a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2 Driver</a> (for Android apps)</li>
 <li>The <a href="/docs/en/drivers/windows/index.html">Windows Driver</a> (for Windows Desktop apps)</li>
 <li>The <a href="/docs/en/drivers/mac/index.html">Mac Driver</a> (for Mac Desktop apps)</li>
-<li>(BETA) The <a href="/docs/en/drivers/android-espresso/index.html">Espresso Driver</a> (for Android apps)</li>
 </ul>
 <h3 id="verifying-the-installation">Verifying the Installation</h3>
 <p>To verify that all of Appium's dependencies are met you can use
@@ -1838,6 +1865,7 @@ doc</a>.</p>
 <p>So here is how we begin to construct a session in our test file:</p>
 <pre><code class="js">// javascript
 const opts = {
+  path: '/wd/hub',
   port: 4723,
   capabilities: {
     platformName: "Android",
@@ -1866,8 +1894,7 @@ path with the actual download path for your system). We've registered this fact
 with <code>webdriverio</code> and now have a client object which will represent the
 connection to the Appium server. From here, we can go ahead and start the
 session, perform some test commands, and end the session. In our case, we will
-simply tap into a few menus and then back out the way we came before ending the
-session:</p>
+simply type into a text field and check that the correct text was entered:</p>
 <pre><code class="js">// javascript
 
 const field = await client.$("android.widget.EditText");
@@ -1877,13 +1904,9 @@ assert.equal(value, "Hello World!");
 </code></pre>
 
 <p>What's going on here is that after creating a session and launching our app,
-we're instructing Appium to find an element in the app hierarchy and click on
-it. Specifically, <code>webdriverio</code> has a convention where the <code>~</code> prefix means to
-find an element by its "accessbility id", which in the case of Android means an
-element's "content description". So we find and tap on these elements in order
-to navigate through the app's menu system. Then we can use the <code>back()</code> method
-to trigger the Android "back" behavior and get back to where we started before
-ending the session.</p>
+we're instructing Appium to find an element in the app hierarchy and type into
+it. The same field is then queried for its text, which is asserted to be what we
+expect.</p>
 <p>Putting it all together, the file should look like:</p>
 <pre><code class="js">// javascript
 

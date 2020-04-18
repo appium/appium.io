@@ -322,6 +322,27 @@
         
             
   <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Events</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../commands/session/events/log-event/">Log event</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../commands/session/events/get-events/">Get events</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Settings</a>
     <ul class="dropdown-menu">
         
@@ -1446,6 +1467,12 @@
         
             
 <li>
+    <a href="../../android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
     <a href="../../android/android-ime/">How To Emulate IME Actions Generation</a>
 </li>
 
@@ -1708,7 +1735,7 @@ This documentation aims to help to understand how they work for iOS.</p>
 <li>You may specify <code>documents</code> container type only for bundle ids returned by <code>ifuse -u &lt;udid&gt; --list-apps</code></li>
 <li>
 <p>e.g. Below <em>On My iPhone</em> image has <em>Slack</em> folder, but <code>com.tinyspeck.chatlyio</code> does not exist in the output of <code>--list-apps</code>. Thus, we cannot mount it as <code>com.tinyspeck.chatlyio@documents/</code></p>
-<p><img src="./ios-xctest-file-movement/on_my_iphone.png" width="100">
+<p><img src="/docs/en/writing-running-appium/ios/ios-xctest-file-movement/on_my_iphone.png" width="100">
     - The others work as <em>format 2</em>
         - Only apps having the flag <code>UIFileSharingEnabled</code> in their <code>info.plist</code> can be mounted
 - <code>path_to_the_file_or_folder_inside_container</code> is the target to push/pull to/from them.
@@ -1768,9 +1795,9 @@ File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
 </thead>
 <tbody>
 <tr>
-<td align="center"><img alt="" src="../ios-xctest-file-movement/top_files.png"></td>
-<td align="center"><img alt="" src="../ios-xctest-file-movement/on_my_iphone.png"></td>
-<td align="center"><img alt="" src="../ios-xctest-file-movement/keynote.png"></td>
+<td align="center"><img alt="" src="../../../writing-running-appium/ios/ios-xctest-file-movement/top_files.png"></td>
+<td align="center"><img alt="" src="../../../writing-running-appium/ios/ios-xctest-file-movement/on_my_iphone.png"></td>
+<td align="center"><img alt="" src="../../../writing-running-appium/ios/ios-xctest-file-movement/keynote.png"></td>
 </tr>
 </tbody>
 </table>
