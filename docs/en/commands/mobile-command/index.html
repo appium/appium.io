@@ -1380,6 +1380,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/ios/actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
@@ -1434,6 +1440,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -1919,6 +1931,12 @@ on syntax).</p>
 <td></td>
 </tr>
 <tr>
+<td>mobile:tapWithNumberOfTaps</td>
+<td>refer to <a href="/docs/en/writing-running-appium/ios/ios-xctest-mobile-gestures/index.html#mobile-tapWithNumberOfTaps">Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>mobile:tap</td>
 <td>refer to <a href="/docs/en/writing-running-appium/ios/ios-xctest-mobile-gestures/index.html#mobile-tap">Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend</a></td>
 <td></td>
@@ -2161,7 +2179,7 @@ on syntax).</p>
 </tr>
 <tr>
 <td>mobile:getNotifications</td>
-<td>Get the list of items as JSON format in the status bar notifications. Please turn 'Notification access' on via <em>Settings &gt; App &amp; notifications &gt; Special app access</em> (the actual path depends on the device model). Please read <a href="https://appiumpro.com/editions/106">Appium Pro</a> for more details.</td>
+<td>Get the list of items as JSON format in the status bar notifications. Please turn 'Notification access' on via <em>Settings &gt; App &amp; notifications &gt; Special app access</em> (the actual path depends on the device model). Please read <a href="https://appiumpro.com/editions/106-retrieving-status-bar-notifications-for-android-devices">Appium Pro</a> for more details.</td>
 <td><none></none></td>
 <td><none></none></td>
 </tr>
@@ -2182,6 +2200,12 @@ on syntax).</p>
 <td>Get time of the device under test. https://momentjs.com/docs/ is the full list of supported datetime format. Defaults to <code>YYYY-MM-DDTHH:mm:ssZ</code> which is  ISO-8601.</td>
 <td><code>{format}</code></td>
 <td><code>{format: 'YYYY-MM'}</code></td>
+</tr>
+<tr>
+<td>mobile:deleteFile</td>
+<td>Delete a file on the device under test. The remote path value should be the full path or a file inside an application bundle.</td>
+<td><code>{remotePath}</code></td>
+<td><code>{remotePath: '@io.appium.example/path/in/bundle'}</code>, <code>{remotePath: '/tmp/data/file'}</code></td>
 </tr>
 </tbody>
 </table>
@@ -2219,6 +2243,12 @@ on syntax).</p>
 <td>Scroll from one element to another</td>
 <td><code>{elementId, elementToId}</code></td>
 <td><code>{elementId: 2, elementToId: 1}</code></td>
+</tr>
+<tr>
+<td>mobile:scroll</td>
+<td>Scroll the given scrollable element until the element identifier by <code>strategy</code> and <code>selector</code> becomes visible since Appium 1.18.0. An optional <code>maxSwipes</code> property can limit the number of scroll actions. It accepts an optional <code>element</code> property which should be the element identifier and scrollable. Without this property, Appium will select the first currently available scrollable container. Please read <code>mobileScroll</code> section in <a href="https://github.com/appium/appium-uiautomator2-driver/blob/master/lib/commands/general.js">appium-uiautomator2-driver</a> for more details.</td>
+<td><code>{element, strategy, selector, maxSwipes}</code></td>
+<td><code>{strategy: 'accessibility id', selector: 'target content description'}</code></td>
 </tr>
 <tr>
 <td>mobile:viewportScreenshot</td>
