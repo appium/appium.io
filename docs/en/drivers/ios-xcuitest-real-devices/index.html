@@ -1380,6 +1380,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/ios/actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
@@ -1434,6 +1440,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -1929,8 +1941,15 @@ for this).</p>
 <li>Make sure UDID is correct by checking it in Xcode Organizer or iTunes. It
    is a long string (20+ chars).</li>
 <li>Make sure that you can run your tests against the Simulator.</li>
-<li>Make sure UI Automation is enabled on your device. Settings -&gt; Developer -&gt;
-   Enable UI Automation</li>
+<li>Make sure the following settings are <strong>enabled</strong> on your device:<ol>
+<li>Settings -&gt; Developer -&gt; <strong>Enable UI Automation</strong></li>
+<li>Settings -&gt; Safari -&gt; Advanced -&gt; <strong>Web Inspector</strong> and <strong>Remote Automation</strong><ol>
+<li>Please read <a href="../docs/en/writing-running-appium/web/mobile-web/">Automating mobile web apps</a> for more details about WebView</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Consider generating a provisioning profile with <code>.xctrunner</code> identifier if you do not want to generate a wildcard one for manual configuration. The <code>.xctrunner</code> config support has been added since Xcode 11. <a href="https://github.com/appium/appium/issues/13610">A reference</a></li>
 </ol></div>
         
     </div>

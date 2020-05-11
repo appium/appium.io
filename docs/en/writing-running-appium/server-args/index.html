@@ -1380,6 +1380,12 @@
         
             
 <li>
+    <a href="../ios/actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
+<li>
     <a href="../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
@@ -1434,6 +1440,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -2205,6 +2217,12 @@
 <td>[]</td>
 <td>Specify a list of features which will never be allowed to run, even if --relaxed-security is turned on, and even if feature names are listed with --allow-insecure. Should be a comma-separated list, or a path to a filename containing one feature name per line. See also the <a href="/docs/en/writing-running-appium/security/index.html">security doc</a></td>
 <td><code>--deny-insecure=foo,bar</code></td>
+</tr>
+<tr>
+<td><code>--log-filters</code></td>
+<td>null</td>
+<td>Specify a full path to a JSON file containing one or more log filtering rules. This feature is useful for cases when it is necessary to obfuscate sensitive information, which may be present in server log records, like passwords or access tokens. The format of each rule is described in https://github.com/appium/appium-support/blob/master/lib/log-internal.js. An exception will be thrown on server startup if any of the rules has issues.</td>
+<td><code>--log-filters=/home/config.json</code></td>
 </tr>
 </tbody>
 </table></div>
