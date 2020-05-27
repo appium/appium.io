@@ -1380,6 +1380,12 @@
         
             
 <li>
+    <a href="../../../writing-running-appium/ios/actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
@@ -1426,6 +1432,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../writing-running-appium/ios/audio-capture/">Audio Capture</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1434,6 +1446,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../writing-running-appium/android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -1897,7 +1915,15 @@ f2.create_pointer_up(:left)
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO
+            <pre><code class="csharp">var inputDevice = new PointerInputDevice(PointerKind.Touch);
+var actionSequence = new ActionSequence(inputDevice, 0);
+
+actionSequence.AddAction(inputDevice.CreatePointerMove(element));
+actionSequence.AddAction(inputDevice.CreatePointerDown(PointerButton.TouchContact));
+actionSequence.AddAction(inputDevice.CreatePause(TimeSpan.FromSeconds(1)));
+actionSequence.AddAction(inputDevice.CreatePointerUp(PointerButton.TouchContact));
+
+driver.PerformActions(new List&lt;ActionSequence&gt; {actionSequence});
 
 </code></pre>
           </div>

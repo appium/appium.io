@@ -1380,6 +1380,12 @@
         
             
 <li>
+    <a href="../ios/actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
+<li>
     <a href="../ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
@@ -1426,6 +1432,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../ios/audio-capture/">Audio Capture</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1434,6 +1446,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -2063,6 +2081,11 @@ Capabilities available in general and for specific drivers.</p>
 <td>e.g. <code>9543</code></td>
 </tr>
 <tr>
+<td><code>enableWebviewDetailsCollection</code></td>
+<td>Enables collection of detailed WebView information via <code>/json/version</code> CDP (Chrome Developer Protocol) endpoint since Appium 1.18.0+. This helps to properly match Chromedriver version which supports the given WebView. Without this flag enabled, Appium tries to guess the version of the WebView based on the version of the corresponding installed package (which usually <a href="https://github.com/appium/appium/issues/13918">fails</a> for custom web views). Defaults to <code>false</code></td>
+<td><code>true</code> or <code>false</code></td>
+</tr>
+<tr>
 <td><code>dontStopAppOnReset</code></td>
 <td>Doesn't stop the process of the app under test, before starting the app using adb. If the app under test is created by another anchor app, setting this false, allows the process of the anchor app to be still alive, during the start of the test app using adb. In other words, with <code>dontStopAppOnReset</code> set to <code>true</code>, we will not include the <code>-S</code> flag in the <code>adb shell am start</code> call. With this capability omitted or set to <code>false</code>, we include the <code>-S</code> flag. Default <code>false</code></td>
 <td><code>true</code> or <code>false</code></td>
@@ -2207,6 +2230,26 @@ Capabilities available in general and for specific drivers.</p>
 <td>By default application installation is skipped if newer or the same version of this app is already present on the device under test. Setting this option to <code>true</code> will enforce Appium to always install the current application build independently of the currently installed version of it. Defaults to <code>false</code>.</td>
 <td><code>true</code> , <code>false</code></td>
 </tr>
+<tr>
+<td><code>ignoreHiddenApiPolicyError</code></td>
+<td>Ignores <code>Security exception: Permission denial</code> alert and allows to continue the session creation process since Appium 1.18.0+. The error happens when Appium tries to relax <a href="https://developer.android.com/distribute/best-practices/develop/restrictions-non-sdk-interfaces#how_can_i_enable_access_to_non-sdk_interfaces">hidden API policy</a>, although some devices with a customized firmware deny such requests. Defaults to <code>false</code>.</td>
+<td><code>true</code>, <code>false</code></td>
+</tr>
+<tr>
+<td><code>mockLocationApp</code></td>
+<td>Sets the package identifier of the app, which is used as a system mock location provider since Appium 1.18.0+. This capability has no effect on emulators. If the value is set to <code>null</code> or an empty string, then Appium will skip the mocked location provider setup procedure. Defaults to Appium Setting package identifier (<code>io.appium.settings</code>).</td>
+<td>e.g., <code>null</code>, <code>io.appium.settings</code>, <code>example.your.app</code></td>
+</tr>
+<tr>
+<td>logcatFormat</td>
+<td>Set the output format for logcat messages since Appium 1.18.0. Supported formats are listed in <a href="https://github.com/appium/appium-adb/blob/master/lib/logcat.js">here</a>. Please read <a href="https://developer.android.com/studio/command-line/logcat#outputFormat">logcat#outputFormat</a> for more details about each format. Defaults to <code>threadtime</code>.</td>
+<td>e.g., <code>process</code></td>
+</tr>
+<tr>
+<td>logcatFilterSpecs</td>
+<td>Set the output filter rule for logcat messages since Appium 1.18.0. Please read <a href="https://developer.android.com/studio/command-line/logcat#filteringOutput">logcat#filteringOutput</a> for more details about the rule. <a href="https://developer.android.com/studio/debug/am-logcat">Write and View Logs with Logcat</a> is also helpful.</td>
+<td>e.g., <code>['*:W', 'MyActivity:D']</code> (<code>MyActivity</code> is a tag)</td>
+</tr>
 </tbody>
 </table>
 <h4 id="uiautomator-1-2">UIAutomator (1 &amp; 2)</h4>
@@ -2255,13 +2298,23 @@ Capabilities available in general and for specific drivers.</p>
 <tbody>
 <tr>
 <td><code>appWaitForLaunch</code></td>
-<td>Tries to launch the app under test without <a href="https://developer.android.com/studio/command-line/adb#am">-W</a> option in session creation. It might help when the session creation does not proceed since <code>shell am start</code> does not respond. Defaults to <code>true</code></td>
+<td>Tries to launch the app under test without <a href="https://developer.android.com/studio/command-line/adb#am">-W</a> option in session creation. It might help when the session creation does not proceed since <code>shell am start</code> does not respond. Defaults to <code>true</code>.</td>
 <td><code>false</code> or <code>true</code></td>
 </tr>
 <tr>
-<td><code>uiautomator2ServerLaunchTimeout</code></td>
-<td>Timeout in milliseconds used to wait for an uiAutomator2 server to launch. Defaults to <code>20000</code></td>
-<td>e.g., <code>20000</code></td>
+<td><code>disableSuppressAccessibilityService</code></td>
+<td>Set <a href="https://developer.android.com/reference/android/app/UiAutomation#FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES">FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES</a> to allow existing accessibility service continue to run, and a new one may start for Appium. It helps to test the app under test which has accessibility feature such as TalkBack. Appium will not specify the flag if nothing is provided. The flag requires Android API Level 24+.</td>
+<td><code>false</code> or <code>true</code></td>
+</tr>
+<tr>
+<td><code>mjpegServerPort</code></td>
+<td>If specified this is the local port that will be bound to the <code>appium-uiautomator2-server</code>'s MJPEG screenshot stream. This can be used in conjunction with <code>mjpegScreenshotUrl</code>. <code>Integer</code> value default <code>null</code>.</td>
+<td>any <code>Integer</code>, recommend: <code>9200</code> -&gt; <code>9299</code> for consistency w/ <code>serverPort</code> range</td>
+</tr>
+<tr>
+<td><code>skipServerInstallation</code></td>
+<td>Skip uiAutomator2 server installation and use uiAutomator2 server from the device. Can be used to improve startup performance when an uiAutomator2 server in proper version is already installed on the device. Defaults to <code>false</code>.</td>
+<td><code>false</code> or <code>true</code></td>
 </tr>
 <tr>
 <td><code>uiautomator2ServerInstallTimeout</code></td>
@@ -2269,19 +2322,14 @@ Capabilities available in general and for specific drivers.</p>
 <td>e.g., <code>20000</code></td>
 </tr>
 <tr>
-<td><code>skipServerInstallation</code></td>
-<td>Skip uiAutomator2 server installation and use uiAutomator2 server from the device. Can be used to improve startup performance when an uiAutomator2 server in proper version is already installed on the device. Defaults to <code>false</code></td>
-<td><code>true</code> or <code>false</code></td>
+<td><code>uiautomator2ServerLaunchTimeout</code></td>
+<td>Timeout in milliseconds used to wait for an uiAutomator2 server to launch. Defaults to <code>20000</code></td>
+<td>e.g., <code>20000</code></td>
 </tr>
 <tr>
 <td><code>userProfile</code></td>
 <td>Enforce user profile as the given parameter if the value was provided. It should be an integer.</td>
 <td>e.g., <code>11</code></td>
-</tr>
-<tr>
-<td><code>disableSuppressAccessibilityService</code></td>
-<td>Set <a href="https://developer.android.com/reference/android/app/UiAutomation#FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES">FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES</a> to allow existing accessibility service continue to run, and a new one may start for Appium. It helps to test the app under test which has accessibility feature such as TalkBack. Appium will not specify the flag if nothing is provided. The flag requires Android API Level 24+.</td>
-<td><code>true</code>, <code>false</code></td>
 </tr>
 </tbody>
 </table>
@@ -2562,6 +2610,11 @@ Driver</a>.</p>
 <td><code>webkitDebugProxyPort</code></td>
 <td>(Real device only) Port to which <code>ios-webkit-debug-proxy</code> is connected, during real device tests. Default is <code>27753</code>.</td>
 <td><code>12021</code></td>
+</tr>
+<tr>
+<td><code>fullContextList</code></td>
+<td>Returns the detailed information on contexts for the <a href="/docs/en/commands/context/get-contexts/index.html">get available context</a> command. If this capability is enabled, then each item in the returned contexts list would additionally include WebView title, full URL and the bundle identifier. Defaults to <code>false</code>.</td>
+<td><code>true</code> or <code>false</code></td>
 </tr>
 </tbody>
 </table>

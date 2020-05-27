@@ -1379,6 +1379,12 @@
     <ul class="dropdown-menu">
         
             
+<li>
+    <a href="../actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
 <li class="active">
     <a href="./">XCUITest Mobile Gestures</a>
 </li>
@@ -1426,6 +1432,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../audio-capture/">Audio Capture</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1434,6 +1446,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -1666,7 +1684,7 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../../image-comparison/">
+                        <a rel="next" href="../actions/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -1757,6 +1775,15 @@
                 <li class="third-level"><a href="#supported-arguments_9">Supported arguments</a></li>
             
                 <li class="third-level"><a href="#usage-examples_9">Usage examples</a></li>
+            
+        
+            <li class="second-level"><a href="#mobile-tapwithnumberoftaps">mobile: tapWithNumberOfTaps</a></li>
+            
+                <li class="third-level"><a href="#supported-arguments_10">Supported arguments</a></li>
+            
+                <li class="third-level"><a href="#usage-examples_10">Usage examples</a></li>
+            
+                <li class="third-level"><a href="#reference">Reference</a></li>
             
         
             <li class="second-level"><a href="#advanced-topics">Advanced Topics</a></li>
@@ -1975,6 +2002,23 @@ js.executeScript("mobile: selectPickerWheelValue", params);
 driver.execute_script('mobile: alert', {'action': 'accept', 'buttonLabel': 'My Cool Alert Button'});
 </code></pre>
 
+<h3 id="mobile-tapwithnumberoftaps">mobile: tapWithNumberOfTaps</h3>
+<p>Sends one or more taps with one or more touch points since Appium 1.17.1.</p>
+<h4 id="supported-arguments_10">Supported arguments</h4>
+<ul>
+<li><em>element</em>: The internal element identifier (as hexadecimal hash string) to perform one or more taps.</li>
+<li><em>numberOfTaps</em>: The number of taps</li>
+<li><em>numberOfTouches</em>: The number of touch points</li>
+</ul>
+<h4 id="usage-examples_10">Usage examples</h4>
+<pre><code class="ruby"># Ruby
+e = @driver.find_element :id, 'target element'
+# Taps the element with a single touch point twice
+@driver.execute_script 'mobile: tapWithNumberOfTaps', {element: e.ref, numberOfTaps: 2, numberOfTouches: 1}
+</code></pre>
+
+<h4 id="reference">Reference</h4>
+<p><a href="https://developer.apple.com/documentation/xctest/xcuielement/1618671-tapwithnumberoftaps">tapWithNumberOfTaps:numberOfTouches:</a></p>
 <h3 id="advanced-topics">Advanced Topics</h3>
 <p>Check <a href="https://github.com/facebook/WebDriverAgent/blob/master/WebDriverAgentLib/Commands/FBElementCommands.m">WDA Element Commands API</a>
 to get the information about the gestures implemented in Facebook WebDriverAgent.
