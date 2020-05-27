@@ -1432,6 +1432,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../ios/audio-capture/">Audio Capture</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -2233,6 +2239,16 @@ Capabilities available in general and for specific drivers.</p>
 <td><code>mockLocationApp</code></td>
 <td>Sets the package identifier of the app, which is used as a system mock location provider since Appium 1.18.0+. This capability has no effect on emulators. If the value is set to <code>null</code> or an empty string, then Appium will skip the mocked location provider setup procedure. Defaults to Appium Setting package identifier (<code>io.appium.settings</code>).</td>
 <td>e.g., <code>null</code>, <code>io.appium.settings</code>, <code>example.your.app</code></td>
+</tr>
+<tr>
+<td>logcatFormat</td>
+<td>Set the output format for logcat messages since Appium 1.18.0. Supported formats are listed in <a href="https://github.com/appium/appium-adb/blob/master/lib/logcat.js">here</a>. Please read <a href="https://developer.android.com/studio/command-line/logcat#outputFormat">logcat#outputFormat</a> for more details about each format. Defaults to <code>threadtime</code>.</td>
+<td>e.g., <code>process</code></td>
+</tr>
+<tr>
+<td>logcatFilterSpecs</td>
+<td>Set the output filter rule for logcat messages since Appium 1.18.0. Please read <a href="https://developer.android.com/studio/command-line/logcat#filteringOutput">logcat#filteringOutput</a> for more details about the rule. <a href="https://developer.android.com/studio/debug/am-logcat">Write and View Logs with Logcat</a> is also helpful.</td>
+<td>e.g., <code>['*:W', 'MyActivity:D']</code> (<code>MyActivity</code> is a tag)</td>
 </tr>
 </tbody>
 </table>
