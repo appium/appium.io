@@ -1857,6 +1857,18 @@
     
         <li class="first-level active"><a href="#chromedriver">Chromedriver</a></li>
         
+            <li class="second-level"><a href="#when-installing-the-server">When installing the server</a></li>
+            
+        
+            <li class="second-level"><a href="#when-starting-the-server">When starting the server</a></li>
+            
+        
+            <li class="second-level"><a href="#when-starting-a-session-manual-discovery">When starting a session (manual discovery)</a></li>
+            
+        
+            <li class="second-level"><a href="#when-starting-a-session-automated-discovery">When starting a session (automated discovery)</a></li>
+            
+        
             <li class="second-level"><a href="#chromedriverchrome-compatibility">Chromedriver/Chrome compatibility</a></li>
             
         
@@ -1882,31 +1894,45 @@ instance and proxying commands to it when necessary. It comes bundled with the
 <a href="https://chromedriver.storage.googleapis.com/LATEST_RELEASE">latest version of Chromedriver</a>, installed through the
 npm package <a href="https://www.npmjs.com/package/appium-chromedriver">appium-chromedriver</a>
 (Github: <a href="https://github.com/appium/appium-chromedriver">appium-chromedriver</a>).</p>
-<p>Unfortunately, with each update to Chromedriver there is an increase in the minimum
+<p>With each update to Chromedriver there is an increase in the minimum
 supported version of Chrome, such that older devices are often unable to be automated
 with the bundled version. In the Appium server logs there will be an error like:</p>
 <pre><code>An unknown server-side error occurred while processing the command.
 Original error: unknown error: Chrome version must be &gt;= 55.0.2883.0
 </code></pre>
 
-<p>To get around this, Appium can be configured to use a particular Chromedriver
-version, either at install time, by either passing the <code>--chromedriver_version</code>
-config property, e.g.,</p>
+<p>To get around this it is necessary to provide Appium with a proper Chromedriver binary,
+that <a href="https://raw.githubusercontent.com/appium/appium-chromedriver/master/config/mapping.json">matches</a>
+to the Chrome engine version running on the device under test.
+Read the <code>Chromedriver/Chrome compatibility</code> topic below to know more about finding a matching Chromedriver executable.</p>
+<p>There are several ways to provide a customized Chromedriver to Appium:</p>
+<h4 id="when-installing-the-server">When installing the server</h4>
+<p>Provide <code>--chromedriver_version</code> command line argument containing the actual version number</p>
 <pre><code>npm install appium --chromedriver_version="2.16"
 </code></pre>
 
-<p>Or specifying the version in the <code>CHROMEDRIVER_VERSION</code> environment variable,
+<p>Or specify the Chromedriver version in the <code>CHROMEDRIVER_VERSION</code> environment variable,
 e.g,</p>
 <pre><code>CHROMEDRIVER_VERSION=2.20 npm install appium
 </code></pre>
 
 <p>This can also be set to <code>LATEST</code> to get the most recent version.</p>
-<p>Finally, a version can be specified at runtime, by specifying the
+<h4 id="when-starting-the-server">When starting the server</h4>
+<p>Chromedriver version can be specified at runtime, by specifying the
 <code>--chromedriver-executable</code> server flag, along with the full path to the
-Chromedriver executable which was manually downloaded, e.g.,</p>
+Chromedriver executable which was manually downloaded and put to the server file system, e.g.,</p>
 <pre><code>appium --chromedriver-executable /path/to/my/chromedriver
 </code></pre>
 
+<h4 id="when-starting-a-session-manual-discovery">When starting a session (manual discovery)</h4>
+<p>Chromedriver version can be specified in session capabilities, by providing the
+<code>chromedriverExecutable</code> cap, containing the full path to a matching
+Chromedriver executable, which must be manually downloaded and put to the server file system.
+See http://appium.io/docs/en/writing-running-appium/caps/ for more details</p>
+<h4 id="when-starting-a-session-automated-discovery">When starting a session (automated discovery)</h4>
+<p>Appium could also try to detect the version of the target Chrome engine and
+download matching chromedriver for it automatically if it does not exist on the local file system.
+Read the <code>Automatic discovery of compatible Chromedriver</code> topic below for more details.</p>
 <h3 id="chromedriverchrome-compatibility">Chromedriver/Chrome compatibility</h3>
 <p>The list of Chromedriver versions and their matching minimum
 Chrome versions could be found at https://raw.githubusercontent.com/appium/appium-chromedriver/master/config/mapping.json</p>

@@ -1889,6 +1889,7 @@ You no longer install extra dependencies.</p>
 and handles the application under test via it.
 While this is simple in theory, the hoops of code signing and provisioning applications for
 development and testing can make this a bit of a headache.</p>
+<p>The device should be available to Xcode. Please make sure the device under test can connect to Xcode without issues. You could confirm it with <em>Devices and Simulators</em> Xcode dialog.</p>
 <p>The documentation on <a href="https://github.com/appium/appium-xcuitest-driver">appium-xcuitest-driver</a> is also helpful to resolve dependencies.</p>
 <h3 id="basic-automatic-configuration">Basic (automatic) configuration</h3>
 <p>The easiest way to get up-and-running with Appium's XCUITest support on iOS
@@ -2106,6 +2107,10 @@ for this).</p>
 </ol>
 </li>
 <li>Consider generating a provisioning profile with <code>.xctrunner</code> identifier if you do not want to generate a wildcard one for manual configuration. The <code>.xctrunner</code> config support has been added since Xcode 11. <a href="https://github.com/appium/appium/issues/13610">A reference</a></li>
+<li>Make sure the device under test is not a jaibroken one<ul>
+<li><code>com.apple.mobile.installation_proxy</code> service to manage Apps on the device <a href="https://github.com/appium/appium-desktop/issues/1447">does not work</a></li>
+</ul>
+</li>
 </ol></div>
         
     </div>
