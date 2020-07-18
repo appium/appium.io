@@ -2037,6 +2037,7 @@ AndroidDriver&lt;AndroidElement&gt; driver = new AndroidDriver&lt;AndroidElement
 <li><a href="https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#session-1">JSONWP Spec</a> Required capabilities have higher priority than desired capabilities and must be set for the session to be created</li>
 <li><a href="https://www.w3.org/TR/webdriver/#dfn-new-session">W3C Spec</a> capabilities.alwaysMatch must be set for session to be created; capabilities.firstMatch must match at least one (the first one to match will be used)</li>
 </ul>
+<p>Please do not forget to call <a href="/docs/en/commands/session/delete/index.html">delete command</a> at the end of the session so that Appium could cleanup the downstream resources properly. Refusing to do so could corrupt the following session creation attempts or to break the stability of your tests in general.</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>
