@@ -1984,6 +1984,7 @@ get_clipboard
 
 <h2 id="description">Description</h2>
 <p>Get the content of the system clipboard</p>
+<p>(For iOS real devices) Apple security preferences require the WebDriverAgentRunner application to be in <a href="https://github.com/appium/WebDriverAgent/issues/330">foreground</a> in order to be able to receive the system clipboard content. Otherwise an empty string is always returned. Consider using <a href="/docs/en/commands/device/app/activate-app/index.html">Activate App</a> and <a href="/docs/en/commands/device/app/background-app/index.html">Background App</a> to change the foreground application.</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
 <table>
