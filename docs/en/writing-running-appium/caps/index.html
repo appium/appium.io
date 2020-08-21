@@ -2461,8 +2461,8 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>mjpegServerPort</code></td>
-<td>If specified this is the local port that will be bound to the <code>appium-uiautomator2-server</code>'s MJPEG screenshot stream. This can be used in conjunction with <code>mjpegScreenshotUrl</code>. <code>Integer</code> value default <code>null</code>.</td>
-<td>any <code>Integer</code>, recommend: <code>9200</code> -&gt; <code>9299</code> for consistency w/ <code>serverPort</code> range</td>
+<td>If specified this is the local port that will be bound to the <code>appium-uiautomator2-server</code>'s MJPEG screenshot stream. This can be used in conjunction with <code>mjpegScreenshotUrl</code>. It should be a valid integer in range <em>1025..65535</em>. Defaults to <code>null</code>. e.g. <code>mjpegScreenshotUrl = 'http://localhost:9200', mjpegServerPort = 9200</code></td>
+<td>any <code>Integer</code>, recommended: <code>9200..9299</code> for consistency w/ <code>serverPort</code> range</td>
 </tr>
 <tr>
 <td><code>skipServerInstallation</code></td>
