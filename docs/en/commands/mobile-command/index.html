@@ -2399,6 +2399,12 @@ on syntax).</p>
 <td><code>{intent, user}</code></td>
 <td><code>{intent: 'my.app/my.activity'}</code></td>
 </tr>
+<tr>
+<td>mobile:getContexts</td>
+<td>Retrieve available contexts, along with details associated with each webview (see <a href="/docs/en/commands/context/get-contexts/index.html">get contexts</a>) in JSON structure. The details of each webview includes such as android package name and its window handles details (see <a href="/docs/en/commands/web/window/get-handles/index.html">get handles</a>). The details of each window handle (which donated as <code>pages</code> in the JSON) contains such as url, title and id. The id is part of a window handle name. Therefore, by concatenating a string like "CDwindow-" + id, you can use the string for switching to window (see <a href="/docs/en/commands/web/window/set-window/index.html">set window</a>.)</td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id="android-uiautomator2-only">Android (UiAutomator2 only)</h3>
