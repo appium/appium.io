@@ -2610,8 +2610,9 @@ Capabilities available in general and for specific drivers.</p>
 </tbody>
 </table>
 <p><strong><em>Application dependencies</em></strong></p>
-<p><code>additionalAppDependencies</code> array specifies additional dependencies of the application under test that build tools should know about when building the Espresso server. For example: <code>[ "com.google.android.material:material:1.0.0" ]</code>.</p>
-<p>Items belonging to this array are translated to <code>implementation</code> lines in Gradle build files of the Espresso server.</p>
+<p><code>additionalAppDependencies</code> and <code>additionalAndroidTestDependencies</code> array specify additional dependencies of the application under test that build tools should know about when building the Espresso server.
+For example: <code>"additionalAndroidTestDependencies": [ "com.google.android.material:material:1.0.0" ]</code>.</p>
+<p>Items belonging to <code>additionalAppDependencies</code> array are translated to <code>implementation</code> lines in Gradle build files of the Espresso server. <code>additionalAndroidTestDependencies</code> are translated to <code>androidTestImplementation</code>.</p>
 <h3 id="ios-only">iOS Only</h3>
 <p>These Capabilities are available only on the <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest
 Driver</a> and the deprecated <a href="/docs/en/drivers/ios-uiautomation/index.html">UIAutomation
