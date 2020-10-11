@@ -2,7 +2,7 @@
 # and it is the easiest way to get a working version. Installing
 # node is easy as a build step
 language: python
-python: "3.6"
+python: "3.8"
 env:
   global:
     - URL=http://localhost:4000
@@ -19,7 +19,7 @@ jobs:
       after_script: kill -9 $!
 before_install:
   - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-  - nvm install 10
+  - nvm install 12
   - sudo apt-get install ruby-full
 install:
   - npm install
