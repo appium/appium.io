@@ -362,6 +362,12 @@
   </li>
 
         
+            
+<li>
+    <a href="../../commands/session/execute-driver/">Execute Driver Script</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1380,6 +1386,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/ios/actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
@@ -1426,6 +1438,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../writing-running-appium/ios/audio-capture/">Audio Capture</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1434,6 +1452,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -1468,6 +1492,12 @@
             
 <li>
     <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/android-mobile-gestures/">Automating Mobile Gestures With UiAutomator2 Backend</a>
 </li>
 
         
@@ -1520,6 +1550,144 @@
   </li>
 
                         
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Tutorial</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe-tutorial/">Swipe Tutorial</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Simple swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/simple-screen/">Screen</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/simple-element/">Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/simple-partial-screen/">Partial screen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/android-simple/">Simple</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/android-multiple/">Multiple scroll views</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/android-layout-direction/">Add scroll layout</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/android-tricks/">Tricks and Tips</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-mobile-screen/">Screen</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-mobile-element/">Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-mobile-element-search/">Element search</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS pickerWheels</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-picker-wheels-set-value/">Fast</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-picker-wheels-mobile/">Slow</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Troubleshoot</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/swipe-troubleshoot-guide/">Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
                         </ul>
                     </li>
                 
@@ -1552,6 +1720,12 @@
                             
 <li>
     <a href="../../advanced-concepts/grid/">Using Selenium Grid with Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/log-filters/">Appium Logs Filtering</a>
 </li>
 
                         
@@ -1721,6 +1895,7 @@ You no longer install extra dependencies.</p>
 and handles the application under test via it.
 While this is simple in theory, the hoops of code signing and provisioning applications for
 development and testing can make this a bit of a headache.</p>
+<p>The device should be available to Xcode. Please make sure the device under test can connect to Xcode without issues. You could confirm it with <em>Devices and Simulators</em> Xcode dialog.</p>
 <p>The documentation on <a href="https://github.com/appium/appium-xcuitest-driver">appium-xcuitest-driver</a> is also helpful to resolve dependencies.</p>
 <h3 id="basic-automatic-configuration">Basic (automatic) configuration</h3>
 <p>The easiest way to get up-and-running with Appium's XCUITest support on iOS
@@ -1909,7 +2084,7 @@ and
 <ul>
 <li>An <a href="https://developer.apple.com/programs/ios/">Apple Developer ID</a> and a valid
 Developer Account with a configured development certificate and provisioning
-profile.</li>
+profile. (Please make sure the provisioning profile has <a href="https://developer.apple.com/support/certificates/">iOS Distribution</a> type)</li>
 <li>A valid iOS Development Certificate and Provisioning Profile are necessary to
 test on a real device. Your app will also need to be signed. You can find
 information about this in the <a href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/TestingYouriOSApp/TestingYouriOSApp.html">Apple documentation</a>.</li>
@@ -1929,8 +2104,23 @@ for this).</p>
 <li>Make sure UDID is correct by checking it in Xcode Organizer or iTunes. It
    is a long string (20+ chars).</li>
 <li>Make sure that you can run your tests against the Simulator.</li>
-<li>Make sure UI Automation is enabled on your device. Settings -&gt; Developer -&gt;
-   Enable UI Automation</li>
+<li>Make sure the following settings are <strong>enabled</strong> on your device:<ol>
+<li>Settings -&gt; Developer -&gt; <strong>Enable UI Automation</strong></li>
+<li>Settings -&gt; Safari -&gt; Advanced -&gt; <strong>Web Inspector</strong> and <strong>Remote Automation</strong><ol>
+<li>Please read <a href="../../writing-running-appium/web/mobile-web">Automating mobile web apps</a> for more details about WebView</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Consider generating a provisioning profile with <code>.xctrunner</code> identifier if you do not want to generate a wildcard one for manual configuration. The <code>.xctrunner</code> config support has been added since Xcode 11. <a href="https://github.com/appium/appium/issues/13610">A reference</a></li>
+<li>Make sure the device under test is not a jaibroken one<ul>
+<li><code>com.apple.mobile.installation_proxy</code> service to manage Apps on the device <a href="https://github.com/appium/appium-desktop/issues/1447">does not work</a></li>
+</ul>
+</li>
+<li>Make sure the provisioning profile has <a href="https://developer.apple.com/support/certificates/"><em>iOS Distribution</em> certificate</a><ul>
+<li>An active Xcode/xcodebuild connection/session is necessary to interact with WebDriverAgentRunner because of Apple's security design. The certificate affects the limitation (<a href="https://github.com/appium/appium/issues/14577#issuecomment-660997827">issue</a>)</li>
+</ul>
+</li>
 </ol></div>
         
     </div>

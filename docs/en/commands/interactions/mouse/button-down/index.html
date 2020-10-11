@@ -362,6 +362,12 @@
   </li>
 
         
+            
+<li>
+    <a href="../../../session/execute-driver/">Execute Driver Script</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1380,6 +1386,12 @@
         
             
 <li>
+    <a href="../../../../writing-running-appium/ios/actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
+<li>
     <a href="../../../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
@@ -1426,6 +1438,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../../../writing-running-appium/ios/audio-capture/">Audio Capture</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1434,6 +1452,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -1468,6 +1492,12 @@
             
 <li>
     <a href="../../../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-mobile-gestures/">Automating Mobile Gestures With UiAutomator2 Backend</a>
 </li>
 
         
@@ -1520,6 +1550,144 @@
   </li>
 
                         
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Tutorial</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe-tutorial/">Swipe Tutorial</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Simple swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/simple-screen/">Screen</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/simple-element/">Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/simple-partial-screen/">Partial screen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/android-simple/">Simple</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/android-multiple/">Multiple scroll views</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/android-layout-direction/">Add scroll layout</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/android-tricks/">Tricks and Tips</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/ios-mobile-screen/">Screen</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/ios-mobile-element/">Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/ios-mobile-element-search/">Element search</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS pickerWheels</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/ios-picker-wheels-set-value/">Fast</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/ios-picker-wheels-mobile/">Slow</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Troubleshoot</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/tutorial/swipe/swipe-troubleshoot-guide/">Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
                         </ul>
                     </li>
                 
@@ -1552,6 +1720,12 @@
                             
 <li>
     <a href="../../../../advanced-concepts/grid/">Using Selenium Grid with Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/log-filters/">Appium Logs Filtering</a>
 </li>
 
                         
@@ -1796,7 +1970,10 @@ action.move_to(element).click_and_hold.perform
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO C# sample
+            <pre><code class="csharp">Actions action = new Actions(driver);
+action.MoveToElement(element);
+action.ClickAndHold();
+action.Perform();
 
 </code></pre>
           </div>
@@ -1929,7 +2106,7 @@ action.move_to(element).click_and_hold.perform
 <tr>
 <td><a href="https://github.com/appium/appium-dotnet-driver/releases/latest">C#</a></td>
 <td>All</td>
-<td><a href="https://github.com/appium/appium-dotnet-driver/">github.com</a></td>
+<td><a href="https://github.com/SeleniumHQ/selenium/blob/master/dotnet/src/webdriver/Interactions/Actions.cs">github.com</a></td>
 </tr>
 </tbody>
 </table>

@@ -362,6 +362,12 @@
   </li>
 
         
+            
+<li>
+    <a href="../../commands/session/execute-driver/">Execute Driver Script</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1380,6 +1386,12 @@
         
             
 <li>
+    <a href="../../writing-running-appium/ios/actions/">Low-Level Insights on iOS Input Events</a>
+</li>
+
+        
+            
+<li>
     <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest Mobile Gestures</a>
 </li>
 
@@ -1426,6 +1438,12 @@
 </li>
 
         
+            
+<li>
+    <a href="../../writing-running-appium/ios/audio-capture/">Audio Capture</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -1434,6 +1452,12 @@
   <li class="menu-item dropdown-submenu">
     <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
     <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/actions/">Low-Level Insights on Android Input Events</a>
+</li>
+
         
             
 <li>
@@ -1468,6 +1492,12 @@
             
 <li>
     <a href="../../writing-running-appium/android/android-screen-streaming/">Android Device Screen Streaming</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/android-mobile-gestures/">Automating Mobile Gestures With UiAutomator2 Backend</a>
 </li>
 
         
@@ -1520,6 +1550,144 @@
   </li>
 
                         
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Tutorial</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe-tutorial/">Swipe Tutorial</a>
+</li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Simple swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/simple-screen/">Screen</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/simple-element/">Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/simple-partial-screen/">Partial screen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/android-simple/">Simple</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/android-multiple/">Multiple scroll views</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/android-layout-direction/">Add scroll layout</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/android-tricks/">Tricks and Tips</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS swipe</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-mobile-screen/">Screen</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-mobile-element/">Element</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-mobile-element-search/">Element search</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS pickerWheels</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-picker-wheels-set-value/">Fast</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/ios-picker-wheels-mobile/">Slow</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Troubleshoot</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/tutorial/swipe/swipe-troubleshoot-guide/">Guide</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
                         </ul>
                     </li>
                 
@@ -1552,6 +1720,12 @@
                             
 <li>
     <a href="../grid/">Using Selenium Grid with Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../log-filters/">Appium Logs Filtering</a>
 </li>
 
                         
@@ -1781,7 +1955,7 @@
 <tbody>
 <tr>
 <td><code>ignoreUnimportantViews</code></td>
-<td>Boolean which sets whether Android devices should use <code>setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster. <code>false</code> by default.</td>
+<td>Controls whether the Android device should use <code>setCompressedLayoutHeirarchy()</code> which ignores all views which are marked IMPORTANT_FOR_ACCESSIBILITY_NO or IMPORTANT_FOR_ACCESSIBILITY_AUTO (and have been deemed not important by the system), in an attempt to make things less confusing or faster. Defaults to <code>false</code>.</td>
 <td><code>false</code> or <code>true</code></td>
 </tr>
 </tbody>
@@ -1797,39 +1971,54 @@
 </thead>
 <tbody>
 <tr>
+<td><code>actionAcknowledgmentTimeout</code></td>
+<td>Same as: <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setActionAcknowledgmentTimeout(long)">setActionAcknowledgmentTimeout</a>. If a negative value is given, it would set to default (3 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g., <code>5000</code></td>
+</tr>
+<tr>
 <td><code>allowInvisibleElements</code></td>
-<td>Boolean which set whether Android device should show all elements, visible and invisible. <code>false</code> by default.</td>
+<td>Controls whether the Android device should show all elements, visible and invisible. Defaults to <code>false</code>.</td>
 <td><code>false</code> or <code>true</code></td>
+</tr>
+<tr>
+<td><code>enableMultiWindows</code></td>
+<td>If enabled then the page source and xpath lookup will include all windows available to the accessibility rather than the active one only. It might help to resolve finding elements on windows like <code>android.widget.PopupWindow</code>. Defaults to <code>false</code> and returns an active root window. Read <a href="https://github.com/appium/appium-uiautomator2-server/pull/301">appium-uiautomator2-server#301</a> for more details.</td>
+<td><code>true</code> or <code>false</code></td>
 </tr>
 <tr>
 <td><code>enableNotificationListener</code></td>
-<td>Boolean which sets whether the Android device should enable or disable the <code>NotificationListener</code>. <code>true</code> by default.</td>
+<td>Controls whether the Android device should enable or disable the <code>NotificationListener</code>. Defaults to <code>true</code>.</td>
 <td><code>false</code> or <code>true</code></td>
 </tr>
 <tr>
-<td><code>actionAcknowledgmentTimeout</code></td>
-<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setActionAcknowledgmentTimeout(long)">setActionAcknowledgmentTimeout</a>. If a negative value is given, it would set to default(3 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
-<td>e.g., <code>5000</code></td>
-</tr>
-<tr>
 <td><code>keyInjectionDelay</code></td>
-<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setKeyInjectionDelay(long)">setKeyInjectionDelay</a>. If a negative value is given, it would set to default(0 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>Same as: <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setKeyInjectionDelay(long)">setKeyInjectionDelay</a>. If a negative value is given, it would set to default (0 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
 <td>e.g., <code>5000</code></td>
 </tr>
 <tr>
-<td><code>scrollAcknowledgmentTimeout</code></td>
-<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setScrollAcknowledgmentTimeout(long)">setScrollAcknowledgmentTimeout</a>. If a negative value is given, it would set to default(200 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
-<td>e.g., <code>300</code></td>
+<td><code>mjpegBilinearFiltering</code></td>
+<td>Controls whether or not to apply bilinear filtering to source screenshot resize algorithm. Enabling this flag may improve the quality of the resulting scaled bitmap, but will introduce a [small] performance hit. Defaults to <code>false</code>.</td>
+<td><code>false</code> or <code>true</code></td>
 </tr>
 <tr>
-<td><code>waitForIdleTimeout</code></td>
-<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForIdleTimeout(long)">setWaitForIdleTimeout</a>. If a negative value is given, it would set to default(10 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
-<td>e.g., <code>10000</code></td>
+<td><code>mjpegScalingFactor</code></td>
+<td>Controls the scaling factor of streamed screenshots. 100 means no scaling is applied (e.g. 100% of the original size). The bigger image size is the more CPU performance is needed to encode it. Integer values between <code>1</code> and <code>100</code> are available. Defaults to <code>50</code>.</td>
+<td><code>1</code> to <code>100</code></td>
 </tr>
 <tr>
-<td><code>waitForSelectorTimeout</code></td>
-<td>Int (milliseconds) which is the same as <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForSelectorTimeout(long)">setWaitForSelectorTimeout</a>. If a negative value is given, it would set to default(10 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
-<td>e.g., <code>10000</code></td>
+<td><code>mjpegServerFramerate</code></td>
+<td>Controls the framerate of streamed screenshots. Greater framerate values create greater CPU load. That actual maximum framerate value is limited by the performance of the device under test. Integer values between <code>1</code> and <code>60</code> are available. Defaults to <code>10</code>.</td>
+<td><code>1</code> to <code>60</code></td>
+</tr>
+<tr>
+<td><code>mjpegServerPort</code></td>
+<td>Controls the MJPEG server port. Integer values between <code>1024</code> and <code>65535</code> are available. Defaults to <code>7810</code>.</td>
+<td><code>1024</code> to <code>65535</code></td>
+</tr>
+<tr>
+<td><code>mjpegServerScreenshotQuality</code></td>
+<td>Controls the quality of streamed screenshots. Where the best quality is 100 and the worst is 1. The greater the value is the more CPU time is needed to encode a single bitmap into JPEG format. Usually a value between 25 and 90 is fine for this setting. Greater values affect performance too much without visible quality improvements and lower ones introduce visible distortions into the resulting image. Integer values between <code>1</code> and <code>100</code> are available. Defaults to <code>50</code>.</td>
+<td><code>1</code> to <code>100</code></td>
 </tr>
 <tr>
 <td><code>normalizeTagNames</code></td>
@@ -1837,24 +2026,44 @@
 <td><code>false</code> or <code>true</code></td>
 </tr>
 <tr>
+<td><code>scrollAcknowledgmentTimeout</code></td>
+<td>Same as: <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setScrollAcknowledgmentTimeout(long)">setScrollAcknowledgmentTimeout</a>. If a negative value is given, it would set to default (200 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g. <code>300</code></td>
+</tr>
+<tr>
+<td><code>serverPort</code></td>
+<td>Controls the server port. Integer values between <code>1024</code> and <code>65535</code> are available. Defaults to <code>6790</code>.</td>
+<td><code>1024</code> to <code>65535</code></td>
+</tr>
+<tr>
 <td><code>shutdownOnPowerDisconnect</code></td>
-<td>Shutdown the server through the broadcast receiver on <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_POWER_DISCONNECTED">ACTION_POWER_DISCONNECTED</a>. Defaults to <code>true</code></td>
+<td>Shutdown the server through the broadcast receiver on <a href="https://developer.android.com/reference/android/content/Intent.html#ACTION_POWER_DISCONNECTED">ACTION_POWER_DISCONNECTED</a>. Defaults to <code>true</code>.</td>
+<td><code>false</code> or <code>true</code></td>
+</tr>
+<tr>
+<td><code>simpleBoundsCalculation</code></td>
+<td>If enabled then the <code>bounds</code> attribute will be calculated using a less accurate but simpler method that may improve performance. First available in Appium 1.18.0. Defaults to <code>false</code>.</td>
 <td><code>false</code> or <code>true</code></td>
 </tr>
 <tr>
 <td><code>trackScrollEvents</code></td>
-<td>Turn on or off the tracking of scroll events as they happen. If <code>true</code>, a field, <code>lastScrollData</code>, is added to the results of <code>getSession</code>, which can then be used to check on scroll progress. Turning this feature off significantly increases touch action performance. Defaults to <code>true</code></td>
-<td><code>true</code> or <code>false</code></td>
+<td>Controls the tracking of scroll events as they happen. If <code>true</code>, a field, <code>lastScrollData</code>, is added to the results of <code>getSession</code>, which can then be used to check on scroll progress. Turning this feature off significantly increases touch action performance. Defaults to <code>true</code>.</td>
+<td><code>false</code> or <code>true</code></td>
+</tr>
+<tr>
+<td><code>waitForIdleTimeout</code></td>
+<td>Same as: <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForIdleTimeout(long)">setWaitForIdleTimeout</a>. If a negative value is given, it would set to default (10 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g. <code>10000</code></td>
+</tr>
+<tr>
+<td><code>waitForSelectorTimeout</code></td>
+<td>Same as: <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html#setWaitForSelectorTimeout(long)">setWaitForSelectorTimeout</a>. If a negative value is given, it would set to default (10 * 1000 milliseconds). Handled by <a href="https://developer.android.com/reference/android/support/test/uiautomator/Configurator.html">UiAutomator Configurator</a> in Android API 18 and above.</td>
+<td>e.g. <code>10000</code></td>
 </tr>
 <tr>
 <td><code>wakeLockTimeout</code></td>
-<td>Allows to change the timeout of the acquired wake lock. The lock is acquired on server startup and is held until the UIAutomator2 server is killed or the timeout expires. Setting this value to zero or a negative number will release the lock immediately if it is held. Defaults to '24 * 60 * 60 * 1000' milliseconds.</td>
+<td>Controls the timeout of the acquired wake lock. The lock is acquired on server startup and is held until the UIAutomator2 server is killed or the timeout expires. Setting this value to zero or a negative number will release the lock immediately if it is held. Defaults to '24 * 60 * 60 * 1000' milliseconds.</td>
 <td>e.g. <code>0</code>, <code>60000</code> (1 min)</td>
-</tr>
-<tr>
-<td><code>enableMultiWindows</code></td>
-<td>If enabled then the page source and xpath lookup will include all windows available to the accessibility rather than the active one only. It might help to resolve finding elements on windows like <code>android.widget.PopupWindow</code>. Defaults to <code>false</code> and returns an active root window. Read <a href="https://github.com/appium/appium-uiautomator2-server/pull/301">appium-uiautomator2-server#301</a> for mroe details.</td>
-<td><code>true</code> or <code>false</code></td>
 </tr>
 </tbody>
 </table>
@@ -1971,6 +2180,12 @@
 <td>Adjust screenshot orientation for iOS. Appium tries to return a screenshot and adjust its orientation properly using internal heuristics, but sometimes it does not work, especially in landscape mode. The actual screenshot orientation depends on various factors such as OS versions, model versions and whether this is a real or simulator device. This option allows you to enforce the given image orientation. Defaults to <code>auto</code>.</td>
 <td><code>auto</code>, <code>portrait</code>, <code>portraitUpsideDown</code>, <code>landscapeRight</code>, <code>landscapeLeft</code></td>
 <td>1.17.0+</td>
+</tr>
+<tr>
+<td><code>boundElementsByIndex</code></td>
+<td>Whether to look up elements with <a href="https://developer.apple.com/documentation/xctest/xcuielementquery/1500816-allelementsboundbyaccessibilitye"><code>allElementsBoundByAccessibilityElement</code></a> (default) or <a href="https://developer.apple.com/documentation/xctest/xcuielementquery/1500945-allelementsboundbyindex"><code>allElementsBoundByIndex</code></a>. <a href="https://stackoverflow.com/questions/49307513/meaning-of-allelementsboundbyaccessibilityelement">This Stack Overflow topic</a> explains the differences. Defaults to <code>false</code></td>
+<td><code>true</code>, <code>false</code></td>
+<td>1.18.0+</td>
 </tr>
 </tbody>
 </table></div>
