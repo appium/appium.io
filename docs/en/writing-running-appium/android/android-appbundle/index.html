@@ -1927,6 +1927,10 @@ driver = core.start_driver
 </code></pre>
 
 <p>You can find another way to get test APKs in https://developer.android.com/guide/app-bundle/</p>
+<p>You could also install <code>.apks</code> bundles via <a href="/docs/en/commands/device/app/install-app/index.html">Install App</a> command like below.</p>
+<pre><code class="ruby">driver.install_app 'path/to/your.apks'
+</code></pre>
+
 <h2 id="tips">Tips</h2>
 <h3 id="make-bundletooljar-executable">Make <code>bundletool.jar</code> executable</h3>
 <p>Make sure the bundletool is executable.
