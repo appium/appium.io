@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Espresso (Android) - Appium</title>
+    <title>Safari (Mac/iOS) - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -149,8 +149,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Espresso (Android)</a>
+<li>
+    <a href="../android-espresso/">Espresso (Android)</a>
 </li>
 
                         
@@ -161,8 +161,8 @@
 
                         
                             
-<li>
-    <a href="../safari/">Safari (Mac/iOS)</a>
+<li class="active">
+    <a href="./">Safari (Mac/iOS)</a>
 </li>
 
                         
@@ -1852,12 +1852,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../android-uiautomator2/">
+                        <a rel="next" href="../windows/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../windows/">
+                        <a rel="prev" href="../gecko/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1873,7 +1873,7 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#the-espresso-driver-for-android">The Espresso Driver for Android</a></li>
+        <li class="first-level active"><a href="#the-safari-driver">The Safari Driver</a></li>
         
             <li class="second-level"><a href="#requirements-and-support">Requirements and Support</a></li>
             
@@ -1884,46 +1884,50 @@
             <li class="second-level"><a href="#capabilities">Capabilities</a></li>
             
         
-            <li class="second-level"><a href="#setup">Setup</a></li>
-            
-        
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="the-espresso-driver-for-android"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/drivers/android-espresso.md">
+        <div class="col-md-9 documentation" role="main"><h2 id="the-safari-driver"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/drivers/safari.md">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>The Espresso Driver for Android</h2>
-<p>Appium currently has support for the
-<a href="https://developer.android.com/training/testing/espresso/index.html">Espresso</a>
-automation technology via its own Espresso driver. This driver works by kicking
-off an Espresso run on a device, with our own automation server as part of the
-Espresso test APK.  Appium can then communicate with this automation server and
-trigger Espresso commands as the result of Appium client calls.</p>
-<p>Development of the Espresso driver happens at the
-<a href="https://github.com/appium/appium-espresso-driver">appium-espresso-driver</a>
+  </a>The Safari Driver</h2>
+<p>Safari driver has been added to Appium since version 1.20. This driver
+is a wrapper over Apple's <a href="https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari?language=objc">safaridriver</a>
+binary, which is included to the standard macOS distribution and implements communication with either
+desktop or mobile Safari browser via <a href="https://www.w3.org/TR/webdriver/">W3C WebDriver protocol</a>.</p>
+<p>Development of the Safari driver happens at the
+<a href="https://github.com/appium/appium-safari-driver">appium-safari-driver</a>
 repo.</p>
-<p>Appium also supports Android automation using the
-<a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2 Driver</a>.)</p>
+<p>Appium also supports mobile Safari automation and Safari web views automation using the
+<a href="https://github.com/appium/appium-remote-debugger">appium-remote-debugger</a>. This module is
+used to implement context switching feature with XCUITest automation name. It is more universal
+and flexible than the current Safari driver, however it is using the undocumented WebKit communication
+protocol under the hood. Which means the development of it and the effort to keep it in working state
+is comparably high while the list of supported features is smaller. On the other hand <code>safaridriver</code>
+is maintained by Apple, which means it is always in sync with the most recent browser
+and communication protocol requirements.</p>
+<p>Long story short, it makes sense to prefer this driver if it is necessary to only automate
+a web application that only works in Safari browser (either mobile or desktop). In case it is necessary to interact with native context or switch between different applications/contexts while automating your scenario
+then the obvious choice would be either <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest Driver</a>
+(for the mobile platform) or <a href="/docs/en/drivers/mac/index.html">Mac driver</a> (for the desktop platform).</p>
 <h3 id="requirements-and-support">Requirements and Support</h3>
 <p>In addition to Appium's general requirements:</p>
 <ul>
-<li>Java 8 installed and configured correctly for your platform</li>
-<li>Mac, Windows, or Linux OS with the ability to run the Android SDK</li>
+<li>Run the <code>safaridriver --enable</code> command from the macOS terminal and provide your administrator password before any automated session will be executed. This only should be done once.</li>
+<li>In order to automate Safari on real devices it is necessary to enable Remote Automation switch in <code>Settings → Safari → Advanced → Remote Automation</code> for these particular devices and trust them on the target host. The device's screen must not be locked while starting tests.</li>
+<li>Only macOS (High Sierra or newer) is supported as the host platform.</li>
+<li>Only iOS 13 and newer is supported for mobile browser automation. As it is stated in the WebKit blog <a href="https://webkit.org/blog/9395/webdriver-is-coming-to-safari-in-ios-13/">article</a>, Safari for iOS does not allow WebDriver-initiated navigations to be handled outside of Safari. In other words, clicking a tel:// link will not offer to place a phone call, and clicking an app store link will not redirect the user to the App Store. Similarly, non-Safari content displayed by the system–such as update dialogs, app notifications, incoming calls, etc.–are suppressed while a WebDriver session is active.</li>
 </ul>
 <h3 id="usage">Usage</h3>
-<p>The way to start a session using the Espresso driver is to include the
-<code>automationName</code> <a href="#TODO">capability</a> in your <a href="#TODO">new session request</a>, with
-the value <code>Espresso</code>. Of course, you must also include appropriate
-<code>platformName</code> (=<code>Android</code>), <code>platformVersion</code>, <code>deviceName</code>, and <code>app</code>
-capabilities, at a minimum.</p>
+<p>The way to start a session using the Safari driver is to include the
+<code>automationName</code> capability in your new session request, with
+the value <code>Safari</code>. Of course, you must also include appropriate
+<code>platformName</code> (<code>Mac</code> or <code>iOS</code>). Read
+https://github.com/appium/appium-safari-driver/blob/master/README.md for
+more details.</p>
 <h3 id="capabilities">Capabilities</h3>
-<p>The Espresso driver currently supports a subset of the standard <a href="/docs/en/writing-running-appium/caps/index.html#android-only">Android
-capabilities</a>.</p>
-<h3 id="setup">Setup</h3>
-<p>Setup for the Espresso driver basically entails getting the Android SDK and
-build tools ready to go. You can follow the instructions at the <a href="../android-uiautomator2/#basic-setup">UiAutomator2
-Driver doc</a>, since the steps are the same.</p></div>
+<p>The list of available driver capabilities could be found at
+https://github.com/appium/appium-safari-driver/blob/master/README.md</p></div>
         
     </div>
 
