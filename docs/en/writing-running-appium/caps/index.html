@@ -162,6 +162,18 @@
                         
                             
 <li>
+    <a href="../../drivers/safari/">Safari (Mac/iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/gecko/">Gecko (Firefox)</a>
+</li>
+
+                        
+                            
+<li>
     <a href="../../drivers/mac/">Mac</a>
 </li>
 
@@ -2408,6 +2420,11 @@ Capabilities available in general and for specific drivers.</p>
 <td>logcatFilterSpecs</td>
 <td>Set the output filter rule for logcat messages since Appium 1.18.0. Please read <a href="https://developer.android.com/studio/command-line/logcat#filteringOutput">logcat#filteringOutput</a> for more details about the rule. <a href="https://developer.android.com/studio/debug/am-logcat">Write and View Logs with Logcat</a> is also helpful.</td>
 <td>e.g., <code>['*:W', 'MyActivity:D']</code> (<code>MyActivity</code> is a tag)</td>
+</tr>
+<tr>
+<td>allowDelayAdb</td>
+<td>Whether enable <code>-delay-adb</code> on emulator startup. Defaults to <code>true</code></td>
+<td><code>true</code>, <code>false</code></td>
 </tr>
 </tbody>
 </table>
