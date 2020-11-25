@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Espresso (Android) - Appium</title>
+    <title>Gecko (Firefox) - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -149,8 +149,8 @@
 
                         
                             
-<li class="active">
-    <a href="./">Espresso (Android)</a>
+<li>
+    <a href="../android-espresso/">Espresso (Android)</a>
 </li>
 
                         
@@ -167,8 +167,8 @@
 
                         
                             
-<li>
-    <a href="../gecko/">Gecko (Firefox)</a>
+<li class="active">
+    <a href="./">Gecko (Firefox)</a>
 </li>
 
                         
@@ -1852,12 +1852,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../android-uiautomator2/">
+                        <a rel="next" href="../safari/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../windows/">
+                        <a rel="prev" href="../mac/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -1873,7 +1873,7 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#the-espresso-driver-for-android">The Espresso Driver for Android</a></li>
+        <li class="first-level active"><a href="#the-gecko-driver">The Gecko Driver</a></li>
         
             <li class="second-level"><a href="#requirements-and-support">Requirements and Support</a></li>
             
@@ -1884,46 +1884,39 @@
             <li class="second-level"><a href="#capabilities">Capabilities</a></li>
             
         
-            <li class="second-level"><a href="#setup">Setup</a></li>
-            
-        
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="the-espresso-driver-for-android"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/drivers/android-espresso.md">
+        <div class="col-md-9 documentation" role="main"><h2 id="the-gecko-driver"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/drivers/gecko.md">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>The Espresso Driver for Android</h2>
-<p>Appium currently has support for the
-<a href="https://developer.android.com/training/testing/espresso/index.html">Espresso</a>
-automation technology via its own Espresso driver. This driver works by kicking
-off an Espresso run on a device, with our own automation server as part of the
-Espresso test APK.  Appium can then communicate with this automation server and
-trigger Espresso commands as the result of Appium client calls.</p>
-<p>Development of the Espresso driver happens at the
-<a href="https://github.com/appium/appium-espresso-driver">appium-espresso-driver</a>
+  </a>The Gecko Driver</h2>
+<p>Gecko driver has been added to Appium since version 1.20. This driver
+is a wrapper over Mozilla's <a href="https://firefox-source-docs.mozilla.org/testing/geckodriver/">geckodriver</a>
+binary, which implements communication with either
+desktop/mobile Gecko-based browsers like Firefox or Gecko-based web views (on mobile)
+via <a href="https://www.w3.org/TR/webdriver/">W3C WebDriver protocol</a>.</p>
+<p>Development of the Gecko driver happens at the
+<a href="https://github.com/appium/appium-geckodriver">appium-geckodriver</a>
 repo.</p>
-<p>Appium also supports Android automation using the
-<a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2 Driver</a>.)</p>
 <h3 id="requirements-and-support">Requirements and Support</h3>
 <p>In addition to Appium's general requirements:</p>
 <ul>
-<li>Java 8 installed and configured correctly for your platform</li>
-<li>Mac, Windows, or Linux OS with the ability to run the Android SDK</li>
+<li>A supported browser must be installed on the destination platform. The recent browser releases (both desktop and mobile) could be retrieved from the official <a href="https://www.mozilla.org/en-GB/firefox/all/">download page</a>.</li>
+<li>The corresponding executable driver binary for the target platform must be available in <code>PATH</code> under <code>geckodriver</code> (<code>geckodriver.exe</code> in Windows) name. Geckodriver build for different supported platforms could be retrieved from the GitHub <a href="https://github.com/mozilla/geckodriver/releases">Releases page</a>.</li>
+<li>Windows (32/64 bit), Linux (32/64 bit) or macOS are supported as the host platforms.</li>
+<li><a href="https://developer.android.com/studio">Android SDK</a> must be installed if it is necessary to communicate with the browser or a web view on mobile devices. Also, the Emulator SDK is needed if automated tests are going to use Android emulators. For real Android devices it is necessary to make sure they have the <code>online</code> status to in the <code>adb devices -l</code> output. The device's screen must not be locked.</li>
 </ul>
 <h3 id="usage">Usage</h3>
-<p>The way to start a session using the Espresso driver is to include the
-<code>automationName</code> <a href="#TODO">capability</a> in your <a href="#TODO">new session request</a>, with
-the value <code>Espresso</code>. Of course, you must also include appropriate
-<code>platformName</code> (=<code>Android</code>), <code>platformVersion</code>, <code>deviceName</code>, and <code>app</code>
-capabilities, at a minimum.</p>
+<p>The way to start a session using the Gecko driver is to include the
+<code>automationName</code> capability in your new session request, with
+the value <code>Gecko</code>. Of course, you must also include appropriate
+<code>platformName</code> (<code>Mac</code>/<code>Android</code>/<code>Windows</code>/<code>Linux</code>). Read
+https://github.com/appium/appium-geckodriver/blob/master/README.md for
+more details.</p>
 <h3 id="capabilities">Capabilities</h3>
-<p>The Espresso driver currently supports a subset of the standard <a href="/docs/en/writing-running-appium/caps/index.html#android-only">Android
-capabilities</a>.</p>
-<h3 id="setup">Setup</h3>
-<p>Setup for the Espresso driver basically entails getting the Android SDK and
-build tools ready to go. You can follow the instructions at the <a href="../android-uiautomator2/#basic-setup">UiAutomator2
-Driver doc</a>, since the steps are the same.</p></div>
+<p>The list of available driver capabilities could be found at
+https://github.com/appium/appium-geckodriver/blob/master/README.md</p></div>
         
     </div>
 
