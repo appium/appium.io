@@ -31,9 +31,7 @@ jobs:
           echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
           bundle install
       - name: Unit tests
-        run: |
-          npm run test
-          npm run coverage
+        run: npm run test
       - name: Crawl site
         run: |
           npm run serve & npm run crawl
