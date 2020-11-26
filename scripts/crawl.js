@@ -15,7 +15,7 @@ const excludedUrls = [
   'search.maven.org',
   'wiki.jenkins.io', // Slow response
   'www.rubydoc.info', // Slow response
-  // 'https://github.com/',
+  'github.com', // managed as failed
 ];
 
 function logPage (url) {
