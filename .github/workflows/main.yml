@@ -26,9 +26,6 @@ jobs:
           pip install mkdocs==0.16.3
           echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
           bundle install
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
       - name: Unit tests
         run: |
           npm run test
