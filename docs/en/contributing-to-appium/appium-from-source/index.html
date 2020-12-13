@@ -1895,8 +1895,6 @@
         
             <li class="second-level"><a href="#hacking-on-appium">Hacking on Appium</a></li>
             
-                <li class="third-level"><a href="#hacking-with-appium-for-ios">Hacking with Appium for iOS</a></li>
-            
                 <li class="third-level"><a href="#hacking-with-appium-for-android">Hacking with Appium for Android</a></li>
             
                 <li class="third-level"><a href="#making-sure-youre-up-to-date">Making sure you're up to date</a></li>
@@ -1970,25 +1968,6 @@ is necessary to remove the old dependencies and re-run <code>npm install</code>:
 
 <p>See <a href="/docs/en/writing-running-appium/server-args/index.html">the server documentation</a>
 for a full list of command line arguments that can be used.</p>
-<h4 id="hacking-with-appium-for-ios">Hacking with Appium for iOS</h4>
-<p>To avoid a security dialog that may appear when launching your iOS apps you'll
-have to modify your <code>/etc/authorization</code> file in one of two ways:</p>
-<ol>
-<li>
-<p>Manually modify the element following <code>&lt;allow-root&gt;</code> under <code>&lt;key&gt;system.privilege.taskport&lt;/key&gt;</code>
-   in your <code>/etc/authorization</code> file to <code>&lt;true/&gt;</code>.</p>
-</li>
-<li>
-<p>Run the following command which automatically modifies your
-   <code>/etc/authorization</code> file for you:</p>
-<p><code>sudo npm run authorize-ios</code></p>
-</li>
-</ol>
-<p>At this point, run:</p>
-<pre><code>rm -rf node_modules &amp;&amp; rm -rf package-lock.json &amp;&amp; npm install
-</code></pre>
-
-<p>Now your Appium instance is ready to go. Run <code>node .</code> to kick up the Appium server.</p>
 <h4 id="hacking-with-appium-for-android">Hacking with Appium for Android</h4>
 <p>To work on Android, make sure you have <code>ant</code>, <code>maven</code>, and <code>adb</code> installed
 and added to system <code>PATH</code> environment variable. Also you would need the

@@ -386,10 +386,6 @@
         
             <li class="second-level"><a href="#appium_2">捣鼓改造 Appium</a></li>
             
-                <li class="third-level"><a href="#hacking-with-appium-for-ios">Hacking with Appium for iOS</a></li>
-            
-                <li class="third-level"><a href="#ios-appium">鼓捣 iOS 上的Appium</a></li>
-            
                 <li class="third-level"><a href="#android-appium">鼓捣 Android 上的Appium</a></li>
             
                 <li class="third-level"><a href="#_1">确保你的代码是最新的</a></li>
@@ -437,7 +433,6 @@
 cd appium
 npm install
 npm run build
-npm run authorize-ios                # for ios only
 node .
 </code></pre>
           </div>
@@ -447,7 +442,6 @@ node .
 cd appium
 npm install
 npm run build # 需要gulp，往下看
-npm run authorize-ios                # 仅iOS
 node .
 </code></pre>
           </div>
@@ -483,24 +477,6 @@ npm run build
 </code></pre>
 
 <p>完整的参数列表，请参考<a href="/docs/cn/writing-running-appium/server-args/index.html">the server documentation</a></p>
-<h4 id="hacking-with-appium-for-ios">Hacking with Appium for iOS</h4>
-<h4 id="ios-appium">鼓捣 iOS 上的Appium</h4>
-<p>为了避免启动iOS应用程序时可能出现的安全对话框，您必须通过以下两种方式之一修改 <code>/etc/authorization</code> 文件：</p>
-<ol>
-<li>手动修改 <code>/etc/authorization</code> 文件中的 <code>&lt;key&gt;system.privilege.taskport&lt;/key&gt;</code> 下的 <code>&lt;allow-root&gt;</code>的值为 <code>&lt;true/&gt;</code>。</li>
-<li>
-<p>运行以下命令，为您自动修改 <code>/etc/authorization</code> 文件：</p>
-<p><code>center
-sudo npm run authorize-ios</code></p>
-</li>
-</ol>
-<p>此时，运行：</p>
-<pre><code class="center">rm -rf node-modules
-npm install
-npm run build
-</code></pre>
-
-<p>现在你的 Appium 实例已经准备好了。运行 <code>node .</code> 以启动Appium服务器。</p>
 <h4 id="android-appium">鼓捣 Android 上的Appium</h4>
 <p>通过运行以下命令配置Appium：</p>
 <pre><code class="center">rm -rf node-modules
