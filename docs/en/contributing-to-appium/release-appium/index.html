@@ -1918,12 +1918,12 @@
 <h2 id="create-a-release-candidate">Create a release candidate</h2>
 <ol>
 <li>Checkout the release branch (e.g.: <code>git checkout releases/1.21 &amp;&amp; git pull origin releases/1.21</code>)</li>
-<li><code>bash ./scripts/release-candidate.sh rc</code></li>
+<li><code>bash ./scripts/release.sh rc</code></li>
 </ol>
 <h2 id="publish-to-ga">Publish to GA</h2>
 <ol>
 <li>Checkout the release branch (e.g.: <code>git checkout releases/1.21 &amp;&amp; git pull origin releases/1.21</code>)</li>
-<li><code>bash ./scripts/release-candidate.sh latest</code></li>
+<li><code>bash ./scripts/release.sh latest</code></li>
 <li>Update the site docs by going to https://github.com/appium/appium.io/pulls and merging the latest pull request that was opened by the Triager bot. Close any other pull requests opened by Triager bot.</li>
 <li>Create a new release on GitHub: go to <code>https://github.com/appium/appium/releases/tag/v&lt;VERSION&gt;</code> and hit "Edit Tag". Make the release name <code>&lt;VERSION&gt;</code> (e.g., <code>2.0.5</code>), then paste in the changelog (but not the changelog header for this version). If it's a beta release, mark as pre-release.</li>
 <li>Create a new post on discuss.appium.io announcing the release. Post it in the "News" category. Paste in the changelog and any choice comments. Pin it and unpin the previous release post.</li>
