@@ -1899,9 +1899,6 @@
             <li class="second-level"><a href="#xpath-locator-strategy">xpath locator strategy</a></li>
             
         
-            <li class="second-level"><a href="#system-dependencies">System dependencies</a></li>
-            
-        
             <li class="second-level"><a href="#api-differences">API differences</a></li>
             
                 <li class="third-level"><a href="#scrolling-and-clicking">Scrolling and clicking</a></li>
@@ -1971,8 +1968,6 @@
 </code></pre>
 
 <p>where x and y are non-xpath locators and z is a xpath locator).</p>
-<h3 id="system-dependencies">System dependencies</h3>
-<p>In addition to the many gotchas that might come with upgrading any XCode installation (unrelated to Appium), Appium's XCUITest support requires a new system dependency: <a href="https://github.com/Carthage/Carthage">Carthage</a>. Appium Doctor has now been updated to ensure that the <code>carthage</code> binary is on your path.</p>
 <h3 id="api-differences">API differences</h3>
 <p>Unfortunately, the XCUITest API and the UIAutomation API are not equivalent. In many cases (like with <code>tap/click</code>), the behavior is identical. But some features that were available in the UIAutomation backend are not yet available in the new XCUITest backend. These known lacking features include:
 * Geolocation support (e.g., <code>driver.location</code>)
