@@ -16,6 +16,9 @@ const excludedUrls = [
   'wiki.jenkins.io', // Slow response
   'www.rubydoc.info', // Slow response
   'github.com', // managed as failed
+  'www.packtpub.com', // Slow response
+  'twitter.com', // Slow or has redirect
+  'hamcrest.org', // Temporary down
 ];
 
 function logPage (url) {
