@@ -402,8 +402,6 @@
  * 如果使用了Appium的默认设置，则不需要如下的步骤。服务器将为您搞定一切，当然你也不能对WDA做太多控制。
  * 对连接的被测设备必须有SSH或物理访问权限。</p>
 <h3 id="wda">安装WDA</h3>
-<p>Appium 会自动下载 WebDriverAgent 源码。如果使用 npm 命令（<code>npm install -g appium</code>） 安装Appium的话，通常情况下会保存在/usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent 目录下。
-如果是首次安装的话，还需要下载一些第三方依赖("carthage"工具就是为此准备的: <code>brew install carthage</code>):</p>
 <pre><code class="bash">cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
 ./Scripts/bootstrap.sh -d
 </code></pre>
