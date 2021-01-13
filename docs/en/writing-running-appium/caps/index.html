@@ -1892,7 +1892,7 @@
         
             <li class="second-level"><a href="#android-only">Android Only</a></li>
             
-                <li class="third-level"><a href="#uiautomator-1-2">UIAutomator (1 &amp; 2)</a></li>
+                <li class="third-level"><a href="#uiautomator-1">UIAutomator 1</a></li>
             
                 <li class="third-level"><a href="#uiautomator2-only">UIAutomator2 Only</a></li>
             
@@ -2086,8 +2086,7 @@ Capabilities available in general and for specific drivers.</p>
 </tbody>
 </table>
 <h3 id="android-only">Android Only</h3>
-<p>These Capabilities are available only on Android-based drivers (like
-<a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2</a> for example).</p>
+<p>These Capabilities are available only on Android-based drivers.</p>
 <table>
 <thead>
 <tr>
@@ -2449,8 +2448,8 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 </tbody>
 </table>
-<h4 id="uiautomator-1-2">UIAutomator (1 &amp; 2)</h4>
-<p>These Capabilities are available on UIA 1 and 2</p>
+<h4 id="uiautomator-1">UIAutomator 1</h4>
+<p>These Capabilities are available on UIAutomator 1.</p>
 <table>
 <thead>
 <tr>
@@ -2483,174 +2482,9 @@ Capabilities available in general and for specific drivers.</p>
 </tbody>
 </table>
 <h4 id="uiautomator2-only">UIAutomator2 Only</h4>
-<p>These Capabilities are available only on the <a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2 Driver</a></p>
-<table>
-<thead>
-<tr>
-<th>Capability</th>
-<th>Description</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>appWaitForLaunch</code></td>
-<td>Tries to launch the app under test without <a href="https://developer.android.com/studio/command-line/adb#am">-W</a> option in session creation. It might help when the session creation does not proceed since <code>shell am start</code> does not respond. Defaults to <code>true</code>.</td>
-<td><code>false</code> or <code>true</code></td>
-</tr>
-<tr>
-<td><code>disableSuppressAccessibilityService</code></td>
-<td>Set <a href="https://developer.android.com/reference/android/app/UiAutomation#FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES">FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES</a> to allow existing accessibility service continue to run, and a new one may start for Appium. It helps to test the app under test which has accessibility feature such as TalkBack. Appium will not specify the flag if nothing is provided. The flag requires Android API Level 24+.</td>
-<td><code>false</code> or <code>true</code></td>
-</tr>
-<tr>
-<td><code>mjpegServerPort</code></td>
-<td>If specified this is the local port that will be bound to the <code>appium-uiautomator2-server</code>'s MJPEG screenshot stream. This can be used in conjunction with <code>mjpegScreenshotUrl</code>. It should be a valid integer in range <em>1025..65535</em>. Defaults to <code>null</code>. e.g. <code>mjpegScreenshotUrl = 'http://localhost:9200', mjpegServerPort = 9200</code></td>
-<td>any <code>Integer</code>, recommended: <code>9200..9299</code> for consistency w/ <code>serverPort</code> range</td>
-</tr>
-<tr>
-<td><code>skipServerInstallation</code></td>
-<td>Skip uiAutomator2 server installation and use uiAutomator2 server from the device. Can be used to improve startup performance when an uiAutomator2 server in proper version is already installed on the device. Defaults to <code>false</code>.</td>
-<td><code>false</code> or <code>true</code></td>
-</tr>
-<tr>
-<td><code>uiautomator2ServerInstallTimeout</code></td>
-<td>Timeout in milliseconds used to wait for an uiAutomator2 server to be installed. Defaults to <code>20000</code></td>
-<td>e.g., <code>20000</code></td>
-</tr>
-<tr>
-<td><code>uiautomator2ServerLaunchTimeout</code></td>
-<td>Timeout in milliseconds used to wait for an uiAutomator2 server to launch. Defaults to <code>20000</code></td>
-<td>e.g., <code>20000</code></td>
-</tr>
-<tr>
-<td><code>userProfile</code></td>
-<td>Enforce user profile as the given parameter if the value was provided. It should be an integer.</td>
-<td>e.g., <code>11</code></td>
-</tr>
-</tbody>
-</table>
+<p>Please refer to the documentation on the UIAutomator2 driver <a href="https://github.com/appium/appium-uiautomator2-driver#capabilities">repository</a> about its available capabilities.</p>
 <h4 id="espresso-only">Espresso Only</h4>
-<p>These Capabilities are available only on the <a href="/docs/en/drivers/android-espresso/index.html">Espresso Driver</a></p>
-<table>
-<thead>
-<tr>
-<th>Capability</th>
-<th>Description</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>espressoServerLaunchTimeout</code></td>
-<td>Timeout in milliseconds used to wait for the Espresso server to launch. Defaults to <code>30000</code></td>
-<td>e.g., <code>50000</code></td>
-</tr>
-<tr>
-<td><code>espressoBuildConfig</code></td>
-<td>Path to the Espresso server build configuration JSON (see below) or a stringified JSON itself (only supported since server version 1.19)</td>
-<td>e.g., <code>/projects/myapp-tests/buildconfig.json</code></td>
-</tr>
-<tr>
-<td><code>showGradleLog</code></td>
-<td>Whether to pipe Gradle build log for the Espresso server to the Appium log. Defaults to <code>false</code></td>
-<td>e.g., <code>true</code></td>
-</tr>
-<tr>
-<td><code>skipServerInstallation</code></td>
-<td>Skip Espresso server build and apk installation. This option could break proper Espresso server setup for the particular Appium version, but it can improve startup performance when the proper Espresso server and the proper app under test are already installed on the device. Please, make sure not to enable this option if the Espresso server or the application under test needs an update. Defaults to <code>false</code></td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>intentOptions</code></td>
-<td>Intent options which will be used to start the application under test. It can set intent options such as <code>action</code>, <code>categories</code> and <code>component</code> as JSON format. Please read <a href="https://github.com/appium/appium-espresso-driver/issues/538">#538</a> as an example usage.</td>
-<td>e.g. <code>{"action": "android.intent.action.MAIN", "categories": "android.intent.category.LAUNCHER", "component": "com.appium/.launcher.MainActivity"</code></td>
-</tr>
-<tr>
-<td><code>disableSuppressAccessibilityService</code></td>
-<td>Set <a href="https://developer.android.com/reference/android/app/UiAutomation#FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES">FLAG_DONT_SUPPRESS_ACCESSIBILITY_SERVICES</a> to allow existing accessibility service continue to run, and a new one may start for Appium. It helps to test the app under test which has accessibility feature such as TalkBack. Appium will not specify the flag if nothing is provided. The flag requires Android API Level 24+.</td>
-<td><code>true</code>, <code>false</code></td>
-</tr>
-<tr>
-<td><code>appLocale</code></td>
-<td>Set <a href="https://developer.android.com/reference/java/util/Locale">Locale</a> for <a href="https://developer.android.com/reference/androidx/test/core/app/ApplicationProvider#getApplicationContext()">the target context</a> since Appium 1.18.0. <code>language</code>, <code>country</code> and <code>variant</code> are available as same as the Locale class. <code>language</code> is mandatory. Please check the <a href="https://developer.android.com/reference/java/util/Locale">locale page</a> for more details. Setting <code>appLocale</code> only affects the locale of the application under test and does not influence other system views, such as the status bar. Consider setting <code>language</code>, <code>locale</code> and/or <code>localeScript</code> capabilities if you would like to change the locale for the entire the system.</td>
-<td>e.g., <code>{"language": "ja", "country": "JP"}</code></td>
-</tr>
-</tbody>
-</table>
-<h5 id="espresso-server-build-configuration-json">Espresso server build configuration JSON</h5>
-<p>Passing this configuration file using <code>espressoBuildConfig</code> desired capability allows to fine-tune the build process of the Espresso server. It is mostly useful in cases where the default Espresso server settings are not compatible with your application under test.
-  One example of such a case is tests crashing due to <code>Resource &lt;name&gt; is not a Drawable</code> error (see https://github.com/appium/appium-espresso-driver/issues/449 for discussion).</p>
-<p>Configuration example:</p>
-<pre><code class="json">{
-  "toolsVersions": {
-    "gradle": "5.1.1",
-    "androidGradlePlugin": "3.4.2",
-    "compileSdk": 28,
-    "buildTools": "28.0.3",
-    "minSdk": 18,
-    "targetSdk": 28,
-    "kotlin": "1.3.31"
-  },
-  "additionalAppDependencies": [
-    "com.google.android.material:material:1.0.0"
-  ]
-}
-</code></pre>
-
-<p><strong><em>Version settings</em></strong></p>
-<p><code>toolsVersion</code> specifies versions of various tools and SDKs used during the building process of the Espresso server. Default versions are the versions used to build the Espresso driver without build configuration JSON.</p>
-<p>The module versions enumerated under <code>toolsVersion</code> are only used to build the server APK. They don't affect the manifest of your application under test or the Espresso server manifest (that is still generated from the manifest of your application under test).</p>
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>Description</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>gradle</code></td>
-<td>Gradle version</td>
-<td>e.g.,<code>5.1.1</code></td>
-</tr>
-<tr>
-<td><code>androidGradlePlugin</code></td>
-<td>Android Gradle Plugin version</td>
-<td>e.g., <code>3.4.2</code></td>
-</tr>
-<tr>
-<td><code>buildTools</code></td>
-<td>Version of the Android SDK build tools that should be used to compile the Espresso server (corresponds to <code>buildToolsVersion</code> in Gradle build files)</td>
-<td>e.g., <code>28.0.3</code></td>
-</tr>
-<tr>
-<td><code>compileSdk</code></td>
-<td>Android API level that should be used to compile the Espresso server (corresponds to <code>compileSdkVersion</code> in Gradle build files)</td>
-<td>e.g., <code>28</code></td>
-</tr>
-<tr>
-<td><code>minSdk</code></td>
-<td>Minimum Android API level required to run the application under tests, affects compatibility libraries used to build the Espresso server (corresponds to <code>minSdk</code> in Gradle build files)</td>
-<td>e.g., <code>18</code></td>
-</tr>
-<tr>
-<td><code>targetSdk</code></td>
-<td>Android API level used to test the app (corresponds to <code>targetSdk</code> in Gradle build files)</td>
-<td>e.g., <code>28</code></td>
-</tr>
-<tr>
-<td><code>kotlin</code></td>
-<td>Version of Kotlin compiler and official libraries</td>
-<td>e.g., <code>1.3.311</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong><em>Application dependencies</em></strong></p>
-<p><code>additionalAppDependencies</code> and <code>additionalAndroidTestDependencies</code> array specify additional dependencies of the application under test that build tools should know about when building the Espresso server.
-For example: <code>"additionalAndroidTestDependencies": [ "com.google.android.material:material:1.0.0" ]</code>.</p>
-<p>Items belonging to <code>additionalAppDependencies</code> array are translated to <code>implementation</code> lines in Gradle build files of the Espresso server. <code>additionalAndroidTestDependencies</code> are translated to <code>androidTestImplementation</code>.</p>
+<p>Please refer to the documentation on the Espresso driver <a href="https://github.com/appium/appium-espresso-driver#capabilities">repository</a> about its available capabilities.</p>
 <h3 id="ios-only">iOS Only</h3>
 <p>These Capabilities are available only on the <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest
 Driver</a> and the deprecated <a href="/docs/en/drivers/ios-uiautomation/index.html">UIAutomation
@@ -2822,21 +2656,21 @@ Driver</a>.</p>
 </tbody>
 </table>
 <h4 id="ios-only-using-xcuitest">iOS Only, using XCUITest</h4>
-<p>(For XCUITest-specific capabilities, please refer to the documentation on the <a href="https://github.com/appium/appium-xcuitest-driver#desired-capabilities">XCUITest Driver repo</a> itself.)</p>
+<p>Please refer to the documentation on the XCUITest driver <a href="https://github.com/appium/appium-xcuitest-driver#desired-capabilities">repository</a> about its available capabilities.</p>
 <h3 id="safaridriver-only">Safaridriver Only</h3>
-<p>(For safaridriver capabilities, please refer to the documentation on the <a href="https://github.com/appium/appium-safari-driver">safaridriver repo</a> itself.)</p>
+<p>Please refer to the documentation on the safaridriver <a href="https://github.com/appium/appium-safari-driver">repository</a> about its available capabilities.</p>
 <h3 id="geckodriver-only">Geckodriver Only</h3>
-<p>(For geckodriver capabilities, please refer to the documentation on the <a href="https://github.com/appium/appium-geckodriver">geckodriver repo</a> itself.)</p>
+<p>Please refer to the documentation on the geckodriver <a href="https://github.com/appium/appium-geckodriver">repository</a> about its available capabilities.</p>
 <h3 id="macdriver-only">MacDriver Only</h3>
-<p>(For MacDriver capabilities, please refer to the documentation on the <a href="https://github.com/appium/appium-mac-driver#desired-capabilities">Appium MacDriver repo</a> itself.)</p>
+<p>Please refer to the documentation on the MacDriver <a href="https://github.com/appium/appium-mac-driver#desired-capabilities">repository</a> about its available capabilities.</p>
 <h3 id="mac2driver-only">Mac2Driver Only</h3>
-<p>(For Mac2 Driver capabilities, please refer to the documentation on the <a href="https://github.com/appium/appium-mac2-driver#capabilities">Appium Mac2Driver repo</a> itself.)</p>
+<p>Please refer to the documentation on the Mac2Driver <a href="https://github.com/appium/appium-mac2-driver#capabilities">repository</a> about its available capabilities.</p>
 <h3 id="youi-engine-only">You.i Engine Only</h3>
-<p>(For You.i Engine-specific capabilities, please refer to the documentation on the <a href="https://github.com/YOU-i-Labs/appium-youiengine-driver#desired-capabilities">You.i Engine driver</a> itself.)</p>
+<p>Please refer to the documentation on the You.i Engine driver <a href="https://github.com/YOU-i-Labs/appium-youiengine-driver#desired-capabilities">repository</a> about its available capabilities.</p>
 <h3 id="winappdriver-only">WinAppDriver Only</h3>
-<p>(For WinAppDriver specific capabilities, please refer to the documentation on the <a href="https://github.com/appium/appium-windows-driver#windowsdriver-specific-capabilities">Appium Windows Driver repo</a> itself.)</p>
+<p>Please refer to the documentation on the Appium Windows Diver <a href="https://github.com/appium/appium-windows-driver#windowsdriver-specific-capabilities">repository</a> about its available capabilities.</p>
 <h3 id="flutter-driver-only">Flutter driver only</h3>
-<p>(For FlutterDriver specific capabilities, examples please refer to the documentation on the <a href="https://github.com/truongsinh/appium-flutter-driver#desired-capabilities-for-flutter-driver-only">Flutter Driver repo</a> itself.)</p></div>
+<p>Please refer to the documentation on the Flutter Diver <a href="https://github.com/truongsinh/appium-flutter-driver#desired-capabilities-for-flutter-driver-only">repository</a> about its available capabilities.</p></div>
         
     </div>
 
