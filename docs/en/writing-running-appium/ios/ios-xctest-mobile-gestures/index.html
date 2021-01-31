@@ -1950,7 +1950,7 @@
                 <li class="third-level"><a href="#usage-examples_8">Usage examples</a></li>
             
         
-            <li class="second-level"><a href="#mobile-alert">mobile: alert</a></li>
+            <li class="second-level"><a href="#mobile-rotateelement">mobile: rotateElement</a></li>
             
                 <li class="third-level"><a href="#supported-arguments_9">Supported arguments</a></li>
             
@@ -2172,19 +2172,25 @@ params.put("element", ((RemoteWebElement) element).getId());
 js.executeScript("mobile: selectPickerWheelValue", params);
 </code></pre>
 
-<h3 id="mobile-alert">mobile: alert</h3>
-<p>Performs operations on NSAlert instance.</p>
+<h3 id="mobile-rotateelement">mobile: rotateElement</h3>
+<p>Performs <a href="https://developer.apple.com/documentation/xctest/xcuielement/1618665-rotate?language=objc">rotate</a> gesture on the given element.</p>
 <h4 id="supported-arguments_9">Supported arguments</h4>
 <ul>
-<li><em>action</em>: The following actions are supported: <em>accept</em>, <em>dismiss</em> and <em>getButtons</em>.
- Mandatory parameter</li>
-<li><em>buttonLabel</em>: The label text of an existing alert button to click on. This is an
- optional parameter and is only valid in combination with <em>accept</em> and <em>dismiss</em>
- actions.</li>
+<li><em>element</em>: Internal element id (as hexadecimal hash string) to perform
+ rotation on. Mandatory parameter</li>
+<li><em>rotation</em>: The rotation of the gesture in radians. Mandatory parameter</li>
+<li><em>velocity</em>: The velocity of the rotation gesture in radians per second. Mandatory parameter</li>
 </ul>
 <h4 id="usage-examples_9">Usage examples</h4>
-<pre><code class="python"># Python
-driver.execute_script('mobile: alert', {'action': 'accept', 'buttonLabel': 'My Cool Alert Button'});
+<pre><code class="java">// Java
+JavascriptExecutor js = (JavascriptExecutor) driver;
+js.executeScript("mobile: rotateElement", ImmutableMap.of(
+    // rotate clockwise, 90 degrees
+    "rotation", -Math.PI / 2,
+    // in approximately two seconds
+    "velocity", Math.PI / 4,
+    "element", ((RemoteWebElement) element).getId()
+));
 </code></pre>
 
 <h3 id="mobile-tapwithnumberoftaps">mobile: tapWithNumberOfTaps</h3>

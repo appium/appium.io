@@ -1887,13 +1887,28 @@
     
         <li class="first-level active"><a href="#appium-platform-support">Appium Platform Support</a></li>
         
+    
+        <li class="first-level "><a href="#appium-team-support">Appium team support</a></li>
+        
             <li class="second-level"><a href="#ios-support">iOS Support</a></li>
             
         
             <li class="second-level"><a href="#android-support">Android Support</a></li>
             
         
+            <li class="second-level"><a href="#macos-support">macOS Support</a></li>
+            
+        
             <li class="second-level"><a href="#windows-desktop-support">Windows Desktop Support</a></li>
+            
+        
+    
+        <li class="first-level "><a href="#vendorscommunity-based-drivers">Vendors/Community based drivers</a></li>
+        
+            <li class="second-level"><a href="#youi-engine-support">You.i Engine Support</a></li>
+            
+        
+            <li class="second-level"><a href="#flutter-support">Flutter Support</a></li>
             
         
     
@@ -1905,12 +1920,16 @@
   </a>Appium Platform Support</h2>
 <p>Appium supports a variety of platforms and testing modalities (native,
 hybrid, web, real devices, simulators, etc...). This document is designed to
-make explicit the level of support and requirements for each of these.</p>
+make explicit the level of support and requirements for each of these,
+or guide each driver to proper page.</p>
+<h2 id="appium-team-support">Appium team support</h2>
+<p>This section lists drivers that are supported by Appium team.</p>
 <h3 id="ios-support">iOS Support</h3>
 <p>iOS automation is supported with two drivers:</p>
 <ul>
 <li>The <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest Driver</a></li>
 <li>The (deprecated) <a href="/docs/en/drivers/ios-uiautomation/index.html">UIAutomation Driver</a></li>
+<li>The <a href="/docs/en/drivers/safari/index.html">safaridriver</a> for Apple's <a href="https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari?language=objc">safaridriver</a></li>
 </ul>
 <p>Please refer to these driver docs for setup instructions.</p>
 <ul>
@@ -1920,15 +1939,11 @@ make explicit the level of support and requirements for each of these.</p>
   or correctly-signed .ipa (real devices). Underlying support is provided by
   Apple's <a href="https://developer.apple.com/reference/xctest">XCUITest</a> (or <a href="https://web.archive.org/web/20160904214108/https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation</a> for older versions)
   framework.</li>
-<li>Mobile web support: Yes, via automation of mobile Safari. For real devices,
-  <code>ios-webkit-remote-debugger</code> is required, and automation of native aspects of
-  the Safari interface is not possible. See the <a href="/docs/en/writing-running-appium/web/mobile-web/index.html">mobile web doc</a> for instructions.</li>
-<li>Hybrid support: Yes. For real devices, ios-webkit-remote-debugger is
-  required. See the <a href="/docs/en/writing-running-appium/web/hybrid/index.html">hybrid doc</a> for instructions.</li>
+<li>Mobile web support: Yes, via automation of mobile Safari. See the <a href="/docs/en/writing-running-appium/web/mobile-web/index.html">mobile web doc</a> for instructions.</li>
+<li>Hybrid support: Yes. See the <a href="/docs/en/writing-running-appium/web/hybrid/index.html">hybrid doc</a> for instructions.</li>
 <li>Support for automating multiple apps in one session: No</li>
-<li>Support for automating multiple devices simultaneously: No</li>
-<li>Support for automating vendor-provided or third-party apps: Only
-  vendor-provided apps (Preferences, Maps, etc...), and only on the simulator. For iOS 10+, you can automate the home screen as well.</li>
+<li>Support for automating multiple devices simultaneously: Yes</li>
+<li>Support for automating vendor-provided or third-party apps: Yes, apps which are already installed on the device</li>
 <li>Support for automating custom, non-standard UI controls: Minimal. You need to
   set accessibility information on the control which enables some basic
   automation.</li>
@@ -1937,7 +1952,9 @@ make explicit the level of support and requirements for each of these.</p>
 <p>Android automation is supported with two drivers:</p>
 <ul>
 <li>The <a href="/docs/en/drivers/android-uiautomator2/index.html">UiAutomator2 Driver</a></li>
+<li>The <a href="/docs/en/drivers/android-espresso/index.html">Espresso Driver</a></li>
 <li>The (deprecated) <a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator Driver</a></li>
+<li>The <a href="/docs/en/drivers/gecko/index.html">geckodriver</a> for Firefox and <a href="https://wiki.mozilla.org/Mobile/GeckoView">GeckoView</a></li>
 </ul>
 <p>Please refer to these driver docs for setup instructions.</p>
 <ul>
@@ -1963,8 +1980,28 @@ make explicit the level of support and requirements for each of these.</p>
 <li>Support for automating vendor-provided or third-party apps: Yes</li>
 <li>Support for automating custom, non-standard UI controls: No</li>
 </ul>
+<h3 id="macos-support">macOS Support</h3>
+<p>macOS automation is supported with below drivers.</p>
+<ul>
+<li>The <a href="/docs/en/drivers/mac2/index.html">Mac2Driver</a> is for macOS 10.15 or later</li>
+<li>The (deprecated) <a href="/docs/en/drivers/mac/index.html">MacDriver</a> is for lower macOS versions</li>
+</ul>
 <h3 id="windows-desktop-support">Windows Desktop Support</h3>
-<p>See the <a href="/docs/en/drivers/windows/index.html">Windows Driver</a> doc for details</p></div>
+<p>Windows automation is supported with below drivers.</p>
+<ul>
+<li>The <a href="/docs/en/drivers/windows/index.html">WinAppDriver</a></li>
+<li>The <a href="/docs/en/drivers/gecko/index.html">geckodriver</a> for Firefox and <a href="https://wiki.mozilla.org/Mobile/GeckoView">GeckoView</a></li>
+</ul>
+<h2 id="vendorscommunity-based-drivers">Vendors/Community based drivers</h2>
+<p>This section lists drivers that are supported by vendors and community.</p>
+<h3 id="youi-engine-support">You.i Engine Support</h3>
+<ul>
+<li>The <a href="https://github.com/YOU-i-Labs/appium-youiengine-driver">You.i Engine</a></li>
+</ul>
+<h3 id="flutter-support">Flutter Support</h3>
+<ul>
+<li>The <a href="https://github.com/truongsinh/appium-flutter-driver">Flutter Driver</a></li>
+</ul></div>
         
     </div>
 
