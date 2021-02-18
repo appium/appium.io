@@ -1894,50 +1894,57 @@
                 <li class="third-level"><a href="#usage-examples">Usage examples</a></li>
             
         
-            <li class="second-level"><a href="#mobile-draggesture">mobile: dragGesture</a></li>
+            <li class="second-level"><a href="#mobile-doubleclickgesture">mobile: doubleClickGesture</a></li>
             
                 <li class="third-level"><a href="#supported-arguments_1">Supported arguments</a></li>
             
                 <li class="third-level"><a href="#usage-examples_1">Usage examples</a></li>
             
         
-            <li class="second-level"><a href="#mobile-flinggesture">mobile: flingGesture</a></li>
+            <li class="second-level"><a href="#mobile-draggesture">mobile: dragGesture</a></li>
             
                 <li class="third-level"><a href="#supported-arguments_2">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#returned-value">Returned value</a></li>
             
                 <li class="third-level"><a href="#usage-examples_2">Usage examples</a></li>
             
         
-            <li class="second-level"><a href="#mobile-pinchopengesture">mobile: pinchOpenGesture</a></li>
+            <li class="second-level"><a href="#mobile-flinggesture">mobile: flingGesture</a></li>
             
                 <li class="third-level"><a href="#supported-arguments_3">Supported arguments</a></li>
+            
+                <li class="third-level"><a href="#returned-value">Returned value</a></li>
             
                 <li class="third-level"><a href="#usage-examples_3">Usage examples</a></li>
             
         
-            <li class="second-level"><a href="#mobile-pinchclosegesture">mobile: pinchCloseGesture</a></li>
+            <li class="second-level"><a href="#mobile-pinchopengesture">mobile: pinchOpenGesture</a></li>
             
                 <li class="third-level"><a href="#supported-arguments_4">Supported arguments</a></li>
             
                 <li class="third-level"><a href="#usage-examples_4">Usage examples</a></li>
             
         
-            <li class="second-level"><a href="#mobile-swipegesture">mobile: swipeGesture</a></li>
+            <li class="second-level"><a href="#mobile-pinchclosegesture">mobile: pinchCloseGesture</a></li>
             
                 <li class="third-level"><a href="#supported-arguments_5">Supported arguments</a></li>
             
                 <li class="third-level"><a href="#usage-examples_5">Usage examples</a></li>
             
         
-            <li class="second-level"><a href="#mobile-scrollgesture">mobile: scrollGesture</a></li>
+            <li class="second-level"><a href="#mobile-swipegesture">mobile: swipeGesture</a></li>
             
                 <li class="third-level"><a href="#supported-arguments_6">Supported arguments</a></li>
             
+                <li class="third-level"><a href="#usage-examples_6">Usage examples</a></li>
+            
+        
+            <li class="second-level"><a href="#mobile-scrollgesture">mobile: scrollGesture</a></li>
+            
+                <li class="third-level"><a href="#supported-arguments_7">Supported arguments</a></li>
+            
                 <li class="third-level"><a href="#returned-value_1">Returned value</a></li>
             
-                <li class="third-level"><a href="#usage-examples_6">Usage examples</a></li>
+                <li class="third-level"><a href="#usage-examples_7">Usage examples</a></li>
             
         
     
@@ -1997,10 +2004,54 @@ Available since Appium v1.19</p>
 
 
 
+<h3 id="mobile-doubleclickgesture">mobile: doubleClickGesture</h3>
+<p>This gesture performs double click action on the given element/coordinates.
+Available since Appium v1.21</p>
+<h4 id="supported-arguments_1">Supported arguments</h4>
+<ul>
+<li><em>elementId</em>: The id of the element to be clicked.
+  If the element is missing then both click offset coordinates must be provided.
+  If both the element id and offset are provided then the coordinates
+  are parsed as relative offsets from the top left corner of the element.</li>
+<li><em>x</em>: The x-offset coordinate</li>
+<li><em>y</em>: The y-offset coordinate</li>
+</ul>
+<h4 id="usage-examples_1">Usage examples</h4>
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="1_0">
+            <pre><code class="java">((JavascriptExecutor) driver).executeScript("mobile: doubleClickGesture", ImmutableMap.of(
+    "elementId", ((RemoteWebElement) element).getId()
+));
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_1">
+            <pre><code class="python">driver.execute_script('mobile: doubleClickGesture', {'x': 100, 'y': 100})
+</code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
+
 <h3 id="mobile-draggesture">mobile: dragGesture</h3>
 <p>This gesture performs drag action from the given element/coordinates to the given point.
 Available since Appium v1.19</p>
-<h4 id="supported-arguments_1">Supported arguments</h4>
+<h4 id="supported-arguments_2">Supported arguments</h4>
 <ul>
 <li><em>elementId</em>: The id of the element to be dragged.
   If the element id is missing then both start coordinates must be provided.
@@ -2013,7 +2064,7 @@ Available since Appium v1.19</p>
 <li><em>speed</em>:  The speed at which to perform this gesture in pixels per second.
   The value must not be negative. The default value is <code>2500 * displayDensity</code></li>
 </ul>
-<h4 id="usage-examples_1">Usage examples</h4>
+<h4 id="usage-examples_2">Usage examples</h4>
 <pre><code class="java">// Java
 ((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of(
     "elementId", ((RemoteWebElement) element).getId(),
@@ -2025,7 +2076,7 @@ Available since Appium v1.19</p>
 <h3 id="mobile-flinggesture">mobile: flingGesture</h3>
 <p>This gesture performs fling gesture on the given element/area.
 Available since Appium v1.19</p>
-<h4 id="supported-arguments_2">Supported arguments</h4>
+<h4 id="supported-arguments_3">Supported arguments</h4>
 <ul>
 <li><em>elementId</em>: The id of the element to be flinged.
   If the element id is missing then fling bounding area must be provided.
@@ -2043,7 +2094,7 @@ Available since Appium v1.19</p>
 </ul>
 <h4 id="returned-value">Returned value</h4>
 <p>The returned value is a boolean one and equals to <code>true</code> if the object can still scroll in the given direction</p>
-<h4 id="usage-examples_2">Usage examples</h4>
+<h4 id="usage-examples_3">Usage examples</h4>
 <pre><code class="java">// Java
 boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: flingGesture", ImmutableMap.of(
     "elementId", ((RemoteWebElement) element).getId(),
@@ -2054,33 +2105,6 @@ boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("m
 
 <h3 id="mobile-pinchopengesture">mobile: pinchOpenGesture</h3>
 <p>This gesture performs pinch-open gesture on the given element/area.
-Available since Appium v1.19</p>
-<h4 id="supported-arguments_3">Supported arguments</h4>
-<ul>
-<li><em>elementId</em>: The id of the element to be pinched.
-  If the element id is missing then pinch bounding area must be provided.
-  If both the element id and the pinch bounding area are provided then the
-  area is effectively ignored.</li>
-<li><em>left</em>: The left coordinate of the pinch bounding area</li>
-<li><em>top</em>: The top coordinate of the pinch bounding area</li>
-<li><em>width</em>: The width of the pinch bounding area</li>
-<li><em>height</em>: The height of the pinch bounding area</li>
-<li><em>percent</em>: The size of the pinch as a percentage of the pinch area size.
-  Valid values must be float numbers in range 0..1, where 1.0 is 100%.
-  Mandatory value.</li>
-<li><em>speed</em>:  The speed at which to perform this gesture in pixels per second.
-  The value must not be negative. The default value is <code>2500 * displayDensity</code></li>
-</ul>
-<h4 id="usage-examples_3">Usage examples</h4>
-<pre><code class="java">// Java
-((JavascriptExecutor) driver).executeScript("mobile: pinchOpenGesture", ImmutableMap.of(
-    "elementId", ((RemoteWebElement) element).getId(),
-    "percent", 0.75
-));
-</code></pre>
-
-<h3 id="mobile-pinchclosegesture">mobile: pinchCloseGesture</h3>
-<p>This gesture performs pinch-close gesture on the given element/area.
 Available since Appium v1.19</p>
 <h4 id="supported-arguments_4">Supported arguments</h4>
 <ul>
@@ -2099,21 +2123,48 @@ Available since Appium v1.19</p>
   The value must not be negative. The default value is <code>2500 * displayDensity</code></li>
 </ul>
 <h4 id="usage-examples_4">Usage examples</h4>
+<pre><code class="java">// Java
+((JavascriptExecutor) driver).executeScript("mobile: pinchOpenGesture", ImmutableMap.of(
+    "elementId", ((RemoteWebElement) element).getId(),
+    "percent", 0.75
+));
+</code></pre>
+
+<h3 id="mobile-pinchclosegesture">mobile: pinchCloseGesture</h3>
+<p>This gesture performs pinch-close gesture on the given element/area.
+Available since Appium v1.19</p>
+<h4 id="supported-arguments_5">Supported arguments</h4>
+<ul>
+<li><em>elementId</em>: The id of the element to be pinched.
+  If the element id is missing then pinch bounding area must be provided.
+  If both the element id and the pinch bounding area are provided then the
+  area is effectively ignored.</li>
+<li><em>left</em>: The left coordinate of the pinch bounding area</li>
+<li><em>top</em>: The top coordinate of the pinch bounding area</li>
+<li><em>width</em>: The width of the pinch bounding area</li>
+<li><em>height</em>: The height of the pinch bounding area</li>
+<li><em>percent</em>: The size of the pinch as a percentage of the pinch area size.
+  Valid values must be float numbers in range 0..1, where 1.0 is 100%.
+  Mandatory value.</li>
+<li><em>speed</em>:  The speed at which to perform this gesture in pixels per second.
+  The value must not be negative. The default value is <code>2500 * displayDensity</code></li>
+</ul>
+<h4 id="usage-examples_5">Usage examples</h4>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#2_0" data-language="java" data-toggle="tab">Java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#2_1" data-language="python" data-toggle="tab">Python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
-          <div role="tabpanel" class="tab-pane active" id="1_0">
+          <div role="tabpanel" class="tab-pane active" id="2_0">
             <pre><code class="java">((JavascriptExecutor) driver).executeScript("mobile: pinchCloseGesture", ImmutableMap.of(
     "elementId", ((RemoteWebElement) element).getId(),
     "percent", 0.75
@@ -2121,7 +2172,7 @@ Available since Appium v1.19</p>
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="1_1">
+          <div role="tabpanel" class="tab-pane " id="2_1">
             <pre><code class="python">can_scroll_more = driver.execute_script('mobile: pinchCloseGesture', {
     'elementId': element.id,
     'percent': 0.75
@@ -2137,7 +2188,7 @@ Available since Appium v1.19</p>
 <h3 id="mobile-swipegesture">mobile: swipeGesture</h3>
 <p>This gesture performs swipe gesture on the given element/area.
 Available since Appium v1.19</p>
-<h4 id="supported-arguments_5">Supported arguments</h4>
+<h4 id="supported-arguments_6">Supported arguments</h4>
 <ul>
 <li><em>elementId</em>: The id of the element to be swiped.
   If the element id is missing then swipe bounding area must be provided.
@@ -2155,7 +2206,7 @@ Available since Appium v1.19</p>
 <li><em>speed</em>:  The speed at which to perform this gesture in pixels per second.
   The value must not be negative. The default value is <code>5000 * displayDensity</code></li>
 </ul>
-<h4 id="usage-examples_5">Usage examples</h4>
+<h4 id="usage-examples_6">Usage examples</h4>
 <pre><code class="java">// Java
 ((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
     "left", 100, "top", 100, "width", 200, "height", 200,
@@ -2167,7 +2218,7 @@ Available since Appium v1.19</p>
 <h3 id="mobile-scrollgesture">mobile: scrollGesture</h3>
 <p>This gesture performs scroll gesture on the given element/area.
 Available since Appium v1.19</p>
-<h4 id="supported-arguments_6">Supported arguments</h4>
+<h4 id="supported-arguments_7">Supported arguments</h4>
 <ul>
 <li><em>elementId</em>: The id of the element to be scrolled.
   If the element id is missing then scroll bounding area must be provided.
@@ -2187,22 +2238,22 @@ Available since Appium v1.19</p>
 </ul>
 <h4 id="returned-value_1">Returned value</h4>
 <p>The returned value is a boolean one and equals to <code>true</code> if the object can still scroll in the given direction</p>
-<h4 id="usage-examples_6">Usage examples</h4>
+<h4 id="usage-examples_7">Usage examples</h4>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#2_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#3_0" data-language="java" data-toggle="tab">Java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#3_1" data-language="python" data-toggle="tab">Python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
-          <div role="tabpanel" class="tab-pane active" id="2_0">
+          <div role="tabpanel" class="tab-pane active" id="3_0">
             <pre><code class="java">boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap.of(
     "left", 100, "top", 100, "width", 200, "height", 200,
     "direction", "down",
@@ -2211,7 +2262,7 @@ Available since Appium v1.19</p>
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="2_1">
+          <div role="tabpanel" class="tab-pane " id="3_1">
             <pre><code class="python">can_scroll_more = driver.execute_script('mobile: scrollGesture', {
     'left': 100, 'top': 100, 'width': 200, 'height': 200,
     'direction': 'down',
