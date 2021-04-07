@@ -1923,6 +1923,10 @@
               <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
           </li>
           
+          <li role="presentation" class="">
+              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+          </li>
+          
         </ul>
         <div class="tab-content">
           
@@ -1946,8 +1950,18 @@ assert result['stdout'] == 'arg1 arg2'
 </code></pre>
           </div>
           
+          <div role="tabpanel" class="tab-pane " id="0_2">
+            <pre><code class="javascript">const output = driver.executeScript('mobile: shell', [{
+    command: 'ls',
+    args: ['/sdcard'],
+    }]);
+</code></pre>
+          </div>
+          
         </div>
       </div>
+
+
 
 </div>
         
