@@ -1897,6 +1897,12 @@
             
         
     
+        <li class="first-level "><a href="#troubleshooting">Troubleshooting</a></li>
+        
+            <li class="second-level"><a href="#when-you-publish-a-version-to-a-wrong-channel">When you publish a version to a wrong channel</a></li>
+            
+        
+    
     </ul>
 </div></div>
         <div class="col-md-9 documentation" role="main"><h1 id="releasing-appium"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/contributing-to-appium/release-appium.md">
@@ -1929,7 +1935,19 @@
 <li>Create a new post on discuss.appium.io announcing the release. Post it in the "News" category. Paste in the changelog and any choice comments. Pin it and unpin the previous release post.</li>
 <li>Begin process of releasing <code>appium-desktop</code>.</li>
 <li>Notify @jlipps to so he can tweet a link to the discuss post.</li>
-</ol></div>
+</ol>
+<h1 id="troubleshooting">Troubleshooting</h1>
+<h2 id="when-you-publish-a-version-to-a-wrong-channel">When you publish a version to a wrong channel</h2>
+<p>For example, you accidentally pusbed <code>rc</code> version into the <code>latest</code> channel.
+Then, you could add the <code>deprecated</code> label to this version , and re-tag the previous stable version in order to keep the stable one via <code>npm install</code>.
+<code>dist-tag</code> command helps to achieve that.</p>
+<pre><code>$ npm deprecate appium@1.21.0-rc.0 "this release should be in rc channel" --tag=latest
+$ npm dist-tag add appium@1.20.2 latest
+</code></pre>
+
+<p>You can confirm if the above step works by calling <code>npm install -g appium</code>.
+Once you can install <code>appium@1.20.2</code>, the above step worked.
+(You may need to wait for a few minutes because of npm caching.)</p></div>
         
     </div>
 
