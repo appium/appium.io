@@ -421,7 +421,7 @@
 <p>什么都不用做就可以运行你的测试。</p>
 <h3 id="appium-ios">在 Appium 上运行你的测试应用（IOS）</h3>
 <p>想知道当前要做什么，最好的方法就是是查看示例代码：</p>
-<p><a href="https://github.com/appium/appium/tree/master/sample-code/javascript-webdriverio">Node.js</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/python">Python</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/php">PHP</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/ruby">Ruby</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/java">Java</a></p>
+<p><a href="https://github.com/appium/appium/tree/master/sample-code/javascript-webdriverio">Node.js</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/python">Python</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/ruby">Ruby</a> | <a href="https://github.com/appium/appium/tree/master/sample-code/java">Java</a></p>
 <p>基本上，首先确认 Appium 正在运行：</p>
 <pre><code>node .
 </code></pre>
@@ -439,10 +439,6 @@
           
           <li role="presentation" class="">
               <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#0_3" data-language="php" data-toggle="tab">PHP</a>
           </li>
           
         </ul>
@@ -477,24 +473,8 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="php">public static $browsers = array(
-    array(
-        'desiredCapabilities' =&gt; array(
-            'platformName' =&gt; 'iOS',
-            'platformVersion' =&gt; '7.1',
-            'deviceName' =&gt; 'iPhone Simulator',
-            'app' =&gt; $myApp
-        )
-    )
-);
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 
 
@@ -557,10 +537,6 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
               <a href="#1_2" data-language="javascript" data-toggle="tab">Javascript</a>
           </li>
           
-          <li role="presentation" class="">
-              <a href="#1_3" data-language="php" data-toggle="tab">PHP</a>
-          </li>
-          
         </ul>
         <div class="tab-content">
           
@@ -593,24 +569,8 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="1_3">
-            <pre><code class="php">public static $browsers = array(
-    array(
-        'desiredCapabilities' =&gt; array(
-            'platformName' =&gt; 'Android',
-            'platformVersion' =&gt; '4.4',
-            'deviceName' =&gt; 'Android Emulator',
-            'app' =&gt; $myApp
-        )
-    )
-);
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 
 
@@ -639,10 +599,6 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
           
           <li role="presentation" class="">
               <a href="#2_2" data-language="javascript" data-toggle="tab">Javascript</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#2_3" data-language="php" data-toggle="tab">PHP</a>
           </li>
           
         </ul>
@@ -686,27 +642,8 @@ capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY: ".MainActivity");
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="2_3">
-            <pre><code class="php">public static $browsers = array(
-    array(
-        'desiredCapabilities' =&gt; array(
-            'automationName' =&gt; 'Selendroid',
-            'platformName' =&gt; 'Android',
-            'platformVersion' =&gt; '2.3',
-            'deviceName' =&gt; 'Android Emulator',
-            'app' =&gt; $myApp,
-            'appPackage' =&gt; 'com.mycompany.package',
-            'appActivity'=&gt; '.MainActivity'
-        )
-    )
-);
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 
 

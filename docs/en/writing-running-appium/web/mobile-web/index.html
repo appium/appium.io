@@ -1947,10 +1947,6 @@ for the correct preferences to have been set.</p>
               <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
           </li>
           
-          <li role="presentation" class="">
-              <a href="#0_4" data-language="php" data-toggle="tab">PHP</a>
-          </li>
-          
         </ul>
         <div class="tab-content">
           
@@ -1997,25 +1993,8 @@ capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="php">public static $browsers = array(
-    array(
-        'desiredCapabilities' =&gt; array(
-            'platformName' =&gt; 'iOS',
-            'platformVersion' =&gt; '13.2',
-            'automationName' =&gt; 'XCUITest',
-            'browserName' =&gt; 'Safari',
-            'deviceName' =&gt; 'iPhone 11'
-        )
-    )
-);
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 
 
@@ -2072,10 +2051,6 @@ documentation.</p>
               <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
           </li>
           
-          <li role="presentation" class="">
-              <a href="#1_2" data-language="php" data-toggle="tab">PHP</a>
-          </li>
-          
         </ul>
         <div class="tab-content">
           
@@ -2117,38 +2092,8 @@ driver.quit()
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="1_2">
-            <pre><code class="php">class ContextTests extends PHPUnit_Extensions_AppiumTestCase
-{
-    public static $browsers = array(
-        array(
-            'desiredCapabilities' =&gt; array(
-                'platformName' =&gt; 'iOS',
-                'platformVersion' =&gt; '7.1',
-                'automationName' =&gt; 'XCUITest',
-                'browserName' =&gt; 'Safari',
-                'deviceName' =&gt; 'iPhone 11'
-            )
-        )
-    );
-
-    public function testThings()
-    {
-        $this-&gt;get('http://saucelabs.com/test/guinea-pig');
-
-        $div = $this-&gt;byId('i_am_an_id');
-        $this-&gt;assertEquals('I am a div', $div-&gt;text());
-
-        $this-&gt;byId('comments')-&gt;sendKeys('My comment');
-    }
-}
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 
 
@@ -2182,10 +2127,6 @@ these to run your test in Chrome:</p>
           
           <li role="presentation" class="">
               <a href="#2_3" data-language="ruby" data-toggle="tab">Ruby</a>
-          </li>
-          
-          <li role="presentation" class="">
-              <a href="#2_4" data-language="php" data-toggle="tab">PHP</a>
           </li>
           
         </ul>
@@ -2234,25 +2175,8 @@ capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="2_4">
-            <pre><code class="php">public static $browsers = array(
-    array(
-        'desiredCapabilities' =&gt; array(
-            'platformName' =&gt; 'Android',
-            'platformVersion' =&gt; '9.0',
-            'browserName' =&gt; 'Chrome',
-            'automationName' =&gt; 'UIAutomator2',
-            'deviceName' =&gt; 'Android Emulator'
-        )
-    )
-);
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 
 
