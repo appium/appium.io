@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:12.22.1-alpine3.11
 WORKDIR '/root'
 RUN apk add git python2 py-pip
 COPY ./package.json ./
