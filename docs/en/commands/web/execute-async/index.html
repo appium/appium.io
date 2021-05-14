@@ -1946,10 +1946,6 @@
               <a href="#0_4" data-language="csharp" data-toggle="tab">C#</a>
           </li>
           
-          <li role="presentation" class="">
-              <a href="#0_5" data-language="php" data-toggle="tab">PHP</a>
-          </li>
-          
         </ul>
         <div class="tab-content">
           
@@ -2000,16 +1996,8 @@ execute_async_script("document.title")
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_5">
-            <pre><code class="php">// TODO PHP sample
-
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 
 
@@ -2022,7 +2010,7 @@ execute_async_script("document.title")
 <h2 id="description">Description</h2>
 <p>The executed script is assumed to be asynchronous and must signal that is done by invoking the provided callback, which is always provided as the final argument to the function. The value to this callback will be returned to the client.</p>
 <p>Asynchronous script commands may not span page loads. If an unload event is fired while waiting for a script result, an error should be returned to the client.</p>
-<p>The script argument defines the script to execute in teh form of a function body. The function will be invoked with the provided args array and the values may be accessed via the arguments object in the order specified. The final argument will always be a callback function that must be invoked to signal that the script has finished.</p>
+<p>The script argument defines the script to execute in the form of a function body. The function will be invoked with the provided args array and the values may be accessed via the arguments object in the order specified. The final argument will always be a callback function that must be invoked to signal that the script has finished.</p>
 <p>Arguments may be any JSON-primitive, array, or JSON object. JSON objects that define a WebElement reference will be converted to the corresponding DOM element. Likewise, any WebElements in the script result will be returned to the client as WebElement JSON objects.</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
@@ -2122,11 +2110,6 @@ execute_async_script("document.title")
 <td><a href="https://github.com/appium/ruby_lib/releases/latest">Ruby</a></td>
 <td>None</td>
 <td><a href="https://www.rubydoc.info/gems/selenium-webdriver/Selenium/WebDriver/Driver:execute_async_script">www.rubydoc.info</a></td>
-</tr>
-<tr>
-<td><a href="https://github.com/appium/php-client/releases/latest">PHP</a></td>
-<td>None</td>
-<td><a href="https://github.com/appium/php-client/">github.com</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/appium/appium-dotnet-driver/releases/latest">C#</a></td>

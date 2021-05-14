@@ -1887,6 +1887,12 @@
     
         <li class="first-level active"><a href="#list-of-client-libraries-with-appium-server-support">List of client libraries with Appium server support</a></li>
         
+            <li class="second-level"><a href="#appium-repository">Appium repository</a></li>
+            
+        
+            <li class="second-level"><a href="#community-based">Community based</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -1897,6 +1903,7 @@
 <p>These libraries wrap standard Selenium client libraries to provide all the regular selenium commands dictated by the <a href="https://w3c.github.io/webdriver/webdriver-spec.html">JSON Wire protocol</a>, and add extra commands related to controlling mobile devices, such as <strong>multi-touch gestures</strong> and <strong>screen orientation</strong>.</p>
 <p>Appium client libraries implement the <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON Wire Protocol</a> (an official draft extension to the standard protocol), and elements of the <a href="https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html">W3C Webdriver spec</a> (a transport-agnostic automation spec; this is where the MultiAction API is defined).</p>
 <p>The Appium server itself defines custom extensions to the official protocols, giving Appium users helpful access to various device behaviors (such as installing/uninstalling apps during the course of a test session). This is why we need Appium-specific clients, not just the 'vanilla' Selenium clients. Of course, Appium client libraries only <strong>add</strong> functionality (in fact, they simply extend the standard Selenium clients), so they can still be used to run regular Selenium sessions.</p>
+<h3 id="appium-repository">Appium repository</h3>
 <table>
 <thead>
 <tr>
@@ -1918,6 +1925,21 @@
 <td><a href="https://github.com/appium/java-client">https://github.com/appium/java-client</a></td>
 </tr>
 <tr>
+<td>C# (.NET)</td>
+<td><a href="https://github.com/appium/appium-dotnet-driver">https://github.com/appium/appium-dotnet-driver</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="community-based">Community based</h3>
+<table>
+<thead>
+<tr>
+<th>Language/Framework</th>
+<th>Github Repo and Installation Instructions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td>JavaScript (Node.js)</td>
 <td><a href="https://github.com/admc/wd">https://github.com/admc/wd</a></td>
 </tr>
@@ -1930,23 +1952,12 @@
 <td><a href="https://github.com/projectxyzio/web2driver">https://github.com/projectxyzio/web2driver</a></td>
 </tr>
 <tr>
-<td>Objective C</td>
-<td><a href="https://github.com/appium/selenium-objective-c">https://github.com/appium/selenium-objective-c</a></td>
-</tr>
-<tr>
-<td>PHP</td>
-<td><a href="https://github.com/appium/php-client">https://github.com/appium/php-client</a></td>
-</tr>
-<tr>
-<td>C# (.NET)</td>
-<td><a href="https://github.com/appium/appium-dotnet-driver">https://github.com/appium/appium-dotnet-driver</a></td>
-</tr>
-<tr>
 <td>RobotFramework</td>
 <td><a href="https://github.com/serhatbolsu/robotframework-appiumlibrary">https://github.com/serhatbolsu/robotframework-appiumlibrary</a></td>
 </tr>
 </tbody>
-</table></div>
+</table>
+<p>W3C WebDriver protocol compatible clients also work.</p></div>
         
     </div>
 

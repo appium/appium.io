@@ -1967,10 +1967,6 @@ the web view context on session initialization by setting the <code>autoWebview<
               <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
           </li>
           
-          <li role="presentation" class="">
-              <a href="#0_4" data-language="php" data-toggle="tab">PHP</a>
-          </li>
-          
         </ul>
         <div class="tab-content">
           
@@ -2060,36 +2056,8 @@ end
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="php">// assuming we have an initialized `driver` object in an AppiumTestCase
-
-public function testThings()
-{
-        $expected_contexts = array(
-                0 =&gt; 'NATIVE_APP',
-                1 =&gt; 'WEBVIEW_1'
-        );
-
-        $contexts = $this-&gt;contexts();
-        $this-&gt;assertEquals($expected_contexts, $contexts);
-
-        $this-&gt;context($contexts[1]);
-        $context = $this-&gt;context();
-        $this-&gt;assertEquals('WEBVIEW_1', $context);
-
-        // do webby stuff
-
-        $this-&gt;context('NATIVE_APP');
-
-        // do mobile stuff
-}
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 
 
