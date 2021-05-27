@@ -62,7 +62,7 @@
     "eslint": "^7.2.0",
     "eslint-config-appium": "4.x",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-promise": "^5.1.0",
     "fancy-log": "^1.3.3",
     "handlebars": "^4.0.10",
