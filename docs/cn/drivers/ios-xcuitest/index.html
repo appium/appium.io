@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Appium 客户端 - Appium</title>
+    <title>XCUITest (iOS) - Appium</title>
 
     <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -65,25 +65,25 @@
                 
                 
                 
-                    <li class="menu-item dropdown active">
+                    <li class="menu-item dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li>
-    <a href="../intro/">简介</a>
-</li>
-
-                        
-                            
-<li class="active">
-    <a href="./">Appium 客户端</a>
+    <a href="../../about-appium/intro/">简介</a>
 </li>
 
                         
                             
 <li>
-    <a href="../platform-support/">已支持的平台</a>
+    <a href="../../about-appium/appium-clients/">Appium 客户端</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/platform-support/">已支持的平台</a>
 </li>
 
                         
@@ -94,25 +94,25 @@
                 
                 
                 
-                    <li class="menu-item dropdown">
+                    <li class="menu-item dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">驱动程序 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
-<li>
-    <a href="../../drivers/ios-xcuitest/">XCUITest (iOS)</a>
+<li class="active">
+    <a href="./">XCUITest (iOS)</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+    <a href="../ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
 </li>
 
                         
                             
 <li>
-    <a href="../../drivers/android-uiautomator2/">UIAutomator2 (Android)</a>
+    <a href="../android-uiautomator2/">UIAutomator2 (Android)</a>
 </li>
 
                         
@@ -387,12 +387,12 @@
                 </li>
                 
                     <li>
-                        <a rel="next" href="../intro/">
+                        <a rel="next" href="../../about-appium/platform-support/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li>
-                        <a rel="prev" href="../platform-support/">
+                        <a rel="prev" href="../ios-xcuitest-real-devices/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -408,80 +408,143 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#appium">支持 Appium 服务器的客户端程序库列表</a></li>
+        <li class="first-level active"><a href="#ios-xcuitest">iOS 的 XCUITest 驱动</a></li>
         
-            <li class="second-level"><a href="#community-based">Community based</a></li>
+            <li class="second-level"><a href="#_1">需求与依赖</a></li>
+            
+        
+            <li class="second-level"><a href="#uiautomation">迁移自 UIAutomation 驱动</a></li>
+            
+        
+            <li class="second-level"><a href="#_2">使用</a></li>
+            
+        
+            <li class="second-level"><a href="#_3">功能参数</a></li>
+            
+        
+            <li class="second-level"><a href="#_4">命令</a></li>
+            
+        
+            <li class="second-level"><a href="#_5">基础设置</a></li>
+            
+        
+            <li class="second-level"><a href="#_6">真机设备设置</a></li>
+            
+        
+            <li class="second-level"><a href="#_7">可选设置</a></li>
+            
+        
+            <li class="second-level"><a href="#_8">运行测试生成的文件</a></li>
+            
+        
+            <li class="second-level"><a href="#_9">键盘设置</a></li>
+            
+        
+            <li class="second-level"><a href="#_10">可访问偏好设置调整</a></li>
             
         
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="appium"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/cn/about-appium/appium-clients.md">
+        <div class="col-md-9 documentation" role="main"><h2 id="ios-xcuitest"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/cn/drivers/ios-xcuitest.md">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>支持 Appium 服务器的客户端程序库列表</h2>
-<p>这些库封装了标准的 Selenium 客户端，提供了所有 <a href="https://w3c.github.io/webdriver/webdriver-spec.html">JSON Wire protocol</a> 指定的常规 selenium 命令，并额外添加操控移动设备相关的命令，例如 <strong>多点触控手势</strong> 和 <strong>屏幕方向</strong>。</p>
-<p>Appium 客户端程序库实现了 <a href="https://github.com/SeleniumHQ/mobile-spec/blob/master/spec-draft.md">Mobile JSON Wire Protocol</a>（一个基于官方标准协议的扩展草案），和 <a href="https://dvcs.w3.org/hg/webdriver/raw-file/default/webdriver-spec.html">W3C Webdriver 规范</a>（一个无关传输的自动化规范；这是定义 MultiAction API 的地方）中的元素。</p>
-<p>Appium 服务端自身定义了基于官方协议的扩展，帮助 Appium 用户使用各种设备操作（例如在测试会话过程中安装 / 卸载应用）。这就是为什么我们需要 Appium 特定的客户端，而不只是「原生（vanilla）」的 Selenium 客户端。当然，Appium 客户端程序库只是<strong>增加</strong>了功能（实际上，它们只是扩展了标准 Selenium 客户端），因此它们仍适用于常规的 Selenium 会话。</p>
-<table>
-<thead>
-<tr>
-<th>语言 / 框架</th>
-<th>Github 仓库和安装指南</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ruby</td>
-<td><a href="https://github.com/appium/ruby_lib">https://github.com/appium/ruby_lib</a>, <a href="https://github.com/appium/ruby_lib_core">https://github.com/appium/ruby_lib_core</a></td>
-</tr>
-<tr>
-<td>Python</td>
-<td><a href="https://github.com/appium/python-client">https://github.com/appium/python-client</a></td>
-</tr>
-<tr>
-<td>Java</td>
-<td><a href="https://github.com/appium/java-client">https://github.com/appium/java-client</a></td>
-</tr>
-<tr>
-<td>C# (.NET)</td>
-<td><a href="https://github.com/appium/appium-dotnet-driver">https://github.com/appium/appium-dotnet-driver</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="community-based">Community based</h3>
-<table>
-<thead>
-<tr>
-<th>语言 / 框架</th>
-<th>Github 仓库和安装指南</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>JavaScript (Node.js)</td>
-<td><a href="https://github.com/admc/wd">https://github.com/admc/wd</a></td>
-</tr>
-<tr>
-<td>JavaScript (Node.js)</td>
-<td><a href="https://github.com/webdriverio/webdriverio">https://github.com/webdriverio/webdriverio</a></td>
-</tr>
-<tr>
-<td>JavaScript (Browser)</td>
-<td><a href="https://github.com/projectxyzio/web2driver">https://github.com/projectxyzio/web2driver</a></td>
-</tr>
-<tr>
-<td>RobotFramework</td>
-<td><a href="https://github.com/serhatbolsu/robotframework-appiumlibrary">https://github.com/serhatbolsu/robotframework-appiumlibrary</a></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>EOF.</p>
-<p>由 @黑水 翻译，TesterHome 社区 id：sanlengjingvv</p>
-<p>@lihuazhang 校验</p>
-<p>翻译：@<a href="https://github.com/Pandorym">Pandorym</a>
-Last english version: ef49649f5e53a644f6732575734aeaea78068234, Feb 22, 2019</p></div>
+  </a>iOS 的 XCUITest 驱动</h2>
+<p>iOS 应用的自动化测试，Appium 主要通过 <code>XCUITest</code> 驱动进行驱动。<em>(如果您是 Appium 新手？ 可以参阅： <a href="#TODO">introduction to Appium drivers</a>)</em>。这个驱动通过苹果公司的 <a href="https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/testing_with_xcode/chapters/09-ui_testing.html">XCUITest</a> 库，让自动化测试可以更方便地执行 App 自动化测试。它是通过 <a href="https://github.com/facebook/webdriveragent">WebDriverAgent</a> 服务对 XCUITest 进行访问。WebDriverAgent（也称之为 “ WDA ”）是 Facebook 公司的一个项目，Appium 的核心团队为其做出了许多贡献。WDA 是一个 WebDriver兼容的服务，服务可以运行在 iOS 模拟器或真机上，并且调用 XCUITest API。WDA 作为 Appium 的 XCUITest 驱动管理器，对用户而言是一个黑盒进程，通过 WDA 对往来的通信进行代理，并提供许多额外的能力（举个例子：如管理模拟器等方法）。</p>
+<p>XCUITest 驱动的开发过程，记录在了 <a href="https://github.com/appium/appium-xcuitest-driver">appium-xcuitest-driver</a> 仓库中。</p>
+<h3 id="_1">需求与依赖</h3>
+<p>在 Appium 常规依赖之外：</p>
+<ul>
+<li>苹果公司从的 XCUITest 库只适用于 iOS 版本大于等于 iOS 9.3 的模拟器或真机设备。</li>
+<li>需要一台 macOS 10.11 或 10.12 的 Mac 电脑。</li>
+<li>Xcode 7 或更高版本的 Xcode.</li>
+<li>XCUITest 驱动从 Appium 1.6 开始在 Appium 中可用。</li>
+<li>为了驱动使用正确，附加的系统库是必需的（请参阅下面的安装部分）。</li>
+</ul>
+<h3 id="uiautomation">迁移自 UIAutomation 驱动</h3>
+<p>如果您正在从 Appium 的旧驱动程序：<a href="/docs/en/drivers/ios-uiautomation/index.html">UIAutomation-based driver</a> 迁移到XCUITest驱动，您可能想知道这个：<a href="/docs/en/advanced-concepts/migrating-to-xcuitest/index.html">迁移指南</a>。</p>
+<h3 id="_2">使用</h3>
+<p>在使用 XCUITest 驱动来创建一个会话链接时，需要包含 <code>automationName</code> <a href="#TODO">capability</a> 参数在您的 <a href="#TODO">创建新会话请求</a>中，且其值应该是：<code>XCUITest</code>。当然，您也至少传递这些必传参数：<code>platformName</code>, <code>platformVersion</code>, <code>deviceName</code> 与 <code>app</code>。</p>
+<p>在 iPhone 与 iPad 设备上，参数 <code>platformName</code> 需要是 <code>iOS</code>。在 tvOS 设备上，参数 <code>platformName</code> 需要是 <code>tvOS</code>。</p>
+<ul>
+<li>iOS
+   <code>json
+   {
+      "automationName": "XCUITest",
+      "platformName": "iOS",
+      "platformVersion": "12.2",
+      "deviceName": "iPhone 8",
+      ...
+   }</code></li>
+<li>tvOS
+   <code>json
+   {
+      "automationName": "XCUITest",
+      "platformName": "tvOS",
+      "platformVersion": "12.2",
+      "deviceName": "Apple TV",
+      ...
+   }</code></li>
+</ul>
+<h3 id="_3">功能参数</h3>
+<p>XCUITest 驱动支持许多通用的功能参数 <a href="/docs/en/writing-running-appium/caps/index.html">Appium
+capabilities</a>, 同时，有许多特有的功能参数，可以参考这篇文档查找这些功能参数：<a href="https://github.com/appium/appium-xcuitest-driver#desired-capabilities">appium-xcuitest-driver
+README</a>.</p>
+<p>如果要在 Safari 上测试，而不是在您的 App 上测试的话，请设置 <code>app</code> 为空，并且设置 <code>browserName</code> 为 <code>Safari</code>。</p>
+<h3 id="_4">命令</h3>
+<p>如果需要查看 Appium 支持的命令，及它们是如何映射到 XCUITest 驱动的，可以参考：<a href="#TODO">API
+Reference</a>.</p>
+<h3 id="_5">基础设置</h3>
+<p><em>(我们推荐使用 <a href="https://brew.sh">Homebrew</a> 来安装系统依赖)</em></p>
+<ol>
+<li>确保您拥有 Appium 的基础依赖（例如：Node 与 NPM）来安装和配置 Appium。</li>
+</ol>
+<p>如果您的自动化测试不使用真机运行，那么您已经完成设置了! 使用模拟器运行一个自动化测试app, 参数 <code>app</code> 需要设置为 App 的绝对路径或下载地址，它需要是一个后缀为 <code>.app</code> 或 <code>.app.zip</code> 这样的，为模拟器构建的 App 文件。</p>
+<h3 id="_6">真机设备设置</h3>
+<p>Automating a real device with XCUITest is considerably more complicated, 
+在真机上使用 XCUITest 进行自动化要复杂得多，原因是
+苹果对在真实设备上运行应用程序的限制。请查看 <a href="../ios-xcuitest-real-devices/">XCUITest real device setup doc</a> 获取介绍 。</p>
+<p>一旦设置完成，在真机上运行会话可以使用这些功能：</p>
+<ul>
+<li><code>app</code> 或 <code>bundleId</code> - 一个是：指定应用程序 (您使用的 <code>.ipa</code> 文件的本地路径或下载地址), 另一个是：如果您已经安装了 App, 用以标示您需要让 Appium 拉起哪一个应用。</li>
+<li><code>udid</code> - 指定要在哪个设备上运行测试。 如果只有一个设备的话，它可以设置为 <code>auto</code> , Appium 将会自动找到并使用该设备。</li>
+</ul>
+<h3 id="_7">可选设置</h3>
+<ul>
+<li>
+<p>安装 idb 可以更好地处理各种iOS模拟器操作，
+例如:生物特征、地理位置设置和窗口聚焦。</p>
+<ul>
+<li>参考 https://github.com/appium/appium-idb#installation 以安装一些必要的库 (自 Appium 1.14.0 起 )</li>
+</ul>
+</li>
+<li>
+<p>安装 <a href="https://github.com/wix/AppleSimulatorUtils">AppleSimulatorUtils</a>
+以设置 <a href="https://github.com/appium/appium-xcuitest-driver#desired-capabilities">权限相关参数</a></p>
+</li>
+</ul>
+<h3 id="_8">运行测试生成的文件</h3>
+<p>在 iOS 上测试生成的文件有时会很大。 它包括：日志文件、临时文件以及Xcode运行时产生的数据。如果需要删除这些文件，一般来说，可以从以下地址找到它们：</p>
+<pre><code>$HOME/Library/Logs/CoreSimulator/*
+$HOME/Library/Developer/Xcode/DerivedData/*
+</code></pre>
+
+<h3 id="_9">键盘设置</h3>
+<p>高于 Appium 1.14.0，Appium 默认配置键盘首选项以让测试运行地更加稳定。您可以通过这些 API 来设置。</p>
+<ul>
+<li>可以在 <em>Keyboards</em> 关闭 <code>Auto-Correction</code></li>
+<li>可以在 <em>Keyboards</em> 关闭 <code>Predictive</code></li>
+<li>Mark keyboard tutorial as complete</li>
+<li>(仅模拟器生效) 打开虚拟键盘</li>
+</ul>
+<h3 id="_10">可访问偏好设置调整</h3>
+<p>在某些情况下，启用以下首选项有助于使某些视图元素可访问。
+Appium不会自动修改这些设置，因为它们可能会影响被测试应用程序的执行方式。
+如果需要这些设置，需要您手动设置。</p>
+<ul>
+<li>可以在 <em>Settings &gt; Accessibility</em> 打开 <code>Spoken Content</code></li>
+<li>可以在 <em>Settings &gt; Accessibility</em> 打开 <code>Speak Selection</code></li>
+</ul></div>
         
     </div>
 
