@@ -1642,12 +1642,12 @@
         }, 
         {
             "location": "/commands/session/logs/get-log-types/", 
-            "text": "Get available log types\n\n\nGet the log for a given log type. Log buffer is reset after each request\n\n\nExample Usage\n\n\n// Java\nSet\nString\n logTypes = driver.manage().logs().getAvailableLogTypes();\n\n\n\n\n\n# Python\nlog_types = driver.log_types\n\n\n\n\n\n// Javascript\n// webdriver.io example\ndriver.getLogTypes()\n\n// wd example\nconst logTypes = await driver.logTypes();\n\n\n\n\n\n# Ruby\n# ruby_lib example\nget_available_log_types\n\n# ruby_lib_core example\n@driver.logs.available_types\n\n\n\n\n\n// C#\nIReadOnlyCollection\nstring\n logTypes = driver.Manage().Logs.AvailableLogTypes;\n\n\n\n\n\nSupport\n\n\nAppium Server\n\n\n\n\n\n\n\n\nPlatform\n\n\nDriver\n\n\nPlatform Versions\n\n\nAppium Version\n\n\nDriver Version\n\n\n\n\n\n\n\n\n\n\niOS\n\n\nXCUITest\n\n\n9.3+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUIAutomation\n\n\n8.0 to 9.3\n\n\nAll\n\n\nAll\n\n\n\n\n\n\nAndroid\n\n\nEspresso\n\n\n?+\n\n\n1.9.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUiAutomator2\n\n\n?+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUiAutomator\n\n\n4.3+\n\n\nAll\n\n\nAll\n\n\n\n\n\n\nMac\n\n\nMac\n\n\n?+\n\n\n1.6.4+\n\n\nAll\n\n\n\n\n\n\nWindows\n\n\nWindows\n\n\n10+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nAppium Clients\n\n\n\n\n\n\n\n\nLanguage\n\n\nSupport\n\n\nDocumentation\n\n\n\n\n\n\n\n\n\n\nJava\n\n\nAll\n\n\nseleniumhq.github.io\n\n\n\n\n\n\nPython\n\n\nAll\n\n\nselenium-python.readthedocs.io\n\n\n\n\n\n\nJavascript (WebdriverIO)\n\n\nAll\n\n\n\n\n\n\n\n\nJavascript (WD)\n\n\nAll\n\n\ngithub.com\n\n\n\n\n\n\nRuby\n\n\nAll\n\n\nwww.rubydoc.info\n\n\n\n\n\n\nC#\n\n\nAll\n\n\ngithub.com\n\n\n\n\n\n\n\n\nHTTP API Specifications\n\n\nEndpoint\n\n\nGET /session/:session_id/log/types\n\n\nURL Parameters\n\n\n\n\n\n\n\n\nname\n\n\ndescription\n\n\n\n\n\n\n\n\n\n\nsession_id\n\n\nID of the session to route the command to\n\n\n\n\n\n\n\n\nJSON Parameters\n\n\nNone\n\n\nResponse\n\n\nThe list of log types (\narray\nstring\n)\n\n\nSee Also\n\n\n\n\nJSONWP Specification", 
+            "text": "Get available log types\n\n\nGet available log types as a list of strings\n\n\nExample Usage\n\n\n// Java\nSet\nString\n logTypes = driver.manage().logs().getAvailableLogTypes();\n\n\n\n\n\n# Python\nlog_types = driver.log_types\n\n\n\n\n\n// Javascript\n// webdriver.io example\ndriver.getLogTypes()\n\n// wd example\nconst logTypes = await driver.logTypes();\n\n\n\n\n\n# Ruby\n# ruby_lib example\nget_available_log_types\n\n# ruby_lib_core example\n@driver.logs.available_types\n\n\n\n\n\n// C#\nIReadOnlyCollection\nstring\n logTypes = driver.Manage().Logs.AvailableLogTypes;\n\n\n\n\n\nSupport\n\n\nAppium Server\n\n\n\n\n\n\n\n\nPlatform\n\n\nDriver\n\n\nPlatform Versions\n\n\nAppium Version\n\n\nDriver Version\n\n\n\n\n\n\n\n\n\n\niOS\n\n\nXCUITest\n\n\n9.3+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUIAutomation\n\n\n8.0 to 9.3\n\n\nAll\n\n\nAll\n\n\n\n\n\n\nAndroid\n\n\nEspresso\n\n\n?+\n\n\n1.9.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUiAutomator2\n\n\n?+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUiAutomator\n\n\n4.3+\n\n\nAll\n\n\nAll\n\n\n\n\n\n\nMac\n\n\nMac\n\n\n?+\n\n\n1.6.4+\n\n\nAll\n\n\n\n\n\n\nWindows\n\n\nWindows\n\n\n10+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nAppium Clients\n\n\n\n\n\n\n\n\nLanguage\n\n\nSupport\n\n\nDocumentation\n\n\n\n\n\n\n\n\n\n\nJava\n\n\nAll\n\n\nseleniumhq.github.io\n\n\n\n\n\n\nPython\n\n\nAll\n\n\nselenium-python.readthedocs.io\n\n\n\n\n\n\nJavascript (WebdriverIO)\n\n\nAll\n\n\n\n\n\n\n\n\nJavascript (WD)\n\n\nAll\n\n\ngithub.com\n\n\n\n\n\n\nRuby\n\n\nAll\n\n\nwww.rubydoc.info\n\n\n\n\n\n\nC#\n\n\nAll\n\n\ngithub.com\n\n\n\n\n\n\n\n\nHTTP API Specifications\n\n\nEndpoint\n\n\nGET /session/:session_id/log/types\n\n\nURL Parameters\n\n\n\n\n\n\n\n\nname\n\n\ndescription\n\n\n\n\n\n\n\n\n\n\nsession_id\n\n\nID of the session to route the command to\n\n\n\n\n\n\n\n\nJSON Parameters\n\n\nNone\n\n\nResponse\n\n\nThe list of log types (\narray\nstring\n)\n\n\nSee Also\n\n\n\n\nJSONWP Specification", 
             "title": "Get Log Types"
         }, 
         {
             "location": "/commands/session/logs/get-log-types/#get-available-log-types", 
-            "text": "Get the log for a given log type. Log buffer is reset after each request", 
+            "text": "Get available log types as a list of strings", 
             "title": "Get available log types"
         }, 
         {
@@ -1947,7 +1947,7 @@
         }, 
         {
             "location": "/commands/session/settings/get-settings/", 
-            "text": "Retrieve Device Settings\n\n\nRetrieve the current settings on the device\n\n\nExample Usage\n\n\n// Java\nMap\nString, Object\n settings = driver.getSettings();\n\n\n\n\n\n# Python\nself.driver.get_settings\n\n\n\n\n\n// Javascript\n// webdriver.io example\nlet settings = driver.getSettings();\n\n// wd example\nawait driver.settings();\n\n\n\n\n\n# Ruby\n# ruby_lib example\nget_settings\n\n# ruby_lib_core example\n@driver.get_settings\n\n\n\n\n\n// Not supported\n\n\n\n\nSupport\n\n\nAppium Server\n\n\n\n\n\n\n\n\nPlatform\n\n\nDriver\n\n\nPlatform Versions\n\n\nAppium Version\n\n\nDriver Version\n\n\n\n\n\n\n\n\n\n\niOS\n\n\nXCUITest\n\n\n9.3+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUIAutomation\n\n\n8.0 to 9.3\n\n\nAll\n\n\nAll\n\n\n\n\n\n\nAndroid\n\n\nEspresso\n\n\n?+\n\n\n1.9.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUiAutomator2\n\n\n?+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUiAutomator\n\n\n4.3+\n\n\nAll\n\n\nAll\n\n\n\n\n\n\nMac\n\n\nMac\n\n\n?+\n\n\n1.6.4+\n\n\nAll\n\n\n\n\n\n\nWindows\n\n\nWindows\n\n\n10+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nAppium Clients\n\n\n\n\n\n\n\n\nLanguage\n\n\nSupport\n\n\nDocumentation\n\n\n\n\n\n\n\n\n\n\nJava\n\n\nAll\n\n\nappium.github.io\n\n\n\n\n\n\nPython\n\n\nNone\n\n\nappium.github.io\n\n\n\n\n\n\nJavascript (WebdriverIO)\n\n\nAll\n\n\n\n\n\n\n\n\nJavascript (WD)\n\n\nAll\n\n\ngithub.com\n\n\n\n\n\n\nRuby\n\n\nNone\n\n\nwww.rubydoc.info\n\n\n\n\n\n\nC#\n\n\nNone\n\n\n\n\n\n\n\n\n\n\nHTTP API Specifications\n\n\nEndpoint\n\n\nGET /session/:session_id/appium/settings\n\n\nURL Parameters\n\n\n\n\n\n\n\n\nname\n\n\ndescription\n\n\n\n\n\n\n\n\n\n\nsession_id\n\n\nID of the session to route the command to\n\n\n\n\n\n\n\n\nJSON Parameters\n\n\nNone\n\n\nResponse\n\n\na JSON hash of all the currently specified settings, see \nSettings API\n. (\narray\nobject\n)\n\n\nSee Also\n\n\n\n\nJSONWP Specification", 
+            "text": "Retrieve Device Settings\n\n\nRetrieve the current settings on the device\n\n\nExample Usage\n\n\n// Java\nMap\nString, Object\n settings = driver.getSettings();\n\n\n\n\n\n# Python\nself.driver.get_settings()\n\n\n\n\n\n// Javascript\n// webdriver.io example\nlet settings = driver.getSettings();\n\n// wd example\nawait driver.settings();\n\n\n\n\n\n# Ruby\n# ruby_lib example\nget_settings\n\n# ruby_lib_core example\n@driver.get_settings\n\n\n\n\n\n// Not supported\n\n\n\n\nSupport\n\n\nAppium Server\n\n\n\n\n\n\n\n\nPlatform\n\n\nDriver\n\n\nPlatform Versions\n\n\nAppium Version\n\n\nDriver Version\n\n\n\n\n\n\n\n\n\n\niOS\n\n\nXCUITest\n\n\n9.3+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUIAutomation\n\n\n8.0 to 9.3\n\n\nAll\n\n\nAll\n\n\n\n\n\n\nAndroid\n\n\nEspresso\n\n\n?+\n\n\n1.9.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUiAutomator2\n\n\n?+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nUiAutomator\n\n\n4.3+\n\n\nAll\n\n\nAll\n\n\n\n\n\n\nMac\n\n\nMac\n\n\n?+\n\n\n1.6.4+\n\n\nAll\n\n\n\n\n\n\nWindows\n\n\nWindows\n\n\n10+\n\n\n1.6.0+\n\n\nAll\n\n\n\n\n\n\n\n\nAppium Clients\n\n\n\n\n\n\n\n\nLanguage\n\n\nSupport\n\n\nDocumentation\n\n\n\n\n\n\n\n\n\n\nJava\n\n\nAll\n\n\nappium.github.io\n\n\n\n\n\n\nPython\n\n\nNone\n\n\nappium.github.io\n\n\n\n\n\n\nJavascript (WebdriverIO)\n\n\nAll\n\n\n\n\n\n\n\n\nJavascript (WD)\n\n\nAll\n\n\ngithub.com\n\n\n\n\n\n\nRuby\n\n\nNone\n\n\nwww.rubydoc.info\n\n\n\n\n\n\nC#\n\n\nNone\n\n\n\n\n\n\n\n\n\n\nHTTP API Specifications\n\n\nEndpoint\n\n\nGET /session/:session_id/appium/settings\n\n\nURL Parameters\n\n\n\n\n\n\n\n\nname\n\n\ndescription\n\n\n\n\n\n\n\n\n\n\nsession_id\n\n\nID of the session to route the command to\n\n\n\n\n\n\n\n\nJSON Parameters\n\n\nNone\n\n\nResponse\n\n\na JSON hash of all the currently specified settings, see \nSettings API\n. (\narray\nobject\n)\n\n\nSee Also\n\n\n\n\nJSONWP Specification", 
             "title": "Get Device Settings"
         }, 
         {
@@ -1957,7 +1957,7 @@
         }, 
         {
             "location": "/commands/session/settings/get-settings/#example-usage", 
-            "text": "// Java\nMap String, Object  settings = driver.getSettings();  # Python\nself.driver.get_settings  // Javascript\n// webdriver.io example\nlet settings = driver.getSettings();\n\n// wd example\nawait driver.settings();  # Ruby\n# ruby_lib example\nget_settings\n\n# ruby_lib_core example\n@driver.get_settings  // Not supported", 
+            "text": "// Java\nMap String, Object  settings = driver.getSettings();  # Python\nself.driver.get_settings()  // Javascript\n// webdriver.io example\nlet settings = driver.getSettings();\n\n// wd example\nawait driver.settings();  # Ruby\n# ruby_lib example\nget_settings\n\n# ruby_lib_core example\n@driver.get_settings  // Not supported", 
             "title": "Example Usage"
         }, 
         {
@@ -9517,183 +9517,13 @@
         }, 
         {
             "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/", 
-            "text": "Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend\n\n\nUnfortunately Apple's XCTest framework does not natively support W3C standards for\nTouchAction interface implementation. Although, it provides rich set of gestures,\nincluding these, that are unique for iOS platform. It is possible to directly invoke these\ngestures in Appium starting from version 1.6.4-beta.\n\n\nIt is important to rememeber that XCTest and WDA are being constantly changed.\nThis means all \"mobile: *\" commands can be also subject of change in Appium\nwithout any preliminary notice.\n\n\nmobile: swipe\n\n\nThis gesture performs a simple \"swipe\" gesture on the particular screen element or\non the application element, which is usually the whole screen. This method does not\naccept coordinates and simply emulates single swipe with one finger. It might be\nuseful for such cases like album pagination, switching views, etc. More advanced\ncases may require to call \"mobile: dragFromToForDuration\", where one can supply\ncoordinates and duration.\n\n\nSupported arguments\n\n\n\n\ndirection\n: Either 'up', 'down', 'left' or 'right'. The argument is mandatory\n\n\nvelocity\n: This argument is optional and is only supported since Appium server version 1.19 and Xcode SDK version 11.4+.\n The value is measured in pixels per second and same values could behave differently on different devices depending on their display density. Higher values make\n swipe gesture faster (which usually scrolls larger areas if we apply it to a list) and lower\n values slow it down. Only values greater than zero have effect.\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to swipe on.\n Application element will be used instead if this argument is not provided\n\n\n\n\nUsage examples\n\n\n// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\nMap\nString, Object\n params = new HashMap\n();\nparams.put(\ndirection\n, \ndown\n);\nparams.put(\nvelocity\n, 2500);\nparams.put(\nelement\n, ((RemoteWebElement) element).getId());\njs.executeScript(\nmobile: swipe\n, params);\n\n\n\n\nmobile: scroll\n\n\nScrolls the element or the whole screen. Different scrolling strategies are supported.\nArguments define the choosen strategy: either 'name', 'direction', 'predicateString' or\n'toVisible' in that order. All strategies are exclusive and only one strategy\ncan be applied at a single moment of time. Use \"mobile: scroll\" to emulate precise\nscrolling in tables or collection views, where it is already known to which element\nthe scrolling should be performed. Although, there is one known limitation there: in case\nit is necessary to perform too many scroll gestures on parent container to reach the\nnecessary child element (tens of them) then the method call may fail.\n\n\nSupported arguments\n\n\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to scroll on.\n Application element will be used if this argument is not set\n\n\nname\n: the accessibility id of the child element, to which scrolling is performed.\n The same result can be achieved by setting \npredicateString\n argument to\n 'name == accessibilityId'. Has no effect if \nelement\n is not a container\n\n\ndirection\n: Either 'up', 'down', 'left' or 'right'. The main difference from\n \nswipe\n call with the same argument is that \nscroll\n will try to move the current viewport\n exactly to the next/previous page (the term \"page\" means the content, which fits into\n a single device screen)\n\n\npredicateString\n: the NSPredicate locator of the child element, to which\n the scrolling should be performed. Has no effect if \nelement\n is not a container\n\n\ntoVisible\n: Boolean parameter. If set to \ntrue\n then asks to scroll to\n the first visible \nelement\n in the parent container. Has no effect if \nelement\n is\n not set\n\n\n\n\nUsage examples\n\n\n# Python\ndriver.execute_script('mobile: scroll', {'direction': 'down'});\n\n\n\n\nmobile: pinch\n\n\nPerforms pinch gesture on the given element or on the application element.\n\n\nSupported arguments\n\n\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to pinch on.\n Application element will be used instead if this parameter is not provided\n\n\nscale\n: Pinch scale of type float. Use a scale between 0 and 1 to \"pinch close\" or\n zoom out and a scale greater than 1 to \"pinch open\" or zoom in. Mandatory parameter\n\n\nvelocity\n: The velocity of the pinch in scale factor per second (float value). Mandatory parameter\n\n\n\n\nUsage examples\n\n\n# Ruby\nexecute_script 'mobile: pinch', scale: 0.5, velocity: 1.1, element: element.ref\n\n\n\n\nmobile: doubleTap\n\n\nPerforms double tap gesture on the given element or on the screen.\n\n\nSupported arguments\n\n\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to double tap on\n\n\nx\n: Screen x tap coordinate of type float. Mandatory parameter only if \nelement\n is not set\n\n\ny\n: Screen y tap coordinate of type float. Mandatory parameter only if \nelement\n is not set\n\n\n\n\nUsage examples\n\n\n// javascript\ndriver.execute('mobile: doubleTap', {element: element.value.ELEMENT});\n\n\n\n\nmobile: touchAndHold\n\n\nPerforms long press gesture on the given element or on the screen.\n\n\nSupported arguments\n\n\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to long tap on\n\n\nduration\n: The float duration of press action in seconds. Mandatory patameter\n\n\nx\n: Screen x long tap coordinate of type float. Mandatory parameter only if \nelement\n is not set\n\n\ny\n: Screen y long tap coordinate of type float. Mandatory parameter only if \nelement\n is not set\n\n\n\n\nUsage examples\n\n\n// c#\nDictionary\nstring, object\n tfLongTap = new Dictionary\nstring, object\n();\ntfLongTap.Add(\nelement\n, element.Id);\ntfLongTap.Add(\nduration\n, 2.0);\n((IJavaScriptExecutor)driver).ExecuteScript(\nmobile: touchAndHold\n, tfLongTap);\n\n\n\n\nmobile: twoFingerTap\n\n\nPerforms two finger tap gesture on the given element or on the application element.\n\n\nSupported arguments\n\n\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to double tap on.\n Application element will be used instead if this\n parameter is not provided\n\n\n\n\nUsage examples\n\n\n// c#\nDictionary\nstring, object\n tfTap = new Dictionary\nstring, object\n();\ntfTap.Add(\nelement\n, element.Id);\n((IJavaScriptExecutor)driver).ExecuteScript(\nmobile: twoFingerTap\n, tfTap);\n\n\n\n\nmobile: tap\n\n\nPerforms tap gesture by coordinates on the given element or on the screen.\n\n\nSupported arguments\n\n\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to long tap on.\n \nx\n and \ny\n tap coordinates will be calulated relatively to the current element position on the\n screen if this argument is provided. Otherwise they should be calculated\n relatively to screen borders.\n\n\nx\n: x tap coordinate of type float. Mandatory parameter\n\n\ny\n: y tap coordinate of type float. Mandatory parameter\n\n\n\n\nUsage examples\n\n\n// FIXME: add an example\n\n\n\n\nmobile: dragFromToForDuration\n\n\nPerforms drag and drop gesture by coordinates. This can be done either on an element or\non the screen\n\n\nSupported arguments\n\n\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to perform drag on.\n All the coordinates will be calculated relatively this this element position on the screen.\n Absolute screen coordinates are expected if this argument is not set\n\n\nduration\n: Float number of seconds in range [0.5, 60]. How long the tap gesture at\n starting drag point should be before to start dragging. Mandatory parameter\n\n\nfromX\n: The x coordinate of starting drag point (type float). Mandatory parameter\n\n\nfromY\n: The y coordinate of starting drag point (type float). Mandatory parameter\n\n\ntoX\n: The x coordinate of ending drag point (type float). Mandatory parameter\n\n\ntoY\n: The y coordinate of ending drag point (type float). Mandatory parameter\n\n\n\n\nUsage examples\n\n\n// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\nMap\nString, Object\n params = new HashMap\n();\nparams.put(\nduration\n, 1.0);\nparams.put(\nfromX\n, 100);\nparams.put(\nfromY\n, 100);\nparams.put(\ntoX\n, 200);\nparams.put(\ntoY\n, 200);\nparams.put(\nelement\n, ((RemoteWebElement) element).getId());\njs.executeScript(\nmobile: dragFromToForDuration\n, params);\n\n\n\n\nmobile: selectPickerWheelValue\n\n\nPerforms selection of the next or previous picker wheel value. This might\nbe useful if these values are populated dynamically, so you don't know which\none to select or value selection does not work because of XCTest bug.\n\n\nSupported arguments\n\n\n\n\nelement\n: PickerWheel's internal element id (as hexadecimal hash string) to perform\n value selection on. The element must be of type XCUIElementTypePickerWheel. Mandatory parameter\n\n\norder\n: Either \nnext\n to select the value next to the current one\n from the target picker wheel or \nprevious\n to select the previous one. Mandatory parameter\n\n\noffset\n: The value in range [0.01, 0.5]. It defines how far from picker\n wheel's center the click should happen. The actual distance is calculated by\n multiplying this value to the actual picker wheel height. Too small offset value\n may not change the picker wheel value and too high value may cause the wheel to switch\n two or more values at once. Usually the optimal value is located in range [0.15, 0.3]. \n0.2\n by default\n\n\n\n\nUsage examples\n\n\n// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\nMap\nString, Object\n params = new HashMap\n();\nparams.put(\norder\n, \nnext\n);\nparams.put(\noffset\n, 0.15);\nparams.put(\nelement\n, ((RemoteWebElement) element).getId());\njs.executeScript(\nmobile: selectPickerWheelValue\n, params);\n\n\n\n\nmobile: rotateElement\n\n\nPerforms \nrotate\n gesture on the given element.\n\n\nSupported arguments\n\n\n\n\nelement\n: Internal element id (as hexadecimal hash string) to perform\n rotation on. Mandatory parameter\n\n\nrotation\n: The rotation of the gesture in radians. Mandatory parameter\n\n\nvelocity\n: The velocity of the rotation gesture in radians per second. Mandatory parameter\n\n\n\n\nUsage examples\n\n\n// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\njs.executeScript(\nmobile: rotateElement\n, ImmutableMap.of(\n    // rotate clockwise, 90 degrees\n    \nrotation\n, -Math.PI / 2,\n    // in approximately two seconds\n    \nvelocity\n, Math.PI / 4,\n    \nelement\n, ((RemoteWebElement) element).getId()\n));\n\n\n\n\nmobile: tapWithNumberOfTaps\n\n\nSends one or more taps with one or more touch points since Appium 1.17.1.\n\n\nSupported arguments\n\n\n\n\nelement\n: The internal element identifier (as hexadecimal hash string) to perform one or more taps.\n\n\nnumberOfTaps\n: The number of taps\n\n\nnumberOfTouches\n: The number of touch points\n\n\n\n\nUsage examples\n\n\n# Ruby\ne = @driver.find_element :id, 'target element'\n# Taps the element with a single touch point twice\n@driver.execute_script 'mobile: tapWithNumberOfTaps', {element: e.ref, numberOfTaps: 2, numberOfTouches: 1}\n\n\n\n\nReference\n\n\ntapWithNumberOfTaps:numberOfTouches:\n\n\nAdvanced Topics\n\n\nCheck \nWDA Element Commands API\n\nto get the information about the gestures implemented in Facebook WebDriverAgent.\nCheck Apple XCTest documentation on \nXCUIElement\n and\n\nXCUICoordinate\n methods list to get the information\nabout all gestures available there.", 
+            "text": "Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend\n\n\nUnfortunately Apple's XCTest framework does not natively support W3C standards for\nTouchAction interface implementation. Although, it provides rich set of gestures,\nincluding these, that are unique for iOS platform. It is possible to directly invoke these\ngestures in Appium starting from version 1.6.4-beta.\n\n\nIt is important to remember that XCTest and WDA are being constantly changed.\nThis means all \"mobile: *\" commands can be also subject of change in Appium\nwithout any preliminary notice.\n\n\n\n\nmobile: swipe\n\n\nmobile: scroll\n\n\nmobile: pinch\n\n\nmobile: doubleTap\n\n\nmobile: touchAndHold\n\n\nmobile: twoFingerTap\n\n\nmobile: tap\n\n\nmobile: dragFromToForDuration\n\n\nmobile: selectPickerWheelValue\n\n\nmobile: rotateElement\n\n\nmobile: tapWithNumberOfTaps\n\n\n\n\nAdvanced Topics\n\n\nCheck \nWDA Element Commands API\n\nto get the information about the gestures implemented in Facebook WebDriverAgent.\nCheck Apple XCTest documentation on \nXCUIElement\n and\n\nXCUICoordinate\n methods list to get the information\nabout all gestures available there.", 
             "title": "XCUITest Mobile Gestures"
         }, 
         {
             "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#automating-mobile-gestures-for-ios-with-webdriveragentxctest-backend", 
-            "text": "Unfortunately Apple's XCTest framework does not natively support W3C standards for\nTouchAction interface implementation. Although, it provides rich set of gestures,\nincluding these, that are unique for iOS platform. It is possible to directly invoke these\ngestures in Appium starting from version 1.6.4-beta.  It is important to rememeber that XCTest and WDA are being constantly changed.\nThis means all \"mobile: *\" commands can be also subject of change in Appium\nwithout any preliminary notice.", 
+            "text": "Unfortunately Apple's XCTest framework does not natively support W3C standards for\nTouchAction interface implementation. Although, it provides rich set of gestures,\nincluding these, that are unique for iOS platform. It is possible to directly invoke these\ngestures in Appium starting from version 1.6.4-beta.  It is important to remember that XCTest and WDA are being constantly changed.\nThis means all \"mobile: *\" commands can be also subject of change in Appium\nwithout any preliminary notice.   mobile: swipe  mobile: scroll  mobile: pinch  mobile: doubleTap  mobile: touchAndHold  mobile: twoFingerTap  mobile: tap  mobile: dragFromToForDuration  mobile: selectPickerWheelValue  mobile: rotateElement  mobile: tapWithNumberOfTaps", 
             "title": "Automating Mobile Gestures For iOS With WebDriverAgent/XCTest Backend"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-swipe", 
-            "text": "This gesture performs a simple \"swipe\" gesture on the particular screen element or\non the application element, which is usually the whole screen. This method does not\naccept coordinates and simply emulates single swipe with one finger. It might be\nuseful for such cases like album pagination, switching views, etc. More advanced\ncases may require to call \"mobile: dragFromToForDuration\", where one can supply\ncoordinates and duration.", 
-            "title": "mobile: swipe"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments", 
-            "text": "direction : Either 'up', 'down', 'left' or 'right'. The argument is mandatory  velocity : This argument is optional and is only supported since Appium server version 1.19 and Xcode SDK version 11.4+.\n The value is measured in pixels per second and same values could behave differently on different devices depending on their display density. Higher values make\n swipe gesture faster (which usually scrolls larger areas if we apply it to a list) and lower\n values slow it down. Only values greater than zero have effect.  element : The internal element identifier (as hexadecimal hash string) to swipe on.\n Application element will be used instead if this argument is not provided", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples", 
-            "text": "// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\nMap String, Object  params = new HashMap ();\nparams.put( direction ,  down );\nparams.put( velocity , 2500);\nparams.put( element , ((RemoteWebElement) element).getId());\njs.executeScript( mobile: swipe , params);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-scroll", 
-            "text": "Scrolls the element or the whole screen. Different scrolling strategies are supported.\nArguments define the choosen strategy: either 'name', 'direction', 'predicateString' or\n'toVisible' in that order. All strategies are exclusive and only one strategy\ncan be applied at a single moment of time. Use \"mobile: scroll\" to emulate precise\nscrolling in tables or collection views, where it is already known to which element\nthe scrolling should be performed. Although, there is one known limitation there: in case\nit is necessary to perform too many scroll gestures on parent container to reach the\nnecessary child element (tens of them) then the method call may fail.", 
-            "title": "mobile: scroll"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_1", 
-            "text": "element : The internal element identifier (as hexadecimal hash string) to scroll on.\n Application element will be used if this argument is not set  name : the accessibility id of the child element, to which scrolling is performed.\n The same result can be achieved by setting  predicateString  argument to\n 'name == accessibilityId'. Has no effect if  element  is not a container  direction : Either 'up', 'down', 'left' or 'right'. The main difference from\n  swipe  call with the same argument is that  scroll  will try to move the current viewport\n exactly to the next/previous page (the term \"page\" means the content, which fits into\n a single device screen)  predicateString : the NSPredicate locator of the child element, to which\n the scrolling should be performed. Has no effect if  element  is not a container  toVisible : Boolean parameter. If set to  true  then asks to scroll to\n the first visible  element  in the parent container. Has no effect if  element  is\n not set", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_1", 
-            "text": "# Python\ndriver.execute_script('mobile: scroll', {'direction': 'down'});", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-pinch", 
-            "text": "Performs pinch gesture on the given element or on the application element.", 
-            "title": "mobile: pinch"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_2", 
-            "text": "element : The internal element identifier (as hexadecimal hash string) to pinch on.\n Application element will be used instead if this parameter is not provided  scale : Pinch scale of type float. Use a scale between 0 and 1 to \"pinch close\" or\n zoom out and a scale greater than 1 to \"pinch open\" or zoom in. Mandatory parameter  velocity : The velocity of the pinch in scale factor per second (float value). Mandatory parameter", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_2", 
-            "text": "# Ruby\nexecute_script 'mobile: pinch', scale: 0.5, velocity: 1.1, element: element.ref", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-doubletap", 
-            "text": "Performs double tap gesture on the given element or on the screen.", 
-            "title": "mobile: doubleTap"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_3", 
-            "text": "element : The internal element identifier (as hexadecimal hash string) to double tap on  x : Screen x tap coordinate of type float. Mandatory parameter only if  element  is not set  y : Screen y tap coordinate of type float. Mandatory parameter only if  element  is not set", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_3", 
-            "text": "// javascript\ndriver.execute('mobile: doubleTap', {element: element.value.ELEMENT});", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-touchandhold", 
-            "text": "Performs long press gesture on the given element or on the screen.", 
-            "title": "mobile: touchAndHold"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_4", 
-            "text": "element : The internal element identifier (as hexadecimal hash string) to long tap on  duration : The float duration of press action in seconds. Mandatory patameter  x : Screen x long tap coordinate of type float. Mandatory parameter only if  element  is not set  y : Screen y long tap coordinate of type float. Mandatory parameter only if  element  is not set", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_4", 
-            "text": "// c#\nDictionary string, object  tfLongTap = new Dictionary string, object ();\ntfLongTap.Add( element , element.Id);\ntfLongTap.Add( duration , 2.0);\n((IJavaScriptExecutor)driver).ExecuteScript( mobile: touchAndHold , tfLongTap);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-twofingertap", 
-            "text": "Performs two finger tap gesture on the given element or on the application element.", 
-            "title": "mobile: twoFingerTap"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_5", 
-            "text": "element : The internal element identifier (as hexadecimal hash string) to double tap on.\n Application element will be used instead if this\n parameter is not provided", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_5", 
-            "text": "// c#\nDictionary string, object  tfTap = new Dictionary string, object ();\ntfTap.Add( element , element.Id);\n((IJavaScriptExecutor)driver).ExecuteScript( mobile: twoFingerTap , tfTap);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-tap", 
-            "text": "Performs tap gesture by coordinates on the given element or on the screen.", 
-            "title": "mobile: tap"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_6", 
-            "text": "element : The internal element identifier (as hexadecimal hash string) to long tap on.\n  x  and  y  tap coordinates will be calulated relatively to the current element position on the\n screen if this argument is provided. Otherwise they should be calculated\n relatively to screen borders.  x : x tap coordinate of type float. Mandatory parameter  y : y tap coordinate of type float. Mandatory parameter", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_6", 
-            "text": "// FIXME: add an example", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-dragfromtoforduration", 
-            "text": "Performs drag and drop gesture by coordinates. This can be done either on an element or\non the screen", 
-            "title": "mobile: dragFromToForDuration"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_7", 
-            "text": "element : The internal element identifier (as hexadecimal hash string) to perform drag on.\n All the coordinates will be calculated relatively this this element position on the screen.\n Absolute screen coordinates are expected if this argument is not set  duration : Float number of seconds in range [0.5, 60]. How long the tap gesture at\n starting drag point should be before to start dragging. Mandatory parameter  fromX : The x coordinate of starting drag point (type float). Mandatory parameter  fromY : The y coordinate of starting drag point (type float). Mandatory parameter  toX : The x coordinate of ending drag point (type float). Mandatory parameter  toY : The y coordinate of ending drag point (type float). Mandatory parameter", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_7", 
-            "text": "// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\nMap String, Object  params = new HashMap ();\nparams.put( duration , 1.0);\nparams.put( fromX , 100);\nparams.put( fromY , 100);\nparams.put( toX , 200);\nparams.put( toY , 200);\nparams.put( element , ((RemoteWebElement) element).getId());\njs.executeScript( mobile: dragFromToForDuration , params);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-selectpickerwheelvalue", 
-            "text": "Performs selection of the next or previous picker wheel value. This might\nbe useful if these values are populated dynamically, so you don't know which\none to select or value selection does not work because of XCTest bug.", 
-            "title": "mobile: selectPickerWheelValue"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_8", 
-            "text": "element : PickerWheel's internal element id (as hexadecimal hash string) to perform\n value selection on. The element must be of type XCUIElementTypePickerWheel. Mandatory parameter  order : Either  next  to select the value next to the current one\n from the target picker wheel or  previous  to select the previous one. Mandatory parameter  offset : The value in range [0.01, 0.5]. It defines how far from picker\n wheel's center the click should happen. The actual distance is calculated by\n multiplying this value to the actual picker wheel height. Too small offset value\n may not change the picker wheel value and too high value may cause the wheel to switch\n two or more values at once. Usually the optimal value is located in range [0.15, 0.3].  0.2  by default", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_8", 
-            "text": "// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\nMap String, Object  params = new HashMap ();\nparams.put( order ,  next );\nparams.put( offset , 0.15);\nparams.put( element , ((RemoteWebElement) element).getId());\njs.executeScript( mobile: selectPickerWheelValue , params);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-rotateelement", 
-            "text": "Performs  rotate  gesture on the given element.", 
-            "title": "mobile: rotateElement"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_9", 
-            "text": "element : Internal element id (as hexadecimal hash string) to perform\n rotation on. Mandatory parameter  rotation : The rotation of the gesture in radians. Mandatory parameter  velocity : The velocity of the rotation gesture in radians per second. Mandatory parameter", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_9", 
-            "text": "// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\njs.executeScript( mobile: rotateElement , ImmutableMap.of(\n    // rotate clockwise, 90 degrees\n     rotation , -Math.PI / 2,\n    // in approximately two seconds\n     velocity , Math.PI / 4,\n     element , ((RemoteWebElement) element).getId()\n));", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#mobile-tapwithnumberoftaps", 
-            "text": "Sends one or more taps with one or more touch points since Appium 1.17.1.", 
-            "title": "mobile: tapWithNumberOfTaps"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#supported-arguments_10", 
-            "text": "element : The internal element identifier (as hexadecimal hash string) to perform one or more taps.  numberOfTaps : The number of taps  numberOfTouches : The number of touch points", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#usage-examples_10", 
-            "text": "# Ruby\ne = @driver.find_element :id, 'target element'\n# Taps the element with a single touch point twice\n@driver.execute_script 'mobile: tapWithNumberOfTaps', {element: e.ref, numberOfTaps: 2, numberOfTouches: 1}", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#reference", 
-            "text": "tapWithNumberOfTaps:numberOfTouches:", 
-            "title": "Reference"
         }, 
         {
             "location": "/writing-running-appium/ios/ios-xctest-mobile-gestures/#advanced-topics", 
@@ -9702,158 +9532,23 @@
         }, 
         {
             "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/", 
-            "text": "Advanced Applications Management Commands For iOS With WebDriverAgent/XCTest Backend\n\n\nSince Xcode9 there is a possibility to manage multiple applications in scope of\na single session. It makes it possible to open iOS preferences and change values\nthere while the application under test is in background and then restore it back\nto foreground or check scenarious, where the application under test is\nterminated and then started again. Appium for iOS has special set of \nmobile:\n\nsubcommands, which provides user interface to such features.\n\n\nImportant note:\n Make sure you don't cache WebElement instances between\napplication restarts, since they are going to be invalidated after each restart.\n\n\nmobile: installApp\n\n\nInstalls given application to the device under test. If the same application is\nalready installed then it's going to be installed over the existing one, which\nallows you to test upgrades. Be careful while reinstalling the main application\nunder test: make sure that \nterminateApp\n has been called first, otherwise\nWebDriverAgent will detect the state as a potential crash of the application.\n\n\nSupported arguments\n\n\n\n\napp\n: The path to an existing .ipa/.app file on the server file system,\n   zipped .app file or an URL pointing to a remote .ipa/.zip file. Mandatory argument.\n\n\n\n\nUsage examples\n\n\n// Java\nMap\nString, Object\n params = new HashMap\n();\nparams.put(\napp\n, \nhttp://example.com/myapp.ipa\n);\njs.executeScript(\nmobile: installApp\n, params);\n\n\n\n\nmobile: removeApp\n\n\nUninstalls an existing application from the device under test. This endpoint\ndoes not verify whether the application is already installed or not before\nuninstalling it.\n\n\nSupported arguments\n\n\n\n\nbundleId\n: The bundle identifier of the application, which is going to be\n   uninstalled. Mandatory argument.\n\n\n\n\nUsage examples\n\n\n# Python\ndriver.execute_script('mobile: removeApp', {'bundleId': 'com.myapp'});\n\n\n\n\nmobile: isAppInstalled\n\n\nVerifies whether the application with given bundle identifier is installed on\nthe device. Returns \ntrue\n or \nfalse\n.\n\n\nSupported arguments\n\n\n\n\nbundleId\n: The bundle identifier of the application, which is going to be\n   verified. Mandatory argument.\n\n\n\n\nUsage examples\n\n\n// Java\nMap\nString, Object\n params = new HashMap\n();\nparams.put(\nbundleId\n, \ncom.myapp\n);\nfinal boolean isInstalled = (Boolean)js.executeScript(\nmobile: isAppInstalled\n, params);\n\n\n\n\nmobile: launchApp\n\n\nExecutes an existing application on the device. If the application is already\nrunning then it will be brought to the foreground.\n\n\nSupported arguments\n\n\n\n\nbundleId\n: The bundle identifier of the application, which is going to be\n executed. Mandatory argument.\n\n\narguments\n: The list of command line arguments. Optional.\n\n\nenvironment\n: Environemnt variables mapping. Optional.\n\n\n\n\nUsage examples\n\n\n# Python\ndriver.execute_script('mobile: launchApp', {'bundleId': 'com.myapp',\n                                            'arguments': ('-foo', '--bar'),\n                                            'environment': {'foo': 'bar'}})\n\n\n\n\nmobile: terminateApp\n\n\nTerminates an existing application on the device. If the application is not\nrunning then the returned result will be \nfalse\n, otherwise \ntrue\n.\n\n\nSupported arguments\n\n\n\n\nbundleId\n: The bundle identifier of the application, which is going to be\n   terminated. Mandatory argument.\n\n\n\n\nUsage examples\n\n\n// Java\nMap\nString, Object\n params = new HashMap\n();\nparams.put(\nbundleId\n, \ncom.myapp\n);\nfinal boolean wasRunningBefore = (Boolean)js.executeScript(\nmobile: terminateApp\n, params);\n\n\n\n\nmobile: activateApp\n\n\nActivates an existing application on the device under test and moves it to the\nforeground. The application should be already running in order to activate it.\nThe call is ignored if the application is already in foreground.\n\n\nSupported arguments\n\n\n\n\nbundleId\n: The bundle identifier of the application, which is going to be\n   brought to the foreground. Mandatory argument.\n\n\n\n\nUsage examples\n\n\n# Python\ndriver.execute_script('mobile: activateApp', {'bundleId': 'com.myapp'});\n\n\n\n\nmobile: queryAppState\n\n\nQueries the state of an existing application on the device. There are five\npossible application states (check \nApple's documentation\n\nfor more details):\n\n\n\n\n0\n: The current application state cannot be determined/is unknown\n\n\n1\n: The application is not running\n\n\n2\n: The application is running in the background and is suspended\n\n\n3\n: The application is running in the background and is not suspended\n\n\n4\n: The application is running in the foreground\n\n\n\n\nSupported arguments\n\n\n\n\nbundleId\n: The bundle identifier of the application, which state is going to\n   be queried. Mandatory argument.\n\n\n\n\nUsage examples\n\n\n// Java\nMap\nString, Object\n params = new HashMap\n();\nparams.put(\nbundleId\n, \ncom.myapp\n);\nfinal int state = (Integer)js.executeScript(\nmobile: queryAppState\n, params);", 
+            "text": "Advanced Applications Management Commands For iOS With WebDriverAgent/XCTest Backend\n\n\nSince Xcode9 there is a possibility to manage multiple applications in scope of\na single session. It makes it possible to open iOS preferences and change values\nthere while the application under test is in background and then restore it back\nto foreground or check scenarios, where the application under test is\nterminated and then started again. Appium for iOS has special set of \nmobile:\n\nsubcommands, which provides user interface to such features.\n\n\nImportant note:\n Make sure you don't cache WebElement instances between\napplication restarts, since they are going to be invalidated after each restart.\n\n\n\n\nmobile: installApp\n\n\nmobile: removeApp\n\n\nmobile: isAppInstalled\n\n\nmobile: launchApp\n\n\nmobile: terminateApp\n\n\nmobile: activateApp\n\n\nmobile: queryAppState", 
             "title": "XCUITest Mobile App Management"
         }, 
         {
             "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#advanced-applications-management-commands-for-ios-with-webdriveragentxctest-backend", 
-            "text": "Since Xcode9 there is a possibility to manage multiple applications in scope of\na single session. It makes it possible to open iOS preferences and change values\nthere while the application under test is in background and then restore it back\nto foreground or check scenarious, where the application under test is\nterminated and then started again. Appium for iOS has special set of  mobile: \nsubcommands, which provides user interface to such features.  Important note:  Make sure you don't cache WebElement instances between\napplication restarts, since they are going to be invalidated after each restart.", 
+            "text": "Since Xcode9 there is a possibility to manage multiple applications in scope of\na single session. It makes it possible to open iOS preferences and change values\nthere while the application under test is in background and then restore it back\nto foreground or check scenarios, where the application under test is\nterminated and then started again. Appium for iOS has special set of  mobile: \nsubcommands, which provides user interface to such features.  Important note:  Make sure you don't cache WebElement instances between\napplication restarts, since they are going to be invalidated after each restart.   mobile: installApp  mobile: removeApp  mobile: isAppInstalled  mobile: launchApp  mobile: terminateApp  mobile: activateApp  mobile: queryAppState", 
             "title": "Advanced Applications Management Commands For iOS With WebDriverAgent/XCTest Backend"
         }, 
         {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#mobile-installapp", 
-            "text": "Installs given application to the device under test. If the same application is\nalready installed then it's going to be installed over the existing one, which\nallows you to test upgrades. Be careful while reinstalling the main application\nunder test: make sure that  terminateApp  has been called first, otherwise\nWebDriverAgent will detect the state as a potential crash of the application.", 
-            "title": "mobile: installApp"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#supported-arguments", 
-            "text": "app : The path to an existing .ipa/.app file on the server file system,\n   zipped .app file or an URL pointing to a remote .ipa/.zip file. Mandatory argument.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#usage-examples", 
-            "text": "// Java\nMap String, Object  params = new HashMap ();\nparams.put( app ,  http://example.com/myapp.ipa );\njs.executeScript( mobile: installApp , params);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#mobile-removeapp", 
-            "text": "Uninstalls an existing application from the device under test. This endpoint\ndoes not verify whether the application is already installed or not before\nuninstalling it.", 
-            "title": "mobile: removeApp"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#supported-arguments_1", 
-            "text": "bundleId : The bundle identifier of the application, which is going to be\n   uninstalled. Mandatory argument.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#usage-examples_1", 
-            "text": "# Python\ndriver.execute_script('mobile: removeApp', {'bundleId': 'com.myapp'});", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#mobile-isappinstalled", 
-            "text": "Verifies whether the application with given bundle identifier is installed on\nthe device. Returns  true  or  false .", 
-            "title": "mobile: isAppInstalled"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#supported-arguments_2", 
-            "text": "bundleId : The bundle identifier of the application, which is going to be\n   verified. Mandatory argument.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#usage-examples_2", 
-            "text": "// Java\nMap String, Object  params = new HashMap ();\nparams.put( bundleId ,  com.myapp );\nfinal boolean isInstalled = (Boolean)js.executeScript( mobile: isAppInstalled , params);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#mobile-launchapp", 
-            "text": "Executes an existing application on the device. If the application is already\nrunning then it will be brought to the foreground.", 
-            "title": "mobile: launchApp"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#supported-arguments_3", 
-            "text": "bundleId : The bundle identifier of the application, which is going to be\n executed. Mandatory argument.  arguments : The list of command line arguments. Optional.  environment : Environemnt variables mapping. Optional.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#usage-examples_3", 
-            "text": "# Python\ndriver.execute_script('mobile: launchApp', {'bundleId': 'com.myapp',\n                                            'arguments': ('-foo', '--bar'),\n                                            'environment': {'foo': 'bar'}})", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#mobile-terminateapp", 
-            "text": "Terminates an existing application on the device. If the application is not\nrunning then the returned result will be  false , otherwise  true .", 
-            "title": "mobile: terminateApp"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#supported-arguments_4", 
-            "text": "bundleId : The bundle identifier of the application, which is going to be\n   terminated. Mandatory argument.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#usage-examples_4", 
-            "text": "// Java\nMap String, Object  params = new HashMap ();\nparams.put( bundleId ,  com.myapp );\nfinal boolean wasRunningBefore = (Boolean)js.executeScript( mobile: terminateApp , params);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#mobile-activateapp", 
-            "text": "Activates an existing application on the device under test and moves it to the\nforeground. The application should be already running in order to activate it.\nThe call is ignored if the application is already in foreground.", 
-            "title": "mobile: activateApp"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#supported-arguments_5", 
-            "text": "bundleId : The bundle identifier of the application, which is going to be\n   brought to the foreground. Mandatory argument.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#usage-examples_5", 
-            "text": "# Python\ndriver.execute_script('mobile: activateApp', {'bundleId': 'com.myapp'});", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#mobile-queryappstate", 
-            "text": "Queries the state of an existing application on the device. There are five\npossible application states (check  Apple's documentation \nfor more details):   0 : The current application state cannot be determined/is unknown  1 : The application is not running  2 : The application is running in the background and is suspended  3 : The application is running in the background and is not suspended  4 : The application is running in the foreground", 
-            "title": "mobile: queryAppState"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#supported-arguments_6", 
-            "text": "bundleId : The bundle identifier of the application, which state is going to\n   be queried. Mandatory argument.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-mobile-apps-management/#usage-examples_6", 
-            "text": "// Java\nMap String, Object  params = new HashMap ();\nparams.put( bundleId ,  com.myapp );\nfinal int state = (Integer)js.executeScript( mobile: queryAppState , params);", 
-            "title": "Usage examples"
-        }, 
-        {
             "location": "/writing-running-appium/ios/ios-xctest-pasteboard/", 
-            "text": "Automating Simulator Pasteboard Actions For iOS With WebDriverAgent/XCTest Backend\n\n\nThere is a possibility in Appium to set the content of the iOS Simulator pasteboard\nand read the content from there if needed. Each Simulator maintains its own pasteboard.\nThis feature is only available since Xcode SDK 8.1.\nOn real devices this functionaliry is available with several security limitations. Please check \nGet Clipboard\n/\nSet Clipboard\n for more details.\n\n\nmobile: setPasteboard\n\n\nThis command sets the content of Simulator's pasteboard to the particular string\nprovided as an argument. Also, it is possible to customize the encoding of the given\nstring.\n\n\nSupported arguments\n\n\n\n\ncontent\n: The content of the pasteboard. The previous content is going\n to be overridden. The parameter is mandatory\n\n\nencoding\n: Encoding of the given content. UTF-8 by default.\n\n\n\n\nUsage examples\n\n\n// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\nMap\nString, Object\n args = new HashMap\n();\nargs.put(\ncontent\n, new String(Files.readAllBytes(new File(\n/etc/passwd\n).toPath()), Charset.forName(\nlatin-1\n)));\njs.executeScript(\nmobile: setPasteboard\n, args);\n\n\n\n\nmobile: getPasteboard\n\n\nThis command is used to get the current content of Simulator's pasteboard as\na string. Also, it is possible to customize the encoding of the received\nstring.\n\n\nSupported arguments\n\n\n\n\nencoding\n: Encoding of the received pasteboard content. UTF-8 by default.\n\n\n\n\nUsage examples\n\n\n# Python\ncontent = driver.execute_script('mobile: getPasteboard', {'encoding': 'shift-jis'});", 
+            "text": "Automating Simulator Pasteboard Actions For iOS With WebDriverAgent/XCTest Backend\n\n\nThere is a possibility in Appium to set the content of the iOS Simulator pasteboard\nand read the content from there if needed. Each Simulator maintains its own pasteboard.\nThis feature is only available since Xcode SDK 8.1.\nOn real devices this functionaliry is available with several security limitations. Please check \nGet Clipboard\n/\nSet Clipboard\n for more details.\n\n\n\n\nmobile: setPasteboard\n\n\nmobile: getPasteboard", 
             "title": "iOS Pasteboard Guide"
         }, 
         {
             "location": "/writing-running-appium/ios/ios-xctest-pasteboard/#automating-simulator-pasteboard-actions-for-ios-with-webdriveragentxctest-backend", 
-            "text": "There is a possibility in Appium to set the content of the iOS Simulator pasteboard\nand read the content from there if needed. Each Simulator maintains its own pasteboard.\nThis feature is only available since Xcode SDK 8.1.\nOn real devices this functionaliry is available with several security limitations. Please check  Get Clipboard / Set Clipboard  for more details.", 
+            "text": "There is a possibility in Appium to set the content of the iOS Simulator pasteboard\nand read the content from there if needed. Each Simulator maintains its own pasteboard.\nThis feature is only available since Xcode SDK 8.1.\nOn real devices this functionaliry is available with several security limitations. Please check  Get Clipboard / Set Clipboard  for more details.   mobile: setPasteboard  mobile: getPasteboard", 
             "title": "Automating Simulator Pasteboard Actions For iOS With WebDriverAgent/XCTest Backend"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-pasteboard/#mobile-setpasteboard", 
-            "text": "This command sets the content of Simulator's pasteboard to the particular string\nprovided as an argument. Also, it is possible to customize the encoding of the given\nstring.", 
-            "title": "mobile: setPasteboard"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-pasteboard/#supported-arguments", 
-            "text": "content : The content of the pasteboard. The previous content is going\n to be overridden. The parameter is mandatory  encoding : Encoding of the given content. UTF-8 by default.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-pasteboard/#usage-examples", 
-            "text": "// Java\nJavascriptExecutor js = (JavascriptExecutor) driver;\nMap String, Object  args = new HashMap ();\nargs.put( content , new String(Files.readAllBytes(new File( /etc/passwd ).toPath()), Charset.forName( latin-1 )));\njs.executeScript( mobile: setPasteboard , args);", 
-            "title": "Usage examples"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-pasteboard/#mobile-getpasteboard", 
-            "text": "This command is used to get the current content of Simulator's pasteboard as\na string. Also, it is possible to customize the encoding of the received\nstring.", 
-            "title": "mobile: getPasteboard"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-pasteboard/#supported-arguments_1", 
-            "text": "encoding : Encoding of the received pasteboard content. UTF-8 by default.", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-pasteboard/#usage-examples_1", 
-            "text": "# Python\ncontent = driver.execute_script('mobile: getPasteboard', {'encoding': 'shift-jis'});", 
-            "title": "Usage examples"
         }, 
         {
             "location": "/writing-running-appium/ios/ios-predicate/", 
@@ -9922,28 +9617,13 @@
         }, 
         {
             "location": "/writing-running-appium/ios/ios-xctest-install-certificate/", 
-            "text": "Automating Installation of Self-Signed Certificate on iOS\n\n\nUnfortunately, Apple does not provide any command line options which can help to install self-signed certificate on a real device or Simulator. However, there is \nover-the-air\n enrollment technology, which allows the deployment of several entity types, including such certificates, by simply downloading specially prepared configuration files with the built-in web browser. After the configuration is downloaded it can be installed and trusted by going through several simple wizard steps.\n\n\nmobile: installCertificate\n\n\nThis command receives the content of an existing certificate in PEM format, transforms the content to a special config format and deploys it on Appium's built-in HTTP server, so the config can be downloaded and accepted on the device under test. Thus the main requirement is that the hostname and port, where Appium server is running, are reachable on the device under test. After the certificate is installed the script is going to open System Preferences again and enable it inside Certificate Trust Settings if it is disabled.\n\n\nSupported arguments\n\n\n\n\ncontent\n: The content of the certificate represented as base64-encoded string. The parameter is mandatory\n\n\n\n\nUsage examples\n\n\n// Java\nMap\nString, Object\n args = new HashMap\n();\nbyte[] byteContent = Files.readAllBytes(new File(\ncustom.cer\n).toPath());\nargs.put(\ncontent\n, Base64.getEncoder().encodeToString(byteContent));\ndriver.executeScript(\nmobile: installCertificate\n, args);", 
+            "text": "Automating Installation of Self-Signed Certificate on iOS\n\n\nUnfortunately, Apple does not provide any command line options which can help to install self-signed certificate on a real device or Simulator. However, there is \nover-the-air\n enrollment technology, which allows the deployment of several entity types, including such certificates, by simply downloading specially prepared configuration files with the built-in web browser. After the configuration is downloaded it can be installed and trusted by going through several simple wizard steps.\n\n\n\n\nmobile: installCertificate", 
             "title": "iOS Install Certificate"
         }, 
         {
             "location": "/writing-running-appium/ios/ios-xctest-install-certificate/#automating-installation-of-self-signed-certificate-on-ios", 
-            "text": "Unfortunately, Apple does not provide any command line options which can help to install self-signed certificate on a real device or Simulator. However, there is  over-the-air  enrollment technology, which allows the deployment of several entity types, including such certificates, by simply downloading specially prepared configuration files with the built-in web browser. After the configuration is downloaded it can be installed and trusted by going through several simple wizard steps.", 
+            "text": "Unfortunately, Apple does not provide any command line options which can help to install self-signed certificate on a real device or Simulator. However, there is  over-the-air  enrollment technology, which allows the deployment of several entity types, including such certificates, by simply downloading specially prepared configuration files with the built-in web browser. After the configuration is downloaded it can be installed and trusted by going through several simple wizard steps.   mobile: installCertificate", 
             "title": "Automating Installation of Self-Signed Certificate on iOS"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-install-certificate/#mobile-installcertificate", 
-            "text": "This command receives the content of an existing certificate in PEM format, transforms the content to a special config format and deploys it on Appium's built-in HTTP server, so the config can be downloaded and accepted on the device under test. Thus the main requirement is that the hostname and port, where Appium server is running, are reachable on the device under test. After the certificate is installed the script is going to open System Preferences again and enable it inside Certificate Trust Settings if it is disabled.", 
-            "title": "mobile: installCertificate"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-install-certificate/#supported-arguments", 
-            "text": "content : The content of the certificate represented as base64-encoded string. The parameter is mandatory", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/ios-xctest-install-certificate/#usage-examples", 
-            "text": "// Java\nMap String, Object  args = new HashMap ();\nbyte[] byteContent = Files.readAllBytes(new File( custom.cer ).toPath());\nargs.put( content , Base64.getEncoder().encodeToString(byteContent));\ndriver.executeScript( mobile: installCertificate , args);", 
-            "title": "Usage examples"
         }, 
         {
             "location": "/writing-running-appium/ios/ios-tvos/", 
@@ -10037,7 +9717,7 @@
         }, 
         {
             "location": "/writing-running-appium/ios/audio-capture/", 
-            "text": "Audio Capture From iOS Simulators and Real Devices\n\n\nClient Side API\n\n\nSince Appium 1.18.0 there is a possibility to record iOS audio stream and save\nit to a file, which could be then retrieved on the client side.\nApple does not provide any API to directly retrieve the audio stream from a\nSimulator or a real device, but it is possible to redirect that stream to\nthe host machine, where it could be captured.\n\n\nmobile: startAudioRecording\n\n\nStarts audio recording process on the given host audio input with the given\naudio compression parameters.\n\n\nSupported arguments\n\n\n\n\naudioInput\n: The name of the corresponding audio input device to use for the capture, for example \n:1\n. The full list of capture devices could be shown using \nffmpeg -f avfoundation -list_devices true -i \"\"\n Terminal command. This argument is mandatory.\n\n\naudioCodec\n: The name of the audio codec. \naac\n is used by default.\n\n\naudioBitrate\n: The bitrate of the resulting audio stream. \n128k\n by default.\n\n\naudioChannels\n: The count of audio channels in the resulting stream. Setting it to \n1\n will create a single channel (mono) audio stream. \n2\n by default.\n\n\naudioRate\n: The sampling rate of the resulting audio stream. \n44100\n by default.\n\n\ntimeLimit\n: The maximum recording time, in seconds. The default value is \n180\n, the maximum value is \n43200\n (12 hours)\n\n\nforceRestart\n: Whether to restart audio capture process forcefully when startRecordingAudio is called (\ntrue\n) or ignore the call until the current audio recording is completed (\nfalse\n, the default setting).\n\n\n\n\nmobile: stopAudioRecording\n\n\nStops the audio recording process previously started by \nstartAudioRecording\n call. The result of the method call is a base64-encoded .mp4 file containing the audio content recorded since \nstartAudioRecording\n was called. Subsequent method calls will return the same result.\nIf \nstartAudioRecording\n was not called before then an empty string is returned.\n\n\nUsage Examples\n\n\n// Java\ndriver.executeScript(\nmobile: startAudioRecording\n, ImmutableMap.of(\naudioInput\n, \n:1\n));\nThread.sleep(10000);\nbyte[] mp4Data = Base64.getMimeDecoder()\n  .decode((String) driver.executeScript(\nmobile: stopAudioRecording\n));\ntry (FileOutputStream fos = new FileOutputStream(\nout.mp4\n)) {\n   fos.write(mp4Data);\n}\n\n\n\n\n# Ruby\n@driver.execute_script 'mobile: startAudioRecording', audioInput: ':0'\nsleep 10\nbase64_str = @driver.execute_script 'mobile: stopAudioRecording'\nFile.write 'out.mp4', Base64.decode64(base64_str)\n\n\n\n\n# Python\ndriver.execute_script('mobile: startAudioRecording', {'audioInput': ':1'})\ntime.sleep(10)\nbase64_str = driver.execute_script('mobile: stopAudioRecording')\nwith open('out.mp4', 'wb') as f:\n    f.write(base64.b64decode(base64_str))\n\n\n\n\nServer Requirements\n\n\nAppium version should be 1.18.0 or newer.\n\n\nIt is mandatory that the host machine has \nFFMPEG\n installed and available in PATH. On macOS it could be installed via \nBrew\n: \nbrew install ffmpeg\n.\n\n\nmacOS since version 10.15 requires applications that record Microphone audio to be explicitly enabled in System Preferences-\nSecurity \n Privacy-\nPrivacy-\nMicrophone tab.\nMake sure either FFMPEG itself or the parent Appium process (e.g. Terminal) is present in that list.\n\n\nThe feature is potentially unsecure, so it must be explicitly allowed\non the server side.\nThe feature name is \naudio_record\n.\nSee \nSecurity\n for more details.\n\n\nSimulator Setup\n\n\nThe following steps are necessary to setup iOS Simulator audio capture:\n\n\n\n\nInstall \nSoundflower\n\n\nRedirect Simulator audio output to Soundflower. From the main Simulator menu select I/O-\nAudio Output-\nSoundflower (2ch)\n\n\nRun \nffmpeg -f avfoundation -list_devices true -i \"\"\n command in Terminal to get the identifier of the \nSoundflower (2ch)\n device. This identifier prefixed with \n:\n will be then used as \naudioInput\n argument to \nmobile: startAudioRecording\n call\n\n\nTest that your setup works as expected. Run any audio playback in Simulator and execute the following command in Terminal (do not forget to replace the \n-i\n argument value with the one you got from the previous step): \nffmpeg -t 5 -f avfoundation -i \":1\" -c:a aac -b:a 128k -ac 2 -ar 44100 -y ~/Desktop/out.mp4\n. After 5 seconds there should be \nout.mp4\n file on your Desktop containing the recorded audio stream.\n\n\n\n\nReal Device Setup\n\n\nThe following steps are necessary to setup iOS Real Device audio capture:\n\n\n\n\nConnect your device to the Mac host with a cable\n\n\nRun \nopen -a /System/Applications/Utilities/Audio\\ MIDI\\ Setup.app\n application\n\n\nFind your phone in the list of devices there and click \nEnable\n button next to it\n\n\nRun \nffmpeg -f avfoundation -list_devices true -i \"\"\n command in Terminal and find the identifier of your device in the \nAVFoundation audio devices\n list. This identifier prefixed with \n:\n will be then used as \naudioInput\n argument to \nmobile: startAudioRecording\n call\n\n\nTest that your setup works as expected. Run any audio playback on the device and execute the following command in Terminal (do not forget to replace the \n-i\n argument value with the value you got from the previous step): \nffmpeg -t 5 -f avfoundation -i \":1\" -c:a aac -b:a 128k -ac 2 -ar 44100 -y ~/Desktop/out.mp4\n. After 5 seconds there should be \nout.mp4\n file on your Desktop containing the recorded audio stream.\n\n\n\n\nApple does not allow phone calls to be redirected this way. You can only record application or system sounds.\n\n\nFurther Reading\n\n\n\n\nhttps://github.com/appium/appium-xcuitest-driver/pull/1207\n\n\nhttps://www.macobserver.com/tips/quick-tip/iphone-audio-input-mac/\n\n\nhttp://www.lorisware.com/blog/2012/04/28/recording-iphone-emulator-video-with-sound/", 
+            "text": "Audio Capture From iOS Simulators and Real Devices\n\n\nClient Side API\n\n\nSince Appium 1.18.0 there is a possibility to record iOS audio stream and save\nit to a file, which could be then retrieved on the client side.\nApple does not provide any API to directly retrieve the audio stream from a\nSimulator or a real device, but it is possible to redirect that stream to\nthe host machine, where it could be captured.\n\n\n\n\nmobile: startAudioRecording\n\n\nmobile: stopAudioRecording\n\n\n\n\nServer Requirements\n\n\nAppium version should be 1.18.0 or newer.\n\n\nIt is mandatory that the host machine has \nFFMPEG\n installed and available in PATH. On macOS it could be installed via \nBrew\n: \nbrew install ffmpeg\n.\n\n\nmacOS since version 10.15 requires applications that record Microphone audio to be explicitly enabled in System Preferences-\nSecurity \n Privacy-\nPrivacy-\nMicrophone tab.\nMake sure either FFMPEG itself or the parent Appium process (e.g. Terminal) is present in that list.\n\n\nThe feature is potentially unsecure, so it must be explicitly allowed\non the server side.\nThe feature name is \naudio_record\n.\nSee \nSecurity\n for more details.\n\n\nSimulator Setup\n\n\nThe following steps are necessary to setup iOS Simulator audio capture:\n\n\n\n\nInstall \nSoundflower\n\n\nRedirect Simulator audio output to Soundflower. From the main Simulator menu select I/O-\nAudio Output-\nSoundflower (2ch)\n\n\nRun \nffmpeg -f avfoundation -list_devices true -i \"\"\n command in Terminal to get the identifier of the \nSoundflower (2ch)\n device. This identifier prefixed with \n:\n will be then used as \naudioInput\n argument to \nmobile: startAudioRecording\n call\n\n\nTest that your setup works as expected. Run any audio playback in Simulator and execute the following command in Terminal (do not forget to replace the \n-i\n argument value with the one you got from the previous step): \nffmpeg -t 5 -f avfoundation -i \":1\" -c:a aac -b:a 128k -ac 2 -ar 44100 -y ~/Desktop/out.mp4\n. After 5 seconds there should be \nout.mp4\n file on your Desktop containing the recorded audio stream.\n\n\n\n\nReal Device Setup\n\n\nThe following steps are necessary to setup iOS Real Device audio capture:\n\n\n\n\nConnect your device to the Mac host with a cable\n\n\nRun \nopen -a /System/Applications/Utilities/Audio\\ MIDI\\ Setup.app\n application\n\n\nFind your phone in the list of devices there and click \nEnable\n button next to it\n\n\nRun \nffmpeg -f avfoundation -list_devices true -i \"\"\n command in Terminal and find the identifier of your device in the \nAVFoundation audio devices\n list. This identifier prefixed with \n:\n will be then used as \naudioInput\n argument to \nmobile: startAudioRecording\n call\n\n\nTest that your setup works as expected. Run any audio playback on the device and execute the following command in Terminal (do not forget to replace the \n-i\n argument value with the value you got from the previous step): \nffmpeg -t 5 -f avfoundation -i \":1\" -c:a aac -b:a 128k -ac 2 -ar 44100 -y ~/Desktop/out.mp4\n. After 5 seconds there should be \nout.mp4\n file on your Desktop containing the recorded audio stream.\n\n\n\n\nApple does not allow phone calls to be redirected this way. You can only record application or system sounds.\n\n\nFurther Reading\n\n\n\n\nhttps://github.com/appium/appium-xcuitest-driver/pull/1207\n\n\nhttps://www.macobserver.com/tips/quick-tip/iphone-audio-input-mac/\n\n\nhttp://www.lorisware.com/blog/2012/04/28/recording-iphone-emulator-video-with-sound/", 
             "title": "Audio Capture"
         }, 
         {
@@ -10047,28 +9727,8 @@
         }, 
         {
             "location": "/writing-running-appium/ios/audio-capture/#client-side-api", 
-            "text": "Since Appium 1.18.0 there is a possibility to record iOS audio stream and save\nit to a file, which could be then retrieved on the client side.\nApple does not provide any API to directly retrieve the audio stream from a\nSimulator or a real device, but it is possible to redirect that stream to\nthe host machine, where it could be captured.", 
+            "text": "Since Appium 1.18.0 there is a possibility to record iOS audio stream and save\nit to a file, which could be then retrieved on the client side.\nApple does not provide any API to directly retrieve the audio stream from a\nSimulator or a real device, but it is possible to redirect that stream to\nthe host machine, where it could be captured.   mobile: startAudioRecording  mobile: stopAudioRecording", 
             "title": "Client Side API"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/audio-capture/#mobile-startaudiorecording", 
-            "text": "Starts audio recording process on the given host audio input with the given\naudio compression parameters.", 
-            "title": "mobile: startAudioRecording"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/audio-capture/#supported-arguments", 
-            "text": "audioInput : The name of the corresponding audio input device to use for the capture, for example  :1 . The full list of capture devices could be shown using  ffmpeg -f avfoundation -list_devices true -i \"\"  Terminal command. This argument is mandatory.  audioCodec : The name of the audio codec.  aac  is used by default.  audioBitrate : The bitrate of the resulting audio stream.  128k  by default.  audioChannels : The count of audio channels in the resulting stream. Setting it to  1  will create a single channel (mono) audio stream.  2  by default.  audioRate : The sampling rate of the resulting audio stream.  44100  by default.  timeLimit : The maximum recording time, in seconds. The default value is  180 , the maximum value is  43200  (12 hours)  forceRestart : Whether to restart audio capture process forcefully when startRecordingAudio is called ( true ) or ignore the call until the current audio recording is completed ( false , the default setting).", 
-            "title": "Supported arguments"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/audio-capture/#mobile-stopaudiorecording", 
-            "text": "Stops the audio recording process previously started by  startAudioRecording  call. The result of the method call is a base64-encoded .mp4 file containing the audio content recorded since  startAudioRecording  was called. Subsequent method calls will return the same result.\nIf  startAudioRecording  was not called before then an empty string is returned.", 
-            "title": "mobile: stopAudioRecording"
-        }, 
-        {
-            "location": "/writing-running-appium/ios/audio-capture/#usage-examples", 
-            "text": "// Java\ndriver.executeScript( mobile: startAudioRecording , ImmutableMap.of( audioInput ,  :1 ));\nThread.sleep(10000);\nbyte[] mp4Data = Base64.getMimeDecoder()\n  .decode((String) driver.executeScript( mobile: stopAudioRecording ));\ntry (FileOutputStream fos = new FileOutputStream( out.mp4 )) {\n   fos.write(mp4Data);\n}  # Ruby\n@driver.execute_script 'mobile: startAudioRecording', audioInput: ':0'\nsleep 10\nbase64_str = @driver.execute_script 'mobile: stopAudioRecording'\nFile.write 'out.mp4', Base64.decode64(base64_str)  # Python\ndriver.execute_script('mobile: startAudioRecording', {'audioInput': ':1'})\ntime.sleep(10)\nbase64_str = driver.execute_script('mobile: stopAudioRecording')\nwith open('out.mp4', 'wb') as f:\n    f.write(base64.b64decode(base64_str))", 
-            "title": "Usage Examples"
         }, 
         {
             "location": "/writing-running-appium/ios/audio-capture/#server-requirements", 

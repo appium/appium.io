@@ -1,0 +1,681 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>XCUITest Real Devices (iOS) - Appium</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link href="../../css/appium.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="/">
+                <img src="../../img/appium_white_360.png">
+            </a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../about-appium/intro/">简介</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/appium-clients/">Appium 客户端</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">驱动程序 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../ios-xcuitest/">XCUITest (iOS)</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../android-uiautomator2/">UIAutomator2 (Android)</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">编写 &amp; 运行测试 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/running-tests/">运行测试</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/caps/">预期功能</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/default-capabilities-arg/">--default-capabilities 标识</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/finding-elements/">寻找元素</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/touch-actions/">触控操作</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/server-args/">命令行参数</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web / Web 视图</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/mobile-web/">自动化 Web 测试</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/chromedriver/">使用 Chromedriver</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest 移动手势</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-predicate/">iOS 谓词（Predicate）指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-touch-id/">iOS Touch ID 指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/uiautomator-uiselector/">UiSelector 指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/android-coverage/">Android 代码覆盖指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">其他</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/reset-strategies/">重置策略</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/network-connection/">网络连接指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/unicode/">在 Appium 中使用 Unicode</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/migrating-to-xcuitest/">迁移到 XCUITest</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/grid/">在 Appium 中使用 Selenium Grid</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/cross-domain-iframes/">跨域 iframes</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/wda-custom-server/">使用自定义 WDA 服务器</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/event-timings/">Event Timings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/parallel-tests/">并行测试的设置</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/settings/">Settings API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">捐赠 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-from-source/">从源代码运行 Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/developers-overview/">开发者概述</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/style-guide/">Appium 风格指南</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/how-to-write-docs/">如何编写文档</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-packages/">Appium 包结构</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/credits/">鸣谢</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a rel="next" href="../ios-xcuitest/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li>
+                        <a rel="prev" href="../android-uiautomator2/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#appium-xcuitest">Appium XCUITest 驱动在真机上的设置</a></li>
+        
+            <li class="second-level"><a href="#_1">安装依赖</a></li>
+            
+        
+            <li class="second-level"><a href="#_2">基础 (自动) 配置</a></li>
+            
+        
+            <li class="second-level"><a href="#_3">基础 (手动) 配置</a></li>
+            
+        
+            <li class="second-level"><a href="#_4">完全手工配置</a></li>
+            
+        
+            <li class="second-level"><a href="#_5">对被测应用的设置</a></li>
+            
+        
+            <li class="second-level"><a href="#_6">问题排查思路</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 documentation" role="main"><h2 id="appium-xcuitest"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/cn/drivers/ios-xcuitest-real-devices.md">
+    <i class="glyphicon glyphicon-pencil"></i>
+    &nbsp;&nbsp;Edit this Doc
+  </a>Appium XCUITest 驱动在真机上的设置</h2>
+<h3 id="_1">安装依赖</h3>
+<p>自 Appium 1.15.0 起，Appium 与真机设备通过 <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a> 进行联通。您不需要再额外安装依赖项。XCUITest 驱动会安装一个名为 <code>WebDriverAgent-Runner</code> 的辅助软件在设备上，并通过这个辅助软件控制被测应用。虽然这听起来很简单，但在苹果软件的代码签名和配置应用程序上，在开发和测试中可能会有些头痛。
+应该可以从Xcode中找到待测设备。请确保被测设备连接Xcode万无一失。你可以通过打开 <em>Devices and Simulators</em> 这个选项栏来确认这件事。</p>
+<p>这篇文章也有利于解决环境依赖安装的问题 <a href="https://github.com/appium/appium-xcuitest-driver">appium-xcuitest-driver</a> 。</p>
+<h3 id="_2">基础 (自动) 配置</h3>
+<p>在 iOS 真机上使用 XCUITest 运行自动化测试最简单的方法，就是使用自动配置来运行。这里有两条路：</p>
+<ul>
+<li>使用功能参数 <code>xcodeOrgId</code> 与 <code>xcodeSigningId</code> :</li>
+</ul>
+<pre><code class="json">    {
+      "xcodeOrgId": "&lt;Team ID&gt;",
+      "xcodeSigningId": "iPhone Developer"
+    }
+</code></pre>
+
+<ul>
+<li>在任意路径下，创建一个 <code>.xcconfig</code> 文件，并添加如下配置：</li>
+</ul>
+<pre><code>    DEVELOPMENT_TEAM = &lt;Team ID&gt;
+    CODE_SIGN_IDENTITY = iPhone Developer
+</code></pre>
+
+<p>无论哪种情况，苹果公司会生成一个 10 位字符的唯一字符串作为您的 Team ID，分配给您的开发团队。您可以您的开发者账号找到这个 Team ID，您可以登录<a href="http://developer.apple.com/account">developer.apple.com/account</a> 并点击侧边栏的 「开发者资格（ Membership ）」。您可以在 「开发者资格（ Membership ）」 详细信息的团队名称下找到您的 Team ID。您也可以在您电脑「钥匙串」中的 iPhone 开发者证书中的 「组织单元（"Organizational Unit"）」字段中，找到您的 Team ID。</p>
+<p>需要注意的是，使用 <code>xcodeConfigFile</code> 这种方式，与使用 <code>xcodeOrgId</code> 和 <code>xcodeSigningId</code> 的方式是互斥的。</p>
+<p>这些配置完成后，您就只剩下将您的真机设备配置在参数 <code>udid</code> 中就可以了。</p>
+<p>如果配置完无法运行，一般会在 Appium 服务日志中有对应的报错信息，比如有些会提示：<code>info XCUITest xcodebuild exited with code '65' and
+signal 'null'</code>。这通常意味着代码签名配置的有问题。继续回看上一部分<a href="#basic-manual-configuration">基础 (自动) 配置</a>来解决这个问题。</p>
+<p>如果 <code>WebDriverAgentRunner</code> 在真机设备上安装成功，但是 Appium 服务日志有如下报错：</p>
+<pre><code>2017-01-24 09:02:18.358 xcodebuild[30385:339674] Error Domain=com.apple.platform.iphoneos Code=-12 "Unable to launch com.apple.test.WebDriverAgentRunner-Runner" UserInfo={NSLocalizedDescription=Unable to launch com.apple.test.WebDriverAgentRunner-Runner, NSUnderlyingError=0x7fa839cadc60 {Error Domain=DTXMessage Code=1 "(null)" UserInfo={DTXExceptionKey=The operation couldn’t be completed. Unable to launch com.apple.test.WebDriverAgentRunner-Runner because it has an invalid code signature, inadequate entitlements or its profile has not been explicitly trusted by the user. : Failed to launch process with bundle identifier 'com.apple.test.WebDriverAgentRunner-Runner'}}}
+2017-01-24 09:02:18.358 xcodebuild[30385:339674] Error Domain=IDETestOperationsObserverErrorDomain Code=5 "Early unexpected exit, operation never finished bootstrapping - no restart will be attempted" UserInfo={NSLocalizedDescription=Early unexpected exit, operation never finished bootstrapping - no restart will be attempted}
+
+Testing failed:
+    Test target WebDriverAgentRunner encountered an error (Early unexpected exit, operation never finished bootstrapping - no restart will be attempted)
+</code></pre>
+
+<p>这个问题是由于开发者在设备上不受信任，当你手动尝试将 <code>WebDriverAgentRunner</code> 安装在您的真机设备上时，会看到如下弹窗信息：</p>
+<p><img alt="Untrusted developer" src="../ios-xcuitest-img/untrusted-dev.png"></p>
+<p>您可以通过 设置（Settings） =&gt; 通用（General） =&gt; 设备管理（Device Management）来信任开发者，以使 <code>WebDriverAgentRunner</code> 能够成功运行 (更多详细信息见： <a href="https://support.apple.com/en-us/HT204460">苹果官方支持文档</a>)。</p>
+<h3 id="_3">基础 (手动) 配置</h3>
+<p>在很多情况下，基本的自动配置是不满足使用需要的。通常在自动化运行时，会有代码签名和项目配置的问题。当正在使用的开发帐户是“免费”帐户时，无法创建出通用的配置文件。</p>
+<p>这通常表现为 Xcode 报错为：<strong>failed to create
+provisioning profile</strong>:</p>
+<p><img alt="No provisioning profile" src="../ios-xcuitest-img/no-prov-prof.png"></p>
+<p>解决此问题的最简单方法是通过打开 <a href="https://developer.apple.com/xcode/">Xcode</a> 并创建一个新项目来创建配置文件 ：</p>
+<p><img alt="Create new project" src="../ios-xcuitest-img/create-new-project.png"></p>
+<p>只要选择了 "iOS"，具体的应用类型无关紧要，一般使用单页面应用 （"Single View Application"）最简单也最方便：</p>
+<p><img alt="Create single page" src="../ios-xcuitest-img/create-single-page.png"></p>
+<p>重要的是，使用一个唯一的 产品名称（"Product Name"）与 组织名称（"Organization Name"），并且，在这时候，请选择你的团队（"Team"）。</p>
+<p><img alt="Setup bundle" src="../ios-xcuitest-img/set-up-bundle.png"></p>
+<p>您可以通过查看 "项目" 选项，来确认配置文件是否已创建：</p>
+<p><img alt="Project pane" src="../ios-xcuitest-img/project-prov-prof.png"></p>
+<p>或者通过进入您的帐户首选项并查看配置文件：</p>
+<p><img alt="Check provisioning profile" src="../ios-xcuitest-img/check-prov-prof.png"></p>
+<p>此时，您有一个有效的配置文件。记住 bundle id 并添加到测试的 <code>updatedWDABundleId</code> 功能参数中。然后按照 <a href="#basic-automatic-configuration">如何初始化自动配置</a>.</p>
+<h3 id="_4">完全手工配置</h3>
+<p>或者，配置文件可以完全通过手工在项目中配置（需要知道的是，每次WDA更新、Appium更新时，都需要操作一次，<em>不推荐</em> ）：</p>
+<ul>
+<li>找到您 Appium 的安装路径:</li>
+</ul>
+<pre><code>    $ which appium
+    /path/where/installed/bin/appium
+</code></pre>
+
+<ul>
+<li>由于路径在： <code>/path/where/installed/bin/appium</code>，那么，<code>WebDriverAgent</code> 可以在这个路径的下级路径中被找到： <code>/path/where/installed/lib/node_modules/appium/node_modules/appium-webdriveragent</code>。
+    打开终端（terminal），移动到该路径下执行如下命令：</li>
+</ul>
+<pre><code>    mkdir -p Resources/WebDriverAgent.bundle
+</code></pre>
+
+<ul>
+<li>( 如果 Appium 版本低于 1.20 ) 在终端（terminal）执行如下命令：</li>
+</ul>
+<pre><code>    ./Scripts/bootstrap.sh -d
+</code></pre>
+
+<ul>
+<li>
+<p>Xcode 打开 <code>WebDriverAgent.xcodeproj</code>。同时选中  <code>WebDriverAgentLib</code>
+    and <code>WebDriverAgentRunner</code> ，在 通用（"General"）页签下，都选择为自动管理签名（"Automatically manage signing"），然后选择您所在的开发组织（<code>Development Team</code>），它将自动选择开发者签名证书（<code>Signing Ceritificate</code>）。结果应如下所示：</p>
+<p><img alt="WebDriverAgent in Xcode project" src="../ios-xcuitest-img/xcode-config.png"></p>
+<ul>
+<li>Xcode 可能无法为 <code>WebDriverAgentRunner</code> 创建配置文件：</li>
+</ul>
+<p><img alt="Xcode provisioning fail" src="../ios-xcuitest-img/xcode-facebook-fail.png"></p>
+<ul>
+<li>这需要通过进入构建设置（"Build Settings"）页签下，手动更改目标的bundle id，并且将构建产物标识符（"Product Bundle Identifier"）<code>com.facebook.WebDriverAgentRunner</code> 进行一些修改，以让 Xcode 通过：</li>
+</ul>
+<p><img alt="Xcode bundle id" src="../ios-xcuitest-img/xcode-bundle-id.png"></p>
+<ul>
+<li>Going back to the "General" tab for the <code>WebDriverAgentRunner</code> target, you
+  should now see that it has created a provisioning profile and all is well:
+  返回 <code>WebDriverAgentRunner</code> 的通用（"General"）页签，您将看到配置文件已经创建完成，并且所有配置都是正常的了：</li>
+</ul>
+<p><img alt="Xcode provisioning profile" src="../ios-xcuitest-img/xcode-facebook-succeed.png"></p>
+</li>
+<li>
+<p>最后，您可以验证一切是否正常。构建项目：</p>
+</li>
+</ul>
+<pre><code>    xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=&lt;udid&gt;' test
+</code></pre>
+
+<p>如果一切正常，输出信息一般以此结尾:</p>
+<pre><code>    Test Suite 'All tests' started at 2017-01-23 15:49:12.585
+    Test Suite 'WebDriverAgentRunner.xctest' started at 2017-01-23 15:49:12.586
+    Test Suite 'UITestingUITests' started at 2017-01-23 15:49:12.587
+    Test Case '-[UITestingUITests testRunner]' started.
+        t =     0.00s     Start Test at 2017-01-23 15:49:12.588
+        t =     0.00s     Set Up
+</code></pre>
+
+<ul>
+<li>要完全验证，您可以尝试访问 WebDriverAgent 服务器状态
+    (<strong>提示:</strong> 您 <em>必须</em> 保证 WebDriverAgent 服务与设备在同一网络下，可以通过以下方式获取 IP， Settings =&gt; Wi-Fi =&gt; Current Network):</li>
+</ul>
+<pre><code>    export DEVICE_URL='http://&lt;device IP&gt;:8100'
+    export JSON_HEADER='-H "Content-Type: application/json;charset=UTF-8, accept: application/json"'
+    curl -X GET $JSON_HEADER $DEVICE_URL/status
+</code></pre>
+
+<p>您将获得类似如下的返回信息:</p>
+<pre><code>    {
+      "value" : {
+        "state" : "success",
+        "os" : {
+          "name" : "iOS",
+          "version" : "10.2"
+        },
+        "ios" : {
+          "simulatorVersion" : "10.2",
+          "ip" : "192.168.0.7"
+        },
+        "build" : {
+          "time" : "Jan 23 2017 14:59:57"
+        }
+      },
+      "sessionId" : "8951A6DD-F3AD-410E-A5DB-D042F42F68A7",
+      "status" : 0
+    }
+</code></pre>
+
+<h3 id="_5">对被测应用的设置</h3>
+<p>不仅是 WDA 可以在您的设备上运行，被测应用也需要可以在您的设备上运行。它们之间的规则是相同的：一个拥有签名的被测应用（ 一个 <code>.ipa</code> 文件）。 可以在 这里 <a href="https://medium.com/ios-os-x-development/ios-code-signing-provisioning-in-a-nutshell-d5b247760bef#.5hirl92tn">这里</a>
+与 
+<a href="https://www.nodesagency.com/understanding-code-signing-for-ios-apps">这里</a> 找到更详细的描述。</p>
+<p>更详细地说，要使用真机运行自动化测试，您需要以下内容：</p>
+<ul>
+<li>
+<p>一个 <a href="https://developer.apple.com/programs/ios/">苹果开发者ID</a> 和一个有效的开发者帐户，以及一个配置好的开发证书和配置文件。（请确保配置文件具有<a href="https://developer.apple.com/support/certificates/">iOS Distribution</a>类型）</p>
+</li>
+<li>
+<p>如果需要在真机运行测试，一个合法的 iOS 开发者证书和配置文件是必须有的。您的 App 也需要签名。您可以在这里看到更多信息：<a href="https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/TestingYouriOSApp/TestingYouriOSApp.html">苹果官方文档</a>。</p>
+</li>
+<li>
+<p>一台 iPad 或 iPhone设备。请确保在 Xcode 中可以找到它们。</p>
+</li>
+<li>
+<p>一个拥有签名的 <code>.app</code> 或 <code>.ipa</code> 被测 App 应用，或者是它们可以被构建的源代码。</p>
+</li>
+<li>
+<p>一台拥有 <a href="https://developer.apple.com/xcode/">Xcode</a> 与 Xcode 开发者命令行工具的 Mac 系统的电脑。</p>
+</li>
+</ul>
+<p>Appium 将通过 <code>ideviceinstaller</code> (<code>libimobiledevice</code> 的一部分功能) 将应用安装到设备上，但有时候，通过 Xcode 预安装会更加方便（再看看这个：<a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/TestingYouriOSApp/TestingYouriOSApp.html">苹果官方文档</a>）</p>
+<h3 id="_6">问题排查思路</h3>
+<ol>
+<li>请通过 Xcode Organizer 或 iTunes 确保设备 UDID 是正确的。 它是一个 20+ 的字符串。</li>
+<li>请确保相同操作在模拟器上是可以运行的。</li>
+<li>请确保在设备上 <strong>启动</strong> 了以下设置:<ol>
+<li>设置（Settings） -&gt; 开发者（Developer） -&gt; <strong>启动 UI Automation （Enable UI Automation）</strong></li>
+<li>设置（Settings） -&gt; Safari -&gt; 高级（Advanced） -&gt; <strong>Web Inspector</strong> 与 <strong>Remote Automation</strong><ol>
+<li>请阅读 <a href="../../writing-running-appium/web/mobile-web">Automating mobile web apps</a> 获取关于 WebView 运行的详细信息。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>如果您不想为手动配置配置文件，请在自动生成时带上 <code>.xctrunner</code> 标识。<code>.xctrunner</code> 在 Xcode 11. <a href="https://github.com/appium/appium/issues/13610">A reference</a> 起，将被自动配置。</p>
+</li>
+<li>
+<p>请确保设备没有越狱</p>
+<ul>
+<li><code>com.apple.mobile.installation_proxy</code> 服务在管理 App 上<a href="https://github.com/appium/appium-desktop/issues/1447">不起作用</a></li>
+</ul>
+</li>
+<li>
+<p>确保配置文件具有：<a href="https://developer.apple.com/support/certificates/"><em>iOS 分发证书</em></a></p>
+<ul>
+<li>由于 Apple 的安全设计，活动 Xcode/xcodebuild 连接/会话是与 WebDriverAgentRunner 交互所必需需要的。 证书限制的影响： (<a href="https://github.com/appium/appium/issues/14577#issuecomment-660997827">issue</a>)</li>
+</ul>
+</li>
+</ol></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small></p>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/extra.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</body></html>
