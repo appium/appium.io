@@ -1887,55 +1887,6 @@
     
         <li class="first-level active"><a href="#advanced-applications-management-commands-for-ios-with-webdriveragentxctest-backend">Advanced Applications Management Commands For iOS With WebDriverAgent/XCTest Backend</a></li>
         
-            <li class="second-level"><a href="#mobile-installapp">mobile: installApp</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-removeapp">mobile: removeApp</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_1">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_1">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-isappinstalled">mobile: isAppInstalled</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_2">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_2">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-launchapp">mobile: launchApp</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_3">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_3">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-terminateapp">mobile: terminateApp</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_4">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_4">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-activateapp">mobile: activateApp</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_5">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_5">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-queryappstate">mobile: queryAppState</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_6">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_6">Usage examples</a></li>
-            
-        
     
     </ul>
 </div></div>
@@ -1946,126 +1897,20 @@
 <p>Since Xcode9 there is a possibility to manage multiple applications in scope of
 a single session. It makes it possible to open iOS preferences and change values
 there while the application under test is in background and then restore it back
-to foreground or check scenarious, where the application under test is
+to foreground or check scenarios, where the application under test is
 terminated and then started again. Appium for iOS has special set of <code>mobile:</code>
 subcommands, which provides user interface to such features.</p>
 <p><strong>Important note:</strong> Make sure you don't cache WebElement instances between
 application restarts, since they are going to be invalidated after each restart.</p>
-<h3 id="mobile-installapp">mobile: installApp</h3>
-<p>Installs given application to the device under test. If the same application is
-already installed then it's going to be installed over the existing one, which
-allows you to test upgrades. Be careful while reinstalling the main application
-under test: make sure that <code>terminateApp</code> has been called first, otherwise
-WebDriverAgent will detect the state as a potential crash of the application.</p>
-<h4 id="supported-arguments">Supported arguments</h4>
 <ul>
-<li><code>app</code>: The path to an existing .ipa/.app file on the server file system,
-   zipped .app file or an URL pointing to a remote .ipa/.zip file. Mandatory argument.</li>
-</ul>
-<h4 id="usage-examples">Usage examples</h4>
-<pre><code class="java">// Java
-Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
-params.put("app", "http://example.com/myapp.ipa");
-js.executeScript("mobile: installApp", params);
-</code></pre>
-
-<h3 id="mobile-removeapp">mobile: removeApp</h3>
-<p>Uninstalls an existing application from the device under test. This endpoint
-does not verify whether the application is already installed or not before
-uninstalling it.</p>
-<h4 id="supported-arguments_1">Supported arguments</h4>
-<ul>
-<li><code>bundleId</code>: The bundle identifier of the application, which is going to be
-   uninstalled. Mandatory argument.</li>
-</ul>
-<h4 id="usage-examples_1">Usage examples</h4>
-<pre><code class="python"># Python
-driver.execute_script('mobile: removeApp', {'bundleId': 'com.myapp'});
-</code></pre>
-
-<h3 id="mobile-isappinstalled">mobile: isAppInstalled</h3>
-<p>Verifies whether the application with given bundle identifier is installed on
-the device. Returns <code>true</code> or <code>false</code>.</p>
-<h4 id="supported-arguments_2">Supported arguments</h4>
-<ul>
-<li><code>bundleId</code>: The bundle identifier of the application, which is going to be
-   verified. Mandatory argument.</li>
-</ul>
-<h4 id="usage-examples_2">Usage examples</h4>
-<pre><code class="java">// Java
-Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
-params.put("bundleId", "com.myapp");
-final boolean isInstalled = (Boolean)js.executeScript("mobile: isAppInstalled", params);
-</code></pre>
-
-<h3 id="mobile-launchapp">mobile: launchApp</h3>
-<p>Executes an existing application on the device. If the application is already
-running then it will be brought to the foreground.</p>
-<h4 id="supported-arguments_3">Supported arguments</h4>
-<ul>
-<li><code>bundleId</code>: The bundle identifier of the application, which is going to be
- executed. Mandatory argument.</li>
-<li><code>arguments</code>: The list of command line arguments. Optional.</li>
-<li><code>environment</code>: Environemnt variables mapping. Optional.</li>
-</ul>
-<h4 id="usage-examples_3">Usage examples</h4>
-<pre><code class="python"># Python
-driver.execute_script('mobile: launchApp', {'bundleId': 'com.myapp',
-                                            'arguments': ('-foo', '--bar'),
-                                            'environment': {'foo': 'bar'}})
-</code></pre>
-
-<h3 id="mobile-terminateapp">mobile: terminateApp</h3>
-<p>Terminates an existing application on the device. If the application is not
-running then the returned result will be <code>false</code>, otherwise <code>true</code>.</p>
-<h4 id="supported-arguments_4">Supported arguments</h4>
-<ul>
-<li><code>bundleId</code>: The bundle identifier of the application, which is going to be
-   terminated. Mandatory argument.</li>
-</ul>
-<h4 id="usage-examples_4">Usage examples</h4>
-<pre><code class="java">// Java
-Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
-params.put("bundleId", "com.myapp");
-final boolean wasRunningBefore = (Boolean)js.executeScript("mobile: terminateApp", params);
-</code></pre>
-
-<h3 id="mobile-activateapp">mobile: activateApp</h3>
-<p>Activates an existing application on the device under test and moves it to the
-foreground. The application should be already running in order to activate it.
-The call is ignored if the application is already in foreground.</p>
-<h4 id="supported-arguments_5">Supported arguments</h4>
-<ul>
-<li><code>bundleId</code>: The bundle identifier of the application, which is going to be
-   brought to the foreground. Mandatory argument.</li>
-</ul>
-<h4 id="usage-examples_5">Usage examples</h4>
-<pre><code class="python"># Python
-driver.execute_script('mobile: activateApp', {'bundleId': 'com.myapp'});
-</code></pre>
-
-<h3 id="mobile-queryappstate">mobile: queryAppState</h3>
-<p>Queries the state of an existing application on the device. There are five
-possible application states (check <a href="https://developer.apple.com/documentation/xctest/xcuiapplicationstate?language=objc">Apple's documentation</a>
-for more details):</p>
-<ul>
-<li><code>0</code>: The current application state cannot be determined/is unknown</li>
-<li><code>1</code>: The application is not running</li>
-<li><code>2</code>: The application is running in the background and is suspended</li>
-<li><code>3</code>: The application is running in the background and is not suspended</li>
-<li><code>4</code>: The application is running in the foreground</li>
-</ul>
-<h4 id="supported-arguments_6">Supported arguments</h4>
-<ul>
-<li><code>bundleId</code>: The bundle identifier of the application, which state is going to
-   be queried. Mandatory argument.</li>
-</ul>
-<h4 id="usage-examples_6">Usage examples</h4>
-<pre><code class="java">// Java
-Map&lt;String, Object&gt; params = new HashMap&lt;&gt;();
-params.put("bundleId", "com.myapp");
-final int state = (Integer)js.executeScript("mobile: queryAppState", params);
-</code></pre></div>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-installapp">mobile: installApp</a></li>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-removeapp">mobile: removeApp</a></li>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-isappinstalled">mobile: isAppInstalled</a></li>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-launchapp">mobile: launchApp</a></li>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-terminateapp">mobile: terminateApp</a></li>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-activateapp">mobile: activateApp</a></li>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-queryappstate">mobile: queryAppState</a></li>
+</ul></div>
         
     </div>
 

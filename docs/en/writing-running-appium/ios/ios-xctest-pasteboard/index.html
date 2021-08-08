@@ -1887,20 +1887,6 @@
     
         <li class="first-level active"><a href="#automating-simulator-pasteboard-actions-for-ios-with-webdriveragentxctest-backend">Automating Simulator Pasteboard Actions For iOS With WebDriverAgent/XCTest Backend</a></li>
         
-            <li class="second-level"><a href="#mobile-setpasteboard">mobile: setPasteboard</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples">Usage examples</a></li>
-            
-        
-            <li class="second-level"><a href="#mobile-getpasteboard">mobile: getPasteboard</a></li>
-            
-                <li class="third-level"><a href="#supported-arguments_1">Supported arguments</a></li>
-            
-                <li class="third-level"><a href="#usage-examples_1">Usage examples</a></li>
-            
-        
     
     </ul>
 </div></div>
@@ -1912,36 +1898,10 @@
 and read the content from there if needed. Each Simulator maintains its own pasteboard.
 This feature is only available since Xcode SDK 8.1.
 On real devices this functionaliry is available with several security limitations. Please check <a href="/docs/en/commands/device/clipboard/get-clipboard/index.html">Get Clipboard</a>/<a href="/docs/en/commands/device/clipboard/set-clipboard/index.html">Set Clipboard</a> for more details.</p>
-<h3 id="mobile-setpasteboard">mobile: setPasteboard</h3>
-<p>This command sets the content of Simulator's pasteboard to the particular string
-provided as an argument. Also, it is possible to customize the encoding of the given
-string.</p>
-<h4 id="supported-arguments">Supported arguments</h4>
 <ul>
-<li><em>content</em>: The content of the pasteboard. The previous content is going
- to be overridden. The parameter is mandatory</li>
-<li><em>encoding</em>: Encoding of the given content. UTF-8 by default.</li>
-</ul>
-<h4 id="usage-examples">Usage examples</h4>
-<pre><code class="java">// Java
-JavascriptExecutor js = (JavascriptExecutor) driver;
-Map&lt;String, Object&gt; args = new HashMap&lt;&gt;();
-args.put("content", new String(Files.readAllBytes(new File("/etc/passwd").toPath()), Charset.forName("latin-1")));
-js.executeScript("mobile: setPasteboard", args);
-</code></pre>
-
-<h3 id="mobile-getpasteboard">mobile: getPasteboard</h3>
-<p>This command is used to get the current content of Simulator's pasteboard as
-a string. Also, it is possible to customize the encoding of the received
-string.</p>
-<h4 id="supported-arguments_1">Supported arguments</h4>
-<ul>
-<li><em>encoding</em>: Encoding of the received pasteboard content. UTF-8 by default.</li>
-</ul>
-<h4 id="usage-examples_1">Usage examples</h4>
-<pre><code class="python"># Python
-content = driver.execute_script('mobile: getPasteboard', {'encoding': 'shift-jis'});
-</code></pre></div>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-setpasteboard">mobile: setPasteboard</a></li>
+<li><a href="https://github.com/appium/appium-xcuitest-driver#mobile-getpasteboard">mobile: getPasteboard</a></li>
+</ul></div>
         
     </div>
 

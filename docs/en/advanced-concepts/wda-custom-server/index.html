@@ -1945,14 +1945,12 @@ so you'll see the icon of WebDriverAgentRunner application on the springboard.</
 <h3 id="wda-startup">WDA Startup</h3>
 <p>WebDriverAgent application acts as a REST server, which proxies external API requests to native XCTest calls
 for your application under test. The server address will be <em>localhost</em> if you run your tests on Simulator
-or the actual phone IP address in case of real device.
-We use <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a> to route network requests
+or the actual phone IP address in case of real device. Appium uses <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a> to route network requests
 to a real device from <em>localhost</em> via USB, which means one can use this tool to unify WDA network
 address for Simulator and for real device.</p>
 <p>You can use <a href="https://github.com/appium/appium-ios-device">appium-ios-device</a> to connect to
 a remote device requiring the module from your JavaScript code as same as Appium.
-Alternatively, you can also use <em>iproxy</em> to handle WebDriverAgent outside Appium.
-It is available via <code>node install -g iproxy</code>.</p>
+Alternatively, you can also use <a href="https://github.com/libimobiledevice/libusbmuxd#iproxy">iproxy</a>, <a href="https://github.com/danielpaulus/go-ios">go-ios</a> or <a href="https://github.com/alibaba/taobao-iphone-device">tidevice</a> to handle WebDriverAgent process outside Appium. For instance, <code>iproxy</code> could be installed using npm: <code>npm install -g iproxy</code>.</p>
 <p>This helper class written in Java illustrates the main implementation details
 wit <em>iproxy</em>:</p>
 <pre><code class="java">public class WDAServer {

@@ -1,0 +1,579 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>UIAutomator2 (Android) - Appium</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link href="../../css/appium.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="/">
+                <img src="../../img/appium_white_360.png">
+            </a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../about-appium/intro/">简介</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/appium-clients/">Appium 客户端</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">驱动程序 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../ios-xcuitest/">XCUITest (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">UIAutomator2 (Android)</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">编写 &amp; 运行测试 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/running-tests/">运行测试</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/caps/">预期功能</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/default-capabilities-arg/">--default-capabilities 标识</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/finding-elements/">寻找元素</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/touch-actions/">触控操作</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/server-args/">命令行参数</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web / Web 视图</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/mobile-web/">自动化 Web 测试</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/chromedriver/">使用 Chromedriver</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest 移动手势</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-predicate/">iOS 谓词（Predicate）指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-touch-id/">iOS Touch ID 指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/uiautomator-uiselector/">UiSelector 指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/android-coverage/">Android 代码覆盖指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">其他</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/reset-strategies/">重置策略</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/network-connection/">网络连接指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/unicode/">在 Appium 中使用 Unicode</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/migrating-to-xcuitest/">迁移到 XCUITest</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/grid/">在 Appium 中使用 Selenium Grid</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/cross-domain-iframes/">跨域 iframes</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/wda-custom-server/">使用自定义 WDA 服务器</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/event-timings/">Event Timings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/parallel-tests/">并行测试的设置</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/settings/">Settings API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">捐赠 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-from-source/">从源代码运行 Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/developers-overview/">开发者概述</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/style-guide/">Appium 风格指南</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/how-to-write-docs/">如何编写文档</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/appium-packages/">Appium 包结构</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../contributing-to-appium/credits/">鸣谢</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a rel="next" href="../ios-xcuitest-real-devices/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li>
+                        <a rel="prev" href="../../writing-running-appium/running-tests/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#android-uiautomator2">Android 的 UiAutomator2 驱动</a></li>
+        
+            <li class="second-level"><a href="#_1">需求与依赖</a></li>
+            
+        
+            <li class="second-level"><a href="#_2">使用方式</a></li>
+            
+        
+            <li class="second-level"><a href="#_3">功能参数</a></li>
+            
+        
+            <li class="second-level"><a href="#_4">命令</a></li>
+            
+        
+            <li class="second-level"><a href="#_5">基础设置</a></li>
+            
+        
+            <li class="second-level"><a href="#_6">模拟器设置</a></li>
+            
+        
+            <li class="second-level"><a href="#_7">真机设置</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 documentation" role="main"><h2 id="android-uiautomator2"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/cn/drivers/android-uiautomator2.md">
+    <i class="glyphicon glyphicon-pencil"></i>
+    &nbsp;&nbsp;Edit this Doc
+  </a>Android 的 UiAutomator2 驱动</h2>
+<p>Appium 目前官方推荐使用 <code>UiAutomator2</code> 作为安卓app在自动化测试中的驱动。
+ <em>(如果你是Appium新手? 可以参阅 <a href="#TODO">introduction to Appium drivers（TODO）</a>)</em>.
+ 这个驱动使用了谷歌的 <a href="https://developer.android.com/training/testing/ui-automator.html">UiAutomator2</a> 技术，让自动化测试可以更方便地在安卓真机或者模拟器上运行。</p>
+<p>UiAutomator2 驱动的开发过程，记录在了<a href="https://github.com/appium/appium-uiautomator2-driver">appium-uiautomator2-driver</a> 代码仓库中。</p>
+<p>在更早期的安卓设备驱动中，包括了以下驱动：
+* <a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator 驱动</a></p>
+<h3 id="_1">需求与依赖</h3>
+<p>在 Appium 常规依赖之外：</p>
+<ul>
+<li>需要在您的设备上，安装并配置好 Java 8</li>
+<li>在 Mac，Windows 或者 Linux OS 设备上，需要安装好 Android SDK</li>
+<li>Android SDK 中 Build Tools 的版本需要大于等于 24</li>
+</ul>
+<p>此外，UiAutomator2 驱动是不支持对 Android 5.0 （Lollipop, API level 21）以下的设备进行自动化测试的，如果对这类版本的设备进行自动化测试，建议使用：<a href="/docs/en/drivers/android-uiautomator/index.html">UiAutomator 驱动</a>；</p>
+<h3 id="_2">使用方式</h3>
+<p>通过 UiAutomator2 驱动启动一个测试任务时，需要传递一个<code>automationName</code> [capability] 的参数在 <a href="#TODO">新会话的请求</a> 中，并且 <code>automationName</code> 的值需要是：<code>UiAutomator2</code>。当然，你至少也需要再传递这些参数：<code>platformName</code> (=<code>Android</code>), <code>platformVersion</code>, <code>deviceName</code>, 与 <code>app</code>。</p>
+<p>同时，强烈建议您传递：<code>appPackage</code> 与 <code>appActivity</code> 这两个参数，以便让 Appium 知道您想要拉起哪个 App 和哪个 activity。如果没有的话，Appium 将会自己从 App 的 manifest 文件中自动去查找。</p>
+<h3 id="_3">功能参数</h3>
+<p>UiAutomator2 驱动支持许多通用的功能参数：<a href="/docs/en/writing-running-appium/caps/index.html">Appium
+capabilities</a>，同时，有许多特有的功能参数，可以参考这篇文档查找这些功能参数：<a href="/docs/en/writing-running-appium/caps/index.html#android-only">Android
+section</a>。</p>
+<p>对于 web 测试，是测试 Chrome 而不是去测试您自己的应用程序，需要保证 <code>app</code> 参数为空，并且设置 <code>browserName</code> 为 <code>Chrome</code>。需要提醒您的是：您需要保证 Chrome 是在安卓模拟器/真机上运行，并且与 <a href="/docs/en/writing-running-appium/web/chromedriver/index.html">version compatible with
+Chromedriver</a> 兼容。</p>
+<h3 id="_4">命令</h3>
+<p>如果需要查看 Appium 支持的命令，及它们是如何映射到 UiAutomator2 驱动的，可以参考：<a href="#TODO">API
+Reference</a>。</p>
+<h3 id="_5">基础设置</h3>
+<ol>
+<li>
+<p>确保您拥有 Appium 的基础依赖（例如：Node 与 NPM）来安装和配置 Appium。</p>
+</li>
+<li>
+<p>确保 Java （ 这里指的是 JDK 而不是 JRE ）已经成功安装并且在环境变量中配置好了 Java 的路径。这一步的具体操作，在 Mac/Linux 与 Windows 等不同平台上操作不同，这里为您提供一个在 Windows 平台上设置路径的方法：<a href="https://www.java.com/en/download/help/path.xml">点击查看</a>。</p>
+</li>
+<li>
+<p>确保环境变量： <code>JAVA_HOME</code> 已经成功设置为 JDK 的路径。举一个 Mac/Linux 的例子（这个路径的具体地址，根据您安装的实际情况有所不同）：
+   <code>export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home"</code></p>
+</li>
+</ol>
+<p>在 Windows 电脑上，可以通过 「控制面板」来配置。
+    <a href="https://developer.android.com/studio/index.html">Android Studio</a> 同样提供了一个 JDK，像这样的一个路径： <code>/Applications/Android Studio.app/Contents/jre/jdk/Contents/Home</code> (示例为Mac电脑版本)。您同样可以指定这个路径。</p>
+<ol>
+<li>
+<p>安装 <a href="http://developer.android.com/sdk/index.html">Android SDK</a>。当前最常用的方法是通过：<a href="https://developer.android.com/studio/index.html">Android
+   Studio</a> 来安装配置。可以在桌面应用程序中，通过GUI界面操作，选中一个路径来下载 Android SDK。</p>
+</li>
+<li>
+<p>设置 <code>ANDROID_HOME</code> 环境变量。举个例子，如果您下载 Android SDK 在 <code>/usr/local/adt</code> 这个路径下，您将在这个路径下，找到一个包含 SDK 文件的、名称为： <code>sdk</code> 的文件夹。在这种情况下，打开
+Mac 和 Linux 的配置文件（如：<code>~/.bashrc</code>, <code>~/.bash_profile</code> 及其他类型的文件），将这个环境变量与路径记录在其中。</p>
+<p><code>export ANDROID_HOME="/usr/local/adt/sdk"</code></p>
+</li>
+</ol>
+<p>在 Windows 机器上，按照相同的步骤，将环境变量设置在「控制面板」中。</p>
+<ol>
+<li>
+<p>通过 SDK manager，确保您安装了您所需要的、对应 Android API 版本的 SDK（例如：24）。</p>
+</li>
+<li>
+<p>在 Windows 电脑上，需确保您的 Appium 是通过管理员模式来运行的。</p>
+</li>
+</ol>
+<p>到此，您基础的系统配置已经完成了。接下来的步骤，需要看您是选择在模拟器运行测试还是在真机上运行测试。需要准备好待测 App （最好是Debug 版本）APK 的本地路径或下载链接，这个路径或链接，在运行测试时，需要设置为 <code>app</code> 参数的内容。</p>
+<h3 id="_6">模拟器设置</h3>
+<p>使用模拟器运行测试是，需要使用 Android Studio 或 SDK 提供的 AVD Manager。通过使用这个工具，来创建您所需要的模拟器。在模拟器启动时，Appium 将会自动找到并使用它进行测试。同时，如果您指定了 <code>avd</code> 这个功能参数为您所制定的设备名称时，Appium 会启动您指定的模拟器来运行测试。</p>
+<p>关于模拟器的一些小提示：</p>
+<ul>
+<li>
+<p>Android 模拟器可以设置硬件加速，尽管它有一些局限性。可以通过 Intel 网站下载，或者通过 Android SDK manager。了解更多信息，<a href="https://github.com/intel/haxm">可以点击这里查看</a>。</p>
+</li>
+<li>
+<p>如果您想在 Appium 测试中使用电源相关的命令，请确保在 AVD 的 <code>config.ini</code> 文件中，设置了：<code>hw.battery=yes</code> （在 Android 5.0 上，为默认设置）。</p>
+</li>
+</ul>
+<h3 id="_7">真机设置</h3>
+<p>对于 Android 自动化测试，除了以下一些简单操作外，不需要其他复杂的设置：</p>
+<ul>
+<li>
+<p>确保打开了设备的 <a href="https://developer.android.com/studio/debug/dev-options.html">开发者模式</a>。</p>
+</li>
+<li>
+<p>确保设备通过 USB 连接到 Appium 服务启动的设备上，并且可以被 <a href="https://developer.android.com/studio/command-line/adb.html">ADB</a> 找到
+( 执行 <code>adb devices</code> 确认 )。</p>
+</li>
+<li>
+<p>确保设置中的“验证应用程序”是关闭的，以允许 Appium 安装一些辅助软件，而不用手动点击确认。</p>
+</li>
+</ul>
+<p>（ 对于一些特殊的指令，设备可能需要被 root ，尽管这并不是经常会遇到的。 ）</p></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small></p>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/extra.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</body></html>
