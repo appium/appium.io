@@ -1970,16 +1970,22 @@ await driver.updateSettings({nativeWebTap: true});
           
           <div role="tabpanel" class="tab-pane " id="0_3">
             <pre><code class="ruby"># ruby_lib example
-update_settings(sample: 'value')
+update_settings({'nativeWebTap' =&gt; true, 'allowInvisibleElements' =&gt; true})
 
 # ruby_lib_core example
-@driver.update_settings(sample: 'value')
+@driver.update_settings({'nativeWebTap' =&gt; true, 'allowInvisibleElements' =&gt; true})
+@driver.settings.update({'nativeWebTap' =&gt; true, 'allowInvisibleElements' =&gt; true})
+@driver.settings = {'nativeWebTap' =&gt; true, 'allowInvisibleElements' =&gt; true}
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// Not supported
+            <pre><code class="csharp">driver.Settings = new Dictionary&lt;string, object&gt;() {
+    [AutomatorSetting.KeyInjectionDelay] = 1500,
+    ["nativeWebTap"] = true
+};
+
 </code></pre>
           </div>
           
@@ -2096,7 +2102,7 @@ update_settings(sample: 'value')
 <tr>
 <td><a href="https://github.com/appium/appium-dotnet-driver/releases/latest">C#</a></td>
 <td>All</td>
-<td></td>
+<td><a href="https://github.com/appium/appium-dotnet-driver/blob/master/src/Appium.Net/Appium/Android/Interfaces/IHasSettings.cs">github.com</a></td>
 </tr>
 </tbody>
 </table>
@@ -2139,7 +2145,7 @@ update_settings(sample: 'value')
 <p>null</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L587">JSONWP Specification</a></li>
+<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L588">JSONWP Specification</a></li>
 </ul></div>
         
     </div>

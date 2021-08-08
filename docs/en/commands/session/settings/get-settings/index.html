@@ -1974,12 +1974,14 @@ get_settings
 
 # ruby_lib_core example
 @driver.get_settings
+@driver.settings.get
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// Not supported
+            <pre><code class="csharp">driver.Settings
+
 </code></pre>
           </div>
           
@@ -2096,7 +2098,7 @@ get_settings
 <tr>
 <td><a href="https://github.com/appium/appium-dotnet-driver/releases/latest">C#</a></td>
 <td>None</td>
-<td></td>
+<td><a href="https://github.com/appium/appium-dotnet-driver/blob/master/src/Appium.Net/Appium/Android/Interfaces/IHasSettings.cs">github.com</a></td>
 </tr>
 </tbody>
 </table>
@@ -2124,7 +2126,7 @@ get_settings
 <p>a JSON hash of all the currently specified settings, see <a href="/docs/en/advanced-concepts/settings/index.html">Settings API</a>. (<code>array&lt;object&gt;</code>)</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L587">JSONWP Specification</a></li>
+<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L588">JSONWP Specification</a></li>
 </ul></div>
         
     </div>
