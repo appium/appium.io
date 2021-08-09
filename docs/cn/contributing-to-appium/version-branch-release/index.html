@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Appium 版本, 分支和发布模式 - Appium</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link href="../../css/appium.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="/">
+                <img src="../../img/appium_white_360.png">
+            </a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../about-appium/intro/">简介</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/appium-clients/">Appium 客户端</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">驱动程序 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../drivers/ios-xcuitest/">XCUITest (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../drivers/android-uiautomator2/">UIAutomator2 (Android)</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">编写 &amp; 运行测试 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/running-tests/">运行测试</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/caps/">预期功能</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/default-capabilities-arg/">--default-capabilities 标识</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/finding-elements/">寻找元素</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/touch-actions/">触控操作</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../writing-running-appium/server-args/">命令行参数</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web / Web 视图</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/mobile-web/">自动化 Web 测试</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/web/chromedriver/">使用 Chromedriver</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest 移动手势</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-predicate/">iOS 谓词（Predicate）指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/ios/ios-touch-id/">iOS Touch ID 指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/uiautomator-uiselector/">UiSelector 指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/android/android-coverage/">Android 代码覆盖指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">其他</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/reset-strategies/">重置策略</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/network-connection/">网络连接指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../writing-running-appium/other/unicode/">在 Appium 中使用 Unicode</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/migrating-to-xcuitest/">迁移到 XCUITest</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/grid/">在 Appium 中使用 Selenium Grid</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/cross-domain-iframes/">跨域 iframes</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/wda-custom-server/">使用自定义 WDA 服务器</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/event-timings/">Event Timings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/parallel-tests/">并行测试的设置</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../advanced-concepts/settings/">Settings API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">捐赠 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../appium-from-source/">从源代码运行 Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../developers-overview/">开发者概述</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../style-guide/">Appium 风格指南</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../how-to-write-docs/">如何编写文档</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../appium-packages/">Appium 包结构</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../credits/">鸣谢</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#appium">Appium 版本, 分支和发布模式</a></li>
+        
+            <li class="second-level"><a href="#_1">版本控制</a></li>
+            
+        
+            <li class="second-level"><a href="#_2">分支和发布模式</a></li>
+            
+        
+            <li class="second-level"><a href="#_3">里程碑</a></li>
+            
+        
+            <li class="second-level"><a href="#workflow">Workflow</a></li>
+            
+                <li class="third-level"><a href="#_4">例如</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 documentation" role="main"><h1 id="appium"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/cn/contributing-to-appium/version-branch-release.md">
+    <i class="glyphicon glyphicon-pencil"></i>
+    &nbsp;&nbsp;Edit this Doc
+  </a>Appium 版本, 分支和发布模式</h1>
+<h2 id="_1">版本控制</h2>
+<p>1.3.6版本之后, Appium 使用语义版本控制： <code>major | minor | patch | [-beta{N}]</code>. 例如, <code>1.4.1</code> or <code>2.4.0-Beta4</code>.
+* Major: API 突破性变化；新功能
+* Minor: 向后兼容的变化; 可能包含或不包括新功能
+* Patch: 快速修复工程; 没有新功能</p>
+<p>这使得 Appium 的版本与 NPM 生态系统中的其他主要项目一致。它也适用于下面描述的基于主干的开发模式。</p>
+<h2 id="_2">分支和发布模式</h2>
+<p>Appium 使用 <a href="http://paulhammant.com/2013/04/05/what-is-trunk-based-development/">Trunk Based Development</a>。正如 Paul Hammant 所说,</p>
+<blockquote>
+<p>Trunk Based Development (TBD) 是所有开发人员（针对特定可部署单元）在源控制下提交到一个共享分支。那个分支俗称为 trunk。</p>
+<p>⋯ 分支是为了发布而创建的。开发人员不得在共享的地方建立分支。只有发布工程师才能对这些分支进行 commit，并且实际上得去创建这些分支。如果有必要的话，发布工程师可能会 cherry-pick 一些提交到发布分支。</p>
+<p>⋯ 发布分支将在短时间内被另一个发布分支替代，每个发布分支在创建时要从 trunk 中获取所有内容。在合并方面，只支持从主干到发布分支的 cherry-pick。</p>
+</blockquote>
+<h2 id="_3">里程碑</h2>
+<p>我们根据版本控制和发布模式来设定 Appium 的里程碑. 下一个里程碑一直会是 Major.Minor 的发布。 与接下来要发布的 Major.Minor 版本不相干的产品缺陷修复和新功能，将会被积压到下一个以修复 BUG 或者新功能的命名分支上发布（即 Bugs 和 Features）。一般来说，我们每次的 minor 发布周期为 8 到 10 周一次。这包括大约一周的 Beta 测试和另外一周的修复和最终更改。 修补程序在 Major.Minor 版本之间根据需要发布（Major.Minor.Patch）。这样我们可以快速解决问题，同时最大限度地减少回归的风险。</p>
+<h2 id="workflow">Workflow</h2>
+<p>对于Appium，基本流程如下所示：</p>
+<ol>
+<li>所有 PRs 都提交到 <code>master</code> (aka <code>trunk</code>).</li>
+<li>由发布工程师（Release engineer，简称RE）来主导发布行为。 当发布分支已经准备好共享（“Beta”状态或更好）时，RE将创建一个新的分支v[Major].[Minor].[Patch]-branch。</li>
+<li>PRs 持续提交到 <code>master</code>.</li>
+<li>如果有修复相关的发布提交到 <code>master</code>, RE将这些提交到发布分支。</li>
+<li>发布分支可以修改与后续补丁修补程序发布。 这使得团队可以小心地将小型变更集放在一起，以便快速发布。修复也可以在需要时被并入以前的分支。</li>
+<li>冲洗，重复。</li>
+</ol>
+<p>开发人员可以随他们的意愿维护他们开发中的分支，这些仅是个人使用。但所有“官方”分支机构均应符合上述规定。</p>
+<h3 id="_4">例如</h3>
+<ol>
+<li>今天 6 月 1 日， Appium 团队计划于7月15日发布 20.1-beta，8 月 1 日发布全面的 20.1 版本。</li>
+<li>在接下来的六个星期里，这个团队将他们的代码提交到 <code>master</code>.</li>
+<li>7月15日，执行 RE 创建 20.1-branch。第一个节点被标记为 “20.1.0 Beta”。</li>
+<li>一个团队成员开始修复测试版中的错误。这些修复会被提交到 <code>master</code>.</li>
+<li>其他贡献者开始按计划提交代码到 <code>20.2</code> 中去。这些内容也会被提交到 <code>master</code>。</li>
+<li>RE把修复的内容cherry picks到 <code>20.1-branch</code>, 并保留 <code>master</code> 的其他变更。</li>
+<li>该团队庆祝 8 月 1 日发布的所有测试版本都已修复。</li>
+<li>RE 标签的 HEAD 20.1-branch 为 20.1.0 发布版本。</li>
+<li>几周后，发现 20.1.0 存在崩溃，用户现在需要修复。</li>
+<li>执行 RE 将主机的崩溃修复程序拉入 20.1-branch，将 HEAD 标记为 20.1.1 并发布修补程序。</li>
+<li>一旦 20.2 发布完毕，循环就会重复。</li>
+</ol>
+<p>本文由 大东 翻译，由 lihuazhang 校验。</p></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small></p>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../js/extra.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</body></html>

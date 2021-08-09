@@ -5,5 +5,5 @@ theme:
   custom_dir: {{themeDir}}
 extra:
   base_url: {{baseUrl}}
-pages:
+nav:
 {{{toc}}}

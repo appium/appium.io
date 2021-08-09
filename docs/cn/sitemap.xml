@@ -1,198 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    
-        
     <url>
-     <loc>/about-appium/intro/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/about-appium/appium-clients/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/about-appium/platform-support/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
-     <loc>/drivers/ios-xcuitest/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/drivers/ios-xcuitest-real-devices/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/drivers/android-uiautomator2/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
-     <loc>/writing-running-appium/running-tests/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/writing-running-appium/caps/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/writing-running-appium/default-capabilities-arg/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/writing-running-appium/finding-elements/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/writing-running-appium/touch-actions/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/writing-running-appium/server-args/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>/advanced-concepts/migrating-to-xcuitest/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/advanced-concepts/grid/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/advanced-concepts/cross-domain-iframes/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/advanced-concepts/wda-custom-server/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/advanced-concepts/event-timings/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/advanced-concepts/parallel-tests/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/advanced-concepts/settings/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
-     <loc>/contributing-to-appium/appium-from-source/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/contributing-to-appium/developers-overview/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/contributing-to-appium/style-guide/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/contributing-to-appium/how-to-write-docs/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/contributing-to-appium/appium-packages/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/contributing-to-appium/credits/</loc>
+     <loc>None</loc>
      <lastmod>2021-08-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2021-08-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
 </urlset>
