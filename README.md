@@ -15,7 +15,7 @@ To locally preview appium.io
 1. Node + NPM
 1. Ruby Bundler (`gem install bundler`)
 1. pip (`brew install pip`)
-1. MkDocs 0.16.3 (`pip install mkdocs==0.16.3`)
+1. MkDocs 0.16.3 (`pip install mkdocs==0.17.5`)
 
 ## Setup
 
