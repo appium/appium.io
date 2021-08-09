@@ -1,6 +1,8 @@
 site_name: Appium
 docs_dir: {{language}}
-theme_dir: {{themeDir}}
+theme:
+  name: mkdocs
+  custom_dir: {{themeDir}}
 extra:
   base_url: {{baseUrl}}
 pages:
