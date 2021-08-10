@@ -1,0 +1,730 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Get app strings - Appium</title>
+
+    <link href="../../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&amp;subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link href="../../../../css/cinder.css" rel="stylesheet">
+    <link href="../../../../css/appium.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="/">
+                <img src="../../../../img/appium_white_360.png">
+            </a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">关于 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../../../about-appium/intro/">简介</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../about-appium/appium-clients/">Appium 客户端</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../about-appium/platform-support/">已支持的平台</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">驱动程序 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../../../drivers/ios-xcuitest/">XCUITest (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../drivers/ios-xcuitest-real-devices/">XCUITest Real Devices (iOS)</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../drivers/android-uiautomator2/">UIAutomator2 (Android)</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">编写 &amp; 运行测试 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../../../writing-running-appium/running-tests/">运行测试</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../writing-running-appium/caps/">预期功能</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../writing-running-appium/default-capabilities-arg/">--default-capabilities 标识</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../writing-running-appium/finding-elements/">寻找元素</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../writing-running-appium/touch-actions/">触控操作</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../writing-running-appium/server-args/">命令行参数</a>
+</li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Web / Web 视图</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/web/mobile-web/">自动化 Web 测试</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/web/hybrid/">自动化混合应用</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/web/ios-webkit-debug-proxy/">使用 ios-webkit-debug-proxy</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/web/chromedriver/">使用 Chromedriver</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">iOS</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/ios/ios-xctest-mobile-gestures/">XCUITest 移动手势</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/ios/ios-predicate/">iOS 谓词（Predicate）指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/ios/ios-touch-id/">iOS Touch ID 指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">Android</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/android/uiautomator-uiselector/">UiSelector 指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/android/android-coverage/">Android 代码覆盖指南</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="menu-item dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="">其他</a>
+    <ul class="dropdown-menu">
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/other/reset-strategies/">重置策略</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/other/network-connection/">网络连接指南</a>
+</li>
+
+        
+            
+<li>
+    <a href="../../../../writing-running-appium/other/unicode/">在 Appium 中使用 Unicode</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">进阶 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/migrating-to-xcuitest/">迁移到 XCUITest</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/grid/">在 Appium 中使用 Selenium Grid</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/cross-domain-iframes/">跨域 iframes</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/wda-custom-server/">使用自定义 WDA 服务器</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/event-timings/">Event Timings API</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/parallel-tests/">并行测试的设置</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../advanced-concepts/settings/">Settings API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                
+                
+                    <li class="menu-item dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">捐赠 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li>
+    <a href="../../../../contributing-to-appium/appium-from-source/">从源代码运行 Appium</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../contributing-to-appium/developers-overview/">开发者概述</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../contributing-to-appium/style-guide/">Appium 风格指南</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../contributing-to-appium/how-to-write-docs/">如何编写文档</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../contributing-to-appium/appium-packages/">Appium 包结构</a>
+</li>
+
+                        
+                            
+<li>
+    <a href="../../../../contributing-to-appium/credits/">鸣谢</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="../../../../#app">获取 App 字符串</a></li>
+        
+            <li class="second-level"><a href="../../../../#_1">使用范例</a></li>
+            
+        
+            <li class="second-level"><a href="../../../../#_2">帮助文档</a></li>
+            
+                <li class="third-level"><a href="../../../../#appium-server">Appium Server</a></li>
+            
+                <li class="third-level"><a href="../../../../#appium">Appium 客户端</a></li>
+            
+        
+            <li class="second-level"><a href="../../../../#http-api">HTTP API 规范</a></li>
+            
+                <li class="third-level"><a href="../../../../#endpoint">Endpoint</a></li>
+            
+                <li class="third-level"><a href="../../../../#url">URL 参数</a></li>
+            
+                <li class="third-level"><a href="../../../../#json">JSON 参数</a></li>
+            
+                <li class="third-level"><a href="../../../../#response">响应（Response）</a></li>
+            
+        
+            <li class="second-level"><a href="../../../../#_3">另请参阅</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9 documentation" role="main"><h1 id="app"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/commands-yml/commands/device/app/get-app-strings.yml">
+    <i class="glyphicon glyphicon-pencil"></i>
+    &nbsp;&nbsp;Edit this Doc
+  </a>获取 App 字符串</h1>
+<p>获取 App 字符串</p>
+<h2 id="_1">使用范例</h2>
+<div>
+        <ul class="nav nav-tabs" role="tablist">
+          
+          <li role="presentation" class="active">
+              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_4" data-language="csharp" data-toggle="tab">C#</a>
+          </li>
+          
+          <li role="presentation" class="">
+              <a href="#0_5" data-language="php" data-toggle="tab">PHP</a>
+          </li>
+          
+        </ul>
+        <div class="tab-content">
+          
+          <div role="tabpanel" class="tab-pane active" id="0_0">
+            <pre><code class="java">Map&lt;String, String&gt; appStrings = driver.getAppStringMap("en", "/path/to/file");
+
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="python">appStrings = self.driver.app_strings("en", "/path/to/file")
+
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_2">
+            <pre><code class="javascript">// webdriver.io 例子
+let appStrings = driver.getStrings("en");
+
+// wd 例子
+let appStrings = await driver.getAppStrings();
+
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_3">
+            <pre><code class="ruby"># ruby_lib 例子
+app_strings("en")
+
+# ruby_lib_core 例子
+@driver.app_strings("en")
+
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_4">
+            <pre><code class="csharp">Dictionary&lt;string, object&gt; appStrings = driver.GetAppStringDictionary("end", "/path/to/file");
+
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_5">
+            <pre><code class="php">$strings = $driver-&gt;appStrings();
+
+</code></pre>
+          </div>
+          
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="_2">帮助文档</h2>
+<h3 id="appium-server">Appium Server</h3>
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>Driver</th>
+<th>平台版本</th>
+<th>Appium 版本</th>
+<th>Driver 版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOS</td>
+<td><a href="/docs/cn/drivers/ios-xcuitest/index.html">XCUITest</a></td>
+<td>9.3+</td>
+<td>1.6.0+</td>
+<td>All</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="/docs/cn/drivers/ios-uiautomation/index.html">UIAutomation</a></td>
+<td>8.0 to 9.3</td>
+<td>All</td>
+<td>All</td>
+</tr>
+<tr>
+<td>Android</td>
+<td><a href="/docs/cn/drivers/android-espresso/index.html">Espresso</a></td>
+<td>?+</td>
+<td>1.9.0+</td>
+<td>All</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="/docs/cn/drivers/android-uiautomator2/index.html">UiAutomator2</a></td>
+<td>?+</td>
+<td>1.6.0+</td>
+<td>All</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="/docs/cn/drivers/android-uiautomator/index.html">UiAutomator</a></td>
+<td>4.3+</td>
+<td>All</td>
+<td>All</td>
+</tr>
+<tr>
+<td>Mac</td>
+<td><a href="/docs/cn/drivers/mac/index.html">Mac</a></td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Windows</td>
+<td><a href="/docs/cn/drivers/windows/index.html">Windows</a></td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appium">Appium 客户端</h3>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>是否支持</th>
+<th>文档</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/appium/java-client/releases/latest">Java</a></td>
+<td>All</td>
+<td><a href="https://appium.github.io/java-client/io/appium/java_client/HasAppStrings.html#getAppStringMap--">appium.github.io</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/appium/python-client/releases/latest">Python</a></td>
+<td>All</td>
+<td><a href="https://appium.github.io/python-client-sphinx/webdriver.extensions.html#webdriver.extensions.applications.Applications.app_strings">appium.github.io</a></td>
+</tr>
+<tr>
+<td><a href="http://webdriver.io/index.html">Javascript (WebdriverIO)</a></td>
+<td>All</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/admc/wd/releases/latest">Javascript (WD)</a></td>
+<td>All</td>
+<td><a href="https://github.com/admc/wd/blob/master/lib/commands.js#L2916">github.com</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/appium/ruby_lib/releases/latest">Ruby</a></td>
+<td>All</td>
+<td><a href="https://www.rubydoc.info/github/appium/ruby_lib_core/Appium/Core/Device#app_strings-instance_method">www.rubydoc.info</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/appium/php-client/releases/latest">PHP</a></td>
+<td>All</td>
+<td><a href="https://github.com/appium/php-client/">github.com</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/appium/appium-dotnet-driver/releases/latest">C#</a></td>
+<td>All</td>
+<td><a href="https://github.com/appium/appium-dotnet-driver/blob/master/src/Appium.Net/Appium/AppiumDriver.cs">github.com</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="http-api">HTTP API 规范</h2>
+<h3 id="endpoint">Endpoint</h3>
+<p><code>POST /session/:session_id/appium/app/strings</code></p>
+<h3 id="url">URL 参数</h3>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_id</td>
+<td>通过命令去路由的session id</td>
+</tr>
+</tbody>
+</table>
+<h3 id="json">JSON 参数</h3>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>language</td>
+<td><code>string</code></td>
+<td>语言代码 (可选)</td>
+</tr>
+<tr>
+<td>stringFile</td>
+<td><code>string</code></td>
+<td>字符文件串路径 (可选)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response">响应（Response）</h3>
+<p>无</p>
+<h2 id="_3">另请参阅</h2>
+<ul>
+<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L562">JSONWP 说明书</a></li>
+</ul></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small></p>
+    </footer>
+
+    <script src="../../../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../../../..';
+    </script>
+    <script data-main="../../../../mkdocs/js/search.js" src="../../../../mkdocs/js/require.js"></script>
+    <script src="../../../../js/base.js"></script>
+    <script src="../../../../js/extra.js"></script>
+    <script src="../../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</body></html>
