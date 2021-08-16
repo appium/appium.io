@@ -1885,14 +1885,14 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#memory-collection">Memory Collection</a></li>
+        <li class="first-level active"><a href="#memory-collection">Memory Collection</a></li>
         
-            <li class="second-level"><a href="../../#creating-a-dump-file">Creating a dump file</a></li>
+            <li class="second-level"><a href="#creating-a-dump-file">Creating a dump file</a></li>
             
-                <li class="third-level"><a href="../../#examples">Examples</a></li>
+                <li class="third-level"><a href="#examples">Examples</a></li>
             
         
-            <li class="second-level"><a href="../../#dump-file-analysis">Dump file analysis</a></li>
+            <li class="second-level"><a href="#dump-file-analysis">Dump file analysis</a></li>
             
         
     
@@ -1908,15 +1908,13 @@ This is <em>extremely</em> useful for finding memory leaks.</p>
 <p>To create a dump file at any given time, add the following command line parameter to <code>node</code> process, which executes the appium.js script:</p>
 <pre><code>--heapsnapshot-signal=&amp;lt;signal&amp;gt;
 </code></pre>
-
 <p>where <code>signal</code> can be one of available custom signals, for example <code>SIGUSR2</code>. Then you will be able to</p>
 <pre><code>kill -SIGUSR2 &amp;lt;nodePID&amp;gt;
 </code></pre>
-
 <p>Dump files are created in the same folder where the main Appium script has been executed.
 They have the <code>.heapsnapshot</code> extension, and can be loaded into the Chrome Inspector for further investigation.</p>
 <h4 id="examples">Examples</h4>
-<pre><code class="shell"># 1. Go to the directory where appium is installed via NPM using one of the two cd command below, depending on appium 
+<pre><code class="language-shell"># 1. Go to the directory where appium is installed via NPM using one of the two cd command below, depending on appium 
 # is installed globally or locally
 ## if your appium is globally installed via NPM with command "npm install -g appium":
 cd "$(npm -g root)/appium/"
@@ -1934,7 +1932,6 @@ pid=$!
 kill -SIGUSR2 $pid
 # Then the heap dump file is created in current directory
 </code></pre>
-
 <h3 id="dump-file-analysis">Dump file analysis</h3>
 <p>Read the <a href="https://blog.risingstack.com/finding-a-memory-leak-in-node-js/">Rising Stack article</a> for more details.</p></div>
         

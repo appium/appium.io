@@ -1885,23 +1885,23 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#automating-hybrid-apps">Automating hybrid apps</a></li>
+        <li class="first-level active"><a href="#automating-hybrid-apps">Automating hybrid apps</a></li>
         
-            <li class="second-level"><a href="../../../#entering-the-web-view-context">Entering the web view context</a></li>
+            <li class="second-level"><a href="#entering-the-web-view-context">Entering the web view context</a></li>
             
         
-            <li class="second-level"><a href="../../../#automatically-entering-the-web-view-context-on-session-start">Automatically entering the web view context on session start</a></li>
+            <li class="second-level"><a href="#automatically-entering-the-web-view-context-on-session-start">Automatically entering the web view context on session start</a></li>
             
         
-            <li class="second-level"><a href="../../../#examples">Examples</a></li>
+            <li class="second-level"><a href="#examples">Examples</a></li>
             
         
-            <li class="second-level"><a href="../../../#automating-hybrid-android-apps">Automating hybrid Android apps</a></li>
+            <li class="second-level"><a href="#automating-hybrid-android-apps">Automating hybrid Android apps</a></li>
             
         
-            <li class="second-level"><a href="../../../#automating-hybrid-ios-apps">Automating hybrid iOS apps</a></li>
+            <li class="second-level"><a href="#automating-hybrid-ios-apps">Automating hybrid iOS apps</a></li>
             
-                <li class="third-level"><a href="../../../#execution-against-an-ios-real-device">Execution against an iOS real device</a></li>
+                <li class="third-level"><a href="#execution-against-an-ios-real-device">Execution against an iOS real device</a></li>
             
         
     
@@ -1952,26 +1952,44 @@ the web view context on session initialization by setting the <code>autoWebview<
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">// assuming we have a set of capabilities
+            <pre><code class="language-javascript">// assuming we have an initialized `driver` object for an app
+driver
+    .contexts().then(function (contexts) { // get list of available views. Returns array: ["NATIVE_APP","WEBVIEW_1"]
+        return driver.context(contexts[1]); // choose the webview context
+    })
+
+    // do some web testing
+    .elementsByCss('.green_button').click()
+
+    .context('NATIVE_APP') // leave webview context
+
+    // do more native stuff here if we want
+
+    .quit() // stop webdrivage
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="language-java">// assuming we have a set of capabilities
 driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
 Set&lt;String&gt; contextNames = driver.getContextHandles();
@@ -1991,45 +2009,8 @@ driver.quit();
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python"># assuming we have an initialized `driver` object for an app
-
-# switch to webview
-webview = driver.contexts.last
-driver.switch_to.context(webview)
-
-# do some webby stuff
-driver.find_element(By.CSS, ".green_button").click
-
-# switch back to native view
-driver.switch_to.context(driver.contexts.first)
-
-# do more native testing if we want
-
-driver.quit()
-</code></pre>
-          </div>
-          
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">// assuming we have an initialized `driver` object for an app
-driver
-    .contexts().then(function (contexts) { // get list of available views. Returns array: ["NATIVE_APP","WEBVIEW_1"]
-        return driver.context(contexts[1]); // choose the webview context
-    })
-
-    // do some web testing
-    .elementsByCss('.green_button').click()
-
-    .context('NATIVE_APP') // leave webview context
-
-    // do more native stuff here if we want
-
-    .quit() // stop webdrivage
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby"># assuming we have a set of capabilities
+            <pre><code class="language-ruby"># assuming we have a set of capabilities
 @driver = Appium::Core.for(url: SERVER_URL, desired_capabilities: capabilities).start_driver
 # ruby_lib
 # opts = { caps: capabilities, appium_lib: { custom_url: SERVER_URL }}
@@ -2056,12 +2037,27 @@ end
 </code></pre>
           </div>
           
+          <div role="tabpanel" class="tab-pane " id="0_3">
+            <pre><code class="language-python"># assuming we have an initialized `driver` object for an app
+
+# switch to webview
+webview = driver.contexts.last
+driver.switch_to.context(webview)
+
+# do some webby stuff
+driver.find_element(By.CSS, ".green_button").click
+
+# switch back to native view
+driver.switch_to.context(driver.contexts.first)
+
+# do more native testing if we want
+
+driver.quit()
+</code></pre>
+          </div>
+          
         </div>
       </div>
-
-
-
-
 
 
 

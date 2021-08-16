@@ -408,24 +408,24 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#appium-xcuitest">Appium XCUITest 驱动在真机上的设置</a></li>
+        <li class="first-level active"><a href="#appium-xcuitest">Appium XCUITest 驱动在真机上的设置</a></li>
         
-            <li class="second-level"><a href="../../#_1">安装依赖</a></li>
+            <li class="second-level"><a href="#_1">安装依赖</a></li>
             
         
-            <li class="second-level"><a href="../../#_2">基础 (自动) 配置</a></li>
+            <li class="second-level"><a href="#_2">基础 (自动) 配置</a></li>
             
         
-            <li class="second-level"><a href="../../#_3">基础 (手动) 配置</a></li>
+            <li class="second-level"><a href="#_3">基础 (手动) 配置</a></li>
             
         
-            <li class="second-level"><a href="../../#_4">完全手工配置</a></li>
+            <li class="second-level"><a href="#_4">完全手工配置</a></li>
             
         
-            <li class="second-level"><a href="../../#_5">对被测应用的设置</a></li>
+            <li class="second-level"><a href="#_5">对被测应用的设置</a></li>
             
         
-            <li class="second-level"><a href="../../#_6">问题排查思路</a></li>
+            <li class="second-level"><a href="#_6">问题排查思路</a></li>
             
         
     
@@ -444,19 +444,17 @@
 <ul>
 <li>使用功能参数 <code>xcodeOrgId</code> 与 <code>xcodeSigningId</code> :</li>
 </ul>
-<pre><code class="json">    {
+<pre><code class="language-json">    {
       "xcodeOrgId": "&lt;Team ID&gt;",
       "xcodeSigningId": "iPhone Developer"
     }
 </code></pre>
-
 <ul>
 <li>在任意路径下，创建一个 <code>.xcconfig</code> 文件，并添加如下配置：</li>
 </ul>
 <pre><code>    DEVELOPMENT_TEAM = &lt;Team ID&gt;
     CODE_SIGN_IDENTITY = iPhone Developer
 </code></pre>
-
 <p>无论哪种情况，苹果公司会生成一个 10 位字符的唯一字符串作为您的 Team ID，分配给您的开发团队。您可以您的开发者账号找到这个 Team ID，您可以登录<a href="http://developer.apple.com/account">developer.apple.com/account</a> 并点击侧边栏的 「开发者资格（ Membership ）」。您可以在 「开发者资格（ Membership ）」 详细信息的团队名称下找到您的 Team ID。您也可以在您电脑「钥匙串」中的 iPhone 开发者证书中的 「组织单元（"Organizational Unit"）」字段中，找到您的 Team ID。</p>
 <p>需要注意的是，使用 <code>xcodeConfigFile</code> 这种方式，与使用 <code>xcodeOrgId</code> 和 <code>xcodeSigningId</code> 的方式是互斥的。</p>
 <p>这些配置完成后，您就只剩下将您的真机设备配置在参数 <code>udid</code> 中就可以了。</p>
@@ -469,7 +467,6 @@ signal 'null'</code>。这通常意味着代码签名配置的有问题。继续
 Testing failed:
     Test target WebDriverAgentRunner encountered an error (Early unexpected exit, operation never finished bootstrapping - no restart will be attempted)
 </code></pre>
-
 <p>这个问题是由于开发者在设备上不受信任，当你手动尝试将 <code>WebDriverAgentRunner</code> 安装在您的真机设备上时，会看到如下弹窗信息：</p>
 <p><img alt="Untrusted developer" src="../ios-xcuitest-img/untrusted-dev.png"></p>
 <p>您可以通过 设置（Settings） =&gt; 通用（General） =&gt; 设备管理（Device Management）来信任开发者，以使 <code>WebDriverAgentRunner</code> 能够成功运行 (更多详细信息见： <a href="https://support.apple.com/en-us/HT204460">苹果官方支持文档</a>)。</p>
@@ -497,20 +494,17 @@ provisioning profile</strong>:</p>
 <pre><code>    $ which appium
     /path/where/installed/bin/appium
 </code></pre>
-
 <ul>
 <li>由于路径在： <code>/path/where/installed/bin/appium</code>，那么，<code>WebDriverAgent</code> 可以在这个路径的下级路径中被找到： <code>/path/where/installed/lib/node_modules/appium/node_modules/appium-webdriveragent</code>。
     打开终端（terminal），移动到该路径下执行如下命令：</li>
 </ul>
 <pre><code>    mkdir -p Resources/WebDriverAgent.bundle
 </code></pre>
-
 <ul>
 <li>( 如果 Appium 版本低于 1.20 ) 在终端（terminal）执行如下命令：</li>
 </ul>
 <pre><code>    ./Scripts/bootstrap.sh -d
 </code></pre>
-
 <ul>
 <li>
 <p>Xcode 打开 <code>WebDriverAgent.xcodeproj</code>。同时选中  <code>WebDriverAgentLib</code>
@@ -537,7 +531,6 @@ provisioning profile</strong>:</p>
 </ul>
 <pre><code>    xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=&lt;udid&gt;' test
 </code></pre>
-
 <p>如果一切正常，输出信息一般以此结尾:</p>
 <pre><code>    Test Suite 'All tests' started at 2017-01-23 15:49:12.585
     Test Suite 'WebDriverAgentRunner.xctest' started at 2017-01-23 15:49:12.586
@@ -546,7 +539,6 @@ provisioning profile</strong>:</p>
         t =     0.00s     Start Test at 2017-01-23 15:49:12.588
         t =     0.00s     Set Up
 </code></pre>
-
 <ul>
 <li>要完全验证，您可以尝试访问 WebDriverAgent 服务器状态
     (<strong>提示:</strong> 您 <em>必须</em> 保证 WebDriverAgent 服务与设备在同一网络下，可以通过以下方式获取 IP， Settings =&gt; Wi-Fi =&gt; Current Network):</li>
@@ -555,7 +547,6 @@ provisioning profile</strong>:</p>
     export JSON_HEADER='-H "Content-Type: application/json;charset=UTF-8, accept: application/json"'
     curl -X GET $JSON_HEADER $DEVICE_URL/status
 </code></pre>
-
 <p>您将获得类似如下的返回信息:</p>
 <pre><code>    {
       "value" : {
@@ -576,7 +567,6 @@ provisioning profile</strong>:</p>
       "status" : 0
     }
 </code></pre>
-
 <h3 id="_5">对被测应用的设置</h3>
 <p>不仅是 WDA 可以在您的设备上运行，被测应用也需要可以在您的设备上运行。它们之间的规则是相同的：一个拥有签名的被测应用（ 一个 <code>.ipa</code> 文件）。 可以在 这里 <a href="https://medium.com/ios-os-x-development/ios-code-signing-provisioning-in-a-nutshell-d5b247760bef#.5hirl92tn">这里</a>
 与 

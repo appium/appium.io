@@ -1885,18 +1885,18 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#android-device-screen-streaming-with-appium">Android Device Screen Streaming With Appium</a></li>
+        <li class="first-level active"><a href="#android-device-screen-streaming-with-appium">Android Device Screen Streaming With Appium</a></li>
         
-            <li class="second-level"><a href="../../../#mobile-startscreenstreaming">mobile: startScreenStreaming</a></li>
+            <li class="second-level"><a href="#mobile-startscreenstreaming">mobile: startScreenStreaming</a></li>
             
-                <li class="third-level"><a href="../../../#supported-arguments">Supported arguments</a></li>
+                <li class="third-level"><a href="#supported-arguments">Supported arguments</a></li>
             
-                <li class="third-level"><a href="../../../#usage-examples">Usage examples</a></li>
+                <li class="third-level"><a href="#usage-examples">Usage examples</a></li>
             
         
-            <li class="second-level"><a href="../../../#mobile-stopscreenstreaming">mobile: stopScreenStreaming</a></li>
+            <li class="second-level"><a href="#mobile-stopscreenstreaming">mobile: stopScreenStreaming</a></li>
             
-                <li class="third-level"><a href="../../../#usage-examples_1">Usage examples</a></li>
+                <li class="third-level"><a href="#usage-examples_1">Usage examples</a></li>
             
         
     
@@ -1932,18 +1932,18 @@ In case the streaming is already running the command just returns silently. Simu
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">Map&lt;String, Object&gt; args = new HashMap&lt;&gt;();
+            <pre><code class="language-java">Map&lt;String, Object&gt; args = new HashMap&lt;&gt;();
 args.put("width", 1080);
 args.put("height", 1920);
 args.put("considerRotation", true);
@@ -1954,7 +1954,7 @@ driver.executeScript("mobile: startScreenStreaming", args);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">driver.execute_script('mobile: startScreenStreaming', {
+            <pre><code class="language-python">driver.execute_script('mobile: startScreenStreaming', {
     'width': 1080,
     'height': 1920,
     'considerRotation': True,
@@ -1967,8 +1967,6 @@ driver.executeScript("mobile: startScreenStreaming", args);
         </div>
       </div>
 
-
-
 <h3 id="mobile-stopscreenstreaming">mobile: stopScreenStreaming</h3>
 <p>Stops the running screen streaming session. If no session has been started before then no action is done. Note that screen streaming session is always stopped automatically as soon as the container driver session is terminated.</p>
 <h4 id="usage-examples_1">Usage examples</h4>
@@ -1976,29 +1974,28 @@ driver.executeScript("mobile: startScreenStreaming", args);
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#1_0" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#1_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="java">driver.executeScript("mobile: stopScreenStreaming");
+            <pre><code class="language-java">driver.executeScript("mobile: stopScreenStreaming");
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="python">driver.execute_script('mobile: stopScreenStreaming')
+            <pre><code class="language-python">driver.execute_script('mobile: stopScreenStreaming')
 </code></pre>
           </div>
           
         </div>
       </div>
-
 </div>
         
     </div>

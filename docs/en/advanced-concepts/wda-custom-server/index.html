@@ -1885,15 +1885,15 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#how-to-set-up-and-customize-webdriveragent-server">How To Set Up And Customize WebDriverAgent Server</a></li>
+        <li class="first-level active"><a href="#how-to-set-up-and-customize-webdriveragent-server">How To Set Up And Customize WebDriverAgent Server</a></li>
         
-            <li class="second-level"><a href="../../#wda-setup">WDA Setup</a></li>
+            <li class="second-level"><a href="#wda-setup">WDA Setup</a></li>
             
         
-            <li class="second-level"><a href="../../#wda-startup">WDA Startup</a></li>
+            <li class="second-level"><a href="#wda-startup">WDA Startup</a></li>
             
         
-            <li class="second-level"><a href="../../#important-notes">Important Notes</a></li>
+            <li class="second-level"><a href="#important-notes">Important Notes</a></li>
             
         
     
@@ -1919,14 +1919,12 @@ long-running perspective.</p>
 <p>WebDriverAgent source is automatically downloaded with Appium. The usual folder location
 in case Appium is installed via npm tool (<code>npm install -g appium</code>) is
 <code>/usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent</code></p>
-<pre><code class="bash">cd /usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent
+<pre><code class="language-bash">cd /usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent
 ./Scripts/bootstrap.sh -d
 </code></pre>
-
 <p>Also, it might be necessary to create an empty folder for WDA resources:</p>
-<pre><code class="bash">mkdir -p /usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent/Resources/WebDriverAgent.bundle
+<pre><code class="language-bash">mkdir -p /usr/local/lib/node_modules/appium/node_modules/appium-webdriveragent/Resources/WebDriverAgent.bundle
 </code></pre>
-
 <p>No further configuration steps are needed if you're going to execute your automated tests on
 iOS Simulator.</p>
 <p>Real device, however, requires some more work to be done. Follow
@@ -1953,7 +1951,7 @@ a remote device requiring the module from your JavaScript code as same as Appium
 Alternatively, you can also use <a href="https://github.com/libimobiledevice/libusbmuxd#iproxy">iproxy</a>, <a href="https://github.com/danielpaulus/go-ios">go-ios</a> or <a href="https://github.com/alibaba/taobao-iphone-device">tidevice</a> to handle WebDriverAgent process outside Appium. For instance, <code>iproxy</code> could be installed using npm: <code>npm install -g iproxy</code>.</p>
 <p>This helper class written in Java illustrates the main implementation details
 wit <em>iproxy</em>:</p>
-<pre><code class="java">public class WDAServer {
+<pre><code class="language-java">public class WDAServer {
     private static final Logger log = ZLogger.getLog(WDAServer.class.getSimpleName());
 
     private static final int MAX_REAL_DEVICE_RESTART_RETRIES = 1;
@@ -2157,18 +2155,15 @@ wit <em>iproxy</em>:</p>
     }
 }
 </code></pre>
-
 <p>One should call this piece of code before to start Appium iOS driver, for example, in setUp method:</p>
-<pre><code class="java">   if (!WDAServer.getInstance().isRunning()) {
+<pre><code class="language-java">   if (!WDAServer.getInstance().isRunning()) {
        WDAServer.getInstance().restart();
    }
 </code></pre>
-
 <p>It is important to set <strong>webDriverAgentUrl</strong> capability for Appium driver to let it know
 that our WDA driver is ready for use:</p>
-<pre><code class="java">    capabilities.setCapability("webDriverAgentUrl", WDAServer.SERVER_URL);
+<pre><code class="language-java">    capabilities.setCapability("webDriverAgentUrl", WDAServer.SERVER_URL);
 </code></pre>
-
 <h3 id="important-notes">Important Notes</h3>
 <ul>
 <li>The process does not have direct access to keychain if it is executed by Jenkins agent,

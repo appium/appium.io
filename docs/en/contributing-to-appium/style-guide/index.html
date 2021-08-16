@@ -1885,21 +1885,21 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#style-guide-for-contributors">Style guide for contributors</a></li>
+        <li class="first-level active"><a href="#style-guide-for-contributors">Style guide for contributors</a></li>
         
-            <li class="second-level"><a href="../../#javascript">JavaScript</a></li>
+            <li class="second-level"><a href="#javascript">JavaScript</a></li>
             
         
-            <li class="second-level"><a href="../../#rebasing">Rebasing</a></li>
+            <li class="second-level"><a href="#rebasing">Rebasing</a></li>
             
         
-            <li class="second-level"><a href="../../#linting">Linting</a></li>
+            <li class="second-level"><a href="#linting">Linting</a></li>
             
         
-            <li class="second-level"><a href="../../#style-notes">Style notes</a></li>
+            <li class="second-level"><a href="#style-notes">Style notes</a></li>
             
         
-            <li class="second-level"><a href="../../#test-style">Test Style:</a></li>
+            <li class="second-level"><a href="#test-style">Test Style:</a></li>
             
         
     
@@ -2060,14 +2060,13 @@ let x = y ? y : z;</code></p>
 library used is <a href="https://github.com/admc/wd">wd</a>.</p>
 <p>Keep on the same line if it makes sense semantically and length is not an issue:</p>
 <p>Examples:</p>
-<pre><code class="js">driver.elementByTagName('el1').should.become('123');
+<pre><code class="language-js">driver.elementByTagName('el1').should.become('123');
 
 driver
   .elementsByTagName('el1').should.eventually.have.length(0);
 </code></pre>
-
 <p>Alternatively use extra indents to improve readability:</p>
-<pre><code class="js">driver
+<pre><code class="language-js">driver
   .elementById('comments')
     .clear()
     .click()

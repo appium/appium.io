@@ -1885,39 +1885,39 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#getting-started">Getting Started</a></li>
+        <li class="first-level active"><a href="#getting-started">Getting Started</a></li>
         
-            <li class="second-level"><a href="../../#installing-appium">Installing Appium</a></li>
+            <li class="second-level"><a href="#installing-appium">Installing Appium</a></li>
             
-                <li class="third-level"><a href="../../#installation-via-npm">Installation via NPM</a></li>
+                <li class="third-level"><a href="#installation-via-npm">Installation via NPM</a></li>
             
-                <li class="third-level"><a href="../../#installation-via-desktop-app-download">Installation via Desktop App Download</a></li>
-            
-        
-            <li class="second-level"><a href="../../#driver-specific-setup">Driver-Specific Setup</a></li>
+                <li class="third-level"><a href="#installation-via-desktop-app-download">Installation via Desktop App Download</a></li>
             
         
-            <li class="second-level"><a href="../../#verifying-the-installation">Verifying the Installation</a></li>
+            <li class="second-level"><a href="#driver-specific-setup">Driver-Specific Setup</a></li>
             
         
-            <li class="second-level"><a href="../../#appium-clients">Appium Clients</a></li>
+            <li class="second-level"><a href="#verifying-the-installation">Verifying the Installation</a></li>
             
         
-            <li class="second-level"><a href="../../#starting-appium">Starting Appium</a></li>
+            <li class="second-level"><a href="#appium-clients">Appium Clients</a></li>
             
         
-            <li class="second-level"><a href="../../#running-your-first-test">Running Your First Test</a></li>
-            
-                <li class="third-level"><a href="../../#prerequisites">Prerequisites</a></li>
-            
-                <li class="third-level"><a href="../../#setting-up-the-appium-client">Setting up the Appium Client</a></li>
-            
-                <li class="third-level"><a href="../../#session-initialization">Session Initialization</a></li>
-            
-                <li class="third-level"><a href="../../#running-test-commands">Running Test Commands</a></li>
+            <li class="second-level"><a href="#starting-appium">Starting Appium</a></li>
             
         
-            <li class="second-level"><a href="../../#whats-next">What's Next</a></li>
+            <li class="second-level"><a href="#running-your-first-test">Running Your First Test</a></li>
+            
+                <li class="third-level"><a href="#prerequisites">Prerequisites</a></li>
+            
+                <li class="third-level"><a href="#setting-up-the-appium-client">Setting up the Appium Client</a></li>
+            
+                <li class="third-level"><a href="#session-initialization">Session Initialization</a></li>
+            
+                <li class="third-level"><a href="#running-test-commands">Running Test Commands</a></li>
+            
+        
+            <li class="second-level"><a href="#whats-next">What's Next</a></li>
             
         
     
@@ -1945,7 +1945,6 @@ Appium supports Node 10+.</p>
 <p>The actual installation is as simple as:</p>
 <pre><code>npm install -g appium
 </code></pre>
-
 <h4 id="installation-via-desktop-app-download">Installation via Desktop App Download</h4>
 <p>Simply download the latest version of Appium Desktop from the <a href="https://github.com/appium/appium-desktop/releases">releases
 page</a>.</p>
@@ -1997,7 +1996,6 @@ language and ready to go.</p>
 like so (assuming the NPM install was successful):</p>
 <pre><code>appium
 </code></pre>
-
 <p>Or by clicking the huge Start Server button inside of Appium Desktop.</p>
 <p>Appium will now show you a little welcome message showing the version of Appium
 you're running and what port it's listening on (the default is <code>4723</code>). This
@@ -2031,18 +2029,15 @@ samples for many languages and platforms.)</p>
 client. Create a directory for this example, then run:</p>
 <pre><code>npm init -y
 </code></pre>
-
 <p>Once the project has been initialized, install <code>webdriverio</code>:</p>
 <pre><code>npm install webdriverio
 </code></pre>
-
 <h4 id="session-initialization">Session Initialization</h4>
 <p>Now we can create our test file, named <code>index.js</code>, and initialize the
 client object:</p>
-<pre><code class="js">// javascript
+<pre><code class="language-js">// javascript
 const wdio = require("webdriverio");
 </code></pre>
-
 <p>The next thing we need to do is to start an Appium session. We do this by
 defining a set of server options and Desired Capabilities, and calling
 <code>wdio.remote()</code> with them. Desired Capabilities are just a set of keys and
@@ -2061,7 +2056,7 @@ capabilities for any Appium driver should include:</p>
 Capabilities you can use in Appium, see our <a href="/docs/en/writing-running-appium/caps/index.html">Capabilities
 doc</a>.</p>
 <p>So here is how we begin to construct a session in our test file:</p>
-<pre><code class="js">// javascript
+<pre><code class="language-js">// javascript
 const opts = {
   path: '/wd/hub',
   port: 4723,
@@ -2084,7 +2079,6 @@ async function main () {
 
 main();
 </code></pre>
-
 <h4 id="running-test-commands">Running Test Commands</h4>
 <p>You can see that we've specified our Appium port and also constructed our
 Desired Capabilities to match our requirements (but don't forget to replace the
@@ -2093,20 +2087,19 @@ with <code>webdriverio</code> and now have a client object which will represent 
 connection to the Appium server. From here, we can go ahead and start the
 session, perform some test commands, and end the session. In our case, we will
 simply type into a text field and check that the correct text was entered:</p>
-<pre><code class="js">// javascript
+<pre><code class="language-js">// javascript
 
 const field = await client.$("android.widget.EditText");
 await field.setValue("Hello World!");
 const value = await field.getText();
 assert.strictEqual(value, "Hello World!");
 </code></pre>
-
 <p>What's going on here is that after creating a session and launching our app,
 we're instructing Appium to find an element in the app hierarchy and type into
 it. The same field is then queried for its text, which is asserted to be what we
 expect.</p>
 <p>Putting it all together, the file should look like:</p>
-<pre><code class="js">// javascript
+<pre><code class="language-js">// javascript
 
 const wdio = require("webdriverio");
 const assert = require("assert");
@@ -2138,12 +2131,10 @@ async function main () {
 
 main();
 </code></pre>
-
 <p>You can try and run this test on your own. Simply save it and execute it using
 <code>node</code>:</p>
 <pre><code>node index.js
 </code></pre>
-
 <p>If everything is set up correctly, you'll see Appium begin spitting out
 lots of logs and eventually the app will pop up on the screen and start
 behaving as if an invisible user were tapping on it!</p>

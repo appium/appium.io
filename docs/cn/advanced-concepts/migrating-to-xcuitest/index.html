@@ -408,29 +408,29 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#iosuiautomationios-93xcuitestios-93">将你的iOS测试从UIAutomation（iOS 9.3及更低版本）迁移到XCUITest（iOS 9.3及更高版本）</a></li>
+        <li class="first-level active"><a href="#iosuiautomationios-93xcuitestios-93">将你的iOS测试从UIAutomation（iOS 9.3及更低版本）迁移到XCUITest（iOS 9.3及更高版本）</a></li>
         
-            <li class="second-level"><a href="../../#_1">元素类名称模式</a></li>
+            <li class="second-level"><a href="#_1">元素类名称模式</a></li>
             
         
-            <li class="second-level"><a href="../../#_2">页面源码</a></li>
+            <li class="second-level"><a href="#_2">页面源码</a></li>
             
         
-            <li class="second-level"><a href="../../#-ios-uiautomation">-ios uiautomation 定位策略</a></li>
+            <li class="second-level"><a href="#-ios-uiautomation">-ios uiautomation 定位策略</a></li>
             
         
-            <li class="second-level"><a href="../../#xpath">xpath 定位策略</a></li>
+            <li class="second-level"><a href="#xpath">xpath 定位策略</a></li>
             
         
-            <li class="second-level"><a href="../../#_3">系统依赖</a></li>
+            <li class="second-level"><a href="#_3">系统依赖</a></li>
             
         
-            <li class="second-level"><a href="../../#api">API差异</a></li>
+            <li class="second-level"><a href="#api">API差异</a></li>
             
-                <li class="third-level"><a href="../../#_4">滚动和点击</a></li>
+                <li class="third-level"><a href="#_4">滚动和点击</a></li>
             
         
-            <li class="second-level"><a href="../../#_5">其他已知问题</a></li>
+            <li class="second-level"><a href="#_5">其他已知问题</a></li>
             
         
     
@@ -468,41 +468,33 @@
 </ol>
 <pre><code>driver.findElement(x)
 </code></pre>
-
 <p>而不是使用</p>
 <pre><code>driver.findElements(x)[0]
 </code></pre>
-
 <p>通过xpath查找单个元素。 您的定位器匹配的UI元素越多，你的脚本越慢。</p>
 <ol>
 <li>在通过 xpath 定位元素时，一定要使用非常具体的xpath。 像这样的定位器</li>
 </ol>
 <pre><code>//*
 </code></pre>
-
 <p>可能需要几分钟才能完成，具体取决于您的应用程序有多少用户界面元素（例如，</p>
 <pre><code>driver.findElement(By.xpath("//XCUIElementTypeButton[@value='blabla']"))
 </code></pre>
-
 <p>比</p>
 <pre><code>driver.findElement(By.xpath("//*[@value='blabla']"))
 </code></pre>
-
 <p>或</p>
 <pre><code>driver.findElement(By.xpath("//XCUIElementTypeButton")))
 </code></pre>
-
 <p>要快很多。</p>
 <ol>
 <li>在大多数情况下，执行多个嵌套的 findElement 调用比执行 xpath 单个调用更快（例如，</li>
 </ol>
 <pre><code>driver.findElement(x).findElement(y)
 </code></pre>
-
 <p>通常比</p>
 <pre><code>driver.findElement(z)
 </code></pre>
-
 <p>要快</p>
 <p>其中x和y不是xpath定位符，z是xpath定位符）。</p>
 <h3 id="_3">系统依赖</h3>

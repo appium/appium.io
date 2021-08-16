@@ -1885,26 +1885,26 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#migrating-your-ios-tests-from-uiautomation-ios-93-and-below-to-xcuitest-ios-93-and-up">Migrating your iOS tests from UIAutomation (iOS 9.3 and below) to XCUITest (iOS 9.3 and up)</a></li>
+        <li class="first-level active"><a href="#migrating-your-ios-tests-from-uiautomation-ios-93-and-below-to-xcuitest-ios-93-and-up">Migrating your iOS tests from UIAutomation (iOS 9.3 and below) to XCUITest (iOS 9.3 and up)</a></li>
         
-            <li class="second-level"><a href="../../#element-class-name-schema">Element class name schema</a></li>
+            <li class="second-level"><a href="#element-class-name-schema">Element class name schema</a></li>
             
         
-            <li class="second-level"><a href="../../#page-source">Page source</a></li>
+            <li class="second-level"><a href="#page-source">Page source</a></li>
             
         
-            <li class="second-level"><a href="../../#-ios-uiautomation-locator-strategy">-ios uiautomation locator strategy</a></li>
+            <li class="second-level"><a href="#-ios-uiautomation-locator-strategy">-ios uiautomation locator strategy</a></li>
             
         
-            <li class="second-level"><a href="../../#xpath-locator-strategy">xpath locator strategy</a></li>
+            <li class="second-level"><a href="#xpath-locator-strategy">xpath locator strategy</a></li>
             
         
-            <li class="second-level"><a href="../../#api-differences">API differences</a></li>
+            <li class="second-level"><a href="#api-differences">API differences</a></li>
             
-                <li class="third-level"><a href="../../#scrolling-and-clicking">Scrolling and clicking</a></li>
+                <li class="third-level"><a href="#scrolling-and-clicking">Scrolling and clicking</a></li>
             
         
-            <li class="second-level"><a href="../../#other-known-issues">Other known issues</a></li>
+            <li class="second-level"><a href="#other-known-issues">Other known issues</a></li>
             
         
     
@@ -1934,39 +1934,31 @@
 </ol>
 <pre><code>driver.findElement(x)
 </code></pre>
-
 <p>call instead of</p>
 <pre><code>driver.findElements(x)[0]
 </code></pre>
-
 <p>to lookup single element by xpath. The more possible UI elements are matched by your locator the slower it is.
 3. Be very specific when locating elements by xpath. Such locators like</p>
 <pre><code>//*
 </code></pre>
-
 <p>may take minutes to complete depending on how many UI elements your application has (e. g.</p>
 <pre><code>driver.findElement(By.xpath("//XCUIElementTypeButton[@value='blabla']"))
 </code></pre>
-
 <p>is faster than</p>
 <pre><code>driver.findElement(By.xpath("//*[@value='blabla']"))
 </code></pre>
-
 <p>or</p>
 <pre><code>driver.findElement(By.xpath("//XCUIElementTypeButton")))
 </code></pre>
-
 <ol>
 <li>In most cases it would be faster to perform multiple nested findElement calls than to perform a single call by xpath (e.g.</li>
 </ol>
 <pre><code>driver.findElement(x).findElement(y)
 </code></pre>
-
 <p>is usually faster than</p>
 <pre><code>driver.findElement(z)
 
 </code></pre>
-
 <p>where x and y are non-xpath locators and z is a xpath locator).</p>
 <h3 id="api-differences">API differences</h3>
 <p>Unfortunately, the XCUITest API and the UIAutomation API are not equivalent. In many cases (like with <code>tap/click</code>), the behavior is identical. But some features that were available in the UIAutomation backend are not yet available in the new XCUITest backend. These known lacking features include:

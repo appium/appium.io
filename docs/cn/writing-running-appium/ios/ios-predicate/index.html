@@ -408,33 +408,33 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#ios-predicate">iOS 谓词(Predicate)</a></li>
+        <li class="first-level active"><a href="#ios-predicate">iOS 谓词(Predicate)</a></li>
         
-            <li class="second-level"><a href="../../../#_1">基本比较</a></li>
+            <li class="second-level"><a href="#_1">基本比较</a></li>
             
         
-            <li class="second-level"><a href="../../../#_2">布尔值谓词</a></li>
+            <li class="second-level"><a href="#_2">布尔值谓词</a></li>
             
         
-            <li class="second-level"><a href="../../../#_3">基本的复合谓词</a></li>
+            <li class="second-level"><a href="#_3">基本的复合谓词</a></li>
             
         
-            <li class="second-level"><a href="../../../#_4">字符串比较</a></li>
+            <li class="second-level"><a href="#_4">字符串比较</a></li>
             
         
-            <li class="second-level"><a href="../../../#_5">聚合操作</a></li>
+            <li class="second-level"><a href="#_5">聚合操作</a></li>
             
         
-            <li class="second-level"><a href="../../../#_6">标识符</a></li>
+            <li class="second-level"><a href="#_6">标识符</a></li>
             
         
-            <li class="second-level"><a href="../../../#literals">文字 (Literals)</a></li>
+            <li class="second-level"><a href="#literals">文字 (Literals)</a></li>
             
         
-            <li class="second-level"><a href="../../../#_7">保留字</a></li>
+            <li class="second-level"><a href="#_7">保留字</a></li>
             
         
-            <li class="second-level"><a href="../../../#appium-predicate">Appium 谓词(predicate)帮助文档</a></li>
+            <li class="second-level"><a href="#appium-predicate">Appium 谓词(predicate)帮助文档</a></li>
             
         
     
@@ -445,28 +445,25 @@
     &nbsp;&nbsp;Edit this Doc
   </a>iOS 谓词(Predicate)</h2>
 <p>在查看 <em>'-ios uiautomation'</em> 搜索策略时了解 <strong>谓词(Predicate)</strong> 十分必要。 <a href="https://web.archive.org/web/20160904214108/https://developer.apple.com/library/ios/documentation/DeveloperTools/Reference/UIAutomationRef/">UIAutomation JavaScript API</a>有下列几种非常有用的方法:</p>
-<pre><code class="center">(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
+<pre><code class="language-center">(UIAElement) UIAElementArray.firstWithPredicate(PredicateString predicateString)
 (UIAElementArray) UIAElementArray.withPredicate(PredicateString predicateString)
 </code></pre>
-
 <p>原生的JS搜索策略（由Apple提供）提供了更大的灵活性，并且和XPath很像。
 <strong><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/predicates.html">谓词(Predicate)</a></strong> 可以通过使用多个匹配条件来准确定位某一个或某一组元素（相当于只有搜索条件与元素的计算结果为 true 时这些元素才会被认为是匹配的）。</p>
 <p>（翻译备注：XPath 是一门用来定位 xml 文档中的元素的语言，能提供基于路径、元素属性等条件的定位策略）</p>
 <p>例如:</p>
-<pre><code class="java">// java
+<pre><code class="language-java">// java
 appiumDriver.findElementsByIosUIAutomation("collectionViews()[0].cells().withPredicate(\"ANY staticTexts.isVisible == TRUE\")")
 </code></pre>
-
 <p>-  将只选择那些在主视图第一个 <code>UIACollectionView</code> 元素下的、拥有可见子元素 <code>UIAStaticText</code> 的 <code>UIACollectionCell</code> 元素。在这里， <code>staticTexts()</code> 和 <code>isVisible()</code> 分别是<code>UIAElementArray</code> 和 <code>UIAElement</code> 的子方法。 <strong>注意： <code>UIAElementArray</code> 序列编号从 <code>0</code> 开始，而不是像 Xpath 那样从 <code>1</code>开始</strong></p>
 <p>以下是所有可用的谓词(Predicate)的列表（主要取自 <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Predicates/predicates.html">谓词(Predicate) 编程指南</a>)</p>
 <h3 id="_1">基本比较</h3>
 <p>= , ==
 - 左边表达式等于右边表达式:</p>
-<pre><code class="javascript">tableViews()[1].cells().firstWithPredicate("label == 'Olivia' ")
+<pre><code class="language-javascript">tableViews()[1].cells().firstWithPredicate("label == 'Olivia' ")
 
 same in Xpath: /UIATableView[2]/UIATableCell[@label = 'Olivia'][1]
 </code></pre>
-
 <p>&gt;= , =&gt;
 - 左边表达式大于或等于右边表达式。</p>
 <p>&lt;= , =&lt;
@@ -480,10 +477,9 @@ same in Xpath: /UIATableView[2]/UIATableCell[@label = 'Olivia'][1]
 <p>BETWEEN
 - 左边表达式的值在右边表达式的两个边界值之间或等于其中一个边界值。右边表达式为一个有两个值的数组，数组的第一个值是上限，第二个值是下限(这个顺序是固定的) ，例如 <code>1 BETWEEN { 0 , 33 }</code>， 或者 <code>$INPUT BETWEEN { $LOWER, $UPPER }</code>。
 在 Objective-C， 你可以创建一个自定义的 BETWEEN 谓词(Predicate)，如下面的示例所示:</p>
-<pre><code class="center">NSPredicate *betweenPredicate =
+<pre><code class="language-center">NSPredicate *betweenPredicate =
     [NSPredicate predicateWithFormat: @"attributeName BETWEEN %@", @[@1, @10]];
 </code></pre>
-
 <p>这创建了一个等价于 <code>( ( 1 &lt;= attributeValue ) &amp;&amp; ( attributeValue &lt;= 10 ) )</code> 的谓词</p>
 <h3 id="_2">布尔值谓词</h3>
 <p>TRUEPREDICATE
@@ -502,42 +498,37 @@ same in Xpath: /UIATableView[2]/UIATableCell[@label = 'Olivia'][1]
 <p>（翻译备注：这里的音调是指英文字母的音调，如 <code>"náive"</code> 和 <code>"naive"</code>。如果不加关键字 <code>d</code>，这两个字符串会认为是不等价的。）</p>
 <p>BEGINSWITH
 - 左边的表达式以右边的表达式作为开始。</p>
-<pre><code class="center">scrollViews()[3].buttons().firstWithPredicate("name BEGINSWITH 'results toggle' ")
+<pre><code class="language-center">scrollViews()[3].buttons().firstWithPredicate("name BEGINSWITH 'results toggle' ")
 
 same in Xpath: /UIAScrollView[4]/UIAButton[starts-with(@name, 'results toggle')][1]
 </code></pre>
-
 <p>CONTAINS
 - 左边的表达式包含右边的表达式。</p>
-<pre><code class="center">tableViews()[1].cells().withPredicate("ANY collectionViews[0].buttons.name CONTAINS 'opera'")
+<pre><code class="language-center">tableViews()[1].cells().withPredicate("ANY collectionViews[0].buttons.name CONTAINS 'opera'")
 
 same in Xpath: /UIATableView[2]/UIATableCell[UIACollectionView[1]/UIAButton[contains(@name, 'opera')]]
 </code></pre>
-
 <p>ENDSWITH
 - 左边的表达式以右边的表达式作为结束。</p>
 <p>LIKE
 - 左边表达式等于右边表达式: ? 和 *可作为通配符， 其中 ? 匹配 1 个字符， * 匹配 0 个或者多个字符。 在 Mac OS X v10.4， 通配符不能匹配换行符。</p>
-<pre><code class="center">tableViews()[0].cells().firstWithPredicate("name LIKE '*Total: $*' ")
+<pre><code class="language-center">tableViews()[0].cells().firstWithPredicate("name LIKE '*Total: $*' ")
 
 same in Xpath: /UIATableView[1]/UIATableCell[matches(@name, '.*Total: \$.*')][1]
 </code></pre>
-
 <p>MATCHES
 - 左边表达式根据ICU v3的正则表达式风格比较，等于右边表达式 (详情请看ICU用户指南中的 <a href="http://userguide.icu-project.org/strings/regexp">正则表达式</a>)。</p>
-<pre><code class="center">tableViews().firstWithPredicate("value MATCHES '.*of 7' ")
+<pre><code class="language-center">tableViews().firstWithPredicate("value MATCHES '.*of 7' ")
 
 same in Xpath: /UIATableView[matches(@value, '.*of 7')][1]
 </code></pre>
-
 <h3 id="_5">聚合操作</h3>
 <p>ANY , SOME
 - 指定匹配后续表达式的任意元素。例如 <code>ANY children.age &lt; 18</code> 。</p>
-<pre><code class="center">tableViews()[0].cells().firstWithPredicate("SOME staticTexts.name = 'red'").staticTexts().withName('red')
+<pre><code class="language-center">tableViews()[0].cells().firstWithPredicate("SOME staticTexts.name = 'red'").staticTexts().withName('red')
 
 same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIAStaticText[@name = 'red']
 </code></pre>
-
 <p>ALL
 - 指定匹配后续表达式的所有元素。例如 <code>ALL children.age &lt; 18</code> 。</p>
 <p>NONE
@@ -552,11 +543,10 @@ same in Xpath: /UIATableView[1]/UIATableCell[UIAStaticText/@name = 'red'][1]/UIA
 - 指定数组中的最后一个元素。</p>
 <p>array[SIZE]
 - 指定数组的大小</p>
-<pre><code class="center">elements()[0].tableViews()[0].cells().withPredicate("staticTexts[SIZE] &gt; 2")
+<pre><code class="language-center">elements()[0].tableViews()[0].cells().withPredicate("staticTexts[SIZE] &gt; 2")
 
 same in Xpath: /*[1]/UIATableView[1]/UIATableCell[count(UIAStaticText) &gt; 2]
 </code></pre>
-
 <h3 id="_6">标识符</h3>
 <p><strong>C语言标识符</strong>
 - 任何C语言的标识符都不是保留字。</p>
@@ -607,7 +597,7 @@ same in Xpath: /*[1]/UIATableView[1]/UIATableCell[count(UIAStaticText) &gt; 2]
 <li><code>getNameContains</code></li>
 </ul>
 <p>如下是个Ruby的例子</p>
-<pre><code class="ruby"># Ruby example
+<pre><code class="language-ruby"># Ruby example
 text = 'Various uses'
 predicate = "name contains[c] '#{text}' || label contains[c] '#{text}' || value contains[c] '#{text}'"
 element = execute_script(%Q(au.mainApp().getFirstWithPredicate("#{predicate}");))

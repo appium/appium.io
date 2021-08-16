@@ -1885,30 +1885,30 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#chromedriver">Chromedriver</a></li>
+        <li class="first-level active"><a href="#chromedriver">Chromedriver</a></li>
         
-            <li class="second-level"><a href="../../../#when-installing-the-server">When installing the server</a></li>
+            <li class="second-level"><a href="#when-installing-the-server">When installing the server</a></li>
             
         
-            <li class="second-level"><a href="../../../#when-starting-the-server">When starting the server</a></li>
+            <li class="second-level"><a href="#when-starting-the-server">When starting the server</a></li>
             
         
-            <li class="second-level"><a href="../../../#when-starting-a-session-manual-discovery">When starting a session (manual discovery)</a></li>
+            <li class="second-level"><a href="#when-starting-a-session-manual-discovery">When starting a session (manual discovery)</a></li>
             
         
-            <li class="second-level"><a href="../../../#when-starting-a-session-automated-discovery">When starting a session (automated discovery)</a></li>
+            <li class="second-level"><a href="#when-starting-a-session-automated-discovery">When starting a session (automated discovery)</a></li>
             
         
-            <li class="second-level"><a href="../../../#chromedriverchrome-compatibility">Chromedriver/Chrome compatibility</a></li>
+            <li class="second-level"><a href="#chromedriverchrome-compatibility">Chromedriver/Chrome compatibility</a></li>
             
         
-            <li class="second-level"><a href="../../../#automatic-discovery-of-compatible-chromedriver">Automatic discovery of compatible Chromedriver</a></li>
+            <li class="second-level"><a href="#automatic-discovery-of-compatible-chromedriver">Automatic discovery of compatible Chromedriver</a></li>
             
         
-            <li class="second-level"><a href="../../../#troubleshooting-network-issues">Troubleshooting network issues</a></li>
+            <li class="second-level"><a href="#troubleshooting-network-issues">Troubleshooting network issues</a></li>
             
         
-            <li class="second-level"><a href="../../../#w3c-support">W3C support</a></li>
+            <li class="second-level"><a href="#w3c-support">W3C support</a></li>
             
         
     
@@ -1930,7 +1930,6 @@ with the bundled version. In the Appium server logs there will be an error like:
 <pre><code>An unknown server-side error occurred while processing the command.
 Original error: unknown error: Chrome version must be &gt;= 55.0.2883.0
 </code></pre>
-
 <p>To get around this it is necessary to provide Appium with a proper Chromedriver binary,
 that <a href="https://raw.githubusercontent.com/appium/appium-chromedriver/master/config/mapping.json">matches</a>
 to the Chrome engine version running on the device under test.
@@ -1940,12 +1939,10 @@ Read the <code>Chromedriver/Chrome compatibility</code> topic below to know more
 <p>Provide <code>--chromedriver_version</code> command line argument containing the actual version number</p>
 <pre><code>npm install appium --chromedriver_version="2.16"
 </code></pre>
-
 <p>Or specify the Chromedriver version in the <code>CHROMEDRIVER_VERSION</code> environment variable,
 e.g,</p>
 <pre><code>CHROMEDRIVER_VERSION=2.20 npm install appium
 </code></pre>
-
 <p>This can also be set to <code>LATEST</code> to get the most recent version.</p>
 <h4 id="when-starting-the-server">When starting the server</h4>
 <p>Chromedriver version can be specified at runtime, by specifying the
@@ -1953,7 +1950,6 @@ e.g,</p>
 Chromedriver executable which was manually downloaded and put to the server file system, e.g.,</p>
 <pre><code>appium --chromedriver-executable /path/to/my/chromedriver
 </code></pre>
-
 <h4 id="when-starting-a-session-manual-discovery">When starting a session (manual discovery)</h4>
 <p>Chromedriver version can be specified in session capabilities, by providing the
 <code>chromedriverExecutable</code> cap, containing the full path to a matching
@@ -1986,12 +1982,11 @@ an Appium version was released, a custom mapping of Chromedrivers to the minimum
 Chrome version they support can be given to Appium through the <code>chromedriverChromeMappingFile</code>
 desired capability. This should be the absolute path to a file with the mapping
 in it. The contents of the file need to be parsable as a JSON object, like:</p>
-<pre><code class="JSON">{
+<pre><code class="language-JSON">{
   "2.42": "63.0.3239",
   "2.41": "62.0.3202"
 }
 </code></pre>
-
 <p>Since Appium 1.15.0 there is a possibility to automatically download the necessary chromedriver(s) into <code>chromedriverExecutableDir</code> from the official Google storage. The script will automatically search for the newest chromedriver version that supports the given browser/web view, download it (the hash sum is verified as well for the downloaded archive) and add to the <code>chromedriverChromeMappingFile</code> mapping. Everything, which is needed to be done from your side is to execute the server with <code>chromedriver_autodownload</code> feature enabled (like <code>appium --allow-insecure chromedriver_autodownload</code>).
 You can also check the <a href="https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/security.md">Security</a> document for more details on how to control potentially insecure server features.</p>
 <h3 id="troubleshooting-network-issues">Troubleshooting network issues</h3>
@@ -1999,17 +1994,14 @@ You can also check the <a href="https://github.com/appium/appium/blob/master/doc
 that there could be network problems that make the install fail.</p>
 <p>By default Chromedriver is retrieved from <code>https://chromedriver.storage.googleapis.com/</code>.
 To use a mirror of the ChromeDriver binaries use npm config property <code>chromedriver_cdnurl</code>.</p>
-<pre><code class="bash">npm install appium-chromedriver --chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
+<pre><code class="language-bash">npm install appium-chromedriver --chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
 </code></pre>
-
 <p>Or add the property into your <a href="https://docs.npmjs.com/files/npmrc"><code>.npmrc</code></a> file.</p>
-<pre><code class="bash">chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
+<pre><code class="language-bash">chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
 </code></pre>
-
 <p>Another option is to use PATH variable <code>CHROMEDRIVER_CDNURL</code>.</p>
-<pre><code class="bash">CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver npm install appium-chromedriver
+<pre><code class="language-bash">CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver npm install appium-chromedriver
 </code></pre>
-
 <p>It may also be necessary to adjust network proxy and firewall settings to allow
 the download to occur.</p>
 <h3 id="w3c-support">W3C support</h3>

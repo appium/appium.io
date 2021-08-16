@@ -397,15 +397,15 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#_1">自动化混合应用</a></li>
+        <li class="first-level active"><a href="#_1">自动化混合应用</a></li>
         
-            <li class="second-level"><a href="../../#android">自动化 Android 的混合应用</a></li>
+            <li class="second-level"><a href="#android">自动化 Android 的混合应用</a></li>
             
         
-            <li class="second-level"><a href="../../#ios">自动化 iOS 混合应用</a></li>
+            <li class="second-level"><a href="#ios">自动化 iOS 混合应用</a></li>
             
         
-            <li class="second-level"><a href="../../#ios_1">在 iOS 真机上运行</a></li>
+            <li class="second-level"><a href="#ios_1">在 iOS 真机上运行</a></li>
             
         
     
@@ -429,30 +429,48 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_4" data-language="php" data-toggle="tab">PHP</a>
+              <a href="#0_4" data-language="language-php" data-toggle="tab">Language-php</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">// 假定我们设置了capabilities
+            <pre><code class="language-javascript">// 假定你已经初始化driver
+driver
+ &nbsp; &nbsp;.contexts().then(function (contexts) { // 获取view列表，返回数组格式: ["NATIVE_APP","WEBVIEW_1"]
+ &nbsp; &nbsp; &nbsp; &nbsp;return driver.context(contexts[1]); // 选择 webview context
+    })
+
+ &nbsp; &nbsp;// 执行web测试
+ &nbsp; &nbsp;.elementsByCss('.green_button').click()
+
+    .context('NATIVE_APP') // leave webview context
+
+ &nbsp; &nbsp;//把native操作放这里
+ &nbsp; &nbsp;
+ &nbsp; &nbsp;.quit() // 退出driver
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="language-java">// 假定我们设置了capabilities
 driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
 Set&lt;String&gt; contextNames = driver.getContextHandles();
@@ -472,45 +490,8 @@ driver.quit();
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python"># assuming we have an initialized `driver` object for an app
-
-# switch to webview
-webview = driver.contexts.last
-driver.switch_to.context(webview)
-
-# do some webby stuff
-driver.find_element(:css, ".green_button").click
-
-# switch back to native view
-driver.switch_to.context(driver.contexts.first)
-
-# do more native testing if we want
-
-driver.quit()
-</code></pre>
-          </div>
-          
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">// 假定你已经初始化driver
-driver
- &nbsp; &nbsp;.contexts().then(function (contexts) { // 获取view列表，返回数组格式: ["NATIVE_APP","WEBVIEW_1"]
- &nbsp; &nbsp; &nbsp; &nbsp;return driver.context(contexts[1]); // 选择 webview context
-    })
-
- &nbsp; &nbsp;// 执行web测试
- &nbsp; &nbsp;.elementsByCss('.green_button').click()
-
-    .context('NATIVE_APP') // leave webview context
-
- &nbsp; &nbsp;//把native操作放这里
- &nbsp; &nbsp;
- &nbsp; &nbsp;.quit() // 退出driver
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby"># 假定我们设置了capabilities
+            <pre><code class="language-ruby"># 假定我们设置了capabilities
 @driver = Selenium::WebDriver.for(:remote, :desired_capabilities =&gt; capabilities, :url =&gt; SERVER_URL)
 
 # I switch to the last context because its always the webview in our case, in other cases you may need to specify a context
@@ -534,8 +515,27 @@ end
 </code></pre>
           </div>
           
+          <div role="tabpanel" class="tab-pane " id="0_3">
+            <pre><code class="language-python"># assuming we have an initialized `driver` object for an app
+
+# switch to webview
+webview = driver.contexts.last
+driver.switch_to.context(webview)
+
+# do some webby stuff
+driver.find_element(:css, ".green_button").click
+
+# switch back to native view
+driver.switch_to.context(driver.contexts.first)
+
+# do more native testing if we want
+
+driver.quit()
+</code></pre>
+          </div>
+          
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="php">// assuming we have an initialized `driver` object in an AppiumTestCase
+            <pre><code class="language-php">// assuming we have an initialized `driver` object in an AppiumTestCase
 
 public function testThings()
 {
@@ -562,11 +562,6 @@ public function testThings()
           
         </div>
       </div>
-
-
-
-
-
 
 
 

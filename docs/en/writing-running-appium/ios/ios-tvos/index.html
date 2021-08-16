@@ -1885,25 +1885,25 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#tvos-support">tvOS support</a></li>
+        <li class="first-level active"><a href="#tvos-support">tvOS support</a></li>
         
     
-        <li class="first-level "><a href="../../../#setup">Setup</a></li>
+        <li class="first-level "><a href="#setup">Setup</a></li>
         
     
-        <li class="first-level "><a href="../../../#limitations">Limitations</a></li>
+        <li class="first-level "><a href="#limitations">Limitations</a></li>
         
     
-        <li class="first-level "><a href="../../../#basic-actions">Basic Actions</a></li>
+        <li class="first-level "><a href="#basic-actions">Basic Actions</a></li>
         
     
-        <li class="first-level "><a href="../../../#more-actions">More actions</a></li>
+        <li class="first-level "><a href="#more-actions">More actions</a></li>
         
     
-        <li class="first-level "><a href="../../../#test-running-environment">Test Running Environment</a></li>
+        <li class="first-level "><a href="#test-running-environment">Test Running Environment</a></li>
         
     
-        <li class="first-level "><a href="../../../#resources">Resources</a></li>
+        <li class="first-level "><a href="#resources">Resources</a></li>
         
     
     </ul>
@@ -1921,7 +1921,7 @@
 <p><img src="https://user-images.githubusercontent.com/5511591/55161297-876e0200-51a8-11e9-8313-8d9f15a0db9d.gif" width="50%"></p>
 <h2 id="setup">Setup</h2>
 <p>You can run tests for tvOS by changing the <code>platformName</code> capability like it is done below.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     "automationName": "XCUITest",
     "platformName": "tvOS", // here
     "platformVersion": "12.2",
@@ -1929,7 +1929,6 @@
     ...
 }
 </code></pre>
-
 <p>Tips to build WDA for tvOS
 - Update to the latest Carthage
 - Be sure tvOS simulator exists in your simulator list if you would like to run your test on tvOS simulators
@@ -1946,38 +1945,44 @@ Consider using <code>wait</code> methods since tvOS also has animation.</p>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-Python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">WebElement element = driver.findElementByAccessibilityId("element on the app");
-element.getAttribute("focused");
-element.click();
-driver.queryAppState("test.package.name");
-driver.executeScript("mobile: pressButton", ImmutableMap.of("name", "Home"));
-driver.executeScript("mobile: pressButton", ImmutableMap.of("name", "Up"));
-element = driver.switchTo().activeElement();
-element.getAttribute("label");
+            <pre><code class="language-ruby">element = @driver.find_element :accessibility_id, 'element on the app'
+# Returns true if the element is focused, otherwise false
+element.focused #=&gt; 'true'
+# Appium moves the focus to the element by pressing the corresponding keys and clicking the element
+element.click
+# Get the app state
+@driver.app_state('test.package.name') # =&gt; :running_in_foreground
+# Press keys
+@driver.execute_script 'mobile: pressButton', { name: 'Home' }
+# Move focus and get the focused element
+@driver.execute_script 'mobile: pressButton', { name: 'Up' }
+# Get a focused element
+element = @driver.switch_to.active_element
+element.label #=&gt; "Settings"
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="Python">element = driver.find_element_by_accessibility_id('element on the app')
+            <pre><code class="language-Python">element = driver.find_element_by_accessibility_id('element on the app')
 element.get_attribute('focused')
 element.click()
 driver.query_app_state('test.package.name')
@@ -1989,7 +1994,19 @@ element.get_attribute('label')
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">// webdriver.io example
+            <pre><code class="language-java">WebElement element = driver.findElementByAccessibilityId("element on the app");
+element.getAttribute("focused");
+element.click();
+driver.queryAppState("test.package.name");
+driver.executeScript("mobile: pressButton", ImmutableMap.of("name", "Home"));
+driver.executeScript("mobile: pressButton", ImmutableMap.of("name", "Up"));
+element = driver.switchTo().activeElement();
+element.getAttribute("label");
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_3">
+            <pre><code class="language-javascript">// webdriver.io example
 const element = $('~SomeAccessibilityId');
 element.getAttribute('focused');
 element.click();
@@ -2009,30 +2026,8 @@ await activeElement.getAttribute('label');
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">element = @driver.find_element :accessibility_id, 'element on the app'
-# Returns true if the element is focused, otherwise false
-element.focused #=&gt; 'true'
-# Appium moves the focus to the element by pressing the corresponding keys and clicking the element
-element.click
-# Get the app state
-@driver.app_state('test.package.name') # =&gt; :running_in_foreground
-# Press keys
-@driver.execute_script 'mobile: pressButton', { name: 'Home' }
-# Move focus and get the focused element
-@driver.execute_script 'mobile: pressButton', { name: 'Up' }
-# Get a focused element
-element = @driver.switch_to.active_element
-element.label #=&gt; "Settings"
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
-
-
 
 
 

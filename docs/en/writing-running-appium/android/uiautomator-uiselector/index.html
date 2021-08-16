@@ -1885,7 +1885,7 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#uiautomator-uiselector">uiautomator UiSelector</a></li>
+        <li class="first-level active"><a href="#uiautomator-uiselector">uiautomator UiSelector</a></li>
         
     
     </ul>
@@ -1900,25 +1900,22 @@ is also supported.</p>
 <p>Note that the index selector is unreliable so prefer instance instead. The
 following examples are written against the api demos apk using Ruby.</p>
 <p>Find the first textview.</p>
-<pre><code class="ruby"># ruby
+<pre><code class="language-ruby"># ruby
 first_textview = find_element(:uiautomator, 'new UiSelector().className("android.widget.TextView").instance(0)');
 </code></pre>
-
 <p>Find the first element by text.</p>
-<pre><code class="ruby"># ruby
+<pre><code class="language-ruby"># ruby
 first_text = find_element(:uiautomator, 'new UiSelector().text("Animation")')
 first_text.text # "Animation"
 </code></pre>
-
 <p>Find the first scrollable element, then find a TextView with the text "Tabs".
 The "Tabs" element will be scrolled into view.</p>
-<pre><code class="ruby"># ruby
+<pre><code class="language-ruby"># ruby
 element = find_element(:uiautomator, 'new UiScrollable(new UiSelector().scrollable(true).instance(0)).getChildByText(new UiSelector().className("android.widget.TextView"), "Tabs")')
 </code></pre>
-
 <p>As a special case, scrollIntoView returns the element that is scrolled into view.
 scrollIntoView allows scrolling to any UiSelector.</p>
-<pre><code class="ruby"># ruby
+<pre><code class="language-ruby"># ruby
 element = find_element(:uiautomator, 'new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text("WebView").instance(0));')
 element.text # "WebView"
 </code></pre></div>

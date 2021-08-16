@@ -1885,16 +1885,16 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#multi-lingual-support">Multi-lingual Support</a></li>
+        <li class="first-level active"><a href="#multi-lingual-support">Multi-lingual Support</a></li>
         
-            <li class="second-level"><a href="../../../#finders">Finders</a></li>
+            <li class="second-level"><a href="#finders">Finders</a></li>
             
         
-            <li class="second-level"><a href="../../../#text-fields">Text Fields</a></li>
+            <li class="second-level"><a href="#text-fields">Text Fields</a></li>
             
-                <li class="third-level"><a href="../../../#ios">iOS</a></li>
+                <li class="third-level"><a href="#ios">iOS</a></li>
             
-                <li class="third-level"><a href="../../../#android">Android</a></li>
+                <li class="third-level"><a href="#android">Android</a></li>
             
         
     
@@ -1915,18 +1915,17 @@ binary representation"</a>.</p>
 does not cause any changes, and performing
 the operation multiple times does not have an effect. Thus a normalization
 function can be called on text without risking adverse effects.</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 var unorm = require('unorm');
 
 'some ASCII text' === unorm.nfd('some ASCII text');
 unorm.nfd('Adélaïde Hervé') === unorm.nfd(unorm.nfd('Adélaïde Hervé'));
 </code></pre>
-
 <p>So, when dealing with unicode text within a test, you need to normalize, preferably
 on both the text expected and that received from Appium. There are a number of
 ways to do the normalization, so be sure to perform the same operation on both
 strings!</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 var unorm = require('unorm');
 driver
   .elementByAccessibilityId('find')
@@ -1935,29 +1934,26 @@ driver
       unorm.nfd(txt).should.be(unorm.nfd("é Œ ù ḍ"));
     });
 </code></pre>
-
 <p>One tell-tale sign that the problem is with the encoding of the unicode text is
 an assertion that fails but reports what look to be the same string:</p>
-<pre><code class="shell">AssertionError: expected 'François Gérard' to deeply equal 'François Gérard'
+<pre><code class="language-shell">AssertionError: expected 'François Gérard' to deeply equal 'François Gérard'
       + expected - actual
 
       +"François Gérard"
       -"François Gérard"
 </code></pre>
-
 <p>Since the error is just encoding, the output <em>looks</em> the same. Normalized, these
 should equal programmatically as well as visually.</p>
 <h3 id="finders">Finders</h3>
 <p>Finding by text can also require normalization. For instance, if you have a button
 in an iOS app with the name <code>Найти</code> you may need to normalize the text within the
 find command.</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 var unorm = require('unorm');
 driver
   .findElementByXPath(unorm.nfd("//UIAButton[@name='Найти']"))
     .should.eventually.exist;
 </code></pre>
-
 <p>Otherwise the elements may not be found.</p>
 <h3 id="text-fields">Text Fields</h3>
 <p>By default the automation tools for both iOS and Android do not support non-ASCII
@@ -1968,7 +1964,7 @@ keyboard altogether. While this allows the text to be inputted in tests, it shou
 be kept in mind that any business logic triggered by keyboard input will therefore
 not be tested.</p>
 <p>As above, the text received may need to be normalized before asserting on it.</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 var unorm = require('unorm');
 var testText = unorm.nfd("é Œ ù ḍ");
 driver
@@ -1978,7 +1974,6 @@ driver
     .should.become(testText)
   .nodeify(done);
 </code></pre>
-
 <h4 id="android">Android</h4>
 <p>Android tests allow for Unicode input by installing and using a <a href="https://github.com/appium/io.appium.android.ime">specialized
 keyboard</a> that allows the text
@@ -1988,7 +1983,7 @@ is set to <code>true</code>. If the keyboard should be returned to its original 
 <code>resetKeyboard</code> desired capability should also be set to <code>true</code>. Otherwise Appium's
 Unicode keyboard will remain enabled on the device after the tests are completed.</p>
 <p>Then tests can pass Unicode text to editable fields using <code>send_keys</code>.</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 var desired = {
   app: '/path/to/app',
   deviceName: 'Android Emulator',

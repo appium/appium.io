@@ -1885,31 +1885,31 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#running-appium-from-source">Running Appium from Source</a></li>
+        <li class="first-level active"><a href="#running-appium-from-source">Running Appium from Source</a></li>
         
-            <li class="second-level"><a href="../../#nodejs">Node.js</a></li>
-            
-        
-            <li class="second-level"><a href="../../#setting-up-appium-from-source">Setting up Appium from Source</a></li>
+            <li class="second-level"><a href="#nodejs">Node.js</a></li>
             
         
-            <li class="second-level"><a href="../../#hacking-on-appium">Hacking on Appium</a></li>
-            
-                <li class="third-level"><a href="../../#hacking-with-appium-for-android">Hacking with Appium for Android</a></li>
-            
-                <li class="third-level"><a href="../../#making-sure-youre-up-to-date">Making sure you're up to date</a></li>
+            <li class="second-level"><a href="#setting-up-appium-from-source">Setting up Appium from Source</a></li>
             
         
-            <li class="second-level"><a href="../../#different-packages">Different packages</a></li>
+            <li class="second-level"><a href="#hacking-on-appium">Hacking on Appium</a></li>
+            
+                <li class="third-level"><a href="#hacking-with-appium-for-android">Hacking with Appium for Android</a></li>
+            
+                <li class="third-level"><a href="#making-sure-youre-up-to-date">Making sure you're up to date</a></li>
             
         
-            <li class="second-level"><a href="../../#running-tests">Running Tests</a></li>
+            <li class="second-level"><a href="#different-packages">Different packages</a></li>
             
         
-            <li class="second-level"><a href="../../#debugging-node">Debugging Node</a></li>
+            <li class="second-level"><a href="#running-tests">Running Tests</a></li>
             
         
-            <li class="second-level"><a href="../../#committing-code">Committing code</a></li>
+            <li class="second-level"><a href="#debugging-node">Debugging Node</a></li>
+            
+        
+            <li class="second-level"><a href="#committing-code">Committing code</a></li>
             
         
     
@@ -1944,7 +1944,6 @@ npm install
 npm run build
 node .
 </code></pre>
-
 <h3 id="hacking-on-appium">Hacking on Appium</h3>
 <p>Install the <a href="https://github.com/appium/appium-doctor">appium-doctor</a> tool, and run it to verify all of the
 dependencies are set up correctly (since dependencies for building Appium
@@ -1952,20 +1951,16 @@ are different from those for simply running it):</p>
 <pre><code>npm install -g appium-doctor
 appium-doctor --dev
 </code></pre>
-
 <p>Install the Node.js dependencies:</p>
 <pre><code>npm install
 </code></pre>
-
 <p>When pulling new code from GitHub, if there are changes to <code>package.json</code> it
 is necessary to remove the old dependencies and re-run <code>npm install</code>:</p>
 <pre><code>rm -rf node_modules &amp;&amp; rm -rf package-lock.json &amp;&amp; npm install
 </code></pre>
-
 <p>At this point, you will be able to start the Appium server:</p>
 <pre><code>node .
 </code></pre>
-
 <p>See <a href="/docs/en/writing-running-appium/server-args/index.html">the server documentation</a>
 for a full list of command line arguments that can be used.</p>
 <h4 id="hacking-with-appium-for-android">Hacking with Appium for Android</h4>
@@ -1976,13 +1971,11 @@ From your local repo's command prompt, install/run the following:</p>
 <p>Set up Appium by running:</p>
 <pre><code>rm -rf node_modules &amp;&amp; rm -rf package-lock.json &amp;&amp; npm install
 </code></pre>
-
 <p>Make sure you have one and only one Android emulator or device running, e.g.,
 by running this command in another process (assuming the <code>emulator</code> command is
 on your path):</p>
 <pre><code>emulator -avd &lt;MyAvdName&gt;
 </code></pre>
-
 <p>Now you are ready to run the Appium server via <code>node .</code>.</p>
 <h4 id="making-sure-youre-up-to-date">Making sure you're up to date</h4>
 <p>Since Appium uses dev versions of some packages, it often becomes necessary to
@@ -1992,7 +1985,6 @@ its version up. Prior to running <code>npm install</code> it is recommended to r
 all the old dependencies in the <code>node_modules</code> directory:</p>
 <pre><code>rm -rf node_modules &amp;&amp; rm -rf package-lock.json &amp;&amp; npm install
 </code></pre>
-
 <h3 id="different-packages">Different packages</h3>
 <p>Appium is made up of a number of different packages. While it is often possible
 to work in a single package, it is also often the case that work, whether fixing
@@ -2022,12 +2014,10 @@ system is set up properly for the platforms you desire to test on.</p>
 with:</p>
 <pre><code>npm run test
 </code></pre>
-
 <p>You can run functional tests for all supported platforms (after ensuring that
 Appium is running in another window with <code>node .</code>) with:</p>
 <pre><code>npm run e2e-test
 </code></pre>
-
 <h3 id="debugging-node">Debugging Node</h3>
 <p>This project has multiple launch configurations for running NodeJS code from within <a href="https://code.visualstudio.com/">VSCode</a></p>
 <ul>

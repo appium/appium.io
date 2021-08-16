@@ -408,19 +408,19 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#appium">从源码运行Appium</a></li>
+        <li class="first-level active"><a href="#appium">从源码运行Appium</a></li>
         
-            <li class="second-level"><a href="../../#appium_1">从源码配置 Appium</a></li>
-            
-        
-            <li class="second-level"><a href="../../#appium_2">捣鼓改造 Appium</a></li>
-            
-                <li class="third-level"><a href="../../#android-appium">鼓捣 Android 上的Appium</a></li>
-            
-                <li class="third-level"><a href="../../#_1">确保你的代码是最新的</a></li>
+            <li class="second-level"><a href="#appium_1">从源码配置 Appium</a></li>
             
         
-            <li class="second-level"><a href="../../#_2">运行测试</a></li>
+            <li class="second-level"><a href="#appium_2">捣鼓改造 Appium</a></li>
+            
+                <li class="third-level"><a href="#android-appium">鼓捣 Android 上的Appium</a></li>
+            
+                <li class="third-level"><a href="#_1">确保你的代码是最新的</a></li>
+            
+        
+            <li class="second-level"><a href="#_2">运行测试</a></li>
             
         
     
@@ -447,18 +447,18 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="center" data-toggle="tab">Center</a>
+              <a href="#0_0" data-language="language-center" data-toggle="tab">Language-center</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="center" data-toggle="tab">Center</a>
+              <a href="#0_1" data-language="language-center" data-toggle="tab">Language-center</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="center">git clone https://github.com/appium/appium.git
+            <pre><code class="language-center">git clone https://github.com/appium/appium.git
 cd appium
 npm install
 npm run build
@@ -467,7 +467,7 @@ node .
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="center">git clone https://github.com/appium/appium.git
+            <pre><code class="language-center">git clone https://github.com/appium/appium.git
 cd appium
 npm install
 npm run build # 需要gulp，往下看
@@ -478,8 +478,6 @@ node .
         </div>
       </div>
 
-
-
 <h3 id="appium_2">捣鼓改造 Appium</h3>
 <p>Make sure you have <code>ant</code>, <code>maven</code>, <code>adb</code> installed and added to system <code>PATH</code>, also you
 would need the android-16 sdk (for Selendroid) and android-19 sdk installed.
@@ -487,55 +485,47 @@ From your local repo's command prompt, install the following packages using the
 following commands (if you didn't install <code>node</code> using Homebrew, you might have
 to run <code>npm</code> with sudo privileges):</p>
 <p>确保已安装 <code>ant</code>、 <code>maven</code>、 <code>adb</code> 且已添加到 <code>PATH</code> 环境变量，还需要安装 android-16 的 sdk（Selendroid需要使用）和 android-19 的 sdk。在 Appium 本地仓库打开命令行，使用以下命令安装以下包（如果你没有使用Homebrew安装过 node，可能需要使用 sudo 运行 npm）：</p>
-<pre><code class="center">npm install -g appium-doctor &amp;&amp; appium-doctor --dev
+<pre><code class="language-center">npm install -g appium-doctor &amp;&amp; appium-doctor --dev
 npm install
 gulp transpile
 </code></pre>
-
 <p>前两个命令安装测试和构建工具（如果您通过 Homebrew 安装了 nodejs，则 <code>sudo</code> 可能不是必需的）。 第三个命令验证所有依赖关系是否正确设置（因为构建 Appium 的依赖关系不同于简单运行 Appium 的依赖项），而第四个命令将安装所有应用程序依赖关系并构建支持二进制文件和测试应用程序。 最终的命令将转换所有代码，以便 nodejs 可以运行它。</p>
 <p>When pulling new code from GitHub, if there are changes to <code>package.json</code> it
 is necessary to remove the old dependencies and re-run <code>npm install</code>:</p>
 <p>当从 GitHub 中拉出新的代码时，如果 <code>package.json</code> 有更改，需要删除旧的依赖关系并重新运行 <code>npm install</code>：</p>
-<pre><code class="center">rm -rf node_modules
+<pre><code class="language-center">rm -rf node_modules
 npm install
 npm run build
 </code></pre>
-
 <p>此时，您将可以启动 Appium Server：</p>
-<pre><code class="center">node .
+<pre><code class="language-center">node .
 </code></pre>
-
 <p>完整的参数列表，请参考<a href="/docs/cn/writing-running-appium/server-args/index.html">the server documentation</a></p>
 <h4 id="android-appium">鼓捣 Android 上的Appium</h4>
 <p>通过运行以下命令配置Appium：</p>
-<pre><code class="center">rm -rf node-modules
+<pre><code class="language-center">rm -rf node-modules
 npm install
 npm run build
 </code></pre>
-
 <p>确保您只有一个 Android 模拟器或设备运行，例如，通过在另一个进程中运行此命令（假设 <code>emulator</code> 命令在您的路径上）：</p>
-<pre><code class="center">emulator -avd &lt;MyAvdName&gt;
+<pre><code class="language-center">emulator -avd &lt;MyAvdName&gt;
 </code></pre>
-
 <p>现在，您可以通过 <code>node .</code> 运行Appium服务器了。</p>
 <h4 id="_1">确保你的代码是最新的</h4>
 <p>由于Appium使用某些软件包的开发版本，因此通常需要安装新 <code>npm</code> 软件包或更新各种软件。运行 <code>npm install</code> 将更新所需的一切。当 Appium 升级版本时，您还需要执行此操作。在运行 <code>npm install</code> 之前，建议先删除 <code>node_modules</code> 目录中的所有旧依赖项：</p>
-<pre><code class="center">rm -rf node-modules
+<pre><code class="language-center">rm -rf node-modules
 npm install
 npm run build
 </code></pre>
-
 <h3 id="_2">运行测试</h3>
 <p>首先，请查看我们关于<a href="/docs/cn/writing-running-appium/running-tests/index.html">running tests in
 general</a> 的文档，确保您的系统正确设置为您希望测试的平台。</p>
 <p>一旦您的系统配置完毕，您的代码是最新的，您可以运行单元测试：</p>
-<pre><code class="center">npm run test
+<pre><code class="language-center">npm run test
 </code></pre>
-
 <p>您可以对所有受支持的平台运行功能测试（确保在另一个窗口中运行Appium <code>node .</code>）与：</p>
-<pre><code class="center">npm run e2e-test
+<pre><code class="language-center">npm run e2e-test
 </code></pre>
-
 <p>在提交代码之前，请运行 <code>npm run test</code> 一些基本测试，并根据代码质量标准检查您的更改。</p>
 <p>本文由 校长 翻译，由 lihuazhang 校验。</p></div>
         

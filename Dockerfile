@@ -1,8 +1,8 @@
-FROM node:12.22.1-alpine3.11
+FROM node:14-alpine3.14
 WORKDIR '/root'
-RUN apk add git python2 py-pip
+RUN apk add git python3 python3-dev py-pip gcc musl-dev
 COPY ./package.json ./
-RUN pip install mkdocs==1.0.4
+RUN pip3 install mkdocs==1.1
 RUN npm install
 VOLUME docs/ ./docs/
 COPY . .

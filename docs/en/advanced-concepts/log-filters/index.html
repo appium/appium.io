@@ -1885,15 +1885,15 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#appium-logs-filtering">Appium Logs Filtering</a></li>
+        <li class="first-level active"><a href="#appium-logs-filtering">Appium Logs Filtering</a></li>
         
-            <li class="second-level"><a href="../../#config-format">Config Format</a></li>
+            <li class="second-level"><a href="#config-format">Config Format</a></li>
             
         
-            <li class="second-level"><a href="../../#config-examples">Config Examples</a></li>
+            <li class="second-level"><a href="#config-examples">Config Examples</a></li>
             
         
-            <li class="second-level"><a href="../../#config-errors-handling">Config Errors Handling</a></li>
+            <li class="second-level"><a href="#config-errors-handling">Config Errors Handling</a></li>
             
         
     
@@ -1918,15 +1918,14 @@ The following rule properties are supported:</p>
 </ul>
 <h3 id="config-examples">Config Examples</h3>
 <p>Replace all occurrences of <code>my.magic.app</code> string with the default replacer:</p>
-<pre><code class="json">[
+<pre><code class="language-json">[
     {
         "text": "my.magic.app"
     }
 ]
 </code></pre>
-
 <p>Replace all occurrences of <code>my.magic.&lt;any char&gt;</code> string with a custom replacer (case insensitive):</p>
-<pre><code class="json">[
+<pre><code class="language-json">[
     {
         "pattern": "my\\.magic\\.\\w",
         "flags": "i",
@@ -1934,9 +1933,8 @@ The following rule properties are supported:</p>
     }
 ]
 </code></pre>
-
 <p>Replace all occurrences of <code>my.magic.&lt;any chars&gt;</code> and/or <code>your.magic</code> strings with a custom replacer (case insensitive):</p>
-<pre><code class="json">[
+<pre><code class="language-json">[
     {
         "pattern": "my\\.magic\\.\\w+",
         "flags": "i",
@@ -1949,9 +1947,8 @@ The following rule properties are supported:</p>
     }
 ]
 </code></pre>
-
 <p>Cut off all log lines to max 15 chars (advanced):</p>
-<pre><code class="json">[
+<pre><code class="language-json">[
     {
         "pattern": "(.{1,15}).*",
         "flags": "s",
@@ -1959,7 +1956,6 @@ The following rule properties are supported:</p>
     }
 ]
 </code></pre>
-
 <h3 id="config-errors-handling">Config Errors Handling</h3>
 <p>If any of config rules contains invalid items (such as empty/invalid pattern, empty rule, etc.) then Appium will print the detailed report about collected errors and will fail to start until these errors are addressed.</p></div>
         

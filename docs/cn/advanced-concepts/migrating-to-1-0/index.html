@@ -397,24 +397,24 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#appium-018x-appium-1x">将您的测试从 Appium 0.18.x 迁移到 Appium 1.x</a></li>
+        <li class="first-level active"><a href="#appium-018x-appium-1x">将您的测试从 Appium 0.18.x 迁移到 Appium 1.x</a></li>
         
-            <li class="second-level"><a href="../../#_1">新的客户端库</a></li>
+            <li class="second-level"><a href="#_1">新的客户端库</a></li>
             
         
-            <li class="second-level"><a href="../../#desired-capabilities">新的 desired capabilities</a></li>
+            <li class="second-level"><a href="#desired-capabilities">新的 desired capabilities</a></li>
             
         
-            <li class="second-level"><a href="../../#_2">新的定位策略</a></li>
+            <li class="second-level"><a href="#_2">新的定位策略</a></li>
             
         
-            <li class="second-level"><a href="../../#xml-not-json">XML, not JSON</a></li>
+            <li class="second-level"><a href="#xml-not-json">XML, not JSON</a></li>
             
         
-            <li class="second-level"><a href="../../#hybrid-context-window">Hybrid 通过 context 支持，而不是 window</a></li>
+            <li class="second-level"><a href="#hybrid-context-window">Hybrid 通过 context 支持，而不是 window</a></li>
             
         
-            <li class="second-level"><a href="../../#execute_scriptmobile-xxx">不再有 execute_script("mobile: xxx")</a></li>
+            <li class="second-level"><a href="#execute_scriptmobile-xxx">不再有 execute_script("mobile: xxx")</a></li>
             
         
     
@@ -430,13 +430,11 @@
 <p>The biggest thing you need to worry about is using the new Appium client libraries instead of the vanilla WebDriver clients you are currently using. Visit the <a href="/docs/cn/about-appium/appium-clients/index.html">Appium client list</a> to find the client for your language. Downloads and instructions for integrating into your code are available on the individual client websites.</p>
 <p>您最需要担心的是使用新的 Appium 客户端库，而不是您正在使用的普通 WebDriver 客户端。 访问<a href="/docs/cn/about-appium/appium-clients/index.html">Appium客户端列表</a>以找到匹配您的语言的客户端。 你可以在各个客户端网站上找到下载地址和如何集成到你的测试代码的教程。</p>
 <p>最终，你会做以下一些事情（以Python为例）：</p>
-<pre><code class="center">from appium import webdriver
+<pre><code class="language-center">from appium import webdriver
 </code></pre>
-
 <p>代替：</p>
-<pre><code class="center">from selenium import webdriver
+<pre><code class="language-center">from selenium import webdriver
 </code></pre>
-
 <h3 id="desired-capabilities">新的 desired capabilities</h3>
 <p>不再使用以下的 capabilities：</p>
 <ul>
@@ -462,13 +460,11 @@
 <p><code>tag name</code> 已被 <code>class name</code>替换。 所以要通过 UI 类型找到一个元素，在你的客户脚本里使用类名定位器策略。</p>
 <p>Note about <code>class name</code> and <code>xpath</code> strategies: these now require the fully-qualified class name for your element. This means that if you had an xpath selector that looked like this:</p>
 <p>关于 <code>class name</code> 和 <code>xpath</code> 策略的注意事项：这些策略现在需要元素完全限定类名。 这意味着如果你有一个如下所示的 xpath 选择器：</p>
-<pre><code class="center">//table/cell/button
+<pre><code class="language-center">//table/cell/button
 </code></pre>
-
 <p>现在需要：</p>
-<pre><code class="center">//UIATableView/UIATableCell/UIAButton
+<pre><code class="language-center">//UIATableView/UIATableCell/UIAButton
 </code></pre>
-
 <p>（同样对于Android：<code>button</code> 现在需要是 <code>android.widget.Button</code>）</p>
 <p>我们还添加了以下定位器策略：</p>
 <ul>
@@ -491,75 +487,69 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_0" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_1" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="c#" data-toggle="tab">C#</a>
+              <a href="#0_2" data-language="language-c#" data-toggle="tab">Language-c#</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_3" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_4" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_4" data-language="language-php" data-toggle="tab">Language-php</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_5" data-language="php" data-toggle="tab">PHP</a>
+              <a href="#0_5" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="python">driver.contexts
+            <pre><code class="language-python">driver.contexts
 current = driver.context
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="javascript">driver.contexts().then(function (contexts) { /*...*/ })
+            <pre><code class="language-javascript">driver.contexts().then(function (contexts) { /*...*/ })
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="c#">driver.GetContexts ()
+            <pre><code class="language-c#">driver.GetContexts ()
 driver.GetContext ()
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="java">Set&lt;String&gt; contextNames = driver.getContextHandles();
+            <pre><code class="language-java">Set&lt;String&gt; contextNames = driver.getContextHandles();
 String context = driver.getContext();
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="ruby">contexts = available_contexts
-context = current_context
+            <pre><code class="language-php">$contexts = $this-&gt;contexts();
+$context = $this-&gt;context();
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_5">
-            <pre><code class="php">$contexts = $this-&gt;contexts();
-$context = $this-&gt;context();
+            <pre><code class="language-ruby">contexts = available_contexts
+context = current_context
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
-
-
-
 
 
 
@@ -570,71 +560,65 @@ $context = $this-&gt;context();
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="python" data-toggle="tab">Python</a>
+              <a href="#1_0" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#1_1" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_2" data-language="c#" data-toggle="tab">C#</a>
+              <a href="#1_2" data-language="language-c#" data-toggle="tab">Language-c#</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_3" data-language="java" data-toggle="tab">Java</a>
+              <a href="#1_3" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_4" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#1_4" data-language="language-php" data-toggle="tab">Language-php</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_5" data-language="php" data-toggle="tab">PHP</a>
+              <a href="#1_5" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="python">driver.switch_to.context("WEBVIEW")
+            <pre><code class="language-python">driver.switch_to.context("WEBVIEW")
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="javascript">driver.currentContext().then(function (context) { /*...*/ })
+            <pre><code class="language-javascript">driver.currentContext().then(function (context) { /*...*/ })
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_2">
-            <pre><code class="c#">driver.SetContext ("WEBVIEW");
+            <pre><code class="language-c#">driver.SetContext ("WEBVIEW");
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_3">
-            <pre><code class="java">java
+            <pre><code class="language-java">java
 driver.context(contextName);
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_4">
-            <pre><code class="ruby">set_context "WEBVIEW"
+            <pre><code class="language-php">$this-&gt;context('WEBVIEW');
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_5">
-            <pre><code class="php">$this-&gt;context('WEBVIEW');
+            <pre><code class="language-ruby">set_context "WEBVIEW"
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
-
-
-
 
 
 

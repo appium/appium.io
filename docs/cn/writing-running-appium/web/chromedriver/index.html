@@ -408,9 +408,9 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#chromedriver">Chromedriver</a></li>
+        <li class="first-level active"><a href="#chromedriver">Chromedriver</a></li>
         
-            <li class="second-level"><a href="../../../#_1">安装遇到的网络问题</a></li>
+            <li class="second-level"><a href="#_1">安装遇到的网络问题</a></li>
             
         
     
@@ -425,7 +425,6 @@
 <pre><code>An unknown server-side error occurred while processing the command.
 Original error: unknown error: Chrome version must be &gt;= 55.0.2883.0
 </code></pre>
-
 <p>为了解决这个问题，Appium 可以指定特定的 Chromedriver 版本。或者在安装的时候指定版本，比如 <code>npm install appium --chromedriver_version="2.16"</code> 
 或者 <code>CHROMEDRIVER_VERSION=2.20 npm install appium</code>，也可以使用 <code>LATEST</code> 作为 <code>CHROMEDRIVER_VERSION</code> 的版本号，表示使用最新的 Chromedriver。或者可以在 Appium 运行的时候指定 <code>--chromedriver-executable</code> 为你自己下载的版本的路径，比如 <code>appium --chromedriver-executable /path/to/my/chromedriver</code>。</p>
 <p>以下就是 Chromedriver 版本和支持的 Chrome 的最小版本的信息：</p>
@@ -594,17 +593,14 @@ Original error: unknown error: Chrome version must be &gt;= 55.0.2883.0
 <h3 id="_1">安装遇到的网络问题</h3>
 <p>Appium 安装的时候需要下载 Chromedriver，所以经常会遇到网络问题，尤其在有长城防火墙的中国。</p>
 <p>Chromedriver 默认是从 <code>https://chromedriver.storage.googleapis.com/</code> 下载。如果要使用镜像的话，需要配置npm的参数 <code>chromedriver_cdnurl</code></p>
-<pre><code class="bash">npm install appium-chromedriver --chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
+<pre><code class="language-bash">npm install appium-chromedriver --chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
 </code></pre>
-
 <p>或者把这个参数加到你的 <a href="https://docs.npmjs.com/files/npmrc"><code>.npmrc</code></a> 文件中去.</p>
-<pre><code class="bash">chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
+<pre><code class="language-bash">chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
 </code></pre>
-
 <p>也可以使用环境变量 <code>CHROMEDRIVER_CDNURL</code>.</p>
-<pre><code class="bash">CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver npm install appium-chromedriver
+<pre><code class="language-bash">CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver npm install appium-chromedriver
 </code></pre>
-
 <p>当然最好开着代理或者vpn来下载更好。</p>
 <p>本文由 <a href="https://github.com/lihuazhang">lihuazhang</a> 翻译，由 <a href="https://github.com/lihuazhang">lihuazhang</a> 校验。</p></div>
         

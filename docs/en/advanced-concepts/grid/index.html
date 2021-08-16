@@ -1885,9 +1885,9 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#selenium-grid">Selenium Grid</a></li>
+        <li class="first-level active"><a href="#selenium-grid">Selenium Grid</a></li>
         
-            <li class="second-level"><a href="../../#grid-node-configuration-example-json-file">Grid Node Configuration Example json file</a></li>
+            <li class="second-level"><a href="#grid-node-configuration-example-json-file">Grid Node Configuration Example json file</a></li>
             
         
     
@@ -1899,11 +1899,10 @@
   </a>Selenium Grid</h2>
 <p>You are able to register your appium server with a local <a href="https://github.com/SeleniumHQ/selenium/wiki/Grid2">Selenium grid</a> (<a href="https://www.selenium.dev/documentation/legacy/grid_3/setting_up_your_own_grid/">setup docs</a>) by using the
 <code>--nodeconfig</code> server parameter.</p>
-<pre><code class="center">&gt; appium --nodeconfig /path/to/nodeconfig.json
+<pre><code class="language-center">&gt; appium --nodeconfig /path/to/nodeconfig.json
 # or, if running from source:
 &gt; node . --nodeconfig /path/to/nodeconfig.json
 </code></pre>
-
 <p>In the node config file you have to define the <code>browserName</code>,
 <code>version</code> and <code>platform</code> and based on these parameters the grid
 will re-direct your test to the right device. You will also need to
@@ -1914,7 +1913,7 @@ a full list of all parameters and descriptions look
 you will see your device on the grid console page:</p>
 <p>"http://<strong>\&lt;grid-ip-adress&gt;</strong>:<strong>\&lt;grid-port&gt;</strong>/grid/console"</p>
 <h3 id="grid-node-configuration-example-json-file">Grid Node Configuration Example json file</h3>
-<pre><code class="xml">{
+<pre><code class="language-xml">{
   "capabilities":
       [
         {
@@ -1941,7 +1940,6 @@ you will see your device on the grid console page:</p>
   }
 }
 </code></pre>
-
 <p>Valid platforms are listed <a href="https://www.selenium.dev/downloads/">here</a></p>
 <p>If <code>url</code>, <code>host</code>, and <code>port</code> are not given, the config will be auto updated
 to point to localhost:whatever-port-Appium-started-on.</p>

@@ -1885,21 +1885,21 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#releasing-appium">Releasing Appium</a></li>
+        <li class="first-level active"><a href="#releasing-appium">Releasing Appium</a></li>
         
-            <li class="second-level"><a href="../../#create-a-release-branch">Create a release branch</a></li>
+            <li class="second-level"><a href="#create-a-release-branch">Create a release branch</a></li>
             
         
-            <li class="second-level"><a href="../../#create-a-release-candidate">Create a release candidate</a></li>
+            <li class="second-level"><a href="#create-a-release-candidate">Create a release candidate</a></li>
             
         
-            <li class="second-level"><a href="../../#publish-to-ga">Publish to GA</a></li>
+            <li class="second-level"><a href="#publish-to-ga">Publish to GA</a></li>
             
         
     
-        <li class="first-level "><a href="../../#troubleshooting">Troubleshooting</a></li>
+        <li class="first-level "><a href="#troubleshooting">Troubleshooting</a></li>
         
-            <li class="second-level"><a href="../../#when-you-publish-a-version-to-a-wrong-channel">When you publish a version to a wrong channel</a></li>
+            <li class="second-level"><a href="#when-you-publish-a-version-to-a-wrong-channel">When you publish a version to a wrong channel</a></li>
             
         
     
@@ -1956,7 +1956,6 @@ Then, you could add the <code>deprecated</code> label to this version , and re-t
 <pre><code>$ npm deprecate appium@1.21.0-rc.0 "this release should be in rc channel" --tag=latest
 $ npm dist-tag add appium@1.20.2 latest
 </code></pre>
-
 <p>You can confirm if the above step works by calling <code>npm install -g appium</code>.
 Once you can install <code>appium@1.20.2</code>, the above step worked.
 (You may need to wait for a few minutes because of npm caching.)</p></div>

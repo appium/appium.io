@@ -397,18 +397,18 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#_1">给贡献者的风格指南</a></li>
+        <li class="first-level active"><a href="#_1">给贡献者的风格指南</a></li>
         
-            <li class="second-level"><a href="../../#rebasing">衍合（Rebasing）</a></li>
+            <li class="second-level"><a href="#rebasing">衍合（Rebasing）</a></li>
             
         
-            <li class="second-level"><a href="../../#linting">检错（Linting）</a></li>
+            <li class="second-level"><a href="#linting">检错（Linting）</a></li>
             
         
-            <li class="second-level"><a href="../../#style-notes">风格注释（Style notes）</a></li>
+            <li class="second-level"><a href="#style-notes">风格注释（Style notes）</a></li>
             
         
-            <li class="second-level"><a href="../../#test-style">测试代码风格（Test Style）:</a></li>
+            <li class="second-level"><a href="#test-style">测试代码风格（Test Style）:</a></li>
             
         
     
@@ -583,16 +583,15 @@ var x = y ? y : z;</code></p>
 <h3 id="test-style">测试代码风格（Test Style）:</h3>
 <p>在代码语义通顺和长度许可下，可以保持在同一行：</p>
 <p>样例：</p>
-<pre><code class="javascript">  driver.elementByTagName('el1').should.become("123")
+<pre><code class="language-javascript">  driver.elementByTagName('el1').should.become("123")
     .nodeify(done);
 
   driver
     .elementsByTagName('el1').should.eventually.have.length(0)
     .nodeify(done);
 </code></pre>
-
 <p>或者使用缩进来提高代码的可读性：</p>
-<pre><code class="javascript">h.driver
+<pre><code class="language-javascript">h.driver
   .elementById('comments')
     .clear()
     .click()
@@ -608,7 +607,6 @@ h.driver
     .should.be.rejectedWith("status: 13")
   .nodeify(done);
 </code></pre>
-
 <p>本文由 <a href="https://github.com/wanyukang">wanyukang</a> 翻译，由 <a href="https://github.com/oscarxie">oscarxie</a> 校验。</p></div>
         
     </div>

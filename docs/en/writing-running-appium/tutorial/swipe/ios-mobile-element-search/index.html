@@ -1885,7 +1885,7 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../../#ios-mobile-element-search-swipe">iOS 'mobile:': Element search swipe</a></li>
+        <li class="first-level active"><a href="#ios-mobile-element-search-swipe">iOS 'mobile:': Element search swipe</a></li>
         
     
     </ul>
@@ -1903,7 +1903,7 @@
 is a good NSPredicate cheat sheet.</p>
 <p>NSPredicate covers element id search with 'name ==
 accessibilityIdentifier' predicate string.</p>
-<pre><code class="java">String pre = "label == 'exact_text'";
+<pre><code class="language-java">String pre = "label == 'exact_text'";
 MobileElement el = (MobileElement) driver.findElement(MobileBy.id("element_id"));
 
 mobileScrollToElementIOS(el, pre);
@@ -1934,14 +1934,13 @@ public void mobileScrollToElementIOS(MobileElement el, String pre) {
     }
 }
 </code></pre>
-
 <p>'mobileScrollToElementIOS' works UNRELIABLE and often missing needed
 element while scrolling (especially in complex views). Sometimes helps
 set <code>simpleIsVisibleCheck'</code> capability to true.</p>
 <p>As workaround try use combination of simple scroll(screen or element)
 and check that the destination element is visible on each step.</p>
 <p>Example of screen scroll and element visibility check.</p>
-<pre><code class="java">String pre = "label == 'exact_text'";
+<pre><code class="language-java">String pre = "label == 'exact_text'";
 mobileScrollScreenByPredicateIOS(pre, Direction.DOWN);
 
 /**

@@ -408,18 +408,18 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#_1">给贡献者的风格指南</a></li>
+        <li class="first-level active"><a href="#_1">给贡献者的风格指南</a></li>
         
-            <li class="second-level"><a href="../../#rebasing">衍合（Rebasing）</a></li>
+            <li class="second-level"><a href="#rebasing">衍合（Rebasing）</a></li>
             
         
-            <li class="second-level"><a href="../../#linting">检错（Linting）</a></li>
+            <li class="second-level"><a href="#linting">检错（Linting）</a></li>
             
         
-            <li class="second-level"><a href="../../#style-notes">风格注释（Style notes）</a></li>
+            <li class="second-level"><a href="#style-notes">风格注释（Style notes）</a></li>
             
         
-            <li class="second-level"><a href="../../#test-style">测试代码风格（Test Style）:</a></li>
+            <li class="second-level"><a href="#test-style">测试代码风格（Test Style）:</a></li>
             
         
     
@@ -436,7 +436,7 @@
 <h3 id="linting">检错（Linting）</h3>
 <p>所有的代码（除了使用了 Apple 私有方法的<code>bootstrap.js</code>代码）必须通过 JSLint 的检错测试。你可以在 Appium 存储目录下，运行<code>grunt lint</code>来检查你的代码。如果你已创建一个新的 .js 文件，请确认它在<code>grunt.js</code>中被通配符覆盖，或者被专门添加。</p>
 <p>编辑器的即时检错集成很简单，并且这会使得整个编码过程更加顺利。 我们喜欢 <a href="http://www.jshint.com">jshint</a>, 因为它已经与许多源代码编辑器集成了。将文件<code>.jshintrc</code>加入到仓库中，它的内容是：</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
   "laxcomma": true,
   "strict": true,
   "undef": true,
@@ -447,9 +447,8 @@
   "indent": 2
 }
 </code></pre>
-
 <p>因为jshint不再强制检查代码风格，我们也使用 <a href="https://github.com/mdevils/node-jscs">jscs</a>，它也集成在一些源代码编辑器中。配置文件为：</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
   "excludeFiles": ["submodules/**", "node_modules/**",
     "./lib/server/static/**", "./lib/devices/firefoxos/atoms/*.js",
     "./test/harmony/**/*.js", "./sample-code/examples/node/**/*-yiewd.js",
@@ -464,7 +463,6 @@
   }
 }
 </code></pre>
-
 <p>这些配置文件定义了哪些警告类型将会出现在你的编辑器中。 查看 <a href="http://www.jshint.com/platforms/">this page for jshint</a> 和 <a href="https://github.com/mdevils/node-jscs#friendly-packages">this page for jscs</a> ，找到它们各自支持的编辑器和平台的列表，以及如何设置你的编辑器使之能自动化检错。</p>
 <h3 id="style-notes">风格注释（Style notes）</h3>
 <ul>
@@ -618,16 +616,15 @@ var x = y ? y : z;</code></p>
 <h3 id="test-style">测试代码风格（Test Style）:</h3>
 <p>在代码语义通顺和长度许可下，可以保持在同一行：</p>
 <p>样例：</p>
-<pre><code class="javascript">  driver.elementByTagName('el1').should.become("123")
+<pre><code class="language-javascript">  driver.elementByTagName('el1').should.become("123")
     .nodeify(done);
 
   driver
     .elementsByTagName('el1').should.eventually.have.length(0)
     .nodeify(done);
 </code></pre>
-
 <p>或者使用缩进来提高代码的可读性：</p>
-<pre><code class="javascript">h.driver
+<pre><code class="language-javascript">h.driver
   .elementById('comments')
     .clear()
     .click()
@@ -643,7 +640,6 @@ h.driver
     .should.be.rejectedWith("status: 13")
   .nodeify(done);
 </code></pre>
-
 <p>本文由 <a href="https://github.com/wanyukang">wanyukang</a> 翻译，由 <a href="https://github.com/oscarxie">oscarxie</a> 校验。</p></div>
         
     </div>

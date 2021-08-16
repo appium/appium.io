@@ -1885,33 +1885,33 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#execute-driver-script">Execute Driver Script</a></li>
+        <li class="first-level active"><a href="#execute-driver-script">Execute Driver Script</a></li>
         
-            <li class="second-level"><a href="../../../#example-usage">Example Usage</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#description">Description</a></li>
+            <li class="second-level"><a href="#example-usage">Example Usage</a></li>
             
         
-            <li class="second-level"><a href="../../../#support">Support</a></li>
-            
-                <li class="third-level"><a href="../../../#appium-server">Appium Server</a></li>
-            
-                <li class="third-level"><a href="../../../#appium-clients">Appium Clients</a></li>
+            <li class="second-level"><a href="#description">Description</a></li>
             
         
-            <li class="second-level"><a href="../../../#http-api-specifications">HTTP API Specifications</a></li>
+            <li class="second-level"><a href="#support">Support</a></li>
             
-                <li class="third-level"><a href="../../../#endpoint">Endpoint</a></li>
+                <li class="third-level"><a href="#appium-server">Appium Server</a></li>
             
-                <li class="third-level"><a href="../../../#url-parameters">URL Parameters</a></li>
-            
-                <li class="third-level"><a href="../../../#json-parameters">JSON Parameters</a></li>
-            
-                <li class="third-level"><a href="../../../#response">Response</a></li>
+                <li class="third-level"><a href="#appium-clients">Appium Clients</a></li>
             
         
-            <li class="second-level"><a href="../../../#see-also">See Also</a></li>
+            <li class="second-level"><a href="#http-api-specifications">HTTP API Specifications</a></li>
+            
+                <li class="third-level"><a href="#endpoint">Endpoint</a></li>
+            
+                <li class="third-level"><a href="#url-parameters">URL Parameters</a></li>
+            
+                <li class="third-level"><a href="#json-parameters">JSON Parameters</a></li>
+            
+                <li class="third-level"><a href="#response">Response</a></li>
+            
+        
+            <li class="second-level"><a href="#see-also">See Also</a></li>
             
         
     
@@ -1927,30 +1927,30 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_4" data-language="csharp" data-toggle="tab">C#</a>
+              <a href="#0_4" data-language="language-csharp" data-toggle="tab">Language-csharp</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">String script = "const el = await driver.$('~foo');\n"
+            <pre><code class="language-java">String script = "const el = await driver.$('~foo');\n"
               + "await el.click();"
 driver.executeDriverScript(script, new ScriptOptions().withTimeout(200));
 
@@ -1958,7 +1958,7 @@ driver.executeDriverScript(script, new ScriptOptions().withTimeout(200));
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">import textwrap
+            <pre><code class="language-python">import textwrap
 script = """
     const el = await driver.$('~foo');
     await el.click();
@@ -1969,7 +1969,7 @@ response = driver.execute_driver(script=textwrap.dedent(script))
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">// webdriver.io example
+            <pre><code class="language-javascript">// webdriver.io example
 const script = `
   const el = await driver.$('~foo');
   await el.click();
@@ -1987,7 +1987,7 @@ await driver.executeDriver(script, {timeout: 200});
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby"># ruby_lib example
+            <pre><code class="language-ruby"># ruby_lib example
 script = &lt;&lt;-SCRIPT
 const status = await driver.status();
 return status;
@@ -2005,18 +2005,13 @@ SCRIPT
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">// TODO C# sample
+            <pre><code class="language-csharp">// TODO C# sample
 
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
-
-
 
 
 
@@ -2033,15 +2028,13 @@ SCRIPT
   * <code>console</code>: a custom <code>console</code> object, with methods <code>log</code>, <code>warn</code>, and <code>error</code>, so that logging may take place.
   * <code>Promise</code>: a Promise library (<a href="http://bluebirdjs.com/docs/getting-started.html">Bluebird</a>), to make asynchronous work easier.</p>
 <p>The code will be placed inside an <code>async</code> function, as below, so you are free to use <code>await</code>:</p>
-<pre><code class="js">(async function (driver, console, Promise) {
+<pre><code class="language-js">(async function (driver, console, Promise) {
   // --&gt; your script here &lt;--
 })()
 </code></pre>
-
 <p>Any errors will result in an error response to the call to this command. Any return values will be wrapped up and sent back to your client in the following form:</p>
-<pre><code class="js">{result: &lt;return value&gt;, logs: {log: [], warn: [], error: []}}
+<pre><code class="language-js">{result: &lt;return value&gt;, logs: {log: [], warn: [], error: []}}
 </code></pre>
-
 <p>Using this response object you can gather the return value as well as the output of any log statements you made.</p>
 <p>The advantage of this approach of using WebdriverIO code is that you have access to a full programming language and Appium API, and can use any language or API features you need, including loops, conditionals, and explicit waits. The WebdriverIO API cannot be enumerated here, so visit the <a href="https://webdriver.io/docs/api.html">WebdriverIO documentation</a> for more info.</p>
 <h2 id="support">Support</h2>

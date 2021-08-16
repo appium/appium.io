@@ -1885,23 +1885,23 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#android-coverage-guide">Android Coverage Guide</a></li>
+        <li class="first-level active"><a href="#android-coverage-guide">Android Coverage Guide</a></li>
         
-            <li class="second-level"><a href="../../../#requirement">Requirement</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#project-structure">Project Structure</a></li>
+            <li class="second-level"><a href="#requirement">Requirement</a></li>
             
         
-            <li class="second-level"><a href="../../../#example">Example</a></li>
+            <li class="second-level"><a href="#project-structure">Project Structure</a></li>
             
-                <li class="third-level"><a href="../../../#1-appium-testing-project-configure-caps">[1] Appium Testing Project - Configure Caps</a></li>
+        
+            <li class="second-level"><a href="#example">Example</a></li>
             
-                <li class="third-level"><a href="../../../#2-android-project">[2] Android Project</a></li>
+                <li class="third-level"><a href="#1-appium-testing-project-configure-caps">[1] Appium Testing Project - Configure Caps</a></li>
             
-                <li class="third-level"><a href="../../../#3-now-build-apk-and-run-appium-tests">[3] Now, build apk and run Appium tests!</a></li>
+                <li class="third-level"><a href="#2-android-project">[2] Android Project</a></li>
             
-                <li class="third-level"><a href="../../../#4-about-generating-html-reports">[4] About generating HTML reports</a></li>
+                <li class="third-level"><a href="#3-now-build-apk-and-run-appium-tests">[3] Now, build apk and run Appium tests!</a></li>
+            
+                <li class="third-level"><a href="#4-about-generating-html-reports">[4] About generating HTML reports</a></li>
             
         
     
@@ -1926,7 +1926,6 @@
    |____ JacocoInstrumentation.java    The instrument class created by you. Also it needs to implement `InstrumentActivitylistener`.
    |____ EndEmmaBroadCast.java    A broadcast receiver which will be invoked by appium-uiautomator2-driver at the end of testing. You need implementing logic to invoke InstrumentActivityListener so as to export coverage to files.
 </code></pre>
-
 <p>Configure followings in your caps:<br>
  * automationName ： <code>uiautomator2</code> (case irrelevant)<br>
  * androidCoverage ： {package}/{instrumentation class}, in our example, <code>com.example.pkg/com.example.pkg.JacocoInstrumentation</code><br>
@@ -1941,7 +1940,7 @@
 <p>Please refer to <strong> "Project Structure" -&gt;  "Configure followings in your caps" </strong></p>
 <h3 id="2-android-project">[2] Android Project</h3>
 <p>Define instrumentation class and broadcast receiver in <code>AndroidManifest.xml</code>:</p>
-<pre><code class="xml">    &lt;instrumentation
+<pre><code class="language-xml">    &lt;instrumentation
         android:name="com.example.pkg.instrumentation.JacocoInstrumentation"
         android:targetPackage="com.example.pkg" &gt;
     &lt;/instrumentation&gt;
@@ -1953,9 +1952,8 @@
        &lt;/intent-filter&gt;
     &lt;/receiver&gt;
 </code></pre>
-
 <p>Then, <code>EndEmmaBroadcast.java</code> ：</p>
-<pre><code class="java">package com.example.pkg;
+<pre><code class="language-java">package com.example.pkg;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -1979,9 +1977,8 @@ public class EndEmmaBroadcast extends BroadcastReceiver {
     }
 }
 </code></pre>
-
 <p>After that, <code>JacocoInstrumentation.java</code>：</p>
-<pre><code class="java">package com.example.pkg;
+<pre><code class="language-java">package com.example.pkg;
 
 import android.app.Activity;
 import android.app.Instrumentation;
@@ -2080,17 +2077,15 @@ public class JacocoInstrumentation  extends Instrumentation implements Instrumen
 }
 
 </code></pre>
-
 <p>Then, <code>InstrumentActivityListener.java</code></p>
-<pre><code class="java">package com.example.pkg;
+<pre><code class="language-java">package com.example.pkg;
 
 public interface InstrumentActivityListener {
     void onActivityEnd();
 }
 </code></pre>
-
 <p><code>InstrumentActivity.java</code> (This is optional, you can use MainActivity)</p>
-<pre><code class="java">package com.example.pkg;
+<pre><code class="language-java">package com.example.pkg;
 import android.app.Instrumentation;
 import android.os.Bundle;
 import android.util.Log;
@@ -2116,9 +2111,8 @@ public class InstrumentActivity extends MainActivity {
     }
 }
 </code></pre>
-
 <p>Finally, the most important part is <code>gradle</code>:</p>
-<pre><code class="groovy">....
+<pre><code class="language-groovy">....
 
 
 apply plugin: 'jacoco' // add plugin for jacoco
@@ -2149,14 +2143,13 @@ dependencies {
 }
 
 </code></pre>
-
 <h3 id="3-now-build-apk-and-run-appium-tests">[3] Now, build apk and run Appium tests!</h3>
 <p>The coverage.ec will be generated at /data/data/com.example.pkg/files. Pull it out.</p>
 <h3 id="4-about-generating-html-reports">[4] About generating HTML reports</h3>
 <p>To get the HTML report of coverage.ec, you need following steps:
 * [1] pull it into file system by <code>adb pull</code> 
 * [2] create the following task in your gradle file:</p>
-<pre><code class="groovy">def coverageSourceDirs = [
+<pre><code class="language-groovy">def coverageSourceDirs = [
         './src/main/java'
 ]
 

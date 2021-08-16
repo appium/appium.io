@@ -408,23 +408,23 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#_1">自动化混合应用</a></li>
+        <li class="first-level active"><a href="#_1">自动化混合应用</a></li>
         
-            <li class="second-level"><a href="../../../#web-context">进入 Web 视图上下文（context）</a></li>
+            <li class="second-level"><a href="#web-context">进入 Web 视图上下文（context）</a></li>
             
         
-            <li class="second-level"><a href="../../../#session-web-context">在会话（session）开启时自动进入 Web 视图上下文（context）</a></li>
+            <li class="second-level"><a href="#session-web-context">在会话（session）开启时自动进入 Web 视图上下文（context）</a></li>
             
         
-            <li class="second-level"><a href="../../../#_2">示例</a></li>
+            <li class="second-level"><a href="#_2">示例</a></li>
             
         
-            <li class="second-level"><a href="../../../#android">自动化 Android 的混合应用</a></li>
+            <li class="second-level"><a href="#android">自动化 Android 的混合应用</a></li>
             
         
-            <li class="second-level"><a href="../../../#ios">自动化 iOS 的混合应用</a></li>
+            <li class="second-level"><a href="#ios">自动化 iOS 的混合应用</a></li>
             
-                <li class="third-level"><a href="../../../#ios_1">对真实的 iOS 设备执行</a></li>
+                <li class="third-level"><a href="#ios_1">对真实的 iOS 设备执行</a></li>
             
         
     
@@ -457,30 +457,48 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_4" data-language="php" data-toggle="tab">PHP</a>
+              <a href="#0_4" data-language="language-php" data-toggle="tab">Language-php</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">// 假定我们设置了 capabilities
+            <pre><code class="language-javascript">// 假定我们已经为这个应用程序初始化了 `driver` 对象
+driver
+    .contexts().then(function (contexts) { // get list of available views. Returns array: ["NATIVE_APP","WEBVIEW_1"]
+        return driver.context(contexts[1]); // choose the webview context
+    })
+
+    // 执行一些 web 测试
+    .elementsByCss('.green_button').click()
+
+    .context('NATIVE_APP') // leave webview context
+
+    // 如果你想，可以在这做一些原生操作
+
+    .quit() // stop webdrivage
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="language-java">// 假定我们设置了 capabilities
 driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 
 Set&lt;String&gt; contextNames = driver.getContextHandles();
@@ -500,45 +518,8 @@ driver.quit();
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python"># 假定我们已经为这个应用程序初始化了 `driver` 对象
-
-# 切换到 webview
-webview = driver.contexts.last
-driver.switch_to.context(webview)
-
-# 执行一些 web 测试
-driver.find_element(:css, ".green_button").click
-
-# 切换回原生视图
-driver.switch_to.context(driver.contexts.first)
-
-# 如果你想，可以在这做一些原生操作
-
-driver.quit()
-</code></pre>
-          </div>
-          
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">// 假定我们已经为这个应用程序初始化了 `driver` 对象
-driver
-    .contexts().then(function (contexts) { // get list of available views. Returns array: ["NATIVE_APP","WEBVIEW_1"]
-        return driver.context(contexts[1]); // choose the webview context
-    })
-
-    // 执行一些 web 测试
-    .elementsByCss('.green_button').click()
-
-    .context('NATIVE_APP') // leave webview context
-
-    // 如果你想，可以在这做一些原生操作
-
-    .quit() // stop webdrivage
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby"># 假定我们设置了 capabilities
+            <pre><code class="language-ruby"># 假定我们设置了 capabilities
 @driver = Appium::Core.for(url: SERVER_URL, desired_capabilities: capabilities).start_driver
 # ruby_lib
 # opts = { caps: capabilities, appium_lib: { custom_url: SERVER_URL }}
@@ -565,8 +546,27 @@ end
 </code></pre>
           </div>
           
+          <div role="tabpanel" class="tab-pane " id="0_3">
+            <pre><code class="language-python"># 假定我们已经为这个应用程序初始化了 `driver` 对象
+
+# 切换到 webview
+webview = driver.contexts.last
+driver.switch_to.context(webview)
+
+# 执行一些 web 测试
+driver.find_element(:css, ".green_button").click
+
+# 切换回原生视图
+driver.switch_to.context(driver.contexts.first)
+
+# 如果你想，可以在这做一些原生操作
+
+driver.quit()
+</code></pre>
+          </div>
+          
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="php">// 假定我们已经在这个AppiumTestCase中初始化了 `driver` 对象
+            <pre><code class="language-php">// 假定我们已经在这个AppiumTestCase中初始化了 `driver` 对象
 public function testThings()
 {
         $expected_contexts = array(
@@ -592,11 +592,6 @@ public function testThings()
           
         </div>
       </div>
-
-
-
-
-
 
 
 

@@ -1885,23 +1885,23 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../../#swipe-troubleshoot-guide">Swipe troubleshoot guide</a></li>
+        <li class="first-level active"><a href="#swipe-troubleshoot-guide">Swipe troubleshoot guide</a></li>
         
-            <li class="second-level"><a href="../../../../#simple-swipe-actions">Simple swipe actions</a></li>
-            
-        
-            <li class="second-level"><a href="../../../../#android-uiscrollable-swipe">Android: 'UIScrollable' swipe</a></li>
-            
-                <li class="third-level"><a href="../../../../#scroll-does-not-start">Scroll does not start:</a></li>
-            
-                <li class="third-level"><a href="../../../../#missed-the-search-element">Missed the search element:</a></li>
+            <li class="second-level"><a href="#simple-swipe-actions">Simple swipe actions</a></li>
             
         
-            <li class="second-level"><a href="../../../../#ios-mobilescroll-mobileswipe-swipe">iOS: 'mobile:scroll', 'mobile:swipe' swipe</a></li>
+            <li class="second-level"><a href="#android-uiscrollable-swipe">Android: 'UIScrollable' swipe</a></li>
             
-                <li class="third-level"><a href="../../../../#scroll-does-not-start_1">Scroll does not start:</a></li>
+                <li class="third-level"><a href="#scroll-does-not-start">Scroll does not start:</a></li>
             
-                <li class="third-level"><a href="../../../../#missed-the-search-element_1">Missed the search element:</a></li>
+                <li class="third-level"><a href="#missed-the-search-element">Missed the search element:</a></li>
+            
+        
+            <li class="second-level"><a href="#ios-mobilescroll-mobileswipe-swipe">iOS: 'mobile:scroll', 'mobile:swipe' swipe</a></li>
+            
+                <li class="third-level"><a href="#scroll-does-not-start_1">Scroll does not start:</a></li>
+            
+                <li class="third-level"><a href="#missed-the-search-element_1">Missed the search element:</a></li>
             
         
     
@@ -1917,7 +1917,7 @@
 <li>Add logs to touch coordinates.</li>
 </ol>
 <p>Swipe screen example with logs:</p>
-<pre><code class="java">/**
+<pre><code class="language-java">/**
  * Performs swipe from the center of screen
  *
  * @param dir the direction of swipe
@@ -1987,7 +1987,6 @@ public void swipeScreenWithLogs(Direction dir) {
     }
 }
 </code></pre>
-
 <p>Example output:</p>
 <pre><code>swipeScreen(): dir: 'DOWN'
 swipeScreen(): pointStart: {187,333}
@@ -1998,7 +1997,6 @@ swipeScreen(): pointStart: {187,333}
 swipeScreen(): pointEnd: {187,10}
 swipeScreen(): screenSize: {375,667}
 </code></pre>
-
 <ol>
 <li>In Android enable 'Show Taps' and 'Pointer location' in 'Settings -&gt;
    System -&gt; Developer options -&gt; Input tab' to see touches visually.</li>
@@ -2020,7 +2018,7 @@ swipeScreen(): screenSize: {375,667}
    while test in pause. After pause add code to check element search.
    E.g. if you specified search element by text:</li>
 </ol>
-<pre><code class="java">MobileElement element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
+<pre><code class="language-java">MobileElement element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
          "new UiSelector().text(\"exact_text\")"));
 // or
 MobileElement element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
@@ -2032,7 +2030,6 @@ try {
     System.out.println("Element found: false");
 }
 </code></pre>
-
 <h3 id="ios-mobilescroll-mobileswipe-swipe">iOS: 'mobile:scroll', 'mobile:swipe' swipe</h3>
 <h4 id="scroll-does-not-start_1">Scroll does not start:</h4>
 <ol>

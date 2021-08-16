@@ -1885,17 +1885,17 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#ios-webkit-debug-proxy">iOS WebKit Debug Proxy</a></li>
+        <li class="first-level active"><a href="#ios-webkit-debug-proxy">iOS WebKit Debug Proxy</a></li>
         
-            <li class="second-level"><a href="../../../#installation">Installation</a></li>
+            <li class="second-level"><a href="#installation">Installation</a></li>
             
-                <li class="third-level"><a href="../../../#using-homebrew">Using Homebrew</a></li>
+                <li class="third-level"><a href="#using-homebrew">Using Homebrew</a></li>
             
-                <li class="third-level"><a href="../../../#building-ios-webkit-debug-proxy-from-source">Building ios-webkit-debug-proxy from source</a></li>
+                <li class="third-level"><a href="#building-ios-webkit-debug-proxy-from-source">Building ios-webkit-debug-proxy from source</a></li>
             
-                <li class="third-level"><a href="../../../#running-ios-webkit-debug-proxy">Running ios-webkit-debug-proxy</a></li>
+                <li class="third-level"><a href="#running-ios-webkit-debug-proxy">Running ios-webkit-debug-proxy</a></li>
             
-                <li class="third-level"><a href="../../../#specifying-non-default-port">Specifying non-default port</a></li>
+                <li class="third-level"><a href="#specifying-non-default-port">Specifying non-default port</a></li>
             
         
     
@@ -1918,7 +1918,7 @@ Homebrew, run the following commands in the terminal:</p>
 <h4 id="building-ios-webkit-debug-proxy-from-source">Building ios-webkit-debug-proxy from source</h4>
 <p>Open the command terminal on your linux machine. You can find instructions on how to open the
 terminal via your favorite search engine.</p>
-<pre><code class="shell">$ cd  ~
+<pre><code class="language-shell">$ cd  ~
 $ sudo apt-get install autoconf automake libusb-dev libusb-1.0-0-dev libplist-dev libplist++-dev usbmuxd libtool libimobiledevice-dev
 $ git clone https://github.com/google/ios-webkit-debug-proxy.git
 $ cd ios-webkit-debug-proxy
@@ -1926,7 +1926,6 @@ $ ./autogen.sh
 $ make
 $ sudo make install
 </code></pre>
-
 <h4 id="running-ios-webkit-debug-proxy">Running ios-webkit-debug-proxy</h4>
 <p>Once installed you can start the proxy with the following command:</p>
 <pre><code># Change the udid to be the udid of the attached device and make sure to set the port to 27753
@@ -1934,7 +1933,6 @@ $ sudo make install
 # Apple's developer resources.
 &gt; ios_webkit_debug_proxy -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
 </code></pre>
-
 <p>You can also set the desired capability called <code>startIWDP</code> to <code>true</code> (see the <a href="/docs/en/writing-running-appium/caps/index.html">desired capabilities docs</a>). This will run the above command as a subprocess from within Appium and will set the udid, so you don't have to run <code>ios_webkit_debug_proxy</code> yourself anymore. It monitors the proxy for crashes and relaunches when needed.</p>
 <pre><code>// example desired capabilities
 {
@@ -1946,7 +1944,6 @@ $ sudo make install
   "udid": "auto"
 }
 </code></pre>
-
 <p>You may also use <code>ios-webkit-debug-proxy-launcher</code>, a small script included with the Appium codebase, to launch the
 proxy. It monitors the proxy log for errors, and relaunch the proxy
 where needed. This is also optional and may help with recent devices:</p>
@@ -1954,7 +1951,6 @@ where needed. This is also optional and may help with recent devices:</p>
 # note, this is run from an Appium repository
 &gt; ./bin/ios-webkit-debug-proxy-launcher.js -c 0e4b2f612b65e98c1d07d22ee08678130d345429:27753 -d
 </code></pre>
-
 <p><strong>NOTE:</strong> the proxy requires the <strong>"web inspector"</strong> to be turned on to
 allow a connection to be established. Turn it on by going to <strong>settings &gt;
 safari &gt; advanced</strong>.</p>

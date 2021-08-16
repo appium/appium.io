@@ -1885,33 +1885,33 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#image-comparison-features">Image Comparison Features</a></li>
+        <li class="first-level active"><a href="#image-comparison-features">Image Comparison Features</a></li>
         
-            <li class="second-level"><a href="../../#prerequisites">Prerequisites</a></li>
-            
-        
-            <li class="second-level"><a href="../../#purpose">Purpose</a></li>
+            <li class="second-level"><a href="#prerequisites">Prerequisites</a></li>
             
         
-            <li class="second-level"><a href="../../#feature-based-comparison">Feature-based Comparison</a></li>
-            
-                <li class="third-level"><a href="../../#examples">Examples</a></li>
-            
-                <li class="third-level"><a href="../../#visualization-example">Visualization Example</a></li>
+            <li class="second-level"><a href="#purpose">Purpose</a></li>
             
         
-            <li class="second-level"><a href="../../#occurrences-lookup">Occurrences Lookup</a></li>
+            <li class="second-level"><a href="#feature-based-comparison">Feature-based Comparison</a></li>
             
-                <li class="third-level"><a href="../../#examples_1">Examples</a></li>
+                <li class="third-level"><a href="#examples">Examples</a></li>
             
-                <li class="third-level"><a href="../../#visualization-example_1">Visualization Example</a></li>
+                <li class="third-level"><a href="#visualization-example">Visualization Example</a></li>
             
         
-            <li class="second-level"><a href="../../#similarity-calculation">Similarity Calculation</a></li>
+            <li class="second-level"><a href="#occurrences-lookup">Occurrences Lookup</a></li>
             
-                <li class="third-level"><a href="../../#examples_2">Examples</a></li>
+                <li class="third-level"><a href="#examples_1">Examples</a></li>
             
-                <li class="third-level"><a href="../../#visualization-example_2">Visualization Example</a></li>
+                <li class="third-level"><a href="#visualization-example_1">Visualization Example</a></li>
+            
+        
+            <li class="second-level"><a href="#similarity-calculation">Similarity Calculation</a></li>
+            
+                <li class="third-level"><a href="#examples_2">Examples</a></li>
+            
+                <li class="third-level"><a href="#visualization-example_2">Visualization Example</a></li>
             
         
     
@@ -1936,7 +1936,7 @@
 <h2 id="feature-based-comparison">Feature-based Comparison</h2>
 <p>Performs images matching by template to find possible occurrence of the partial image in the full image. Read https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_matcher/py_matcher.html for more details on this topic. Such comparison is useful in case the resulting image is rotated/scaled in comparison to the original one.</p>
 <h3 id="examples">Examples</h3>
-<pre><code class="java">// java
+<pre><code class="language-java">// java
 
 byte[] screenshot = Base64.encodeBase64(driver.getScreenshotAs(OutputType.BYTES));
 FeaturesMatchingResult result = driver
@@ -1953,9 +1953,8 @@ assertNotNull(result.getRect1());
 assertFalse(result.getPoints2().isEmpty());
 assertNotNull(result.getRect2());
 </code></pre>
-
 <p>All the <code>FeaturesMatchingOptions</code> builder methods above contain detailed descriptions in their docstrings.</p>
-<pre><code class="ruby"># Ruby
+<pre><code class="language-ruby"># Ruby
 image1 = File.read 'first/image/path.png'
 image2 = File.read 'second/image/path.png'
 
@@ -1967,14 +1966,13 @@ assert_equal %w(points1 rect1 points2 rect2 totalCount count visualization), mat
 File.open('match_result_visual.png', 'wb') { |f| f&lt;&lt; Base64.decode64(match_result_visual['visualization']) }
 assert File.size? 'match_result_visual.png'
 </code></pre>
-
 <h3 id="visualization-example">Visualization Example</h3>
 <p><img alt="Feature-Based Comparison Example" src="https://user-images.githubusercontent.com/7767781/38800997-f7408fb8-4168-11e8-93b9-cfe3d51ecf1c.png"></p>
 <h2 id="occurrences-lookup">Occurrences Lookup</h2>
 <p>Performs images matching by template to find possible occurrence of the partial image in the full image. Read https://docs.opencv.org/2.4/doc/tutorials/imgproc/histograms/template_matching/template_matching.html for more details on this topic. Such comparison is useful in case the full image is a superset of the partial image.</p>
 <p>There is a subtle difference between occurrence comparison and feature comparison. The former is to be used when the image to be found is a subset of the target/screenshot. The latter is to be used when the image to be found is basically the same as the target but rotated and/or scaled.</p>
 <h3 id="examples_1">Examples</h3>
-<pre><code class="java">// java
+<pre><code class="language-java">// java
 
 byte[] screenshot = Base64.encodeBase64(driver.getScreenshotAs(OutputType.BYTES));
 OccurrenceMatchingResult result = driver
@@ -1983,24 +1981,37 @@ OccurrenceMatchingResult result = driver
 assertThat(result.getVisualization().length, is(greaterThan(0)));
 assertNotNull(result.getRect());
 </code></pre>
-
 <p>All the <code>OccurrenceMatchingOptions</code> builder methods above contain detailed descriptions in their docstrings.</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_0" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_1" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="javascript">// Typescript / Javascript
+            <pre><code class="language-ruby">image1 = File.read 'first/image/path.png'
+image2 = File.read 'partial/image/path.png'
+
+find_result = @driver.find_image_occurrence full_image: image1, partial_image: image2
+assert_equal({ 'rect' =&gt; { 'x' =&gt; 0, 'y' =&gt; 0, 'width' =&gt; 750, 'height' =&gt; 1334 } }, find_result)
+
+find_result_visual = @driver.find_image_occurrence full_image: image1, partial_image: image2, visualize: true
+assert_equal %w(rect visualization), find_result_visual.keys
+File.open('find_result_visual.png', 'wb') { |f| f&lt;&lt; Base64.decode64(find_result_visual['visualization']) }
+assert File.size? 'find_result_visual.png'
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="language-javascript">// Typescript / Javascript
   /*
      Typescsript code for occurrence comparison using the template matching algorithm.
      It detects if an image is contained in another image (called the template).
@@ -2066,24 +2077,8 @@ assertNotNull(result.getRect());
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="ruby">image1 = File.read 'first/image/path.png'
-image2 = File.read 'partial/image/path.png'
-
-find_result = @driver.find_image_occurrence full_image: image1, partial_image: image2
-assert_equal({ 'rect' =&gt; { 'x' =&gt; 0, 'y' =&gt; 0, 'width' =&gt; 750, 'height' =&gt; 1334 } }, find_result)
-
-find_result_visual = @driver.find_image_occurrence full_image: image1, partial_image: image2, visualize: true
-assert_equal %w(rect visualization), find_result_visual.keys
-File.open('find_result_visual.png', 'wb') { |f| f&lt;&lt; Base64.decode64(find_result_visual['visualization']) }
-assert File.size? 'find_result_visual.png'
-</code></pre>
-          </div>
-          
         </div>
       </div>
-
-
 
 <h3 id="visualization-example_1">Visualization Example</h3>
 <p><img alt="Occurrences Lookup" src="https://user-images.githubusercontent.com/7767781/40233298-b7decfe4-5aa2-11e8-8c9b-f85f384d2092.png"></p>
@@ -2091,7 +2086,7 @@ assert File.size? 'find_result_visual.png'
 <h2 id="similarity-calculation">Similarity Calculation</h2>
 <p>Performs images matching to calculate the similarity score between them. The flow there is similar to the one used in <code>findImageOccurrence</code>, but it is mandatory that both images are of equal size. Such comparison is useful in case the original image is a copy of the original one, but with changed content.</p>
 <h3 id="examples_2">Examples</h3>
-<pre><code class="java">// java
+<pre><code class="language-java">// java
 
 byte[] screenshot1 = Base64.encodeBase64(driver.getScreenshotAs(OutputType.BYTES));
 byte[] screenshot2 = Base64.encodeBase64(driver.getScreenshotAs(OutputType.BYTES));
@@ -2101,9 +2096,8 @@ SimilarityMatchingResult result = driver
 assertThat(result.getVisualization().length, is(greaterThan(0)));
 assertThat(result.getScore(), is(greaterThan(0.0)));
 </code></pre>
-
 <p>All the <code>SimilarityMatchingOptions</code> builder methods above contain detailed descriptions in their docstrings.</p>
-<pre><code class="ruby"># Ruby
+<pre><code class="language-ruby"># Ruby
 image1 = File.read 'first/image/path.png'
 image2 = File.read 'second/image/path.png'
 
@@ -2115,7 +2109,6 @@ assert_equal %w(score visualization), get_images_result_visual.keys
 File.open('get_images_result_visual.png', 'wb') { |f| f&lt;&lt; Base64.decode64(get_images_result_visual['visualization']) }
 assert File.size? 'get_images_result_visual.png'
 </code></pre>
-
 <h3 id="visualization-example_2">Visualization Example</h3>
 <p><img alt="Similarity Matching Example" src="https://user-images.githubusercontent.com/7767781/38780635-27198346-40da-11e8-803d-1ec4afd3c3aa.png"></p>
 <p>The similarity score for two pictures above is ~0.98.</p></div>

@@ -397,30 +397,30 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../../#app">获取 App 字符串</a></li>
+        <li class="first-level active"><a href="#app">获取 App 字符串</a></li>
         
-            <li class="second-level"><a href="../../../../#_1">使用范例</a></li>
-            
-        
-            <li class="second-level"><a href="../../../../#_2">帮助文档</a></li>
-            
-                <li class="third-level"><a href="../../../../#appium-server">Appium Server</a></li>
-            
-                <li class="third-level"><a href="../../../../#appium">Appium 客户端</a></li>
+            <li class="second-level"><a href="#_1">使用范例</a></li>
             
         
-            <li class="second-level"><a href="../../../../#http-api">HTTP API 规范</a></li>
+            <li class="second-level"><a href="#_2">帮助文档</a></li>
             
-                <li class="third-level"><a href="../../../../#endpoint">Endpoint</a></li>
+                <li class="third-level"><a href="#appium-server">Appium Server</a></li>
             
-                <li class="third-level"><a href="../../../../#url">URL 参数</a></li>
-            
-                <li class="third-level"><a href="../../../../#json">JSON 参数</a></li>
-            
-                <li class="third-level"><a href="../../../../#response">响应（Response）</a></li>
+                <li class="third-level"><a href="#appium">Appium 客户端</a></li>
             
         
-            <li class="second-level"><a href="../../../../#_3">另请参阅</a></li>
+            <li class="second-level"><a href="#http-api">HTTP API 规范</a></li>
+            
+                <li class="third-level"><a href="#endpoint">Endpoint</a></li>
+            
+                <li class="third-level"><a href="#url">URL 参数</a></li>
+            
+                <li class="third-level"><a href="#json">JSON 参数</a></li>
+            
+                <li class="third-level"><a href="#response">响应（Response）</a></li>
+            
+        
+            <li class="second-level"><a href="#_3">另请参阅</a></li>
             
         
     
@@ -436,46 +436,46 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_4" data-language="csharp" data-toggle="tab">C#</a>
+              <a href="#0_4" data-language="language-php" data-toggle="tab">Language-php</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_5" data-language="php" data-toggle="tab">PHP</a>
+              <a href="#0_5" data-language="language-csharp" data-toggle="tab">Language-csharp</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">Map&lt;String, String&gt; appStrings = driver.getAppStringMap("en", "/path/to/file");
+            <pre><code class="language-java">Map&lt;String, String&gt; appStrings = driver.getAppStringMap("en", "/path/to/file");
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">appStrings = self.driver.app_strings("en", "/path/to/file")
+            <pre><code class="language-python">appStrings = self.driver.app_strings("en", "/path/to/file")
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">// webdriver.io 例子
+            <pre><code class="language-javascript">// webdriver.io 例子
 let appStrings = driver.getStrings("en");
 
 // wd 例子
@@ -485,7 +485,7 @@ let appStrings = await driver.getAppStrings();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby"># ruby_lib 例子
+            <pre><code class="language-ruby"># ruby_lib 例子
 app_strings("en")
 
 # ruby_lib_core 例子
@@ -495,25 +495,19 @@ app_strings("en")
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">Dictionary&lt;string, object&gt; appStrings = driver.GetAppStringDictionary("end", "/path/to/file");
+            <pre><code class="language-php">$strings = $driver-&gt;appStrings();
 
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_5">
-            <pre><code class="php">$strings = $driver-&gt;appStrings();
+            <pre><code class="language-csharp">Dictionary&lt;string, object&gt; appStrings = driver.GetAppStringDictionary("end", "/path/to/file");
 
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
-
-
-
 
 
 

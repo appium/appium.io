@@ -1885,29 +1885,29 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#automating-mobile-web-apps">Automating mobile web apps</a></li>
+        <li class="first-level active"><a href="#automating-mobile-web-apps">Automating mobile web apps</a></li>
         
-            <li class="second-level"><a href="../../../#ios-mobile-web-automation">iOS mobile web automation</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#mobile-safari-on-simulator">Mobile Safari on Simulator</a></li>
+            <li class="second-level"><a href="#ios-mobile-web-automation">iOS mobile web automation</a></li>
             
         
-            <li class="second-level"><a href="../../../#mobile-safari-on-a-real-ios-device">Mobile Safari on a Real iOS Device</a></li>
-            
-                <li class="third-level"><a href="../../../#for-xcuitest">For XCUITest</a></li>
-            
-                <li class="third-level"><a href="../../../#for-instruments">For Instruments</a></li>
-            
-                <li class="third-level"><a href="../../../#setup-for-an-ios-real-device">Setup for an iOS real device</a></li>
+            <li class="second-level"><a href="#mobile-safari-on-simulator">Mobile Safari on Simulator</a></li>
             
         
-            <li class="second-level"><a href="../../../#running-your-test">Running your test</a></li>
+            <li class="second-level"><a href="#mobile-safari-on-a-real-ios-device">Mobile Safari on a Real iOS Device</a></li>
+            
+                <li class="third-level"><a href="#for-xcuitest">For XCUITest</a></li>
+            
+                <li class="third-level"><a href="#for-instruments">For Instruments</a></li>
+            
+                <li class="third-level"><a href="#setup-for-an-ios-real-device">Setup for an iOS real device</a></li>
             
         
-            <li class="second-level"><a href="../../../#android-mobile-web-automation">Android mobile web automation</a></li>
+            <li class="second-level"><a href="#running-your-test">Running your test</a></li>
             
-                <li class="third-level"><a href="../../../#troubleshooting-chromedriver">Troubleshooting Chromedriver</a></li>
+        
+            <li class="second-level"><a href="#android-mobile-web-automation">Android mobile web automation</a></li>
+            
+                <li class="third-level"><a href="#troubleshooting-chromedriver">Troubleshooting Chromedriver</a></li>
             
         
     
@@ -1932,36 +1932,37 @@ for the correct preferences to have been set.</p>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13.2");
-capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
-capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
+            <pre><code class="language-javascript">{
+  platformName: 'iOS'
+  , platformVersion: '13.2'
+  , automationName: 'XCUITest'
+  , browserName: 'Safari'
+  , deviceName: 'iPhone 11'
+}
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">{
+            <pre><code class="language-python">{
   'platformName': 'iOS',
   'platformVersion': '13.2',
   'automationName': 'XCUITest',
@@ -1972,18 +1973,17 @@ capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">{
-  platformName: 'iOS'
-  , platformVersion: '13.2'
-  , automationName: 'XCUITest'
-  , browserName: 'Safari'
-  , deviceName: 'iPhone 11'
-}
+            <pre><code class="language-java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13.2");
+capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
+capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">{
+            <pre><code class="language-ruby">{
   platformName: 'iOS',
   platformVersion: '13.2',
   automationName: 'XCUITest',
@@ -1995,10 +1995,6 @@ capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 11");
           
         </div>
       </div>
-
-
-
-
 
 
 
@@ -2044,18 +2040,18 @@ documentation.</p>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#1_0" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#1_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="java">//setup the web driver and launch the webview app.
+            <pre><code class="language-java">//setup the web driver and launch the webview app.
 DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
 desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
@@ -2074,7 +2070,7 @@ driver.quit();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="python"># setup the web driver and launch the webview app.
+            <pre><code class="language-python"># setup the web driver and launch the webview app.
 capabilities = { 'browserName': 'Safari', 'automationName': 'XCUITest' }
 driver = webdriver.Remote('http://localhost:4723/wd/hub', capabilities)
 
@@ -2095,8 +2091,6 @@ driver.quit()
         </div>
       </div>
 
-
-
 <h3 id="android-mobile-web-automation">Android mobile web automation</h3>
 <p>Appium supports automating the Chrome browser both real and emulated Android
 devices.</p>
@@ -2114,36 +2108,37 @@ these to run your test in Chrome:</p>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#2_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#2_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#2_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#2_2" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#2_3" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="2_0">
-            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.0");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
-capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+            <pre><code class="language-javascript">{
+  platformName: 'Android'
+  , platformVersion: '9.0'
+  , deviceName: 'Android Emulator'
+  , automationName: 'UIAutomator2'
+  , browserName: 'Chrome'
+};
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_1">
-            <pre><code class="python">{
+            <pre><code class="language-python">{
   'platformName': 'Android',
   'platformVersion': '9.0',
   'deviceName': 'Android Emulator',
@@ -2154,18 +2149,17 @@ capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_2">
-            <pre><code class="javascript">{
-  platformName: 'Android'
-  , platformVersion: '9.0'
-  , deviceName: 'Android Emulator'
-  , automationName: 'UIAutomator2'
-  , browserName: 'Chrome'
-};
+            <pre><code class="language-java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.0");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
+capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_3">
-            <pre><code class="ruby">{
+            <pre><code class="language-ruby">{
   platformName: 'Android',
   platformVersion: '9.0',
   deviceName: 'Android Emulator',
@@ -2177,10 +2171,6 @@ capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
           
         </div>
       </div>
-
-
-
-
 
 
 
@@ -2200,9 +2190,8 @@ required write access to the <code>/data/local</code> directory to set Chrome's 
 line arguments.</p>
 <p>If testing on Chrome app prior to version 33, ensure <code>adb shell</code> has read/write
 access to <code>/data/local</code> directory on the device:</p>
-<pre><code class="center">$ adb shell su -c chmod 777 /data/local
+<pre><code class="language-center">$ adb shell su -c chmod 777 /data/local
 </code></pre>
-
 <p>There is a desired capability <code>showChromedriverLog</code> which, when set to <code>true</code>,
 writes the Chromedriver logs inline with the Appium logs. This can be helpful
 for debugging.</p>

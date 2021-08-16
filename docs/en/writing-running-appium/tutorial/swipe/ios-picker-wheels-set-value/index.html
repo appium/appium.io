@@ -1885,12 +1885,12 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../../#ios-pickerwheels-fast-setvalue-example">iOS pickerWheels: Fast '.setValue()' example</a></li>
+        <li class="first-level active"><a href="#ios-pickerwheels-fast-setvalue-example">iOS pickerWheels: Fast '.setValue()' example</a></li>
         
-            <li class="second-level"><a href="../../../../#one-pickerwheel">One PickerWheel</a></li>
+            <li class="second-level"><a href="#one-pickerwheel">One PickerWheel</a></li>
             
         
-            <li class="second-level"><a href="../../../../#multiple-pickerwheels">Multiple PickerWheels</a></li>
+            <li class="second-level"><a href="#multiple-pickerwheels">Multiple PickerWheels</a></li>
             
         
     
@@ -1908,13 +1908,12 @@ controls. Sometimes the setValue() call might not have any effect.</p>
 - if PickerWheel value complicated e.g. country flag image and country
   text then the probability of failure increases.</p>
 <h3 id="one-pickerwheel">One PickerWheel</h3>
-<pre><code class="java">String txt = "exact_text";
+<pre><code class="language-java">String txt = "exact_text";
 MobileElement el = (MobileElement) driver.findElement(MobileBy.className("XCUIElementTypePickerWheel"));
 el.setValue(txt);
 </code></pre>
-
 <h3 id="multiple-pickerwheels">Multiple PickerWheels</h3>
-<pre><code class="java">String txt = "exact_text";
+<pre><code class="language-java">String txt = "exact_text";
 List&lt;MobileElement&gt; el = driver.findElements(MobileBy.className("XCUIElementTypePickerWheel"));
 
 // set first PickerWheel

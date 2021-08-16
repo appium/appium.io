@@ -1885,27 +1885,27 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#espresso-datamatcher-selector">Espresso DataMatcher Selector</a></li>
+        <li class="first-level active"><a href="#espresso-datamatcher-selector">Espresso DataMatcher Selector</a></li>
         
-            <li class="second-level"><a href="../../../#adapterviews">AdapterViews</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#example">Example</a></li>
+            <li class="second-level"><a href="#adapterviews">AdapterViews</a></li>
             
         
-            <li class="second-level"><a href="../../../#writing-the-selector">Writing the Selector</a></li>
+            <li class="second-level"><a href="#example">Example</a></li>
             
         
-            <li class="second-level"><a href="../../../#json-matcher-samples">JSON matcher samples</a></li>
-            
-                <li class="third-level"><a href="../../../#startswith">StartsWith</a></li>
-            
-                <li class="third-level"><a href="../../../#multiple-matchers">Multiple Matchers</a></li>
-            
-                <li class="third-level"><a href="../../../#cursor-matchers">Cursor Matchers</a></li>
+            <li class="second-level"><a href="#writing-the-selector">Writing the Selector</a></li>
             
         
-            <li class="second-level"><a href="../../../#resources">Resources</a></li>
+            <li class="second-level"><a href="#json-matcher-samples">JSON matcher samples</a></li>
+            
+                <li class="third-level"><a href="#startswith">StartsWith</a></li>
+            
+                <li class="third-level"><a href="#multiple-matchers">Multiple Matchers</a></li>
+            
+                <li class="third-level"><a href="#cursor-matchers">Cursor Matchers</a></li>
+            
+        
+            <li class="second-level"><a href="#resources">Resources</a></li>
             
         
     
@@ -1921,7 +1921,7 @@
 <p>When using Espresso's Data Matcher, you can target views that are off-screen by writing a <a href="https://junit.org/junit4/javadoc/latest/org/hamcrest/class-use/Matcher.html">Hamcrest matcher</a> that selects an item from an adapter. If the item is not in the view hierarchy, Espresso automatically scrolls it into view.</p>
 <h3 id="example">Example</h3>
 <p>This is a ListView taken from the source XML of an Android App:</p>
-<pre><code class="xml">&lt;android.widget.ListView index="0" package="io.appium.android.apis" class="android.widget.ListView" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="true" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,210][1080,1794]" resource-id="android:id/list" adapter-type="HashMap" adapters="{contentDescription=Animation, title=Animation, intent=Intent { cmp=io.appium.android.apis/.ApiDemos (has extras) }},{contentDescription=Auto Complete, title=Auto Complete, intent=Intent { cmp=io.appium.android.apis/.ApiDemos (has extras) }}, ...}"&gt;
+<pre><code class="language-xml">&lt;android.widget.ListView index="0" package="io.appium.android.apis" class="android.widget.ListView" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="true" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,210][1080,1794]" resource-id="android:id/list" adapter-type="HashMap" adapters="{contentDescription=Animation, title=Animation, intent=Intent { cmp=io.appium.android.apis/.ApiDemos (has extras) }},{contentDescription=Auto Complete, title=Auto Complete, intent=Intent { cmp=io.appium.android.apis/.ApiDemos (has extras) }}, ...}"&gt;
     &lt;android.widget.TextView index="0" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Drag and Drop" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,148][1080,274]" text="Drag and Drop" hint="false" resource-id="android:id/text1" /&gt;
     &lt;android.widget.TextView index="1" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Expandable Lists" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,277][1080,403]" text="Expandable Lists" hint="false" resource-id="android:id/text1" /&gt;
     &lt;android.widget.TextView index="2" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Focus" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,406][1080,532]" text="Focus" hint="false" resource-id="android:id/text1" /&gt;
@@ -1937,10 +1937,9 @@
     &lt;android.widget.TextView index="12" package="io.appium.android.apis" class="android.widget.TextView" content-desc="Lists" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" visible="true" bounds="[0,1696][1080,1822]" text="Lists" hint="false" resource-id="android:id/text1" /&gt;
 &lt;/android.widget.ListView&gt;
 </code></pre>
-
 <p>This ListView displays menu items [<code>Drag and Drop</code>, <code>Expandable Lists</code>, ... to <code>Lists</code>]. This menu has several more items that aren't on-screen and can't be located with standard locators. For example, There's a menu item called <code>TextClock</code> that is not currently visible in the View hierarchy.</p>
 <p>The <code>ListView</code> node in the above XML has an attribute called <code>adapters</code> that contains the data that "backs up" the ListView:</p>
-<pre><code class="js">{
+<pre><code class="language-js">{
     contentDescription = Animation, title = Animation, intent = Intent {
         cmp = io.appium.android.apis / .ApiDemos(has extras)
     }
@@ -1959,28 +1958,27 @@
 },
 ...
 </code></pre>
-
 <p>These items can be targeted using a datamatcher selector. Here's a code snippet that shows how to locate and click <code>TextClock</code>:</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#0_0" data-language="language-js" data-toggle="tab">Language-js</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_2" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="js">// Javascript example
+            <pre><code class="language-js">// Javascript example
 driver.findElementById("list")
   .findElement("-android datamatcher", JSON.stringify({
     "name": "hasEntry",
@@ -1991,17 +1989,7 @@ driver.findElementById("list")
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">driver.find_element_by_id('list')
-    .find_element_by_android_data_matcher({
-        name='hasEntry',
-        args=['title', 'TextClock']
-    })
-    .click()
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="ruby">@driver.find_element(:id, 'list')
+            <pre><code class="language-ruby">@driver.find_element(:id, 'list')
   .find_element(:data_matcher, {
     name: 'hasEntry',
     args: ['title', 'TextClock']
@@ -2010,42 +1998,48 @@ driver.findElementById("list")
 </code></pre>
           </div>
           
+          <div role="tabpanel" class="tab-pane " id="0_2">
+            <pre><code class="language-python">driver.find_element_by_id('list')
+    .find_element_by_android_data_matcher({
+        name='hasEntry',
+        args=['title', 'TextClock']
+    })
+    .click()
+</code></pre>
+          </div>
+          
         </div>
       </div>
 
 
-
-
-
 <p>This Appium selector is equivalent to writing this matcher in Espresso:</p>
-<pre><code class="java">// Espresso code (not Appium code)
+<pre><code class="language-java">// Espresso code (not Appium code)
 onData(hasEntry("title", "textClock")
   .inAdapterView(withId("android:id/list))
   .perform(click());
 </code></pre>
-
 <p>In this example, we select the parent <code>AdapterView</code> using an id selector and then find a child of that view by applying a Hamcrest Matcher that matches an object with <code>title="TextClock"</code>.</p>
 <p>Locating the parent <code>AdapterView</code> is not necessary if the Activity only has one adapter view. In that case, it can be omitted.</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#1_0" data-language="language-js" data-toggle="tab">Language-js</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#1_1" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_2" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#1_2" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="js">driver.findElement("-android datamatcher", JSON.stringify({
+            <pre><code class="language-js">driver.findElement("-android datamatcher", JSON.stringify({
     "name": "hasEntry",
     "args": ["title", "TextClock"]
   }))
@@ -2054,18 +2048,18 @@ onData(hasEntry("title", "textClock")
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="python">driver.find_element_by_android_data_matcher({
-    name='hasEntry',
-    args=['title', 'TextClock']
-}).click()
+            <pre><code class="language-ruby">@driver.find_element(:data_matcher, {
+  name: 'hasEntry',
+  args: ['title', 'TextClock']
+}.to_json).click
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_2">
-            <pre><code class="ruby">@driver.find_element(:data_matcher, {
-  name: 'hasEntry',
-  args: ['title', 'TextClock']
-}.to_json).click
+            <pre><code class="language-python">driver.find_element_by_android_data_matcher({
+    name='hasEntry',
+    args=['title', 'TextClock']
+}).click()
 </code></pre>
           </div>
           
@@ -2073,16 +2067,12 @@ onData(hasEntry("title", "textClock")
       </div>
 
 
-
-
-
 <h3 id="writing-the-selector">Writing the Selector</h3>
 <p>The data matcher selector uses Java reflection to invoke a <a href="http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html">Hamcrest matcher</a> that's used to locate the adapter object. The matcher is in JSON format and has this format</p>
-<pre><code class="js">{
+<pre><code class="language-js">{
   "name": "&lt;METHOD_NAME&gt;",
   "args": [...],
 </code></pre>
-
 <p>The name is a Hamcrest matcher method name. This defaults to the <code>org.hamcrest.Matchers</code> namespace, but fully qualifed matcher method names can be used too (e.g.: <code>android.support.test.espresso.matcher.CursorMatchers.withRowBlob</code>).</p>
 <p>The args are a list of args that the method takes (can be undefined if it takes no args). These can be strings, numbers, booleans or other hamcrest matcher JSON definitions.</p>
 <h3 id="json-matcher-samples">JSON matcher samples</h3>
@@ -2092,18 +2082,18 @@ onData(hasEntry("title", "textClock")
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#2_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#2_0" data-language="language-js" data-toggle="tab">Language-js</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_1" data-language="java" data-toggle="tab">Java</a>
+              <a href="#2_1" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="2_0">
-            <pre><code class="js">// 'startsWith' JSON
+            <pre><code class="language-js">// 'startsWith' JSON
 {
   "name": "startsWith",
   "args": "substr" // if it's a single arg, we don't need args to be an array
@@ -2112,7 +2102,7 @@ onData(hasEntry("title", "textClock")
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_1">
-            <pre><code class="java">// Espresso 'startsWith' example
+            <pre><code class="language-java">// Espresso 'startsWith' example
 onData(startsWith("substr"));
 </code></pre>
           </div>
@@ -2120,25 +2110,23 @@ onData(startsWith("substr"));
         </div>
       </div>
 
-
-
 <h4 id="multiple-matchers">Multiple Matchers</h4>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#3_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#3_0" data-language="language-js" data-toggle="tab">Language-js</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#3_1" data-language="java" data-toggle="tab">Java</a>
+              <a href="#3_1" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="3_0">
-            <pre><code class="js">// 'multiple matchers' JSON
+            <pre><code class="language-js">// 'multiple matchers' JSON
 {
   "name": "allOf",
   "args": [
@@ -2153,7 +2141,7 @@ onData(startsWith("substr"));
           </div>
           
           <div role="tabpanel" class="tab-pane " id="3_1">
-            <pre><code class="java">// Espresso 'multiple matchers' example
+            <pre><code class="language-java">// Espresso 'multiple matchers' example
 onData(allOf(is(instanceOf(Map.class)), hasEntry(equalTo("STR"), is("item: 50"))));
 </code></pre>
           </div>
@@ -2161,25 +2149,23 @@ onData(allOf(is(instanceOf(Map.class)), hasEntry(equalTo("STR"), is("item: 50"))
         </div>
       </div>
 
-
-
 <h4 id="cursor-matchers">Cursor Matchers</h4>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#4_0" data-language="js" data-toggle="tab">Js</a>
+              <a href="#4_0" data-language="language-js" data-toggle="tab">Language-js</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#4_1" data-language="java" data-toggle="tab">Java</a>
+              <a href="#4_1" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="4_0">
-            <pre><code class="js">// 'cursor matchers' JSON
+            <pre><code class="language-js">// 'cursor matchers' JSON
 {
   "name": "is", "args": {
     "name": "instanceOf", "args": "Cursor.class"
@@ -2192,7 +2178,7 @@ onData(allOf(is(instanceOf(Map.class)), hasEntry(equalTo("STR"), is("item: 50"))
           </div>
           
           <div role="tabpanel" class="tab-pane " id="4_1">
-            <pre><code class="java">// Espresso 'cursor matchers' example
+            <pre><code class="language-java">// Espresso 'cursor matchers' example
 onData(
     is(instanceOf(Cursor.class)),
     CursorMatchers.withRowString("job_title", is("Barista"))
@@ -2202,8 +2188,6 @@ onData(
           
         </div>
       </div>
-
-
 
 <h3 id="resources">Resources</h3>
 <ul>

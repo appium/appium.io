@@ -1885,33 +1885,33 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#actions">Actions</a></li>
+        <li class="first-level active"><a href="#actions">Actions</a></li>
         
-            <li class="second-level"><a href="../../../#example-usage">Example Usage</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#description">Description</a></li>
+            <li class="second-level"><a href="#example-usage">Example Usage</a></li>
             
         
-            <li class="second-level"><a href="../../../#support">Support</a></li>
-            
-                <li class="third-level"><a href="../../../#appium-server">Appium Server</a></li>
-            
-                <li class="third-level"><a href="../../../#appium-clients">Appium Clients</a></li>
+            <li class="second-level"><a href="#description">Description</a></li>
             
         
-            <li class="second-level"><a href="../../../#http-api-specifications">HTTP API Specifications</a></li>
+            <li class="second-level"><a href="#support">Support</a></li>
             
-                <li class="third-level"><a href="../../../#endpoint">Endpoint</a></li>
+                <li class="third-level"><a href="#appium-server">Appium Server</a></li>
             
-                <li class="third-level"><a href="../../../#url-parameters">URL Parameters</a></li>
-            
-                <li class="third-level"><a href="../../../#json-parameters">JSON Parameters</a></li>
-            
-                <li class="third-level"><a href="../../../#response">Response</a></li>
+                <li class="third-level"><a href="#appium-clients">Appium Clients</a></li>
             
         
-            <li class="second-level"><a href="../../../#see-also">See Also</a></li>
+            <li class="second-level"><a href="#http-api-specifications">HTTP API Specifications</a></li>
+            
+                <li class="third-level"><a href="#endpoint">Endpoint</a></li>
+            
+                <li class="third-level"><a href="#url-parameters">URL Parameters</a></li>
+            
+                <li class="third-level"><a href="#json-parameters">JSON Parameters</a></li>
+            
+                <li class="third-level"><a href="#response">Response</a></li>
+            
+        
+            <li class="second-level"><a href="#see-also">See Also</a></li>
             
         
     
@@ -1927,30 +1927,30 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_4" data-language="csharp" data-toggle="tab">C#</a>
+              <a href="#0_4" data-language="language-csharp" data-toggle="tab">Language-csharp</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">WebElement source = (MobileElement) driver.findElementsByAccessibilityId("SomeAccessibilityID");
+            <pre><code class="language-java">WebElement source = (MobileElement) driver.findElementsByAccessibilityId("SomeAccessibilityID");
 WebElement target = (MobileElement) driver.findElementsByAccessibilityId("SomeOtherAccessibilityID");
 
 Point source = dragMe.getCenter();
@@ -1969,7 +1969,7 @@ driver.perform(Arrays.asList(dragNDrop));
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">element = driver.find_element_by_accessibility_id("elId")
+            <pre><code class="language-python">element = driver.find_element_by_accessibility_id("elId")
 actions = ActionChains(driver)
 actions.move_to_element(element)
 actions.click(hidden_submenu)
@@ -1979,7 +1979,7 @@ actions.perform()
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">// webdriver.io example
+            <pre><code class="language-javascript">// webdriver.io example
 // Example: expressing a 1-second pinch-and-zoom
 // with a 500ms wait after the fingers first touch:
 driver.performActions([{
@@ -2033,7 +2033,7 @@ await driver.releaseW3CActions();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby"># ruby_lib example
+            <pre><code class="language-ruby"># ruby_lib example
 # Send keys to an element
 # Build Single action chain
 action_builder = action
@@ -2091,7 +2091,7 @@ f2.create_pointer_up(:left)
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">var inputDevice = new PointerInputDevice(PointerKind.Touch);
+            <pre><code class="language-csharp">var inputDevice = new PointerInputDevice(PointerKind.Touch);
 var actionSequence = new ActionSequence(inputDevice, 0);
 
 actionSequence.AddAction(inputDevice.CreatePointerMove(element));
@@ -2106,11 +2106,6 @@ driver.PerformActions(new List&lt;ActionSequence&gt; {actionSequence});
           
         </div>
       </div>
-
-
-
-
-
 
 
 

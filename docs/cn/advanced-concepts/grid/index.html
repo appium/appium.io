@@ -408,9 +408,9 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#selenium-grid">Selenium Grid</a></li>
+        <li class="first-level active"><a href="#selenium-grid">Selenium Grid</a></li>
         
-            <li class="second-level"><a href="../../#grid-json">Grid 节点的示例 JSON 配置文件</a></li>
+            <li class="second-level"><a href="#grid-json">Grid 节点的示例 JSON 配置文件</a></li>
             
         
     
@@ -421,16 +421,15 @@
     &nbsp;&nbsp;Edit this Doc
   </a>Selenium Grid</h2>
 <p>通过服务器参数 <code>--nodeconfig</code>，可以将 appium 服务器注册到本地的 <a href="https://github.com/SeleniumHQ/selenium/wiki/Grid2">Selenium grid</a></p>
-<pre><code class="center">&gt; appium --nodeconfig /path/to/nodeconfig.json
+<pre><code class="language-center">&gt; appium --nodeconfig /path/to/nodeconfig.json
 # 或者使用源文件执行
 &gt; node . --nodeconfig /path/to/nodeconfig.json
 </code></pre>
-
 <p>在 Selenium 节点（Node）的配置文件里，你需要定义 <code>browserName</code>、<code>version</code> 和 <code>platform</code>，然后 Grid 会通过这些参数将你的测试重定向到正确的设备上。你还需要配置 <code>host</code> 和 <code>selenium grid</code> 的详细信息。详细的参数列表和描述信息，请查看 这里。</p>
 <p>一旦你启动了 appium 服务器并且在 grid 里注册了信息，就可以在 grid 控制台看到你的设备：</p>
 <p>"http://<strong>\&lt;grid-ip-adress&gt;</strong>:<strong>\&lt;grid-port&gt;</strong>/grid/console"</p>
 <h3 id="grid-json">Grid 节点的示例 JSON 配置文件</h3>
-<pre><code class="xml">{
+<pre><code class="language-xml">{
   "capabilities":
       [
         {
@@ -457,7 +456,6 @@
   }
 }
 </code></pre>
-
 <p>如果没有给出 <code>url</code>、<code>host</code> 和 <code>port</code>，配置会自动指向 <code>localhost:whatever-port-Appium-started-on</code>。</p>
 <p>如果你的 Appium Server 和 Selenium Grid 没有运行在同一台机器上，为确保 Selenium Grid 连接正常，请在你的 <code>host</code> &amp; <code>url</code> 上使用外部域名或 IP 地址，而不是 <code>localhost</code> 和 <code>127.0.0.1</code>。</p>
 <hr>

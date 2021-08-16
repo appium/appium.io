@@ -408,27 +408,27 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#_1">运行测试</a></li>
+        <li class="first-level active"><a href="#_1">运行测试</a></li>
         
-            <li class="second-level"><a href="../../#ios">准备你要测试的应用（iOS）</a></li>
+            <li class="second-level"><a href="#ios">准备你要测试的应用（iOS）</a></li>
             
         
-            <li class="second-level"><a href="../../#android">准备你要测试的应用（Android）</a></li>
+            <li class="second-level"><a href="#android">准备你要测试的应用（Android）</a></li>
             
         
-            <li class="second-level"><a href="../../#windows">准备你要测试的应用（Windows）</a></li>
+            <li class="second-level"><a href="#windows">准备你要测试的应用（Windows）</a></li>
             
         
-            <li class="second-level"><a href="../../#appium-ios">在 Appium 上运行你的测试应用（IOS）</a></li>
+            <li class="second-level"><a href="#appium-ios">在 Appium 上运行你的测试应用（IOS）</a></li>
             
         
-            <li class="second-level"><a href="../../#appium-android">使用 Appium 测试你的应用（Android）</a></li>
+            <li class="second-level"><a href="#appium-android">使用 Appium 测试你的应用（Android）</a></li>
             
         
-            <li class="second-level"><a href="../../#appium-android-43">使用 Appium 运行你的测试程序（Android 设备 &lt; 4.3，和混合测试）</a></li>
+            <li class="second-level"><a href="#appium-android-43">使用 Appium 运行你的测试程序（Android 设备 &lt; 4.3，和混合测试）</a></li>
             
         
-            <li class="second-level"><a href="../../#appium-windows">使用 Appium 运行你的测试程序（Windows）</a></li>
+            <li class="second-level"><a href="#appium-windows">使用 Appium 运行你的测试程序（Windows）</a></li>
             
         
     
@@ -459,31 +459,32 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "7.1");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simulator");
-capabilities.setCapability(MobileCapabilityType.APP, myApp);
+            <pre><code class="language-javascript">{
+    platformName: 'iOS',
+    platformVersion: '7.1',
+    deviceName: 'iPhone Simulator',
+    app: myApp
+}
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">{
+            <pre><code class="language-python">{
     'platformName': 'iOS',
     'platformVersion': '7.1',
     'deviceName': 'iPhone Simulator',
@@ -493,20 +494,16 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">{
-    platformName: 'iOS',
-    platformVersion: '7.1',
-    deviceName: 'iPhone Simulator',
-    app: myApp
-}
+            <pre><code class="language-java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "7.1");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simulator");
+capabilities.setCapability(MobileCapabilityType.APP, myApp);
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
 
 
 <p>在这组功能（capabilities）中，<code>myApp</code> 必须是以下的任意一个：</p>
@@ -555,31 +552,32 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#1_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#1_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#1_2" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-capabilities.setCapability(MobileCapabilityType.APP, myApp);
+            <pre><code class="language-javascript">{
+    platformName: 'Android',
+    platformVersion: '4.4',
+    deviceName: 'Android Emulator',
+    app: myApp
+}
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="python">{
+            <pre><code class="language-python">{
     'platformName': 'Android',
     'platformVersion': '4.4',
     'deviceName': 'Android Emulator',
@@ -589,20 +587,16 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_2">
-            <pre><code class="javascript">{
-    platformName: 'Android',
-    platformVersion: '4.4',
-    deviceName: 'Android Emulator',
-    app: myApp
-}
+            <pre><code class="language-java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+capabilities.setCapability(MobileCapabilityType.APP, myApp);
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
 
 
 <p>在这组功能（capabilities）中，<code>myApp</code> 必须是以下任意一个：</p>
@@ -619,34 +613,35 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#2_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#2_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#2_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#2_2" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="2_0">
-            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Selendroid");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "2.3");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-capabilities.setCapability(MobileCapabilityType.APP, myApp);
-capabilities.setCapability(MobileCapabilityType.APP_PACKAGE: "com.mycompany.package");
-capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY: ".MainActivity");
+            <pre><code class="language-javascript">{
+    automationName: 'Selendroid',
+    platformName: 'Android',
+    platformVersion: '2.3',
+    deviceName: 'Android Emulator',
+    app: myApp,
+    appPackage: 'com.mycompany.package',
+    appActivity: '.MainActivity'
+}
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_1">
-            <pre><code class="python">{
+            <pre><code class="language-python">{
     'automationName': 'Selendroid',
     'platformName': 'Android',
     'platformVersion': '2.3',
@@ -659,23 +654,19 @@ capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY: ".MainActivity");
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_2">
-            <pre><code class="javascript">{
-    automationName: 'Selendroid',
-    platformName: 'Android',
-    platformVersion: '2.3',
-    deviceName: 'Android Emulator',
-    app: myApp,
-    appPackage: 'com.mycompany.package',
-    appActivity: '.MainActivity'
-}
+            <pre><code class="language-java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Selendroid");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "2.3");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+capabilities.setCapability(MobileCapabilityType.APP, myApp);
+capabilities.setCapability(MobileCapabilityType.APP_PACKAGE: "com.mycompany.package");
+capabilities.setCapability(MobileCapabilityType.APP_ACTIVITY: ".MainActivity");
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
 
 
 <p>现在 Appium 将启动一个 Selendroid 测试会话，而不是默认的测试会话。使用 Selendroid 的缺点之一是，它的某些 API 和 Appium 有显著差异。因此，我们建议你在为旧设备或混合应用程序编写脚本前，彻读 <a href="http://selendroid.io/native.html">Selendroid文档</a></p>

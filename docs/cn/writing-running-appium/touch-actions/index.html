@@ -408,18 +408,18 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#_1">移动手势的自动化</a></li>
+        <li class="first-level active"><a href="#_1">移动手势的自动化</a></li>
         
-            <li class="second-level"><a href="../../#touchaction-multiaction-api">触摸操作（TouchAction） / 多点触控（MultiAction） API 概述</a></li>
+            <li class="second-level"><a href="#touchaction-multiaction-api">触摸操作（TouchAction） / 多点触控（MultiAction） API 概述</a></li>
             
         
-            <li class="second-level"><a href="../../#touchaction">触摸操作（TouchAction）</a></li>
+            <li class="second-level"><a href="#touchaction">触摸操作（TouchAction）</a></li>
             
         
-            <li class="second-level"><a href="../../#multitouch">多点触控（MultiTouch）</a></li>
+            <li class="second-level"><a href="#multitouch">多点触控（MultiTouch）</a></li>
             
         
-            <li class="second-level"><a href="../../#_2">缺陷与解决方法</a></li>
+            <li class="second-level"><a href="#_2">缺陷与解决方法</a></li>
             
         
     
@@ -449,9 +449,8 @@
  * 取消(cancel)
  * 执行(perform)</p>
 <p>这是一个使用伪代码创建一个动作的示例：</p>
-<pre><code class="center">TouchAction().press(el0).moveTo(el1).release()
+<pre><code class="language-center">TouchAction().press(el0).moveTo(el1).release()
 </code></pre>
-
 <p>上述模拟了一个用户按下一个元素，滑动他的手指到另一个位置，然后将他的手指从屏幕上移开。</p>
 <p>Appium按顺序执行这一些列事件。你可以添加 <code>wait</code> 事件来控制事件的时长。</p>
 <p><code>moveTo</code> 的坐标现在与当前位置是 <em>绝对关系</em> 。例如，从 100,100 拖拽到 200,200 可以这样实现：</p>
@@ -459,7 +458,6 @@
 .moveTo(200,200) // 通过绝对值 200,200，在 200,200 结束
 
 </code></pre>
-
 <p>Appium 客户端库有不同的实现方式，例如：你可以传递坐标或一个元素给 <code>moveTo</code> 事件。当坐标 <em>和</em> 元素一起传递时，该坐标被理解为是相对于元素位置的相对坐标，而不是绝对位置。</p>
 <p>调用 <code>perform</code> 事件发送全部的事件序列给 appium，触摸手势将在你的设备上执行。</p>
 <h3 id="multitouch">多点触控（MultiTouch）</h3>
@@ -469,11 +467,10 @@
 <p>当 <code>perform</code> 执行时，被添加到多点触控里的所有触摸操作会被发送给 appium 并被执行，就像它们
 同时发生一样。Appium 会按序一个个执行触摸事件，首先第一个事件，然后第二个，以此类推。</p>
 <p>用两只手指点击的伪代码示例：</p>
-<pre><code class="center">action0 = TouchAction().tap(el)
+<pre><code class="language-center">action0 = TouchAction().tap(el)
 action1 = TouchAction().tap(el)
 MultiAction().add(action0).add(action1).perform()
 </code></pre>
-
 <h3 id="_2">缺陷与解决方法</h3>
 <p>不幸的是，在iOS 7.0 - 8.x 的模拟器上存在着一个缺陷，ScrollViews、CollectionViews 和 TableViews 不能识别由 UIAutomation（ Appium 在 iOS 底层所使用的框架）所创建的手势。为了解决这个问题，我们提供了一个不同的入口函数 <code>scroll</code>，在大多数情况下，它能让你对 view 执行你想要执行的操作，即滚动它！</p>
 <p><strong>滚动</strong></p>
@@ -484,76 +481,70 @@ MultiAction().add(action0).add(action1).perform()
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_3" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_4" data-language="csharp" data-toggle="tab">C#</a>
+              <a href="#0_4" data-language="language-csharp" data-toggle="tab">Language-csharp</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_5" data-language="php" data-toggle="tab">PHP</a>
+              <a href="#0_5" data-language="language-php" data-toggle="tab">Language-php</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">JavascriptExecutor js = (JavascriptExecutor) driver;
+            <pre><code class="language-javascript">driver.execute('mobile: scroll', {direction: 'down'})
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="language-java">JavascriptExecutor js = (JavascriptExecutor) driver;
 HashMap&lt;String, String&gt; scrollObject = new HashMap&lt;String, String&gt;();
 scrollObject.put("direction", "down");
 js.executeScript("mobile: scroll", scrollObject);
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">driver.execute_script("mobile: scroll", {"direction": "down"})
-</code></pre>
-          </div>
-          
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">driver.execute('mobile: scroll', {direction: 'down'})
+            <pre><code class="language-ruby">execute_script 'mobile: scroll', direction: 'down'
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_3">
-            <pre><code class="ruby">execute_script 'mobile: scroll', direction: 'down'
+            <pre><code class="language-python">driver.execute_script("mobile: scroll", {"direction": "down"})
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_4">
-            <pre><code class="csharp">Dictionary&lt;string, string&gt; scrollObject = new Dictionary&lt;string, string&gt;();
+            <pre><code class="language-csharp">Dictionary&lt;string, string&gt; scrollObject = new Dictionary&lt;string, string&gt;();
 scrollObject.Add("direction", "down");
 ((IJavaScriptExecutor)driver).ExecuteScript("mobile: scroll", scrollObject));
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_5">
-            <pre><code class="php">$params = array(array('direction' =&gt; 'down'));
+            <pre><code class="language-php">$params = array(array('direction' =&gt; 'down'));
 $driver-&gt;executeScript("mobile: scroll", $params);
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
-
-
-
 
 
 
@@ -564,34 +555,39 @@ $driver-&gt;executeScript("mobile: scroll", $params);
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#1_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#1_1" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#1_2" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_3" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#1_3" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_4" data-language="csharp" data-toggle="tab">C#</a>
+              <a href="#1_4" data-language="language-csharp" data-toggle="tab">Language-csharp</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_5" data-language="php" data-toggle="tab">PHP</a>
+              <a href="#1_5" data-language="language-php" data-toggle="tab">Language-php</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="java">JavascriptExecutor js = (JavascriptExecutor) driver;
+            <pre><code class="language-javascript">driver.execute('mobile: scroll', {direction: 'down', element: element.value.ELEMENT});
+</code></pre>
+          </div>
+          
+          <div role="tabpanel" class="tab-pane " id="1_1">
+            <pre><code class="language-java">JavascriptExecutor js = (JavascriptExecutor) driver;
 HashMap&lt;String, String&gt; scrollObject = new HashMap&lt;String, String&gt;();
 scrollObject.put("direction", "down");
 scrollObject.put("element", ((RemoteWebElement) element).getId());
@@ -599,23 +595,18 @@ js.executeScript("mobile: scroll", scrollObject);
 </code></pre>
           </div>
           
-          <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="python">driver.execute_script("mobile: scroll", {"direction": "down", element: element.getAttribute("id")})
-</code></pre>
-          </div>
-          
           <div role="tabpanel" class="tab-pane " id="1_2">
-            <pre><code class="javascript">driver.execute('mobile: scroll', {direction: 'down', element: element.value.ELEMENT});
+            <pre><code class="language-ruby">execute_script 'mobile: scroll', direction: 'down', element: element.ref
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_3">
-            <pre><code class="ruby">execute_script 'mobile: scroll', direction: 'down', element: element.ref
+            <pre><code class="language-python">driver.execute_script("mobile: scroll", {"direction": "down", element: element.getAttribute("id")})
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_4">
-            <pre><code class="csharp">Dictionary&lt;string, string&gt; scrollObject = new Dictionary&lt;string, string&gt;();
+            <pre><code class="language-csharp">Dictionary&lt;string, string&gt; scrollObject = new Dictionary&lt;string, string&gt;();
 scrollObject.Add("direction", "down");
 scrollObject.Add("element", &lt;element_id&gt;);
 ((IJavaScriptExecutor)driver).ExecuteScript("mobile: scroll", scrollObject));
@@ -623,19 +614,13 @@ scrollObject.Add("element", &lt;element_id&gt;);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_5">
-            <pre><code class="php">$params = array(array('direction' =&gt; 'down', 'element' =&gt; element.GetAttribute("id")));
+            <pre><code class="language-php">$params = array(array('direction' =&gt; 'down', 'element' =&gt; element.GetAttribute("id")));
 $driver-&gt;executeScript("mobile: scroll", $params);
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
-
-
-
 
 
 
@@ -649,13 +634,12 @@ $driver-&gt;executeScript("mobile: scroll", $params);
 <ul>
 <li><strong>Java</strong></li>
 </ul>
-<pre><code class="java">// java
+<pre><code class="language-java">// java
 // 滑动值可以是代表0到1之间数字的字符串
 // 例如，"0.1"代表10%，"1.0"代表100%
 WebElement slider =  driver.findElement(By.xpath("//window[1]/slider[1]"));
 slider.sendKeys("0.1");
 </code></pre>
-
 <p><strong>Android</strong></p>
 <p>在Android上与滑块交互的最佳方式是使用触摸操作（TouchActions）。</p>
 <hr>

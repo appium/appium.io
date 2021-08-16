@@ -1885,19 +1885,19 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#adjusting-network-connection">Adjusting Network Connection</a></li>
+        <li class="first-level active"><a href="#adjusting-network-connection">Adjusting Network Connection</a></li>
         
-            <li class="second-level"><a href="../../../#ios">iOS</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#android">Android</a></li>
-            
-                <li class="third-level"><a href="../../../#real-devices">Real Devices</a></li>
-            
-                <li class="third-level"><a href="../../../#emulators">Emulators</a></li>
+            <li class="second-level"><a href="#ios">iOS</a></li>
             
         
-            <li class="second-level"><a href="../../../#windows">Windows</a></li>
+            <li class="second-level"><a href="#android">Android</a></li>
+            
+                <li class="third-level"><a href="#real-devices">Real Devices</a></li>
+            
+                <li class="third-level"><a href="#emulators">Emulators</a></li>
+            
+        
+            <li class="second-level"><a href="#windows">Windows</a></li>
             
         
     
@@ -1970,7 +1970,7 @@ connection API for iOS.</p>
 <h3 id="windows">Windows</h3>
 <p>Unfortunately, at the moment Appium does not support the Selenium network
 connection API for Windows.</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 // set airplane mode
 driver.setNetworkConnection(1)
 
@@ -1983,10 +1983,9 @@ driver.setNetworkConnection(4)
 // set wifi and data
 driver.setNetworkConnection(6)
 </code></pre>
-
 <p>Retrieving the network connection settings returns the same bitmask, from which
 the status can be decoded.</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 driver.getNetworkConnection().then(function (connectionType) {
   switch (connectionType) {
     case 0:

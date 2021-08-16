@@ -1885,12 +1885,12 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../../#android-uiscrollable-swipe-multiple-scroll-views-example">Android 'UIScrollable' swipe: Multiple scroll views example</a></li>
+        <li class="first-level active"><a href="#android-uiscrollable-swipe-multiple-scroll-views-example">Android 'UIScrollable' swipe: Multiple scroll views example</a></li>
         
-            <li class="second-level"><a href="../../../../#by-instance">By instance</a></li>
+            <li class="second-level"><a href="#by-instance">By instance</a></li>
             
         
-            <li class="second-level"><a href="../../../../#by-id">By id</a></li>
+            <li class="second-level"><a href="#by-id">By id</a></li>
             
         
     
@@ -1905,7 +1905,7 @@ UIScrollable fails to scroll to the destination subview. In such case we
 would need to specify the locator of the destination subview as "new
 UiSelector().scrollable(true)".</p>
 <h3 id="by-instance">By instance</h3>
-<pre><code class="java">// first scrollView
+<pre><code class="language-java">// first scrollView
 // FindElement
 MobileElement element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
         "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
@@ -1918,9 +1918,8 @@ MobileElement element = (MobileElement) driver.findElement(MobileBy.AndroidUIAut
          ".scrollIntoView(new UiSelector().text(\"exact_text\"))"));
 
 </code></pre>
-
 <h3 id="by-id">By id</h3>
-<pre><code class="java">// FindElement
+<pre><code class="language-java">// FindElement
 MobileElement element = (MobileElement) driver.findElement(MobileBy.AndroidUIAutomator(
         "new UiScrollable(new UiSelector().resourceIdMatches(\".*part_id.*\").scrollable(true))" +
          ".scrollIntoView(new UiSelector().text(\"exact_text\"))"));

@@ -1885,12 +1885,12 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#safarilauncher-setup-instructions">SafariLauncher Setup Instructions</a></li>
+        <li class="first-level active"><a href="#safarilauncher-setup-instructions">SafariLauncher Setup Instructions</a></li>
         
-            <li class="second-level"><a href="../../#automatic-safarilauncher-configuration">Automatic SafariLauncher configuration</a></li>
+            <li class="second-level"><a href="#automatic-safarilauncher-configuration">Automatic SafariLauncher configuration</a></li>
             
         
-            <li class="second-level"><a href="../../#manual-safarilauncher-configuration">Manual SafariLauncher configuration</a></li>
+            <li class="second-level"><a href="#manual-safarilauncher-configuration">Manual SafariLauncher configuration</a></li>
             
         
     
@@ -1926,7 +1926,7 @@ manual configuration below.</p>
 <li><strong>Step 6:</strong> Search for the <strong>UUID</strong> and the string for it is your <strong>identity code</strong>.</li>
 </ul>
 <p>Now simply include your UDID and device name in your desired capabilities:</p>
-<pre><code class="js">{
+<pre><code class="language-js">{
   udid: '...',
   deviceName: '...',
   platformName: 'iOS',
@@ -1934,16 +1934,14 @@ manual configuration below.</p>
   browserName: 'Safari'
 }
 </code></pre>
-
 <h3 id="manual-safarilauncher-configuration">Manual SafariLauncher configuration</h3>
 <p><strong>Note:</strong> This procedure assumes you have <a href="https://developer.apple.com/xcode/">Xcode</a> 7.3 or 7.3.1.</p>
 <p>It is possible to use the version of <a href="https://github.com/snevesbarros/SafariLauncher">SafariLauncher</a>
 that comes with the <a href="https://github.com/appium/appium-ios-driver">appium-ios-driver</a>,
 but if you do, each time you update Appium the procedure will have to be done again.</p>
 <p>To get a local copy of <code>SafariLauncher</code>, first clone it from <a href="https://github.com/">GitHub</a>:</p>
-<pre><code class="bash">git clone https://github.com/snevesbarros/SafariLauncher.git
+<pre><code class="language-bash">git clone https://github.com/snevesbarros/SafariLauncher.git
 </code></pre>
-
 <p>Once you have a local copy of the source code for the <code>SafariLauncher</code> app, open
 <a href="https://developer.apple.com/xcode/">Xcode</a> and then open the <code>SafariLauncher</code> project</p>
 <p><img alt="Opening SafariLauncher project" src="../ios-uiautomation-safari-launcher-img/opening.png"></p>
@@ -1968,7 +1966,7 @@ screen that will launch <code>Safari</code> at the click of a button</p>
 is different from the default (<code>com.bytearc.SafariLauncher</code>). If you did, it is
 necessary to send that to Appium when creating a session, using the <code>bundleId</code>
 desired capability:</p>
-<pre><code class="js">{
+<pre><code class="language-js">{
   udid: '...',
   deviceName: '...',
   platformName: 'iOS',

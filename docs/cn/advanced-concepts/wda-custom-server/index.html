@@ -408,15 +408,15 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#webdriveragent-server">如何搭建并定制 WebDriverAgent Server</a></li>
+        <li class="first-level active"><a href="#webdriveragent-server">如何搭建并定制 WebDriverAgent Server</a></li>
         
-            <li class="second-level"><a href="../../#wda">安装WDA</a></li>
+            <li class="second-level"><a href="#wda">安装WDA</a></li>
             
         
-            <li class="second-level"><a href="../../#wda_1">启动WDA</a></li>
+            <li class="second-level"><a href="#wda_1">启动WDA</a></li>
             
         
-            <li class="second-level"><a href="../../#_1">重要注释</a></li>
+            <li class="second-level"><a href="#_1">重要注释</a></li>
             
         
     
@@ -431,15 +431,13 @@
  * 如果使用了Appium的默认设置，则不需要如下的步骤。服务器将为您搞定一切，当然你也不能对WDA做太多控制。
  * 对连接的被测设备必须有SSH或物理访问权限。</p>
 <h3 id="wda">安装WDA</h3>
-<pre><code class="bash">cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
+<pre><code class="language-bash">cd /usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent
 ./Scripts/bootstrap.sh -d
 </code></pre>
-
 <p>不需要进一步的配置步骤，你就可以在iOS模拟器上执行自动化测试。</p>
 <p>如果是在真机上进行测试的话，则需要做更多的设置。参考<a href="https://github.com/appium/appium-xcuitest-driver/blob/master/docs/real-device-config.md">real device configuration documentation</a> 设置代码签名。另外，你还需要安装iproxy工具。</p>
-<pre><code class="bash">npm install -g iproxy
+<pre><code class="language-bash">npm install -g iproxy
 </code></pre>
-
 <p>为了确保 WDA 源代码配置正确，请执行以下操作：</p>
 <ul>
 <li>用Xcode打开/usr/local/lib/node_modules/appium/node_modules/appium-xcuitest-driver/WebDriverAgent/WebDriverAgent.xcodeproj</li>
@@ -451,7 +449,7 @@
 <h3 id="wda_1">启动WDA</h3>
 <p>WebDriverAgent 应用程序扮演一个 REST 服务的角色，接收外部 API 请求，然后传递给被测应用的原生 XCTest 调用。如果在模拟器上运行你的测试，REST 服务的地址将是localhost，如果在有实际的 IP 地址的真实设备上运行，REST 服务的地址将是实际的 ip 地址。我们使用 iproxy 将网络请求路由到通过 USB 连接的真实设备上，这意味着可以使用这个工具将模拟器和真实设备上的 WDA 网络地址统一。</p>
 <p>这个用Java编写的助手类说明了主要的实现细节：</p>
-<pre><code class="java">public class WDAServer {
+<pre><code class="language-java">public class WDAServer {
     private static final Logger log = ZLogger.getLog(WDAServer.class.getSimpleName());
 
     private static final int MAX_REAL_DEVICE_RESTART_RETRIES = 1;
@@ -666,17 +664,14 @@
     }
 }
 </code></pre>
-
 <p>之前应该调用这段代码来启动 Appium iOS 驱动，例如，在 setUp 方法中：</p>
-<pre><code class="java">   if (!WDAServer.getInstance().isRunning()) {
+<pre><code class="language-java">   if (!WDAServer.getInstance().isRunning()) {
        WDAServer.getInstance().restart();
    }
 </code></pre>
-
 <p>为 Appium 驱动程序设置 webDriverAgentUrl 非常重要，让它知道我们的 WDA 驱动程序可以使用：</p>
-<pre><code class="java">    capabilities.setCapability("webDriverAgentUrl", WDAServer.SERVER_URL);
+<pre><code class="language-java">    capabilities.setCapability("webDriverAgentUrl", WDAServer.SERVER_URL);
 </code></pre>
-
 <h3 id="_1">重要注释</h3>
 <ul>
 <li>如果是 jenkins agent 执行的，该进程不能直接访问钥匙串（Keychain），所以我们需要在为真实设备编译 WDA 之前准备钥匙串，否则编码将失败。</li>

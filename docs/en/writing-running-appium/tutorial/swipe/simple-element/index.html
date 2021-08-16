@@ -1885,12 +1885,12 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../../#simple-element-swipe">Simple Element swipe</a></li>
+        <li class="first-level active"><a href="#simple-element-swipe">Simple Element swipe</a></li>
         
-            <li class="second-level"><a href="../../../../#android-uiautomator2">Android: UIAutomator2</a></li>
+            <li class="second-level"><a href="#android-uiautomator2">Android: UIAutomator2</a></li>
             
         
-            <li class="second-level"><a href="../../../../#ios-xcuitest">iOS: XCUITest</a></li>
+            <li class="second-level"><a href="#ios-xcuitest">iOS: XCUITest</a></li>
             
         
     
@@ -1905,7 +1905,7 @@
 on the screen. If a container is split between the visible and invisible
 parts of the viewport then a part of its content won't be visible.</p>
 <p><img alt="simple-element-swipe.png" src="../images/simple-element-swipe.png"></p>
-<pre><code class="java">/**
+<pre><code class="language-java">/**
  * Performs swipe inside an element
  *
  * @param el  the element to swipe
@@ -1983,7 +1983,6 @@ public void swipeElementAndroid(MobileElement el, Direction dir) {
     }
 }
 </code></pre>
-
 <h3 id="ios-xcuitest">iOS: XCUITest</h3>
 <p>XCUITest shows elements outside screen. It is strongly advised to use
 either screen swipe or 'mobile:scroll' / 'mobile:swipe' methods. If you
@@ -1994,7 +1993,7 @@ following:
    elements overlap it and limit swipe possibilities. Try to fix it by
    configuring correct borders. If borders differ per screen - make them
    configurable via swipe function variables.</p>
-<pre><code class="java">/**
+<pre><code class="language-java">/**
  * Performs swipe inside an element
  *
  * @param el  the element to swipe

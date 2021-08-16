@@ -1885,26 +1885,26 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#pushingpulling-files">Pushing/Pulling files</a></li>
+        <li class="first-level active"><a href="#pushingpulling-files">Pushing/Pulling files</a></li>
         
-            <li class="second-level"><a href="../../../#format">Format</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#real-device">Real device</a></li>
-            
-                <li class="third-level"><a href="../../../#format_1">Format</a></li>
-            
-                <li class="third-level"><a href="../../../#example">Example</a></li>
+            <li class="second-level"><a href="#format">Format</a></li>
             
         
-            <li class="second-level"><a href="../../../#simulator">Simulator</a></li>
+            <li class="second-level"><a href="#real-device">Real device</a></li>
             
-                <li class="third-level"><a href="../../../#format_2">Format</a></li>
+                <li class="third-level"><a href="#format_1">Format</a></li>
             
-                <li class="third-level"><a href="../../../#example_1">Example</a></li>
+                <li class="third-level"><a href="#example">Example</a></li>
             
         
-            <li class="second-level"><a href="../../../#references">references</a></li>
+            <li class="second-level"><a href="#simulator">Simulator</a></li>
+            
+                <li class="third-level"><a href="#format_2">Format</a></li>
+            
+                <li class="third-level"><a href="#example_1">Example</a></li>
+            
+        
+            <li class="second-level"><a href="#references">references</a></li>
             
         
     
@@ -1955,32 +1955,30 @@ This documentation aims to help to understand how they work for iOS.</p>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_1" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="javascript">let data = driver.pullFile('@io.appium.example:documents/Presentation.key');
+            <pre><code class="language-javascript">let data = driver.pullFile('@io.appium.example:documents/Presentation.key');
 await fs.writeFile('presentation.key', Buffer.from(data, 'base64'), 'binary');
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="ruby">file = @driver.pull_file '@com.apple.Keynote:documents/Presentation.key'
+            <pre><code class="language-ruby">file = @driver.pull_file '@com.apple.Keynote:documents/Presentation.key'
 File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
 
 <p>The file is in <em>On My iPhone/Keynote</em> of <em>Files</em> app.</p>
 <table>
@@ -2004,32 +2002,30 @@ File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#1_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#1_1" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="javascript">let data = driver.pullFile('@io.appium.example:documents/Dir1/Dir2/Presentation.key');
+            <pre><code class="language-javascript">let data = driver.pullFile('@io.appium.example:documents/Dir1/Dir2/Presentation.key');
 await fs.writeFile('presentation.key', Buffer.from(data, 'base64'), 'binary');
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="ruby">file = @driver.pull_file '@com.apple.Keynote:documents/Dir1/Dir2/Presentation.key'
+            <pre><code class="language-ruby">file = @driver.pull_file '@com.apple.Keynote:documents/Dir1/Dir2/Presentation.key'
 File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
 
 <ul>
 <li>Pull folder</li>
@@ -2039,32 +2035,30 @@ File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#2_0" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#2_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#2_1" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#2_1" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="2_0">
-            <pre><code class="javascript">let data = driver.pullFolder('@io.appium.example:documents/');
+            <pre><code class="language-javascript">let data = driver.pullFolder('@io.appium.example:documents/');
 await fs.writeFile('documents.zip', Buffer.from(data, 'base64'), 'binary');
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_1">
-            <pre><code class="ruby">file = @driver.pull_folder '@com.apple.Keynote:documents/'
+            <pre><code class="language-ruby">file = @driver.pull_folder '@com.apple.Keynote:documents/'
 File.open('documents.zip', 'wb') { |f| f&lt;&lt; file }
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
 
 <ul>
 <li>Push file</li>
@@ -2074,30 +2068,28 @@ File.open('documents.zip', 'wb') { |f| f&lt;&lt; file }
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#3_0" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#3_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#3_1" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#3_1" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="3_0">
-            <pre><code class="javascript">driver.pushFile('@com.apple.Keynote:documents/text.txt', new Buffer("Hello World").toString('base64'));
+            <pre><code class="language-javascript">driver.pushFile('@com.apple.Keynote:documents/text.txt', new Buffer("Hello World").toString('base64'));
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="3_1">
-            <pre><code class="ruby">@driver.push_file '@com.apple.Keynote:documents/text.txt', (File.read 'path/to/file')
+            <pre><code class="language-ruby">@driver.push_file '@com.apple.Keynote:documents/text.txt', (File.read 'path/to/file')
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
 
 <h3 id="simulator">Simulator</h3>
 <h4 id="format_2">Format</h4>
@@ -2113,13 +2105,12 @@ File.open('documents.zip', 'wb') { |f| f&lt;&lt; file }
 </ul>
 <p><em>format 3</em> format handles as <code>app</code> container</p>
 <h4 id="example_1">Example</h4>
-<pre><code class="java">// Java
+<pre><code class="language-java">// Java
 // Get AddressBook.sqlitedb in test app package ('app' container)
 byte[] fileContent = driver.pullFile("Library/AddressBook/AddressBook.sqlitedb");
 Path dstPath = Paths.get(new File("/local/path/AddressBook.sqlitedb"));
 Files.write(dstPath, fileContent);
 </code></pre>
-
 <h3 id="references">references</h3>
 <ul>
 <li>https://stackoverflow.com/questions/1108076/where-does-the-iphone-simulator-store-its-data</li>

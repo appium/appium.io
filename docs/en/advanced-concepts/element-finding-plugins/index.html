@@ -1885,15 +1885,15 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#element-finding-plugins">Element Finding Plugins</a></li>
+        <li class="first-level active"><a href="#element-finding-plugins">Element Finding Plugins</a></li>
         
-            <li class="second-level"><a href="../../#usage">Usage</a></li>
+            <li class="second-level"><a href="#usage">Usage</a></li>
             
         
-            <li class="second-level"><a href="../../#developing-a-plugin">Developing a Plugin</a></li>
+            <li class="second-level"><a href="#developing-a-plugin">Developing a Plugin</a></li>
             
         
-            <li class="second-level"><a href="../../#list-of-known-plugins">List of Known Plugins</a></li>
+            <li class="second-level"><a href="#list-of-known-plugins">List of Known Plugins</a></li>
             
         
     
@@ -1936,14 +1936,12 @@ Node's <a href="https://medium.freecodecamp.org/requiring-modules-in-node-js-eve
 <li>Prefixing your selector with <code>&lt;shortcut&gt;:</code></li>
 </ol>
 <p>So with the example plugin above, if I wanted to find an element using the selector "foo", it would look like this (in imaginary client code):</p>
-<pre><code class="js">driver.findElement('-custom', 'plug:foo');
+<pre><code class="language-js">driver.findElement('-custom', 'plug:foo');
 </code></pre>
-
 <p>In other words, I'm using the <code>-custom</code> locator strategy, and sending in the selector <code>foo</code>, making sure Appium knows that it is specifically the <code>plug</code> plugin which should handle the find request.</p>
 <p>In the case where only one plugin is registered, you can omit the shortcut in the selector (since Appium will not be confused about which plugin you want to use):</p>
-<pre><code class="js">driver.findElement('-custom', 'foo');
+<pre><code class="language-js">driver.findElement('-custom', 'foo');
 </code></pre>
-
 <p>The <code>-custom</code> locator strategy is not well supported in all Appium clients at this point; check client documentation for the correct invocation for this strategy.</p>
 <h3 id="developing-a-plugin">Developing a Plugin</h3>
 <p>Anyone can develop an element finding plugin for Appium. The only rules are as follows:</p>

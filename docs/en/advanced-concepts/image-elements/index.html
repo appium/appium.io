@@ -1885,18 +1885,18 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#finding-and-interacting-with-image-elements">Finding and Interacting with Image Elements</a></li>
+        <li class="first-level active"><a href="#finding-and-interacting-with-image-elements">Finding and Interacting with Image Elements</a></li>
         
-            <li class="second-level"><a href="../../#image-selectors">Image Selectors</a></li>
+            <li class="second-level"><a href="#image-selectors">Image Selectors</a></li>
             
         
-            <li class="second-level"><a href="../../#image-elements">Image Elements</a></li>
+            <li class="second-level"><a href="#image-elements">Image Elements</a></li>
             
         
-            <li class="second-level"><a href="../../#related-settings">Related Settings</a></li>
+            <li class="second-level"><a href="#related-settings">Related Settings</a></li>
             
         
-            <li class="second-level"><a href="../../#debug">Debug</a></li>
+            <li class="second-level"><a href="#debug">Debug</a></li>
             
         
     
@@ -2009,35 +2009,33 @@
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_0" data-language="language-ruby" data-toggle="tab">Language-ruby</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="ruby" data-toggle="tab">Ruby</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="python">self.driver.update_settings({"getMatchedImageResult": True})
-el = self.driver.find_element_by_image('path/to/img.ong')
-el.get_attribute('visual') # returns base64 encoded string
-</code></pre>
-          </div>
-          
-          <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="ruby"># Ruby core
+            <pre><code class="language-ruby"># Ruby core
 @driver.update_settings({ getMatchedImageResult: true })
 el = @driver.find_element_by_image 'path/to/img.ong'
 img_el.visual # returns base64 encoded string
 </code></pre>
           </div>
           
+          <div role="tabpanel" class="tab-pane " id="0_1">
+            <pre><code class="language-python">self.driver.update_settings({"getMatchedImageResult": True})
+el = self.driver.find_element_by_image('path/to/img.ong')
+el.get_attribute('visual') # returns base64 encoded string
+</code></pre>
+          </div>
+          
         </div>
       </div>
-
-
 
 <p>reference: https://github.com/appium/appium-base-driver/pull/327</p></div>
         

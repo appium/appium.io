@@ -408,19 +408,19 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#_1">调整网络连接</a></li>
+        <li class="first-level active"><a href="#_1">调整网络连接</a></li>
         
-            <li class="second-level"><a href="../../../#ios">iOS</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#android">Android</a></li>
-            
-                <li class="third-level"><a href="../../../#_2">真机</a></li>
-            
-                <li class="third-level"><a href="../../../#_3">模拟器</a></li>
+            <li class="second-level"><a href="#ios">iOS</a></li>
             
         
-            <li class="second-level"><a href="../../../#windows">Windows</a></li>
+            <li class="second-level"><a href="#android">Android</a></li>
+            
+                <li class="third-level"><a href="#_2">真机</a></li>
+            
+                <li class="third-level"><a href="#_3">模拟器</a></li>
+            
+        
+            <li class="second-level"><a href="#windows">Windows</a></li>
             
         
     
@@ -491,7 +491,7 @@
 </ul>
 <h3 id="windows">Windows</h3>
 <p>不幸的是，目前 Appium 测试 Windows 应用，不支持这个 API。</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 // set airplane mode
 driver.setNetworkConnection(1)
 
@@ -504,9 +504,8 @@ driver.setNetworkConnection(4)
 // set wifi and data
 driver.setNetworkConnection(6)
 </code></pre>
-
 <p>检索网络连接设置返回相同的掩码，其中状态可以解码。</p>
-<pre><code class="javascript">// javascript
+<pre><code class="language-javascript">// javascript
 driver.getNetworkConnection().then(function (connectionType) {
   switch (connectionType) {
     case 0:
@@ -527,7 +526,6 @@ driver.getNetworkConnection().then(function (connectionType) {
   }
 });
 </code></pre>
-
 <p>本文由 <a href="https://github.com/testly">testly</a> 翻译，由 <a href="https://github.com/lihuazhang">lihuazhang</a> 校验。</p></div>
         
     </div>

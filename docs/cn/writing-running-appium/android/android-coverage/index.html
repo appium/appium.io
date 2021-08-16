@@ -408,23 +408,23 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../#android-coverage-guide">Android Coverage Guide</a></li>
+        <li class="first-level active"><a href="#android-coverage-guide">Android Coverage Guide</a></li>
         
-            <li class="second-level"><a href="../../../#_1">要求</a></li>
-            
-        
-            <li class="second-level"><a href="../../../#_2">项目结构</a></li>
+            <li class="second-level"><a href="#_1">要求</a></li>
             
         
-            <li class="second-level"><a href="../../../#_3">例子：实现流程</a></li>
+            <li class="second-level"><a href="#_2">项目结构</a></li>
             
-                <li class="third-level"><a href="../../../#1-appium-caps">[1] Appium测试项目 - 设置Caps</a></li>
+        
+            <li class="second-level"><a href="#_3">例子：实现流程</a></li>
             
-                <li class="third-level"><a href="../../../#2-android-androidmanifestxml">[2] Android项目 - AndroidManifest.xml</a></li>
+                <li class="third-level"><a href="#1-appium-caps">[1] Appium测试项目 - 设置Caps</a></li>
             
-                <li class="third-level"><a href="../../../#3-apk">[3] 现在，你可以构建apk，并拿来跑你的自动测试吧！！</a></li>
+                <li class="third-level"><a href="#2-android-androidmanifestxml">[2] Android项目 - AndroidManifest.xml</a></li>
             
-                <li class="third-level"><a href="../../../#4-html">[4] 关于拉出HTML报告</a></li>
+                <li class="third-level"><a href="#3-apk">[3] 现在，你可以构建apk，并拿来跑你的自动测试吧！！</a></li>
+            
+                <li class="third-level"><a href="#4-html">[4] 关于拉出HTML报告</a></li>
             
         
     
@@ -449,7 +449,6 @@
    |____ JacocoInstrumentation.java  你自己的Instrumentation文件，必须实现InstrumentActivityListener
    |____ EndEmmaBroadCast.java 用于接受结束信号广播的接收器，它将调用InstrumentActivityListener并导出覆盖率。
 </code></pre>
-
 <p>你在配置Caps时要做如下设置<br>
  * automationName ： <code>uiautomator2</code> (无视大小写)<br>
  * androidCoverage ： {package}/{instrumentation class}, 在我们的例子中是com.example.pkg/com.example.pkg.JacocoInstrumentation<br>
@@ -464,7 +463,7 @@
 <p>请参考 <strong>『项目结构』 -&gt; 『你在配置Caps时要做如下设置』</strong></p>
 <h3 id="2-android-androidmanifestxml">[2] Android项目 - AndroidManifest.xml</h3>
 <p>在 <code>AndroidManifest.xml</code> 里定义 instrumentation 和 broadcast 接收器。</p>
-<pre><code class="xml">    &lt;instrumentation
+<pre><code class="language-xml">    &lt;instrumentation
         android:name="com.example.pkg.instrumentation.JacocoInstrumentation"
         android:targetPackage="com.example.pkg" &gt;
     &lt;/instrumentation&gt;
@@ -476,9 +475,8 @@
        &lt;/intent-filter&gt;
     &lt;/receiver&gt;
 </code></pre>
-
 <p>接下来，编写 <code>EndEmmaBroadcast.java</code> ：</p>
-<pre><code class="java">package com.example.pkg;
+<pre><code class="language-java">package com.example.pkg;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -502,9 +500,8 @@ public class EndEmmaBroadcast extends BroadcastReceiver {
     }
 }
 </code></pre>
-
 <p>之后，编写 <code>JacocoInstrumentation.java</code>：</p>
-<pre><code class="java">package com.example.pkg;
+<pre><code class="language-java">package com.example.pkg;
 
 import android.app.Activity;
 import android.app.Instrumentation;
@@ -603,17 +600,15 @@ public class JacocoInstrumentation  extends Instrumentation implements Instrumen
 }
 
 </code></pre>
-
 <p>之后是<code>InstrumentActivityListener.java</code></p>
-<pre><code class="java">package com.example.pkg;
+<pre><code class="language-java">package com.example.pkg;
 
 public interface InstrumentActivityListener {
     void onActivityEnd();
 }
 </code></pre>
-
 <p>可选的 <code>InstrumentActivity.java</code></p>
-<pre><code class="java">package com.example.pkg;
+<pre><code class="language-java">package com.example.pkg;
 import android.app.Instrumentation;
 import android.os.Bundle;
 import android.util.Log;
@@ -639,9 +634,8 @@ public class InstrumentActivity extends MainActivity {
     }
 }
 </code></pre>
-
 <p>最后，最重要的是<code>gradle</code>:</p>
-<pre><code class="groovy">....
+<pre><code class="language-groovy">....
 
 
 apply plugin: 'jacoco' // add plugin for jacoco
@@ -672,14 +666,13 @@ dependencies {
 }
 
 </code></pre>
-
 <h3 id="3-apk">[3] 现在，你可以构建apk，并拿来跑你的自动测试吧！！</h3>
 <p>测试完成后，就会在/data/data/com.example.pkg/files中生成coverage.ec文件，将其pull出。</p>
 <h3 id="4-html">[4] 关于拉出HTML报告</h3>
 <p>当你跑完测试后，程序会在你手机的app里产生coverage.ec这样的文件。
 * [1] 首先，利用adb pull把coverage.ec拉出手机
 * [2] 关于如何把ec转化成HTML，你可以在gradle里加入下列task：</p>
-<pre><code class="groovy">def coverageSourceDirs = [
+<pre><code class="language-groovy">def coverageSourceDirs = [
         './src/main/java'
 ]
 

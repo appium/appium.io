@@ -1885,18 +1885,18 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../../../#android-uiscrollable-swipe-tricks-and-tips">Android 'UIScrollable' swipe: Tricks and Tips</a></li>
+        <li class="first-level active"><a href="#android-uiscrollable-swipe-tricks-and-tips">Android 'UIScrollable' swipe: Tricks and Tips</a></li>
         
-            <li class="second-level"><a href="../../../../#scroll-forward">Scroll forward</a></li>
+            <li class="second-level"><a href="#scroll-forward">Scroll forward</a></li>
             
         
-            <li class="second-level"><a href="../../../../#scroll-backward">Scroll backward</a></li>
+            <li class="second-level"><a href="#scroll-backward">Scroll backward</a></li>
             
         
-            <li class="second-level"><a href="../../../../#scroll-to-beginning">Scroll to beginning</a></li>
+            <li class="second-level"><a href="#scroll-to-beginning">Scroll to beginning</a></li>
             
         
-            <li class="second-level"><a href="../../../../#scroll-to-end">Scroll to end</a></li>
+            <li class="second-level"><a href="#scroll-to-end">Scroll to end</a></li>
             
         
     
@@ -1909,7 +1909,7 @@
 <p>While Appium does not allow you to use the full power 'UIScrollable'
 directly, it is possible to ignore errors and do the trick.</p>
 <h3 id="scroll-forward">Scroll forward</h3>
-<pre><code class="java">// scrollForward (moves exactly one view)
+<pre><code class="language-java">// scrollForward (moves exactly one view)
 try {
     driver.findElement(MobileBy.AndroidUIAutomator(
             "new UiScrollable(new UiSelector().scrollable(true)).scrollForward()"));
@@ -1925,9 +1925,8 @@ try {
     // ignore
 }
 </code></pre>
-
 <h3 id="scroll-backward">Scroll backward</h3>
-<pre><code class="java">// scrollBackward (moves exactly one view)
+<pre><code class="language-java">// scrollBackward (moves exactly one view)
 try {
     driver.findElement(MobileBy.AndroidUIAutomator(
             "new UiScrollable(new UiSelector().scrollable(true)).scrollBackward()"));
@@ -1943,9 +1942,8 @@ try {
     // ignore
 }
 </code></pre>
-
 <h3 id="scroll-to-beginning">Scroll to beginning</h3>
-<pre><code class="java">// scrollToBeginning (moves exactly by one view. 10 scrolls max)
+<pre><code class="language-java">// scrollToBeginning (moves exactly by one view. 10 scrolls max)
 try {
     driver.findElement(MobileBy.AndroidUIAutomator(
             "new UiScrollable(new UiSelector().scrollable(true)).scrollToBeginning(10)"));
@@ -1961,9 +1959,8 @@ try {
     // ignore
 }
 </code></pre>
-
 <h3 id="scroll-to-end">Scroll to end</h3>
-<pre><code class="java">// scrollToEnd (moves exactly by one view. 10 scrolls max)
+<pre><code class="language-java">// scrollToEnd (moves exactly by one view. 10 scrolls max)
 try {
     driver.findElement(MobileBy.AndroidUIAutomator(
             "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"));

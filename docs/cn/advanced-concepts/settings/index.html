@@ -408,11 +408,11 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#settings">Settings</a></li>
+        <li class="first-level active"><a href="#settings">Settings</a></li>
         
-            <li class="second-level"><a href="../../#settings_1">支持的Settings</a></li>
+            <li class="second-level"><a href="#settings_1">支持的Settings</a></li>
             
-                <li class="third-level"><a href="../../#android-uiautomator-configurator">Android UiAutomator Configurator</a></li>
+                <li class="third-level"><a href="#android-uiautomator-configurator">Android UiAutomator Configurator</a></li>
             
         
     
@@ -441,7 +441,6 @@
   }
 }
 </code></pre>
-
 <p><strong>GET</strong> /session/:sessionId/appium/settings</p>
 <blockquote>
 <p>以JSON格式返回当前所有配置。</p>
@@ -450,7 +449,6 @@
   ignoreUnimportantViews : true
 }
 </code></pre>
-
 <p>注意，实际的命令因您的脚本所使用的语言而异; 请参阅具体的Appium客户端文档以获取更多信息。</p>
 <h3 id="settings_1">支持的Settings</h3>
 <p><strong>"ignoreUnimportantViews"</strong> - 布尔类型。设置为false时，Android设备不会忽略任何视图；被设置为true时，会使用<code>setCompressedLayoutHeirarchy()</code>忽略标记了IMPORTANT_FOR_ACCESSIBILITY_NO或IMPORTANT_FOR_ACCESSIBILITY_AUTO（以及被系统认为不重要的）的视图，从而尽量让脚本变得简单或执行的更快。</p>

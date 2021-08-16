@@ -397,12 +397,12 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#ios-93-web-safarilauncher">在 iOS 9.3 及以下版本的真机上运行移动 web 测试：SafariLauncher</a></li>
+        <li class="first-level active"><a href="#ios-93-web-safarilauncher">在 iOS 9.3 及以下版本的真机上运行移动 web 测试：SafariLauncher</a></li>
         
-            <li class="second-level"><a href="../../#safarilauncher">自动配置SafariLauncher</a></li>
+            <li class="second-level"><a href="#safarilauncher">自动配置SafariLauncher</a></li>
             
         
-            <li class="second-level"><a href="../../#safarilauncher_1">手动配置 SafariLauncher</a></li>
+            <li class="second-level"><a href="#safarilauncher_1">手动配置 SafariLauncher</a></li>
             
         
     
@@ -434,7 +434,7 @@ manual configuration below.</p>
 步骤5：下载配置文件并用文本编辑器打开。
 步骤6：搜索<strong>UUID</strong>及其字符串作为您的<strong>身份代码</strong>。</p>
 <p>现在只需将您的UDID和设备名称包含在您所需的功能中：</p>
-<pre><code class="js">{
+<pre><code class="language-js">{
   udid: '...',
   deviceName: '...',
   platformName: 'iOS',
@@ -442,14 +442,12 @@ manual configuration below.</p>
   browserName: 'Safari'
 }
 </code></pre>
-
 <h3 id="safarilauncher_1">手动配置 SafariLauncher</h3>
 <p><strong>注意：</strong> 此过程假定您已经安装<a href="https://developer.apple.com/xcode/">Xcode</a>7.3或7.3.1。</p>
 <p>可以使用 <a href="https://github.com/appium/appium-ios-driver">appium-ios-driver</a> 附带的 <a href="https://github.com/snevesbarros/SafariLauncher">SafariLauncher</a> 版本，但如果这样做，每次更新Appium时，必须重新执行该过程。</p>
 <p>要获取 <code>SafariLauncher</code> 的本地副本，请先从 <a href="https://github.com/">GitHub</a> 克隆它：</p>
-<pre><code class="bash">git clone https://github.com/snevesbarros/SafariLauncher.git
+<pre><code class="language-bash">git clone https://github.com/snevesbarros/SafariLauncher.git
 </code></pre>
-
 <p>一旦您拥有 <code>SafariLauncher</code> 的源代码的本地副本，请打开 <a href="https://developer.apple.com/xcode/">Xcode</a>，然后打开 <code>SafariLauncher</code> 项目</p>
 <p><img alt="Opening SafariLauncher project" src="opening.png"></p>
 <p>在 <code>SafariLauncher</code> target 窗口中，您会看到一个错误，表示需要有一个此 app 的配置文件</p>
@@ -463,7 +461,7 @@ manual configuration below.</p>
 <p>现在你的设备上有一个可用的 <code>SafariLauncher</code>。 该app本身是一个简单的屏幕，点击一个按钮将启动 <code>Safari</code></p>
 <p><img alt="SafariLauncher on device" src="safarilauncher.png"></p>
 <p>如果您选择了与默认（com.bytearc.SafariLauncher）不同的app的软件包标识符，则最后一步是必需的。 如果你这样做，在使用bundleId所需的功能创建会话时，需要将它发送到Appium：</p>
-<pre><code class="js">{
+<pre><code class="language-js">{
   udid: '...',
   deviceName: '...',
   platformName: 'iOS',
@@ -472,7 +470,6 @@ manual configuration below.</p>
   bundleId: 'com.imurchie.SafariLauncher'
 }
 </code></pre>
-
 <p>本文由 高鹏 翻译，由 lihuazhang 校验。</p></div>
         
     </div>

@@ -1885,24 +1885,24 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="../../#running-tests">Running Tests</a></li>
+        <li class="first-level active"><a href="#running-tests">Running Tests</a></li>
         
-            <li class="second-level"><a href="../../#preparing-your-app-for-test-ios">Preparing your app for test (iOS)</a></li>
+            <li class="second-level"><a href="#preparing-your-app-for-test-ios">Preparing your app for test (iOS)</a></li>
             
         
-            <li class="second-level"><a href="../../#preparing-your-app-for-test-android">Preparing your app for test (Android)</a></li>
+            <li class="second-level"><a href="#preparing-your-app-for-test-android">Preparing your app for test (Android)</a></li>
             
         
-            <li class="second-level"><a href="../../#preparing-your-app-for-test-windows">Preparing your app for test (Windows)</a></li>
+            <li class="second-level"><a href="#preparing-your-app-for-test-windows">Preparing your app for test (Windows)</a></li>
             
         
-            <li class="second-level"><a href="../../#running-your-test-app-with-appium-ios">Running your test app with Appium (iOS)</a></li>
+            <li class="second-level"><a href="#running-your-test-app-with-appium-ios">Running your test app with Appium (iOS)</a></li>
             
         
-            <li class="second-level"><a href="../../#running-your-test-app-with-appium-android">Running your test app with Appium (Android)</a></li>
+            <li class="second-level"><a href="#running-your-test-app-with-appium-android">Running your test app with Appium (Android)</a></li>
             
         
-            <li class="second-level"><a href="../../#running-your-test-app-with-appium-windows">Running your test app with Appium (Windows)</a></li>
+            <li class="second-level"><a href="#running-your-test-app-with-appium-windows">Running your test app with Appium (Windows)</a></li>
             
         
     
@@ -1938,31 +1938,32 @@ want to zip it up, you can.</p>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#0_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#0_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#0_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#0_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#0_2" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="0_0">
-            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "7.1");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simulator");
-capabilities.setCapability(MobileCapabilityType.APP, myApp);
+            <pre><code class="language-javascript">{
+    platformName: 'iOS',
+    platformVersion: '7.1',
+    deviceName: 'iPhone Simulator',
+    app: myApp
+}
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">{
+            <pre><code class="language-python">{
     'platformName': 'iOS',
     'platformVersion': '7.1',
     'deviceName': 'iPhone Simulator',
@@ -1972,20 +1973,16 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_2">
-            <pre><code class="javascript">{
-    platformName: 'iOS',
-    platformVersion: '7.1',
-    deviceName: 'iPhone Simulator',
-    app: myApp
-}
+            <pre><code class="language-java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "7.1");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone Simulator");
+capabilities.setCapability(MobileCapabilityType.APP, myApp);
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
 
 
 <p>In this set of capabilities, <code>myApp</code> must be either:</p>
@@ -2047,31 +2044,32 @@ proceed in one of the following ways:</p>
         <ul class="nav nav-tabs" role="tablist">
           
           <li role="presentation" class="active">
-              <a href="#1_0" data-language="java" data-toggle="tab">Java</a>
+              <a href="#1_0" data-language="language-javascript" data-toggle="tab">Language-javascript</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_1" data-language="python" data-toggle="tab">Python</a>
+              <a href="#1_1" data-language="language-python" data-toggle="tab">Language-python</a>
           </li>
           
           <li role="presentation" class="">
-              <a href="#1_2" data-language="javascript" data-toggle="tab">Javascript</a>
+              <a href="#1_2" data-language="language-java" data-toggle="tab">Language-java</a>
           </li>
           
         </ul>
         <div class="tab-content">
           
           <div role="tabpanel" class="tab-pane active" id="1_0">
-            <pre><code class="java">DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4");
-capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-capabilities.setCapability(MobileCapabilityType.APP, myApp);
+            <pre><code class="language-javascript">{
+    platformName: 'Android',
+    platformVersion: '4.4',
+    deviceName: 'Android Emulator',
+    app: myApp
+}
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_1">
-            <pre><code class="python">{
+            <pre><code class="language-python">{
     'platformName': 'Android',
     'platformVersion': '4.4',
     'deviceName': 'Android Emulator',
@@ -2081,20 +2079,16 @@ capabilities.setCapability(MobileCapabilityType.APP, myApp);
           </div>
           
           <div role="tabpanel" class="tab-pane " id="1_2">
-            <pre><code class="javascript">{
-    platformName: 'Android',
-    platformVersion: '4.4',
-    deviceName: 'Android Emulator',
-    app: myApp
-}
+            <pre><code class="language-java">DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "4.4");
+capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
+capabilities.setCapability(MobileCapabilityType.APP, myApp);
 </code></pre>
           </div>
           
         </div>
       </div>
-
-
-
 
 
 <p>In this set of capabilities, <code>myApp</code> must be either:</p>
