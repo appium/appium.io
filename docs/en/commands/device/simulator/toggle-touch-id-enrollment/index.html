@@ -2001,6 +2001,7 @@ toggle_touch_id_enrollment
 <h2 id="description">Description</h2>
 <p>To enable this feature, the <code>allowTouchIdEnroll</code> desired capability must be set to true. When <code>allowTouchIdEnroll</code> is set to true
 the Simulator will be enrolled by default, and the 'Toggle Touch ID Enrollment' changes the enrollment state.</p>
+<p>Another way to enable touch id is by using <code>mobile: enrollBiometric</code>. More info <a href="https://github.com/appium/appium-xcuitest-driver#mobile-enrollbiometric">here</a>.</p>
 <p>This call will only work if the Appium process or its parent application (e.g., Terminal.app or Appium.app) has access to Mac OS accessibility in System Preferences &gt; Security &amp; Privacy &gt; Privacy &gt; Accessibility list</p>
 <h2 id="support">Support</h2>
 <h3 id="appium-server">Appium Server</h3>
@@ -2147,7 +2148,7 @@ the Simulator will be enrolled by default, and the 'Toggle Touch ID Enrollment' 
 <p>null</p>
 <h2 id="see-also">See Also</h2>
 <ul>
-<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L545">JSONWP Specification</a></li>
+<li><a href="https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js#L555">JSONWP Specification</a></li>
 </ul></div>
         
     </div>
