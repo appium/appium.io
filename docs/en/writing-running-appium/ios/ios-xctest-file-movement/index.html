@@ -1930,9 +1930,12 @@ This documentation aims to help to understand how they work for iOS.</p>
 <li><code>@&lt;app_bundle_id&gt;</code> is the application bundle identifier</li>
 <li><code>optional_container_type</code> is the container type<ul>
 <li><code>documents</code> is the only available option<ul>
-<li>You may specify <code>documents</code> container type only for bundle ids returned by <code>ifuse -u &lt;udid&gt; --list-apps</code></li>
+<li>You may specify <code>documents</code> container type only for bundle ids that exists in the device<ul>
+<li>Since appium-xcuitest-driver v3.55.0, <a href="https://github.com/appium/appium-xcuitest-driver#mobile-listapps">mobile: listApps</a> provides a list of available applications. Applications which have <code>UIFileSharingEnabled</code> attribute as <code>true</code> can be specified.</li>
+</ul>
+</li>
 <li>
-<p>e.g. Below <em>On My iPhone</em> image has <em>Slack</em> folder, but <code>com.tinyspeck.chatlyio</code> does not exist in the output of <code>--list-apps</code>. Thus, we cannot mount it as <code>com.tinyspeck.chatlyio@documents/</code></p>
+<p>e.g. Below <em>On My iPhone</em> image has <em>Slack</em> folder, but <code>com.tinyspeck.chatlyio</code> does not exist in installed bundle ids. Then, we cannot mount it as <code>com.tinyspeck.chatlyio@documents/</code></p>
 <p><img src="/docs/en/writing-running-appium/ios/ios-xctest-file-movement/on_my_iphone.png" width="100">
     - The others work as <em>format 2</em>
         - Only apps having the flag <code>UIFileSharingEnabled</code> in their <code>info.plist</code> can be mounted
