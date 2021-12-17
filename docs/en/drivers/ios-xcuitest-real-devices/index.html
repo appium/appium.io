@@ -1905,6 +1905,9 @@
             <li class="second-level"><a href="#troubleshooting-ideas">Troubleshooting ideas</a></li>
             
         
+            <li class="second-level"><a href="#notice">Notice</a></li>
+            
+        
     
     </ul>
 </div></div>
@@ -2068,6 +2071,10 @@ installed, and is <em>not</em> recommended):</p>
         t =     0.00s     Set Up
 </code></pre>
 
+<p>If the command fails, try passing the <code>-allowProvisioningUpdates</code> flag like this (see <a href="https://github.com/appium/appium/issues/16212">#16212</a>):</p>
+<pre><code>    xcodebuild -project WebDriverAgent.xcodeproj -scheme WebDriverAgentRunner -destination 'id=&lt;udid&gt;' -allowProvisioningUpdates test
+</code></pre>
+
 <ul>
 <li>To completely verify, you can try accessing the WebDriverAgent server status
     (<strong>note:</strong> you <em>must</em> be on the same network as the device, and know its IP
@@ -2121,7 +2128,7 @@ information about this in the <a href="https://developer.apple.com/library/ios/d
 <li>A Mac with <a href="https://developer.apple.com/xcode/">Xcode</a> and the Xcode Command
 Line Developer Tools.</li>
 </ul>
-<p>Appium handles installing the application to the device, using
+<p>(Only for Appium versions below 1.15.0) Appium handles installing the application to the device, using
 <code>ideviceinstaller</code> (which is installed as part of <code>libimobiledevice</code>), but it
 is sometimes easier to pre-install your app using Xcode to ensure there are no
 problems (see again the <a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/TestingYouriOSApp/TestingYouriOSApp.html">Apple
@@ -2141,10 +2148,6 @@ for this).</p>
 </ol>
 </li>
 <li>Consider generating a provisioning profile with <code>.xctrunner</code> identifier if you do not want to generate a wildcard one for manual configuration. The <code>.xctrunner</code> config support has been added since Xcode 11. <a href="https://github.com/appium/appium/issues/13610">A reference</a></li>
-<li>Make sure the device under test is not a jaibroken one<ul>
-<li><code>com.apple.mobile.installation_proxy</code> service to manage Apps on the device <a href="https://github.com/appium/appium-desktop/issues/1447">does not work</a></li>
-</ul>
-</li>
 <li>Make sure the provisioning profile has <a href="https://developer.apple.com/support/certificates/"><em>iOS Distribution</em> certificate</a><ul>
 <li>An active Xcode/xcodebuild connection/session is necessary to interact with WebDriverAgentRunner because of Apple's security design. The certificate affects the limitation (<a href="https://github.com/appium/appium/issues/14577#issuecomment-660997827">issue</a>)</li>
 </ul>
@@ -2153,7 +2156,11 @@ for this).</p>
 <li>Non-official or non-English keyboards may not be able to send keys to <code>XCUIElementTypeSecureTextField</code>. e.g. <a href="https://github.com/appium/appium/issues/15647">issues#15647</a></li>
 </ul>
 </li>
-</ol></div>
+</ol>
+<h3 id="notice">Notice</h3>
+<p>Appium team does not test xcuitest driver against jailbroken devices, so we cannot guaranteer it is going to work as expected as same as non-jailbroken devices.</p>
+<p>e.g., <a href="https://github.com/appium/appium-desktop/issues/1447"><code>com.apple.mobile.installation_proxy</code> service error to manage Apps on the device</a></p>
+<p>Please use it at your own risk.</p></div>
         
     </div>
 
