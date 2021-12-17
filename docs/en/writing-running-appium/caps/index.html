@@ -1892,13 +1892,13 @@
                 <li class="third-level"><a href="#update-settings">Update settings</a></li>
             
         
-            <li class="second-level"><a href="#android-only">Android Only</a></li>
+            <li class="second-level"><a href="#android">Android</a></li>
             
-                <li class="third-level"><a href="#uiautomator-1">UIAutomator 1</a></li>
+                <li class="third-level"><a href="#uiautomator1">UIAutomator1</a></li>
             
-                <li class="third-level"><a href="#uiautomator2-only">UIAutomator2 Only</a></li>
+                <li class="third-level"><a href="#uiautomator2">UIAutomator2</a></li>
             
-                <li class="third-level"><a href="#espresso-only">Espresso Only</a></li>
+                <li class="third-level"><a href="#espresso">Espresso</a></li>
             
         
             <li class="second-level"><a href="#ios-only">iOS Only</a></li>
@@ -2085,8 +2085,9 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="android-only">Android Only</h3>
-<p>These Capabilities are available only on Android-based drivers.</p>
+<h3 id="android">Android</h3>
+<h4 id="uiautomator1">UIAutomator1</h4>
+<p>These Capabilities are available for UiAutomator1 driver. The driver is for Android 5 and lower.</p>
 <table>
 <thead>
 <tr>
@@ -2437,28 +2438,15 @@ Capabilities available in general and for specific drivers.</p>
 <td>e.g., <code>process</code></td>
 </tr>
 <tr>
-<td>logcatFilterSpecs</td>
+<td><code>logcatFilterSpecs</code></td>
 <td>Set the output filter rule for logcat messages since Appium 1.18.0. Please read <a href="https://developer.android.com/studio/command-line/logcat#filteringOutput">logcat#filteringOutput</a> for more details about the rule. <a href="https://developer.android.com/studio/debug/am-logcat">Write and View Logs with Logcat</a> is also helpful.</td>
 <td>e.g., <code>['*:W', 'MyActivity:D']</code> (<code>MyActivity</code> is a tag)</td>
 </tr>
 <tr>
-<td>allowDelayAdb</td>
+<td><code>allowDelayAdb</code></td>
 <td>Whether enable <code>-delay-adb</code> on emulator startup. Defaults to <code>true</code></td>
 <td><code>true</code>, <code>false</code></td>
 </tr>
-</tbody>
-</table>
-<h4 id="uiautomator-1">UIAutomator 1</h4>
-<p>These Capabilities are available on UIAutomator 1.</p>
-<table>
-<thead>
-<tr>
-<th>Capability</th>
-<th>Description</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td><code>intentAction</code></td>
 <td>Intent action which will be used to start activity (default <code>android.intent.action.MAIN</code>)</td>
@@ -2481,9 +2469,9 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 </tbody>
 </table>
-<h4 id="uiautomator2-only">UIAutomator2 Only</h4>
+<h4 id="uiautomator2">UIAutomator2</h4>
 <p>Please refer to the documentation on the UIAutomator2 driver <a href="https://github.com/appium/appium-uiautomator2-driver#capabilities">repository</a> about its available capabilities.</p>
-<h4 id="espresso-only">Espresso Only</h4>
+<h4 id="espresso">Espresso</h4>
 <p>Please refer to the documentation on the Espresso driver <a href="https://github.com/appium/appium-espresso-driver#capabilities">repository</a> about its available capabilities.</p>
 <h3 id="ios-only">iOS Only</h3>
 <p>These Capabilities are available only on the <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest
