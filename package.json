@@ -59,7 +59,7 @@
     "chalk": "^4.0.0",
     "cross-env": "^7.0.2",
     "ejs": "^3.0.2",
-    "eslint": "^7.2.0",
+    "eslint": "^8.5.0",
     "eslint-config-appium": "4.x",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-mocha": "^10.0.1",
