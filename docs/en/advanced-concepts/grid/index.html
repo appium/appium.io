@@ -1885,7 +1885,10 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="first-level active"><a href="#selenium-grid">Selenium Grid</a></li>
+        <li class="first-level active"><a href="#selenium-grid-4">Selenium Grid 4</a></li>
+        
+    
+        <li class="first-level "><a href="#selenium-grid-3">Selenium Grid 3</a></li>
         
             <li class="second-level"><a href="#grid-node-configuration-example-json-file">Grid Node Configuration Example json file</a></li>
             
@@ -1893,10 +1896,13 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="selenium-grid"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/advanced-concepts/grid.md">
+        <div class="col-md-9 documentation" role="main"><h2 id="selenium-grid-4"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/advanced-concepts/grid.md">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
-  </a>Selenium Grid</h2>
+  </a>Selenium Grid 4</h2>
+<p><code>Relay</code> feature in Grid 4 allows you to proxy Appium requests to an appium server instance.</p>
+<p>Please check <a href="https://www.selenium.dev/documentation/grid/configuration/toml_options/#relaying-commands-to-a-service-endpoint-that-supports-webdriver">Relaying commands to a service endpoint that supports WebDriver</a> and <a href="https://www.youtube.com/watch?v=3_aP2rsqZD0">Selenium Grid 4 and Appium together in harmony</a> about the configuration and for more details.</p>
+<h2 id="selenium-grid-3">Selenium Grid 3</h2>
 <p>You are able to register your appium server with a local <a href="https://github.com/SeleniumHQ/selenium/wiki/Grid2">Selenium grid</a> (<a href="https://www.selenium.dev/documentation/legacy/grid_3/setting_up_your_own_grid/">setup docs</a>) by using the
 <code>--nodeconfig</code> server parameter.</p>
 <pre><code class="center">&gt; appium --nodeconfig /path/to/nodeconfig.json
