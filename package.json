@@ -67,7 +67,7 @@
     "fancy-log": "^2.0.0",
     "handlebars": "^4.0.10",
     "humanize-duration": "^3.16.0",
-    "is-absolute-url": "^3.0.3",
+    "is-absolute-url": "^4.0.1",
     "mocha": "^9.0.0",
     "pre-commit": "^1.2.2",
     "relative": "^3.0.2",
