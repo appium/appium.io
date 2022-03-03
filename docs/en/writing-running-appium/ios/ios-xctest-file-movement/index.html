@@ -2037,7 +2037,8 @@ File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
 <ul>
 <li>Pull folder</li>
 </ul>
-<p>You can pull documents root of <em>On My iPhone/Keynote</em> as <code>@driver.pull_folder '@com.apple.Keynote:documents/'</code>.</p>
+<p>You can pull documents root of <em>On My iPhone/Keynote</em> as <code>@driver.pull_folder '@com.apple.Keynote:documents/'</code>.
+<code>@driver.pull_folder '@com.apple.Keynote:documents/Keynote'</code> is to get files in the Keynote folder. Then, <em>Keynote</em> is the documentation root to get.</p>
 <div>
         <ul class="nav nav-tabs" role="tablist">
           
@@ -2055,12 +2056,18 @@ File.open('presentation.key', 'wb') { |f| f&lt;&lt; file }
           <div role="tabpanel" class="tab-pane active" id="2_0">
             <pre><code class="javascript">let data = driver.pullFolder('@io.appium.example:documents/');
 await fs.writeFile('documents.zip', Buffer.from(data, 'base64'), 'binary');
+
+let data = driver.pullFolder('@io.appium.example:documents/Keynote');
+await fs.writeFile('keynote.zip', Buffer.from(data, 'base64'), 'binary');
 </code></pre>
           </div>
           
           <div role="tabpanel" class="tab-pane " id="2_1">
             <pre><code class="ruby">file = @driver.pull_folder '@com.apple.Keynote:documents/'
 File.open('documents.zip', 'wb') { |f| f&lt;&lt; file }
+
+file = @driver.pull_folder '@com.apple.Keynote:documents/Keynote'
+File.open('keynote.zip', 'wb') { |f| f&lt;&lt; file }
 </code></pre>
           </div>
           
