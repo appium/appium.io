@@ -1887,19 +1887,21 @@
     
         <li class="first-level active"><a href="#releasing-appium">Releasing Appium</a></li>
         
-            <li class="second-level"><a href="#create-a-release-branch">Create a release branch</a></li>
+            <li class="second-level"><a href="#appium">Appium</a></li>
+            
+                <li class="third-level"><a href="#create-a-release-branch">Create a release branch</a></li>
+            
+                <li class="third-level"><a href="#create-a-release-candidate">Create a release candidate</a></li>
+            
+                <li class="third-level"><a href="#publish-to-ga">Publish to GA</a></li>
             
         
-            <li class="second-level"><a href="#create-a-release-candidate">Create a release candidate</a></li>
+            <li class="second-level"><a href="#troubleshooting">Troubleshooting</a></li>
+            
+                <li class="third-level"><a href="#when-you-publish-a-version-to-a-wrong-channel">When you publish a version to a wrong channel</a></li>
             
         
-            <li class="second-level"><a href="#publish-to-ga">Publish to GA</a></li>
-            
-        
-    
-        <li class="first-level "><a href="#troubleshooting">Troubleshooting</a></li>
-        
-            <li class="second-level"><a href="#when-you-publish-a-version-to-a-wrong-channel">When you publish a version to a wrong channel</a></li>
+            <li class="second-level"><a href="#each-package">Each package</a></li>
             
         
     
@@ -1910,7 +1912,8 @@
     &nbsp;&nbsp;Edit this Doc
   </a>Releasing Appium</h1>
 <p>Appium follows the GitLab flow approach. Releases are made on release branches that have the format <code>releases/x.y</code> where <code>x</code> is a major version and <code>y</code> is a minor version. The main Appium repository doesn't strictly follow semver (unlike the dependencies of Appium). A minor release (e.g.: <code>1.20.0</code>) means that we're creating a new release that has a newly created set of dependencies that are shrinkwrapped to the latest. A patch release (e.g.: <code>1.20.4</code>) isn't strictly a "patch", but just means that we're making an intermediary release that brings in small changes. For example, suppose I have a new version of <code>appium-xcuitest-driver</code> that I want to publish and it can't wait until the next minor release. To bring in that change, I would checkout the release branch (e.g.: <code>git checkout releases/1.20</code>); install the dependency (<code>npm install appium-xcuitest-driver@version &amp;&amp; git commit -a -m 'bump appium-xcuitest-driver to version $version</code>); release a "release candidate" (see below) and then when it's ready, graduate the "release candidate" to general availability</p>
-<h2 id="create-a-release-branch">Create a release branch</h2>
+<h2 id="appium">Appium</h2>
+<h3 id="create-a-release-branch">Create a release branch</h3>
 <ol>
 <li><code>bash ./scripts/release-branch.sh x.y</code> where <code>x</code> is the major version and <code>y</code> is the minor version (example: <code>bash ./scripts/release-branch.sh 1.20</code>)</li>
 <li>This will create:<ul>
@@ -1921,12 +1924,12 @@
 </li>
 <li>Create a changelog pull request</li>
 </ol>
-<h2 id="create-a-release-candidate">Create a release candidate</h2>
+<h3 id="create-a-release-candidate">Create a release candidate</h3>
 <ol>
 <li>Checkout the release branch (e.g.: <code>git checkout releases/1.21 &amp;&amp; git pull origin releases/1.21</code>)</li>
 <li><code>bash ./scripts/release.sh rc</code></li>
 </ol>
-<h2 id="publish-to-ga">Publish to GA</h2>
+<h3 id="publish-to-ga">Publish to GA</h3>
 <ol>
 <li>Checkout the release branch (e.g.: <code>git checkout releases/1.21 &amp;&amp; git pull origin releases/1.21</code>)</li>
 <li><code>bash ./scripts/release-latest.sh 1.21.0</code><ul>
@@ -1948,8 +1951,8 @@
 </ol>
 </li>
 </ol>
-<h1 id="troubleshooting">Troubleshooting</h1>
-<h2 id="when-you-publish-a-version-to-a-wrong-channel">When you publish a version to a wrong channel</h2>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="when-you-publish-a-version-to-a-wrong-channel">When you publish a version to a wrong channel</h3>
 <p>For example, you accidentally pusbed <code>rc</code> version into the <code>latest</code> channel.
 Then, you could add the <code>deprecated</code> label to this version , and re-tag the previous stable version in order to keep the stable one via <code>npm install</code>.
 <code>dist-tag</code> command helps to achieve that.</p>
@@ -1959,7 +1962,11 @@ $ npm dist-tag add appium@1.20.2 latest
 
 <p>You can confirm if the above step works by calling <code>npm install -g appium</code>.
 Once you can install <code>appium@1.20.2</code>, the above step worked.
-(You may need to wait for a few minutes because of npm caching.)</p></div>
+(You may need to wait for a few minutes because of npm caching.)</p>
+<h2 id="each-package">Each package</h2>
+<p>Each package is now pushed via <a href="https://github.com/semantic-release/semantic-release">semantic-release</a>. The rule is in <code>.releaserc</code> in each repository.
+The basic rule is <a href="https://github.com/semantic-release/commit-analyzer#default-rules-matching">the default rule</a>. It means if a commit message has <code>feat</code> prefix message, the commit version will be a minor release.</p>
+<p>Please modify <code>.releaserc</code> to customize the release rule.</p></div>
         
     </div>
 
