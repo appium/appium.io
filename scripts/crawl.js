@@ -19,7 +19,7 @@ const excludedUrls = [
   'www.packtpub.com', // Slow response
   'twitter.com', // Slow or has redirect
   'hamcrest.org', // Temporary down
-  'www.selenium.dev', // temporary
+  'seleniumhq.github.io', // temporary
 ];
 
 function logPage (url) {
