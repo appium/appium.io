@@ -13,8 +13,8 @@ const LANGUAGES = ['en', 'cn'];
 const log = logger.getLogger('APPIUM.IO');
 
 async function getAppiumDocs () {
-  log.info(`Cloning Appium from GitHub`);
-  await exec('git', ['clone', 'https://github.com/appium/appium.git', 'appium']);
+  log.info(`Cloning Appium from GitHub with 1.x branch`);
+  await exec('git', ['clone', '--single-branch', '--branch', '1.x', 'https://github.com/appium/appium.git', 'appium']);
   const pathToDocs = path.resolve('appium', 'docs');
 
   // Do some treating on the docs to get it working correctly
