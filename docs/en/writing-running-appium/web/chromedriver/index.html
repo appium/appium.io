@@ -1999,15 +1999,15 @@ You can also check the <a href="https://github.com/appium/appium/blob/master/doc
 that there could be network problems that make the install fail.</p>
 <p>By default Chromedriver is retrieved from <code>https://chromedriver.storage.googleapis.com/</code>.
 To use a mirror of the ChromeDriver binaries use npm config property <code>chromedriver_cdnurl</code>.</p>
-<pre><code class="bash">npm install appium-chromedriver --chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
+<pre><code class="bash">npm install appium-chromedriver --chromedriver_cdnurl=https://npmmirror.com/mirrors/chromedriver
 </code></pre>
 
 <p>Or add the property into your <a href="https://docs.npmjs.com/files/npmrc"><code>.npmrc</code></a> file.</p>
-<pre><code class="bash">chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
+<pre><code class="bash">chromedriver_cdnurl=https://npmmirror.com/mirrors/chromedriver
 </code></pre>
 
 <p>Another option is to use PATH variable <code>CHROMEDRIVER_CDNURL</code>.</p>
-<pre><code class="bash">CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver npm install appium-chromedriver
+<pre><code class="bash">CHROMEDRIVER_CDNURL=https://npmmirror.com/mirrors/chromedriver npm install appium-chromedriver
 </code></pre>
 
 <p>It may also be necessary to adjust network proxy and firewall settings to allow
