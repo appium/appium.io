@@ -1957,7 +1957,7 @@ element.sendKeys("Hello world!");
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">self.driver.find_element_by_accessibility_id('SomeAccessibilityID').send_keys('Hello world!')
+            <pre><code class="python">self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="SomeAccessibilityID").send_keys('Hello world!')
 
 </code></pre>
           </div>
