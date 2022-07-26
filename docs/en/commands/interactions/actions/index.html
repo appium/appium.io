@@ -1969,7 +1969,9 @@ driver.perform(Arrays.asList(dragNDrop));
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">element = driver.find_element_by_accessibility_id("elId")
+            <pre><code class="python">from selenium.webdriver.common.action_chains import ActionChains
+
+element = driver.find_element_by_accessibility_id("elId")
 actions = ActionChains(driver)
 actions.move_to_element(element)
 actions.click(hidden_submenu)

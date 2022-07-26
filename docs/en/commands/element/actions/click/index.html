@@ -1957,8 +1957,8 @@ el.click();
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">el = self.driver.find_element_by_accessibility_id('SomeId')
-el.click();
+            <pre><code class="python">el = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value='SomeId')
+el.click()
 
 </code></pre>
           </div>
