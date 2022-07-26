@@ -1957,7 +1957,7 @@ MobileElement elementTwo = (MobileElement) driver.findElementByClassName("SomeCl
           </div>
           
           <div role="tabpanel" class="tab-pane " id="0_1">
-            <pre><code class="python">el = self.driver.find_element_by_accessibility_id('SomeAccessibilityID')
+            <pre><code class="python">el = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="SomeAccessibilityID")
 
 </code></pre>
           </div>
@@ -2154,7 +2154,7 @@ AndroidElement elementTwo = driver.FindElementByClassName("Some class");
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="https://www.w3.org/TR/webdriver/#find-element">W3C Specification</a></li>
-<li><a href="https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol#sessionsessionidelement">JSONWP Specification</a></li>
+<li><a href="https://www.selenium.dev/documentation/legacy/json_wire_protocol/#sessionsessionidelement">JSONWP Specification</a></li>
 </ul></div>
         
     </div>
