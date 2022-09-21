@@ -1989,7 +1989,7 @@ Capabilities available in general and for specific drivers.</p>
 <tr>
 <td><code>deviceName</code></td>
 <td>The kind of mobile device or emulator to use</td>
-<td><code>iPhone Simulator</code>, <code>iPad Simulator</code>, <code>iPhone Retina 4-inch</code>, <code>Android Emulator</code>, <code>Galaxy S4</code>, etc.... On iOS, this should be one of the valid devices returned by instruments with <code>instruments -s devices</code> or xctrace with <code>xcrun xctrace list devices</code> (since Xcode 12). On Android this capability is currently ignored, though it remains required.</td>
+<td><code>iPhone Simulator</code>, <code>iPad Simulator</code>, <code>iPhone Retina 4-inch</code>, <code>Android Emulator</code>, <code>Galaxy S4</code>, etc.... On iOS, this should be one of the valid devices returned by instruments with <code>instruments -s devices</code> or xctrace with <code>xcrun xctrace list devices</code> (since Xcode 12). On Android this capability is currently ignored, though it remains required. To ensure connecting to the correct Android device when multiple devices are connected, use the <code>udid</code> capability.</code></td>
 </tr>
 <tr>
 <td><code>app</code></td>
@@ -2023,8 +2023,8 @@ Capabilities available in general and for specific drivers.</p>
 </tr>
 <tr>
 <td><code>udid</code></td>
-<td>Unique device identifier of the connected physical device</td>
-<td>e.g. <code>1ae203187fc012g</code></td>
+<td>Unique device identifier of the connected physical device. For Android, this is the device name as listed by <code>adb devices</code>.</td>
+<td>e.g. <code>1ae203187fc012g</code>, <code>emulator-5554</code></td>
 </tr>
 <tr>
 <td><code>orientation</code></td>
