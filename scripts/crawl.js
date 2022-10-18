@@ -20,6 +20,7 @@ const excludedUrls = [
   'twitter.com', // Slow or has redirect
   'hamcrest.org', // Temporary down
   'seleniumhq.github.io', // temporary
+  'javadoc.io', // temporary
 ];
 
 function logPage (url) {
