@@ -463,7 +463,7 @@
 <tr>
 <td><code>deviceName</code></td>
 <td>使用的手机或模拟器类型</td>
-<td><code>iPhone Simulator</code>, <code>iPad Simulator</code>, <code>iPhone Retina 4-inch</code>, <code>Android Emulator</code>, <code>Galaxy S4</code>, 等等.... 在 iOS 上，使用 Instruments 的 <code>instruments -s devices</code> 命令可返回一个有效的设备的列表。在 Andorid 上虽然这个参数目前已被忽略，但仍然需要添加上该参数</td>
+<td><code>iPhone Simulator</code>, <code>iPad Simulator</code>, <code>iPhone Retina 4-inch</code>, <code>Android Emulator</code>, <code>Galaxy S4</code>, 等等.... 在 iOS 上，使用 Instruments 的 <code>instruments -s devices</code> 命令可返回一个有效的设备的列表。在 Andorid 上虽然这个参数目前已被忽略，但仍然需要添加上该参数。 为确保在连接多个设备时连接到正确的 Android 设备，请使用 <code>udid</code> 功能。</td>
 </tr>
 <tr>
 <td><code>app</code></td>
@@ -492,8 +492,8 @@
 </tr>
 <tr>
 <td><code>udid</code></td>
-<td>连接真机的唯一设备号</td>
-<td>例如  <code>1ae203187fc012g</code></td>
+<td>连接真机的唯一设备号。 对于 Android，这是 <code>adb devices</code> 列出的设备名称</td>
+<td>例如  <code>1ae203187fc012g</code>, <code>emulator-5554</code></td>
 </tr>
 <tr>
 <td><code>orientation</code></td>
