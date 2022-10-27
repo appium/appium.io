@@ -139,10 +139,8 @@ already had well over 1,000 commits.
 
 Appium began to grow and mature significantly. In May 2014,
 we released Appium 1.0, which stood as a milestone in Appium's development.
-Appium was given
-[various](http://sauceio.com/index.php/2014/01/appium-selected-as-a-black-duck-open-source-rookie-of-the-year/)
-[awards](http://sauceio.com/index.php/2014/10/appium-wins-a-bossy-award-from-infoworld/)
-and became the most popular open-source cross-platform mobile automation
+Appium was given various awards and became the most popular open-source
+cross-platform mobile automation
 framework. Stability improved, bugs were prioritized and fixed, and features
 added. Sauce Labs increased the number of developers it donated to working
 on Appium, but the entire community stayed involved in guiding the project and
