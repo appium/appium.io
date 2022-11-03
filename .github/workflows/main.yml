@@ -27,7 +27,7 @@ jobs:
       - name: install dependencies
         run: |
           npm install
-          pip install mkdocs==0.16.3
+          pip install mkdocs==0.17.5
           echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
           bundle install
       - name: Unit tests
