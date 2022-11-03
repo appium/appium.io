@@ -12,10 +12,11 @@ To locally preview appium.io
 ## Requirements
 
 1. [Ruby 2.1.0 or higher](https://www.ruby-lang.org/en/downloads/)
+    - macOS system installed Ruby might cause installation issue
 1. Node + NPM
 1. Ruby Bundler (`gem install bundler`)
 1. pip (`brew install pip`)
-1. MkDocs 0.16.3 (`pip install mkdocs==0.17.5`)
+1. MkDocs 0.17.5 (`pip install mkdocs==0.17.5`)
 
 ## Setup
 
