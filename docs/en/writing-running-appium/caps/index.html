@@ -1901,9 +1901,7 @@
                 <li class="third-level"><a href="#espresso">Espresso</a></li>
             
         
-            <li class="second-level"><a href="#ios-only">iOS Only</a></li>
-            
-                <li class="third-level"><a href="#ios-only-using-xcuitest">iOS Only, using XCUITest</a></li>
+            <li class="second-level"><a href="#xcuitest-only">XCUITest Only</a></li>
             
         
             <li class="second-level"><a href="#safaridriver-only">Safaridriver Only</a></li>
@@ -1930,7 +1928,9 @@
     
     </ul>
 </div></div>
-        <div class="col-md-9 documentation" role="main"><h2 id="appium-desired-capabilities"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/writing-running-appium/caps.md">
+        <div class="col-md-9 documentation" role="main"><p>Note that this documentation explains about Appium 1.x.
+Please refer to <a href="https://github.com/appium/appium">the README in the Appium repository</a> or <a href="https://appium.github.io/appium">Appium 2.0 documentation</a> about Appium 2.0.</p>
+<h2 id="appium-desired-capabilities"><a id="github-link" style="padding: 4px 4px;" class="btn btn-default pull-right" href="https://github.com/appium/appium/edit/master/docs/en/writing-running-appium/caps.md">
     <i class="glyphicon glyphicon-pencil"></i>
     &nbsp;&nbsp;Edit this Doc
   </a>Appium Desired Capabilities</h2>
@@ -2473,172 +2473,7 @@ Capabilities available in general and for specific drivers.</p>
 <p>Please refer to the documentation on the UIAutomator2 driver <a href="https://github.com/appium/appium-uiautomator2-driver#capabilities">repository</a> about its available capabilities.</p>
 <h4 id="espresso">Espresso</h4>
 <p>Please refer to the documentation on the Espresso driver <a href="https://github.com/appium/appium-espresso-driver#capabilities">repository</a> about its available capabilities.</p>
-<h3 id="ios-only">iOS Only</h3>
-<p>These Capabilities are available only on the <a href="/docs/en/drivers/ios-xcuitest/index.html">XCUITest
-Driver</a> and the deprecated <a href="/docs/en/drivers/ios-uiautomation/index.html">UIAutomation
-Driver</a>.</p>
-<table>
-<thead>
-<tr>
-<th>Capability</th>
-<th>Description</th>
-<th>Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>calendarFormat</code></td>
-<td>(Sim-only) Calendar format to set for the iOS Simulator</td>
-<td>e.g. <code>gregorian</code></td>
-</tr>
-<tr>
-<td><code>bundleId</code></td>
-<td>Bundle ID of the app under test. Useful for starting an app on a real device or for using other caps which require the bundle ID during test startup. To run a test on a real device using the bundle ID, you may omit the 'app' capability, but you must provide 'udid'.</td>
-<td>e.g. <code>io.appium.TestApp</code></td>
-</tr>
-<tr>
-<td><code>launchTimeout</code></td>
-<td>Amount of time in ms to wait for instruments before assuming it hung and failing the session</td>
-<td>e.g. <code>20000</code></td>
-</tr>
-<tr>
-<td><code>locationServicesEnabled</code></td>
-<td>(Sim-only) Force location services to be either on or off. Default is to keep current sim setting.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>locationServicesAuthorized</code></td>
-<td>(Sim-only) Set location services to be authorized or not authorized for app via plist, so that location services alert doesn't pop up. Default is to keep current sim setting. Note that if you use this setting you MUST also use the <code>bundleId</code> capability to send in your app's bundle ID.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>autoAcceptAlerts</code></td>
-<td>Accept all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>autoDismissAlerts</code></td>
-<td>Dismiss all iOS alerts automatically if they pop up. This includes privacy access permission alerts (e.g., location, contacts, photos). Default is false.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>nativeInstrumentsLib</code></td>
-<td>Use native intruments lib (ie disable instruments-without-delay).</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>nativeWebTap</code></td>
-<td>Enable "real", non-javascript-based web taps in Safari. Default: <code>false</code>. Warning: depending on viewport size/ratio; this might not accurately tap an element</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>safariInitialUrl</code></td>
-<td>Initial safari url, default is a local welcome page</td>
-<td>e.g. <code>https://www.github.com</code></td>
-</tr>
-<tr>
-<td><code>safariAllowPopups</code></td>
-<td>(Sim-only) Allow javascript to open new windows in Safari. Default keeps current sim setting</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>safariIgnoreFraudWarning</code></td>
-<td>(Sim-only) Prevent Safari from showing a fraudulent website warning. Default keeps current sim setting.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>safariOpenLinksInBackground</code></td>
-<td>(Sim-only) Whether Safari should allow links to open in new windows. Default keeps current sim setting.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>keepKeyChains</code></td>
-<td>(Sim-only) Whether to keep keychains (Library/Keychains) when appium session is started/finished</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>localizableStringsDir</code></td>
-<td>Where to look for localizable strings. Default <code>en.lproj</code></td>
-<td><code>en.lproj</code></td>
-</tr>
-<tr>
-<td><code>processArguments</code></td>
-<td>Arguments to pass to the AUT using instruments</td>
-<td>e.g., <code>-myflag</code></td>
-</tr>
-<tr>
-<td><code>interKeyDelay</code></td>
-<td>The delay, in ms, between keystrokes sent to an element when typing.</td>
-<td>e.g., <code>100</code></td>
-</tr>
-<tr>
-<td><code>showIOSLog</code></td>
-<td>Whether to show any logs captured from a device in the appium logs. Default <code>false</code></td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>sendKeyStrategy</code></td>
-<td>strategy to use to type test into a test field. Simulator default: <code>oneByOne</code>. Real device default: <code>grouped</code></td>
-<td><code>oneByOne</code>, <code>grouped</code> or <code>setValue</code></td>
-</tr>
-<tr>
-<td><code>screenshotWaitTimeout</code></td>
-<td>Max timeout in sec to wait for a screenshot to be generated. default: 10</td>
-<td>e.g., <code>5</code></td>
-</tr>
-<tr>
-<td><code>waitForAppScript</code></td>
-<td>The ios automation script used to determined if the app has been launched, by default the system wait for the page source not to be empty. The result must be a boolean</td>
-<td>e.g. <code>true;</code>, <code>target.elements().length &gt; 0;</code>, <code>$.delay(5000); true;</code></td>
-</tr>
-<tr>
-<td><code>webviewConnectRetries</code></td>
-<td>Number of times to send connection message to remote debugger, to get webview. Default: <code>8</code></td>
-<td>e.g., <code>12</code></td>
-</tr>
-<tr>
-<td><code>appName</code></td>
-<td>The display name of the application under test. Used to automate backgrounding the app in iOS 9+.</td>
-<td>e.g., <code>UICatalog</code></td>
-</tr>
-<tr>
-<td><code>customSSLCert</code></td>
-<td>(Sim only) Add an SSL certificate to IOS Simulator.</td>
-<td>e.g. <br><code>-----BEGIN CERTIFICATE-----MIIFWjCCBEKg...</code><br><code>-----END CERTIFICATE-----</code></td>
-</tr>
-<tr>
-<td><code>webkitResponseTimeout</code></td>
-<td>(Real device only) Set the time, in ms, to wait for a response from WebKit in a Safari session. Defaults to <code>5000</code></td>
-<td>e.g., <code>10000</code></td>
-</tr>
-<tr>
-<td><code>remoteDebugProxy</code></td>
-<td>(Sim only, &lt;= 11.2) If set, Appium sends and receives remote debugging messages through a proxy on either the local port (Sim only, &lt;= 11.2) or a proxy on this unix socket (Sim only &gt;= 11.3) instead of communicating with the iOS remote debugger directly.</td>
-<td>e.g. <code>12000</code> or <code>"/tmp/my.proxy.socket"</code></td>
-</tr>
-<tr>
-<td><code>enableAsyncExecuteFromHttps</code></td>
-<td>capability to allow simulators to execute asynchronous JavaScript on pages using HTTPS. Defaults to <code>false</code></td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>skipLogCapture</code></td>
-<td>Skips to start capturing logs such as crash, system, safari console and safari network. It might improve performance such as network. Log related commands will not work. Defaults to <code>false</code>.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-<tr>
-<td><code>webkitDebugProxyPort</code></td>
-<td>(Real device only) Port to which <code>ios-webkit-debug-proxy</code> is connected, during real device tests. Default is <code>27753</code>.</td>
-<td><code>12021</code></td>
-</tr>
-<tr>
-<td><code>fullContextList</code></td>
-<td>Returns the detailed information on contexts for the <a href="/docs/en/commands/context/get-contexts/index.html">get available context</a> command. If this capability is enabled, then each item in the returned contexts list would additionally include WebView title, full URL and the bundle identifier. Defaults to <code>false</code>.</td>
-<td><code>true</code> or <code>false</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="ios-only-using-xcuitest">iOS Only, using XCUITest</h4>
+<h3 id="xcuitest-only">XCUITest Only</h3>
 <p>Please refer to the documentation on the XCUITest driver <a href="https://github.com/appium/appium-xcuitest-driver#desired-capabilities">repository</a> about its available capabilities.</p>
 <h3 id="safaridriver-only">Safaridriver Only</h3>
 <p>Please refer to the documentation on the safaridriver <a href="https://github.com/appium/appium-safari-driver">repository</a> about its available capabilities.</p>
