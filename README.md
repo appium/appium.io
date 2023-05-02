@@ -1,3 +1,7 @@
+This repository is for deprecated appium.io WebSite.
+
+http://appium.github.io/appium.io/docs/en/about-appium/intro/
+
 appium.io
 =========
 
